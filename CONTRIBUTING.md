@@ -1,5 +1,8 @@
 # Contributing
 
+The portable documentation checker and its fixture suite require Python 3.11
+or newer and have no third-party package dependencies.
+
 ## Before starting
 
 1. Classify the request: explanation, diagnosis, feature, defect, migration,
@@ -48,5 +51,6 @@ A material change is done only when:
 Run the documentation check before handoff:
 
 ```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/check_docs.py
 ```

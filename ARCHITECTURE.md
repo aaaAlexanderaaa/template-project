@@ -1,22 +1,28 @@
+---
+document_role: structural-authority
+template_state: unconfigured
+last_reconciled: 2026-07-26
+---
+
 # Architecture
 
 > Template status: fill this document before adding product implementation.
-> Replace every bracketed prompt. Once adopted, this file is the structural
+> Replace every double-brace prompt. Once adopted, this file is the structural
 > authority and must describe the current system rather than an aspirational
 > mixture of current and future states.
 
 ## 1. System purpose
 
-- Product/system: `[name]`
-- Primary users: `[users]`
-- Problem boundary: `[what this system owns]`
-- Explicit non-goals: `[what it does not own]`
+- Product/system: `{{project-name}}`
+- Primary users: `{{primary-users}}`
+- Problem boundary: `{{what-this-system-owns}}`
+- Explicit non-goals: `{{what-this-system-does-not-own}}`
 
 ## 2. Bounded contexts and layers
 
 | Context or layer | Owns | Public interface | May depend on | Must not know |
 |---|---|---|---|---|
-| `[name]` | `[state/behavior]` | `[API/events/types]` | `[owners]` | `[private semantics]` |
+| `{{context-name}}` | `{{state-or-behavior}}` | `{{public-interface}}` | `{{allowed-dependencies}}` | `{{private-semantics}}` |
 
 State the dependency direction explicitly. A lower-level or generic layer must
 not acquire product-specific knowledge through convenience imports, shared
@@ -26,7 +32,7 @@ storage reads, or copied status vocabularies.
 
 | Invariant | Authoritative owner | Consumers | Enforcement surface |
 |---|---|---|---|
-| `[state transition or rule]` | `[module/service]` | `[clients]` | `[type/test/runtime guard]` |
+| `{{state-transition-or-rule}}` | `{{owner}}` | `{{consumers}}` | `{{enforcement-surface}}` |
 
 Every material invariant must have one owner. Consumers may render or compose
 the public contract but may not independently redefine it.
@@ -71,13 +77,13 @@ Per-surface behavior belongs under `docs/design/`, not in this structural map.
 
 ## 7. Runtime and deployment
 
-- Runtime topology: `[processes/services/jobs]`
-- Configuration sources and precedence: `[sources]`
-- Secret ownership: `[mechanism]`
-- Health and observability: `[logs/metrics/traces/audit]`
-- Deployment and rollback unit: `[unit]`
-- Data migration and compatibility window: `[policy]`
-- Recovery objectives: `[RTO/RPO or qualitative contract]`
+- Runtime topology: `{{processes-services-jobs}}`
+- Configuration sources and precedence: `{{sources-and-precedence}}`
+- Secret ownership: `{{mechanism}}`
+- Health and observability: `{{logs-metrics-traces-audit}}`
+- Deployment and rollback unit: `{{unit}}`
+- Data migration and compatibility window: `{{policy}}`
+- Recovery objectives: `{{recovery-objectives}}`
 
 ## 8. Hard and soft boundaries
 
@@ -94,13 +100,19 @@ Anything not explicitly public is private to its owner.
 
 ## 9. Structural fitness tests
 
-List the mechanical checks that prove the architecture remains true:
+`architecture-rules.toml` is the portable baseline enforcement manifest. In an
+adopted project, set it to `configured` with at least one non-vacuous path and
+forbidden-reference rule, or to `not_applicable` with a substantive rationale.
+The generic checker evaluates those literal boundary rules.
 
-- `[forbidden dependency/import check]`
-- `[public contract/schema compatibility check]`
-- `[state/recovery lifecycle test]`
-- `[permission/capability isolation test]`
-- `[frontend ownership or geometry guard]`
+List additional language-native or runtime checks that prove the architecture
+remains true:
+
+- `{{semantic-dependency-or-import-check}}`
+- `{{public-contract-or-schema-compatibility-check}}`
+- `{{state-and-recovery-lifecycle-test}}`
+- `{{permission-or-capability-isolation-test}}`
+- `{{frontend-ownership-or-geometry-guard}}`
 
 ## 10. Reconciliation log
 

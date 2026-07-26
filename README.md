@@ -7,7 +7,9 @@
 - 契约优先的开发纪律；
 - 前端、后端和跨端变更模板；
 - 计划、Issue、验证与交接模板；
-- 最小文档生命周期自检。
+- 可配置、带夹具测试的文档纪律检查器。
+
+文档检查器只依赖 Python 标准库，最低版本为 Python 3.11。
 
 ## 使用方式
 
@@ -16,8 +18,9 @@
 3. 阅读 `docs/README.md`，确定文档权威顺序。
 4. 将 `templates/` 中需要的模板复制到对应 `docs/` 目录并填写。
 5. 只有契约已落盘且冲突已对账后，才开始实现。
-6. 运行 `python3 scripts/check_docs.py` 检查文档生命周期和引用。
-7. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
+6. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
+7. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。
+8. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
 
 ## 目录
 
@@ -26,6 +29,8 @@
 ├── AGENTS.md                 # 自动化开发者的工作入口
 ├── CONTRIBUTING.md           # 人与自动化开发者共享的推进流程
 ├── ARCHITECTURE.md           # 待项目填写的结构权威模板
+├── architecture-rules.toml   # 可机器执行的基础架构边界规则
+├── docs-policy.toml          # 文档老化、模板和 adoption 策略
 ├── docs/
 │   ├── README.md             # 文档权威与生命周期地图
 │   ├── contracts/            # 当前、长期有效的规范
@@ -35,9 +40,9 @@
 │   ├── guides/               # 操作和维护说明
 │   └── evidence/             # 可复核的持久证据
 ├── templates/                # 可复制模板，不具有项目行为权威
-├── scripts/                  # 纪律的最小机械执行面
+├── scripts/                  # 可移植纪律的机械执行面
 ├── src/                      # 产品代码占位，当前为空
-├── tests/                    # 产品测试占位，当前为空
+├── tests/                    # 检查器夹具测试；采用后继续增加产品测试
 ├── tmp/                      # 本地临时证据，gitignored
 └── archive/                  # 本地替换备份，gitignored
 ```

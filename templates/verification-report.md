@@ -38,7 +38,7 @@ subject: {{initiative-or-contract}}
 
 ## Anomalies
 
-- `{{ID}}`: {{finding, severity, evidence, issue link}}
+- abnormality[{{registered-slug}}]: result={{pass|fail|not_run}}; evidence={{path-or-observation}}; issue={{issue-id-or-none}}
 
 An empty anomaly list means none were observed in this run; it does not prove
 that unknown anomalies cannot exist.

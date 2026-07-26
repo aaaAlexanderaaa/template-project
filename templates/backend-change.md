@@ -18,13 +18,21 @@ supersedes: []
 
 ## Source anchors
 
-- **source[1] — {{YYYY-MM-DD}}:** {{request, incident, or decision}}
+### source[1] — {{YYYY-MM-DD}}
+
+{{Request, incident, or decision}}
 
 ## Ownership
 
 | Concern | Authoritative owner | Public consumers | Forbidden duplicate owner |
 |---|---|---|---|
 | {{state/invariant}} | {{module/service/store}} | {{consumers}} | {{location}} |
+
+## Normative invariants
+
+- **INV-1 — {{name}}.** {{durable backend rule}}
+  - from: source[{{N}}]
+  - enforcement: `{{type/test/runtime guard}}`
 
 ## Public interface
 

@@ -1,0 +1,102 @@
+version = 1
+
+[aging]
+# Default for target contracts and target surface documents. A document-level
+# `review_due: YYYY-MM-DD` overrides this derived deadline.
+target_max_age_days = 90
+future_date_tolerance_days = 1
+pending_abnormality_max_age_days = 30
+
+[adoption]
+# Product mode begins when any configured source root contains a file other
+# than one of the placeholder names below.
+source_roots = ["src"]
+placeholder_names = ["README.md", ".gitkeep"]
+minimum_live_contracts = 1
+governance_contracts = [
+  "development-discipline.md",
+  "documentation-harness.md",
+]
+
+[architecture]
+manifest = "architecture-rules.toml"
+
+[templates]
+required_files = [
+  "contract.md",
+  "frontend-surface.md",
+  "backend-change.md",
+  "cross-stack-change.md",
+  "implementation-plan.md",
+  "issue-tracker.md",
+  "verification-report.md",
+  "handoff.md",
+  "guide.md",
+]
+
+[templates.required_sections]
+"contract.md" = [
+  "Purpose",
+  "Scope",
+  "Source anchors",
+  "Ownership and boundary",
+  "States and triggers",
+  "Normative invariants",
+  "Failure, recovery, and intervention",
+  "Acceptance evidence",
+  "Promise register",
+  "Reconciliation log",
+]
+"frontend-surface.md" = [
+  "Purpose and user outcome",
+  "Raw layer",
+  "Translated layer",
+  "Outcomes",
+  "Reachable states",
+  "Layout and size contract",
+  "Interaction map",
+  "Known abnormality classes",
+  "Verification matrix",
+  "Reconciliation log",
+]
+"backend-change.md" = [
+  "Outcome and scope",
+  "Source anchors",
+  "Ownership",
+  "Normative invariants",
+  "Public interface",
+  "State machine",
+  "Concurrency and idempotency",
+  "Failure and recovery",
+  "Authorization and capability boundary",
+  "Observability",
+  "Class-level acceptance tests",
+  "Reconciliation log",
+]
+"cross-stack-change.md" = [
+  "User outcome",
+  "Shared vocabulary",
+  "End-to-end state matrix",
+  "Ownership boundary",
+  "Interface contract",
+  "Frontend surface projection",
+  "Compatibility and cutover",
+  "Acceptance matrix",
+  "Failure-category guards",
+  "Reconciliation log",
+]
+"implementation-plan.md" = [
+  "Cold-start summary",
+  "Authority and prerequisites",
+  "Complete end state",
+  "Current state and gap",
+  "Execution order within one coherent change",
+  "Risk register",
+  "Verification matrix",
+  "Rollout, migration, and rollback",
+  "Completion record",
+]
+"issue-tracker.md" = ["Evidence", "Independent verification", "Category and root mechanism", "Contract impact", "Decision", "Resolution"]
+"verification-report.md" = ["Claim being verified", "Environment", "Result matrix", "Failure and negative-path checks", "Anomalies", "Limitations", "Verdict"]
+"handoff.md" = ["Outcome sought", "Read first", "Verified current facts", "Completed work", "Remaining work", "How to verify"]
+"guide.md" = ["Purpose", "Preconditions", "Procedure", "Verification", "Failure and recovery", "Safety and rollback", "Related authority"]

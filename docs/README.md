@@ -35,7 +35,13 @@ Canonical Markdown documents under `docs/` carry frontmatter:
 - `authority`: `normative`, `planning`, `guidance`, or `evidence`;
 - `last_reconciled`: last date the document was checked against its sources;
 - contracts also use `implementation` and `verification_status`;
+- target contracts and surfaces may set `review_due` to override the configured
+  aging deadline;
 - replacements use `supersedes` and `superseded_by`.
+
+Lifecycle relationship fields use repository-root-relative paths. Markdown
+links may be document-relative. Neither form may be absolute or escape the
+repository, even when the external target happens to exist locally.
 
 ## Lifecycle
 
@@ -52,6 +58,11 @@ Implementation states: `not_started`, `in_progress`, `partial`, `implemented`,
 
 Verification states: `pending`, `partial`, `enforced`, `not_applicable`.
 
+Repository-wide aging, template inventory, adoption roots, and optional
+abnormality deadlines live in `docs-policy.toml`. Concrete future commitments
+use structured `promise[id]` records with explicit due dates rather than
+natural-language TODO detection.
+
 ## Conflict rule
 
 Do not silently merge conflicting documents. Mark the affected document
@@ -66,4 +77,10 @@ direction is current, and preserve an explicit supersession chain.
   chooses a binary-artifact store. Commit structured summaries and stable
   references instead.
 
-Run `python3 scripts/check_docs.py` after changing canonical documentation.
+With Python 3.11 or newer, run `python3 scripts/check_docs.py` after changing
+canonical documentation. Run the standard-library unit suite when changing the
+checker or templates:
+
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+```

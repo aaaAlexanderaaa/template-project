@@ -14,6 +14,8 @@ Before changing code or behavior, read in this order:
 5. The active implementation plan under `docs/plans/`, if one exists.
 
 Do not infer authority from recency, filename, or document length.
+`docs-policy.toml` owns mechanical lifecycle defaults;
+`architecture-rules.toml` owns the portable baseline fitness declarations.
 
 ## Contract-first gate
 
@@ -84,3 +86,5 @@ The full discipline lives in
 - Record durable evidence for durable claims; keep scratch artifacts in `tmp/`.
 - Update contract implementation/verification status, plan status, issue
   status, and supersession links before declaring work complete.
+- When changing the documentation harness or templates, run both the fixture
+  suite and the repository check with Python 3.11 or newer.

@@ -33,27 +33,35 @@ If this changes an older requirement, write `supersedes: raw[N]` explicitly.
 
 ## Translated layer
 
-Every translated item cites at least one raw anchor.
+Every `###` translated subsection cites at least one raw anchor with a
+`- from: raw[N]` line. Place additional citations adjacent to a more specific
+claim when a subsection translates multiple sources. The checker enforces that
+every subsection is cited, every citation resolves, and every defined raw
+anchor is used.
 
 ### Outcomes
 
 - **O1 — {{outcome}}**
-  From: raw[{{N}}]
+  - from: raw[{{N}}]
 
 ### Reachable states
 
-| State | Entry condition | Visible result | Available actions | Exit/error behavior | From |
-|---|---|---|---|---|---|
-| `{{state}}` | {{condition}} | {{result}} | {{actions}} | {{behavior}} | raw[{{N}}] |
+| State | Entry condition | Visible result | Available actions | Exit/error behavior |
+|---|---|---|---|---|
+| `{{state}}` | {{condition}} | {{result}} | {{actions}} | {{behavior}} |
+
+- from: raw[{{N}}]
 
 Include applicable empty, loading, populated, error, stale, disabled, selected,
 expanded, unauthorized, offline, and archived states.
 
 ### Layout and size contract
 
-| Element/region | Width contract | Height contract | Overflow/scroll owner | Conditions | From |
-|---|---|---|---|---|---|
-| `{{stable handle}}` | {{min/max/intrinsic}} | {{min/max/content}} | {{owner}} | {{state/container}} | raw[{{N}}] |
+| Element/region | Width contract | Height contract | Overflow/scroll owner | Conditions |
+|---|---|---|---|---|
+| `{{stable handle}}` | {{min/max/intrinsic}} | {{min/max/content}} | {{owner}} | {{state/container}} |
+
+- from: raw[{{N}}]
 
 Define narrow, intermediate, and wide container behavior from the layout's own
 constraints. Device names may be used as verification fixtures, not as the sole
@@ -61,9 +69,11 @@ source of breakpoints.
 
 ### Interaction map
 
-| ID | Stable handle | Trigger/input | Precondition | Expected state delta | Focus/scroll result | From |
-|---|---|---|---|---|---|---|
-| `{{id}}` | `{{selector/role/test id}}` | {{click/key/touch/etc.}} | {{state}} | {{delta}} | {{result}} | raw[{{N}}] |
+| ID | Stable handle | Trigger/input | Precondition | Expected state delta | Focus/scroll result |
+|---|---|---|---|---|---|
+| `{{id}}` | `{{selector/role/test id}}` | {{click/key/touch/etc.}} | {{state}} | {{delta}} | {{result}} |
+
+- from: raw[{{N}}]
 
 ### Content and visual logic
 
@@ -72,7 +82,7 @@ source of breakpoints.
 - Empty/error language: {{contract}}
 - Shared component variants used: {{variants}}
 - Surface-specific exceptions and owner: {{exceptions or none}}
-- From: raw[{{N}}]
+- from: raw[{{N}}]
 
 ### Accessibility and input
 
@@ -81,7 +91,7 @@ source of breakpoints.
 - Touch and pointer: {{targets/gestures/hover alternatives}}
 - Screen reader announcements: {{dynamic state}}
 - Contrast, motion, zoom, and text scaling: {{support}}
-- From: raw[{{N}}]
+- from: raw[{{N}}]
 
 ### Responsive and browser support
 
@@ -89,11 +99,15 @@ source of breakpoints.
 |---|---|---|---|
 | {{range derived from constraints}} | {{state}} | {{changes}} | {{targets}} |
 
+- from: raw[{{N}}]
+
 ## Known abnormality classes
 
-List prior or plausible failures the verifier must check explicitly:
+This section is optional in an adopted surface. If present, every entry uses
+the exact structured form below. Pending evidence expires according to
+`docs-policy.toml`.
 
-- {{hard clipping, hidden scroll affordance, stretched item, lost focus, etc.}}
+- abnormality[{{stable-slug}}]: state=pending; evidence=pending:{{YYYY-MM-DD}}; guard=pending; description={{hard clipping, hidden scroll affordance, stretched item, lost focus, etc.}}
 
 ## Verification matrix
 

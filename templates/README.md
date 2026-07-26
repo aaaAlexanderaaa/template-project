@@ -17,5 +17,9 @@ are replaced, and lifecycle metadata is set correctly.
 | Operator or maintainer procedure | `guide.md` | `docs/guides/<topic>.md` |
 
 `ci/docs-check.example.yml` is an optional GitHub Actions adapter for the
-repository's dependency-free documentation check. Other CI systems should run
-the same command in their native format.
+repository's dependency-free Python 3.11+ documentation check and fixture
+suite. Other CI systems should run the same commands in their native format.
+
+The template inventory and required sections are declared in
+`docs-policy.toml`; editing a template without reconciling that policy fails the
+repository check.
