@@ -66,14 +66,55 @@ The human owner confirms:
 - immediate rules versus advisory rules;
 - current adoption stage.
 
-### 4. Separate current and target state
+### 4. Declare the confirmed decisions in `docs-policy.toml`
+
+The harness reads the owner's decisions instead of assuming one project shape.
+Set these before running the check for the first time:
+
+```toml
+[adoption]
+stage = "observed"              # or baselined / scoped_enforcement / adopted
+source_roots = ["app", "lib"]   # the project's real layout
+harness_paths = ["scripts"]     # tooling that is not product code
+managed_paths = []              # in scoped_enforcement: the governed boundaries
+
+[templates]
+profile = "minimal"             # or standard / full
+```
+
+Consequences worth knowing before you choose:
+
+- **Stage** decides whether adoption gaps block. `observed` and `baselined`
+  report them and still exit zero, so a running project can put the check into
+  CI on day one — including before the source roots are right. Getting the
+  layout wrong at an early stage produces a report, not a red build.
+  `scoped_enforcement` and `adopted` block.
+- **Source roots** decide what "product code" means. If code exists outside all
+  of them, the check names the paths rather than passing on nothing. Files
+  directly in the repository root are never counted, so `setup.py`,
+  `conftest.py`, and `vite.config.ts` need no entry. For a tooling directory,
+  add it to `harness_paths`, which accepts glob patterns such as `tools/**`.
+- **Profile** decides the template inventory, and tiers are cumulative. A small
+  project selects `minimal` and may delete the templates it will never fill in;
+  documentation that still references a deleted template becomes an advisory,
+  not a build failure.
+- **Severity.** Time-based findings — overdue targets and promises, expired
+  pending evidence — are advisory by default. Run `--strict` on a schedule
+  rather than promoting them on every push. A rule you set to `off` stays off
+  even under `--strict`.
+
+Unknown keys in `[adoption]` and `[severity]` are rejected rather than ignored,
+so a typo or a setting from an older revision of the template surfaces as a
+failure with the replacement named.
+
+### 5. Separate current and target state
 
 Describe the current system in `ARCHITECTURE.md` only when it is verified. Put
 future behavior in target contracts and active plans. Do not make architecture
 look clean by deleting evidence of current debt or by copying aspirational
 template prompts into current authority.
 
-### 5. Plan one bounded migration
+### 6. Plan one bounded migration
 
 Use [implementation-plan.md](../../templates/implementation-plan.md) for the
 first managed boundary. A brownfield adoption normally moves through:
@@ -87,7 +128,7 @@ first managed boundary. A brownfield adoption normally moves through:
 Historical debt does not automatically block unrelated delivery. New work must
 not silently expand a baseline debt class.
 
-### 6. Reconcile entrypoints
+### 7. Reconcile entrypoints
 
 Update root and local `AGENTS.md`, contributor guidance, architecture ownership,
 source roots, CI entrypoints, and applicable contracts for the selected scope.
@@ -101,7 +142,9 @@ template files outrank project-specific authority.
 - Current and target descriptions are visibly separate.
 - Existing authorities are preserved or have explicit supersession links.
 - The first managed boundary has a contract, plan, and verification path.
-- The repository check passes for the scope claimed as enforced.
+- The repository check passes for the scope claimed as enforced. At an early
+  stage this means outstanding adoption work is reported rather than absent;
+  it must not be satisfied by fabricating architecture or contracts.
 - Remaining debt, exclusions, decisions, and higher adoption stages stay open.
 
 Passing the checker proves structural validity, not semantic correctness or

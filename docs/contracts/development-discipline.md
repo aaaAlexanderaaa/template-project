@@ -2,6 +2,7 @@
 doc_type: contract
 status: current
 authority: normative
+contract_role: governance
 implementation: implemented
 verification_status: partial
 last_reconciled: 2026-07-26

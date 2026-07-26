@@ -2,6 +2,7 @@
 doc_type: contract
 status: current
 authority: normative
+contract_role: governance
 implementation: implemented
 verification_status: partial
 last_reconciled: 2026-07-26
@@ -81,6 +82,18 @@ ownership until explicitly reconciled or superseded.
 | `scoped_enforcement` | Selected boundaries are reconciled | Declared rules gate only managed scope | First bounded migration lands | Every selected boundary has contract and verification evidence |
 | `adopted` | Chosen profile is the normal project standard | Normal governance gates apply | All agreed adoption outcomes pass | Completion record and residual exceptions are durable |
 
+The stage is a declared input, not a description. `[adoption].stage` in
+`docs-policy.toml` selects it, and the repository check honours it: adoption
+gates report without blocking in `observed` and `baselined`, and block from
+`scoped_enforcement` onward. `[adoption].managed_paths` narrows the governed
+file set in `scoped_enforcement` so declared rules gate only the confirmed
+boundaries. The selected governance profile is likewise declared, as
+`[templates].profile`.
+
+An adopting repository must therefore be able to pass its own check at every
+stage: an early stage reports the outstanding adoption work instead of
+demanding that it be fabricated.
+
 Greenfield projects may move directly from a completed initial assessment to
 `scoped_enforcement`. Brownfield projects default to staged progression unless
 the owner explicitly chooses and can verify an immediate cutover.
@@ -121,7 +134,12 @@ source roots, excluded scope, priority authority, and enforcement stage. The
 framework must not infer that copying files grants authority over the entire
 project.
 
-- from: source[1], source[2]
+Each of those decisions has a corresponding field in `docs-policy.toml`, and
+the checker reads them rather than assuming one layout. A repository whose code
+lives outside every declared source root is reported, not passed: silence must
+not be mistaken for compliance.
+
+- from: source[1], source[2], source[3]
 
 ### O5 — Historical debt does not become invisible or project-wide blocking
 
@@ -184,8 +202,11 @@ Verified on 2026-07-26:
   migration linkage, verification, and limitations;
 - the two new fixture cases first failed before the assessment template existed
   and pass after registration;
-- the full Python 3.11 fixture suite passes 36 tests and the repository checker
-  validates 12 canonical documents and 14 templates.
+- the declared stage and managed scope are checker inputs: fixtures confirm that
+  `observed` and `baselined` report adoption gaps without failing the build,
+  that `scoped_enforcement` gates only `managed_paths`, and that a rejected
+  stage name fails;
+- the full Python 3.11 fixture suite and the repository checker pass.
 
 Verification remains `partial`: no real greenfield or brownfield repository has
 yet completed this onboarding path, so usability, proportionality, and stage
@@ -205,3 +226,8 @@ transition behavior are not independently proven.
 - **2026-07-26 — implemented:** added current onboarding and post-adoption
   operation guides, a first-class assessment record, entrypoint routing, and
   missing-file/section guards. Real-project adoption evidence remains open.
+- **2026-07-26 — stage and scope made mechanical:** the staged model existed
+  only as prose, so an adopter at `observed` could not satisfy its own
+  verification step without fabricating adoption artifacts. `[adoption].stage`,
+  `managed_paths`, `source_roots`, and `[templates].profile` are now checker
+  inputs.

@@ -22,13 +22,44 @@
    `docs/guides/onboarding.md` 做只读盘点，不要直接覆盖已有权威。
 3. 使用 `templates/adoption-assessment.md` 记录当前事实、治理范围、优先级
    权威与 adoption 阶段，并由项目所有者确认。
-4. 在写首个受治理的产品变更前完成当前态 `ARCHITECTURE.md` 和相关契约。
-5. 只有契约已落盘且冲突已对账后，才开始对应范围的实现。
-6. 如果由 agent 推进 material/high-risk 变更，按
+4. 在 `docs-policy.toml` 中声明这些决定（见下节「按项目规模伸缩」）：
+   `[adoption].stage`、`source_roots`、`managed_paths` 与
+   `[templates].profile`。检查器读取这些字段，而不是假设某一种项目形态。
+5. 在写首个受治理的产品变更前完成当前态 `ARCHITECTURE.md` 和相关契约。
+6. 只有契约已落盘且冲突已对账后，才开始对应范围的实现。
+7. 如果由 agent 推进 material/high-risk 变更，按
    `docs/contracts/agent-execution-discipline.md` 选择执行与独立评审深度。
-7. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
-8. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。
-9. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
+8. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
+9. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。
+10. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
+
+## 按项目规模伸缩
+
+模板不假设项目大小，也不要求先完成迁移才能接入 CI。四个旋钮都在
+`docs-policy.toml` 里：
+
+| 旋钮 | 作用 | 常见取值 |
+|---|---|---|
+| `[adoption].stage` | 采用阶段是否阻断构建 | `observed`/`baselined` 只报告并返回 0；`scoped_enforcement`/`adopted` 阻断 |
+| `[adoption].source_roots` | 什么算产品代码 | `["src"]`、`["app", "lib"]`、`["packages"]`、`["cmd", "internal"]` |
+| `[adoption].managed_paths` | `scoped_enforcement` 下受治理的边界 | `["packages/billing/**"]` |
+| `[templates].profile` | 需要哪些模板（分层累积） | `minimal` / `standard` / `full` |
+
+由此得到的工作方式：
+
+- **小项目：** `profile = "minimal"` 只保留契约、计划、Issue 与指南四个模板，
+  其余可以直接删除；文档里残留的引用降级为 advisory，不会让构建变红。
+- **运行中的项目：** 第一天就可以把检查器放进 CI。`stage = "observed"` 会把
+  未完成的采用工作打印出来并返回 0，随阶段推进逐步收紧。
+- **非 `src/` 布局：** 代码若落在所有 `source_roots` 之外，检查器会指名报告，
+  而不是在空集合上给出一个无意义的绿灯。这条同样受 stage 影响：早期阶段只报告，
+  所以还没配好布局也能先把检查接进 CI。仓库根目录下的文件（`setup.py`、
+  `conftest.py`、`vite.config.ts` 等）从不计入产品代码；工具目录写进
+  `harness_paths`，它接受 `tools/**` 这样的 glob。
+- **CI：** 结构性问题是 error；仅因日期推移产生的问题（过期 target、逾期
+  promise、pending 证据超期）默认是 advisory。把 `--strict` 放到定时任务里，
+  日期变化就不会让一个无关的 PR 失败。设为 `off` 的规则在 `--strict` 下仍然
+  保持关闭——关掉它是项目自己的决定。
 
 ## 目录
 

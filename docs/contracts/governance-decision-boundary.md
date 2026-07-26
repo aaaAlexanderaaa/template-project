@@ -2,6 +2,7 @@
 doc_type: contract
 status: current
 authority: normative
+contract_role: governance
 implementation: implemented
 verification_status: partial
 last_reconciled: 2026-07-26
@@ -194,10 +195,11 @@ Verified on 2026-07-26:
 
 - contributor, agent, onboarding, project-operation, and assessment entrypoints
   use the five output classes and preserve human priority authority;
-- `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
-  passed all 36 fixture tests;
-- `uv run --python 3.11 python scripts/check_docs.py --today 2026-07-26`
-  passed against 12 canonical documents and 14 required templates.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` passed the full fixture
+  suite;
+- `python3 scripts/check_docs.py --today 2026-07-26` passed. The checker's
+  summary line reports the current document and template inventory; restating a
+  count here would only go stale.
 
 Verification remains `partial`: the repository proves structural reachability
 and terminology alignment, not how an independent real project applies the

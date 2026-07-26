@@ -2,6 +2,7 @@
 doc_type: contract
 status: current
 authority: normative
+contract_role: governance
 implementation: implemented
 verification_status: enforced
 last_reconciled: 2026-07-26
@@ -59,6 +60,18 @@ citations while the shipped checker does not validate them.
 The operator approved a domain-neutral hardening pass, including the review's
 valuable findings with configurable rather than project-specific mechanisms.
 
+### source[3] — 2026-07-26
+
+> "pls help me optimize this template project to make it suite to different
+> scale of projects because sometimes the project is not such big or sometimes
+> my project need CI... we need to make the workflow work smoothly instead of
+> make agent pay a lot attention to fit it."
+
+The harness described staged, scoped, and profiled adoption in prose while the
+checker enforced exactly one profile, at one stage, with every finding blocking.
+The operator asked for the mechanism to carry that variation instead of the
+reader.
+
 ## Operating modes
 
 ### Template mode
@@ -77,7 +90,11 @@ authority must be marked configured, the architecture fitness manifest must be
 `configured` with at least one rule or `not_applicable` with a substantive
 rationale, and at least one live product contract must be in implementation.
 
-- from: source[1], source[2]
+Which files count is a function of `[adoption].source_roots` and, in stage
+`scoped_enforcement`, `[adoption].managed_paths`. Whether the gates block is a
+function of `[adoption].stage`.
+
+- from: source[1], source[2], source[3]
 
 ## Normative invariants
 
@@ -128,12 +145,19 @@ merely because they are old.
 
 ### H4 — Templates are checked as first-class deliverables
 
-`docs-policy.toml` declares required template files and required sections. The
+`docs-policy.toml` declares the template inventory and required sections. The
 checker validates their frontmatter shape, section inventory, standard
 raw/source citation examples, structured promise example, placeholders, and
 local links without treating them as current product contracts.
 
-- from: source[1]
+The inventory is selected by a cumulative profile — `minimal`, `standard`, or
+`full` — rather than one fixed list, so a small project is not required to
+carry ceremony it will never fill in. `[templates.doc_types]` owns the expected
+`doc_type` of every template; a required template with no declared type fails
+rather than silently skipping the assertion. An explicit `required_files` list
+overrides the profile.
+
+- from: source[1], source[3]
 
 ### H5 — Architecture fitness is declared without pretending to be universal
 
@@ -176,7 +200,53 @@ links. Tests control their clock and write only to temporary directories.
 
 - from: source[1]
 
-### H8 — Mechanical scope is honest
+### H8 — Enforcement stage and managed scope are inputs, not prose
+
+`[adoption].stage` carries the enforcement stage from
+`docs/contracts/project-adoption.md` into the checker. In `observed` and
+`baselined` the adoption gates report without failing the build; from
+`scoped_enforcement` onward they block. In `scoped_enforcement`,
+`[adoption].managed_paths` narrows the governed file set to the boundaries the
+owner has confirmed.
+
+Product mode must not be decidable by one hard-coded directory name. When
+source files exist outside every configured source root, the checker names the
+offending paths rather than reporting a pass that gates nothing. That report is
+itself stage-sensitive: like the adoption gates it advises in `observed` and
+`baselined` and blocks from `scoped_enforcement` onward, so declaring an early
+stage is enough to run the check in CI before the layout is configured.
+
+Files directly in the repository root are exempt from that report. Build and
+tooling configuration — `setup.py`, `conftest.py`, `vite.config.ts`, and their
+equivalents — belongs to no source root in any layout, and demanding that an
+adopter claim it would fail the first run for something the gates should never
+have governed. Directory scans prune dependency and tool caches during the
+walk, so cost stays proportional to the project rather than to what it vendors.
+
+- from: source[3]
+
+### H9 — Findings carry a severity, and only errors block
+
+Every finding is an error, an advisory, or off. Structural contradictions —
+missing metadata, unresolved citations, broken links, absent templates,
+incoherent lifecycle — are errors. Findings caused solely by the passage of
+time, or by a documented artifact a lower profile legitimately drops, default
+to advisory: they are printed and the summary still passes.
+
+`[severity]` retunes any listed rule; `--strict` promotes advisories to errors
+for a scheduled job. A rule set to `off` stays off under `--strict`: switching
+one off is a decision the project made, and a hygiene job reports harder rather
+than overturning it. A repository that passed yesterday must not fail today
+because a calendar date advanced and nothing else changed.
+
+Policy keys are checked against what the checker actually reads. An unknown
+`[adoption]` or `[severity]` key fails instead of being ignored, and a key
+retired by a later revision names its replacement, so an upgrading adopter is
+told how to migrate rather than losing the setting silently.
+
+- from: source[3]
+
+### H10 — Mechanical scope is honest
 
 Every stable syntactic rule above has a checker or test. Rules requiring human
 judgment remain explicit review gates and evidence requirements rather than
@@ -191,7 +261,12 @@ being represented by a vacuous automated pass.
   fixtures without third-party dependencies.
 - `--root` allows fixture repositories to be checked.
 - `--today` makes aging tests deterministic.
+- `--strict` promotes advisories to errors and leaves `off` rules off.
+- An unsupported interpreter fails with a version message before any
+  version-specific import is attempted.
 - Failures name the document and concrete violated rule.
+- The summary line names the document count, template count, selected profile,
+  and adoption stage, so a green check states what it actually enforced.
 - Template validation permits placeholders only under `templates/` and the
   intentionally unconfigured architecture skeleton.
 
@@ -213,18 +288,27 @@ being represented by a vacuous automated pass.
 |---|---|---|
 | Bidirectional UI and contract citations | Fixture tests + repository check | PASS — resolving, orphan, subsection, and layer-boundary cases |
 | Configurable target and promise aging | Clock-controlled fixture tests | PASS — default age, override, and overdue promise cases |
-| Templates validated as deliverables | Required-file/section/syntax fixtures | PASS — 14 required templates checked |
+| Templates validated as deliverables | Required-file/section/syntax fixtures | PASS — every template the selected profile requires |
+| Profiles scale the inventory | Profile-selection and trimmed-reference fixtures | PASS — lower tier still enforced, dropped tier not required, typos still fail |
+| Adoption gates read the declared scope | Source-root, managed-path, and stage fixtures | PASS — outside-root detection, scope narrowing, and advisory stages |
+| Configuration never fails an adopter for what it cannot own | Root-file, glob-harness, and vendored-tree fixtures | PASS — root tooling, `tools/**`, `node_modules/`, and `.venv/` all exempt |
+| Retired and misspelled policy keys are refused | `[adoption]` and `[severity]` key fixtures | PASS — retired key names its replacement, typo is rejected |
 | Non-vacuous architecture adoption | Manifest and forbidden-pattern fixtures | PASS — adoption, no-match, escape, and literal cases |
 | Optional abnormalities remain accountable | Registry/evidence fixtures | PASS — fresh, expired, resolving, and unregistered cases |
-| Checker behavior remains stable | Standard-library unittest suite | PASS — 36 tests |
+| Severity is honest about what blocks | Advisory/error/off and `--strict` fixtures | PASS — time-based findings never fail a default run, and `off` survives `--strict` |
+| Checker behavior remains stable | Standard-library unittest suite | PASS — full suite green |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
+
+Counts are deliberately absent from this table: the checker's own summary line
+and the fixture suite are the current inventory, and a number copied into prose
+goes stale the next time a template is added.
 
 Verification run on 2026-07-26:
 
-- `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
-  → PASS, 36 tests.
-- `uv run --python 3.11 python scripts/check_docs.py --today 2026-07-26`
-  → PASS, 12 canonical documents and 14 templates valid.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` → PASS, full suite.
+- `python3 scripts/check_docs.py --today 2026-07-26` → PASS.
+- `python3 scripts/check_docs.py --today 2027-06-30` → PASS, confirming no
+  shipped deadline can turn an adopter's build red on a date boundary.
 - `git diff --check` → PASS with no output.
 - Scoped repository-independence `rg` audits → PASS with no matches.
 
@@ -238,4 +322,20 @@ Verification run on 2026-07-26:
   repository-contained references, and 31 fixture cases now form one portable
   documentation harness.
 - **2026-07-26 — inventory extended:** registered the agent-governance and
-  project-adoption records; 36 fixtures now protect 14 reusable templates.
+  project-adoption records under the fixture suite.
+- **2026-07-26 — scaled to project size:** the harness enforced one profile, at
+  one stage, with every finding blocking, while the contracts described tiers,
+  stages, and managed scope. Template profiles, `[adoption].stage`,
+  `managed_paths`, source-root detection, recursive contract counting, and an
+  error/advisory split moved that variation out of prose and into
+  `docs-policy.toml`. Prose counts were removed in favour of the checker's own
+  summary.
+- **2026-07-26 — review corrections:** review of that change found the scaling
+  mechanisms could still fail an adopter for something they had decided or did
+  not own. `--strict` promoted `off` rules to errors, overturning a project's
+  own decision; repository-root tooling such as `setup.py` was reported as
+  unclaimed product code, failing the first run of a stage that exists to be
+  non-blocking; `source_root_configuration` ignored the declared stage;
+  retired `[adoption]` keys were dropped silently on upgrade; and directory
+  scans filtered dependency trees after walking them. Each is now fixed and
+  covered by a fixture.

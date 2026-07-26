@@ -2,6 +2,7 @@
 doc_type: contract
 status: current
 authority: normative
+contract_role: governance
 implementation: implemented
 verification_status: enforced
 last_reconciled: 2026-07-26
@@ -232,13 +233,14 @@ This contract is implemented when:
 
 Verified on 2026-07-26:
 
-- `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
-  passed all 36 fixture tests, including missing agent/adoption templates,
-  missing-section, and unsupported-runtime cases;
-- `uv run --python 3.11 python scripts/check_docs.py` passed against 12 canonical
-  documents and 14 required templates;
-- `/usr/bin/python3 scripts/check_docs.py --help` under Python 3.9 exited with
-  the actionable Python 3.11+ preflight and no traceback.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` passed the full fixture
+  suite, including missing agent/adoption templates, missing-section, and
+  unsupported-runtime cases;
+- `python3 scripts/check_docs.py` passed; the checker's own summary line is the
+  authority on the document and template inventory, so no count is restated here;
+- the runtime preflight is covered without depending on a second interpreter
+  being installed: the guard is asserted directly for 3.9, 3.10, and 2.7, and a
+  source-order fixture keeps it ahead of the `tomllib` import.
 
 ## Promise register
 

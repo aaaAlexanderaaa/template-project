@@ -9,22 +9,36 @@ correct.
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from collections import defaultdict
-from collections.abc import Iterable
+from collections.abc import Iterable, Iterator, Sequence
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
+from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any
 from urllib.parse import unquote
 
-if sys.version_info < (3, 11):
+MINIMUM_PYTHON = (3, 11)
+
+
+def require_supported_python(version_info: Sequence[int] = sys.version_info) -> None:
+    """Fail with an actionable message before any 3.11-only import is attempted."""
+
+    if tuple(version_info[:2]) >= MINIMUM_PYTHON:
+        return
+    required = ".".join(str(part) for part in MINIMUM_PYTHON)
+    current = ".".join(str(part) for part in version_info[:2])
     raise SystemExit(
-        "check_docs requires Python 3.11 or newer; "
-        f"current runtime is {sys.version_info.major}.{sys.version_info.minor}. "
-        "Select a Python 3.11+ interpreter and rerun the command."
+        f"check_docs requires Python {required} or newer; "
+        f"current runtime is {current}. "
+        f"Select a Python {required}+ interpreter and rerun the command."
     )
+
+
+require_supported_python()
 
 import tomllib
 
@@ -59,6 +73,113 @@ VALID_SCOPES = {"current-ui", "future-ui", "historical-ui"}
 VALID_PROMISE_STATUSES = {"open", "resolved", "cancelled"}
 VALID_ABNORMALITY_STATES = {"pending", "active", "retired"}
 VALID_ABNORMALITY_RESULTS = {"pass", "fail", "not_run"}
+VALID_CONTRACT_ROLES = {"product", "governance"}
+
+ERROR = "error"
+ADVISORY = "advisory"
+OFF = "off"
+VALID_SEVERITIES = {ERROR, ADVISORY, OFF}
+
+# Adoption stages come from docs/contracts/project-adoption.md. Early stages are
+# source-preserving: the harness reports adoption gaps without blocking work.
+ADOPTION_STAGES = ("observed", "baselined", "scoped_enforcement", "adopted")
+ADVISORY_ADOPTION_STAGES = {"observed", "baselined"}
+
+# Rules whose severity a project may retune in `[severity]`. Everything not
+# listed here is a structural error: the repository contradicts itself.
+CONFIGURABLE_RULES = {
+    # A calendar date passed. Nothing in the repository changed.
+    "target_aging": ADVISORY,
+    "overdue_promise": ADVISORY,
+    "pending_abnormality_aging": ADVISORY,
+    # Product code exists but the adoption artifacts are incomplete. Blocking
+    # from `scoped_enforcement` onward; reported only before that.
+    "adoption_gate": ERROR,
+    # Product code exists outside every configured source root, so the adoption
+    # gates above would silently evaluate against nothing.
+    "source_root_configuration": ERROR,
+    # Documentation still references a known template that the selected profile
+    # does not require and the project has deleted.
+    "trimmed_template_link": ADVISORY,
+}
+
+# Rules that describe unfinished adoption rather than a contradiction. Before
+# the owner has committed to enforcement they are reported, not blocking: an
+# adopter must be able to put the check into CI on the first day.
+STAGE_SENSITIVE_RULES = {"adoption_gate", "source_root_configuration"}
+
+# `[adoption]` keys the checker reads. Anything else is a typo or a key from an
+# earlier revision that now silently does nothing.
+KNOWN_ADOPTION_KEYS = {
+    "stage",
+    "source_roots",
+    "placeholder_names",
+    "harness_paths",
+    "managed_paths",
+    "minimum_live_contracts",
+    "source_suffixes",
+}
+
+# Retired keys, mapped to what replaced them, so an upgrading adopter is told
+# how to migrate rather than losing the setting without a word.
+RETIRED_ADOPTION_KEYS = {
+    "governance_contracts": (
+        "mark those contracts with `contract_role: governance` in their own "
+        "frontmatter instead"
+    ),
+}
+
+# Never product code, at any depth, in any layout.
+IGNORED_DIRECTORY_NAMES = {
+    ".git",
+    ".hg",
+    ".svn",
+    ".idea",
+    ".vscode",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".tox",
+    ".venv",
+    "__pycache__",
+    "node_modules",
+    "venv",
+    "vendor",
+}
+
+# Governance surface of the template itself, relative to the repository root.
+GOVERNANCE_PATHS = ("docs", "templates", "archive", "tmp")
+
+DEFAULT_SOURCE_SUFFIXES = (
+    ".c",
+    ".cc",
+    ".cpp",
+    ".cs",
+    ".css",
+    ".dart",
+    ".ex",
+    ".exs",
+    ".go",
+    ".h",
+    ".hpp",
+    ".java",
+    ".js",
+    ".jsx",
+    ".kt",
+    ".m",
+    ".mjs",
+    ".php",
+    ".py",
+    ".rb",
+    ".rs",
+    ".scala",
+    ".sql",
+    ".svelte",
+    ".swift",
+    ".ts",
+    ".tsx",
+    ".vue",
+)
 
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 PLACEHOLDER_RE = re.compile(r"\{\{[^}]+\}\}")
@@ -79,29 +200,57 @@ SOURCE_REF_RE = re.compile(r"source\[(\d+)\]")
 PROMISE_RE = re.compile(r"^\s*-\s*promise\[([a-z0-9][a-z0-9-]*)\]:\s*(.+?)\s*$")
 ABNORMALITY_RE = re.compile(r"^\s*-\s*abnormality\[([a-z0-9][a-z0-9-]*)\]:\s*(.+?)\s*$")
 
-TEMPLATE_EXPECTED_TYPES = {
-    "contract.md": "contract",
-    "backend-change.md": "contract",
-    "cross-stack-change.md": "contract",
-    "frontend-surface.md": "surface-contract",
-    "implementation-plan.md": "plan",
-    "issue-tracker.md": "issue-tracker",
-    "verification-report.md": "evidence",
-    "handoff.md": "evidence",
-    "guide.md": "guide",
-    "agent-execution-plan.md": "plan",
-    "independent-review.md": "evidence",
-    "holistic-evaluation.md": "evidence",
-    "evidence-preserving-data.md": "contract",
-    "adoption-assessment.md": "evidence",
-}
-
 
 @dataclass(frozen=True)
 class DocRecord:
     path: Path
     metadata: dict[str, str]
     text: str
+
+
+@dataclass(frozen=True)
+class Finding:
+    path: Path
+    message: str
+    severity: str
+    rule: str | None
+
+
+def path_matches(relative: str, patterns: Iterable[str]) -> bool:
+    """Match a repository-relative POSIX path against globs or directory prefixes.
+
+    Matching uses `fnmatch`, which does not treat `/` specially, so `*` spans
+    directory separators exactly as `**` does: `src/billing/*` also matches
+    `src/billing/deep/nested/a.py`. Both places that consume this — managed
+    scope and harness exemptions — only ever widen what is skipped, so the
+    permissive reading is the safe one.
+    """
+
+    for raw in patterns:
+        pattern = str(raw).strip().strip("/")
+        if not pattern:
+            continue
+        if relative == pattern or relative.startswith(f"{pattern}/"):
+            return True
+        if fnmatch(relative, pattern):
+            return True
+    return False
+
+
+def iter_files(directory: Path) -> Iterator[Path]:
+    """Yield files under `directory`, pruning tool and dependency trees.
+
+    Pruning during the walk rather than filtering afterwards keeps the cost
+    proportional to the project instead of to its vendored dependencies.
+    """
+
+    for current, directory_names, file_names in os.walk(directory):
+        directory_names[:] = sorted(
+            name for name in directory_names if name not in IGNORED_DIRECTORY_NAMES
+        )
+        base = Path(current)
+        for name in sorted(file_names):
+            yield base / name
 
 
 def parse_frontmatter_text(text: str) -> tuple[dict[str, str], str | None]:
@@ -206,19 +355,93 @@ def relation_values(raw: str) -> list[str]:
 
 
 class DocumentationChecker:
-    def __init__(self, root: Path, today: date):
+    def __init__(self, root: Path, today: date, strict: bool = False):
         self.root = root.resolve()
         self.docs = self.root / "docs"
         self.templates = self.root / "templates"
         self.today = today
-        self.messages: dict[Path, list[str]] = defaultdict(list)
+        self.strict = strict
+        self.findings: list[Finding] = []
         self.policy: dict[str, Any] = {}
         self.records: list[DocRecord] = []
         self.metadata_by_path: dict[Path, dict[str, str]] = {}
         self.abnormalities: dict[str, Path] = {}
+        self.required_templates: list[str] = []
 
-    def add(self, path: Path, message: str) -> None:
-        self.messages[path].append(message)
+    def add(self, path: Path, message: str, rule: str | None = None) -> None:
+        severity = self.severity_for(rule)
+        if severity == OFF:
+            return
+        self.findings.append(Finding(path, message, severity, rule))
+
+    @property
+    def errors(self) -> list[Finding]:
+        return [finding for finding in self.findings if finding.severity == ERROR]
+
+    @property
+    def advisories(self) -> list[Finding]:
+        return [finding for finding in self.findings if finding.severity == ADVISORY]
+
+    @property
+    def stage(self) -> str:
+        stage = str(self.policy.get("adoption", {}).get("stage", "adopted")).strip()
+        return stage if stage in ADOPTION_STAGES else "adopted"
+
+    def severity_for(self, rule: str | None) -> str:
+        """Resolve a rule's severity from stage defaults and `[severity]` policy."""
+
+        if rule is None:
+            return ERROR
+        default = CONFIGURABLE_RULES.get(rule, ERROR)
+        if rule in STAGE_SENSITIVE_RULES and self.stage in ADVISORY_ADOPTION_STAGES:
+            default = ADVISORY
+        configured = self.policy.get("severity", {}).get(rule)
+        severity = str(configured) if configured is not None else default
+        if severity not in VALID_SEVERITIES:
+            severity = default
+        # `off` is a decision the project made; a scheduled strict run reports
+        # harder, it does not overturn a rule the owner switched off.
+        if self.strict and severity == ADVISORY:
+            return ERROR
+        return severity
+
+    def validate_policy_shape(self) -> None:
+        policy_path = self.root / "docs-policy.toml"
+        adoption = self.policy.get("adoption", {})
+        declared_stage = adoption.get("stage")
+        if declared_stage is not None and str(declared_stage) not in ADOPTION_STAGES:
+            self.add(
+                policy_path,
+                f"[adoption].stage must be one of {', '.join(ADOPTION_STAGES)}: "
+                f"{declared_stage}",
+            )
+        for key in adoption:
+            if key in KNOWN_ADOPTION_KEYS:
+                continue
+            if replacement := RETIRED_ADOPTION_KEYS.get(key):
+                self.add(
+                    policy_path,
+                    f"[adoption].{key} is no longer read; {replacement}, then "
+                    "delete the key",
+                )
+            else:
+                self.add(
+                    policy_path,
+                    f"[adoption].{key} is not a recognised key; known keys are "
+                    f"{', '.join(sorted(KNOWN_ADOPTION_KEYS))}",
+                )
+        for rule, severity in self.policy.get("severity", {}).items():
+            if rule not in CONFIGURABLE_RULES:
+                self.add(
+                    policy_path,
+                    f"[severity].{rule} is not a configurable rule; known rules are "
+                    f"{', '.join(sorted(CONFIGURABLE_RULES))}",
+                )
+            elif str(severity) not in VALID_SEVERITIES:
+                self.add(
+                    policy_path,
+                    f"[severity].{rule} must be error, advisory, or off: {severity}",
+                )
 
     def display_path(self, path: Path) -> str:
         try:
@@ -333,6 +556,12 @@ class DocumentationChecker:
                 self.add(
                     path,
                     "contracts require doc_type: contract and authority: normative",
+                )
+            role = metadata.get("contract_role", "product")
+            if role not in VALID_CONTRACT_ROLES:
+                self.add(
+                    path,
+                    f"contract_role must be product or governance: {role}",
                 )
             self.validate_contract_lifecycle(path, status, implementation, verification)
 
@@ -456,6 +685,7 @@ class DocumentationChecker:
                 record.path,
                 f"target document review overdue since {deadline}; promote, "
                 "supersede, mark historical, or reconcile it",
+                rule="target_aging",
             )
 
     def validate_promises(self, record: DocRecord) -> None:
@@ -492,6 +722,7 @@ class DocumentationChecker:
                 self.add(
                     record.path,
                     f"line {lineno}: open promise[{promise_id}] overdue since {deadline}",
+                    rule="overdue_promise",
                 )
 
     def validate_surface_citations(self, record: DocRecord) -> None:
@@ -607,10 +838,52 @@ class DocumentationChecker:
         for anchor_id in sorted(definitions - citations):
             self.add(path, f"{kind}[{anchor_id}] defined but never cited")
 
+    def required_template_files(self) -> list[str]:
+        """Resolve the template inventory for the project's declared profile.
+
+        Tiers are cumulative in `tier_order`, so a small project selects
+        `minimal` and never carries ceremony it will not fill in. An explicit
+        `required_files` list overrides the profile entirely.
+        """
+
+        config = self.policy.get("templates", {})
+        policy_path = self.root / "docs-policy.toml"
+        if explicit := config.get("required_files"):
+            return [str(name) for name in explicit]
+
+        order = [str(tier) for tier in config.get("tier_order", [])]
+        tiers = config.get("tiers", {})
+        profile = str(config.get("profile", "")).strip()
+        if not order or not tiers:
+            self.add(
+                policy_path,
+                "[templates] needs either required_files or tier_order plus "
+                "[templates.tiers]",
+            )
+            return []
+        if profile not in order:
+            self.add(
+                policy_path,
+                f"[templates].profile must be one of {', '.join(order)}: "
+                f"{profile or '(unset)'}",
+            )
+            return []
+        for tier in order:
+            if tier not in tiers:
+                self.add(policy_path, f"[templates.tiers] is missing tier: {tier}")
+
+        selected: list[str] = []
+        for tier in order[: order.index(profile) + 1]:
+            for name in tiers.get(tier, []):
+                if str(name) not in selected:
+                    selected.append(str(name))
+        return selected
+
     def validate_templates(self) -> None:
         config = self.policy.get("templates", {})
-        required_files = config.get("required_files", [])
+        required_files = self.required_templates
         required_sections = config.get("required_sections", {})
+        expected_types = config.get("doc_types", {})
         for filename in required_files:
             path = self.templates / filename
             if not path.exists():
@@ -624,8 +897,14 @@ class DocumentationChecker:
             for key in ("doc_type", "status", "authority", "last_reconciled"):
                 if not metadata.get(key):
                     self.add(path, f"template missing metadata: {key}")
-            expected_type = TEMPLATE_EXPECTED_TYPES.get(filename)
-            if expected_type and metadata.get("doc_type") != expected_type:
+            expected_type = expected_types.get(filename)
+            if not expected_type:
+                self.add(
+                    path,
+                    "required template has no declared doc_type in "
+                    "[templates.doc_types]",
+                )
+            elif metadata.get("doc_type") != expected_type:
                 self.add(
                     path,
                     f"template doc_type must be {expected_type}: {metadata.get('doc_type')}",
@@ -830,6 +1109,7 @@ class DocumentationChecker:
                 self.add(
                     path,
                     f"line {lineno}: abnormality[{slug}] evidence pending for more than {pending_days} days",
+                    rule="pending_abnormality_aging",
                 )
             return
 
@@ -906,23 +1186,123 @@ class DocumentationChecker:
                         f"local Markdown link escapes repository: {target}",
                     )
                 elif not resolved.exists():
-                    self.add(path, f"broken local Markdown link: {target}")
+                    self.add(
+                        path,
+                        f"broken local Markdown link: {target}",
+                        rule=self.trimmed_template_rule(resolved),
+                    )
 
-    def product_files(self) -> list[Path]:
+    def trimmed_template_rule(self, resolved: Path) -> str | None:
+        """Classify a missing link target that a lower profile legitimately drops.
+
+        A project on `minimal` deletes templates it will never fill in. The
+        catalogue prose that still mentions them is stale, not broken, so it
+        must not fail the build the way a typo does.
+        """
+
+        if resolved.parent != self.templates:
+            return None
+        if resolved.name in self.required_templates:
+            return None
+        if resolved.name not in self.known_template_files():
+            return None
+        return "trimmed_template_link"
+
+    def known_template_files(self) -> set[str]:
+        config = self.policy.get("templates", {})
+        known = {str(name) for name in config.get("required_files", [])}
+        for names in config.get("tiers", {}).values():
+            known.update(str(name) for name in names)
+        known.update(str(name) for name in config.get("doc_types", {}))
+        return known
+
+    def source_roots(self) -> list[str]:
         adoption = self.policy.get("adoption", {})
         roots = adoption.get("source_roots", ["src"])
+        return [str(root).strip().strip("/") for root in roots if str(root).strip()]
+
+    def product_files(self) -> list[Path]:
+        """Files the adoption gates govern, narrowed by stage-managed scope."""
+
+        adoption = self.policy.get("adoption", {})
         placeholders = set(adoption.get("placeholder_names", ["README.md", ".gitkeep"]))
         product: list[Path] = []
-        for source_root in roots:
+        for source_root in self.source_roots():
             directory = self.root / source_root
             if not directory.exists():
                 continue
             product.extend(
                 path
-                for path in directory.rglob("*")
-                if path.is_file() and path.name not in placeholders
+                for path in iter_files(directory)
+                if path.name not in placeholders
             )
+        managed = [
+            str(pattern)
+            for pattern in adoption.get("managed_paths", [])
+            if str(pattern).strip()
+        ]
+        if self.stage == "scoped_enforcement" and managed:
+            product = [
+                path
+                for path in product
+                if path_matches(path.relative_to(self.root).as_posix(), managed)
+            ]
         return sorted(product)
+
+    def validate_source_root_configuration(self) -> None:
+        """Catch code that lives outside every configured root.
+
+        Without this, a repository whose sources are in `app/` or `packages/`
+        reports a clean check while every adoption gate silently evaluates
+        against an empty file set.
+
+        Files directly in the repository root are exempt. `setup.py`,
+        `conftest.py`, `noxfile.py`, `vite.config.ts`, and their equivalents are
+        build and tooling configuration in every layout this template targets;
+        treating them as unclaimed product code would fail an adopter's very
+        first run for something no source root is supposed to own.
+        """
+
+        adoption = self.policy.get("adoption", {})
+        roots = self.source_roots()
+        harness = [
+            str(entry).strip().strip("/")
+            for entry in adoption.get("harness_paths", [])
+            if str(entry).strip()
+        ]
+        suffixes = {
+            str(suffix).lower()
+            for suffix in adoption.get("source_suffixes", DEFAULT_SOURCE_SUFFIXES)
+        }
+        excluded = [*GOVERNANCE_PATHS, *roots, *harness]
+
+        outside: list[str] = []
+        for path in iter_files(self.root):
+            if path.suffix.lower() not in suffixes:
+                continue
+            relative = path.relative_to(self.root)
+            if len(relative.parts) == 1:
+                continue
+            posix = relative.as_posix()
+            if path_matches(posix, excluded):
+                continue
+            outside.append(posix)
+
+        if not outside:
+            return
+        outside.sort()
+        sample = ", ".join(outside[:5])
+        if len(outside) > 5:
+            sample += f", and {len(outside) - 5} more"
+        self.add(
+            self.root / "docs-policy.toml",
+            "source files exist outside every configured source root, so the "
+            f"adoption gates check nothing: {sample}. Add the owning directory to "
+            "[adoption].source_roots, or — if it is tooling rather than product "
+            "code — to [adoption].harness_paths, which accepts directory names "
+            "and glob patterns alike",
+            rule="source_root_configuration",
+        )
 
     def validate_architecture(self) -> None:
         architecture = self.root / "ARCHITECTURE.md"
@@ -958,21 +1338,25 @@ class DocumentationChecker:
             )
 
         product = self.product_files()
+        self.validate_source_root_configuration()
         if product:
             if architecture_metadata.get("template_state") != "configured":
                 self.add(
                     architecture,
                     "product source exists but architecture template_state is not configured",
+                    rule="adoption_gate",
                 )
             if PLACEHOLDER_RE.search(architecture_text):
                 self.add(
                     architecture,
                     "product source exists but ARCHITECTURE.md still has placeholders",
+                    rule="adoption_gate",
                 )
             if manifest_status == "template":
                 self.add(
                     manifest_path,
                     "product source exists but architecture fitness is still template",
+                    rule="adoption_gate",
                 )
             self.validate_live_product_contracts(product)
 
@@ -988,15 +1372,17 @@ class DocumentationChecker:
 
     def validate_live_product_contracts(self, product: list[Path]) -> None:
         adoption = self.policy.get("adoption", {})
-        excluded = set(adoption.get("governance_contracts", []))
         minimum = int(adoption.get("minimum_live_contracts", 1))
+        contracts = self.docs / "contracts"
         live = 0
         for record in self.records:
-            if record.path.parent != self.docs / "contracts":
-                continue
-            if record.path.name in excluded:
+            # Contracts may be grouped into per-domain subdirectories; every
+            # other pass reads them recursively, so counting must too.
+            if not record.path.is_relative_to(contracts):
                 continue
             metadata = record.metadata
+            if metadata.get("contract_role", "product") != "product":
+                continue
             if metadata.get("status") not in {"current", "target"}:
                 continue
             if metadata.get("implementation") not in {
@@ -1011,6 +1397,7 @@ class DocumentationChecker:
                 product[0].parent,
                 f"product source exists but only {live} live implementation contract(s); "
                 f"minimum is {minimum}",
+                rule="adoption_gate",
             )
 
     def validate_architecture_rules(
@@ -1136,6 +1523,8 @@ class DocumentationChecker:
 
     def run(self) -> bool:
         self.policy = self.load_toml(self.root / "docs-policy.toml", "docs policy")
+        self.validate_policy_shape()
+        self.required_templates = self.required_template_files()
         self.validate_docs_layout()
         self.load_records()
         for record in self.records:
@@ -1149,22 +1538,53 @@ class DocumentationChecker:
         self.validate_abnormalities()
         self.validate_local_links()
         self.validate_architecture()
-        return not self.messages
+        return not self.errors
+
+    def print_group(self, findings: list[Finding]) -> None:
+        grouped: dict[Path, list[str]] = defaultdict(list)
+        for finding in findings:
+            grouped[finding.path].append(finding.message)
+        for path in sorted(grouped, key=self.display_path):
+            print(f"\n{self.display_path(path)}")
+            for message in grouped[path]:
+                print(f"  - {message}")
 
     def print_report(self) -> None:
-        if self.messages:
-            print(f"check_docs: {len(self.messages)} path(s) need attention")
-            for path in sorted(self.messages, key=self.display_path):
-                print(f"\n{self.display_path(path)}")
-                for message in self.messages[path]:
-                    print(f"  - {message}")
+        errors = self.errors
+        advisories = self.advisories
+        if errors:
+            print(
+                f"check_docs: {len(errors)} error(s) in "
+                f"{len({finding.path for finding in errors})} path(s) — "
+                "these block"
+            )
+            self.print_group(errors)
+        if advisories:
+            if errors:
+                print()
+            print(
+                f"check_docs: {len(advisories)} advisory finding(s) in "
+                f"{len({finding.path for finding in advisories})} path(s) "
+                "— not blocking; rerun with --strict to enforce"
+            )
+            self.print_group(advisories)
+        if errors:
             return
-        template_count = len(self.policy.get("templates", {}).get("required_files", []))
+        if advisories:
+            print()
         print(
             "check_docs: OK — "
             f"{len(self.records)} canonical document(s), "
-            f"{template_count} template(s), links and policy valid"
+            f"{len(self.required_templates)} template(s) "
+            f"(profile: {self.template_profile()}), "
+            f"adoption stage: {self.stage}, links and policy valid"
         )
+
+    def template_profile(self) -> str:
+        config = self.policy.get("templates", {})
+        if config.get("required_files"):
+            return "explicit"
+        return str(config.get("profile", "unset"))
 
 
 def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
@@ -1180,6 +1600,11 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
         default=datetime.now().astimezone().date().isoformat(),
         help="clock date for deterministic aging checks (YYYY-MM-DD)",
     )
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="treat advisory findings as errors (for a scheduled hygiene job)",
+    )
     return parser.parse_args(argv)
 
 
@@ -1190,10 +1615,10 @@ def main(argv: Iterable[str] | None = None) -> int:
     except ValueError:
         print(f"check_docs: invalid --today date: {args.today}")
         return 2
-    checker = DocumentationChecker(args.root, today)
+    checker = DocumentationChecker(args.root, today, strict=args.strict)
     checker.run()
     checker.print_report()
-    return 0 if not checker.messages else 1
+    return 0 if not checker.errors else 1
 
 
 if __name__ == "__main__":

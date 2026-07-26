@@ -23,6 +23,14 @@ Do not infer authority from recency, filename, or document length.
 `docs-policy.toml` owns mechanical lifecycle defaults;
 `architecture-rules.toml` owns the portable baseline fitness declarations.
 
+Governance depth is declared, not assumed. `[adoption].stage`,
+`[adoption].source_roots`, `[adoption].managed_paths`, and
+`[templates].profile` in `docs-policy.toml` state which scope is governed and
+how strictly. Read them before reporting a gap: at an early stage the checker
+reports adoption work without blocking, and that is the intended state, not a
+finding. Change the declared scope by proposing it to the owner, never by
+weakening a rule to make a check pass.
+
 ## Contract-first gate
 
 - Do not implement a material behavior change without a landed contract.

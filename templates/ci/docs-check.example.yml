@@ -1,16 +1,45 @@
 name: documentation-contracts
 
+# Two jobs on purpose. The per-change gate blocks only on findings a change can
+# actually cause; time-based staleness is collected by the scheduled job, so a
+# passing deadline never turns an unrelated pull request red.
+
 on:
   pull_request:
   push:
+  schedule:
+    # Weekly hygiene sweep. Adjust the cadence or delete the job entirely.
+    - cron: "0 6 * * 1"
 
 jobs:
   check-docs:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      # Drop this step once tests/ holds product tests instead of the
+      # checker fixtures, and run the project's own suite here.
       - run: python3 -m unittest discover -s tests -p 'test_*.py'
       - run: python3 scripts/check_docs.py
+
+  check-docs-strict:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # --strict promotes advisories -- overdue targets and promises, expired
+      # pending abnormality evidence, references to trimmed templates -- into
+      # failures, so staleness surfaces on a schedule the team owns. A rule set
+      # to "off" in [severity] stays off here.
+      #
+      # Before enabling this job, reconcile or reset the deadlines this
+      # template ships with: the promise register and target dates inherited
+      # from the template will expire on dates your project never chose, and
+      # this job is where that first shows up.
+      - run: python3 scripts/check_docs.py --strict

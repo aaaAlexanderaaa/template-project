@@ -8,39 +8,98 @@ future_date_tolerance_days = 1
 pending_abnormality_max_age_days = 30
 
 [adoption]
+# Enforcement stage from docs/contracts/project-adoption.md:
+# observed | baselined | scoped_enforcement | adopted.
+# `observed` and `baselined` report adoption gaps without failing the build, so
+# a running project can start under the harness before it is fully migrated.
+stage = "adopted"
+
 # Product mode begins when any configured source root contains a file other
-# than one of the placeholder names below.
+# than one of the placeholder names below. Set these to the project's real
+# layout, e.g. ["app", "lib"], ["packages"], ["cmd", "internal"].
 source_roots = ["src"]
 placeholder_names = ["README.md", ".gitkeep"]
+
+# Directories that hold tooling rather than product code. They are exempt from
+# the "source outside every source root" check. Adopters whose product code
+# lives in scripts/ or tests/ should move those entries to source_roots.
+# Glob patterns work here too, e.g. "tools/**" or "*.config.ts". Files sitting
+# directly in the repository root are always exempt and need no entry.
+harness_paths = ["scripts", "tests"]
+
+# Only consulted in stage `scoped_enforcement`: globs or directory prefixes
+# naming the boundaries currently governed. Empty means every source root.
+# Matching is fnmatch-based, so `*` spans `/` exactly as `**` does:
+# "src/billing/*" also selects "src/billing/deep/nested/a.py".
+managed_paths = []
+
 minimum_live_contracts = 1
-governance_contracts = [
-  "development-discipline.md",
-  "documentation-harness.md",
-  "agent-execution-discipline.md",
-  "governance-decision-boundary.md",
-  "project-adoption.md",
-]
+
+[severity]
+# error (blocks) | advisory (reported, exit 0) | off. `--strict` promotes
+# advisories to errors, which suits a scheduled hygiene job rather than a
+# per-push gate; a rule set to `off` stays off even under `--strict`, because
+# switching one off is a decision the project made. Time-based rules default to
+# advisory: a deadline passing is not a reason for an unrelated pull request to
+# fail.
+target_aging = "advisory"
+overdue_promise = "advisory"
+pending_abnormality_aging = "advisory"
+# `adoption_gate` and `source_root_configuration` are deliberately unset:
+# leaving them out lets [adoption].stage decide (advisory while
+# `observed`/`baselined`, blocking from `scoped_enforcement` on). Set either
+# here only to pin one severity at every stage.
 
 [architecture]
 manifest = "architecture-rules.toml"
 
 [templates]
-required_files = [
+# minimal | standard | full. Tiers are cumulative, so `standard` also requires
+# every `minimal` template. Setting an explicit `required_files` list overrides
+# the profile entirely.
+profile = "full"
+tier_order = ["minimal", "standard", "full"]
+
+[templates.tiers]
+# Enough to work contract-first at any size.
+minimal = [
   "contract.md",
+  "implementation-plan.md",
+  "issue-tracker.md",
+  "guide.md",
+]
+# Adds the stack-specific change records and durable verification evidence.
+standard = [
   "frontend-surface.md",
   "backend-change.md",
   "cross-stack-change.md",
-  "implementation-plan.md",
-  "issue-tracker.md",
   "verification-report.md",
   "handoff.md",
-  "guide.md",
+]
+# Adds agent risk governance, independent review, and adoption records.
+full = [
   "agent-execution-plan.md",
   "independent-review.md",
   "holistic-evaluation.md",
   "evidence-preserving-data.md",
   "adoption-assessment.md",
 ]
+
+[templates.doc_types]
+"contract.md" = "contract"
+"backend-change.md" = "contract"
+"cross-stack-change.md" = "contract"
+"evidence-preserving-data.md" = "contract"
+"frontend-surface.md" = "surface-contract"
+"implementation-plan.md" = "plan"
+"agent-execution-plan.md" = "plan"
+"issue-tracker.md" = "issue-tracker"
+"verification-report.md" = "evidence"
+"handoff.md" = "evidence"
+"independent-review.md" = "evidence"
+"holistic-evaluation.md" = "evidence"
+"adoption-assessment.md" = "evidence"
+"guide.md" = "guide"
 
 [templates.required_sections]
 "contract.md" = [
