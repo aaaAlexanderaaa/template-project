@@ -12,6 +12,12 @@ Before changing code or behavior, read in this order:
 3. The relevant `status: current` contract under `docs/contracts/`.
 4. For UI work, the relevant current surface contract under `docs/design/`.
 5. The active implementation plan under `docs/plans/`, if one exists.
+6. For material agent-driven work, the risk and review requirements in
+   `docs/contracts/agent-execution-discipline.md`.
+
+For greenfield or brownfield adoption, read
+`docs/contracts/project-adoption.md` and `docs/guides/onboarding.md` before
+rewriting existing authority or enabling project-wide gates.
 
 Do not infer authority from recency, filename, or document length.
 `docs-policy.toml` owns mechanical lifecycle defaults;
@@ -28,6 +34,21 @@ Do not infer authority from recency, filename, or document length.
 
 The full discipline lives in
 `docs/contracts/development-discipline.md`.
+
+## Governance decision boundary
+
+- Product direction, priority, trade-offs, and risk acceptance remain with the
+  declared human owner. The framework supplies decision evidence; it does not
+  replace that authority.
+- Classify material governance output as `fact`, `risk`, `recommendation`,
+  `human_decision_required`, or `execution_blocker`.
+- Use `execution_blocker` only for the bounded conflict, authorization,
+  configuration/dependency, adopted evidence/review, and coherent-end-state
+  conditions in `docs/contracts/governance-decision-boundary.md`.
+- A blocker pauses one execution path, not the product idea. Name its evidence,
+  exact scope, recovery options, and available human decision.
+- When priority is missing, present candidates and request direction; do not
+  silently promote an agent recommendation into project priority.
 
 ## Working safely
 
@@ -50,6 +71,25 @@ The full discipline lives in
 - Add a class-level guard that catches sibling variants of the same mechanism.
 - Prefer cohesion and a single reason for change over arbitrary file-size
   targets. Split modules that mix bounded contexts.
+
+## Agent execution profile
+
+- Classify agent-driven work as routine, material, or high-risk before
+  implementation. Record the rationale; do not downgrade risk to bypass a
+  missing reviewer.
+- Material work uses the seven-phase fixture- and test-first loop in
+  `docs/contracts/agent-execution-discipline.md`.
+- High-risk design requires independent system/contract, user/operator, and
+  engineering/maintenance perspectives plus a separate synthesis.
+- High-risk completion requires a fresh-context holistic evaluation. A
+  same-context checklist is useful evidence but is not independent evidence.
+- If a required independent context is unavailable, keep the affected
+  completion layer blocked or verifying unless a human records a scoped
+  governance exception.
+- When no named task is executable, consume the declared portfolio priority or
+  perform read-only diagnosis. Record discovered candidates, but obtain human
+  priority before non-trivial implementation when existing policy does not
+  already authorize the choice.
 
 ## Frontend work
 
@@ -86,5 +126,7 @@ The full discipline lives in
 - Record durable evidence for durable claims; keep scratch artifacts in `tmp/`.
 - Update contract implementation/verification status, plan status, issue
   status, and supersession links before declaring work complete.
+- State which layer is complete: task, task group/key result, objective, or
+  release gate. Completion at one layer does not close the next.
 - When changing the documentation harness or templates, run both the fixture
   suite and the repository check with Python 3.11 or newer.

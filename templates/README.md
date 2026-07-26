@@ -15,6 +15,11 @@ are replaced, and lifecycle metadata is set correctly.
 | Durable verification | `verification-report.md` | `docs/evidence/YYYY-MM-DD-<topic>.md` |
 | Cross-session continuation | `handoff.md` | `docs/evidence/YYYY-MM-DD-<topic>-handoff.md` |
 | Operator or maintainer procedure | `guide.md` | `docs/guides/<topic>.md` |
+| Risk-based agent execution | `agent-execution-plan.md` | `docs/plans/YYYY-MM-DD-<topic>.md` |
+| Independent multi-perspective review | `independent-review.md` | `docs/evidence/YYYY-MM-DD-<topic>-review.md` |
+| Fresh-context completion evaluation | `holistic-evaluation.md` | `docs/evidence/YYYY-MM-DD-<topic>-evaluation.md` |
+| Evidence-preserving data boundary | `evidence-preserving-data.md` | `docs/contracts/<topic>-data.md` |
+| Greenfield/brownfield adoption baseline | `adoption-assessment.md` | `docs/evidence/YYYY-MM-DD-adoption-assessment.md` |
 
 `ci/docs-check.example.yml` is an optional GitHub Actions adapter for the
 repository's dependency-free Python 3.11+ documentation check and fixture

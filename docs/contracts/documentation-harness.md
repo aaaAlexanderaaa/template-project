@@ -213,18 +213,18 @@ being represented by a vacuous automated pass.
 |---|---|---|
 | Bidirectional UI and contract citations | Fixture tests + repository check | PASS — resolving, orphan, subsection, and layer-boundary cases |
 | Configurable target and promise aging | Clock-controlled fixture tests | PASS — default age, override, and overdue promise cases |
-| Templates validated as deliverables | Required-file/section/syntax fixtures | PASS — nine required templates checked |
+| Templates validated as deliverables | Required-file/section/syntax fixtures | PASS — 14 required templates checked |
 | Non-vacuous architecture adoption | Manifest and forbidden-pattern fixtures | PASS — adoption, no-match, escape, and literal cases |
 | Optional abnormalities remain accountable | Registry/evidence fixtures | PASS — fresh, expired, resolving, and unregistered cases |
-| Checker behavior remains stable | Standard-library unittest suite | PASS — 31 tests |
+| Checker behavior remains stable | Standard-library unittest suite | PASS — 36 tests |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
 
 Verification run on 2026-07-26:
 
 - `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
-  → PASS, 31 tests.
+  → PASS, 36 tests.
 - `uv run --python 3.11 python scripts/check_docs.py --today 2026-07-26`
-  → PASS, four canonical documents and nine templates valid.
+  → PASS, 12 canonical documents and 14 templates valid.
 - `git diff --check` → PASS with no output.
 - Scoped repository-independence `rg` audits → PASS with no matches.
 
@@ -237,3 +237,5 @@ Verification run on 2026-07-26:
   template self-validation, architecture fitness, abnormality accountability,
   repository-contained references, and 31 fixture cases now form one portable
   documentation harness.
+- **2026-07-26 — inventory extended:** registered the agent-governance and
+  project-adoption records; 36 fixtures now protect 14 reusable templates.

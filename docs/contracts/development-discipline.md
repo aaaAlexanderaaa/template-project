@@ -21,15 +21,19 @@ memory into durable, reviewable contracts and reproducible evidence.
 
 ## Core invariants
 
-### D1 — Contract before implementation
+### D1 — Contract before material implementation
 
-Do not implement a feature or behavior change until its contract exists on
-disk. The contract must name the behavior, relevant states and triggers,
-ownership boundary, failure behavior, non-goals, and acceptance evidence.
+Do not implement a material feature or behavior change until its contract
+exists on disk. The contract must name the behavior, relevant states and
+triggers, ownership boundary, failure behavior, non-goals, and acceptance
+evidence.
 
-If no contract exists, write one first. If current discussion conflicts with a
-landed contract, stop implementation, record the conflict, reconcile it, and
-only then continue.
+Routine corrections and mechanically bounded refactors may rely on an existing
+current contract when they introduce no new semantics, state, boundary, or
+failure behavior. They do not require a standalone contract solely to satisfy a
+ritual. If no applicable contract exists for a material change, write one
+first. If current discussion conflicts with a landed contract, stop dependent
+implementation, record the conflict, reconcile it, and only then continue.
 
 Comments, tickets, commit messages, and conversation summaries are supporting
 context; they are not substitutes for the normative contract.

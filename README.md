@@ -7,20 +7,28 @@
 - 契约优先的开发纪律；
 - 前端、后端和跨端变更模板；
 - 计划、Issue、验证与交接模板；
+- 面向 AI agent 的风险分级、七阶段执行、独立评审与换上下文验收模板；
+- 证据保全型数据边界模板；
+- 不替代开发者优先级与产品判断的有限治理边界；
+- 面向新项目与运行中项目的 AI 引导式渐进 onboarding；
 - 可配置、带夹具测试的文档纪律检查器。
 
 文档检查器只依赖 Python 标准库，最低版本为 Python 3.11。
 
 ## 使用方式
 
-1. 复制或以本仓库作为新项目起点。
-2. 在写产品代码前完成 `ARCHITECTURE.md`。
-3. 阅读 `docs/README.md`，确定文档权威顺序。
-4. 将 `templates/` 中需要的模板复制到对应 `docs/` 目录并填写。
-5. 只有契约已落盘且冲突已对账后，才开始实现。
-6. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
-7. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。
-8. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
+1. 阅读 `docs/README.md`，确定文档权威顺序。
+2. 新项目以本仓库为起点；运行中项目先按
+   `docs/guides/onboarding.md` 做只读盘点，不要直接覆盖已有权威。
+3. 使用 `templates/adoption-assessment.md` 记录当前事实、治理范围、优先级
+   权威与 adoption 阶段，并由项目所有者确认。
+4. 在写首个受治理的产品变更前完成当前态 `ARCHITECTURE.md` 和相关契约。
+5. 只有契约已落盘且冲突已对账后，才开始对应范围的实现。
+6. 如果由 agent 推进 material/high-risk 变更，按
+   `docs/contracts/agent-execution-discipline.md` 选择执行与独立评审深度。
+7. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
+8. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。
+9. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
 
 ## 目录
 
@@ -58,6 +66,12 @@
 - 缺陷按类别修复并增加类级护栏；
 - 前端穷尽状态并结合感知与结构证据；
 - 后端明确状态所有权、失败和恢复；
+- agent 风险决定执行深度，高风险设计与验收使用真实独立上下文；
+- 开发者拥有方向和优先级，框架只提供事实、风险、建议与有限执行门；
+- onboarding 先保全当前事实，再按 observed → baselined →
+  scoped_enforcement → adopted 渐进收紧；
+- 任务、任务组、目标与发布门分别关闭，不以低层完成冒充高层完成；
+- 原始输入与派生表示分层，数据删除、迁移与 GC 保留可验证证据；
 - 规则尽量进入环境，而不是依赖记忆；
 - 计划、契约、Issue 和证据不互相冒充。
 

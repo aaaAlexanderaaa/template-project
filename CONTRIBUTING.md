@@ -12,6 +12,12 @@ or newer and have no third-party package dependencies.
 4. Check for contradictory contracts, active plans, or unresolved issues.
 5. For a material change, copy the appropriate file from `templates/` and land
    the contract before implementation.
+6. For agent-driven work, classify the risk using
+   `docs/contracts/agent-execution-discipline.md`; use
+   `templates/agent-execution-plan.md` for material or high-risk execution.
+7. For template adoption, follow `docs/guides/onboarding.md`, preserve existing
+   authority, and record the human-confirmed profile, managed scope, priority
+   source, and adoption stage before enabling broad gates.
 
 ## During the change
 
@@ -23,6 +29,13 @@ or newer and have no third-party package dependencies.
 - Add class-level guards while implementing, rather than scheduling them as
   unspecified future cleanup.
 - Keep verification evidence tied to the claim it supports.
+- Keep product direction and priority with the declared human owner. Separate
+  facts, risks, recommendations, required decisions, and execution blockers.
+- For material work, preserve fixture identity and the observed failing
+  acceptance check before implementation.
+- For high-risk work, commission the required independent perspectives and
+  fresh-context evaluation, or record the exact blocked/governance-exception
+  state. Do not self-attest independence.
 
 ## Review questions
 
@@ -36,6 +49,14 @@ or newer and have no third-party package dependencies.
 - Are failure, recovery, observability, migration, and rollback addressed where
   relevant?
 - Can the evidence be reproduced in the declared environment?
+- Is the risk profile honest, and is claimed review independence demonstrated
+  by the review context rather than by labels?
+- Does the completion claim name the correct layer instead of promoting task
+  completion into objective or release completion?
+- Does selected work trace to a declared priority source or explicit human
+  choice, rather than an agent-authored ranking?
+- If governance blocks execution, is the blocker class allowed, evidence-backed,
+  scoped to one path, and paired with recovery or a human decision?
 
 ## Definition of done
 
@@ -47,6 +68,9 @@ A material change is done only when:
 - durable evidence is stored at the appropriate level;
 - the implementation plan and related issues have final lifecycle states;
 - operational guidance is updated if users or maintainers must act differently.
+- independent design and holistic review evidence exists where the recorded
+  risk requires it, or the work remains truthfully open under a documented
+  human governance exception.
 
 Run the documentation check before handoff:
 

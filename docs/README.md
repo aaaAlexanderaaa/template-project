@@ -77,6 +77,37 @@ direction is current, and preserve an explicit supersession chain.
   chooses a binary-artifact store. Commit structured summaries and stable
   references instead.
 
+## Agent execution profile
+
+This template repository applies
+`docs/contracts/agent-execution-discipline.md` to its own material agent work.
+An adopting project selects its agent-governance depth during onboarding and
+reconciles its local instructions explicitly; copying the files does not grant
+an agent product-direction or priority authority. Review records and holistic
+evaluations remain evidence, plans remain planning, and product behavior still
+belongs in contracts.
+
+Use `templates/agent-execution-plan.md` for material execution,
+`templates/independent-review.md` for genuinely independent perspectives,
+and `templates/holistic-evaluation.md` for completion review. If independence
+is required but unavailable, record a blocked state or an explicit human
+governance exception; never relabel same-context analysis as independent.
+
+## Governance and onboarding
+
+`docs/contracts/governance-decision-boundary.md` owns the boundary between
+human product authority and governance assistance. Developers or product owners
+retain direction, priority, trade-offs, and risk acceptance. Governance output
+is explicitly a fact, risk, recommendation, required human decision, or a
+narrow evidence-backed execution blocker.
+
+`docs/contracts/project-adoption.md` owns greenfield and brownfield adoption.
+Use `docs/guides/onboarding.md` and `templates/adoption-assessment.md` to
+inventory current truth, preserve existing authority, declare managed scope and
+priority ownership, and move through evidence-backed adoption stages. After
+onboarding, `docs/guides/project-operation.md` describes how agents consume
+rather than invent project priority.
+
 With Python 3.11 or newer, run `python3 scripts/check_docs.py` after changing
 canonical documentation. Run the standard-library unit suite when changing the
 checker or templates:

@@ -16,6 +16,9 @@ minimum_live_contracts = 1
 governance_contracts = [
   "development-discipline.md",
   "documentation-harness.md",
+  "agent-execution-discipline.md",
+  "governance-decision-boundary.md",
+  "project-adoption.md",
 ]
 
 [architecture]
@@ -32,6 +35,11 @@ required_files = [
   "verification-report.md",
   "handoff.md",
   "guide.md",
+  "agent-execution-plan.md",
+  "independent-review.md",
+  "holistic-evaluation.md",
+  "evidence-preserving-data.md",
+  "adoption-assessment.md",
 ]
 
 [templates.required_sections]
@@ -100,3 +108,8 @@ required_files = [
 "verification-report.md" = ["Claim being verified", "Environment", "Result matrix", "Failure and negative-path checks", "Anomalies", "Limitations", "Verdict"]
 "handoff.md" = ["Outcome sought", "Read first", "Verified current facts", "Completed work", "Remaining work", "How to verify"]
 "guide.md" = ["Purpose", "Preconditions", "Procedure", "Verification", "Failure and recovery", "Safety and rollback", "Related authority"]
+"agent-execution-plan.md" = ["Cold-start summary", "Risk classification", "Authority and prerequisites", "Complete end state", "Seven-phase execution loop", "Work-selection fallback", "Review topology", "Verification and evidence matrix", "Layered completion", "Progress and closure"]
+"independent-review.md" = ["Review scope and independence", "Inputs", "Perspective findings", "Synthesis", "Disagreements and human decisions", "Limitations", "Verdict and follow-up"]
+"holistic-evaluation.md" = ["Claim and completion layer", "Independence", "Evidence inventory", "Six-dimensional evaluation", "Failure and recovery", "Residual risks", "Verdict"]
+"evidence-preserving-data.md" = ["Purpose", "Scope", "Source anchors", "Value hierarchy", "Authoritative input and derived output", "Preservation invariants", "Reference inventory and garbage collection", "Migration and rollback", "Acceptance evidence", "Reconciliation log"]
+"adoption-assessment.md" = ["Adoption context", "Existing authority inventory", "Current-state baseline", "Governance profile and scope", "Priority and decision authority", "Risk and conflict register", "Stage decision", "Migration plan link", "Verification and completion", "Limitations"]

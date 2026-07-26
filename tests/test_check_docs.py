@@ -291,6 +291,56 @@ rationale = "{rationale}"
         self.replace("templates/guide.md", "## Purpose", "## Goal")
         self.assert_fails_with("template missing required section: Purpose")
 
+    def test_missing_agent_execution_template_fails(self) -> None:
+        self.path("templates/agent-execution-plan.md").unlink()
+        self.assert_fails_with(
+            "templates/agent-execution-plan.md",
+            "required template is missing",
+        )
+
+    def test_agent_execution_template_requires_review_topology(self) -> None:
+        self.replace(
+            "templates/agent-execution-plan.md",
+            "## Review topology",
+            "## Review arrangement",
+        )
+        self.assert_fails_with(
+            "template missing required section: Review topology"
+        )
+
+    def test_missing_adoption_assessment_template_fails(self) -> None:
+        self.path("templates/adoption-assessment.md").unlink()
+        self.assert_fails_with(
+            "templates/adoption-assessment.md",
+            "required template is missing",
+        )
+
+    def test_adoption_assessment_requires_stage_decision(self) -> None:
+        self.replace(
+            "templates/adoption-assessment.md",
+            "## Stage decision",
+            "## Stage suggestion",
+        )
+        self.assert_fails_with(
+            "template missing required section: Stage decision"
+        )
+
+    def test_unsupported_python_has_actionable_preflight(self) -> None:
+        executable = shutil.which("python3.9")
+        if executable is None:
+            self.skipTest("Python 3.9 is not installed")
+        result = subprocess.run(
+            [executable, str(CHECKER), "--help"],
+            cwd=REPOSITORY_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        output = result.stdout + result.stderr
+        self.assertNotEqual(result.returncode, 0, output)
+        self.assertIn("requires Python 3.11 or newer", output)
+        self.assertNotIn("Traceback", output)
+
     def test_surface_template_subsection_requires_citation(self) -> None:
         content = self.read("templates/frontend-surface.md")
         marker = "### Responsive and browser support"

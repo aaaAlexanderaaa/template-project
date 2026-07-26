@@ -19,6 +19,13 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import unquote
 
+if sys.version_info < (3, 11):
+    raise SystemExit(
+        "check_docs requires Python 3.11 or newer; "
+        f"current runtime is {sys.version_info.major}.{sys.version_info.minor}. "
+        "Select a Python 3.11+ interpreter and rerun the command."
+    )
+
 import tomllib
 
 VALID_DOC_TYPES = {
@@ -82,6 +89,11 @@ TEMPLATE_EXPECTED_TYPES = {
     "verification-report.md": "evidence",
     "handoff.md": "evidence",
     "guide.md": "guide",
+    "agent-execution-plan.md": "plan",
+    "independent-review.md": "evidence",
+    "holistic-evaluation.md": "evidence",
+    "evidence-preserving-data.md": "contract",
+    "adoption-assessment.md": "evidence",
 }
 
 
