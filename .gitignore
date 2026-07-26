@@ -1,0 +1,17 @@
+# Ephemeral work and local replacement backups
+/tmp/*
+!/tmp/.gitkeep
+/archive/*
+!/archive/.gitkeep
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Common generated noise
+*.log
+__pycache__/
+.pytest_cache/
+.DS_Store

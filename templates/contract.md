@@ -1,0 +1,96 @@
+---
+doc_type: contract
+status: target
+authority: normative
+implementation: not_started
+verification_status: pending
+last_reconciled: {{YYYY-MM-DD}}
+supersedes: []
+---
+
+# {{Contract title}}
+
+## Purpose
+
+What durable problem does this contract solve? State the user or system outcome,
+not only the implementation mechanism.
+
+## Scope
+
+### In scope
+
+- {{behavior, state, interface, or surface}}
+
+### Out of scope
+
+- {{explicit non-goal}}
+
+## Source anchors
+
+Record dated stakeholder language, incidents, standards, or prior decisions.
+Quote source language when interpretation matters.
+
+- **source[1] — {{YYYY-MM-DD}}:** “{{verbatim statement}}”
+- **source[2] — {{YYYY-MM-DD}}:** {{evidence or decision}}
+
+## Vocabulary
+
+| Term | Meaning | Excluded meaning |
+|---|---|---|
+| `{{term}}` | {{definition}} | {{common ambiguity}} |
+
+## Ownership and boundary
+
+- Authoritative owner: `{{module/service/surface}}`
+- Consumers: `{{consumers}}`
+- Public contract: `{{interface}}`
+- Private implementation details consumers must not infer: `{{details}}`
+
+## States and triggers
+
+| State | Entry trigger | Allowed actions | Exit trigger | Failure behavior |
+|---|---|---|---|---|
+| `{{state}}` | {{trigger}} | {{actions}} | {{trigger}} | {{behavior}} |
+
+List invalid transitions explicitly.
+
+## Normative invariants
+
+- **INV-1 — {{name}}.** {{rule}}
+  Source: `source[{{N}}]`
+  Enforcement: `{{type/test/runtime guard}}`
+
+## Required behaviors
+
+- **RB-1.** {{positive requirement}}
+
+## Forbidden behaviors
+
+- **FB-1.** {{behavior that would violate ownership or intent}}
+
+## Failure, recovery, and intervention
+
+- Retryable failures: {{classification}}
+- Terminal failures: {{classification}}
+- Timeout behavior: {{behavior}}
+- Recovery identity and persisted state: {{contract}}
+- Manual intervention: {{who, when, how}}
+
+## Compatibility and migration
+
+- Current state: {{facts}}
+- Cutover policy: {{atomic / compatibility window / dual-read, with rationale}}
+- Data migration: {{method and idempotency}}
+- Rollback: {{method and limitations}}
+- Removal criteria for temporary compatibility, if any: {{criteria and owner}}
+
+## Acceptance evidence
+
+| Outcome | Guard or verification | Durable evidence |
+|---|---|---|
+| {{observable outcome}} | {{test/probe/review}} | {{path or pending}} |
+
+## Reconciliation log
+
+- **{{YYYY-MM-DD}}:** {{ambiguity, translation correction, requirement change,
+  implementation regression, or evidence conflict}}
