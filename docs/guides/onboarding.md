@@ -42,6 +42,8 @@ The normative behavior is defined by the
 Inspect, without rewriting:
 
 - architecture, modules, services, persistence, and source roots;
+- style layers, shared visual values, theme mechanisms, and existing override
+  debt, where the project has a frontend;
 - READMEs, ADRs, contracts, tickets, plans, and agent instructions;
 - tests, CI, deployment, rollback, observability, and incident procedures;
 - product/direction owner, priority source, maintainers, and risk authority;

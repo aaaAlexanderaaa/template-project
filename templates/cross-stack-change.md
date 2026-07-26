@@ -65,6 +65,7 @@ terminal failure states where applicable.
 - Interaction and focus behavior: {{behavior}}
 - Responsive/accessibility implications: {{implications}}
 - Visual hierarchy outcome: {{outcome}}
+- Style layer impact: {{new shared values, new variants, or none}}
 
 ## Compatibility and cutover
 

@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-27
 supersedes: []
 ---
 
@@ -41,9 +41,10 @@ context; they are not substitutes for the normative contract.
 
 ### D2 — One owner for every invariant
 
-Every state transition, data rule, API shape, layout rule, and operational
-decision has one authoritative owner. Consumers may use the owner's public
-contract but must not silently reproduce or override its private rules.
+Every state transition, data rule, API shape, layout rule, shared visual value,
+and operational decision has one authoritative owner. Consumers may use the
+owner's public contract but must not silently reproduce or override its private
+rules.
 
 Cross-layer behavior must identify:
 
@@ -137,6 +138,54 @@ Frontend work translates product intent into observable states and geometry.
 - Interaction expectations: trigger, state transition, focus behavior,
   reachability, and failure/empty response.
 - Browser, input, accessibility, and responsive support targets.
+- The style layer, value tiers, and published override surface the change
+  consumes, plus any value it must define locally and why.
+
+### Style ownership and layering
+
+Style decay is a dependency-direction and precedence problem that happens to
+render. The rules below are the frontend instance of D2; they do not create a
+second authority for frontend work.
+
+- **Precedence is declared, not emergent.** The project declares one ordered
+  list of style layers, lowest to highest authority, and every file in its
+  style corpus resolves to exactly one of them. Which owner wins is a
+  declaration, not a consequence of selector weight, source order, or the
+  order in which build artifacts happened to be concatenated.
+- **An omission is not a low-priority default.** Where the realizing mechanism
+  grants undeclared style the *highest* authority rather than the lowest,
+  forgetting to declare a layer is an escalation. Declaring the corpus is what
+  prevents it. A project whose mechanism resolves conflicts by artifact or
+  load order records that dependency and the risk it accepts.
+- **Shared values are tiered and reference one way.** Named visual values are
+  declared in ordered tiers — raw values, the roles they serve, and any
+  unit-scoped names — each with one owner. A tier may reference only tiers
+  below it. Consumers bind to roles rather than to raw values, because a name
+  that describes an appearance cannot be re-pointed when the appearance
+  changes.
+- **A literal at a use site is an unowned decision.** A recurring visual value
+  restated where it is used forks its owner, including when it is restated as
+  a fallback beside the reference. The project declares which classes of value
+  are governed and which literals remain legal.
+- **The override surface is published, and everything else is private.** A
+  unit others may restyle enumerates what they may set: named values, named
+  regions, named variants. That enumeration is the soft boundary of
+  `ARCHITECTURE.md` §8; everything not enumerated is hard. Reachability is not
+  publication.
+- **Escalation is recorded debt, not technique.** Winning by outranking rather
+  than by owning — forced priority, inflated selector weight, or reaching
+  across a declared boundary — is legitimate only as a declared permanent part
+  of a layer's contract, or as a registered exception carrying one owner, a
+  reason, and a removal condition. An exception with no owner is not an
+  exception.
+- **Responsive authority names its measurement basis.** Each adaptive band
+  states what is measured and who owns it: the space the unit was given, or
+  the display. A unit that adapts to the display is correct only where it was
+  measured.
+- **Style is deletable or it is permanent.** A unit's style is owned in one
+  declared place, so removing the unit removes its style. Where reachability
+  cannot be established mechanically, the project records that blindness
+  rather than treating an unproven rule as live.
 
 ### Verification discipline
 
@@ -158,8 +207,9 @@ Frontend work translates product intent into observable states and geometry.
 
 A frontend change is complete when functionality, display, interaction,
 accessibility, responsive behavior, and visual logic meet the surface contract;
-the relevant mechanical guards pass; and the production-like surface has been
-verified.
+every visual value it introduces resolves to a declared owner or to a
+registered exception with an owner and a removal condition; the relevant
+mechanical guards pass; and the production-like surface has been verified.
 
 ## Backend and service development contract
 

@@ -84,6 +84,19 @@ source of breakpoints.
 - Surface-specific exceptions and owner: {{exceptions or none}}
 - from: raw[{{N}}]
 
+### Style and theming contract
+
+- Style layer this surface writes into: {{layer}}
+- Values consumed, by tier: {{named values, not literals}}
+- Override surface used on shared units: {{published names and variants}}
+- Theme, mode, density, or direction variants supported: {{axes}}
+- Values defined locally, with owner and removal condition: {{values or none}}
+- Escalations held by this surface: {{registered ids or none}}
+- from: raw[{{N}}]
+
+Record a value the shared layer does not publish as an exception with an owner.
+Do not restate the shared layer's rules here; name what this surface consumes.
+
 ### Accessibility and input
 
 - Semantic structure: {{headings/landmarks/control roles}}
@@ -116,6 +129,9 @@ the exact structured form below. Pending evidence expires according to
 | {{state}} | {{environment}} | pending | pending | pending | pending | pending |
 
 Geometric claims must cite rendered measurements, not static stylesheet values.
+Theme and mode variants are environments in the range column, not new columns.
+A style-ownership claim is structural: it is proved by the declared guard, not
+by a screenshot, which shows what rendered rather than who owned it.
 
 ## Reconciliation log
 

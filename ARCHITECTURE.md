@@ -70,6 +70,11 @@ If the project has a frontend, define:
 - which backend contracts are authoritative;
 - what state is frontend-owned versus merely projected;
 - component or design-system ownership;
+- which module owns shared visual values, and the order in which style layers
+  win when they disagree;
+- the scoping mechanism, what it actually contains, and what leaks past it;
+- the override surface each unit publishes, and how a consumer obtains a value
+  the shared layer does not publish;
 - routing and extension points;
 - accessibility, browser, input, and responsive support policy.
 
@@ -92,11 +97,15 @@ Classify extension points:
 - **Hard:** state identity, integrity, protocol shape, geometry, accessibility,
   authorization, or dependency direction. Consumers cannot override it.
 - **Soft:** presentation or configuration explicitly exposed through a finite
-  public API.
+  public API, including the named visual values and theme surface a unit
+  publishes for consumers to set.
 - **Family/group:** a declared owner provides named variants while protecting
   shared behavior.
 
-Anything not explicitly public is private to its owner.
+Anything not explicitly public is private to its owner. Reachability is not
+publication: a value or handle a consumer can technically select, but the owner
+never published, is private, and depending on it is a boundary violation rather
+than a supported extension.
 
 ## 9. Structural fitness tests
 

@@ -75,6 +75,23 @@ VALID_ABNORMALITY_STATES = {"pending", "active", "retired"}
 VALID_ABNORMALITY_RESULTS = {"pass", "fail", "not_run"}
 VALID_CONTRACT_ROLES = {"product", "governance"}
 
+# Declaration manifests share one lifecycle vocabulary so an adopter learns it
+# once: shipped-but-unfilled, in force, or deliberately not applicable.
+VALID_MANIFEST_STATUSES = {"template", "configured", "not_applicable"}
+
+# Keys the optional style-ownership manifest reads. Validated for the same
+# reason `[adoption]` is: a configuration surface where a typo is a silent
+# no-op is worse than no configuration surface.
+KNOWN_STYLE_KEYS = {
+    "version",
+    "status",
+    "rationale",
+    "scan",
+    "scan_exclude",
+    "layers",
+    "tiers",
+}
+
 ERROR = "error"
 ADVISORY = "advisory"
 OFF = "off"
@@ -1400,6 +1417,248 @@ class DocumentationChecker:
                 rule="adoption_gate",
             )
 
+    def resolve_globs(
+        self,
+        manifest_path: Path,
+        label: str,
+        includes: Any,
+        excludes: Any = (),
+    ) -> set[Path]:
+        """Resolve repository-contained include/exclude globs to real files.
+
+        Glob safety has one owner. Every manifest that reaches the filesystem
+        goes through here, so an escape rejected for one declaration cannot be
+        accepted for another.
+        """
+
+        matched: set[Path] = set()
+        if not isinstance(includes, list):
+            self.add(manifest_path, f"{label} include must be a list")
+            return matched
+        for include in includes:
+            if (
+                not isinstance(include, str)
+                or not include
+                or PLACEHOLDER_RE.search(include)
+            ):
+                self.add(manifest_path, f"{label} has invalid include glob")
+                continue
+            include_path = Path(include)
+            if include_path.is_absolute() or ".." in include_path.parts:
+                self.add(
+                    manifest_path,
+                    f"{label} include glob must stay inside repository: {include}",
+                )
+                continue
+            try:
+                for path in self.root.glob(include):
+                    if not path.is_file():
+                        continue
+                    if not path.resolve().is_relative_to(self.root):
+                        self.add(
+                            manifest_path,
+                            f"{label} include glob resolved outside repository: "
+                            f"{include}",
+                        )
+                        continue
+                    matched.add(path)
+            except (NotImplementedError, ValueError) as exc:
+                self.add(
+                    manifest_path,
+                    f"{label} has invalid include glob {include!r}: {exc}",
+                )
+        if not isinstance(excludes, list):
+            self.add(manifest_path, f"{label} exclude must be a list")
+            excludes = []
+        valid_excludes: list[str] = []
+        for exclude in excludes:
+            if (
+                not isinstance(exclude, str)
+                or not exclude
+                or PLACEHOLDER_RE.search(exclude)
+                or Path(exclude).is_absolute()
+                or ".." in Path(exclude).parts
+            ):
+                self.add(manifest_path, f"{label} has invalid exclude glob")
+                continue
+            valid_excludes.append(exclude)
+        return {
+            path
+            for path in matched
+            if not any(
+                path.relative_to(self.root).match(exclude)
+                for exclude in valid_excludes
+            )
+        }
+
+    def validate_style_ownership(self) -> None:
+        """Validate the optional style-ownership declaration.
+
+        The manifest does not ship. A project that owns no style — a service, a
+        library, a command-line tool — creates no file and the harness asks
+        nothing of it. Everything checked below is path, index, and string
+        arithmetic: the checker never parses a stylesheet, computes a
+        specificity, or simulates a cascade.
+        """
+
+        manifest_path = self.root / "style-ownership.toml"
+        if not manifest_path.exists():
+            return
+        manifest = self.load_toml(manifest_path, "style ownership manifest")
+        if not manifest:
+            return
+        for key in manifest:
+            if key not in KNOWN_STYLE_KEYS:
+                self.add(
+                    manifest_path,
+                    f"unknown style manifest key: {key}; known keys are "
+                    f"{', '.join(sorted(KNOWN_STYLE_KEYS))}",
+                )
+        status = str(manifest.get("status", "")).strip()
+        if status not in VALID_MANIFEST_STATUSES:
+            self.add(
+                manifest_path,
+                "style manifest status must be template, configured, or "
+                f"not_applicable: {status or '(unset)'}",
+            )
+            return
+        if status == "not_applicable":
+            rationale = str(manifest.get("rationale", "")).strip()
+            if len(rationale) < 20 or PLACEHOLDER_RE.search(rationale):
+                self.add(
+                    manifest_path,
+                    "not_applicable style ownership requires a substantive rationale",
+                )
+            return
+        if status == "template":
+            return
+        self.validate_style_layers(manifest_path, manifest)
+        self.validate_style_tiers(manifest_path, manifest)
+
+    def validate_style_layers(
+        self, manifest_path: Path, manifest: dict[str, Any]
+    ) -> None:
+        """Every declared corpus file resolves to exactly one declared layer.
+
+        This is the mechanical form of "precedence is declared, not emergent".
+        A file claimed by no layer is the failure that matters: where the
+        realizing mechanism gives unlayered style the highest authority, an
+        omission escalates rather than defaults.
+        """
+
+        layers = manifest.get("layers", [])
+        if not isinstance(layers, list) or not layers:
+            self.add(
+                manifest_path, "configured style manifest needs at least one layer"
+            )
+            return
+        corpus = self.resolve_globs(
+            manifest_path,
+            "scan",
+            manifest.get("scan", []),
+            manifest.get("scan_exclude", []),
+        )
+        if not corpus:
+            self.add(
+                manifest_path,
+                "style manifest scan matches no files (vacuous corpus)",
+            )
+        claims: dict[Path, list[str]] = defaultdict(list)
+        seen: set[str] = set()
+        for index, layer in enumerate(layers, start=1):
+            if not isinstance(layer, dict):
+                self.add(manifest_path, f"style layer #{index} must be a table")
+                continue
+            name = str(layer.get("name", "")).strip()
+            if not name:
+                self.add(manifest_path, f"style layer #{index} missing name")
+                continue
+            if name in seen:
+                self.add(manifest_path, f"duplicate style layer name: {name}")
+            seen.add(name)
+            if not str(layer.get("owner", "")).strip():
+                self.add(manifest_path, f"style layer {name} missing owner")
+            includes = layer.get("include", [])
+            if not isinstance(includes, list) or not includes:
+                self.add(
+                    manifest_path, f"style layer {name} needs non-empty include globs"
+                )
+                continue
+            for path in self.resolve_globs(
+                manifest_path,
+                f"style layer {name}",
+                includes,
+                layer.get("exclude", []),
+            ):
+                claims[path].append(name)
+        for path in sorted(corpus):
+            owners = claims.get(path, [])
+            relative = path.relative_to(self.root).as_posix()
+            if not owners:
+                self.add(
+                    manifest_path,
+                    f"style corpus file resolves to no declared layer: {relative}",
+                )
+            elif len(owners) > 1:
+                self.add(
+                    manifest_path,
+                    "style corpus file resolves to more than one layer "
+                    f"({', '.join(sorted(owners))}): {relative}",
+                )
+
+    def validate_style_tiers(
+        self, manifest_path: Path, manifest: dict[str, Any]
+    ) -> None:
+        """Value tiers reference one way only.
+
+        Array order is the reference order, so an upward or self reference is a
+        strict index comparison. The graph is acyclic by construction; there is
+        no traversal to get subtly wrong.
+        """
+
+        tiers = manifest.get("tiers", [])
+        if not isinstance(tiers, list) or not tiers:
+            return
+        order: dict[str, int] = {}
+        for index, tier in enumerate(tiers):
+            if not isinstance(tier, dict):
+                self.add(manifest_path, f"style tier #{index + 1} must be a table")
+                continue
+            name = str(tier.get("name", "")).strip()
+            if not name:
+                self.add(manifest_path, f"style tier #{index + 1} missing name")
+                continue
+            if name in order:
+                self.add(manifest_path, f"duplicate style tier name: {name}")
+            else:
+                order[name] = index
+            if not str(tier.get("owner", "")).strip():
+                self.add(manifest_path, f"style tier {name} missing owner")
+        for index, tier in enumerate(tiers):
+            if not isinstance(tier, dict):
+                continue
+            name = str(tier.get("name", "")).strip()
+            if not name:
+                continue
+            references = tier.get("may_reference", [])
+            if not isinstance(references, list):
+                self.add(
+                    manifest_path, f"style tier {name} may_reference must be a list"
+                )
+                continue
+            for reference in references:
+                target = str(reference).strip()
+                if target not in order:
+                    self.add(
+                        manifest_path,
+                        f"style tier {name} references undeclared tier: {target}",
+                    )
+                elif order[target] >= index:
+                    self.add(
+                        manifest_path,
+                        f"style tier {name} may reference only lower tiers: {target}",
+                    )
+
     def validate_architecture_rules(
         self, manifest_path: Path, manifest: dict[str, Any]
     ) -> None:
@@ -1434,64 +1693,9 @@ class DocumentationChecker:
                     f"rule {rule_id} needs non-empty forbidden_patterns",
                 )
                 continue
-            if not isinstance(excludes, list):
-                self.add(manifest_path, f"rule {rule_id} exclude must be a list")
-                excludes = []
-            matched: set[Path] = set()
-            for include in includes:
-                if (
-                    not isinstance(include, str)
-                    or not include
-                    or PLACEHOLDER_RE.search(include)
-                ):
-                    self.add(manifest_path, f"rule {rule_id} has invalid include glob")
-                    continue
-                include_path = Path(include)
-                if include_path.is_absolute() or ".." in include_path.parts:
-                    self.add(
-                        manifest_path,
-                        f"rule {rule_id} include glob must stay inside repository: "
-                        f"{include}",
-                    )
-                    continue
-                try:
-                    candidates = self.root.glob(include)
-                    for path in candidates:
-                        if not path.is_file():
-                            continue
-                        if not path.resolve().is_relative_to(self.root):
-                            self.add(
-                                manifest_path,
-                                f"rule {rule_id} include glob resolved outside "
-                                f"repository: {include}",
-                            )
-                            continue
-                        matched.add(path)
-                except (NotImplementedError, ValueError) as exc:
-                    self.add(
-                        manifest_path,
-                        f"rule {rule_id} has invalid include glob {include!r}: {exc}",
-                    )
-            valid_excludes: list[str] = []
-            for exclude in excludes:
-                if (
-                    not isinstance(exclude, str)
-                    or not exclude
-                    or PLACEHOLDER_RE.search(exclude)
-                    or Path(exclude).is_absolute()
-                    or ".." in Path(exclude).parts
-                ):
-                    self.add(manifest_path, f"rule {rule_id} has invalid exclude glob")
-                    continue
-                valid_excludes.append(exclude)
-            filtered = {
-                path
-                for path in matched
-                if not any(
-                    path.relative_to(self.root).match(exclude)
-                    for exclude in valid_excludes
-                )
-            }
+            filtered = self.resolve_globs(
+                manifest_path, f"rule {rule_id}", includes, excludes
+            )
             if not filtered:
                 self.add(
                     manifest_path, f"rule {rule_id} matches no files (vacuous rule)"
@@ -1538,6 +1742,7 @@ class DocumentationChecker:
         self.validate_abnormalities()
         self.validate_local_links()
         self.validate_architecture()
+        self.validate_style_ownership()
         return not self.errors
 
     def print_group(self, findings: list[Finding]) -> None:

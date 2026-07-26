@@ -82,6 +82,7 @@ full = [
   "independent-review.md",
   "holistic-evaluation.md",
   "evidence-preserving-data.md",
+  "style-system.md",
   "adoption-assessment.md",
 ]
 
@@ -90,6 +91,7 @@ full = [
 "backend-change.md" = "contract"
 "cross-stack-change.md" = "contract"
 "evidence-preserving-data.md" = "contract"
+"style-system.md" = "contract"
 "frontend-surface.md" = "surface-contract"
 "implementation-plan.md" = "plan"
 "agent-execution-plan.md" = "plan"
@@ -171,4 +173,5 @@ full = [
 "independent-review.md" = ["Review scope and independence", "Inputs", "Perspective findings", "Synthesis", "Disagreements and human decisions", "Limitations", "Verdict and follow-up"]
 "holistic-evaluation.md" = ["Claim and completion layer", "Independence", "Evidence inventory", "Six-dimensional evaluation", "Failure and recovery", "Residual risks", "Verdict"]
 "evidence-preserving-data.md" = ["Purpose", "Scope", "Source anchors", "Value hierarchy", "Authoritative input and derived output", "Preservation invariants", "Reference inventory and garbage collection", "Migration and rollback", "Acceptance evidence", "Reconciliation log"]
+"style-system.md" = ["Purpose", "Scope", "Source anchors", "Layer order and ownership", "Shared value tiers", "Published override surface", "Responsive authority", "Escalation and exception register", "Acceptance evidence", "Promise register", "Reconciliation log"]
 "adoption-assessment.md" = ["Adoption context", "Existing authority inventory", "Current-state baseline", "Governance profile and scope", "Priority and decision authority", "Risk and conflict register", "Stage decision", "Migration plan link", "Verification and completion", "Limitations"]

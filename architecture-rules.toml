@@ -13,6 +13,19 @@ rationale = "{{replace-with-configured-policy-or-not-applicable-rationale}}"
 # exclude = ["src/generic/generated/**"]
 # forbidden_patterns = ["domain_specific_package", "DomainSpecificType"]
 #
+# The same rule shape expresses a style-ownership boundary. Scope `include` to
+# the consumers and `exclude` to the layer that owns the value, then name the
+# literal forms this project has decided consumers must not restate. Those
+# literals are yours: the template ships none, because the value classes worth
+# governing and the syntax that expresses them differ per stack.
+#
+# [[rules]]
+# id = "consumers-do-not-restate-owned-values"
+# description = "Consumers bind to published names instead of forking a value."
+# include = ["src/features/**/*"]
+# exclude = ["src/features/**/generated/**"]
+# forbidden_patterns = ["owned_value_literal_form", "escalation_marker"]
+#
 # Or, only when path/reference fitness rules genuinely do not apply:
 #
 # status = "not_applicable"

@@ -46,6 +46,8 @@ or newer and have no third-party package dependencies.
   non-goals?
 - Does the test suite guard the failure category, not only the reported input?
 - Are frontend and backend projections self-consistent?
+- Does every visual value the change introduces resolve to a declared owner, or
+  to a registered exception with an owner and a removal condition?
 - Are failure, recovery, observability, migration, and rollback addressed where
   relevant?
 - Can the evidence be reproduced in the declared environment?

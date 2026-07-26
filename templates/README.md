@@ -8,6 +8,7 @@ are replaced, and lifecycle metadata is set correctly.
 |---|---|---|
 | Cross-cutting behavior or invariant | `contract.md` | `docs/contracts/<topic>.md` |
 | Frontend surface | `frontend-surface.md` | `docs/design/<surface>.md` |
+| Style layers, shared visual values, override surface | `style-system.md` | `docs/contracts/<topic>-style-system.md` |
 | Backend/service/state change | `backend-change.md` | `docs/contracts/<topic>.md` |
 | Frontend + backend change | `cross-stack-change.md` | `docs/contracts/<topic>.md` |
 | Implementation or migration | `implementation-plan.md` | `docs/plans/YYYY-MM-DD-<topic>.md` |

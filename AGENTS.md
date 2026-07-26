@@ -102,8 +102,15 @@ The full discipline lives in
 ## Frontend work
 
 - Preserve dated stakeholder language in a raw layer and translate it into
-  states, layout, size, interaction, accessibility, and responsive behavior.
+  states, layout, size, interaction, style, accessibility, and responsive
+  behavior.
 - Enumerate relevant reachable states instead of checking one sample.
+- Consume the declared style layer and value tiers; do not introduce a second
+  source of visual truth. A value restated where it is used has no owner.
+- Change another unit's appearance only through the surface that unit
+  published. Being able to select something is not permission to style it.
+- When the shared layer publishes no suitable value, record the exception with
+  an owner and a removal condition instead of overriding privately.
 - For layout work, combine perceptual review with rendered structural evidence.
 - Check repeated instances, both axes, intermediate responsive ranges, and
   actual usability.

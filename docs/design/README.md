@@ -8,7 +8,8 @@ The required pair is:
 - **Raw layer:** dated stakeholder language, observations, rejected attempts,
   and changed requirements in the source's own words.
 - **Translated layer:** engineering states, transitions, layout, size,
-  interaction, accessibility, responsive behavior, and evidence expectations.
+  interaction, style ownership, accessibility, responsive behavior, and
+  evidence expectations.
 
 Every `###` subsection inside the translated layer contains at least one
 `- from: raw[N]` line; place additional citations next to a more specific claim
@@ -18,6 +19,11 @@ citation, rejects uncited subsections, and requires every raw anchor to be
 cited. Citations elsewhere in the document do not count. When feedback says
 the result is wrong, classify whether the source was ambiguous, the translation
 was wrong, the requirement changed, or implementation regressed.
+
+A surface names the style layer and value tiers it consumes and records any
+value it defines locally as an exception with an owner. It does not restate the
+shared layer's rules: those belong to the style system contract, and a surface
+that repeats them becomes a second owner of the same decision.
 
 If the surface maintains known abnormality classes, use the structured
 `abnormality[slug]` records in the template. The section is optional; once

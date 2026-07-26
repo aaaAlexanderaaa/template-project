@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-27
 supersedes: []
 ---
 
@@ -33,6 +33,8 @@ correct.
 - validation of the reusable templates themselves;
 - adoption gates for product contracts and architecture fitness declarations;
 - optional structured frontend abnormality records;
+- an optional style-ownership declaration: layer partition and value-tier
+  direction;
 - local references and lifecycle relationship paths;
 - fixture-based tests for the checker.
 
@@ -71,6 +73,17 @@ The harness described staged, scoped, and profiled adoption in prose while the
 checker enforced exactly one profile, at one stage, with every finding blocking.
 The operator asked for the mechanism to carry that variation instead of the
 reader.
+
+### source[4] — 2026-07-27
+
+> "I noticed that in the front-end discipline of this project, the part about
+> CSS modularization doesn't seem to have been emphasized. In fact, this is a
+> very common and significant issue."
+
+The frontend discipline specified reachable states, geometry, interaction,
+accessibility, and evidence, but never named who owns a shared visual value or
+in what order style layers win. The operator asked for that gap to be closed
+against how large frontends actually decay.
 
 ## Operating modes
 
@@ -254,6 +267,29 @@ being represented by a vacuous automated pass.
 
 - from: source[1], source[2]
 
+### H11 — Style ownership is declared by the project, or not at all
+
+`style-ownership.toml` does not ship. A project that owns no style creates no
+file, the harness asks nothing of it, and that absence is a decision rather
+than an unfinished adoption step.
+
+When the file exists it declares `template`, `configured`, or `not_applicable`
+in the same vocabulary as the architecture manifest. A `configured` declaration
+names the style corpus and an ordered layer list, and every corpus file resolves
+to exactly one layer. An unclaimed file is the failure that matters: where the
+realizing mechanism grants undeclared style the highest authority, an omission
+escalates rather than defaults. Declared value tiers may reference only tiers at
+a lower position, which makes the reference graph one-way by construction rather
+than by traversal.
+
+The checker compares paths, array indices, and strings. It does not parse a
+stylesheet, compute a specificity, or simulate a cascade. The literal forms a
+project forbids its consumers to restate stay in that project's own
+`architecture-rules.toml` rules, because the value classes worth governing and
+the syntax expressing them differ per stack.
+
+- from: source[4]
+
 ## Required behaviors
 
 - `python3 scripts/check_docs.py` validates the current repository.
@@ -281,6 +317,8 @@ being represented by a vacuous automated pass.
   syntactically well formed.
 - Do not execute arbitrary configured shell commands from the documentation
   checker.
+- Do not parse a stylesheet, compute a specificity, simulate a cascade, or ship
+  a default layer count, tier count, budget threshold, or forbidden literal.
 
 ## Acceptance evidence
 
@@ -295,6 +333,7 @@ being represented by a vacuous automated pass.
 | Retired and misspelled policy keys are refused | `[adoption]` and `[severity]` key fixtures | PASS — retired key names its replacement, typo is rejected |
 | Non-vacuous architecture adoption | Manifest and forbidden-pattern fixtures | PASS — adoption, no-match, escape, and literal cases |
 | Optional abnormalities remain accountable | Registry/evidence fixtures | PASS — fresh, expired, resolving, and unregistered cases |
+| Optional style ownership stays optional and non-vacuous | Absent-file, partition, and tier-order fixtures | PASS — absent file changes nothing; unclaimed, double-claimed, vacuous corpus, and upward reference all fail |
 | Severity is honest about what blocks | Advisory/error/off and `--strict` fixtures | PASS — time-based findings never fail a default run, and `off` survives `--strict` |
 | Checker behavior remains stable | Standard-library unittest suite | PASS — full suite green |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
@@ -330,6 +369,16 @@ Verification run on 2026-07-26:
   error/advisory split moved that variation out of prose and into
   `docs-policy.toml`. Prose counts were removed in favour of the checker's own
   summary.
+- **2026-07-27 — style ownership added:** the frontend discipline governed
+  states, geometry, interaction, and evidence but never named who owns a shared
+  visual value or in what order style layers win, so the decay large frontends
+  actually suffer had no owner and no guard. Style ownership landed as an
+  instance of D2 inside the existing frontend contract rather than as a second
+  authority, a `style-system.md` template carried the project-level
+  declaration, and an optional `style-ownership.toml` made layer partition and
+  tier direction mechanically checkable without parsing a stylesheet. Glob
+  safety was extracted into one shared resolver so both manifests reach the
+  filesystem through the same escape checks.
 - **2026-07-26 — review corrections:** review of that change found the scaling
   mechanisms could still fail an adopter for something they had decided or did
   not own. `--strict` promoted `off` rules to errors, overturning a project's

@@ -911,6 +911,233 @@ last_reconciled: 2026-07-26
         )
         self.assert_fails_with("local Markdown link escapes repository: ../outside.md")
 
+    def style_manifest(self, body: str) -> None:
+        self.write("style-ownership.toml", "version = 1\n" + body)
+
+    def adopt_fixture(self) -> None:
+        """Satisfy the adoption gates so product source is legal in the fixture."""
+
+        self.configure_architecture_not_applicable(
+            "Structural fitness is enforced by language-native tests in this project."
+        )
+        self.write(
+            "docs/contracts/product-behavior.md",
+            self.basic_contract(body="Card appearance has one owner."),
+        )
+
+    def configured_style_corpus(self) -> None:
+        """Two corpus files, one per layer: the shape a passing project has."""
+
+        self.adopt_fixture()
+        self.write("src/styles/base/reset.css", "/* base */\n")
+        self.write("src/styles/parts/card.css", "/* card */\n")
+
+    def test_absent_style_manifest_changes_nothing(self) -> None:
+        """The opt-in property the whole design rests on."""
+
+        self.configured_style_corpus()
+        self.assertFalse(self.path("style-ownership.toml").exists())
+        output = self.assert_passes()
+        self.assertNotIn("style corpus", output)
+        self.assertNotIn("style manifest", output)
+
+    def test_template_style_manifest_gates_nothing(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest('status = "template"\n')
+        self.assert_passes()
+
+    def test_declared_style_layers_partition_the_corpus(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "base"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/base/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "parts"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/parts/**/*.css"]\n'
+        )
+        self.assert_passes()
+
+    def test_style_corpus_file_claimed_by_no_layer_fails(self) -> None:
+        self.configured_style_corpus()
+        self.write("src/styles/stray.css", "/* nobody owns this */\n")
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "base"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/base/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "parts"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/parts/**/*.css"]\n'
+        )
+        self.assert_fails_with(
+            "style corpus file resolves to no declared layer: src/styles/stray.css"
+        )
+
+    def test_style_corpus_file_claimed_by_two_layers_fails(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "base"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "parts"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/parts/**/*.css"]\n'
+        )
+        self.assert_fails_with(
+            "style corpus file resolves to more than one layer (base, parts): "
+            "src/styles/parts/card.css"
+        )
+
+    def test_vacuous_style_corpus_fails(self) -> None:
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "base"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/base/**/*.css"]\n'
+        )
+        self.assert_fails_with("style manifest scan matches no files (vacuous corpus)")
+
+    def test_configured_style_manifest_needs_a_layer(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest('status = "configured"\nscan = ["src/styles/**/*.css"]\n')
+        self.assert_fails_with("configured style manifest needs at least one layer")
+
+    def test_style_layer_requires_an_owner(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "everything"\n'
+            'include = ["src/styles/**/*.css"]\n'
+        )
+        self.assert_fails_with("style layer everything missing owner")
+
+    def test_style_manifest_glob_cannot_escape_repository(self) -> None:
+        (self.root.parent / "outside.css").write_text("/* x */\n", encoding="utf-8")
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "base"\n'
+            'owner = "design-system"\n'
+            'include = ["../outside.css"]\n'
+        )
+        self.assert_fails_with(
+            "style layer base include glob must stay inside repository: ../outside.css"
+        )
+
+    def test_style_tiers_reference_only_lower_tiers(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "everything"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/**/*.css"]\n\n'
+            "[[tiers]]\n"
+            'name = "raw"\n'
+            'owner = "design-system"\n'
+            "may_reference = []\n\n"
+            "[[tiers]]\n"
+            'name = "role"\n'
+            'owner = "design-system"\n'
+            'may_reference = ["raw"]\n'
+        )
+        self.assert_passes()
+
+    def test_style_tier_cannot_reference_upward(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "everything"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/**/*.css"]\n\n'
+            "[[tiers]]\n"
+            'name = "raw"\n'
+            'owner = "design-system"\n'
+            'may_reference = ["role"]\n\n'
+            "[[tiers]]\n"
+            'name = "role"\n'
+            'owner = "design-system"\n'
+            "may_reference = []\n"
+        )
+        self.assert_fails_with("style tier raw may reference only lower tiers: role")
+
+    def test_style_tier_reference_must_resolve(self) -> None:
+        self.configured_style_corpus()
+        self.style_manifest(
+            'status = "configured"\n'
+            'scan = ["src/styles/**/*.css"]\n\n'
+            "[[layers]]\n"
+            'name = "everything"\n'
+            'owner = "design-system"\n'
+            'include = ["src/styles/**/*.css"]\n\n'
+            "[[tiers]]\n"
+            'name = "role"\n'
+            'owner = "design-system"\n'
+            'may_reference = ["no-such-tier"]\n'
+        )
+        self.assert_fails_with(
+            "style tier role references undeclared tier: no-such-tier"
+        )
+
+    def test_not_applicable_style_ownership_needs_a_substantive_rationale(self) -> None:
+        self.style_manifest('status = "not_applicable"\nrationale = "n/a"\n')
+        self.assert_fails_with(
+            "not_applicable style ownership requires a substantive rationale"
+        )
+
+    def test_substantive_not_applicable_style_ownership_passes(self) -> None:
+        self.style_manifest(
+            'status = "not_applicable"\n'
+            'rationale = "This service renders no user interface and ships no '
+            'stylesheet of any kind."\n'
+        )
+        self.assert_passes()
+
+    def test_unknown_style_manifest_key_is_rejected(self) -> None:
+        self.style_manifest('status = "template"\nlayer_count = 7\n')
+        self.assert_fails_with("unknown style manifest key: layer_count")
+
+    def test_invalid_style_manifest_status_is_rejected(self) -> None:
+        self.style_manifest('status = "enforced"\n')
+        self.assert_fails_with("style manifest status must be template, configured")
+
+    def test_missing_style_system_template_fails(self) -> None:
+        self.path("templates/style-system.md").unlink()
+        self.assert_fails_with(
+            "templates/style-system.md", "required template is missing"
+        )
+
+    def test_style_system_template_requires_layer_ownership_section(self) -> None:
+        self.replace(
+            "templates/style-system.md",
+            "## Layer order and ownership",
+            "## Layer notes",
+        )
+        self.assert_fails_with(
+            "template missing required section: Layer order and ownership"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
