@@ -2,7 +2,8 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-28
+projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md]
 ---
 
 # AI-guided project onboarding
@@ -100,10 +101,9 @@ Consequences worth knowing before you choose:
   project selects `minimal` and may delete the templates it will never fill in;
   documentation that still references a deleted template becomes an advisory,
   not a build failure.
-- **Severity.** Time-based findings — overdue targets and promises, expired
-  pending evidence — are advisory by default. Run `--strict` on a schedule
-  rather than promoting them on every push. A rule you set to `off` stays off
-  even under `--strict`.
+- **Severity.** Review signals that should not fail an unrelated change by
+  default are advisory. Run `--strict` on a schedule rather than promoting them
+  on every push. A rule you set to `off` stays off even under `--strict`.
 
 Unknown keys in `[adoption]` and `[severity]` are rejected rather than ignored,
 so a typo or a setting from an older revision of the template surfaces as a

@@ -22,9 +22,10 @@ initiative: {{initiative-slug}}
 - Expected: {{contract-backed behavior}}
 - Observed: {{observation}}
 
-### Independent verification
+### Verification
 
 - Verdict: `{{verified/disproved/partial}}`
+- Verifier/context and independence when required: {{identity and basis}}
 - What is actually true: {{refined statement}}
 - Evidence limitations: {{limitations}}
 
@@ -51,6 +52,7 @@ initiative: {{initiative-slug}}
 
 - Change: {{summary}}
 - Revision/commit: {{id}}
-- Class-level guard: {{test/check and sibling case it catches}}
+- Sibling-variant guard: {{test/check and sibling case it catches, or local-only
+  rationale when no repeatable mechanism or proportionate guard exists}}
 - Verification evidence: {{path}}
 - Final status: `resolved`

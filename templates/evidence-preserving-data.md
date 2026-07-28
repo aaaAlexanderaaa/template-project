@@ -47,6 +47,12 @@ Context: {{source context}}
 - Rebuild path and required version identity: {{procedure}}
 - Explicitly irreversible operations: {{none or human-approved operation}}
 
+## Activated quality attributes
+
+| Concern | Normative owner | Boundary and failure policy | Evidence |
+|---|---|---|---|
+| {{security/privacy/capacity/reliability/dependency or none}} | `{{contract and section}}` | {{owned rule or link}} | {{guard/observation}} |
+
 ## Preservation invariants
 
 - **DATA-1 — {{name}}.** {{losslessness or recoverability rule}}
@@ -74,7 +80,7 @@ retirement paths before it can ship.
 
 | Claim | Failure-category guard | Migration/integration check | Durable evidence |
 |---|---|---|---|
-| {{preservation claim}} | {{sibling-variant test}} | {{round-trip or fault injection}} | {{path}} |
+| {{preservation claim}} | {{proportionate sibling-variant test or local-only rationale}} | {{round-trip or fault injection}} | {{path}} |
 
 ## Reconciliation log
 

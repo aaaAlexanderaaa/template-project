@@ -37,6 +37,12 @@ terminal failure states where applicable.
 - Rules the frontend must not reconstruct: {{rules}}
 - UI-only state the backend must not absorb: {{state}}
 
+## Activated quality attributes
+
+| Concern | Normative owner | Shared boundary/failure policy | Producer steps | Consumer steps | Evidence |
+|---|---|---|---|---|---|
+| {{concern or none}} | `{{contract and section}}` | {{link, not duplicated policy}} | {{steps}} | {{steps}} | {{guard/probe}} |
+
 ## Interface contract
 
 ### Read path
@@ -82,6 +88,10 @@ terminal failure states where applicable.
 | {{scenario}} | {{state/API}} | {{display/interaction}} | {{test/probe}} |
 
 ## Failure-category guards
+
+Retain only categories activated by this boundary or a repeatable defect
+mechanism. Record why a local guard is sufficient when broader coverage is not
+proportionate.
 
 - API self-consistency: {{guard}}
 - Cross-surface consistency: {{guard}}

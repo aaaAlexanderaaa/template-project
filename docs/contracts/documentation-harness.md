@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-07-27
+last_reconciled: 2026-07-28
 supersedes: []
 ---
 
@@ -85,6 +85,12 @@ accessibility, and evidence, but never named who owns a shared visual value or
 in what order style layers win. The operator asked for that gap to be closed
 against how large frontends actually decay.
 
+### source[5] — 2026-07-28
+
+> “长期治理应该考虑存量管理，考虑文档的退役和沉淀/总结，而不只是增量……
+> 文档耦合……很容易出现一个事情在多个文档里出现，导致更新的时候只更新了
+> 一个地方。”
+
 ## Operating modes
 
 ### Template mode
@@ -142,7 +148,8 @@ the source-anchor section must cite every defined anchor, and every
 
 `docs-policy.toml` owns repository-wide aging defaults. A target contract or
 surface uses an explicit `review_due` when present; otherwise its deadline is
-`last_reconciled + target_max_age_days`. An overdue target fails.
+`last_reconciled + target_max_age_days`. An overdue target produces a
+`target_aging` finding; its configured severity decides whether the run blocks.
 
 Promises use structured records rather than language-specific prose matching:
 
@@ -150,9 +157,9 @@ Promises use structured records rather than language-specific prose matching:
 - promise[example]: due=2026-07-26; status=resolved; owner=template-maintainer; description=syntax example only
 ```
 
-An open promise past its explicit due date fails. Resolved or cancelled promises
-remain as history. `last_reconciled` is not used to expire current contracts
-merely because they are old.
+An open promise past its explicit due date produces an `overdue_promise`
+finding. Resolved or cancelled promises remain as history. `last_reconciled` is
+not used to expire current contracts merely because they are old.
 
 - from: source[1], source[2]
 
@@ -243,8 +250,9 @@ walk, so cost stays proportional to the project rather than to what it vendors.
 Every finding is an error, an advisory, or off. Structural contradictions —
 missing metadata, unresolved citations, broken links, absent templates,
 incoherent lifecycle — are errors. Findings caused solely by the passage of
-time, or by a documented artifact a lower profile legitimately drops, default
-to advisory: they are printed and the summary still passes.
+time, by a documented artifact a lower profile legitimately drops, or by a
+coupling change whose semantic impact still requires review default to
+advisory: they are printed and the summary still passes.
 
 `[severity]` retunes any listed rule; `--strict` promotes advisories to errors
 for a scheduled job. A rule set to `off` stays off under `--strict`: switching
@@ -290,6 +298,42 @@ the syntax expressing them differ per stack.
 
 - from: source[4]
 
+### H12 — Projection coupling and document stock stay visible
+
+The documentation authority map owns the semantic rules for creating, merging,
+summarizing, and retiring documents. The checker does not impose file-count,
+line-count, directory-depth, or blanket retention-age budgets as quality or
+deletion proxies and does not infer duplication from similar prose. H3's
+target-review, promise, and pending-evidence deadlines remain in force.
+
+Only a canonical current guide may declare `projection_of`, and it may target
+only canonical current normative contracts or surface contracts. Paths are
+repository-root-relative. A plan, evidence record, root entrypoint, template,
+architecture file, non-current guide, or non-current/non-normative source is
+outside this field's lifecycle matrix and produces a structural finding. If a
+source leaves current authority, recovery reconciles the guide against a
+current replacement or removes its projection and restatement; marking the
+guide `needs_reconciliation` exposes the interim conflict but does not validate
+the relationship.
+
+If a projected source's `last_reconciled` date is later than the guide's, the
+checker emits a configurable `projection_staleness` advisory. The advisory asks
+for review rather than assuming that every source edit changes the projection.
+Day-granularity dates cannot detect a later source edit on the same date, so the
+check proves later-dated drift only; same-day ordering remains a review limit.
+
+Lifecycle compatibility keeps retired stock out of false authority: `completed`
+is reserved for plans, and a contract or surface with
+`implementation: retired` cannot remain `current`. Supersession relationships
+join canonical documents and remain bidirectional: a document with
+`superseded_by` has status `superseded`, and the replacement names it through
+`supersedes`. Both endpoints have the same `doc_type` and `authority`; a plan,
+guide, or evidence record cannot become the replacement owner of a normative
+contract. These checks govern coherent state, not how many historical records a
+project is allowed to retain.
+
+- from: source[5]
+
 ## Required behaviors
 
 - `python3 scripts/check_docs.py` validates the current repository.
@@ -303,6 +347,9 @@ the syntax expressing them differ per stack.
 - Failures name the document and concrete violated rule.
 - The summary line names the document count, template count, selected profile,
   and adoption stage, so a green check states what it actually enforced.
+- Projection relationships resolve to normative sources, and stale projections
+  are visible without turning a harmless source-date change into a per-push
+  blocker.
 - Template validation permits placeholders only under `templates/` and the
   intentionally unconfigured architecture skeleton.
 
@@ -319,6 +366,9 @@ the syntax expressing them differ per stack.
   checker.
 - Do not parse a stylesheet, compute a specificity, simulate a cascade, or ship
   a default layer count, tier count, budget threshold, or forbidden literal.
+- Do not enforce universal documentation counts, lengths, folder depths, or
+  blanket retention ages as quality or deletion proxies, or use textual
+  similarity as proof that two documents conflict.
 
 ## Acceptance evidence
 
@@ -334,6 +384,7 @@ the syntax expressing them differ per stack.
 | Non-vacuous architecture adoption | Manifest and forbidden-pattern fixtures | PASS — adoption, no-match, escape, and literal cases |
 | Optional abnormalities remain accountable | Registry/evidence fixtures | PASS — fresh, expired, resolving, and unregistered cases |
 | Optional style ownership stays optional and non-vacuous | Absent-file, partition, and tier-order fixtures | PASS — absent file changes nothing; unclaimed, double-claimed, vacuous corpus, and upward reference all fail |
+| Projection coupling stays reviewable without volume quotas | Relationship, lifecycle, and clock-controlled fixtures | PASS — narrow guide/source types, later-date advisory, configurable/off behavior, lifecycle compatibility, and reciprocal canonical supersession |
 | Severity is honest about what blocks | Advisory/error/off and `--strict` fixtures | PASS — time-based findings never fail a default run, and `off` survives `--strict` |
 | Checker behavior remains stable | Standard-library unittest suite | PASS — full suite green |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
@@ -350,6 +401,16 @@ Verification run on 2026-07-26:
   shipped deadline can turn an adopter's build red on a date boundary.
 - `git diff --check` → PASS with no output.
 - Scoped repository-independence `rg` audits → PASS with no matches.
+
+Verification run on 2026-07-28:
+
+- `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
+  -> PASS, full suite including projection, lifecycle, reciprocal relationship,
+  severity, and template-route variants.
+- `uv run --python 3.11 python scripts/check_docs.py --today 2026-07-28` -> PASS.
+- The same repository check with `--strict` -> PASS.
+- `git diff --check` and scoped trigger-duplication audits -> PASS with no
+  findings.
 
 ## Reconciliation log
 
@@ -388,3 +449,10 @@ Verification run on 2026-07-26:
   retired `[adoption]` keys were dropped silently on upgrade; and directory
   scans filtered dependency trees after walking them. Each is now fixed and
   covered by a fixture.
+- **2026-07-28 — stock and coupling target landed:** document volume is not a
+  quality metric, but intentional projections and lifecycle states are stable
+  syntax. H12 adds a non-blocking projection reconciliation signal and lifecycle
+  compatibility checks without textual duplication detection or document
+  quotas. The checker and fixture suite now enforce typed projection paths,
+  lifecycle coherence, reciprocal supersession, strict/off severity behavior,
+  and the date signal's deliberately limited claim.

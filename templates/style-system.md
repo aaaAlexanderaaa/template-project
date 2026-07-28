@@ -134,6 +134,9 @@ Every construct that wins by outranking rather than by owning is listed here or
 does not exist. Escalation that is a permanent, declared part of a layer's
 contract belongs in the layer table above instead.
 
+State whether the owning boundary is waivable. An escalation path does not
+create an exception where the contract declares one unavailable.
+
 | ID | What is escalated | Owner | Reason | Removal condition |
 |---|---|---|---|---|
 | `{{id}}` | `{{forced priority, weight inflation, boundary reach}}` | `{{owner}}` | {{why}} | {{condition}} |

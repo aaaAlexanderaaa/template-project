@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-28
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -52,6 +52,11 @@ Out of scope:
 
 > “同意”采用有限治理权、AI 引导式 onboarding 和 brownfield 分阶段收紧。
 
+### source[4] — 2026-07-28
+
+> “赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能
+> 理解用户的需求和场景时刻担心犯错。”
+
 ## Vocabulary
 
 - **Direction authority:** the human owner authorized to decide product intent,
@@ -63,6 +68,9 @@ Out of scope:
   intent.
 - **Governance exception:** a dated, scoped human decision accepting a named
   deviation and its residual risk.
+- **Engineering decision envelope:** reversible implementation choices an agent
+  or contributor may make inside authorized product intent, public contracts,
+  permission boundaries, durable-state rules, and any declared risk budget.
 
 ## Ownership and boundary
 
@@ -70,6 +78,7 @@ Out of scope:
 |---|---|---|---|
 | Product direction and user value | Developer/product owner | surface evidence and alternatives | substitute its own preference |
 | Portfolio priority | Declared portfolio owner | consume priority and expose dependencies | invent or silently reorder priority |
+| Reversible implementation mechanics | Implementer inside the engineering decision envelope | choose, implement, test, and revise without per-choice approval | change product meaning, public promises, privileged behavior, irreversible state, or accepted risk |
 | Technical and lifecycle truth | Declared system/contract owner | detect contradictions and missing evidence | rewrite current truth to fit a proposal |
 | Risk acceptance | Authorized human owner | explain impact and record disposition | treat an unaccepted risk as accepted |
 | Mechanical integrity | Checker/test owner | fail on stable declared invariants | claim semantic judgment from syntax alone |
@@ -154,12 +163,55 @@ existing policy already determines it.
 
 - from: source[1], source[2]
 
+### G6 — Delegated engineering work proceeds by default
+
+Within an authorized outcome and managed scope, an agent or contributor may
+make a local engineering choice without requesting approval when the choice is
+reversible at reasonable cost and does not change product meaning, a public
+contract, authorization or capability, irreversible or durable-state
+semantics, an activated quality-attribute boundary, or another owner's private
+rule. Normal naming, decomposition, test organization, and equivalent internal
+implementation choices belong to this envelope.
+
+When no risk budget is declared, the default envelope permits a choice that is
+inside current authority, managed scope, and every activated boundary, is
+locally reversible, and creates no uncontracted durable-state or external
+effect. Uncertainty about technical reversibility is investigated as a
+technical fact. A human decision is needed when the evidence instead exposes
+unknown product intent, missing authority, or risk acceptance, not merely
+because investigation was initially required.
+
+The implementer records an assumption when it materially affects verification
+or a later decision; it does not turn every ordinary choice into a decision
+request. A preference difference inside the envelope is review feedback, not a
+governance blocker.
+
+- from: source[4]
+
+### G7 — Missing knowledge is routed, not automatically escalated
+
+Unknown product intent, authority, or risk acceptance produces
+`human_decision_required`. A missing technical fact first produces a bounded
+investigation. When read-only evidence is insufficient, the controlled
+experiment defined by the development discipline may resolve it inside the
+engineering decision envelope. Only a proven G2 condition blocks delivery.
+
+An experiment does not authorize product behavior, production exposure,
+privileged access, or irreversible mutation. Its result may inform a later
+recommendation or contract, but cannot silently become either.
+
+- from: source[4]
+
 ## Required behaviors
 
 - Every governance-facing report distinguishes facts, risks, recommendations,
   required human decisions, and execution blockers.
 - A priority source is named before autonomous project-level work selection.
 - Missing priority produces a decision request, not agent-authored direction.
+- Choices inside the engineering decision envelope proceed without serial human
+  approval; material assumptions remain visible in the plan or evidence.
+- Missing technical knowledge uses read-only investigation or a bounded
+  experiment before it is described as a blocker.
 - A blocker includes scope, evidence, recovery, and available human authority.
 - Accepted deviations use a durable governance-exception record.
 
@@ -172,6 +224,8 @@ existing policy already determines it.
   requirement changes.
 - Do not present an advisory finding as mechanically enforced.
 - Do not treat silence as risk acceptance or priority approval.
+- Do not turn reversible implementation discretion or a resolvable technical
+  unknown into a product-direction question.
 
 ## Failure, recovery, and intervention
 
@@ -186,6 +240,8 @@ contract before dependent implementation.
 - Contributor and agent entrypoints state the authority boundary.
 - Project-operation guidance consumes rather than creates portfolio priority.
 - The agent work-selection rule distinguishes discovery from authorization.
+- The contributor and agent entrypoints state the positive engineering decision
+  envelope and controlled-learning route.
 - Onboarding asks the adopting owner to declare governance scope and priority
   authority.
 - Documentation checks and fixture tests remain green after the new reusable
@@ -205,6 +261,13 @@ Verification remains `partial`: the repository proves structural reachability
 and terminology alignment, not how an independent real project applies the
 decision boundary under delivery pressure.
 
+Verified on 2026-07-28:
+
+- `AGENTS.md`, `CONTRIBUTING.md`, and project-operation guidance expose the
+  positive decision envelope and controlled-learning route;
+- the Python 3.11 fixture suite and both repository checker modes pass; the
+  final high-risk holistic evaluation remains a separate objective-level gate.
+
 ## Reconciliation log
 
 - **2026-07-26 — target created:** recorded limited governance authority as the
@@ -212,3 +275,9 @@ decision boundary under delivery pressure.
 - **2026-07-26 — implemented:** reconciled contributor and agent entrypoints,
   project-operation guidance, onboarding scope, and the agent work-selection
   protocol. Real-project behavioral evidence remains outstanding.
+- **2026-07-28 — positive delegation target landed:** bounded blockers were
+  insufficient to prevent approval-seeking on ordinary engineering choices.
+  G6 now grants reversible local discretion and G7 routes technical unknowns to
+  investigation or controlled experiments. Agent/contributor entrypoints and
+  project-operation guidance now expose that route. Verification remains
+  partial until a real adopter exercises the boundary under delivery pressure.

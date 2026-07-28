@@ -28,6 +28,15 @@ supersedes: []
 |---|---|---|---|
 | {{state/invariant}} | {{module/service/store}} | {{consumers}} | {{location}} |
 
+## Activated quality attributes
+
+Retain only rows activated through development D8. Link another current/target
+contract when it owns the boundary; do not restate its threshold here.
+
+| Concern | Normative owner | Scenario and boundary | Failure/escalation policy | Evidence surface |
+|---|---|---|---|---|
+| {{performance/reliability/security/dependency/production learning or none}} | `{{contract and section}}` | {{scenario/boundary}} | {{policy or non-waivable}} | {{guard/signal}} |
+
 ## Normative invariants
 
 - **INV-1 — {{name}}.** {{durable backend rule}}
@@ -77,6 +86,9 @@ Invalid transitions:
 
 ## Authorization and capability boundary
 
+Delete this section unless development D8 activates the security/privacy
+concern for this change.
+
 | Caller/role | Necessary operations | Explicitly hidden operations | Enforcement |
 |---|---|---|---|
 | {{caller}} | {{operations}} | {{operations}} | {{policy/test}} |
@@ -92,13 +104,20 @@ Invalid transitions:
 
 ## Class-level acceptance tests
 
+Retain only lifecycle behavior and activated-concern cases applicable to this
+change.
+
 - {{happy lifecycle invariant}}
 - {{invalid transition}}
-- {{duplicate/idempotency sibling case}}
+- {{duplicate/idempotency sibling case when the mechanism is repeatable}}
 - {{concurrent/race case}}
 - {{restart or partial-write recovery}}
-- {{permission denial}}
+- {{permission denial when security/privacy is activated}}
 - {{API/persistence/count self-consistency}}
+
+When no repeatable sibling mechanism exists or a broader guard would cost more
+than the bounded risk warrants, record that reason and keep the correction
+local.
 
 ## Rollout and verification
 

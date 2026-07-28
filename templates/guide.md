@@ -3,9 +3,14 @@ doc_type: guide
 status: current
 authority: guidance
 last_reconciled: {{YYYY-MM-DD}}
+projection_of: [docs/contracts/{{contract}}.md]
 ---
 
 # {{Procedure name}}
+
+Delete `projection_of` when this guide only routes to authority and does not
+summarize it. A retained projection may target only current normative contracts
+or surface contracts.
 
 ## Purpose
 

@@ -33,10 +33,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      # --strict promotes advisories -- overdue targets and promises, expired
-      # pending abnormality evidence, references to trimmed templates -- into
-      # failures, so staleness surfaces on a schedule the team owns. A rule set
-      # to "off" in [severity] stays off here.
+      # --strict promotes every enabled advisory into a failure, so lifecycle
+      # hygiene surfaces on a schedule the team owns without duplicating the
+      # advisory inventory here. A rule set to "off" in [severity] stays off.
       #
       # Before enabling this job, reconcile or reset the deadlines this
       # template ships with: the promise register and target dates inherited

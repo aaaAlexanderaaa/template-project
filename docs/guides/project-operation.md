@@ -2,7 +2,8 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-28
+projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md]
 ---
 
 # Project operation after onboarding
@@ -53,20 +54,23 @@ agent fills in.
 Resume authorized in-progress work before discovering replacement work. A
 blocker on one item does not make unrelated authorized work blocked.
 
+Inside an authorized outcome, use the engineering decision envelope in the
+governance contract: locally reversible choices inside current authority and
+activated boundaries proceed without serial approval. Investigate uncertainty
+about technical reversibility before turning it into a human decision.
+
 ### 3. Run the change-execution loop
 
-For the selected item:
+Use A8 in the agent execution contract to choose the smallest route. Routine
+work consumes existing authority and focused guards without creating a plan.
+An unresolved technical fact uses development D1's disposable experiment path
+before delivery. Material delivery uses the seven-phase plan and only the
+concerns activated through development D8. High-risk work adds the independent
+design and fresh-context completion evidence required by A1/A3/A4.
 
-1. inspect current authority and evidence;
-2. reconcile conflicts;
-3. land or update the behavioral contract;
-4. plan one coherent end state;
-5. encode acceptance and sibling-variant guards;
-6. implement and verify proportionally to risk;
-7. update contract, plan, issue, guide, and evidence lifecycle.
-
-Use the agent execution profile only at the depth selected during onboarding or
-subsequently authorized by the project owner.
+The route links its normative owners rather than restating their boundaries in
+the plan. Use the agent execution profile only at the depth selected during
+onboarding or subsequently authorized by the project owner.
 
 ### 4. Report governance output precisely
 
@@ -87,6 +91,8 @@ framework does not silently reprioritize remaining work.
 - The selected item traces to a human-owned priority source or explicit choice.
 - Recommendations and blockers use the correct classification.
 - The execution plan links the applicable current/target contracts.
+- Every activated concern links the contract that owns its boundary and
+  failure/escalation policy.
 - Acceptance evidence covers the declared risk and boundary surface.
 - Completion is reported at the correct layer.
 - Newly discovered work is recorded but not assigned silent priority.

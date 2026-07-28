@@ -53,6 +53,16 @@ Context: {{where the request, incident, standard, or decision was recorded}}
 - Public contract: `{{interface}}`
 - Private implementation details consumers must not infer: `{{details}}`
 
+## Activated quality attributes
+
+List only concerns activated through development D8. This contract, or the
+linked normative contract, must own the boundary and failure policy; do not
+copy the D8 trigger table.
+
+| Quality concern | Scenario | Boundary/response | Guard or observation | Escalation/exception policy |
+|---|---|---|---|---|
+| {{concern or none}} | {{scenario}} | {{measurable or qualitative boundary}} | {{guard/signal}} | {{owner, path, or explicitly non-waivable}} |
+
 ## States and triggers
 
 | State | Entry trigger | Allowed actions | Exit trigger | Failure behavior |

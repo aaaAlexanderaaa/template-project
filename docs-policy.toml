@@ -39,12 +39,13 @@ minimum_live_contracts = 1
 # error (blocks) | advisory (reported, exit 0) | off. `--strict` promotes
 # advisories to errors, which suits a scheduled hygiene job rather than a
 # per-push gate; a rule set to `off` stays off even under `--strict`, because
-# switching one off is a decision the project made. Time-based rules default to
-# advisory: a deadline passing is not a reason for an unrelated pull request to
-# fail.
+# switching one off is a decision the project made. Review signals that cannot
+# prove semantic impact default to advisory: a deadline or projected-source
+# update is not by itself a reason for an unrelated pull request to fail.
 target_aging = "advisory"
 overdue_promise = "advisory"
 pending_abnormality_aging = "advisory"
+projection_staleness = "advisory"
 # `adoption_gate` and `source_root_configuration` are deliberately unset:
 # leaving them out lets [adoption].stage decide (advisory while
 # `observed`/`baselined`, blocking from `scoped_enforcement` on). Set either
@@ -109,6 +110,7 @@ full = [
   "Scope",
   "Source anchors",
   "Ownership and boundary",
+  "Activated quality attributes",
   "States and triggers",
   "Normative invariants",
   "Failure, recovery, and intervention",
@@ -124,6 +126,7 @@ full = [
   "Reachable states",
   "Layout and size contract",
   "Interaction map",
+  "Activated quality attributes",
   "Known abnormality classes",
   "Verification matrix",
   "Reconciliation log",
@@ -132,12 +135,12 @@ full = [
   "Outcome and scope",
   "Source anchors",
   "Ownership",
+  "Activated quality attributes",
   "Normative invariants",
   "Public interface",
   "State machine",
   "Concurrency and idempotency",
   "Failure and recovery",
-  "Authorization and capability boundary",
   "Observability",
   "Class-level acceptance tests",
   "Reconciliation log",
@@ -147,6 +150,7 @@ full = [
   "Shared vocabulary",
   "End-to-end state matrix",
   "Ownership boundary",
+  "Activated quality attributes",
   "Interface contract",
   "Frontend surface projection",
   "Compatibility and cutover",
@@ -162,16 +166,15 @@ full = [
   "Execution order within one coherent change",
   "Risk register",
   "Verification matrix",
-  "Rollout, migration, and rollback",
   "Completion record",
 ]
-"issue-tracker.md" = ["Evidence", "Independent verification", "Category and root mechanism", "Contract impact", "Decision", "Resolution"]
+"issue-tracker.md" = ["Evidence", "Verification", "Category and root mechanism", "Contract impact", "Decision", "Resolution"]
 "verification-report.md" = ["Claim being verified", "Environment", "Result matrix", "Failure and negative-path checks", "Anomalies", "Limitations", "Verdict"]
 "handoff.md" = ["Outcome sought", "Read first", "Verified current facts", "Completed work", "Remaining work", "How to verify"]
 "guide.md" = ["Purpose", "Preconditions", "Procedure", "Verification", "Failure and recovery", "Safety and rollback", "Related authority"]
-"agent-execution-plan.md" = ["Cold-start summary", "Risk classification", "Authority and prerequisites", "Complete end state", "Seven-phase execution loop", "Work-selection fallback", "Review topology", "Verification and evidence matrix", "Layered completion", "Progress and closure"]
+"agent-execution-plan.md" = ["Cold-start summary", "Risk classification", "Authority and prerequisites", "Engineering decision envelope", "Activated concerns and owners", "Complete end state", "Seven-phase execution loop", "Work-selection fallback", "Verification and evidence matrix", "Layered completion", "Progress and closure"]
 "independent-review.md" = ["Review scope and independence", "Inputs", "Perspective findings", "Synthesis", "Disagreements and human decisions", "Limitations", "Verdict and follow-up"]
-"holistic-evaluation.md" = ["Claim and completion layer", "Independence", "Evidence inventory", "Six-dimensional evaluation", "Failure and recovery", "Residual risks", "Verdict"]
-"evidence-preserving-data.md" = ["Purpose", "Scope", "Source anchors", "Value hierarchy", "Authoritative input and derived output", "Preservation invariants", "Reference inventory and garbage collection", "Migration and rollback", "Acceptance evidence", "Reconciliation log"]
+"holistic-evaluation.md" = ["Claim and completion layer", "Independence", "Evidence inventory", "Six-dimensional evaluation", "Activated quality outcomes", "Failure and recovery", "Residual risks", "Verdict"]
+"evidence-preserving-data.md" = ["Purpose", "Scope", "Source anchors", "Value hierarchy", "Authoritative input and derived output", "Activated quality attributes", "Preservation invariants", "Reference inventory and garbage collection", "Migration and rollback", "Acceptance evidence", "Reconciliation log"]
 "style-system.md" = ["Purpose", "Scope", "Source anchors", "Layer order and ownership", "Shared value tiers", "Published override surface", "Responsive authority", "Escalation and exception register", "Acceptance evidence", "Promise register", "Reconciliation log"]
 "adoption-assessment.md" = ["Adoption context", "Existing authority inventory", "Current-state baseline", "Governance profile and scope", "Priority and decision authority", "Risk and conflict register", "Stage decision", "Migration plan link", "Verification and completion", "Limitations"]

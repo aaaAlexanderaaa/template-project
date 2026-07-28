@@ -12,12 +12,13 @@ supersedes: []
 ## Cold-start summary
 
 State the requested outcome, verified current facts, governing contract, and
-the next executable action so a fresh context can continue without chat
-history.
+the next executable action so another context can continue without chat
+history. Routine work and disposable experiments do not use this delivery-plan
+template solely to prove their classification.
 
 ## Risk classification
 
-- Profile: `{{routine / material / high-risk}}`
+- Profile: `{{material / high-risk}}`
 - Rationale: {{changed semantics, boundaries, data, users, or failure surface}}
 - Required independent review: {{yes/no and governing reason}}
 
@@ -31,6 +32,26 @@ Do not downgrade risk merely because an independent reviewer is unavailable.
 - Active issue or objective: `{{path-or-id}}`
 - Priority source or human authorization: `{{tracker/path/owner and decision}}`
 - Baseline evidence: `{{path-or-command}}`
+
+## Engineering decision envelope
+
+- Authorized outcome and managed scope: {{owner/source and boundary}}
+- Applicable public contracts and permission boundaries: {{links}}
+- Declared risk budget, if any: {{budget or none}}
+- Reversible engineering choices that proceed without serial approval:
+  {{choices}}
+- Human decisions still required: {{product intent, authority, or risk
+  acceptance; none if absent}}
+
+## Activated concerns and owners
+
+List only concerns activated through development D8. The linked current or
+target contract owns each boundary, failure policy, and escalation/exception
+policy; this plan owns only steps and evidence. Do not copy the D8 trigger table.
+
+| Activated concern | Normative owner and section | Implementation steps | Evidence |
+|---|---|---|---|
+| {{concern or none}} | `{{contract and section}}` | {{steps}} | {{guard/probe}} |
 
 ## Complete end state
 
@@ -47,7 +68,7 @@ to leave an undocumented coexistence state behind.
 | 4. Test first | Acceptance guard and observed pre-implementation failure | {{record}} |
 | 5. Implementation | Smallest coherent complete change | {{record}} |
 | 6. Regression | Affected class, integration, and compatibility checks | {{record}} |
-| 7. Holistic evaluation | Fresh-context result or truthful blocked/exception state | {{record}} |
+| 7. Holistic evaluation | Result against the contract and activated quality outcomes | {{record}} |
 
 For any non-applicable phase, record the concrete reason.
 
@@ -66,6 +87,8 @@ When the named task cannot proceed, record which step selected the next work:
 Selected action and authority: {{decision}}
 
 ## Review topology
+
+High-risk only: delete this section for material work.
 
 | Stage | Required lenses/context | Reviewer identity | Result or blocked reason |
 |---|---|---|---|

@@ -30,9 +30,12 @@ intermediate coexistence state as the target.
 
 ## Current state and gap
 
-| Concern | Current verified fact | Contract requirement | Gap/evidence |
+| Activated concern or dependency | Current verified fact | Normative owner | Plan step/evidence gap |
 |---|---|---|---|
-| {{concern}} | {{fact}} | {{requirement}} | {{gap}} |
+| {{concern}} | {{fact}} | `{{contract and section}}` | {{step/gap}} |
+
+The linked contract owns boundaries and failure/escalation policy. This plan
+must not restate them.
 
 ## Execution order within one coherent change
 
@@ -40,7 +43,7 @@ intermediate coexistence state as the target.
 
 - Files/systems: {{targets}}
 - Change: {{change}}
-- Guard added: {{class-level guard}}
+- Guard added: {{proportionate class-level guard or local-only rationale}}
 - Checkpoint outcome: {{observable outcome}}
 
 ### 2. {{Producer/state owner}}
@@ -48,14 +51,14 @@ intermediate coexistence state as the target.
 - Files/systems: {{targets}}
 - Change: {{change}}
 - Failure/recovery handling: {{handling}}
-- Guard added: {{guard}}
+- Guard added: {{guard or not applicable with reason}}
 
 ### 3. {{Consumers/projections}}
 
 - Files/surfaces: {{targets}}
 - Change: {{change}}
 - Compatibility/cutover: {{decision}}
-- Guard added: {{guard}}
+- Guard added: {{guard or not applicable with reason}}
 
 ### 4. {{Verification and closure}}
 
@@ -76,6 +79,9 @@ intermediate coexistence state as the target.
 | {{outcome}} | {{check}} | {{check}} | {{check}} | {{path/pending}} |
 
 ## Rollout, migration, and rollback
+
+Delete this section when compatibility, durable-state, or production rollout
+concerns are not activated.
 
 - Deployment unit/order: {{plan}}
 - Data backup/migration: {{plan}}

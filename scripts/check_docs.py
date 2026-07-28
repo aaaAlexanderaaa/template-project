@@ -109,6 +109,9 @@ CONFIGURABLE_RULES = {
     "target_aging": ADVISORY,
     "overdue_promise": ADVISORY,
     "pending_abnormality_aging": ADVISORY,
+    # A current guide may need review after one of its projected normative
+    # sources was reconciled on a later date.
+    "projection_staleness": ADVISORY,
     # Product code exists but the adoption artifacts are incomplete. Blocking
     # from `scoped_enforcement` onward; reported only before that.
     "adoption_gate": ERROR,
@@ -554,6 +557,8 @@ class DocumentationChecker:
 
         if status == "superseded" and not metadata.get("superseded_by"):
             self.add(path, "status superseded requires superseded_by")
+        if status == "completed" and doc_type != "plan":
+            self.add(path, "status completed is reserved for plans")
 
         if PLACEHOLDER_RE.search(record.text):
             self.add(path, "unresolved {{placeholder}} in canonical documentation")
@@ -609,6 +614,8 @@ class DocumentationChecker:
                 self.add(path, "target surface requires contract_scope: future-ui")
             if status == "current" and implementation == "not_started":
                 self.add(path, "current surface cannot be implementation: not_started")
+            if status == "current" and implementation == "retired":
+                self.add(path, "current surface cannot be implementation: retired")
             if status == "target" and implementation == "implemented":
                 self.add(
                     path, "target surface cannot claim implementation: implemented"
@@ -655,11 +662,13 @@ class DocumentationChecker:
             self.add(path, f"invalid verification_status: {verification}")
         if status == "current" and implementation == "not_started":
             self.add(path, "current contract cannot be implementation: not_started")
+        if status == "current" and implementation == "retired":
+            self.add(path, "current contract cannot be implementation: retired")
         if status == "target" and implementation == "implemented":
             self.add(path, "target contract cannot claim implementation: implemented")
 
     def validate_relationships(self, record: DocRecord) -> None:
-        for field in ("implements", "supersedes", "superseded_by"):
+        for field in ("implements", "supersedes", "superseded_by", "projection_of"):
             for value in relation_values(record.metadata.get(field, "")):
                 if PLACEHOLDER_RE.search(value):
                     continue
@@ -680,6 +689,138 @@ class DocumentationChecker:
                     )
                 elif not resolved.exists():
                     self.add(record.path, f"{field} points to missing path: {value}")
+
+    def validate_document_graph(self) -> None:
+        """Validate typed cross-document relationships and lifecycle coherence."""
+
+        for record in self.records:
+            metadata = record.metadata
+            self.validate_projection_relationships(record)
+            if (
+                relation_values(metadata.get("superseded_by", ""))
+                and metadata.get("status") != "superseded"
+            ):
+                self.add(
+                    record.path,
+                    "document with superseded_by must be status: superseded",
+                )
+            for field, reciprocal in (
+                ("supersedes", "superseded_by"),
+                ("superseded_by", "supersedes"),
+            ):
+                for value, target_path in self.resolved_relationships(record, field):
+                    target_metadata = self.metadata_by_path.get(target_path)
+                    if target_metadata is None:
+                        self.add(
+                            record.path,
+                            f"{field} must target a canonical document: {value}",
+                        )
+                        continue
+                    if (
+                        target_metadata.get("doc_type") != metadata.get("doc_type")
+                        or target_metadata.get("authority")
+                        != metadata.get("authority")
+                    ):
+                        self.add(
+                            record.path,
+                            "supersession endpoints must have the same doc_type "
+                            f"and authority: {value}",
+                        )
+                        continue
+                    if not self.relationship_contains(
+                        target_metadata, reciprocal, record.path.resolve()
+                    ):
+                        self.add(
+                            record.path,
+                            f"{field} relationship is not reciprocated by "
+                            f"{reciprocal}: {value}",
+                        )
+
+    def validate_projection_relationships(self, record: DocRecord) -> None:
+        values = relation_values(record.metadata.get("projection_of", ""))
+        if not values:
+            return
+
+        metadata = record.metadata
+        valid_host = (
+            record.path.is_relative_to(self.docs / "guides")
+            and metadata.get("doc_type") == "guide"
+            and metadata.get("authority") == "guidance"
+            and metadata.get("status") == "current"
+        )
+        if not valid_host:
+            self.add(
+                record.path,
+                "projection_of is allowed only on a current canonical guide",
+            )
+
+        for value, target_path in self.resolved_relationships(
+            record, "projection_of"
+        ):
+            source = self.metadata_by_path.get(target_path)
+            if source is None:
+                self.add(
+                    record.path,
+                    "projection_of source must be a current normative contract "
+                    f"or surface-contract: {value}",
+                )
+                continue
+            valid_source = (
+                source.get("doc_type") in {"contract", "surface-contract"}
+                and source.get("authority") == "normative"
+                and source.get("status") == "current"
+            )
+            if not valid_source:
+                self.add(
+                    record.path,
+                    "projection_of source must be a current normative contract "
+                    f"or surface-contract: {value}",
+                )
+                continue
+            if not valid_host:
+                continue
+            try:
+                guide_date = date.fromisoformat(metadata["last_reconciled"])
+                source_date = date.fromisoformat(source["last_reconciled"])
+            except (KeyError, ValueError):
+                continue
+            if source_date > guide_date:
+                self.add(
+                    record.path,
+                    "projection review is stale: source reconciled "
+                    f"{source_date} after guide {guide_date} ({value})",
+                    rule="projection_staleness",
+                )
+
+    def resolved_relationships(
+        self, record: DocRecord, field: str
+    ) -> list[tuple[str, Path]]:
+        """Return valid repository-contained relationship paths without findings."""
+
+        resolved_values: list[tuple[str, Path]] = []
+        for value in relation_values(record.metadata.get(field, "")):
+            if PLACEHOLDER_RE.search(value):
+                continue
+            target = unquote(value.split("#", 1)[0].strip())
+            if not target or Path(target).is_absolute():
+                continue
+            resolved = (self.root / target).resolve()
+            if not resolved.is_relative_to(self.root) or not resolved.exists():
+                continue
+            resolved_values.append((value, resolved))
+        return resolved_values
+
+    def relationship_contains(
+        self, metadata: dict[str, str], field: str, expected: Path
+    ) -> bool:
+        for value in relation_values(metadata.get(field, "")):
+            target = unquote(value.split("#", 1)[0].strip())
+            if not target or Path(target).is_absolute():
+                continue
+            resolved = (self.root / target).resolve()
+            if resolved.is_relative_to(self.root) and resolved == expected:
+                return True
+        return False
 
     def validate_target_aging(self, record: DocRecord) -> None:
         metadata = record.metadata
@@ -971,6 +1112,28 @@ class DocumentationChecker:
                                 "surface template translated subsection lacks raw "
                                 f"citation: {title}",
                             )
+
+            if filename == "agent-execution-plan.md":
+                if "{{routine / material / high-risk}}" in text:
+                    self.add(
+                        path,
+                        "agent execution plan is only for material or high-risk work",
+                    )
+                if (
+                    "review topology" in headings
+                    and "High-risk only: delete this section for material work."
+                    not in text
+                ):
+                    self.add(
+                        path,
+                        "Review topology must be marked high-risk-only and removable",
+                    )
+            if filename == "backend-change.md" and "- {{permission denial}}" in text:
+                self.add(
+                    path,
+                    "backend permission-denial test must be conditional on "
+                    "security/privacy",
+                )
             if normalized_heading("Source anchors") in headings:
                 if "### source[1] — {{YYYY-MM-DD}}" not in text:
                     self.add(path, "source template missing dated source[1] example")
@@ -1738,6 +1901,7 @@ class DocumentationChecker:
             self.validate_promises(record)
             self.validate_surface_citations(record)
             self.validate_contract_sources(record)
+        self.validate_document_graph()
         self.validate_templates()
         self.validate_abnormalities()
         self.validate_local_links()

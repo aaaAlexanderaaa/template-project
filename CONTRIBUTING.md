@@ -10,11 +10,13 @@ or newer and have no third-party package dependencies.
 2. Locate the current authority using `docs/README.md`.
 3. Confirm the behavior owner and dependency boundary in `ARCHITECTURE.md`.
 4. Check for contradictory contracts, active plans, or unresolved issues.
-5. For a material change, copy the appropriate file from `templates/` and land
-   the contract before implementation.
-6. For agent-driven work, classify the risk using
-   `docs/contracts/agent-execution-discipline.md`; use
-   `templates/agent-execution-plan.md` for material or high-risk execution.
+5. For agent-driven work, select the smallest route in the agent execution
+   contract. Routine work uses existing authority and no plan; a controlled
+   experiment answers an unknown technical fact without becoming delivery.
+6. For material delivery, land the contract. Human contributors normally use
+   `templates/implementation-plan.md`; agent-driven material work uses
+   `templates/agent-execution-plan.md`, with its independent review sections
+   retained only for high-risk work.
 7. For template adoption, follow `docs/guides/onboarding.md`, preserve existing
    authority, and record the human-confirmed profile, managed scope, priority
    source, and adoption stage before enabling broad gates.
@@ -26,13 +28,17 @@ or newer and have no third-party package dependencies.
 - Record decisions and changed requirements in the relevant contract, not only
   in chat or commits.
 - Preserve unrelated changes.
-- Add class-level guards while implementing, rather than scheduling them as
-  unspecified future cleanup.
+- When a defect mechanism has repeatable siblings, add a proportionate
+  class-level guard while implementing; record why a local fix is sufficient
+  when it does not.
 - Keep verification evidence tied to the claim it supports.
 - Keep product direction and priority with the declared human owner. Separate
   facts, risks, recommendations, required decisions, and execution blockers.
 - For material work, preserve fixture identity and the observed failing
   acceptance check before implementation.
+- Link every activated concern to the current/target contract that owns its
+  boundary and failure/escalation policy. Plans carry steps and evidence, not
+  duplicate policy.
 - For high-risk work, commission the required independent perspectives and
   fresh-context evaluation, or record the exact blocked/governance-exception
   state. Do not self-attest independence.

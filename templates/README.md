@@ -22,6 +22,11 @@ are replaced, and lifecycle metadata is set correctly.
 | Evidence-preserving data boundary | `evidence-preserving-data.md` | `docs/contracts/<topic>-data.md` |
 | Greenfield/brownfield adoption baseline | `adoption-assessment.md` | `docs/evidence/YYYY-MM-DD-adoption-assessment.md` |
 
+Routine work uses existing authority and no plan template. A controlled
+experiment uses a disposable scratch record unless its findings support a
+durable decision. `agent-execution-plan.md` is for material delivery; retain
+its review topology only for high-risk work.
+
 `ci/docs-check.example.yml` is an optional GitHub Actions adapter for the
 repository's dependency-free Python 3.11+ documentation check and fixture
 suite. Other CI systems should run the same commands in their native format.

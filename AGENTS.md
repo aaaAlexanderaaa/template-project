@@ -9,8 +9,10 @@ Before changing code or behavior, read in this order:
 
 1. `ARCHITECTURE.md` for structural ownership and dependency direction.
 2. `docs/README.md` for document authority and lifecycle.
-3. The relevant `status: current` contract under `docs/contracts/`.
-4. For UI work, the relevant current surface contract under `docs/design/`.
+3. The relevant `status: current` contract and any applicable accepted
+   `status: target` contract under `docs/contracts/`.
+4. For UI work, the relevant current and accepted target surface contracts
+   under `docs/design/`.
 5. The active implementation plan under `docs/plans/`, if one exists.
 6. For material agent-driven work, the risk and review requirements in
    `docs/contracts/agent-execution-discipline.md`.
@@ -33,8 +35,12 @@ weakening a rule to make a check pass.
 
 ## Contract-first gate
 
-- Do not implement a material behavior change without a landed contract.
-- If the contract is missing, draft and confirm it first.
+- Do not deliver a material behavior change without a landed contract.
+- When a material technical fact is unknown, use the controlled experiment
+  path in development D1; the experiment is disposable evidence, not delivery.
+- Routine work may consume an applicable current contract without creating a
+  standalone contract or plan.
+- If a material delivery contract is missing, draft and confirm it first.
 - If conversation, code, tests, and contract disagree, stop and surface the
   conflict. Reconcile before editing dependent code.
 - Plans describe execution; they do not override current contracts.
@@ -57,6 +63,9 @@ The full discipline lives in
   exact scope, recovery options, and available human decision.
 - When priority is missing, present candidates and request direction; do not
   silently promote an agent recommendation into project priority.
+- Inside an authorized outcome, proceed with locally reversible engineering
+  choices in the G6 decision envelope. Investigate technical uncertainty before
+  escalating it as a product or risk decision.
 
 ## Working safely
 
@@ -73,31 +82,34 @@ The full discipline lives in
 
 - Describe one coherent end state. Dependency order is not permission to leave
   temporary architecture behind indefinitely.
-- Identify owner, public contract, states, triggers, failure behavior,
-  non-goals, risks, and acceptance evidence before implementation.
+- For material delivery, identify owner, public contract, states, triggers,
+  failure behavior, non-goals, risks, and acceptance evidence first.
 - Name the defect category before fixing a bug.
-- Add a class-level guard that catches sibling variants of the same mechanism.
+- Add a sibling-variant guard when the root mechanism is repeatable and the
+  guard is proportionate to the bounded risk; otherwise record why the fix stays
+  local.
 - Prefer cohesion and a single reason for change over arbitrary file-size
   targets. Split modules that mix bounded contexts.
 
 ## Agent execution profile
 
-- Classify agent-driven work as routine, material, or high-risk before
-  implementation. Record the rationale; do not downgrade risk to bypass a
-  missing reviewer.
-- Material work uses the seven-phase fixture- and test-first loop in
-  `docs/contracts/agent-execution-discipline.md`.
-- High-risk design requires independent system/contract, user/operator, and
-  engineering/maintenance perspectives plus a separate synthesis.
-- High-risk completion requires a fresh-context holistic evaluation. A
-  same-context checklist is useful evidence but is not independent evidence.
-- If a required independent context is unavailable, keep the affected
-  completion layer blocked or verifying unless a human records a scoped
-  governance exception.
-- When no named task is executable, consume the declared portfolio priority or
-  perform read-only diagnosis. Record discovered candidates, but obtain human
-  priority before non-trivial implementation when existing policy does not
-  already authorize the choice.
+Choose the smallest route in
+`docs/contracts/agent-execution-discipline.md` A8:
+
+- **Routine:** use existing authority, make the bounded reversible change, and
+  run focused guards without a new plan.
+- **Controlled experiment:** when read-only investigation cannot answer a
+  technical fact, use development D1's disposable, contained evidence path.
+- **Material delivery:** land the contract, link only D8-activated concern
+  owners, and use the seven-phase fixture- and test-first loop.
+- **High-risk delivery:** add A3/A4 independent design review and fresh-context
+  completion evaluation to the material route.
+
+Record the rationale for material/high-risk work; do not downgrade risk to
+bypass a missing reviewer. If required independent context is unavailable, keep
+only the affected completion layer open unless a human records a scoped
+exception. When no named task is executable, follow A5 and consume human-owned
+portfolio priority rather than inventing it.
 
 ## Frontend work
 

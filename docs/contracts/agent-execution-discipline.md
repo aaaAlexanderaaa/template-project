@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-28
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -60,6 +60,11 @@ Out of scope:
 > “治理框架不应该帮助开发者定义优先级；它可以识别风险和长期异常，但不应
 > 在开发者有自己的想法时替他判断这个想法不对。”
 
+### source[4] — 2026-07-28
+
+> “赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能
+> 理解用户的需求和场景时刻担心犯错。”
+
 ## Vocabulary and risk profiles
 
 - **Routine change:** bounded implementation with an existing contract, no new
@@ -74,6 +79,11 @@ Out of scope:
   the implementer's unfiltered reasoning trace.
 - **Governance exception:** an explicit human decision that waives or replaces
   a required review step for a named scope and records the residual risk.
+- **Controlled experiment:** disposable, non-production implementation used to
+  answer a named technical question that read-only investigation cannot answer;
+  it creates evidence but no product contract or public behavior.
+- **Activated concern:** a quality, compatibility, state, experience, or
+  operational boundary triggered by the change traits in development D8.
 
 - from: source[1], source[2]
 
@@ -90,9 +100,10 @@ not made routine merely to avoid review.
 
 - from: source[1]
 
-### A2 — Material work uses a fixture- and test-first loop
+### A2 — Material delivery uses a fixture- and test-first loop
 
-The default seven phases are:
+When delivery intent and the material facts are known, the default seven phases
+are:
 
 1. understand the domain and current authority;
 2. prepare realistic, sanitized fixtures or controlled boundaries;
@@ -100,12 +111,20 @@ The default seven phases are:
 4. encode acceptance behavior in tests and confirm the new behavior fails;
 5. implement the smallest coherent end state;
 6. run affected regression and integration checks;
-7. evaluate the result holistically from outside the implementation context.
+7. evaluate the result holistically against its contract and activated quality
+   outcomes.
 
 If a phase is not applicable, the plan records why. Skipping a phase silently
 is not allowed.
 
-- from: source[1]
+Fresh context is not required for phase 7 unless A1 classifies the work as
+high-risk. If a material technical fact is still unknown, use development D1's
+controlled experiment before this delivery loop. Its record satisfies D1's
+containment, expiry, cleanup, and concern-routing requirements and records the
+result and disposition. It does not require a fictional product contract or
+failing acceptance test for behavior not yet selected.
+
+- from: source[1], source[4]
 
 ### A3 — High-risk design uses independent lenses
 
@@ -117,8 +136,9 @@ evidence through at least these lenses:
 - engineering cost, maintenance, and extensibility.
 
 A separate synthesis identifies agreement, disagreement, residual risk, and
-decisions requiring human authority. Projects may add security, privacy,
-reliability, or domain-specific lenses.
+decisions requiring human authority. Every concern activated by development D8
+selects an appropriate specialist or domain lens when that concern can affect
+the high-risk outcome, and adds no review obligation when absent.
 
 - from: source[1]
 
@@ -193,9 +213,32 @@ another but do not silently replace one another.
 
 - from: source[1], source[2]
 
+### A8 — The harness selects the smallest executable route
+
+Before creating records, the agent determines which route applies:
+
+- **Routine:** consume existing authority, make the bounded reversible change,
+  run focused guards, and hand off without a new contract or plan.
+- **Material with sufficient facts:** activate development D8 concerns and run
+  the A2 delivery loop.
+- **Material with an unresolved technical fact:** route the experiment method
+  through development D8, run it inside development D1's existing safety and
+  disposal boundaries, then discard it or enter material delivery with its
+  findings as evidence.
+- **High-risk:** use the applicable material route plus A3/A4 independent review
+  and fresh-context evaluation.
+
+The current development discipline owns concern triggers and the governance
+decision boundary owns engineering discretion and escalation. This contract
+links those owners rather than restating their rules. Missing product intent or
+risk authority remains a human decision; an ordinary reversible engineering
+choice inside the declared envelope proceeds without serial approval.
+
+- from: source[4]
+
 ## Required records
 
-Material agent work records:
+Material delivery work records only what its activated route requires:
 
 - the governing contract and risk profile;
 - the priority source or explicit human authorization for the selected work;
@@ -203,8 +246,13 @@ Material agent work records:
 - fixture or controlled-boundary strategy;
 - acceptance tests and their pre-implementation result;
 - commands, environment, and evidence class for verification;
-- independent review or the exact blocked/exception state;
+- independent review or the exact blocked/exception state when the risk profile
+  requires it;
 - final contract, plan, issue, and evidence lifecycle updates.
+
+A controlled experiment uses a scratch record unless its result supports a
+durable contract or decision. Routine work creates none of the records above
+solely to prove that it is routine.
 
 ## Forbidden behaviors
 
@@ -216,6 +264,8 @@ Material agent work records:
 - Do not convert an agent-authored recommendation into portfolio priority.
 - Do not use a heavyweight review ritual for routine work without a recorded
   risk reason.
+- Do not write a delivery contract to legitimize an unanswered experiment.
+- Do not duplicate the concern trigger table in agent plans or entrypoints.
 - Do not let temporary checkpoints become the undocumented end state.
 
 ## Acceptance evidence
@@ -229,6 +279,9 @@ This contract is implemented when:
 - fixture tests prove missing or malformed required templates fail;
 - repository guidance routes agent-driven material changes through this
   contract;
+- repository guidance exposes the routine, controlled-experiment, material,
+  and high-risk routes without requiring the agent to infer them from several
+  documents;
 - the correct Python runtime has a canonical, actionable verification path.
 
 Verified on 2026-07-26:
@@ -241,6 +294,16 @@ Verified on 2026-07-26:
 - the runtime preflight is covered without depending on a second interpreter
   being installed: the guard is asserted directly for 3.9, 3.10, and 2.7, and a
   source-order fixture keeps it ahead of the `tomllib` import.
+
+Verified on 2026-07-28:
+
+- `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
+  passes the full fixture suite, including material-plan routing and removable
+  high-risk review cases;
+- normal and strict repository checks pass for the current guide projections,
+  template inventory, and lifecycle state;
+- scoped audits find no copied D8 trigger table or obsolete fresh-context
+  requirement outside the high-risk route.
 
 ## Promise register
 
@@ -259,3 +322,10 @@ Verified on 2026-07-26:
 - **2026-07-26 — priority authority reconciled:** clarified that the no-idle
   protocol consumes human-owned priority and may discover and recommend work,
   but cannot manufacture product direction or silently authorize execution.
+- **2026-07-28 — proportional execution target landed:** added controlled
+  experiments, concern-triggered specialist review, and a smallest-route
+  selector so technical uncertainty no longer requires premature contracts and
+  reversible routine work creates no governance artifacts. The material plan
+  template now excludes routine work, makes high-risk review removable, and
+  links activated concern owners; fixture and repository checks enforce the
+  stable template surface.

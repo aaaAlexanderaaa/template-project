@@ -39,6 +39,12 @@ subject: {{initiative-or-objective}}
 | Integration and compatibility | Do producers, consumers, artifacts, and migrations align? | {{finding}} | {{evidence}} | pass/fail/partial |
 | Maintainability and operations | Are tests, observability, docs, and rollback sufficient? | {{finding}} | {{evidence}} | pass/fail/partial |
 
+### Activated quality outcomes
+
+| Concern | Normative owner/boundary | Finding | Evidence | Result |
+|---|---|---|---|---|
+| {{activated concern or none}} | `{{contract and section}}` | {{finding}} | {{evidence}} | pass/fail/partial |
+
 ## Failure and recovery
 
 - Negative paths exercised: {{cases}}

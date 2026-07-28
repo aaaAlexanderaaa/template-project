@@ -1,7 +1,7 @@
 ---
 document_role: structural-authority
 template_state: unconfigured
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-28
 ---
 
 # Architecture
@@ -50,6 +50,11 @@ boundaries:
 - deprecation and removal policy.
 
 Link each interface to its normative contract under `docs/contracts/`.
+
+For every quality concern activated by development D8, link the current or
+target contract that owns its scenario, boundary, failure policy, observation
+surface, and escalation/exception policy. This structural map names the owner;
+it does not copy the threshold or policy.
 
 ## 5. State and lifecycle
 

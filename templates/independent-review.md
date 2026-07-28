@@ -11,7 +11,7 @@ subject: {{initiative-or-contract}}
 ## Review scope and independence
 
 - Governing contract and revision: `{{path-and-revision}}`
-- Risk profile: `{{material / high-risk}}`
+- Risk profile: `{{high-risk / optional material review with reason}}`
 - Reviewer/context identity: {{identity}}
 - Independence basis: {{why this context did not produce the proposal}}
 - Independence required and achieved: {{yes/no with reason}}
@@ -39,8 +39,8 @@ Same-context role-play must be labeled non-independent.
 
 {{Complexity, testing, observability, extensibility, and migration findings.}}
 
-Add security, privacy, reliability, or domain lenses when the risk requires
-them.
+Add only the specialist lenses activated through development D8. Their
+normative contracts own the boundary being reviewed.
 
 ## Synthesis
 

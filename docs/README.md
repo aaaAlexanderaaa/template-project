@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-07-26
+last_reconciled: 2026-07-28
 ---
 
 # Documentation authority map
@@ -38,6 +38,9 @@ Canonical Markdown documents under `docs/` carry frontmatter:
 - target contracts and surfaces may set `review_due` to override the configured
   aging deadline;
 - replacements use `supersedes` and `superseded_by`.
+- a `status: current` canonical guide that intentionally summarizes current
+  normative contracts or surface contracts may use `projection_of`; this
+  declares a reconciliation dependency, not shared ownership.
 
 Lifecycle relationship fields use repository-root-relative paths. Markdown
 links may be document-relative. Neither form may be absolute or escape the
@@ -53,6 +56,11 @@ repository, even when the external target happens to exist locally.
 - `superseded`: replaced; requires `superseded_by`.
 - `needs_reconciliation`: conflict or ambiguity blocks dependent work.
 
+The active read set consists of applicable `current`, `target`, `active`, and
+`needs_reconciliation` documents. `completed`, `historical`, and `superseded`
+documents remain searchable history but do not join normal change authority or
+work selection merely because they remain on disk.
+
 Implementation states: `not_started`, `in_progress`, `partial`, `implemented`,
 `retired`.
 
@@ -62,6 +70,73 @@ Repository-wide aging, template inventory, adoption roots, and optional
 abnormality deadlines live in `docs-policy.toml`. Concrete future commitments
 use structured `promise[id]` records with explicit due dates rather than
 natural-language TODO detection.
+
+## Document stock and coupling
+
+Documentation is governed by decisions and ownership, not by file or line
+counts. A large system may need many contracts; a small system may need few.
+Neither volume is evidence of quality by itself, and the harness must not ship
+universal documentation budgets.
+
+Before creating a canonical document:
+
+1. identify the decision, behavior, procedure, finding, or evidence it owns;
+2. update an existing owner when the reason for change is the same;
+3. split only when authority, lifecycle, audience, or reason for change is
+   genuinely distinct;
+4. name the lifecycle exit: merge, supersede, mark historical, or delete
+   disposable evidence.
+
+Long-term maintenance includes subtraction:
+
+- merge still-live decisions into their surviving normative owner;
+- retain a concise historical synthesis when chronology, rejected alternatives,
+  audit, or recovery value would otherwise be lost;
+- mark completed plans and historical evidence out of the active read set;
+- supersede replaced authority bidirectionally;
+- remove scratch evidence once it supports no live claim.
+
+Both ends of a supersession are canonical documents. The replaced document is
+`status: superseded` and names `superseded_by`; the replacement names the same
+document through `supersedes`. Both ends have the same `doc_type` and
+`authority`, so supersession changes a decision within one authority class
+rather than promoting a plan, guide, or evidence record into a normative owner.
+
+One normative rule has one owner. Other documents may:
+
+- **route:** point a reader to the owner without restating the rule;
+- **project:** summarize only what a specific operator or contributor needs;
+- **explain:** provide non-normative examples and procedure;
+- **evidence:** record what was observed and what remains unproved.
+
+A projection does not introduce new conditions. `projection_of` is deliberately
+narrow: only a canonical `doc_type: guide`, `authority: guidance`, and
+`status: current` document may declare it, and every repository-root-relative
+target must be a canonical `status: current`, `authority: normative` contract or
+surface contract. It is not a general dependency field for plans, evidence,
+root entrypoints, templates, architecture, or historical documents.
+
+The lifecycle matrix has one valid operating state: current guide to current
+normative source. If a source becomes `target`, `needs_reconciliation`,
+`superseded`, or otherwise leaves current authority, the guide relationship is
+invalid until the guide is reconciled against a current replacement or removes
+both the projection and its restatement. Marking the guide
+`needs_reconciliation` truthfully removes it from current guidance while that
+recovery occurs; it does not make a stale projection authoritative.
+
+When a projected source has a later `last_reconciled` date than its guide, the
+harness reports the guide for review. The finding is advisory because a source
+change may not affect the projected section. The reviewer updates the guide's
+date when still aligned, changes the projection when affected, or removes the
+relationship when it no longer restates that authority. Date granularity cannot
+detect same-day source changes made after a guide was checked; same-day coupling
+remains a review limitation rather than a mechanically proven freshness claim.
+
+Root entrypoints such as `README.md`, `AGENTS.md`, and `CONTRIBUTING.md` should
+prefer routing and a compact executable path. They are intentionally not made
+canonical merely to obtain a checker field; their duplication risk is handled
+by keeping normative trigger semantics out of them and reviewing their links
+when an owning contract changes.
 
 ## Conflict rule
 
@@ -87,11 +162,13 @@ an agent product-direction or priority authority. Review records and holistic
 evaluations remain evidence, plans remain planning, and product behavior still
 belongs in contracts.
 
-Use `templates/agent-execution-plan.md` for material execution,
-`templates/independent-review.md` for genuinely independent perspectives,
-and `templates/holistic-evaluation.md` for completion review. If independence
-is required but unavailable, record a blocked state or an explicit human
-governance exception; never relabel same-context analysis as independent.
+Routine work uses no plan solely for governance. Use
+`templates/agent-execution-plan.md` for material execution and retain its review
+block only for high-risk work. `templates/independent-review.md` records
+genuinely independent perspectives; `templates/holistic-evaluation.md` records
+completion review when a separate record is warranted. If required independence
+is unavailable, record a blocked state or an explicit human governance
+exception; never relabel same-context analysis as independent.
 
 ## Governance and onboarding
 

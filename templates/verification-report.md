@@ -15,6 +15,8 @@ subject: {{initiative-or-contract}}
 - Observable outcomes: {{outcomes}}
 - Verifier: {{person/context}}
 - Independence required: {{yes/no and why}}
+- Activated quality owners: {{contract sections or none; do not restate their
+  thresholds}}
 
 ## Environment
 

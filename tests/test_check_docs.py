@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-07-26"
+FIXED_TODAY = "2026-07-28"
 
 
 def load_checker_module():
@@ -211,6 +211,30 @@ last_reconciled: {reconciled}
 {body}
 """
 
+    def canonical_guide(
+        self,
+        *,
+        projection_of: str | None = None,
+        status: str = "current",
+        reconciled: str = "2026-07-28",
+    ) -> str:
+        projection_line = (
+            f"projection_of: {projection_of}\n" if projection_of else ""
+        )
+        return f"""---
+doc_type: guide
+status: {status}
+authority: guidance
+last_reconciled: {reconciled}
+{projection_line}---
+
+# Projection guide
+
+## Purpose
+
+Explain the contributor procedure without owning normative behavior.
+"""
+
     def configure_architecture_not_applicable(self, rationale: str) -> None:
         architecture = self.read("ARCHITECTURE.md")
         architecture = architecture.replace(
@@ -391,14 +415,65 @@ rationale = "{rationale}"
             "required template is missing",
         )
 
-    def test_agent_execution_template_requires_review_topology(self) -> None:
-        self.replace(
+    def test_agent_execution_template_marks_review_topology_high_risk_only(self) -> None:
+        content = self.read("templates/agent-execution-plan.md").replace(
+            "High-risk only: delete this section for material work.",
+            "Review notes.",
+            1,
+        )
+        self.write("templates/agent-execution-plan.md", content)
+        self.assert_fails_with(
+            "Review topology must be marked high-risk-only and removable"
+        )
+
+    def test_agent_execution_template_rejects_routine_plan_profile(self) -> None:
+        self.write(
             "templates/agent-execution-plan.md",
-            "## Review topology",
-            "## Review arrangement",
+            self.read("templates/agent-execution-plan.md")
+            + "\n- Invalid profile example: `{{routine / material / high-risk}}`\n",
         )
         self.assert_fails_with(
-            "template missing required section: Review topology"
+            "agent execution plan is only for material or high-risk work"
+        )
+
+    def test_material_agent_plan_does_not_require_review_topology(self) -> None:
+        content = self.read("templates/agent-execution-plan.md")
+        start = content.index("## Review topology")
+        end = content.index("## Verification and evidence matrix", start)
+        self.write(
+            "templates/agent-execution-plan.md", content[:start] + content[end:]
+        )
+        self.assert_passes()
+
+    def test_agent_execution_template_requires_decision_envelope(self) -> None:
+        content = self.read("templates/agent-execution-plan.md")
+        content = content.replace(
+            "## Engineering decision envelope", "## Decision notes", 1
+        )
+        self.write("templates/agent-execution-plan.md", content)
+        self.assert_fails_with(
+            "template missing required section: Engineering decision envelope"
+        )
+
+    def test_agent_execution_template_requires_activated_concern_owners(self) -> None:
+        content = self.read("templates/agent-execution-plan.md")
+        content = content.replace(
+            "## Activated concerns and owners", "## General risks", 1
+        )
+        self.write("templates/agent-execution-plan.md", content)
+        self.assert_fails_with(
+            "template missing required section: Activated concerns and owners"
+        )
+
+    def test_backend_permission_test_is_security_concern_conditional(self) -> None:
+        content = self.read("templates/backend-change.md").replace(
+            "{{permission denial when security/privacy is activated}}",
+            "{{permission denial}}",
+            1,
+        )
+        self.write("templates/backend-change.md", content)
+        self.assert_fails_with(
+            "backend permission-denial test must be conditional on security/privacy"
         )
 
     def test_missing_adoption_assessment_template_fails(self) -> None:
@@ -895,6 +970,209 @@ last_reconciled: 2026-07-26
             "implements: ../outside.md",
         )
         self.assert_fails_with("implements path escapes repository: ../outside.md")
+
+    def test_current_guide_may_project_current_normative_contract(self) -> None:
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(
+                projection_of="docs/contracts/development-discipline.md"
+            ),
+        )
+        self.assert_passes()
+
+    def test_projection_target_must_exist(self) -> None:
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(
+                projection_of="docs/contracts/missing-contract.md"
+            ),
+        )
+        self.assert_fails_with(
+            "projection_of points to missing path: docs/contracts/missing-contract.md"
+        )
+
+    def test_projection_path_cannot_escape_repository(self) -> None:
+        (self.root.parent / "outside.md").write_text("external\n", encoding="utf-8")
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(projection_of="../outside.md"),
+        )
+        self.assert_fails_with("projection_of path escapes repository: ../outside.md")
+
+    def test_only_current_guides_may_declare_projection(self) -> None:
+        self.replace(
+            "docs/plans/2026-07-28-engineering-harness-enablement.md",
+            "supersedes: []",
+            "supersedes: []\nprojection_of: docs/contracts/development-discipline.md",
+        )
+        self.assert_fails_with(
+            "projection_of is allowed only on a current canonical guide"
+        )
+
+    def test_non_current_guide_cannot_keep_projection(self) -> None:
+        self.write(
+            "docs/guides/reconciling.md",
+            self.canonical_guide(
+                projection_of="docs/contracts/development-discipline.md",
+                status="needs_reconciliation",
+            ),
+        )
+        self.assert_fails_with(
+            "projection_of is allowed only on a current canonical guide"
+        )
+
+    def test_projection_source_must_be_contract_or_surface(self) -> None:
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(projection_of="docs/README.md"),
+        )
+        self.assert_fails_with(
+            "projection_of source must be a current normative contract or surface-contract"
+        )
+
+    def test_projection_source_must_be_current(self) -> None:
+        self.write(
+            "docs/contracts/future.md",
+            self.basic_contract(status="target", implementation="in_progress"),
+        )
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(projection_of="docs/contracts/future.md"),
+        )
+        self.assert_fails_with(
+            "projection_of source must be a current normative contract or surface-contract"
+        )
+
+    def test_later_dated_projection_source_is_advisory(self) -> None:
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(
+                projection_of="docs/contracts/development-discipline.md",
+                reconciled="2026-07-27",
+            ),
+        )
+        self.assert_advises(
+            "projection review is stale: source reconciled 2026-07-28 after guide 2026-07-27"
+        )
+
+    def test_projection_staleness_can_be_switched_off(self) -> None:
+        self.set_policy(
+            'projection_staleness = "advisory"',
+            'projection_staleness = "off"',
+        )
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(
+                projection_of="docs/contracts/development-discipline.md",
+                reconciled="2026-07-27",
+            ),
+        )
+        result = self.run_checker(strict=True)
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 0, output)
+        self.assertNotIn("projection review is stale", output)
+
+    def test_same_day_projection_dates_do_not_claim_drift(self) -> None:
+        self.write(
+            "docs/guides/projection.md",
+            self.canonical_guide(
+                projection_of="docs/contracts/development-discipline.md",
+                reconciled="2026-07-28",
+            ),
+        )
+        output = self.assert_passes()
+        self.assertNotIn("projection review is stale", output)
+
+    def test_completed_status_is_reserved_for_plans(self) -> None:
+        self.write(
+            "docs/guides/completed.md",
+            self.canonical_guide(status="completed"),
+        )
+        self.assert_fails_with("status completed is reserved for plans")
+
+    def test_current_contract_cannot_be_retired(self) -> None:
+        self.write(
+            "docs/contracts/retired.md",
+            self.basic_contract(implementation="retired"),
+        )
+        self.assert_fails_with("current contract cannot be implementation: retired")
+
+    def test_supersession_relationships_must_be_bidirectional(self) -> None:
+        old = self.basic_contract(
+            status="superseded", implementation="retired", title="Old behavior"
+        ).replace(
+            "supersedes: []",
+            "supersedes: []\nsuperseded_by: docs/contracts/new.md",
+        )
+        self.write("docs/contracts/old.md", old)
+        self.write(
+            "docs/contracts/new.md", self.basic_contract(title="New behavior")
+        )
+        self.assert_fails_with(
+            "superseded_by relationship is not reciprocated by supersedes"
+        )
+
+    def test_supersession_target_must_be_canonical(self) -> None:
+        new = self.basic_contract(title="New behavior").replace(
+            "supersedes: []", "supersedes: README.md"
+        )
+        self.write("docs/contracts/new.md", new)
+        self.assert_fails_with(
+            "supersedes must target a canonical document: README.md"
+        )
+
+    def test_supersession_cannot_cross_authority_or_document_type(self) -> None:
+        old = self.basic_contract(
+            status="superseded", implementation="retired", title="Old behavior"
+        ).replace(
+            "supersedes: []",
+            "supersedes: []\nsuperseded_by: docs/evidence/replacement.md",
+        )
+        replacement = """---
+doc_type: evidence
+status: historical
+authority: evidence
+last_reconciled: 2026-07-28
+supersedes: docs/contracts/old.md
+---
+
+# Replacement evidence
+
+This evidence cannot replace normative authority.
+"""
+        self.write("docs/contracts/old.md", old)
+        self.write("docs/evidence/replacement.md", replacement)
+        self.assert_fails_with(
+            "supersession endpoints must have the same doc_type and authority"
+        )
+
+    def test_document_with_superseded_by_cannot_remain_current(self) -> None:
+        old = self.basic_contract(title="Old behavior").replace(
+            "supersedes: []",
+            "supersedes: []\nsuperseded_by: docs/contracts/new.md",
+        )
+        new = self.basic_contract(title="New behavior").replace(
+            "supersedes: []", "supersedes: docs/contracts/old.md"
+        )
+        self.write("docs/contracts/old.md", old)
+        self.write("docs/contracts/new.md", new)
+        self.assert_fails_with(
+            "document with superseded_by must be status: superseded"
+        )
+
+    def test_bidirectional_supersession_relationship_passes(self) -> None:
+        old = self.basic_contract(
+            status="superseded", implementation="retired", title="Old behavior"
+        ).replace(
+            "supersedes: []",
+            "supersedes: []\nsuperseded_by: docs/contracts/new.md",
+        )
+        new = self.basic_contract(title="New behavior").replace(
+            "supersedes: []", "supersedes: docs/contracts/old.md"
+        )
+        self.write("docs/contracts/old.md", old)
+        self.write("docs/contracts/new.md", new)
+        self.assert_passes()
 
     def test_missing_local_link_target_fails(self) -> None:
         self.write(

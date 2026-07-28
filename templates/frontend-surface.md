@@ -114,6 +114,16 @@ Do not restate the shared layer's rules here; name what this surface consumes.
 
 - from: raw[{{N}}]
 
+## Activated quality attributes
+
+Experience concerns above are intrinsic to this surface. List only additional
+D8 concerns activated by its implementation or operation, and link their
+normative owner rather than copying a threshold.
+
+| Concern | Normative owner | Boundary/failure policy | Surface evidence |
+|---|---|---|---|
+| {{performance/security/privacy/reliability/dependency/production learning or none}} | `{{contract and section}}` | {{link}} | {{probe/observation}} |
+
 ## Known abnormality classes
 
 This section is optional in an adopted surface. If present, every entry uses
@@ -124,7 +134,7 @@ the exact structured form below. Pending evidence expires according to
 
 ## Verification matrix
 
-| State | Range/environment | Functional | Structural geometry | Perceptual | Accessibility | Independent review |
+| State | Range/environment | Functional | Structural geometry | Perceptual | Accessibility | Independent review (high-risk only) |
 |---|---|---|---|---|---|---|
 | {{state}} | {{environment}} | pending | pending | pending | pending | pending |
 
