@@ -6,10 +6,11 @@ Each user-visible surface gets one living contract. Use
 The required pair is:
 
 - **Raw layer:** dated stakeholder language, observations, rejected attempts,
-  and changed requirements in the source's own words.
+  changed requirements, concrete subject/audience/user-job language, and
+  reactions to bounded design alternatives in the source's own words.
 - **Translated layer:** engineering states, transitions, layout, size,
-  interaction, style ownership, accessibility, responsive behavior, and
-  evidence expectations.
+  interaction, brief-specific design direction, interface language, style
+  ownership, accessibility, responsive behavior, and evidence expectations.
 
 Every `###` subsection inside the translated layer contains at least one
 `- from: raw[N]` line; place additional citations next to a more specific claim
@@ -24,6 +25,14 @@ A surface names the style layer and value tiers it consumes and records any
 value it defines locally as an exception with an owner. It does not restate the
 shared layer's rules: those belong to the style system contract, and a surface
 that repeats them becomes a second owner of the same decision.
+
+The translated `Design direction and content` section records why the accepted
+type, layout, motion, hierarchy, copy, and optional signature element fit this
+subject and user job. Candidate palettes, mockups, visual probes, generated
+tokens, and skill output are evidence or alternatives, not authority. Record
+accepted values through the declared style tiers; keep rejected generic
+defaults and stakeholder reactions in the raw/reconciliation history when they
+explain the resulting direction.
 
 If the surface maintains known abnormality classes, use the structured
 `abnormality[slug]` records in the template. The section is optional; once

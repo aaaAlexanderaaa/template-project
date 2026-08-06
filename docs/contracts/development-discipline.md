@@ -41,6 +41,10 @@ controlled learning.
 > 问题时，找出他没问但可能更关键的问题并指出来。拆解问题以讲清楚因果机制
 > 为标准，不以层级够多为标准，不为了显得深刻而堆砌空洞抽象。”
 
+### source[4] — 2026-08-06
+
+> “同意你的理解, 采用 frontend-design，卸载 ui-ux-pro-max, 该学习的学习一下”
+
 ## Core invariants
 
 ### D1 — Contract before material delivery, evidence before certainty
@@ -311,6 +315,48 @@ Frontend work translates product intent into observable states and geometry.
 - The style layer, value tiers, and published override surface the change
   consumes, plus any value it must define locally and why.
 
+### Design direction and content
+
+Visual direction translates authorized product intent; it does not create
+missing product intent. Ground each surface in a concrete subject, audience,
+and single user job found in its raw layer. Use the subject's real materials,
+instruments, artifacts, language, and workflows where they improve recognition
+or use. When a missing subject, audience, job, or expensive-to-reverse
+preference would materially change the result, use governance G7 rather than
+silently choosing a plausible theme.
+
+Before implementation, work in two design passes:
+
+1. propose a compact candidate direction covering named color roles,
+   typography roles, layout concept, content voice, motion intent, and at most
+   one signature element that serves the user job;
+2. critique that direction against the raw brief, the product's own world, and
+   the generic defaults likely to recur across unrelated products, then revise
+   any choice that cannot be justified specifically.
+
+Candidate directions are decision evidence, not a new source of visual truth.
+Only the accepted translation enters the surface contract and consumes or
+extends the declared style owner. A generated palette, token file, design
+master, mockup, or skill output cannot override those owners. Concentrate
+visual emphasis in the signature element, match execution complexity to the
+accepted direction, and remove decoration that communicates nothing true about
+the subject or hierarchy.
+
+Interface language is part of the design contract. Use the user's vocabulary
+and active, specific action names; keep an action's name consistent from
+control through result feedback; let labels, examples, and supporting text each
+do one job; and make empty and failure states explain the available recovery or
+next action without vague apology or promotional filler.
+
+When a human-owned visual preference cannot be decided usefully from prose,
+prepare a bounded set of low-cost alternatives or a disposable visual probe in
+`tmp/`. State the question it resolves, keep it out of production and public
+interfaces, record the owner's reaction as dated raw surface input, and remove
+the probe when it supports no live evidence. The probe informs the contract; it
+does not authorize delivery or become the accepted design by survival.
+
+- from: source[4]
+
 ### Style ownership and layering
 
 Style decay is a dependency-direction and precedence problem that happens to
@@ -363,6 +409,10 @@ second authority for frontend work.
 - Use both perceptual evidence and structural evidence for layout-affecting
   work. A screenshot can reveal hierarchy; rendered measurements establish
   geometry.
+- Perceptual review checks fidelity to the subject, audience, user job, accepted
+  design thesis, hierarchy, content voice, and deliberate restraint. It names
+  any generic default or decoration that survived without a brief-specific
+  reason; a screenshot remains evidence, not a style owner.
 - Measure all repeated instances and both axes when investigating containment
   or clipping. Do not generalize from the first match.
 - Exercise intermediate responsive ranges, not only the smallest and largest
@@ -377,6 +427,9 @@ second authority for frontend work.
 
 A frontend change is complete when functionality, display, interaction,
 accessibility, responsive behavior, and visual logic meet the surface contract;
+the presentation and interface language remain specific to its subject,
+audience, user job, and accepted design direction rather than an unexamined
+generic default;
 every visual value it introduces resolves to a declared owner or to a
 registered exception with an owner and a removal condition; the relevant
 mechanical guards pass; and the production-like surface has been verified.
@@ -477,6 +530,17 @@ No side may resolve a conflict silently.
 
 ## Reconciliation log
 
+- **2026-08-06 — subject-grounded frontend direction adopted:** the owner
+  selected the reviewed `frontend-design` approach over the database-driven
+  alternative. The frontend contract now requires brief-specific design
+  direction, two-pass generic-default critique, consistent interface language,
+  and bounded visual decision evidence while keeping accepted values in the
+  existing surface/style owners. Disposable probes remain evidence, not
+  delivery or parallel design authority; verification remains partial until a
+  real adopter exercises the method. The template-required direction section
+  first produced the expected missing-section failure, then the full 106-test
+  Python 3.11 fixture suite and strict repository check passed after the
+  projection landed.
 - **2026-08-06 — evidence and causal inquiry added:** made authoritative-source
   research, capability-preserving tool fallback, and causal analysis with
   bounded surfacing of more consequential unasked questions part of the

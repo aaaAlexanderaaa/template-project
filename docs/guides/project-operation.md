@@ -75,6 +75,29 @@ Use the uncertainty route owned by development D10-D12 and governance G7:
   a material trade-off, an expensive-to-reverse preference, authority, or risk
   acceptance.
 
+#### Work a dependent decision frontier
+
+When G7 classifies several unresolved items as genuine human decisions and
+their answers depend on one another:
+
+1. write the decision dependencies, keeping researched facts and G6 local
+   choices outside the graph;
+2. identify the current frontier: every decision whose prerequisites are
+   settled and whose answer does not depend on another open item in this round;
+3. ask the frontier as a numbered round, giving each decision its bounded
+   options, material trade-offs, reversibility, evidence limit, and a visibly
+   non-binding recommendation;
+4. wait for the owner's answers, record disagreements or unknowns without
+   converting them into assent, and recompute the frontier;
+5. when no branch remains, ask the owner to confirm the shared understanding
+   before landing a material contract or beginning dependent delivery.
+
+If one session cannot hold a coherent frontier, split it by user outcome or
+contract boundary. If a visual preference needs something concrete to react
+to, use development's bounded frontend design-evidence path and feed the
+reaction back into the surface raw layer. Do not keep asking variants of a
+question that prose cannot resolve.
+
 Answer the explicit question and surface a materially more consequential
 unasked premise or risk when evidence supports the connection. State the
 causal mechanism and its limits; do not replace the requested work or silently
@@ -114,6 +137,8 @@ framework does not silently reprioritize remaining work.
 - External claims identify checkable authoritative sources, unavailable tools
   have capability-preserving fallback evidence or explicit limitations, and
   human option sets are reserved for decisions the owner actually owns.
+- Dependent human decisions move through prerequisite-safe rounds, exclude
+  facts and G6 choices, and end with explicit shared-understanding confirmation.
 - Analysis explains the causal mechanism and bounds any surfaced unasked issue
   to evidence and authorized scope.
 - The execution plan links the applicable current/target contracts.
@@ -130,6 +155,8 @@ framework does not silently reprioritize remaining work.
 - Conflicting authority: block only the affected implementation path and start
   reconciliation.
 - Missing evidence: downgrade the claim rather than the test threshold.
+- Oversized or circular decision frontier: split at a user-outcome or contract
+  boundary, or identify the missing fact/evidence needed to unblock it.
 - Over-broad governance: narrow the affected gate or use an authorized,
   expiring exception with residual risk.
 

@@ -3,6 +3,29 @@
 This repository uses contract-first development. These instructions apply to
 human contributors and automated coding agents.
 
+## Transfer value order
+
+When an agent enters this template to decide what is worth carrying into
+another project, do not rank content by file volume, copyability, or checker
+visibility. Use this base attention order:
+
+1. interaction and epistemic discipline: investigate, verify, preserve evidence
+   strength, route uncertainty, and keep human direction and risk authority;
+2. current truth, ownership, public boundaries, dependency direction, and
+   bounded historical debt;
+3. coherent end states, risk-scaled execution, fixture- and test-first material
+   delivery, class-level guards, and failure/recovery verification;
+4. frontend, backend, cross-stack, style, data, operational, security,
+   performance, and other disciplines activated by the target project;
+5. documentation layout, templates, adoption stages, manifests, checkers, and
+   CI examples that carry or enforce the selected practices.
+
+This is the transfer-value order owned by
+`docs/contracts/project-adoption.md` O7, not the document authority order below
+or a mandate to copy everything. Target evidence may promote an activated item
+from step 4. Learning and adoption use the same ranking; actual changes still
+require the target project's authority.
+
 ## Read order
 
 Before changing code or behavior, read in this order:
@@ -93,6 +116,9 @@ approval indiscriminately:
   reversible engineering choices, and present bounded options when product
   intent, material trade-offs, expensive-to-reverse preferences, authority, or
   risk acceptance belong to the user.
+- When several such human decisions depend on one another, use the
+  decision-frontier procedure in `docs/guides/project-operation.md`; do not use
+  it to return researchable facts or G6 choices for serial approval.
 - Answer the explicit question and point out an evidence-backed unasked issue
   when it is materially more consequential to the user's goal. Explain the
   causal connection without expanding implementation scope silently.
@@ -138,6 +164,14 @@ portfolio priority rather than inventing it.
 - Preserve dated stakeholder language in a raw layer and translate it into
   states, layout, size, interaction, style, accessibility, and responsive
   behavior.
+- Ground the accepted direction in the surface's concrete subject, audience,
+  and user job. Critique type, layout, content, motion, and any signature
+  element against the brief and generic defaults before implementation; route
+  missing product intent through G7 instead of inventing it.
+- Treat interface language as design: use user-recognizable terms, consistent
+  action/result names, and actionable empty/error states. Keep disposable
+  visual alternatives in `tmp/` and record stakeholder reactions in the raw
+  layer before accepted choices enter surface/style owners.
 - Enumerate relevant reachable states instead of checking one sample.
 - Consume the declared style layer and value tiers; do not introduce a second
   source of visual truth. A value restated where it is used has no owner.

@@ -126,6 +126,7 @@ full = [
   "Reachable states",
   "Layout and size contract",
   "Interaction map",
+  "Design direction and content",
   "Activated quality attributes",
   "Known abnormality classes",
   "Verification matrix",

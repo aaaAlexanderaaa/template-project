@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-07-26
+last_reconciled: 2026-08-06
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -23,6 +23,7 @@ unbounded compliance migration.
 
 In scope:
 
+- source-template transfer-value ordering for a visiting agent;
 - AI-guided discovery and onboarding;
 - greenfield initialization and brownfield adoption;
 - governance profile, managed scope, and enforcement-stage decisions;
@@ -30,6 +31,8 @@ In scope:
 
 Out of scope:
 
+- requiring every adopter to copy every ranked practice or carrier;
+- creating a separate learning authority alongside adoption;
 - automatically rewriting product architecture or code;
 - declaring historical debt invalid merely because it predates the template;
 - choosing product priority or risk appetite;
@@ -51,6 +54,15 @@ Out of scope:
 
 > “同意”采用 AI 引导式 onboarding，并让 brownfield 项目分阶段收紧治理。
 
+### source[4] — 2026-08-06
+
+> “我认为不应该是一直做增量加文件，采用和学习只是在措辞上强度不一样，
+> 而你作为一个有着大量知识和架构的项目 template，你应该给的是，如果一个
+> 新的 agent 进来，再出去，它自己决定带走什么的时候，你给自己的项目的所有
+> 东西的价值排序。比如说，我自己就认为交互习惯那部分要有很大的优先级。”
+>
+> “同意，按这个调整一下试试。”
+
 ## Vocabulary
 
 - **Greenfield:** a project without product implementation or established
@@ -62,6 +74,12 @@ Out of scope:
 - **Baseline debt:** a truthful, bounded pre-adoption gap that has an owner and
   disposition but is not misrepresented as newly compliant.
 - **Adoption profile:** the human-selected depth of governance for the project.
+- **Transfer-value order:** the source template's default ranking of what a
+  visiting agent should understand first, based on breadth, downstream
+  leverage, error cost, portability, and dependence on target-project context.
+- **Carrier:** a document layout, template, checker, CI example, or other
+  mechanism that transports or enforces a practice but is not the practice's
+  value by itself.
 
 ## Ownership and boundary
 
@@ -71,7 +89,14 @@ and risks, drafts the assessment and migration plan, and executes only the
 confirmed scope. Existing product and organizational authorities retain their
 ownership until explicitly reconciled or superseded.
 
-- from: source[1], source[2], source[3]
+The template owner ranks the source template's transfer value. Existing
+development, governance, architecture, and surface contracts continue to own
+the ranked practices themselves. A visiting agent uses the ranking to allocate
+attention and decide what is relevant to carry forward; target-project evidence
+may change applicability, while target authority still governs any resulting
+write or enforcement decision.
+
+- from: source[1], source[2], source[3], source[4]
 
 ## States and triggers
 
@@ -159,6 +184,39 @@ synonym for copying the template or passing one command.
 
 - from: source[1], source[2], source[3]
 
+### O7 — Transfer value is ranked before its carriers
+
+A visiting agent must not have to infer the template's relative value from file
+volume, mechanical visibility, or how easy an artifact is to copy. Source
+entrypoints expose this base attention and extraction order before adoption
+mechanics:
+
+1. **Interaction and epistemic discipline:** investigate before asking, verify
+   unfamiliar facts, preserve evidence strength when tools fail, explain causal
+   boundaries, route uncertainty correctly, and preserve human direction and
+   risk authority.
+2. **Truth, ownership, and boundaries:** distinguish current from target truth,
+   keep one owner per invariant, publish interfaces deliberately, preserve
+   dependency direction, and keep historical debt visible and bounded.
+3. **Delivery discipline:** describe one coherent end state, select execution
+   depth by risk, use fixture- and test-first delivery for material behavior,
+   guard repeatable defect mechanisms, and verify failure and recovery.
+4. **Conditionally activated disciplines:** frontend, backend, cross-stack,
+   style, data, operations, security, performance, or other specialist rules
+   whose transfer value rises when the target project activates that concern.
+5. **Carriers and enforcement mechanisms:** documentation topology, templates,
+   adoption stages, policy manifests, the portable checker, and CI examples,
+   selected only when they serve the target project's chosen practices.
+
+This is a transfer-value order, not a document-authority order, universal
+mandate, or substitute for target evidence. An activated conditional discipline
+may move ahead of a general delivery concern for that project. Learning and
+adoption consume the same ranking; they differ in authorized action, not in a
+second body of source knowledge. Root projections stay compact and link to the
+existing owners rather than copying their full rules.
+
+- from: source[4]
+
 ## Required onboarding record
 
 The durable assessment contains:
@@ -189,6 +247,10 @@ The durable assessment contains:
 - A reusable adoption-assessment template captures every required record field.
 - Root, contributor, agent, and documentation entrypoints route onboarding to
   this contract and guide.
+- Root reader and agent entrypoints expose the transfer-value order before
+  adoption mechanics, with interaction and epistemic discipline first.
+- The onboarding guide explains that target evidence may promote a conditional
+  discipline without changing document authority or requiring wholesale copy.
 - Project-operation guidance preserves human priority authority after adoption.
 - The documentation harness validates the assessment template and fixture tests
   cover missing-file and missing-section variants.
@@ -208,6 +270,19 @@ Verified on 2026-07-26:
   stage name fails;
 - the full Python 3.11 fixture suite and the repository checker pass.
 
+Verified on 2026-08-06:
+
+- before entrypoint implementation, focused cold-read probes found none of the
+  value-order headings in `README.md`, `AGENTS.md`, or the onboarding procedure;
+- after implementation, `README.md` exposes the ranked value before usage
+  mechanics, `AGENTS.md` exposes it before repository read order, and onboarding
+  begins with transfer-value orientation before adoption classification;
+- the projections put interaction and epistemic discipline first, distinguish
+  transfer order from authority order, permit target evidence to promote an
+  activated domain discipline, and place copyable carriers last;
+- the full 106-test Python 3.11 fixture suite, normal repository check, strict
+  repository check, and whitespace audit pass.
+
 Verification remains `partial`: no real greenfield or brownfield repository has
 yet completed this onboarding path, so usability, proportionality, and stage
 transition behavior are not independently proven.
@@ -221,6 +296,14 @@ transition behavior are not independently proven.
 
 ## Reconciliation log
 
+- **2026-08-06 — source transfer value ranked:** the owner rejected a separate
+  learning-document expansion and required the template to rank what a visiting
+  agent should take away. O7 now puts interaction and epistemic discipline
+  first, then truth and ownership, delivery, conditionally activated domain
+  practices, and finally their carriers. Existing README, agent, and onboarding
+  entrypoints expose that order before mechanics without moving the underlying
+  rules from their current owners. Verification remains partial until a fresh
+  agent exercises the path from the real one-line referral.
 - **2026-07-26 — target created:** defined AI-guided greenfield/brownfield
   onboarding with explicit scope and evidence-backed staged enforcement.
 - **2026-07-26 — implemented:** added current onboarding and post-adoption

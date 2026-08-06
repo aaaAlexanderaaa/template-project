@@ -1,21 +1,25 @@
 # Engineering Discipline Template
 
-这是一个与具体业务、框架和运行时无关的工程模板仓库。它不包含产品实现，
-只提供：
+这是一个与具体业务、框架和运行时无关的工程模板仓库。它不包含产品实现。
+它最重要的产物不是目录、模板或检查器，而是这些载体背后的判断与交付纪律。
 
-- 可复用的目录骨架；
-- 契约优先的开发纪律；
-- 前端、后端和跨端变更模板；
-- 样式所有权纪律：层级、值分层与可覆盖面的模板，以及可选的
-  `style-ownership.toml` 声明（不生成该文件的项目不受任何约束）；
-- 计划、Issue、验证与交接模板；
-- 面向 AI agent 的 routine、受控实验、material 与 high-risk 四种执行路径；
-- 证据保全型数据边界模板；
-- 不替代开发者优先级与产品判断的有限治理边界；
-- 对陌生外部事实先查证、工具失败先找能力等价 fallback，并按事实、可逆工程
-  选择与人类决策分流不确定性的协作纪律；
-- 面向新项目与运行中项目的 AI 引导式渐进 onboarding；
-- 可配置、带夹具测试的文档纪律检查器。
+## 带走价值排序
+
+当一个 agent 进入本仓库并自行判断应该带走什么时，先按适用广度、下游杠杆、
+出错代价、可迁移性和目标项目依赖程度分配注意力：
+
+| 基础优先级 | 优先理解 | 为什么先看 | 现有 owner |
+|---|---|---|---|
+| **P0** | 人与 agent 的交互和认知纪律 | 它决定事实是否被查清、问题是否问对、用户权威和任务范围是否被保留，并影响之后的每一次判断 | [development discipline](docs/contracts/development-discipline.md) D10-D12；[governance boundary](docs/contracts/governance-decision-boundary.md) G1-G7 |
+| **P1** | 当前事实、权威、所有权、依赖边界与历史债务 | 它决定会不会覆盖现有真相、复制规则或把局部债务扩散到整个项目 | [architecture](ARCHITECTURE.md)；[development discipline](docs/contracts/development-discipline.md) D2-D3；[project adoption](docs/contracts/project-adoption.md) O2-O5 |
+| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护与失败恢复 | 它决定如何把正确理解变成可验证的完整交付 | [agent execution](docs/contracts/agent-execution-discipline.md) A1-A8；[development discipline](docs/contracts/development-discipline.md) D4-D9 |
+| **P3** | 前端、后端、跨端、样式、数据、运维、安全、性能等条件性纪律 | 它们在目标项目激活相关边界时价值很高，并应按真实风险上调 | [development discipline](docs/contracts/development-discipline.md) 的对应领域契约及被激活的 concern owner |
+| **P4** | 文档拓扑、模板、adoption stage、policy manifest、检查器和 CI 示例 | 它们承载或执行前面的纪律，但可复制性不等于价值优先级 | [documentation map](docs/README.md)；[documentation harness](docs/contracts/documentation-harness.md) |
+
+这是**注意力与提炼顺序**，不是文档权威顺序，也不是要求完整照搬。目标项目的
+事实可以让 P3 中的相关领域升到 P1/P2；例如有复杂 UI 时，用户状态、交互、
+可访问性和样式所有权立即前移。学习和采用使用同一排序，只是后者涉及实际写入和
+治理授权。先带走方法，再决定是否需要本仓库的文件和工具。
 
 文档检查器只依赖 Python 标准库，最低版本为 Python 3.11。
 
@@ -102,6 +106,8 @@
 - 计划面向完整终态；
 - 缺陷按类别修复；存在可重复兄弟机制且成本相称时增加类级护栏；
 - 前端穷尽状态并结合感知与结构证据；
+- 前端视觉与文案从 raw brief 翻译：设计候选和探针只提供证据，接受后的方向
+  才进入 surface/style owner，缺失的产品意图仍交还人类决定；
 - 样式有唯一所有者：层级顺序、共享视觉值的分层与可覆盖面都显式声明，
   消费方只组合已发布的契约，越权升级记为有主、有回收条件的债务；
 - 后端明确状态所有权、失败和恢复；
@@ -111,7 +117,9 @@
 - 陌生引用与可核查事实不靠猜测补全；优先查原始或官方来源，工具不可用时先找
   保持语义与证据强度的替代路径；
 - 技术事实先调查、可逆工程选择由执行者完成，产品意图、重大取舍与风险接受才
-  交还用户做有限选择；分析以讲清因果机制、适用边界及关键隐含问题为标准；
+  交还用户做有限选择；相互依赖的决定按 prerequisite-safe frontier 推进并在
+  交付前确认 shared understanding；分析以讲清因果机制、适用边界及关键隐含
+  问题为标准；
 - onboarding 先保全当前事实，再按 observed → baselined →
   scoped_enforcement → adopted 渐进收紧；
 - 任务、任务组、目标与发布门分别关闭，不以低层完成冒充高层完成；

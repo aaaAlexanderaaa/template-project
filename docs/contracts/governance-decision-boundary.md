@@ -62,6 +62,10 @@ Out of scope:
 > “如果在项目开发、决策或者设计当中有不确定的东西，就给用户做选择题，
 > 而不是自己瞎折腾，做出来不满意以后又花很多成本去改。”
 
+### source[6] — 2026-08-06
+
+> “同意你的理解, 采用 frontend-design，卸载 ui-ux-pro-max, 该学习的学习一下”
+
 ## Vocabulary
 
 - **Direction authority:** the human owner authorized to decide product intent,
@@ -217,11 +221,25 @@ multiple-choice question when the repository already contains the answer, when
 investigation can establish a fact, or when only one path satisfies current
 authority.
 
+When several human-owned decisions depend on one another, map those
+dependencies and work the current **decision frontier**: ask only decisions
+whose prerequisites are settled, and do not place two questions in the same
+round when one answer could change the other. Recompute the frontier after each
+round. An empty frontier is not delivery authorization by itself; obtain the
+owner's confirmation that the shared understanding is complete before landing
+the resulting material contract or beginning dependent delivery.
+
+The frontier is a sequencing method, not a reason to interrogate every local
+choice. Researchable facts, controlled technical learning, and choices inside
+G6 stay on their existing routes. If the decision scope cannot remain coherent
+in one session, split it by user outcome or contract boundary rather than
+substituting an arbitrary question limit for unresolved branches.
+
 An experiment does not authorize product behavior, production exposure,
 privileged access, or irreversible mutation. Its result may inform a later
 recommendation or contract, but cannot silently become either.
 
-- from: source[4], source[5]
+- from: source[4], source[5], source[6]
 
 ## Required behaviors
 
@@ -235,6 +253,9 @@ recommendation or contract, but cannot silently become either.
   capability-preserving tool fallback, investigate technical facts, make
   reversible local choices, and present bounded options only for decisions
   that belong to the human owner.
+- Dependent human decisions use G7's decision frontier and explicit
+  shared-understanding confirmation without moving facts or G6 choices into an
+  interview.
 - A blocker includes scope, evidence, recovery, and available human authority.
 - Accepted deviations use a durable governance-exception record.
 
@@ -295,12 +316,20 @@ Verified on 2026-08-06:
 
 - D10-D12 and G7 have one explicit uncertainty route across the agent,
   contributor, README, and current operating-guide projections;
+- dependency-aware human decisions have one normative trigger in G7; the
+  operating guide may explain frontier sequencing but cannot broaden the set
+  of decisions returned to the owner;
 - the fixed-date documentation fixtures were reconciled with the new canonical
   dates, and all 106 tests pass under Python 3.11;
 - `python scripts/check_docs.py --strict` passes with no findings.
 
 ## Reconciliation log
 
+- **2026-08-06 — dependent decisions use a frontier:** the owner approved the
+  reviewed extraction of the grilling method without its parallel glossary or
+  ADR outputs. G7 now sequences only genuine human decisions by prerequisite,
+  requires shared-understanding confirmation before dependent material work,
+  and explicitly preserves the existing fact, experiment, and G6 routes.
 - **2026-08-06 — uncertainty routing made explicit:** reconciled the owner's
   preference for choice-based clarification with the existing positive
   engineering envelope. G7 now distinguishes researchable facts, unavailable

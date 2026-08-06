@@ -23,7 +23,9 @@ or newer and have no third-party package dependencies.
 8. Resolve uncertainty through development D10-D12 and governance G7: research
    unfamiliar references, seek a capability-preserving tool fallback, and ask
    for a bounded human choice only when the decision belongs outside the
-   reversible engineering envelope.
+   reversible engineering envelope. When several such decisions depend on one
+   another, use the decision-frontier procedure in
+   `docs/guides/project-operation.md`.
 
 ## During the change
 
@@ -61,6 +63,9 @@ or newer and have no third-party package dependencies.
 - Are frontend and backend projections self-consistent?
 - Does every visual value the change introduces resolve to a declared owner, or
   to a registered exception with an owner and a removal condition?
+- Does each frontend direction trace to a concrete subject, audience, user job,
+  and raw brief; were generic defaults, interface language, and any signature
+  element deliberately reviewed before implementation?
 - Are failure, recovery, observability, migration, and rollback addressed where
   relevant?
 - Can the evidence be reproduced in the declared environment?
@@ -80,6 +85,9 @@ or newer and have no third-party package dependencies.
 - Does the analysis explain the causal mechanism and its boundary, and does any
   requested human choice represent a genuine product, trade-off, authority, or
   risk decision rather than a resolvable fact or reversible local choice?
+- When human decisions depended on one another, did the inquiry work only the
+  prerequisite-safe frontier and obtain shared-understanding confirmation
+  before dependent material work?
 
 ## Definition of done
 

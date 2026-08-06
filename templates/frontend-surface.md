@@ -14,14 +14,16 @@ supersedes: []
 
 ## Purpose and user outcome
 
-What job does this surface help the user complete? Describe intended feel and
-hierarchy without prematurely choosing pixel values.
+What concrete subject does the surface represent, who uses it, and what single
+job does it help them complete? Describe intended feel and hierarchy without
+prematurely choosing pixel values.
 
 ## Raw layer
 
 ### raw[1] — {{YYYY-MM-DD}}
 
-> {{Verbatim stakeholder language}}
+> {{Verbatim stakeholder language about the subject, audience, job, feel, or
+> rejected generic direction}}
 
 Context: {{where/when this was observed}}
 
@@ -75,14 +77,32 @@ source of breakpoints.
 
 - from: raw[{{N}}]
 
-### Content and visual logic
+### Design direction and content
 
-- Hierarchy: {{primary/secondary/supporting}}
-- Typography and density roles: {{contract}}
-- Empty/error language: {{contract}}
+- Concrete subject, audience, and single user job: {{accepted translation}}
+- Design thesis: {{one sentence tying the presentation to that subject/job}}
+- Subject-specific anchors: {{materials, artifacts, language, workflows, or
+  real content that justify the direction}}
+- Candidate direction reviewed: {{named color roles, typography roles, layout
+  concept, content voice, and motion intent}}
+- Generic defaults or rejected alternatives: {{what was rejected and why it
+  did not fit this brief}}
+- Hierarchy and layout signature: {{primary/secondary/supporting and the one
+  memorable element, or none}}
+- Typography and density roles: {{contract and brief-specific rationale}}
+- Motion purpose and reduced-motion equivalent: {{purpose/equivalent or none}}
+- Interface vocabulary and action/result continuity: {{canonical terms and
+  active labels}}
+- Empty/error language and recovery direction: {{contract}}
+- Disposable probe evidence and disposition: {{tmp path, accepted result and
+  cleanup, or none}}
 - Shared component variants used: {{variants}}
 - Surface-specific exceptions and owner: {{exceptions or none}}
 - from: raw[{{N}}]
+
+Candidates and probes do not own values. Carry accepted decisions through the
+style and theming contract below; remove decoration that cannot be justified by
+the subject, hierarchy, or user job.
 
 ### Style and theming contract
 
@@ -134,14 +154,17 @@ the exact structured form below. Pending evidence expires according to
 
 ## Verification matrix
 
-| State | Range/environment | Functional | Structural geometry | Perceptual | Accessibility | Independent review (high-risk only) |
-|---|---|---|---|---|---|---|
-| {{state}} | {{environment}} | pending | pending | pending | pending | pending |
+| State | Range/environment | Functional | Structural geometry | Brief/design direction | Perceptual | Accessibility | Independent review (high-risk only) |
+|---|---|---|---|---|---|---|---|
+| {{state}} | {{environment}} | pending | pending | pending | pending | pending | pending |
 
 Geometric claims must cite rendered measurements, not static stylesheet values.
 Theme and mode variants are environments in the range column, not new columns.
 A style-ownership claim is structural: it is proved by the declared guard, not
 by a screenshot, which shows what rendered rather than who owned it.
+Perceptual review checks subject and user-job fidelity, hierarchy, content
+voice, action-name continuity, deliberate restraint, and whether a generic
+default survived without a brief-specific reason.
 
 ## Reconciliation log
 

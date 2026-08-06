@@ -30,7 +30,21 @@ The normative behavior is defined by the
 
 ## Procedure
 
-### 1. Classify the adoption
+### 1. Orient by transfer value
+
+Before selecting files or enforcement mechanisms, use project-adoption O7's
+base order:
+
+`interaction and epistemic discipline` → `truth, ownership, and boundaries` →
+`delivery discipline` → `activated domain disciplines` → `carriers and tools`.
+
+This order allocates attention; it does not change document authority or require
+wholesale adoption. Inspect the target before final selection: an activated UI,
+state, security, reliability, data, or other boundary promotes its applicable
+discipline. Learning and adoption draw from the same values, while any write or
+enforcement change remains subject to the target project's authority.
+
+### 2. Classify the adoption
 
 - **Greenfield:** no product implementation or established project authority.
   Use the template as the starting repository, establish current structural
@@ -38,7 +52,7 @@ The normative behavior is defined by the
 - **Brownfield:** existing code, decisions, workflows, or delivery obligations.
   Begin with an `observed` read-only assessment and use staged enforcement.
 
-### 2. Inventory before proposing
+### 3. Inventory before proposing
 
 Inspect, without rewriting:
 
@@ -53,7 +67,7 @@ Inspect, without rewriting:
 Do not infer authority from recency or file length. Mark facts, unknowns, and
 conflicts separately.
 
-### 3. Create the adoption assessment
+### 4. Create the adoption assessment
 
 Copy
 [adoption-assessment.md](../../templates/adoption-assessment.md) into
@@ -69,7 +83,7 @@ The human owner confirms:
 - immediate rules versus advisory rules;
 - current adoption stage.
 
-### 4. Declare the confirmed decisions in `docs-policy.toml`
+### 5. Declare the confirmed decisions in `docs-policy.toml`
 
 The harness reads the owner's decisions instead of assuming one project shape.
 Set these before running the check for the first time:
@@ -109,14 +123,14 @@ Unknown keys in `[adoption]` and `[severity]` are rejected rather than ignored,
 so a typo or a setting from an older revision of the template surfaces as a
 failure with the replacement named.
 
-### 5. Separate current and target state
+### 6. Separate current and target state
 
 Describe the current system in `ARCHITECTURE.md` only when it is verified. Put
 future behavior in target contracts and active plans. Do not make architecture
 look clean by deleting evidence of current debt or by copying aspirational
 template prompts into current authority.
 
-### 6. Plan one bounded migration
+### 7. Plan one bounded migration
 
 Use [implementation-plan.md](../../templates/implementation-plan.md) for the
 first managed boundary. A brownfield adoption normally moves through:
@@ -130,7 +144,7 @@ first managed boundary. A brownfield adoption normally moves through:
 Historical debt does not automatically block unrelated delivery. New work must
 not silently expand a baseline debt class.
 
-### 7. Reconcile entrypoints
+### 8. Reconcile entrypoints
 
 Update root and local `AGENTS.md`, contributor guidance, architecture ownership,
 source roots, CI entrypoints, and applicable contracts for the selected scope.
