@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-06
 supersedes: []
 ---
 
@@ -33,6 +33,13 @@ controlled learning.
 
 > “避免只是膨胀……长期治理应该考虑存量管理，考虑文档的退役和沉淀/总结，
 > 而不只是增量……文档耦合……很容易出现一个事情在多个文档里出现。”
+
+### source[3] — 2026-08-06
+
+> “如果遇到不知道的引用名词、文献，或者什么其他别的东西，就调用联网工具
+> 去查，不要自己猜。工具不可用时，不要直接放弃，去找 fallback。用户提出
+> 问题时，找出他没问但可能更关键的问题并指出来。拆解问题以讲清楚因果机制
+> 为标准，不以层级够多为标准，不为了显得深刻而堆砌空洞抽象。”
 
 ## Core invariants
 
@@ -201,6 +208,60 @@ subtraction mechanics; this invariant does not redefine them.
 
 - from: source[2]
 
+### D10 — Unknown references are researched, not reconstructed
+
+When a request, contract, source, or discussion relies on an unfamiliar term,
+named reference, publication, external system, or other checkable fact, do not
+complete it from resemblance or memory. Inspect available local evidence
+first; when that is insufficient, use available network or retrieval tools to
+consult authoritative external sources. Prefer the original publication,
+official documentation, standard, or owning institution over a secondary
+summary, and preserve enough source identity for another contributor to check
+the claim.
+
+Separate what the source states from inference and recommendation. If neither
+local nor external evidence can establish the fact, name the unknown and its
+effect instead of inventing a plausible answer. Research is still bounded by
+the request's permissions, privacy boundary, and activated security or cost
+concerns.
+
+- from: source[3]
+
+### D11 — Tool failure triggers capability-preserving fallback
+
+Failure or absence of one tool is not by itself failure of the task. Identify
+the capability and evidence the step requires, then try an available fallback
+that preserves the intended semantics, safety boundary, and strength of
+evidence. Examples include another repository search mechanism, a primary
+source reached through a different retrieval path, a language-native check in
+place of a convenience wrapper, or a controlled manual inspection when its
+limitations are explicit.
+
+Do not silently substitute a path that changes product behavior, mutates a
+different system, weakens an adopted guard, or supports a weaker completion
+claim. If no permitted fallback can preserve a required capability, report the
+attempts, exact missing capability, affected claim, and recovery options; only
+then may the condition enter the blocker routing owned by governance G2.
+
+- from: source[3]
+
+### D12 — Analysis exposes the decisive causal mechanism
+
+Analysis and explanation are complete when they identify the relevant
+conditions, the mechanism by which those conditions produce the observed or
+expected outcome, the boundary where that explanation stops holding, and the
+evidence that could distinguish it from alternatives. More headings, layers,
+or abstract categories are not evidence of deeper understanding.
+
+Answer the user's explicit question, and also surface an unasked premise,
+constraint, outcome, or risk when evidence shows it is materially more
+consequential to the user's goal. State the causal connection and classify the
+observation through the governance vocabulary. Do not use this obligation to
+speculate without evidence, replace the requested task, manufacture priority,
+or expand implementation scope without authorization.
+
+- from: source[3]
+
 ## Change workflow
 
 Every material delivery change follows this order:
@@ -208,8 +269,10 @@ Every material delivery change follows this order:
 1. **Classify and route.** Establish the decision envelope, evidence state, risk
    profile, and concerns activated by D8.
 2. **Investigate.** Inspect current contracts, code, state, tests, and existing
-   evidence before asking questions that the repository can answer. Use a D1
-   bounded experiment only when read-only evidence cannot answer a material fact.
+   evidence before asking questions that the repository can answer. Apply D10
+   to unfamiliar external references and D11 when an investigation tool is
+   unavailable. Use a D1 bounded experiment only when read-only evidence cannot
+   answer a material technical fact.
 3. **Resolve authority.** Identify the current normative document and the code
    or service that owns the behavior.
 4. **Reconcile intent.** Record ambiguity, contradiction, or changed
@@ -414,6 +477,15 @@ No side may resolve a conflict silently.
 
 ## Reconciliation log
 
+- **2026-08-06 — evidence and causal inquiry added:** made authoritative-source
+  research, capability-preserving tool fallback, and causal analysis with
+  bounded surfacing of more consequential unasked questions part of the
+  collaboration discipline. Governance G7 separately owns which uncertainty
+  is investigated, decided locally, or returned to the human owner. Agent,
+  contributor, README, and operating-guide projections were reconciled; the
+  Python 3.11 fixture suite and strict repository check pass. Verification
+  remains partial because structural reachability does not prove behavior in a
+  real adopting project.
 - **2026-07-28 — harness proportionality target landed:** distinguished
   controlled learning from delivery implementation, added positive concern
   routing and cross-cutting quality ownership, bounded D6 expansion, and made

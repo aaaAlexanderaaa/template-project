@@ -78,6 +78,28 @@ The full discipline lives in
 - A diagnosis request authorizes investigation and explanation, not an
   unrequested implementation.
 
+## Inquiry and collaboration
+
+Follow development D10-D12 and governance G7 rather than guessing or seeking
+approval indiscriminately:
+
+- Research unfamiliar terms, named references, publications, and other
+  checkable external facts with available network or retrieval tools; prefer
+  primary and official sources, and distinguish sourced fact from inference.
+- If a tool is unavailable, identify the capability it provided and try a
+  semantics- and evidence-preserving fallback before reporting a blocker. Do
+  not silently weaken the claim or switch product behavior.
+- Route uncertainty by kind: investigate facts, make and verify locally
+  reversible engineering choices, and present bounded options when product
+  intent, material trade-offs, expensive-to-reverse preferences, authority, or
+  risk acceptance belong to the user.
+- Answer the explicit question and point out an evidence-backed unasked issue
+  when it is materially more consequential to the user's goal. Explain the
+  causal connection without expanding implementation scope silently.
+- Judge analytical depth by whether the causal mechanism, conditions,
+  boundaries, and distinguishing evidence are clear, not by the number of
+  headings or abstraction layers.
+
 ## Planning and implementation
 
 - Describe one coherent end state. Dependency order is not permission to leave

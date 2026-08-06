@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-06
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -56,6 +56,11 @@ Out of scope:
 
 > “赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能
 > 理解用户的需求和场景时刻担心犯错。”
+
+### source[5] — 2026-08-06
+
+> “如果在项目开发、决策或者设计当中有不确定的东西，就给用户做选择题，
+> 而不是自己瞎折腾，做出来不满意以后又花很多成本去改。”
 
 ## Vocabulary
 
@@ -190,17 +195,33 @@ governance blocker.
 
 ### G7 — Missing knowledge is routed, not automatically escalated
 
-Unknown product intent, authority, or risk acceptance produces
-`human_decision_required`. A missing technical fact first produces a bounded
-investigation. When read-only evidence is insufficient, the controlled
-experiment defined by the development discipline may resolve it inside the
-engineering decision envelope. Only a proven G2 condition blocks delivery.
+Route uncertainty by what resolves it and by the cost of being wrong:
+
+- an unfamiliar, externally checkable fact or reference uses development D10's
+  authoritative-source research rather than guessing;
+- an unavailable tool uses development D11's capability-preserving fallback
+  before the task is described as blocked;
+- a missing technical fact first produces bounded read-only investigation and,
+  when necessary, the controlled experiment defined by development D1;
+- a locally reversible implementation choice inside G6 is made and verified by
+  the implementer rather than returned for serial approval;
+- unknown product intent, a material design or decision trade-off, authority,
+  expensive-to-reverse preference, or risk acceptance produces
+  `human_decision_required`.
+
+A required human decision is presented as a bounded option set when genuine
+alternatives exist. Each option names the outcome, material trade-offs,
+reversibility or switching cost, and the evidence limitation; a recommendation
+may be included but must remain visibly non-binding. Do not manufacture a
+multiple-choice question when the repository already contains the answer, when
+investigation can establish a fact, or when only one path satisfies current
+authority.
 
 An experiment does not authorize product behavior, production exposure,
 privileged access, or irreversible mutation. Its result may inform a later
 recommendation or contract, but cannot silently become either.
 
-- from: source[4]
+- from: source[4], source[5]
 
 ## Required behaviors
 
@@ -210,8 +231,10 @@ recommendation or contract, but cannot silently become either.
 - Missing priority produces a decision request, not agent-authored direction.
 - Choices inside the engineering decision envelope proceed without serial human
   approval; material assumptions remain visible in the plan or evidence.
-- Missing technical knowledge uses read-only investigation or a bounded
-  experiment before it is described as a blocker.
+- Missing knowledge follows G7: research checkable references, seek a
+  capability-preserving tool fallback, investigate technical facts, make
+  reversible local choices, and present bounded options only for decisions
+  that belong to the human owner.
 - A blocker includes scope, evidence, recovery, and available human authority.
 - Accepted deviations use a durable governance-exception record.
 
@@ -268,8 +291,23 @@ Verified on 2026-07-28:
 - the Python 3.11 fixture suite and both repository checker modes pass; the
   final high-risk holistic evaluation remains a separate objective-level gate.
 
+Verified on 2026-08-06:
+
+- D10-D12 and G7 have one explicit uncertainty route across the agent,
+  contributor, README, and current operating-guide projections;
+- the fixed-date documentation fixtures were reconciled with the new canonical
+  dates, and all 106 tests pass under Python 3.11;
+- `python scripts/check_docs.py --strict` passes with no findings.
+
 ## Reconciliation log
 
+- **2026-08-06 — uncertainty routing made explicit:** reconciled the owner's
+  preference for choice-based clarification with the existing positive
+  engineering envelope. G7 now distinguishes researchable facts, unavailable
+  tools, technical experiments, reversible local choices, and material human
+  decisions; only the last category returns a bounded option set by default.
+  Verification remains partial because repository checks establish consistent
+  projection, not real-project decision quality.
 - **2026-07-26 — target created:** recorded limited governance authority as the
   agreed operating model: decision support without product-direction takeover.
 - **2026-07-26 — implemented:** reconciled contributor and agent entrypoints,

@@ -20,6 +20,10 @@ or newer and have no third-party package dependencies.
 7. For template adoption, follow `docs/guides/onboarding.md`, preserve existing
    authority, and record the human-confirmed profile, managed scope, priority
    source, and adoption stage before enabling broad gates.
+8. Resolve uncertainty through development D10-D12 and governance G7: research
+   unfamiliar references, seek a capability-preserving tool fallback, and ask
+   for a bounded human choice only when the decision belongs outside the
+   reversible engineering envelope.
 
 ## During the change
 
@@ -34,6 +38,9 @@ or newer and have no third-party package dependencies.
 - Keep verification evidence tied to the claim it supports.
 - Keep product direction and priority with the declared human owner. Separate
   facts, risks, recommendations, required decisions, and execution blockers.
+- Answer the stated question while surfacing any evidence-backed premise or
+  risk that is materially more consequential. Explain its causal mechanism;
+  do not turn it into unrequested implementation.
 - For material work, preserve fixture identity and the observed failing
   acceptance check before implementation.
 - Link every activated concern to the current/target contract that owns its
@@ -65,6 +72,14 @@ or newer and have no third-party package dependencies.
   choice, rather than an agent-authored ranking?
 - If governance blocks execution, is the blocker class allowed, evidence-backed,
   scoped to one path, and paired with recovery or a human decision?
+- Were unfamiliar external claims verified against primary or official sources
+  rather than reconstructed from memory?
+- When a tool failed, was the required capability attempted through a fallback
+  with equivalent semantics and evidence, or was the remaining limitation made
+  explicit?
+- Does the analysis explain the causal mechanism and its boundary, and does any
+  requested human choice represent a genuine product, trade-off, authority, or
+  risk decision rather than a resolvable fact or reversible local choice?
 
 ## Definition of done
 

@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-07-28"
+FIXED_TODAY = "2026-08-06"
 
 
 def load_checker_module():
@@ -1052,7 +1052,7 @@ last_reconciled: 2026-07-26
             ),
         )
         self.assert_advises(
-            "projection review is stale: source reconciled 2026-07-28 after guide 2026-07-27"
+            "projection review is stale: source reconciled 2026-08-06 after guide 2026-07-27"
         )
 
     def test_projection_staleness_can_be_switched_off(self) -> None:
@@ -1077,7 +1077,7 @@ last_reconciled: 2026-07-26
             "docs/guides/projection.md",
             self.canonical_guide(
                 projection_of="docs/contracts/development-discipline.md",
-                reconciled="2026-07-28",
+                reconciled="2026-08-06",
             ),
         )
         output = self.assert_passes()

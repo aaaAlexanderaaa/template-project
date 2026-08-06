@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-06
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md]
 ---
 
@@ -59,7 +59,28 @@ governance contract: locally reversible choices inside current authority and
 activated boundaries proceed without serial approval. Investigate uncertainty
 about technical reversibility before turning it into a human decision.
 
-### 3. Run the change-execution loop
+### 3. Resolve uncertainty without guessing or serial approval
+
+Use the uncertainty route owned by development D10-D12 and governance G7:
+
+- inspect repository evidence, then consult primary or official external
+  sources with available network or retrieval tools for unfamiliar checkable
+  references;
+- when one tool is unavailable, identify its required capability and seek a
+  fallback that preserves semantics, safety, and evidence strength;
+- investigate missing technical facts, using a bounded D1 experiment only when
+  read-only evidence cannot answer them;
+- make and verify locally reversible engineering choices inside G6;
+- present a bounded option set when the human owner must decide product intent,
+  a material trade-off, an expensive-to-reverse preference, authority, or risk
+  acceptance.
+
+Answer the explicit question and surface a materially more consequential
+unasked premise or risk when evidence supports the connection. State the
+causal mechanism and its limits; do not replace the requested work or silently
+expand its scope.
+
+### 4. Run the change-execution loop
 
 Use A8 in the agent execution contract to choose the smallest route. Routine
 work consumes existing authority and focused guards without creating a plan.
@@ -72,14 +93,14 @@ The route links its normative owners rather than restating their boundaries in
 the plan. Use the agent execution profile only at the depth selected during
 onboarding or subsequently authorized by the project owner.
 
-### 4. Report governance output precisely
+### 5. Report governance output precisely
 
 Classify every material output as `fact`, `risk`, `recommendation`,
 `human_decision_required`, or `execution_blocker`. A blocker must name the
 exact path blocked, evidence, recovery, and available decision. Do not present
 a preferred implementation as the only valid product direction.
 
-### 5. Close the correct layer
+### 6. Close the correct layer
 
 Report task, task-group/key-result, objective, and release-gate completion
 separately. Completing an implementation task does not close a higher outcome.
@@ -90,6 +111,11 @@ framework does not silently reprioritize remaining work.
 
 - The selected item traces to a human-owned priority source or explicit choice.
 - Recommendations and blockers use the correct classification.
+- External claims identify checkable authoritative sources, unavailable tools
+  have capability-preserving fallback evidence or explicit limitations, and
+  human option sets are reserved for decisions the owner actually owns.
+- Analysis explains the causal mechanism and bounds any surfaced unasked issue
+  to evidence and authorized scope.
 - The execution plan links the applicable current/target contracts.
 - Every activated concern links the contract that owns its boundary and
   failure/escalation policy.
