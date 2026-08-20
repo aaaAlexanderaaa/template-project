@@ -50,14 +50,14 @@ correct.
 
 ### source[1] — 2026-07-26
 
-> “模板自己的招牌特性，却没被强制。”
+> “The template's own signature feature is not actually enforced.”
 
 The review identified that the surface template requires raw-to-translated
 citations while the shipped checker does not validate them.
 
 ### source[2] — 2026-07-26
 
-> “同意，按你的理解进行优化。”
+> “Agreed. Optimize it according to your understanding.”
 
 The operator approved a domain-neutral hardening pass, including the review's
 valuable findings with configurable rather than project-specific mechanisms.
@@ -87,9 +87,10 @@ against how large frontends actually decay.
 
 ### source[5] — 2026-07-28
 
-> “长期治理应该考虑存量管理，考虑文档的退役和沉淀/总结，而不只是增量……
-> 文档耦合……很容易出现一个事情在多个文档里出现，导致更新的时候只更新了
-> 一个地方。”
+> “Long-term governance should manage the existing stock: retirement,
+> distillation, and summary, not only increment. Document coupling makes it
+> easy for the same matter to appear in several documents, so that an update
+> touches only one of them.”
 
 ## Operating modes
 
@@ -456,3 +457,6 @@ Verification run on 2026-07-28:
   quotas. The checker and fixture suite now enforce typed projection paths,
   lifecycle coherence, reciprocal supersession, strict/off severity behavior,
   and the date signal's deliberately limited claim.
+- **2026-08-20 — publication language:** source anchors originally recorded in
+  Chinese are published as English renderings of the original authorizations.
+  Meaning is unchanged. Already-English source wording is left as recorded.

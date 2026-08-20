@@ -39,32 +39,36 @@ Out of scope:
 
 ### source[1] — 2026-07-26
 
-> “它作为一个治理框架，它不应该去帮助开发者定义优先级，它只能作为辅助，
-> 而不做决策。”
+> “As a governance framework, it should not help developers define priority.
+> It may only assist; it does not make the decision.”
 
 ### source[2] — 2026-07-26
 
-> “可以帮助开发者识别那些他没有识别到的风险和，应该注意到的对长期项目
-> 发展带来的异常。但他不应该在开发者有自己的想法的时候，阻碍他说你这个
-> 想法不对。”
+> “It may help developers see risks they have not identified and abnormalities
+> that matter for long-term project health. It must not, when the developer
+> already has an idea, block them by saying that idea is wrong.”
 
 ### source[3] — 2026-07-26
 
-> “同意”采用有限治理权、AI 引导式 onboarding 和 brownfield 分阶段收紧。
+> “Agreed” to adopt bounded governance authority, AI-guided onboarding, and
+> staged tightening for brownfield projects.
 
 ### source[4] — 2026-07-28
 
-> “赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能
-> 理解用户的需求和场景时刻担心犯错。”
+> “Enable rather than obstruct. An agent should know clearly what it should
+> and should not do, instead of constantly fearing mistakes because it has
+> not understood the user's needs and situation.”
 
 ### source[5] — 2026-08-06
 
-> “如果在项目开发、决策或者设计当中有不确定的东西，就给用户做选择题，
-> 而不是自己瞎折腾，做出来不满意以后又花很多成本去改。”
+> “When something is uncertain in development, decision-making, or design,
+> give the user a multiple-choice question instead of thrashing on your own
+> and paying a high cost later to change work they do not want.”
 
 ### source[6] — 2026-08-06
 
-> “同意你的理解, 采用 frontend-design，卸载 ui-ux-pro-max, 该学习的学习一下”
+> “Agreed with your understanding: adopt frontend-design, uninstall
+> ui-ux-pro-max, and learn what is worth learning.”
 
 ## Vocabulary
 
@@ -348,3 +352,6 @@ Verified on 2026-08-06:
   investigation or controlled experiments. Agent/contributor entrypoints and
   project-operation guidance now expose that route. Verification remains
   partial until a real adopter exercises the boundary under delivery pressure.
+- **2026-08-20 — publication language:** source anchors are published as
+  English renderings of the original authorizations. Contracts that cite the
+  same statement use the same wording; meaning is unchanged.

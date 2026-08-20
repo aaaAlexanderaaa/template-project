@@ -133,10 +133,11 @@ detect same-day source changes made after a guide was checked; same-day coupling
 remains a review limitation rather than a mechanically proven freshness claim.
 
 Root entrypoints such as `README.md`, `AGENTS.md`, and `CONTRIBUTING.md` should
-prefer routing and a compact executable path. They are intentionally not made
-canonical merely to obtain a checker field; their duplication risk is handled
-by keeping normative trigger semantics out of them and reviewing their links
-when an owning contract changes.
+prefer routing and a compact executable path. `README_CN.md` is the Chinese
+homepage companion to `README.md`; it is not a second authority. They are
+intentionally not made canonical merely to obtain a checker field; their
+duplication risk is handled by keeping normative trigger semantics out of them
+and reviewing their links when an owning contract changes.
 
 ## Conflict rule
 

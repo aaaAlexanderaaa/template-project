@@ -1,137 +1,175 @@
 # Engineering Discipline Template
 
-这是一个与具体业务、框架和运行时无关的工程模板仓库。它不包含产品实现。
-它最重要的产物不是目录、模板或检查器，而是这些载体背后的判断与交付纪律。
+[English](README.md) | [中文](README_CN.md)
 
-## 带走价值排序
+This is a domain-neutral engineering template. It is independent of any
+particular product, framework, or runtime, and it contains no product
+implementation. Its most important product is not the directories, templates,
+or checker, but the judgment and delivery discipline those carriers exist to
+hold.
 
-当一个 agent 进入本仓库并自行判断应该带走什么时，先按适用广度、下游杠杆、
-出错代价、可迁移性和目标项目依赖程度分配注意力：
+## Transfer value order
 
-| 基础优先级 | 优先理解 | 为什么先看 | 现有 owner |
+When an agent enters this repository and decides for itself what to take away,
+rank attention by breadth of use, downstream leverage, cost of being wrong,
+portability, and how much the target project must already exist:
+
+| Base priority | Understand first | Why first | Current owner |
 |---|---|---|---|
-| **P0** | 人与 agent 的交互和认知纪律 | 它决定事实是否被查清、问题是否问对、用户权威和任务范围是否被保留，并影响之后的每一次判断 | [development discipline](docs/contracts/development-discipline.md) D10-D12；[governance boundary](docs/contracts/governance-decision-boundary.md) G1-G7 |
-| **P1** | 当前事实、权威、所有权、依赖边界与历史债务 | 它决定会不会覆盖现有真相、复制规则或把局部债务扩散到整个项目 | [architecture](ARCHITECTURE.md)；[development discipline](docs/contracts/development-discipline.md) D2-D3；[project adoption](docs/contracts/project-adoption.md) O2-O5 |
-| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护与失败恢复 | 它决定如何把正确理解变成可验证的完整交付 | [agent execution](docs/contracts/agent-execution-discipline.md) A1-A8；[development discipline](docs/contracts/development-discipline.md) D4-D9 |
-| **P3** | 前端、后端、跨端、样式、数据、运维、安全、性能等条件性纪律 | 它们在目标项目激活相关边界时价值很高，并应按真实风险上调 | [development discipline](docs/contracts/development-discipline.md) 的对应领域契约及被激活的 concern owner |
-| **P4** | 文档拓扑、模板、adoption stage、policy manifest、检查器和 CI 示例 | 它们承载或执行前面的纪律，但可复制性不等于价值优先级 | [documentation map](docs/README.md)；[documentation harness](docs/contracts/documentation-harness.md) |
+| **P0** | Human–agent interaction and epistemic discipline | It decides whether facts are established, whether the right question is asked, and whether user authority and task scope are preserved; it affects every later judgment | [development discipline](docs/contracts/development-discipline.md) D10–D12; [governance boundary](docs/contracts/governance-decision-boundary.md) G1–G7 |
+| **P1** | Current truth, authority, ownership, dependency boundaries, and historical debt | It decides whether existing truth is overwritten, whether rules are copied, and whether local debt spreads across the project | [architecture](ARCHITECTURE.md); [development discipline](docs/contracts/development-discipline.md) D2–D3; [project adoption](docs/contracts/project-adoption.md) O2–O5 |
+| **P2** | Coherent end states, risk-scaled execution, fixture- and test-first material delivery, class-level guards, and failure recovery | It decides how a correct understanding becomes a verifiable complete delivery | [agent execution](docs/contracts/agent-execution-discipline.md) A1–A8; [development discipline](docs/contracts/development-discipline.md) D4–D9 |
+| **P3** | Frontend, backend, cross-stack, style, data, operations, security, performance, and other conditional disciplines | They are high-value when the target project activates the matching boundary, and should be promoted by real risk | the matching domain contracts in [development discipline](docs/contracts/development-discipline.md) and the activated concern owner |
+| **P4** | Documentation topology, templates, adoption stage, policy manifests, the checker, and CI examples | They carry or enforce the discipline above; copyability is not the same as value priority | [documentation map](docs/README.md); [documentation harness](docs/contracts/documentation-harness.md) |
 
-这是**注意力与提炼顺序**，不是文档权威顺序，也不是要求完整照搬。目标项目的
-事实可以让 P3 中的相关领域升到 P1/P2；例如有复杂 UI 时，用户状态、交互、
-可访问性和样式所有权立即前移。学习和采用使用同一排序，只是后者涉及实际写入和
-治理授权。先带走方法，再决定是否需要本仓库的文件和工具。
+This is an **attention and extraction order**, not the document authority
+order, and not a requirement to copy everything. Target-project evidence can
+promote a P3 domain into P1/P2; for example, a complex UI immediately moves
+user states, interaction, accessibility, and style ownership forward. Learning
+and adoption use the same ranking; only the latter writes into the target
+project and requires governance authorization. Take the method first, then
+decide whether this repository's files and tools are needed.
 
-文档检查器只依赖 Python 标准库，最低版本为 Python 3.11。
+The documentation checker depends only on the Python standard library.
+The minimum version is Python 3.11.
 
-## 使用方式
+## How to use it
 
-1. 阅读 `docs/README.md`，确定文档权威顺序。
-2. 新项目以本仓库为起点；运行中项目先按
-   `docs/guides/onboarding.md` 做只读盘点，不要直接覆盖已有权威。
-3. 使用 `templates/adoption-assessment.md` 记录当前事实、治理范围、优先级
-   权威与 adoption 阶段，并由项目所有者确认。
-4. 在 `docs-policy.toml` 中声明这些决定（见下节「按项目规模伸缩」）：
-   `[adoption].stage`、`source_roots`、`managed_paths` 与
-   `[templates].profile`。检查器读取这些字段，而不是假设某一种项目形态。
-5. 在写首个受治理的产品变更前完成当前态 `ARCHITECTURE.md` 和相关契约。
-6. material 交付必须先落盘契约；只读调查无法回答的技术事实，可以先走 D1
-   的一次性受控实验路径，实验结果不能直接成为产品行为。
-7. 如果由 agent 推进变更，按
-   `docs/contracts/agent-execution-discipline.md` A8 选择最小执行路径；只有
-   high-risk 路径要求独立设计评审与换上下文验收。
-8. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
-9. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。
-10. 将 `templates/ci/docs-check.example.yml` 适配到项目自己的 CI。
+1. Read `docs/README.md` for the document authority order.
+2. Start a new project from this repository. For a running project, first do
+   the read-only inventory in `docs/guides/onboarding.md`; do not overwrite
+   existing authority.
+3. Record current facts, governance scope, priority authority, and adoption
+   stage in `templates/adoption-assessment.md`, and have the project owner
+   confirm them.
+4. Declare those decisions in `docs-policy.toml` (see “Scaling to project
+   size” below): `[adoption].stage`, `source_roots`, `managed_paths`, and
+   `[templates].profile`. The checker reads these fields; it does not assume
+   one project shape.
+5. Complete a current-state `ARCHITECTURE.md` and the relevant contracts
+   before the first governed product change.
+6. Material delivery must land a contract first. When a technical fact cannot
+   be learned read-only, use D1's disposable controlled-experiment path; the
+   experiment must not become product behavior.
+7. If an agent drives the change, choose the smallest route in
+   `docs/contracts/agent-execution-discipline.md` A8. Only the high-risk route
+   requires independent design review and a fresh-context evaluation.
+8. Configure `architecture-rules.toml`, or record why it does not apply.
+9. Run the unit tests and `python3 scripts/check_docs.py` with Python 3.11+.
+10. Adapt `templates/ci/docs-check.example.yml` to the project's own CI.
 
-## 按项目规模伸缩
+## Scaling to project size
 
-模板不假设项目大小，也不要求先完成迁移才能接入 CI。四个旋钮都在
-`docs-policy.toml` 里：
+The template does not assume project size, and it does not require a finished
+migration before CI is connected. Four knobs live in `docs-policy.toml`:
 
-| 旋钮 | 作用 | 常见取值 |
+| Knob | Role | Typical values |
 |---|---|---|
-| `[adoption].stage` | 采用阶段是否阻断构建 | `observed`/`baselined` 只报告并返回 0；`scoped_enforcement`/`adopted` 阻断 |
-| `[adoption].source_roots` | 什么算产品代码 | `["src"]`、`["app", "lib"]`、`["packages"]`、`["cmd", "internal"]` |
-| `[adoption].managed_paths` | `scoped_enforcement` 下受治理的边界 | `["packages/billing/**"]` |
-| `[templates].profile` | 需要哪些模板（分层累积） | `minimal` / `standard` / `full` |
+| `[adoption].stage` | Whether adoption work fails the build | `observed`/`baselined` report and return 0; `scoped_enforcement`/`adopted` block |
+| `[adoption].source_roots` | What counts as product code | `["src"]`, `["app", "lib"]`, `["packages"]`, `["cmd", "internal"]` |
+| `[adoption].managed_paths` | Governed boundaries under `scoped_enforcement` | `["packages/billing/**"]` |
+| `[templates].profile` | Which templates are required (tiers accumulate) | `minimal` / `standard` / `full` |
 
-由此得到的工作方式：
+That produces these working modes:
 
-- **小项目：** `profile = "minimal"` 只保留契约、计划、Issue 与指南四个模板，
-  其余可以直接删除；文档里残留的引用降级为 advisory，不会让构建变红。
-- **运行中的项目：** 第一天就可以把检查器放进 CI。`stage = "observed"` 会把
-  未完成的采用工作打印出来并返回 0，随阶段推进逐步收紧。
-- **非 `src/` 布局：** 代码若落在所有 `source_roots` 之外，检查器会指名报告，
-  而不是在空集合上给出一个无意义的绿灯。这条同样受 stage 影响：早期阶段只报告，
-  所以还没配好布局也能先把检查接进 CI。仓库根目录下的文件（`setup.py`、
-  `conftest.py`、`vite.config.ts` 等）从不计入产品代码；工具目录写进
-  `harness_paths`，它接受 `tools/**` 这样的 glob。
-- **CI：** 结构性问题是 error；仅因日期推移产生的问题（过期 target、逾期
-  promise、pending 证据超期）默认是 advisory。把 `--strict` 放到定时任务里，
-  日期变化就不会让一个无关的 PR 失败。设为 `off` 的规则在 `--strict` 下仍然
-  保持关闭——关掉它是项目自己的决定。
+- **Small project:** `profile = "minimal"` keeps only the contract, plan,
+  issue, and guide templates; the rest can be deleted. Leftover references to
+  removed templates become advisory and do not turn the build red.
+- **Running project:** the checker can enter CI on day one. `stage =
+  "observed"` prints unfinished adoption work and returns 0, then tightens as
+  the stage advances.
+- **Layouts other than `src/`:** if code sits outside every configured source
+  root, the checker names it instead of giving a meaningless green result on an
+  empty set. The same stage rule applies: early stages only report, so CI can
+  start before the layout is fully declared. Files in the repository root
+  (`setup.py`, `conftest.py`, `vite.config.ts`, and the like) never count as
+  product code. Tooling directories go in `harness_paths`, which accepts globs
+  such as `tools/**`.
+- **CI:** structural problems are errors. Findings that appear only because a
+  date moved (an aged target, an overdue promise, expired pending evidence)
+  default to advisory. Put `--strict` on a scheduled job so a calendar change
+  does not fail an unrelated pull request. A rule set to `off` stays off even
+  under `--strict` — turning it off is the project's own decision.
 
-## 目录
+## Layout
 
 ```text
 .
-├── AGENTS.md                 # 自动化开发者的工作入口
-├── CONTRIBUTING.md           # 人与自动化开发者共享的推进流程
-├── ARCHITECTURE.md           # 待项目填写的结构权威模板
-├── architecture-rules.toml   # 可机器执行的基础架构边界规则
-├── docs-policy.toml          # 文档老化、模板和 adoption 策略
+├── README.md                 # English homepage
+├── README_CN.md              # Chinese homepage
+├── AGENTS.md                 # working agreement for automated developers
+├── CONTRIBUTING.md           # shared workflow for humans and agents
+├── ARCHITECTURE.md           # structural authority template for the adopting project to fill
+├── architecture-rules.toml   # machine-checkable baseline architecture boundaries
+├── docs-policy.toml          # document aging, templates, and adoption policy
 ├── docs/
-│   ├── README.md             # 文档权威与生命周期地图
-│   ├── contracts/            # 当前、长期有效的规范
-│   ├── design/               # UI surface 的 raw ↔ translated 契约
-│   ├── plans/                # 一次变更的执行计划
-│   ├── issues/               # 缺陷及审计发现的生命周期
-│   ├── guides/               # 操作和维护说明
-│   └── evidence/             # 可复核的持久证据
-├── templates/                # 可复制模板，不具有项目行为权威
-├── scripts/                  # 可移植纪律的机械执行面
-├── src/                      # 产品代码占位，当前为空
-├── tests/                    # 检查器夹具测试；采用后继续增加产品测试
-├── tmp/                      # 本地临时证据，gitignored
-└── archive/                  # 本地替换备份，gitignored
+│   ├── README.md             # document authority and lifecycle map
+│   ├── contracts/            # current, durable norms
+│   ├── design/               # raw ↔ translated contracts for UI surfaces
+│   ├── plans/                # execution plans for one change
+│   ├── issues/               # lifecycle of defects and audit findings
+│   ├── guides/               # operating and maintenance procedures
+│   └── evidence/             # durable, reviewable evidence
+├── templates/                # copyable templates; they have no project-behavior authority
+├── scripts/                  # portable mechanical enforcement of the discipline
+├── src/                      # product-code placeholder; currently empty
+├── tests/                    # checker fixture tests; add product tests after adoption
+├── tmp/                      # local scratch evidence; gitignored
+└── archive/                  # local replacement backups; gitignored
 ```
 
-## 迁移原则
+## Migration principles
 
-应该迁移的是方法，而不是原项目的工具或数字：
+Migrate the method, not the original project's tools or numbers:
 
-- 契约先于 material 交付，技术未知先调查或做有边界、可清理的实验；
-- 当前权威可识别；
-- 冲突必须对账；
-- 计划面向完整终态；
-- 缺陷按类别修复；存在可重复兄弟机制且成本相称时增加类级护栏；
-- 前端穷尽状态并结合感知与结构证据；
-- 前端视觉与文案从 raw brief 翻译：设计候选和探针只提供证据，接受后的方向
-  才进入 surface/style owner，缺失的产品意图仍交还人类决定；
-- 样式有唯一所有者：层级顺序、共享视觉值的分层与可覆盖面都显式声明，
-  消费方只组合已发布的契约，越权升级记为有主、有回收条件的债务；
-- 后端明确状态所有权、失败和恢复；
-- agent 风险决定执行深度，高风险设计与验收使用真实独立上下文；
-- 被激活的质量关注点只在一个规范契约中拥有边界，计划只记录链接、步骤和证据；
-- 开发者拥有方向和优先级，框架只提供事实、风险、建议与有限执行门；
-- 陌生引用与可核查事实不靠猜测补全；优先查原始或官方来源，工具不可用时先找
-  保持语义与证据强度的替代路径；
-- 技术事实先调查、可逆工程选择由执行者完成，产品意图、重大取舍与风险接受才
-  交还用户做有限选择；相互依赖的决定按 prerequisite-safe frontier 推进并在
-  交付前确认 shared understanding；分析以讲清因果机制、适用边界及关键隐含
-  问题为标准；
-- onboarding 先保全当前事实，再按 observed → baselined →
-  scoped_enforcement → adopted 渐进收紧；
-- 任务、任务组、目标与发布门分别关闭，不以低层完成冒充高层完成；
-- 原始输入与派生表示分层，数据删除、迁移与 GC 保留可验证证据；
-- 规则尽量进入环境，而不是依赖记忆；
-- 计划、契约、Issue 和证据不互相冒充。
-- 文档治理同时管理增量与存量：更新、合并、沉淀、退役和删除临时证据；
-  不用文件数、行数或统一保留年龄代替质量判断。
+- A contract precedes material delivery; unknown technical facts are
+  investigated or run as bounded, disposable experiments.
+- Current authority is identifiable.
+- Conflicts must be reconciled.
+- Plans aim at one coherent end state.
+- Defects are fixed by category; add a class-level guard when a sibling
+  mechanism is repeatable and the cost is proportionate.
+- Frontend work enumerates reachable states and combines perceptual and
+  structural evidence.
+- Frontend visuals and copy are translated from a raw brief: design candidates
+  and probes are evidence only; accepted direction enters the surface/style
+  owner; missing product intent still returns to a human decision.
+- Style has one owner: layer order, shared visual-value tiers, and the
+  published override surface are explicit. Consumers compose published
+  contracts; unauthorized escalation is recorded as owned debt with a removal
+  condition.
+- Backend work names state ownership, failure, and recovery.
+- Agent risk decides execution depth; high-risk design and acceptance use a
+  genuinely independent context.
+- Each activated quality concern has one normative contract as owner; plans
+  record links, steps, and evidence, not a second copy of the policy.
+- Developers own direction and priority; the framework supplies facts, risks,
+  recommendations, and bounded execution gates.
+- Unfamiliar references and checkable facts are not filled in by guessing;
+  prefer primary or official sources, and when a tool is unavailable first
+  seek a fallback that preserves semantics and evidence strength.
+- Investigate technical facts first; the executor makes reversible engineering
+  choices; product intent, material trade-offs, and risk acceptance return to
+  the user as a bounded choice. Interdependent decisions advance on a
+  prerequisite-safe frontier and confirm shared understanding before delivery.
+  Analysis is judged by whether it makes the causal mechanism, applicable
+  boundary, and material implied questions clear.
+- Onboarding preserves current facts first, then tightens
+  observed → baselined → scoped_enforcement → adopted.
+- Task, task-group, objective, and release-gate completion close separately;
+  lower-layer completion does not impersonate a higher layer.
+- Raw inputs and derived representations stay layered; deletion, migration,
+  and GC keep verifiable evidence.
+- Prefer rules in the environment over rules in memory.
+- Plans, contracts, issues, and evidence do not impersonate one another.
+- Documentation governance manages both increment and stock: update, merge,
+  distill, retire, and delete scratch evidence. File counts, line counts, and
+  a uniform retention age are not substitutes for quality judgment.
 
-视口数量、测试框架、目录深度、发布平台、样式方案（CSS 组织方式、令牌命名与
-主题实现）和文件行数阈值都应由实际项目重新决定。
+Viewport count, test framework, directory depth, publishing platform, style
+scheme (CSS organization, token names, and theme implementation), and file-line
+thresholds must be decided again by the actual project.
 
-## 许可证
+## License
 
-本仓库以 [MIT License](LICENSE) 发布。
+This repository is published under the [MIT License](LICENSE).

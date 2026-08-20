@@ -42,26 +42,30 @@ Out of scope:
 
 ### source[1] — 2026-07-26
 
-> “采用这个模板项目去作为一个初始项目或者去应用到一个已经正在运行的项目
-> 当中，如何正确而快速的 onboarding。”
+> “How to onboard correctly and quickly when using this template as a new
+> project or applying it to a project that is already running.”
 
 ### source[2] — 2026-07-26
 
-> “有可能是他们在执行 onboarding 的时候会有盲点，就是错误的理解这一个
-> 框架，所以你需要给出一些 onboarding 的指引，比如说出一个 Onboarding.md？”
+> “They may have a blind spot during onboarding and misunderstand this
+> framework, so you need to provide some onboarding guidance, for example an
+> Onboarding.md.”
 
 ### source[3] — 2026-07-26
 
-> “同意”采用 AI 引导式 onboarding，并让 brownfield 项目分阶段收紧治理。
+> “Agreed” to adopt AI-guided onboarding, and to let brownfield projects
+> tighten governance in stages.
 
 ### source[4] — 2026-08-06
 
-> “我认为不应该是一直做增量加文件，采用和学习只是在措辞上强度不一样，
-> 而你作为一个有着大量知识和架构的项目 template，你应该给的是，如果一个
-> 新的 agent 进来，再出去，它自己决定带走什么的时候，你给自己的项目的所有
-> 东西的价值排序。比如说，我自己就认为交互习惯那部分要有很大的优先级。”
+> “I do not think this should keep adding files. Adoption and learning differ
+> only in how strongly they are phrased. As a template that already holds a
+> lot of knowledge and architecture, what you should give is a value ranking
+> of everything in this project, so that when a new agent comes in and later
+> leaves, and it decides for itself what to take, it has that ranking. For
+> example, I think the interaction habits should have a very high priority.”
 >
-> “同意，按这个调整一下试试。”
+> “Agreed. Try adjusting it that way.”
 
 ## Vocabulary
 
@@ -304,6 +308,8 @@ transition behavior are not independently proven.
   entrypoints expose that order before mechanics without moving the underlying
   rules from their current owners. Verification remains partial until a fresh
   agent exercises the path from the real one-line referral.
+- **2026-08-20 — publication language:** source anchors are published as
+  English renderings of the original authorizations. Meaning is unchanged.
 - **2026-07-26 — target created:** defined AI-guided greenfield/brownfield
   onboarding with explicit scope and evidence-backed staged enforcement.
 - **2026-07-26 — implemented:** added current onboarding and post-adoption

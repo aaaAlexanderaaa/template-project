@@ -26,24 +26,29 @@ controlled learning.
 
 ### source[1] — 2026-07-28
 
-> “赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能
-> 理解用户的需求和场景时刻担心犯错。”
+> “Enable rather than obstruct. An agent should know clearly what it should
+> and should not do, instead of constantly fearing mistakes because it has
+> not understood the user's needs and situation.”
 
 ### source[2] — 2026-07-28
 
-> “避免只是膨胀……长期治理应该考虑存量管理，考虑文档的退役和沉淀/总结，
-> 而不只是增量……文档耦合……很容易出现一个事情在多个文档里出现。”
+> “Avoid mere expansion. Long-term governance should manage the existing
+> stock: retirement, distillation, and summary, not only increment. Document
+> coupling makes it easy for the same matter to appear in several documents.”
 
 ### source[3] — 2026-08-06
 
-> “如果遇到不知道的引用名词、文献，或者什么其他别的东西，就调用联网工具
-> 去查，不要自己猜。工具不可用时，不要直接放弃，去找 fallback。用户提出
-> 问题时，找出他没问但可能更关键的问题并指出来。拆解问题以讲清楚因果机制
-> 为标准，不以层级够多为标准，不为了显得深刻而堆砌空洞抽象。”
+> “When you encounter an unfamiliar named reference, publication, or anything
+> else you do not know, use network tools to look it up; do not guess. If a
+> tool is unavailable, do not give up; find a fallback. When the user asks a
+> question, identify the unasked issue that may be more important and point it
+> out. Break problems down to make the causal mechanism clear, not to add
+> layers, and not to pile empty abstraction for an appearance of depth.”
 
 ### source[4] — 2026-08-06
 
-> “同意你的理解, 采用 frontend-design，卸载 ui-ux-pro-max, 该学习的学习一下”
+> “Agreed with your understanding: adopt frontend-design, uninstall
+> ui-ux-pro-max, and learn what is worth learning.”
 
 ## Core invariants
 
@@ -550,6 +555,9 @@ No side may resolve a conflict silently.
   Python 3.11 fixture suite and strict repository check pass. Verification
   remains partial because structural reachability does not prove behavior in a
   real adopting project.
+- **2026-08-20 — publication language:** source anchors are published as
+  English renderings of the original authorizations. Contracts that cite the
+  same statement use the same wording; meaning is unchanged.
 - **2026-07-28 — harness proportionality target landed:** distinguished
   controlled learning from delivery implementation, added positive concern
   routing and cross-cutting quality ownership, bounded D6 expansion, and made

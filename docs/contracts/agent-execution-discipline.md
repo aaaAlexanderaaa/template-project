@@ -57,13 +57,15 @@ Out of scope:
 
 ### source[3] — 2026-07-26
 
-> “治理框架不应该帮助开发者定义优先级；它可以识别风险和长期异常，但不应
-> 在开发者有自己的想法时替他判断这个想法不对。”
+> “The governance framework should not help developers define priority. It may
+> identify risks and long-term abnormalities, but it must not, when the
+> developer already has an idea, judge that idea wrong on their behalf.”
 
 ### source[4] — 2026-07-28
 
-> “赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能
-> 理解用户的需求和场景时刻担心犯错。”
+> “Enable rather than obstruct. An agent should know clearly what it should
+> and should not do, instead of constantly fearing mistakes because it has
+> not understood the user's needs and situation.”
 
 ## Vocabulary and risk profiles
 
@@ -332,3 +334,6 @@ Verified on 2026-07-28:
 - **2026-08-20 — publication redaction:** source[1] keeps the authorized
   practices and omits a sibling-project name that is not part of this
   template's public contract.
+- **2026-08-20 — publication language:** remaining Chinese source anchors are
+  published as English renderings of the original authorizations. Contracts
+  that cite the same statement use the same wording; meaning is unchanged.
