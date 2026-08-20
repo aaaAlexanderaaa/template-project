@@ -20,7 +20,7 @@ subject: engineering-harness-enablement
 
 ## Independence
 
-- Evaluator/context: fresh subagent isolated holistic-evaluation context.
+- Evaluator/context: fresh subagent in an isolated holistic-evaluation context.
 - Relationship: the evaluator did not design or implement the change and read
   the repository and diff from a cold context.
 - Independence required and achieved: yes.

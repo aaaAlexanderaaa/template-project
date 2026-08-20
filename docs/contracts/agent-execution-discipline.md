@@ -329,3 +329,6 @@ Verified on 2026-07-28:
   template now excludes routine work, makes high-risk review removable, and
   links activated concern owners; fixture and repository checks enforce the
   stable template surface.
+- **2026-08-20 — publication redaction:** source[1] keeps the authorized
+  practices and omits a sibling-project name that is not part of this
+  template's public contract.

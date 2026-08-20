@@ -91,7 +91,7 @@ repository, source-audit, and skill-installation checks pass.
 | 2. Fixture or controlled boundary | Current repository plus exact local skill directories form the controlled boundary | Clean worktree and resolved paths recorded |
 | 3. Contract and design | G7 decision-frontier boundary and frontend design-direction contract land before projections | Completed before guide, entrypoint, and template edits |
 | 4. Test first | Template-required design-direction section is declared before the template supplies it, and the focused repository check must fail for that absence | Completed: Python 3.11 check failed only with `template missing required section: Design direction and content`, then passed after the template change |
-| 5. Implementation | Install/archive skills; update guide, entrypoints, design README, and frontend template | Completed; old skill archived at the local Codex skill-backup directory for `ui-ux-pro-max` dated 2026-08-06 |
+| 5. Implementation | Install/archive skills; update guide, entrypoints, design README, and frontend template | Completed; old skill archived in the local Codex skill-backup directory as `ui-ux-pro-max-2026-08-06` |
 | 6. Regression | Run Python 3.11+ fixture suite, normal/strict repository checks, source audits, and skill inventory checks | Completed: 106 tests and both repository modes pass; diff and inventory audits are clean |
 | 7. Holistic evaluation | Audit owner uniqueness, G6 proportionality, brief fidelity, second-authority absence, and recovery path | Completed: G7 owns the frontier trigger, development owns frontend direction, and projections introduce no glossary, ADR, or design master |
 
@@ -110,7 +110,7 @@ reconcile its owner, and do not substitute unrelated portfolio work.
 | Documentation harness remains stable | fixture suite | `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'` | malformed templates or lifecycle records fail | 106 tests pass |
 | Canonical graph and projections reconcile | repository checks | `uv run --python 3.11 python scripts/check_docs.py --today 2026-08-06` and the same command with `--strict` | invalid source/projection/template relationships fail | Both modes pass |
 | Frontier and frontend rules retain one owner | source audit | `rg -n "decision frontier|design thesis|generic default|second.*authority" AGENTS.md CONTRIBUTING.md README.md docs templates` | competing triggers or unowned design sources keep the plan active | Plan completion record |
-| Skill replacement is complete and recoverable | local inventory | inspect the local Codex skills directory and the explicit backup path | both active skills or missing replacement fails handoff | Plan completion record |
+| Skill replacement is complete and recoverable | local inventory | inspect the local Codex skills directory and the dated backup | both active skills or missing replacement fails handoff | Plan completion record |
 
 ## Layered completion
 
@@ -132,3 +132,6 @@ reconcile its owner, and do not substitute unrelated portfolio work.
 - Final revision and verdict: completed on 2026-08-06. The task and task-group
   layers are complete; real-adopter design and decision effectiveness remains
   covered by the contracts' existing partial verification posture.
+- **2026-08-20 — publication redaction:** local skill-directory paths were
+  replaced with host-independent descriptions; the recorded skill names and
+  backup date are unchanged.

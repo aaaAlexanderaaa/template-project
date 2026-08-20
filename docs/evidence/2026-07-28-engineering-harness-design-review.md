@@ -13,7 +13,7 @@ subject: engineering-harness-design
 - Review scope: contract and plan design before dependent implementation.
 - Risk profile: `high-risk`.
 - Reviewer/context identity: fresh serial design-review subagent
-  isolated serial design-review context.
+  in an isolated review context.
 - Relationship to proposal: this context did not author the proposal,
   contracts, plan, templates, or checker implementation.
 - Independence required and achieved: yes. The reviewer received the approved
@@ -246,8 +246,8 @@ reconciliation, not a governance exception or a change in product priority.
 
 ## Serial re-review
 
-- Reviewer/context: isolated serial design-review context, continuing the independent
-  review context after primary reconciliation.
+- Reviewer/context: the same isolated serial design-review subagent,
+  continuing after primary reconciliation.
 - Scope: all eight original findings plus the revised plan's D8 owner mapping
   and complete reusable-template coupling inventory.
 - Result: the first re-review found two plan defects: independent review was
