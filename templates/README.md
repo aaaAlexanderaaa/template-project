@@ -22,6 +22,13 @@ are replaced, and lifecycle metadata is set correctly.
 | Evidence-preserving data boundary | `evidence-preserving-data.md` | `docs/contracts/<topic>-data.md` |
 | Greenfield/brownfield adoption baseline | `adoption-assessment.md` | `docs/evidence/YYYY-MM-DD-adoption-assessment.md` |
 
+Clock, calendar, and demonstration-data rules are not a separate copyable
+template. They are owned by `docs/contracts/foundational-runtime-discipline.md`
+and named in `ARCHITECTURE.md` runtime prompts when D8 activates them.
+Backend, frontend, and cross-stack templates add delete-unless-activated
+sections for those concerns. Do not copy a pit catalog into an adopting
+architecture.
+
 Routine work uses existing authority and no plan template. A controlled
 experiment uses a disposable scratch record unless its findings support a
 durable decision. `agent-execution-plan.md` is for material delivery; retain

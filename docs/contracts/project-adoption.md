@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-06
+last_reconciled: 2026-08-27
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -66,6 +66,24 @@ Out of scope:
 > example, I think the interaction habits should have a very high priority.”
 >
 > “Agreed. Try adjusting it that way.”
+
+### source[5] — 2026-08-24
+
+> “This should not remain only in the current project; it also needs to be
+> exported, for example by updating the Template Project.”
+
+### source[6] — 2026-08-24
+
+> “I agree that you should make the change in the Template project. But you
+> also need to think about whether that change matches that project's own
+> expectations, and you need to evaluate the value of this backfilled
+> information. You cannot simply put down the historical pits you stepped in.
+> How much value do those pits have? And how should a user look at them?”
+
+### source[7] — 2026-08-27
+
+> “When adopting external material, triage it by authorship before deciding
+> how much to trust it.”
 
 ## Vocabulary
 
@@ -197,17 +215,19 @@ mechanics:
 
 1. **Interaction and epistemic discipline:** investigate before asking, verify
    unfamiliar facts, preserve evidence strength when tools fail, explain causal
-   boundaries, route uncertainty correctly, and preserve human direction and
-   risk authority.
+   boundaries, route uncertainty correctly, weigh external material by
+   authorship, and preserve human direction and risk authority.
 2. **Truth, ownership, and boundaries:** distinguish current from target truth,
    keep one owner per invariant, publish interfaces deliberately, preserve
    dependency direction, and keep historical debt visible and bounded.
 3. **Delivery discipline:** describe one coherent end state, select execution
    depth by risk, use fixture- and test-first delivery for material behavior,
-   guard repeatable defect mechanisms, and verify failure and recovery.
+   guard repeatable defect mechanisms, verify failure and recovery, and
+   recognize facts that leak across the system if left unnamed.
 4. **Conditionally activated disciplines:** frontend, backend, cross-stack,
-   style, data, operations, security, performance, or other specialist rules
-   whose transfer value rises when the target project activates that concern.
+   style, data, operations, security, performance, time and calendar,
+   demonstration data, or other specialist rules whose transfer value rises
+   when the target project activates that concern.
 5. **Carriers and enforcement mechanisms:** documentation topology, templates,
    adoption stages, policy manifests, the portable checker, and CI examples,
    selected only when they serve the target project's chosen practices.
@@ -219,7 +239,27 @@ adoption consume the same ranking; they differ in authorized action, not in a
 second body of source knowledge. Root projections stay compact and link to the
 existing owners rather than copying their full rules.
 
-- from: source[4]
+- from: source[4], source[5], source[7]
+
+### O8 — External material is triaged by authorship before adoption
+
+External engineering material — another project's archive, a methodology
+write-up, a generated report — mixes records of different strength. Before any
+of it informs a contract, template, or practice, separate it by who authored
+each part:
+
+- dated human decisions, instructions, and corrections are primary evidence of
+  what the human owner actually wanted;
+- machine-generated summaries, self-described methodologies, and retrospective
+  narratives are leads, not evidence: they may propose hypotheses, but an
+  adopted claim must trace to a primary record or be independently verified;
+- material whose authorship cannot be determined is treated as unverified.
+
+The volume and polish of generated narrative is not evidence of value, and
+importing its vocabulary can pollute the receiving documents. An adoption or
+learning record states which class each adopted lesson came from.
+
+- from: source[7]
 
 ## Required onboarding record
 
@@ -291,6 +331,13 @@ Verification remains `partial`: no real greenfield or brownfield repository has
 yet completed this onboarding path, so usability, proportionality, and stage
 transition behavior are not independently proven.
 
+Verified on 2026-08-27:
+
+- O8 and the O7 first-tier mention landed; the full Python 3.11 fixture suite
+  and both repository checker modes pass;
+- verification remains partial: no visiting agent has yet applied the
+  authorship triage to real external material under this contract.
+
 ## Explicit non-goals
 
 - Onboarding is not a mandatory cleanup of all historical debt.
@@ -300,6 +347,21 @@ transition behavior are not independently proven.
 
 ## Reconciliation log
 
+- **2026-08-27 — authorship triage added:** O8 requires separating external
+  material by authorship before adoption: dated human instructions and
+  decisions are primary evidence, machine-generated narrative is a lead to
+  verify, and its vocabulary does not enter project documents. O7's first
+  tier now names the triage. Source: review of an external project archive
+  in which generated narrative had coined terminology the owner rejected as
+  pollution.
+  - from: source[7]
+- **2026-08-24 — leak-class facts ranked, pit catalog rejected:** O7 delivery
+  discipline includes the test for facts that leak if unnamed. Time/calendar
+  and demonstration data remain conditional examples, not a required
+  questionnaire. A 15-row adopter register of sibling incidents was retracted
+  as ceremony. Method owner:
+  `docs/contracts/foundational-runtime-discipline.md`.
+  - from: source[5], source[6]
 - **2026-08-06 — source transfer value ranked:** the owner rejected a separate
   learning-document expansion and required the template to rank what a visiting
   agent should take away. O7 now puts interaction and epistemic discipline

@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-27
 ---
 
 # Documentation authority map
@@ -101,6 +101,20 @@ Both ends of a supersession are canonical documents. The replaced document is
 document through `supersedes`. Both ends have the same `doc_type` and
 `authority`, so supersession changes a decision within one authority class
 rather than promoting a plan, guide, or evidence record into a normative owner.
+
+## Language style
+
+Canonical documents are written in plain language. Name things with the
+repository's existing vocabulary or with a plain description of the thing
+itself. Do not coin compressed terms, slogans, or metaphors to make a document
+sound systematic: a coined term reads as authority, spreads into later
+documents and conversations, and must then be unlearned everywhere. When a
+concept genuinely needs a name, define it once in the owning document's
+vocabulary section and use that name consistently.
+
+Wording is not decoration. The phrasing of a descriptive document guides the
+language of the work that follows it, so plain writing keeps later writing
+plain.
 
 One normative rule has one owner. Other documents may:
 

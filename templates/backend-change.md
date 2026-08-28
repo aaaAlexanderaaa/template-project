@@ -35,7 +35,7 @@ contract when it owns the boundary; do not restate its threshold here.
 
 | Concern | Normative owner | Scenario and boundary | Failure/escalation policy | Evidence surface |
 |---|---|---|---|---|
-| {{performance/reliability/security/dependency/production learning or none}} | `{{contract and section}}` | {{scenario/boundary}} | {{policy or non-waivable}} | {{guard/signal}} |
+| {{performance/reliability/security/dependency/production learning/time and calendar/demonstration data or none}} | `{{contract and section}}` | {{scenario/boundary}} | {{policy or non-waivable}} | {{guard/signal}} |
 
 ## Normative invariants
 
@@ -83,6 +83,28 @@ Invalid transitions:
 | Failure class | Detection | Retry policy | Persisted state | Operator action | Terminal result |
 |---|---|---|---|---|---|
 | {{class}} | {{signal}} | {{policy}} | {{state}} | {{action/none}} | {{result}} |
+
+## Time and calendar
+
+Delete this section unless development D8 activates Time and calendar.
+
+- Business timezone: `{{IANA name or not_applicable rationale}}`
+- Instant storage: `{{timezone-aware absolute moments; representation changes do not rewrite history}}`
+- Calendar-day rules vs duration: `{{today / day-N / grouping vs TTL / locks / age}}`
+- Public representation: `{{declared offset or zone form}}`
+- Naive input: `{{attach business zone / reject / date-only}}`
+- Clock: `{{injectable owner shared by production and tests}}`
+- Drift: `{{subsystem mismatch fails startup}}`
+
+## Demonstration data
+
+Delete this section unless development D8 activates Demonstration data.
+
+- Relative business day: `{{in-progress / upcoming / completed relative to clock}}`
+- Environment gate: `{{environments that may rewrite; production fail-closed}}`
+- Same-day identity / cross-day replacement: `{{natural keys; allowlist not accumulated}}`
+- Allowlisted scope: `{{identities the refresh may touch}}`
+- Demo vs production completion: `{{labeled demo; does not close a production gate}}`
 
 ## Authorization and capability boundary
 

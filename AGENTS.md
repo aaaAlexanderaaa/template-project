@@ -10,13 +10,16 @@ another project, do not rank content by file volume, copyability, or checker
 visibility. Use this base attention order:
 
 1. interaction and epistemic discipline: investigate, verify, preserve evidence
-   strength, route uncertainty, and keep human direction and risk authority;
+ strength, route uncertainty, weigh external material by authorship, and keep
+ human direction and risk authority;
 2. current truth, ownership, public boundaries, dependency direction, and
    bounded historical debt;
 3. coherent end states, risk-scaled execution, fixture- and test-first material
-   delivery, class-level guards, and failure/recovery verification;
+   delivery, class-level guards, failure/recovery verification, and the test
+   for facts that leak across the system if left unnamed;
 4. frontend, backend, cross-stack, style, data, operational, security,
-   performance, and other disciplines activated by the target project;
+   performance, time/calendar, demonstration data, and other disciplines
+   activated by the target project;
 5. documentation layout, templates, adoption stages, manifests, checkers, and
    CI examples that carry or enforce the selected practices.
 
@@ -31,9 +34,11 @@ require the target project's authority.
 Before changing code or behavior, read in this order:
 
 1. `ARCHITECTURE.md` for structural ownership and dependency direction.
-2. `docs/README.md` for document authority and lifecycle.
+2. `docs/README.md` for document authority, lifecycle, and language style.
 3. The relevant `status: current` contract and any applicable accepted
-   `status: target` contract under `docs/contracts/`.
+   `status: target` contract under `docs/contracts/`. When the change
+   displays, stores, schedules, or seeds date/time or demo data, read
+   `docs/contracts/foundational-runtime-discipline.md`.
 4. For UI work, the relevant current and accepted target surface contracts
    under `docs/design/`.
 5. The active implementation plan under `docs/plans/`, if one exists.
@@ -65,9 +70,12 @@ weakening a rule to make a check pass.
   standalone contract or plan.
 - If a material delivery contract is missing, draft and confirm it first.
 - If conversation, code, tests, and contract disagree, stop and surface the
-  conflict. Reconcile before editing dependent code.
+ conflict. Reconcile before editing dependent code.
 - Plans describe execution; they do not override current contracts.
 - Code comments and commit messages do not replace a normative contract.
+- A rule stated in conversation is not durable authority. When a general rule
+ is stated or recurs, propose recording it in the document that owns its
+ topic (development D13).
 
 The full discipline lives in
 `docs/contracts/development-discipline.md`.
@@ -157,7 +165,10 @@ Record the rationale for material/high-risk work; do not downgrade risk to
 bypass a missing reviewer. If required independent context is unavailable, keep
 only the affected completion layer open unless a human records a scoped
 exception. When no named task is executable, follow A5 and consume human-owned
-portfolio priority rather than inventing it.
+portfolio priority rather than inventing it. When several agents or sessions
+work concurrently, follow A9: register scope on the project's written
+coordination surface, announce shared-surface changes, and re-read files
+before editing them.
 
 ## Frontend work
 
@@ -173,6 +184,8 @@ portfolio priority rather than inventing it.
   visual alternatives in `tmp/` and record stakeholder reactions in the raw
   layer before accepted choices enter surface/style owners.
 - Enumerate relevant reachable states instead of checking one sample.
+- Date/time display and naive input consume the declared business timezone
+  and clock; the device timezone must not interpret business input.
 - Consume the declared style layer and value tiers; do not introduce a second
   source of visual truth. A value restated where it is used has no owner.
 - Change another unit's appearance only through the surface that unit
@@ -192,6 +205,12 @@ portfolio priority rather than inventing it.
   timeouts, retry eligibility, recovery, observability, and permissions.
 - Fail loudly on invalid configuration or unavailable dependencies.
 - Test lifecycle and failure behavior with controlled boundaries.
+- Consume the Time and calendar owner for instants, civil dates, durations,
+  naive input, public representation, and the injectable clock. Do not treat
+  host or browser locale as the business timezone.
+- If operators or customers will see seed or synthetic data, keep it
+  clock-relative, environment-gated, and idempotent on the same business
+  day. Hardcoded live-demo calendar dates are a class defect.
 
 ## Cross-stack work
 

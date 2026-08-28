@@ -2,8 +2,8 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-08-06
-projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md]
+last_reconciled: 2026-08-27
+projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
 # AI-guided project onboarding
@@ -44,6 +44,11 @@ state, security, reliability, data, or other boundary promotes its applicable
 discipline. Learning and adoption draw from the same values, while any write or
 enforcement change remains subject to the target project's authority.
 
+Within the first tier, weigh external material by authorship (O8) before it
+informs any selection: dated human decisions and instructions are primary
+evidence, machine-generated narrative is a lead to verify, and its vocabulary
+does not enter project documents.
+
 ### 2. Classify the adoption
 
 - **Greenfield:** no product implementation or established project authority.
@@ -57,6 +62,8 @@ enforcement change remains subject to the target project's authority.
 Inspect, without rewriting:
 
 - architecture, modules, services, persistence, and source roots;
+- implicit clocks, timezones, civil-date rules, and any seed or demo dataset
+  operators or customers can see;
 - style layers, shared visual values, theme mechanisms, and existing override
   debt, where the project has a frontend;
 - READMEs, ADRs, contracts, tickets, plans, and agent instructions;
@@ -130,6 +137,13 @@ future behavior in target contracts and active plans. Do not make architecture
 look clean by deleting evidence of current debt or by copying aspirational
 template prompts into current authority.
 
+If the project stores or shows date/time, or shows seed data to operators
+or customers, name the owner in the `ARCHITECTURE.md` runtime prompts and
+read [foundational runtime](../contracts/foundational-runtime-discipline.md).
+Do not fill a catalog of historical pits. A brownfield inventory records an
+implicit clock or hardcoded demo dates as facts; rewriting them is a
+separately authorized cutover.
+
 ### 7. Plan one bounded migration
 
 Use [implementation-plan.md](../../templates/implementation-plan.md) for the
@@ -188,5 +202,6 @@ entrypoint changed during adoption.
 
 - [Documentation authority map](../README.md)
 - [Development discipline](../contracts/development-discipline.md)
+- [Foundational runtime](../contracts/foundational-runtime-discipline.md)
 - [AI agent execution discipline](../contracts/agent-execution-discipline.md)
 - [Project operation after onboarding](project-operation.md)

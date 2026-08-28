@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-27
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -31,6 +31,7 @@ In scope:
 - material feature, migration, cross-stack, and governance work performed by
   coding agents;
 - work selection when no explicit executable task is available;
+- written coordination between concurrently running agents or sessions;
 - independence requirements for high-risk design and final evaluation;
 - evidence classes and completion claims.
 
@@ -66,6 +67,11 @@ Out of scope:
 > “Enable rather than obstruct. An agent should know clearly what it should
 > and should not do, instead of constantly fearing mistakes because it has
 > not understood the user's needs and situation.”
+
+### source[5] — 2026-08-27
+
+> “Multiple parallel sessions need a written coordination method, and
+> handoffs at context exhaustion have mature practices to follow.”
 
 ## Vocabulary and risk profiles
 
@@ -238,6 +244,31 @@ choice inside the declared envelope proceeds without serial approval.
 
 - from: source[4]
 
+### A9 — Parallel work is coordinated in writing
+
+When more than one agent or session works the same repository concurrently,
+coordination is written, not assumed:
+
+- before starting, check the project's declared coordination surface — active
+  plans, handoffs, or an explicit work register — for work that may touch the
+  same files, contracts, or fixtures, and record your own scope there;
+- when a change alters a shared surface — a public contract, a shared fixture
+  or constant, a file another workstream is actively editing — announce it on
+  that surface before or as it lands, so parallel workers see it before their
+  next read;
+- re-read a file before editing it when another workstream may have touched it
+  since the last read; a stale read is the normal failure mode of parallel
+  work, not an excuse for it;
+- run the affected guards before claiming completion: the collision net for
+  parallel work is the regression suite, not vigilance.
+
+A handoff names the parallel work it knows about so the next session can
+coordinate. When parallel changes conflict, reconcile them through the normal
+authority order; the later worker does not silently revert the earlier one's
+landed work.
+
+- from: source[5]
+
 ## Required records
 
 Material delivery work records only what its activated route requires:
@@ -250,6 +281,8 @@ Material delivery work records only what its activated route requires:
 - commands, environment, and evidence class for verification;
 - independent review or the exact blocked/exception state when the risk profile
   requires it;
+- when parallel work is active, the coordination entry and the shared-surface
+  announcements made;
 - final contract, plan, issue, and evidence lifecycle updates.
 
 A controlled experiment uses a scratch record unless its result supports a
@@ -269,6 +302,9 @@ solely to prove that it is routine.
 - Do not write a delivery contract to legitimize an unanswered experiment.
 - Do not duplicate the concern trigger table in agent plans or entrypoints.
 - Do not let temporary checkpoints become the undocumented end state.
+- Do not edit from a stale read when parallel work is registered.
+- Do not silently revert another workstream's landed change; reconcile through
+  the normal authority order.
 
 ## Acceptance evidence
 
@@ -307,12 +343,26 @@ Verified on 2026-07-28:
 - scoped audits find no copied D8 trigger table or obsolete fresh-context
   requirement outside the high-risk route.
 
+Verified on 2026-08-27:
+
+- A9 added for written parallel-work coordination; the full Python 3.11
+  fixture suite and both repository checker modes pass;
+- behavioral effectiveness remains partial: no real multi-session project has
+  exercised the coordination surface yet.
+
 ## Promise register
 
 - promise[independent-adoption-review]: due=2026-10-24; status=open; owner=template-maintainer; description=obtain an independent adoption review after the first real product uses the agent execution profile
 
 ## Reconciliation log
 
+- **2026-08-27 — parallel coordination added:** A9 requires written
+  coordination between concurrent agents or sessions: registered scope,
+  announced shared-surface changes, re-reads before edits, and the guard
+  suite as the collision net. Handoffs carry parallel-work context. Source:
+  an external project archive whose human instruction stream showed parallel
+  sessions colliding through stale reads and unannounced shared edits.
+  - from: source[5]
 - **2026-07-26 — contract created:** combined the template's contract-first
   governance with a risk-based AI execution profile derived from a concrete
   agent-driven product workflow.

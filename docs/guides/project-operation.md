@@ -2,8 +2,8 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-08-06
-projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md]
+last_reconciled: 2026-08-27
+projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
 # Project operation after onboarding
@@ -109,12 +109,20 @@ Use A8 in the agent execution contract to choose the smallest route. Routine
 work consumes existing authority and focused guards without creating a plan.
 An unresolved technical fact uses development D1's disposable experiment path
 before delivery. Material delivery uses the seven-phase plan and only the
-concerns activated through development D8. High-risk work adds the independent
+concerns activated through development D8. Date/time and operator-visible
+demo or seed data route to
+[foundational runtime](../contracts/foundational-runtime-discipline.md)
+rather than being treated as optional localization. High-risk work adds the independent
 design and fresh-context completion evidence required by A1/A3/A4.
 
 The route links its normative owners rather than restating their boundaries in
 the plan. Use the agent execution profile only at the depth selected during
 onboarding or subsequently authorized by the project owner.
+
+When several agents or sessions work the repository concurrently, A9 requires
+written coordination: check the declared coordination surface and register
+scope before starting, announce shared-surface changes, re-read files before
+editing, and let the guard suite catch collisions.
 
 ### 5. Report governance output precisely
 
@@ -129,6 +137,10 @@ Report task, task-group/key-result, objective, and release-gate completion
 separately. Completing an implementation task does not close a higher outcome.
 Return higher-layer results to the human-owned portfolio source; the governance
 framework does not silently reprioritize remaining work.
+
+Before reporting a layer closed, propose durable recording for any general
+rule the owner stated during the work (development D13); a rule left only in
+chat history decays with the context that carries it.
 
 ## Verification
 

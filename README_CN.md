@@ -14,8 +14,8 @@
 |---|---|---|---|
 | **P0** | 人与 agent 的交互和认知纪律 | 它决定事实是否被查清、问题是否问对、用户权威和任务范围是否被保留，并影响之后的每一次判断 | [development discipline](docs/contracts/development-discipline.md) D10-D12；[governance boundary](docs/contracts/governance-decision-boundary.md) G1-G7 |
 | **P1** | 当前事实、权威、所有权、依赖边界与历史债务 | 它决定会不会覆盖现有真相、复制规则或把局部债务扩散到整个项目 | [architecture](ARCHITECTURE.md)；[development discipline](docs/contracts/development-discipline.md) D2-D3；[project adoption](docs/contracts/project-adoption.md) O2-O5 |
-| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护与失败恢复 | 它决定如何把正确理解变成可验证的完整交付 | [agent execution](docs/contracts/agent-execution-discipline.md) A1-A8；[development discipline](docs/contracts/development-discipline.md) D4-D9 |
-| **P3** | 前端、后端、跨端、样式、数据、运维、安全、性能等条件性纪律 | 它们在目标项目激活相关边界时价值很高，并应按真实风险上调 | [development discipline](docs/contracts/development-discipline.md) 的对应领域契约及被激活的 concern owner |
+| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护、失败恢复，以及「未命名就会渗到全系统」的识别规则 | 它决定如何把正确理解变成可验证的完整交付，以及一个未声明的默认会不会变成日后的全量切换 | [agent execution](docs/contracts/agent-execution-discipline.md) A1-A8；[development discipline](docs/contracts/development-discipline.md) D4-D9；识别规则见 [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
+| **P3** | 前端、后端、跨端、样式、数据、运维、安全、性能、时钟/日历、演示数据等条件性纪律 | 它们在目标项目激活相关边界时价值很高，并应按真实风险上调 | [development discipline](docs/contracts/development-discipline.md) 的对应领域契约及被激活的 concern owner；时间与演示的不变量：[foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P4** | 文档拓扑、模板、adoption stage、policy manifest、检查器和 CI 示例 | 它们承载或执行前面的纪律，但可复制性不等于价值优先级 | [documentation map](docs/README.md)；[documentation harness](docs/contracts/documentation-harness.md) |
 
 这是**注意力与提炼顺序**，不是文档权威顺序，也不是要求完整照搬。目标项目的
@@ -36,6 +36,8 @@
    `[adoption].stage`、`source_roots`、`managed_paths` 与
    `[templates].profile`。检查器读取这些字段，而不是假设某一种项目形态。
 5. 在写首个受治理的产品变更前完成当前态 `ARCHITECTURE.md` 和相关契约。
+   日期时间和操作员可见的演示数据是 D8 concern：用到时再读，不要在
+   用不到时填一份踩坑表。
 6. material 交付必须先落盘契约；只读调查无法回答的技术事实，可以先走 D1
    的一次性受控实验路径，实验结果不能直接成为产品行为。
 7. 如果由 agent 推进变更，按
@@ -115,6 +117,9 @@
 - 样式有唯一所有者：层级顺序、共享视觉值的分层与可覆盖面都显式声明，
   消费方只组合已发布的契约，越权升级记为有主、有回收条件的债务；
 - 后端明确状态所有权、失败和恢复；
+- 项目会存或展示日期时间时，时间、日历和时钟只有一个 owner；操作员或
+  客户会看到的演示数据相对该时钟生成并受环境门约束。来源项目的其他修补
+  只证明同一形状，不是要抄的额外行；
 - agent 风险决定执行深度，高风险设计与验收使用真实独立上下文；
 - 被激活的质量关注点只在一个规范契约中拥有边界，计划只记录链接、步骤和证据；
 - 开发者拥有方向和优先级，框架只提供事实、风险、建议与有限执行门；

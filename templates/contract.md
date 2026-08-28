@@ -61,7 +61,7 @@ copy the D8 trigger table.
 
 | Quality concern | Scenario | Boundary/response | Guard or observation | Escalation/exception policy |
 |---|---|---|---|---|
-| {{concern or none}} | {{scenario}} | {{measurable or qualitative boundary}} | {{guard/signal}} | {{owner, path, or explicitly non-waivable}} |
+| {{concern or none, including time and calendar or demonstration data}} | {{scenario}} | {{measurable or qualitative boundary}} | {{guard/signal}} | {{owner, path, or explicitly non-waivable}} |
 
 ## States and triggers
 

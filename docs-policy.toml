@@ -171,7 +171,7 @@ full = [
 ]
 "issue-tracker.md" = ["Evidence", "Verification", "Category and root mechanism", "Contract impact", "Decision", "Resolution"]
 "verification-report.md" = ["Claim being verified", "Environment", "Result matrix", "Failure and negative-path checks", "Anomalies", "Limitations", "Verdict"]
-"handoff.md" = ["Outcome sought", "Read first", "Verified current facts", "Completed work", "Remaining work", "How to verify"]
+"handoff.md" = ["Outcome sought", "Read first", "Verified current facts", "Completed work", "Remaining work", "Known pitfalls", "Parallel work in progress", "How to verify", "Session origin"]
 "guide.md" = ["Purpose", "Preconditions", "Procedure", "Verification", "Failure and recovery", "Safety and rollback", "Related authority"]
 "agent-execution-plan.md" = ["Cold-start summary", "Risk classification", "Authority and prerequisites", "Engineering decision envelope", "Activated concerns and owners", "Complete end state", "Seven-phase execution loop", "Work-selection fallback", "Verification and evidence matrix", "Layered completion", "Progress and closure"]
 "independent-review.md" = ["Review scope and independence", "Inputs", "Perspective findings", "Synthesis", "Disagreements and human decisions", "Limitations", "Verdict and follow-up"]

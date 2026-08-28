@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-06
+last_reconciled: 2026-08-27
 supersedes: []
 ---
 
@@ -49,6 +49,18 @@ controlled learning.
 
 > “Agreed with your understanding: adopt frontend-design, uninstall
 > ui-ux-pro-max, and learn what is worth learning.”
+
+### source[5] — 2026-08-24
+
+> “This should not remain only in the current project; it also needs to be
+> exported, for example by updating the Template Project.”
+
+### source[6] — 2026-08-27
+
+> “When a rule stated in conversation recurs, propose recording it as a
+> durable rule in the document that owns its topic. Keep document wording in
+> plain style, because the wording of descriptive documents guides future
+> language style.”
 
 ## Core invariants
 
@@ -195,10 +207,12 @@ trigger semantics.
 | Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation |
 | Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective, dependency failure, observability, alert/rollback trigger |
 | External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Owner, provenance, reproducibility, compatibility, unavailable-dependency behavior |
-| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, localization where relevant |
+| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant |
+| Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | Unique zone, instant vs calendar vs duration, naive-input policy, public representation, injectable clock, fail-loud drift |
+| Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | Clock-relative validity, environment gate, idempotent refresh, production isolation, labeled demo |
 | Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner |
 
-- from: source[1]
+- from: source[1], source[5]
 
 ### D9 — Govern document decisions, not document volume
 
@@ -271,6 +285,23 @@ or expand implementation scope without authorization.
 
 - from: source[3]
 
+### D13 — Recurring verbal rules are proposed for durable recording
+
+A rule the owner states in conversation binds from the moment it is stated,
+but conversation is not durable storage. When a general rule is stated — and
+especially when the same rule is stated again, or is phrased as something to
+remember — propose recording it in the document that owns the topic: a
+contract invariant, a guide procedure, a template field, or an agent
+entrypoint. The proposal states the rule in plain wording, its reason, how it
+applies, and its source and date. The owner confirms before it lands.
+
+A rule that lives only in chat history or agent memory decays with the context
+that carries it. Recording is proposed, not assumed: the decision to adopt
+remains with the human owner, and a rejected proposal stays as history rather
+than returning as an unwritten rule.
+
+- from: source[6]
+
 ## Change workflow
 
 Every material delivery change follows this order:
@@ -315,8 +346,16 @@ Frontend work translates product intent into observable states and geometry.
 - Interaction expectations: trigger, state transition, focus behavior,
   reachability, and failure/empty response.
 - Browser, input, accessibility, and responsive support targets.
-- Localization, text expansion, locale, time-zone, and input-method behavior
-  when the surface or its data activates those concerns.
+- Locale, text expansion, and input-method behavior when the surface
+  activates those concerns.
+- If the surface displays or accepts date/time, consume the Time and
+  calendar owner from D8: business timezone, instant vs calendar-day vs
+  duration, naive-input interpretation, and the injectable clock. If it
+  does not, D8 creates no extra obligation. Omission is not UTC and not
+  the device timezone.
+- If the surface shows seed, synthetic, or sample data to an operator or
+  customer, consume the Demonstration data owner. Hardcoded live-demo
+  calendar dates are a defect.
 - The style layer, value tiers, and published override surface the change
   consumes, plus any value it must define locally and why.
 
@@ -457,7 +496,13 @@ interfaces.
 - Observability: logs, events, metrics, audit fields, and diagnostic identity.
 - Permission boundaries and the minimum capabilities each caller needs.
 - Activated performance/capacity, reliability, security/privacy, dependency,
-  and production-learning boundaries from D8.
+  production-learning, time/calendar, and demonstration-data boundaries
+  from D8.
+- When Time and calendar is activated: the unique business timezone,
+  instant vs calendar-day vs duration, naive-input policy, public
+  representation, injectable clock, and fail-loud drift check.
+- When Demonstration data is activated: clock-relative validity,
+  environment gate, same-day idempotent refresh, and production isolation.
 
 ### Verification discipline
 
@@ -535,6 +580,24 @@ No side may resolve a conflict silently.
 
 ## Reconciliation log
 
+- **2026-08-27 — recurring verbal rules proposed for recording:** D13 added.
+  A general rule stated in conversation is proposed for durable recording in
+  its owning document, with plain wording, reason, application, source, and
+  date; adoption remains the owner's decision. Document language style is
+  owned by the documentation authority map. The fixture clock moved to
+  2026-08-27 with the new canonical dates; the full suite and both checker
+  modes pass. Verification remains partial until a real project exercises
+  the proposal loop.
+  - from: source[6]
+- **2026-08-24 — foundational runtime concerns routed:** D8 now activates
+  Time and calendar and Demonstration data and routes them to
+  `docs/contracts/foundational-runtime-discipline.md`. Frontend and backend
+  required-before-implementation lists no longer treat timezone as an
+  optional localization footnote. A sibling-incident questionnaire was
+  rejected; untriggered concerns still create no section-filling. The
+  method is domain-neutral. Verification remains partial until a real
+  adopter activates one of the two concerns.
+  - from: source[5]
 - **2026-08-06 — subject-grounded frontend direction adopted:** the owner
   selected the reviewed `frontend-design` approach over the database-driven
   alternative. The frontend contract now requires brief-specific design

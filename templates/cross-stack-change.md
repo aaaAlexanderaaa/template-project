@@ -41,7 +41,7 @@ terminal failure states where applicable.
 
 | Concern | Normative owner | Shared boundary/failure policy | Producer steps | Consumer steps | Evidence |
 |---|---|---|---|---|---|
-| {{concern or none}} | `{{contract and section}}` | {{link, not duplicated policy}} | {{steps}} | {{steps}} | {{guard/probe}} |
+| {{concern or none, including time and calendar or demonstration data}} | `{{contract and section}}` | {{link, not duplicated policy}} | {{steps}} | {{steps}} | {{guard/probe}} |
 
 ## Interface contract
 

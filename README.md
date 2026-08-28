@@ -18,8 +18,8 @@ portability, and how much the target project must already exist:
 |---|---|---|---|
 | **P0** | Human–agent interaction and epistemic discipline | It decides whether facts are established, whether the right question is asked, and whether user authority and task scope are preserved; it affects every later judgment | [development discipline](docs/contracts/development-discipline.md) D10–D12; [governance boundary](docs/contracts/governance-decision-boundary.md) G1–G7 |
 | **P1** | Current truth, authority, ownership, dependency boundaries, and historical debt | It decides whether existing truth is overwritten, whether rules are copied, and whether local debt spreads across the project | [architecture](ARCHITECTURE.md); [development discipline](docs/contracts/development-discipline.md) D2–D3; [project adoption](docs/contracts/project-adoption.md) O2–O5 |
-| **P2** | Coherent end states, risk-scaled execution, fixture- and test-first material delivery, class-level guards, and failure recovery | It decides how a correct understanding becomes a verifiable complete delivery | [agent execution](docs/contracts/agent-execution-discipline.md) A1–A8; [development discipline](docs/contracts/development-discipline.md) D4–D9 |
-| **P3** | Frontend, backend, cross-stack, style, data, operations, security, performance, and other conditional disciplines | They are high-value when the target project activates the matching boundary, and should be promoted by real risk | the matching domain contracts in [development discipline](docs/contracts/development-discipline.md) and the activated concern owner |
+| **P2** | Coherent end states, risk-scaled execution, fixture- and test-first material delivery, class-level guards, failure recovery, and the test for facts that leak across the system if left unnamed | It decides how a correct understanding becomes a verifiable complete delivery, and whether an unnamed default will have to be cut over later | [agent execution](docs/contracts/agent-execution-discipline.md) A1–A8; [development discipline](docs/contracts/development-discipline.md) D4–D9; recognition rule in [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
+| **P3** | Frontend, backend, cross-stack, style, data, operations, security, performance, time/calendar, demonstration data, and other conditional disciplines | They are high-value when the target project activates the matching boundary, and should be promoted by real risk | the matching domain contracts in [development discipline](docs/contracts/development-discipline.md) and the activated concern owner; time and demo invariants: [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P4** | Documentation topology, templates, adoption stage, policy manifests, the checker, and CI examples | They carry or enforce the discipline above; copyability is not the same as value priority | [documentation map](docs/README.md); [documentation harness](docs/contracts/documentation-harness.md) |
 
 This is an **attention and extraction order**, not the document authority
@@ -47,7 +47,9 @@ The minimum version is Python 3.11.
    `[templates].profile`. The checker reads these fields; it does not assume
    one project shape.
 5. Complete a current-state `ARCHITECTURE.md` and the relevant contracts
-   before the first governed product change.
+   before the first governed product change. Date/time and operator-visible
+   demo data are D8 concerns: read them when they apply; do not fill a pit
+   catalog when they do not.
 6. Material delivery must land a contract first. When a technical fact cannot
    be learned read-only, use D1's disposable controlled-experiment path; the
    experiment must not become product behavior.
@@ -139,6 +141,10 @@ Migrate the method, not the original project's tools or numbers:
   contracts; unauthorized escalation is recorded as owned debt with a removal
   condition.
 - Backend work names state ownership, failure, and recovery.
+- Time, calendar, and clock have one owner when the project stores or
+  shows date/time; demonstration data that operators or customers will see
+  is relative to that clock and environment-gated. Other source-project
+  repairs are evidence of the same shape, not extra rows to copy.
 - Agent risk decides execution depth; high-risk design and acceptance use a
   genuinely independent context.
 - Each activated quality concern has one normative contract as owner; plans

@@ -134,6 +134,18 @@ Do not restate the shared layer's rules here; name what this surface consumes.
 
 - from: raw[{{N}}]
 
+## Time, locale, and demonstration data
+
+Delete this section unless development D8 activates Time and calendar or
+Demonstration data. Device names are not the business timezone.
+
+- Business timezone consumed: `{{IANA or not_applicable}}`
+- Instant vs calendar-day vs duration on this surface: `{{which}}`
+- Naive input interpretation: `{{offset-less control policy or none}}`
+- Device/OS timezone must not: `{{interpret business input / switch the business display zone}}`
+- Locale and copy: `{{language, numbers, dates}}`
+- Demonstration or sample data visible here: `{{clock-relative / none}}`
+
 ## Activated quality attributes
 
 Experience concerns above are intrinsic to this surface. List only additional
@@ -142,7 +154,7 @@ normative owner rather than copying a threshold.
 
 | Concern | Normative owner | Boundary/failure policy | Surface evidence |
 |---|---|---|---|
-| {{performance/security/privacy/reliability/dependency/production learning or none}} | `{{contract and section}}` | {{link}} | {{probe/observation}} |
+| {{performance/security/privacy/reliability/dependency/production learning/time and calendar/demonstration data or none}} | `{{contract and section}}` | {{link}} | {{probe/observation}} |
 
 ## Known abnormality classes
 

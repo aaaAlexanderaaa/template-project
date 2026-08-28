@@ -61,6 +61,10 @@ or newer and have no third-party package dependencies.
   non-goals?
 - Does the test suite guard the failure category, not only the reported input?
 - Are frontend and backend projections self-consistent?
+- If the change displays, stores, or schedules time, does it consume the
+  Time and calendar owner rather than the host or browser zone?
+- If operators or customers will see seed or demo data, is it relative to
+  that clock, environment-gated, and free of hardcoded live calendar dates?
 - Does every visual value the change introduces resolve to a declared owner, or
   to a registered exception with an owner and a removal condition?
 - Does each frontend direction trace to a concrete subject, audience, user job,

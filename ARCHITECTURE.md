@@ -1,7 +1,7 @@
 ---
 document_role: structural-authority
 template_state: unconfigured
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-24
 ---
 
 # Architecture
@@ -36,6 +36,10 @@ storage reads, or copied status vocabularies.
 
 Every material invariant must have one owner. Consumers may render or compose
 the public contract but may not independently redefine it.
+
+Date/time and operator-visible demo data belong in this map when they exist.
+They are not a separate questionnaire. The method is
+`docs/contracts/foundational-runtime-discipline.md`.
 
 ## 4. Public contracts
 
@@ -81,7 +85,9 @@ If the project has a frontend, define:
 - the override surface each unit publishes, and how a consumer obtains a value
   the shared layer does not publish;
 - routing and extension points;
-- accessibility, browser, input, and responsive support policy.
+- accessibility, browser, input, and responsive support policy;
+- which business timezone, clock, and naive-input rule the surfaces consume
+  when they display or accept date/time.
 
 Per-surface behavior belongs under `docs/design/`, not in this structural map.
 
@@ -94,6 +100,8 @@ Per-surface behavior belongs under `docs/design/`, not in this structural map.
 - Deployment and rollback unit: `{{unit}}`
 - Data migration and compatibility window: `{{policy}}`
 - Recovery objectives: `{{recovery-objectives}}`
+- Business timezone and clock: `{{iana-zone-representation-clock-or-n/a}}`
+- Demonstration-data runtime: `{{relative-refresh-gate-or-n/a}}`
 
 ## 8. Hard and soft boundaries
 
@@ -127,8 +135,16 @@ remains true:
 - `{{state-and-recovery-lifecycle-test}}`
 - `{{permission-or-capability-isolation-test}}`
 - `{{frontend-ownership-or-geometry-guard}}`
+- `{{clock-timezone-and-naive-input-guard}}`
+- `{{demo-refresh-idempotency-and-environment-gate}}`
 
 ## 10. Reconciliation log
 
 Record dated structural changes, superseded decisions, and links to the
 contracts and plans that implemented them.
+
+- **2026-08-24:** runtime prompts name business timezone/clock and
+  demonstration-data only when those exist. A 15-row early-declaration
+  register was added and then removed: it turned historical pits into
+  onboarding ceremony. Method:
+  `docs/contracts/foundational-runtime-discipline.md`.

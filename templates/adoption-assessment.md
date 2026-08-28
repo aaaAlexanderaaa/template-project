@@ -40,6 +40,8 @@ Preserve existing authority until it is explicitly reconciled or superseded.
 - CI/release/rollback path: {{facts}}
 - Current documentation topology: {{facts}}
 - Known debt and historical exceptions: {{bounded inventory or links}}
+- Implicit clock, timezone, or live demo/seed dataset, if any:
+  {{fact / absent / unknown}}
 - Facts that could not be verified: {{unknowns}}
 
 Record current truth separately from desired architecture or governance.
