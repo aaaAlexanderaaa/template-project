@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-08-27
+last_reconciled: 2026-08-28
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -86,7 +86,9 @@ their answers depend on one another:
    settled and whose answer does not depend on another open item in this round;
 3. ask the frontier as a numbered round, giving each decision its bounded
    options, material trade-offs, reversibility, evidence limit, and a visibly
-   non-binding recommendation;
+   non-binding recommendation — and, when the difference between options
+   would not change the outcome under stated conditions, an explicit statement
+   of that instead of a manufactured preference;
 4. wait for the owner's answers, record disagreements or unknowns without
    converting them into assent, and recompute the frontier;
 5. when no branch remains, ask the owner to confirm the shared understanding

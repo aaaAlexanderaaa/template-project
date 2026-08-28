@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-06
+last_reconciled: 2026-08-28
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -70,6 +70,14 @@ Out of scope:
 > “Agreed with your understanding: adopt frontend-design, uninstall
 > ui-ux-pro-max, and learn what is worth learning.”
 
+### source[7] — 2026-08-28
+
+> “When presenting a choice to the user, provide the context needed to trade
+> off — the ROI and the assumptions accepted along with the risk — rather
+> than reporting a problem without saying what impact it has or under what
+> conditions it does not matter. The standpoint matters: the user, the
+> product manager, and the architect cut into the same problem differently.”
+
 ## Vocabulary
 
 - **Direction authority:** the human owner authorized to decide product intent,
@@ -105,7 +113,7 @@ Every material governance observation is expressed as one of these states:
 | State | Meaning | Trigger | Required next action |
 |---|---|---|---|
 | `fact` | Reproducible current observation | Read-only evidence exists | Preserve source and scope |
-| `risk` | Plausible adverse outcome or long-term abnormality | Fact plus causal mechanism exists | Record impact, likelihood limits, and options |
+| `risk` | Plausible adverse outcome or long-term abnormality | Fact plus causal mechanism exists | Record impact and its rough magnitude, likelihood limits, the conditions under which it does not matter, and options |
 | `recommendation` | Non-binding preferred response | Trade-offs can be compared | Direction authority accepts, rejects, or defers |
 | `human_decision_required` | No authorized choice exists | Options materially change intent, priority, or risk | Obtain and record the owner's choice |
 | `execution_blocker` | One path cannot proceed truthfully or safely | A blocker class below is proven | Resolve, change path, or record an allowed exception |
@@ -154,7 +162,15 @@ Recommendations state their evidence, assumptions, expected benefit, cost,
 alternatives, and limitations. A rejected recommendation remains evidence or
 history; it does not silently return as a mandatory rule.
 
-- from: source[2]
+A problem report is incomplete when it stops at "something is wrong". A risk
+or recommendation that asks for attention also states: who bears the impact
+(the user, the operator, the product, or the engineering organization); the
+impact's rough magnitude — a range, or an explicit unknown with its cost of
+finding out, is acceptable; the conditions under which the problem does not
+matter; and what accepting the risk would assume. An option presented for
+decision carries the same fields plus its reversibility or switching cost.
+
+- from: source[2], source[7]
 
 ### G4 — Exceptions are explicit, scoped, and reviewable
 
@@ -220,7 +236,9 @@ Route uncertainty by what resolves it and by the cost of being wrong:
 A required human decision is presented as a bounded option set when genuine
 alternatives exist. Each option names the outcome, material trade-offs,
 reversibility or switching cost, and the evidence limitation; a recommendation
-may be included but must remain visibly non-binding. Do not manufacture a
+may be included but must remain visibly non-binding. When the difference
+between the options would not change the outcome under stated conditions, the
+option set says so instead of manufacturing a preference. Do not manufacture a
 multiple-choice question when the repository already contains the answer, when
 investigation can establish a fact, or when only one path satisfies current
 authority.
@@ -261,6 +279,9 @@ recommendation or contract, but cannot silently become either.
   shared-understanding confirmation without moving facts or G6 choices into an
   interview.
 - A blocker includes scope, evidence, recovery, and available human authority.
+- A risk or problem report names who bears the impact, its rough magnitude,
+  the conditions under which it does not matter, and what accepting it would
+  assume.
 - Accepted deviations use a durable governance-exception record.
 
 ## Forbidden behaviors
@@ -329,6 +350,17 @@ Verified on 2026-08-06:
 
 ## Reconciliation log
 
+- **2026-08-28 — problem reports carry impact context:** G3 and the risk
+  state now require who bears the impact, its rough magnitude, the
+  conditions under which the problem does not matter, and the assumption
+  that accepting the risk would make. G7 option sets state when the
+  difference between options does not matter instead of manufacturing a
+  preference. Source: owner direction of 2026-08-28, mined against archived
+  external materials (error-budget policy as the quantified form of risk
+  acceptance; architecture decisions framed as investments with ROI).
+  Verification remains partial until real project reports exercise the
+  fields. Plan: `docs/plans/2026-08-28-engineering-judgment-discipline.md`.
+  - from: source[7]
 - **2026-08-06 — dependent decisions use a frontier:** the owner approved the
   reviewed extraction of the grilling method without its parallel glossary or
   ADR outputs. G7 now sequences only genuine human decisions by prerequisite,

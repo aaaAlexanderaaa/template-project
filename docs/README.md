@@ -116,6 +116,13 @@ Wording is not decoration. The phrasing of a descriptive document guides the
 language of the work that follows it, so plain writing keeps later writing
 plain.
 
+When citing a normative invariant from another document, link to its owning
+contract and heading slug rather than quoting a letter code; within a
+contract, cite its own invariants by short name. Letter-prefixed codes remain
+valid in contracts that have not migrated.
+`docs/contracts/documentation-harness.md` owns the identifier convention and
+its mechanical validation.
+
 One normative rule has one owner. Other documents may:
 
 - **route:** point a reader to the owner without restating the rule;

@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-27
+last_reconciled: 2026-08-28
 supersedes: []
 ---
 
@@ -61,6 +61,24 @@ controlled learning.
 > durable rule in the document that owns its topic. Keep document wording in
 > plain style, because the wording of descriptive documents guides future
 > language style.”
+
+### source[7] — 2026-08-28
+
+> “Many of our disciplines are collaboration disciplines, and many are
+> AI-facing or documentation disciplines, but we have neglected the
+> disciplines of engineering practice itself: how to define and evaluate
+> user experience — a good engineering implementation is not necessarily
+> good user experience; how to manage project complexity and what should
+> trigger refactoring; how to avoid reinventing the wheel; how to decide
+> between solutions. Reference settled industry practice such as the Google
+> SRE books while avoiding over-design, and mind the standpoint: the user,
+> the product manager, and the architect each cut into the same problem
+> differently.”
+>
+> “Specific problems need specific analysis, but the scenarios have been
+> trodden by many before. Keep enough text to remind an agent to consider
+> what it has not considered — to avoid drilling into a dead end,
+> over-optimizing, or over-designing.”
 
 ## Core invariants
 
@@ -173,6 +191,14 @@ possible, or the guard would cost more than the bounded risk warrants, record
 that fact and keep the change local. D6 is not permission to expand an
 authorized fix into an unbounded cleanup.
 
+When the project operates incidents or postmortems, their output feeds this
+invariant: a postmortem names the root-cause category — possibly several —
+and the class-level action for each, and a monitoring failure (a user noticed
+before the system did) is itself a defect category. A postmortem that ends in
+a local fix without a named category is incomplete.
+
+- from: source[7]
+
 ### D7 — Preserve decisions and evidence
 
 Requirements, translations, implementation plans, issues, and evidence have
@@ -202,17 +228,17 @@ trigger semantics.
 | Change trait | Activated concern | Minimum questions |
 |---|---|---|
 | Public interface, event, schema, or consumer-visible meaning | Compatibility | Version, consumers, cutover, deprecation, rollback |
-| Durable state, migration, concurrency, or replay | State integrity | Atomicity, idempotency, ordering, recovery, manual intervention |
+| Durable state, migration, concurrency, or replay | State integrity | Atomicity, idempotency, ordering, recovery, manual intervention, schema evolution and extensibility |
 | Permission, identity, untrusted input, sensitive data, or cross-tenant access | Security and privacy | Trust boundary, least privilege, abuse/failure case, audit, retention |
-| Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation |
-| Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective, dependency failure, observability, alert/rollback trigger |
-| External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Owner, provenance, reproducibility, compatibility, unavailable-dependency behavior |
-| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant |
+| Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation, named resource bounds and chosen exhaustion behavior |
+| Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective and its error budget, dependency failure, observability, actionable-alert test, postmortem trigger, alert/rollback trigger |
+| External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Existing-solution search before building, owner, provenance, reproducibility, compatibility, cost categories, unavailable-dependency behavior |
+| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals |
 | Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | Unique zone, instant vs calendar vs duration, naive-input policy, public representation, injectable clock, fail-loud drift |
 | Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | Clock-relative validity, environment gate, idempotent refresh, production isolation, labeled demo |
 | Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner |
 
-- from: source[1], source[5]
+- from: source[1], source[5], source[7]
 
 ### D9 — Govern document decisions, not document volume
 
@@ -580,6 +606,23 @@ No side may resolve a conflict silently.
 
 ## Reconciliation log
 
+- **2026-08-28 — D8 minimum questions extended to settled engineering
+  scenarios:** five rows gained the questions industry practice has already
+  settled for their scenario: schema evolution and extensibility (state
+  integrity), named resource bounds and chosen exhaustion behavior
+  (performance/capacity), error budget, actionable-alert test, and
+  postmortem trigger (reliability/operations), existing-solution search and
+  cost categories (dependency), displaced complexity and task success/time
+  signals (experience). D6 now names postmortem output and monitoring
+  failure as category sources. The deeper judgment method — complexity
+  vocabulary, refactor triggers, the in-envelope comparison procedure,
+  build-vs-reuse accounting, standpoint declaration — is drafted in the
+  target contract `docs/contracts/engineering-judgment-discipline.md`.
+  Sources: owner direction of 2026-08-28; external materials mined from the
+  local archive under `archive/external/`, authorship-triaged per O8.
+  Verification remains partial until a real change answers these questions.
+  Plan: `docs/plans/2026-08-28-engineering-judgment-discipline.md`.
+  - from: source[7]
 - **2026-08-27 — recurring verbal rules proposed for recording:** D13 added.
   A general rule stated in conversation is proposed for durable recording in
   its owning document, with plain wording, reason, application, source, and

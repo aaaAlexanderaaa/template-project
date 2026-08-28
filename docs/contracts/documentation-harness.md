@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-07-28
+last_reconciled: 2026-08-28
 supersedes: []
 ---
 
@@ -91,6 +91,16 @@ against how large frontends actually decay.
 > distillation, and summary, not only increment. Document coupling makes it
 > easy for the same matter to appear in several documents, so that an update
 > touches only one of them.”
+
+### source[6] — 2026-08-28
+
+> “How many symbol systems does the project have now? I see different
+> encodings like J, D, and G, and it feels off.”
+
+The owner approved the redesign direction: identify invariants by owning
+contract and heading slug instead of letter codes, validate citation
+fragments mechanically, and migrate contract by contract starting with the
+newest.
 
 ## Operating modes
 
@@ -335,6 +345,29 @@ project is allowed to retain.
 
 - from: source[5]
 
+### H13 — Invariant citations resolve to headings
+
+A normative invariant is identified by its owning document and its heading,
+not by a letter code. New and migrated contracts title their invariants in
+plain language without a code prefix. A cross-document citation is a Markdown
+link whose fragment is the heading's slug — lowercased, punctuation removed,
+spaces replaced by hyphens, the same rule renderers use for heading anchors.
+Within a document, an invariant is cited by its short name in plain prose.
+
+A Markdown link whose fragment does not resolve to a heading of the target
+document produces a `fragment_resolution` finding. The default is advisory so
+an adopting repository can switch the check on before reconciling legacy
+links; a project that has completed its cutover may pin the rule to `error`.
+Renaming a heading is a reference-breaking change: every fragment pointing at
+the old heading is reconciled in the same change, never silently.
+
+Letter-prefixed codes (D, G, A, O, H, INV, J) remain valid in contracts that
+have not migrated. A contract migrates wholesale — headings and incoming
+references in one change — and records the cutover in its reconciliation log.
+Mixed form within one contract is a transition defect, not a style choice.
+
+- from: source[6]
+
 ## Required behaviors
 
 - `python3 scripts/check_docs.py` validates the current repository.
@@ -351,6 +384,9 @@ project is allowed to retain.
 - Projection relationships resolve to normative sources, and stale projections
   are visible without turning a harmless source-date change into a per-push
   blocker.
+- Markdown links carrying a heading fragment resolve to a heading of the
+  target document; `fragment_resolution` findings are advisory until a
+  project completes its cutover and retunes the rule.
 - Template validation permits placeholders only under `templates/` and the
   intentionally unconfigured architecture skeleton.
 
@@ -387,6 +423,7 @@ project is allowed to retain.
 | Optional style ownership stays optional and non-vacuous | Absent-file, partition, and tier-order fixtures | PASS — absent file changes nothing; unclaimed, double-claimed, vacuous corpus, and upward reference all fail |
 | Projection coupling stays reviewable without volume quotas | Relationship, lifecycle, and clock-controlled fixtures | PASS — narrow guide/source types, later-date advisory, configurable/off behavior, lifecycle compatibility, and reciprocal canonical supersession |
 | Severity is honest about what blocks | Advisory/error/off and `--strict` fixtures | PASS — time-based findings never fail a default run, and `off` survives `--strict` |
+| Heading fragments stay resolvable | Fragment fixtures + repository check | PASS — resolving, broken, strict-promoted, and off-under-strict cases |
 | Checker behavior remains stable | Standard-library unittest suite | PASS — full suite green |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
 
@@ -412,6 +449,14 @@ Verification run on 2026-07-28:
 - The same repository check with `--strict` -> PASS.
 - `git diff --check` and scoped trigger-duplication audits -> PASS with no
   findings.
+
+Verification run on 2026-08-28:
+
+- `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'`
+  -> PASS, 110 tests including the heading-fragment cases.
+- `uv run --python 3.11 python scripts/check_docs.py` -> PASS.
+- The same repository check with `--strict` -> PASS, zero fragment findings
+  with the pilot contract's slug citations in place.
 
 ## Reconciliation log
 
@@ -460,3 +505,13 @@ Verification run on 2026-07-28:
 - **2026-08-20 — publication language:** source anchors originally recorded in
   Chinese are published as English renderings of the original authorizations.
   Meaning is unchanged. Already-English source wording is left as recorded.
+- **2026-08-28 — invariant identifiers move to validated heading slugs:** the
+  owner found the accumulating letter codes (D, G, A, O, H, INV, J) arbitrary;
+  the deeper defect was that invariant references formed the repository's only
+  unvalidated reference layer, so a mistyped or orphaned code could rot
+  silently. H13 makes the heading the identifier, adds mechanical fragment
+  validation (advisory by default, retunable per H9), and migrates contract by
+  contract, newest first: the target engineering-judgment contract is the
+  pilot. Letter codes remain valid in unmigrated contracts. Plan:
+  `docs/plans/2026-08-28-invariant-identifier-redesign.md`.
+  - from: source[6]

@@ -28,6 +28,12 @@ Demonstration data invariants when development D8 activates those rows.
 It is not a catalog of historical pits. Adopters name project values in
 `ARCHITECTURE.md` runtime prompts only when the concern applies.
 
+`engineering-judgment-discipline.md` (`status: target`) owns the judgment
+method mined from the engineering reading set: complexity symptoms and
+refactor triggers, the in-envelope comparison procedure, build-vs-reuse
+accounting, standpoint declaration, and the self-bounding rule format. It
+becomes current only after a real project exercises it.
+
 Contracts that declare `## Source anchors` use dated `source[N]` headings and
 adjacent `- from: source[N]` citations. Once the section exists, definitions and
 references are bidirectional and mechanically enforced.

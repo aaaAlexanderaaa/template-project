@@ -27,3 +27,14 @@ selected from an external archive review: written parallel-work coordination
 (A9), durable recording of recurring verbal rules (D13), handoff template
 fields, authorship triage for external material (O8), and a plain-wording
 language style in the documentation authority map.
+
+`2026-08-28-engineering-judgment-discipline.md` lands the mined
+engineering-judgment material: G3 problem-report fields, extended D8 minimum
+questions, D6 postmortem feed, a new target contract for judgment method,
+and the engineering reading list.
+
+`2026-08-28-invariant-identifier-redesign.md` replaces letter-coded
+invariant identifiers with validated heading-slug citations: documentation
+harness H13 owns the convention and transition, the checker resolves link
+fragments (advisory first), and the engineering-judgment contract is the
+pilot cutover.

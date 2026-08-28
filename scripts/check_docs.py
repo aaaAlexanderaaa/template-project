@@ -121,6 +121,10 @@ CONFIGURABLE_RULES = {
     # Documentation still references a known template that the selected profile
     # does not require and the project has deleted.
     "trimmed_template_link": ADVISORY,
+    # A Markdown link points at a heading that no longer exists. Advisory by
+    # default so adopters can switch the check on before reconciling legacy
+    # links; a project that completed the H13 cutover may pin it to error.
+    "fragment_resolution": ADVISORY,
 }
 
 # Rules that describe unfinished adoption rather than a contradiction. Before
@@ -325,6 +329,22 @@ def heading_inventory(text: str) -> set[str]:
         if match := HEADING_RE.match(line):
             headings.add(normalized_heading(match.group(1)))
     return headings
+
+
+def heading_slug(value: str) -> str:
+    """Renderer-style anchor for a heading: lowercase, punctuation removed,
+    spaces replaced by hyphens."""
+
+    value = re.sub(r"[^\w\s-]", "", value.strip().lower())
+    return re.sub(r"\s", "-", value)
+
+
+def heading_slug_inventory(text: str) -> set[str]:
+    slugs: set[str] = set()
+    for line in text.splitlines():
+        if match := HEADING_RE.match(line):
+            slugs.add(heading_slug(match.group(1)))
+    return slugs
 
 
 def section_bounds(lines: list[str], heading: str) -> tuple[int, int] | None:
@@ -1351,7 +1371,7 @@ class DocumentationChecker:
                     continue
                 if PLACEHOLDER_RE.search(target):
                     continue
-                target_path = unquote(target.split("#", 1)[0])
+                target_path, _, fragment = unquote(target).partition("#")
                 if not target_path:
                     continue
                 if Path(target_path).is_absolute():
@@ -1370,6 +1390,19 @@ class DocumentationChecker:
                         path,
                         f"broken local Markdown link: {target}",
                         rule=self.trimmed_template_rule(resolved),
+                    )
+                elif (
+                    fragment
+                    and resolved.suffix == ".md"
+                    and fragment
+                    not in heading_slug_inventory(
+                        resolved.read_text(encoding="utf-8")
+                    )
+                ):
+                    self.add(
+                        path,
+                        f"heading fragment does not resolve: {target}",
+                        rule="fragment_resolution",
                     )
 
     def trimmed_template_rule(self, resolved: Path) -> str | None:

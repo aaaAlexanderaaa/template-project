@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-08-27"
+FIXED_TODAY = "2026-08-28"
 
 
 def load_checker_module():
@@ -1080,7 +1080,7 @@ last_reconciled: 2026-07-26
             ),
         )
         self.assert_advises(
-            "projection review is stale: source reconciled 2026-08-27 after guide 2026-07-27"
+            "projection review is stale: source reconciled 2026-08-28 after guide 2026-07-27"
         )
 
     def test_projection_staleness_can_be_switched_off(self) -> None:
@@ -1105,11 +1105,56 @@ last_reconciled: 2026-07-26
             "docs/guides/projection.md",
             self.canonical_guide(
                 projection_of="docs/contracts/development-discipline.md",
-                reconciled="2026-08-27",
+                reconciled="2026-08-28",
             ),
         )
         output = self.assert_passes()
         self.assertNotIn("projection review is stale", output)
+
+    def test_heading_fragment_resolves(self) -> None:
+        self.write(
+            "docs/contracts/frag-target.md",
+            self.basic_contract(
+                body="## Purpose\n\nOwned behavior.\n\n## Named section\n\nDetails.\n"
+            ),
+        )
+        self.write(
+            "docs/guides/linker.md",
+            self.canonical_guide()
+            + "\nSee [the named section](../contracts/frag-target.md#named-section).\n",
+        )
+        output = self.assert_passes()
+        self.assertNotIn("heading fragment", output)
+
+    def test_broken_heading_fragment_is_advisory(self) -> None:
+        self.write(
+            "docs/contracts/frag-target.md",
+            self.basic_contract(body="## Purpose\n\nOwned behavior.\n"),
+        )
+        self.write(
+            "docs/guides/linker.md",
+            self.canonical_guide()
+            + "\nSee [gone](../contracts/frag-target.md#removed-section).\n",
+        )
+        self.assert_advises("heading fragment does not resolve")
+
+    def test_fragment_resolution_off_survives_strict(self) -> None:
+        self.set_policy(
+            'fragment_resolution = "advisory"', 'fragment_resolution = "off"'
+        )
+        self.write(
+            "docs/contracts/frag-target.md",
+            self.basic_contract(body="## Purpose\n\nOwned behavior.\n"),
+        )
+        self.write(
+            "docs/guides/linker.md",
+            self.canonical_guide()
+            + "\nSee [gone](../contracts/frag-target.md#removed-section).\n",
+        )
+        result = self.run_checker(strict=True)
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 0, output)
+        self.assertNotIn("heading fragment", output)
 
     def test_completed_status_is_reserved_for_plans(self) -> None:
         self.write(
