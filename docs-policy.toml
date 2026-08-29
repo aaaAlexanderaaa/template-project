@@ -46,10 +46,10 @@ target_aging = "advisory"
 overdue_promise = "advisory"
 pending_abnormality_aging = "advisory"
 projection_staleness = "advisory"
-# A Markdown link points at a heading that no longer exists. Advisory while
-# the letter-code cutover (documentation-harness H13) is in progress; pin to
-# "error" once every contract cites invariants by heading slug.
-fragment_resolution = "advisory"
+# A Markdown link points at a heading that no longer exists. The letter-code
+# cutover completed on 2026-08-28, so a broken fragment is a structural error
+# here; adopters mid-cutover may keep this advisory.
+fragment_resolution = "error"
 # `adoption_gate` and `source_root_configuration` are deliberately unset:
 # leaving them out lets [adoption].stage decide (advisory while
 # `observed`/`baselined`, blocking from `scoped_enforcement` on). Set either

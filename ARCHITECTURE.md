@@ -55,10 +55,10 @@ boundaries:
 
 Link each interface to its normative contract under `docs/contracts/`.
 
-For every quality concern activated by development D8, link the current or
-target contract that owns its scenario, boundary, failure policy, observation
-surface, and escalation/exception policy. This structural map names the owner;
-it does not copy the threshold or policy.
+For every quality concern activated by [development § activate-concerns](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony),
+link the current or target contract that owns its scenario, boundary, failure
+policy, observation surface, and escalation/exception policy. This structural
+map names the owner; it does not copy the threshold or policy.
 
 ## 5. State and lifecycle
 

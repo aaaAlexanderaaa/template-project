@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-27
+last_reconciled: 2026-08-28
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -149,7 +149,7 @@ the owner explicitly chooses and can verify an immediate cutover.
 
 ## Normative invariants
 
-### O1 — Discover before translating
+### Discover before translating
 
 Onboarding begins read-only. It inventories architecture, source roots,
 existing documentation, contracts, tests, CI/release paths, trackers, owners,
@@ -157,7 +157,7 @@ and active delivery obligations before proposing replacements.
 
 - from: source[1], source[2]
 
-### O2 — Current and target truth stay separate
+### Current and target truth stay separate
 
 The baseline records what is true now, including contradictions and debt. An
 aspirational architecture or governance profile remains target/planning until
@@ -166,7 +166,7 @@ rewrite history or label an incomplete migration adopted.
 
 - from: source[2]
 
-### O3 — Existing authority is preserved until reconciled
+### Existing authority is preserved until reconciled
 
 Onboarding does not overwrite ADRs, contracts, tracker ownership, release
 procedures, or local agent instructions. Conflicts are catalogued and resolved
@@ -174,7 +174,7 @@ through the normal authority and supersession process.
 
 - from: source[2], source[3]
 
-### O4 — Adoption is explicitly scoped
+### Adoption is explicitly scoped
 
 The assessment names the governance profile, managed paths and boundaries,
 source roots, excluded scope, priority authority, and enforcement stage. The
@@ -188,7 +188,7 @@ not be mistaken for compliance.
 
 - from: source[1], source[2], source[3]
 
-### O5 — Historical debt does not become invisible or project-wide blocking
+### Historical debt does not become invisible or project-wide blocking
 
 Brownfield baseline debt has evidence, category, affected boundary, owner, and
 disposition. It does not block unrelated authorized delivery merely because it
@@ -197,7 +197,7 @@ must resolve it, bound it, or obtain an explicit exception.
 
 - from: source[1], source[3]
 
-### O6 — Stage transitions require evidence
+### Stage transitions require evidence
 
 An AI or checker may recommend a transition, but the adopting owner confirms
 profile and scope. Each transition records exit evidence, remaining gaps,
@@ -206,7 +206,7 @@ synonym for copying the template or passing one command.
 
 - from: source[1], source[2], source[3]
 
-### O7 — Transfer value is ranked before its carriers
+### Transfer value is ranked before its carriers
 
 A visiting agent must not have to infer the template's relative value from file
 volume, mechanical visibility, or how easy an artifact is to copy. Source
@@ -241,7 +241,7 @@ existing owners rather than copying their full rules.
 
 - from: source[4], source[5], source[7]
 
-### O8 — External material is triaged by authorship before adoption
+### External material is triaged by authorship before adoption
 
 External engineering material — another project's archive, a methodology
 write-up, a generated report — mixes records of different strength. Before any
@@ -333,7 +333,7 @@ transition behavior are not independently proven.
 
 Verified on 2026-08-27:
 
-- O8 and the O7 first-tier mention landed; the full Python 3.11 fixture suite
+- the authorship-triage invariant and the transfer-value-order invariant first-tier mention landed; the full Python 3.11 fixture suite
   and both repository checker modes pass;
 - verification remains partial: no visiting agent has yet applied the
   authorship triage to real external material under this contract.
@@ -382,3 +382,8 @@ Verified on 2026-08-27:
   verification step without fabricating adoption artifacts. `[adoption].stage`,
   `managed_paths`, `source_roots`, and `[templates].profile` are now checker
   inputs.
+- **2026-08-28 — cutover to heading-slug identifiers:** the O1–O8 codes were
+  retired; headings are now the identifiers per [documentation-harness § invariant-citations](documentation-harness.md#invariant-citations-resolve-to-headings).
+  Incoming references across living documents were rewritten to slug links in
+  the same change. Earlier entries in this log, completed plans, and dated
+  evidence keep the codes as written.

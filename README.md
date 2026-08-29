@@ -16,9 +16,9 @@ portability, and how much the target project must already exist:
 
 | Base priority | Understand first | Why first | Current owner |
 |---|---|---|---|
-| **P0** | Human–agent interaction and epistemic discipline | It decides whether facts are established, whether the right question is asked, and whether user authority and task scope are preserved; it affects every later judgment | [development discipline](docs/contracts/development-discipline.md) D10–D12; [governance boundary](docs/contracts/governance-decision-boundary.md) G1–G7 |
-| **P1** | Current truth, authority, ownership, dependency boundaries, and historical debt | It decides whether existing truth is overwritten, whether rules are copied, and whether local debt spreads across the project | [architecture](ARCHITECTURE.md); [development discipline](docs/contracts/development-discipline.md) D2–D3; [project adoption](docs/contracts/project-adoption.md) O2–O5 |
-| **P2** | Coherent end states, risk-scaled execution, fixture- and test-first material delivery, class-level guards, failure recovery, and the test for facts that leak across the system if left unnamed | It decides how a correct understanding becomes a verifiable complete delivery, and whether an unnamed default will have to be cut over later | [agent execution](docs/contracts/agent-execution-discipline.md) A1–A8; [development discipline](docs/contracts/development-discipline.md) D4–D9; recognition rule in [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
+| **P0** | Human–agent interaction and epistemic discipline | It decides whether facts are established, whether the right question is asked, and whether user authority and task scope are preserved; it affects every later judgment | [development discipline](docs/contracts/development-discipline.md) § research-unknowns – causal-mechanism; [governance boundary](docs/contracts/governance-decision-boundary.md) (all invariants) |
+| **P1** | Current truth, authority, ownership, dependency boundaries, and historical debt | It decides whether existing truth is overwritten, whether rules are copied, and whether local debt spreads across the project | [architecture](ARCHITECTURE.md); [development discipline](docs/contracts/development-discipline.md) § one-owner – coherent-end-state; [project adoption](docs/contracts/project-adoption.md) § current-vs-target – visible-debt |
+| **P2** | Coherent end states, risk-scaled execution, fixture- and test-first material delivery, class-level guards, failure recovery, and the test for facts that leak across the system if left unnamed | It decides how a correct understanding becomes a verifiable complete delivery, and whether an unnamed default will have to be cut over later | [agent execution](docs/contracts/agent-execution-discipline.md) § risk-selects-depth – smallest-route; [development discipline](docs/contracts/development-discipline.md) § outcomes-first – decisions-not-volume; recognition rule in [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P3** | Frontend, backend, cross-stack, style, data, operations, security, performance, time/calendar, demonstration data, and other conditional disciplines | They are high-value when the target project activates the matching boundary, and should be promoted by real risk | the matching domain contracts in [development discipline](docs/contracts/development-discipline.md) and the activated concern owner; time and demo invariants: [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P4** | Documentation topology, templates, adoption stage, policy manifests, the checker, and CI examples | They carry or enforce the discipline above; copyability is not the same as value priority | [documentation map](docs/README.md); [documentation harness](docs/contracts/documentation-harness.md) |
 
@@ -48,13 +48,13 @@ The minimum version is Python 3.11.
    one project shape.
 5. Complete a current-state `ARCHITECTURE.md` and the relevant contracts
    before the first governed product change. Date/time and operator-visible
-   demo data are D8 concerns: read them when they apply; do not fill a pit
+   demo data are [development § activate-concerns](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns: read them when they apply; do not fill a pit
    catalog when they do not.
 6. Material delivery must land a contract first. When a technical fact cannot
-   be learned read-only, use D1's disposable controlled-experiment path; the
+   be learned read-only, use [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable controlled-experiment path; the
    experiment must not become product behavior.
 7. If an agent drives the change, choose the smallest route in
-   `docs/contracts/agent-execution-discipline.md` A8. Only the high-risk route
+   [agent-execution § smallest-route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route). Only the high-risk route
    requires independent design review and a fresh-context evaluation.
 8. Configure `architecture-rules.toml`, or record why it does not apply.
 9. Run the unit tests and `python3 scripts/check_docs.py` with Python 3.11+.

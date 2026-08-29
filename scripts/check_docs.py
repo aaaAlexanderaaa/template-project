@@ -123,7 +123,7 @@ CONFIGURABLE_RULES = {
     "trimmed_template_link": ADVISORY,
     # A Markdown link points at a heading that no longer exists. Advisory by
     # default so adopters can switch the check on before reconciling legacy
-    # links; a project that completed the H13 cutover may pin it to error.
+    # links; a project that completed the identifier cutover pins it to error.
     "fragment_resolution": ADVISORY,
 }
 

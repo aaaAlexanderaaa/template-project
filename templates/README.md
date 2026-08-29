@@ -24,7 +24,7 @@ are replaced, and lifecycle metadata is set correctly.
 
 Clock, calendar, and demonstration-data rules are not a separate copyable
 template. They are owned by `docs/contracts/foundational-runtime-discipline.md`
-and named in `ARCHITECTURE.md` runtime prompts when D8 activates them.
+and named in `ARCHITECTURE.md` runtime prompts when [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates them.
 Backend, frontend, and cross-stack templates add delete-unless-activated
 sections for those concerns. Do not copy a pit catalog into an adopting
 architecture.

@@ -24,7 +24,7 @@ visibility. Use this base attention order:
    CI examples that carry or enforce the selected practices.
 
 This is the transfer-value order owned by
-`docs/contracts/project-adoption.md` O7, not the document authority order below
+[adoption § transfer-value-order](docs/contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers), not the document authority order below
 or a mandate to copy everything. Target evidence may promote an activated item
 from step 4. Learning and adoption use the same ranking; actual changes still
 require the target project's authority.
@@ -65,7 +65,7 @@ weakening a rule to make a check pass.
 
 - Do not deliver a material behavior change without a landed contract.
 - When a material technical fact is unknown, use the controlled experiment
-  path in development D1; the experiment is disposable evidence, not delivery.
+  path in [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty); the experiment is disposable evidence, not delivery.
 - Routine work may consume an applicable current contract without creating a
   standalone contract or plan.
 - If a material delivery contract is missing, draft and confirm it first.
@@ -75,7 +75,7 @@ weakening a rule to make a check pass.
 - Code comments and commit messages do not replace a normative contract.
 - A rule stated in conversation is not durable authority. When a general rule
  is stated or recurs, propose recording it in the document that owns its
- topic (development D13).
+ topic ([development § durable-recording](docs/contracts/development-discipline.md#recurring-verbal-rules-are-proposed-for-durable-recording)).
 
 The full discipline lives in
 `docs/contracts/development-discipline.md`.
@@ -95,7 +95,7 @@ The full discipline lives in
 - When priority is missing, present candidates and request direction; do not
   silently promote an agent recommendation into project priority.
 - Inside an authorized outcome, proceed with locally reversible engineering
-  choices in the G6 decision envelope. Investigate technical uncertainty before
+  choices in the [governance § decision-envelope](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default). Investigate technical uncertainty before
   escalating it as a product or risk decision.
 
 ## Working safely
@@ -111,7 +111,7 @@ The full discipline lives in
 
 ## Inquiry and collaboration
 
-Follow development D10-D12 and governance G7 rather than guessing or seeking
+Follow [development § research-unknowns](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed), [development § capability-fallback](docs/contracts/development-discipline.md#tool-failure-triggers-capability-preserving-fallback), and [development § causal-mechanism](docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism), plus [governance § route-uncertainty](docs/contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated), rather than guessing or seeking
 approval indiscriminately:
 
 - Research unfamiliar terms, named references, publications, and other
@@ -126,7 +126,7 @@ approval indiscriminately:
   risk acceptance belong to the user.
 - When several such human decisions depend on one another, use the
   decision-frontier procedure in `docs/guides/project-operation.md`; do not use
-  it to return researchable facts or G6 choices for serial approval.
+  it to return researchable facts or [governance § decision-envelope](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) choices for serial approval.
 - Answer the explicit question and point out an evidence-backed unasked issue
   when it is materially more consequential to the user's goal. Explain the
   causal connection without expanding implementation scope silently.
@@ -150,23 +150,25 @@ approval indiscriminately:
 ## Agent execution profile
 
 Choose the smallest route in
-`docs/contracts/agent-execution-discipline.md` A8:
+[agent-execution § smallest-route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route):
 
 - **Routine:** use existing authority, make the bounded reversible change, and
   run focused guards without a new plan.
 - **Controlled experiment:** when read-only investigation cannot answer a
-  technical fact, use development D1's disposable, contained evidence path.
-- **Material delivery:** land the contract, link only D8-activated concern
-  owners, and use the seven-phase fixture- and test-first loop.
-- **High-risk delivery:** add A3/A4 independent design review and fresh-context
-  completion evaluation to the material route.
+  technical fact, use [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable, contained evidence path.
+- **Material delivery:** land the contract, link only concern owners
+  activated through [development § activate-concerns](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony),
+  and use the seven-phase fixture- and test-first loop.
+- **High-risk delivery:** add independent design review ([agent-execution § independent-lenses](docs/contracts/agent-execution-discipline.md#high-risk-design-uses-independent-lenses))
+  and fresh-context completion evaluation ([agent-execution § independence-evidence](docs/contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label))
+  to the material route.
 
 Record the rationale for material/high-risk work; do not downgrade risk to
 bypass a missing reviewer. If required independent context is unavailable, keep
 only the affected completion layer open unless a human records a scoped
-exception. When no named task is executable, follow A5 and consume human-owned
+exception. When no named task is executable, follow [agent-execution § no-invented-priority](docs/contracts/agent-execution-discipline.md#work-selection-has-no-silent-idle-state-or-invented-priority) and consume human-owned
 portfolio priority rather than inventing it. When several agents or sessions
-work concurrently, follow A9: register scope on the project's written
+work concurrently, follow [agent-execution § written-coordination](docs/contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing): register scope on the project's written
 coordination surface, announce shared-surface changes, and re-read files
 before editing them.
 
@@ -178,7 +180,7 @@ before editing them.
 - Ground the accepted direction in the surface's concrete subject, audience,
   and user job. Critique type, layout, content, motion, and any signature
   element against the brief and generic defaults before implementation; route
-  missing product intent through G7 instead of inventing it.
+  missing product intent through [governance § route-uncertainty](docs/contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated) instead of inventing it.
 - Treat interface language as design: use user-recognizable terms, consistent
   action/result names, and actionable empty/error states. Keep disposable
   visual alternatives in `tmp/` and record stakeholder reactions in the raw

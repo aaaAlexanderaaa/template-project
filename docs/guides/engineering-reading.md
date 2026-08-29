@@ -15,7 +15,7 @@ so a future contributor or agent can re-mine originals instead of trusting
 someone's summary — including this one.
 
 Nothing here is normative. A lesson enters the repository only through the
-normal contract-first gate; `docs/contracts/project-adoption.md` O8 owns the
+normal contract-first gate; [adoption § authorship-triage](../contracts/project-adoption.md#external-material-is-triaged-by-authorship-before-adoption) owns the
 authorship triage, and the engineering-judgment contract's
 [rule-format invariant](../contracts/engineering-judgment-discipline.md#every-discipline-entry-carries-its-own-boundary)
 owns the writing format for anything adopted.
@@ -37,7 +37,7 @@ owns the writing format for anything adopted.
 
 ## Sources
 
-| Source | Authorship (O8) | Mine it for |
+| Source | Authorship ([adoption § authorship-triage](../contracts/project-adoption.md#external-material-is-triaged-by-authorship-before-adoption)) | Mine it for |
 |---|---|---|
 | [A Philosophy of Software Design, 2e (Chinese translation)](https://yingang.github.io/aposd2e-zh/) | Primary: named author (Ousterhout) | Complexity symptoms (change amplification, cognitive load, unknown unknowns), contact-frequency weighting, red-flag list, design-twice, "taking it too far" as a rule section |
 | [Google SRE book](https://sre.google/sre-book/table-of-contents/) and [Workbook](https://sre.google/workbook/table-of-contents/) | Primary: named organization | Error budgets as quantified risk acceptance, actionable-alert tests, blameless postmortems feeding defect categories, toil definition, per-system-type SLI selection |
@@ -53,14 +53,14 @@ These were considered on 2026-08-28 and rejected; do not re-propose without
 new evidence:
 
 - numeric targets from any source (10–20% design-investment ratios, 50% toil
-  caps, 80% coverage gates, function-length limits) — D9 rejects numeric
+  caps, 80% coverage gates, function-length limits) — [development § decisions-not-volume](../contracts/development-discipline.md#govern-document-decisions-not-document-volume) rejects numeric
   proxies for judgment, and the numbers are calibrated to other scales;
 - zero-dependency and static-allocation policies — infrastructure-specific
   answers; the template adopts cost accounting and named bounds instead;
 - on-call rotation design, multi-window burn-rate alerting, and other
-  Google-scale operating rituals — the D8 activation model already keeps
+  Google-scale operating rituals — the [development § activate-concerns](../contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activation model already keeps
   untriggered concerns free of ceremony;
-- blanket approval gates ("confirm before coding beyond N steps") — G6
+- blanket approval gates ("confirm before coding beyond N steps") — [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)
   deliberately removed them;
 - aphorisms without a checkable instruction (most of the 97-things list,
   most of hacker-laws) — they stay here as reading, not rules.

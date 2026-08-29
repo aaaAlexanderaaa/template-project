@@ -128,7 +128,7 @@ function of `[adoption].stage`.
 
 ## Normative invariants
 
-### H1 — Surface reconciliation is bidirectional
+### Surface reconciliation is bidirectional
 
 Every canonical `surface-contract`:
 
@@ -146,7 +146,7 @@ translated layer do not satisfy reconciliation.
 
 - from: source[1]
 
-### H2 — Contract source anchors are conditionally bidirectional
+### Contract source anchors are conditionally bidirectional
 
 A canonical contract may omit `## Source anchors`. If it declares that section,
 it defines unique, dated `### source[N] — YYYY-MM-DD` anchors. Material after
@@ -155,7 +155,7 @@ the source-anchor section must cite every defined anchor, and every
 
 - from: source[1]
 
-### H3 — Lifecycle aging is explicit and configurable
+### Lifecycle aging is explicit and configurable
 
 `docs-policy.toml` owns repository-wide aging defaults. A target contract or
 surface uses an explicit `review_due` when present; otherwise its deadline is
@@ -174,7 +174,7 @@ not used to expire current contracts merely because they are old.
 
 - from: source[1], source[2]
 
-### H4 — Templates are checked as first-class deliverables
+### Templates are checked as first-class deliverables
 
 `docs-policy.toml` declares the template inventory and required sections. The
 checker validates their frontmatter shape, section inventory, standard
@@ -190,7 +190,7 @@ overrides the profile.
 
 - from: source[1], source[3]
 
-### H5 — Architecture fitness is declared without pretending to be universal
+### Architecture fitness is declared without pretending to be universal
 
 `architecture-rules.toml` is machine-readable. In adopted mode it is either:
 
@@ -204,7 +204,7 @@ tests; the generic checker does not simulate an AST with regular expressions.
 
 - from: source[2]
 
-### H6 — Frontend abnormality records are optional but structured
+### Frontend abnormality records are optional but structured
 
 When a canonical surface includes `## Known abnormality classes`, each entry
 uses a stable `abnormality[slug]` record with state, evidence, guard, and
@@ -218,7 +218,7 @@ registry requirement.
 
 - from: source[1], source[2]
 
-### H7 — The checker is tested as infrastructure
+### The checker is tested as infrastructure
 
 Lifecycle relationship fields use repository-root-relative paths. Local
 Markdown links may be document-relative, but both forms must resolve inside the
@@ -231,7 +231,7 @@ links. Tests control their clock and write only to temporary directories.
 
 - from: source[1]
 
-### H8 — Enforcement stage and managed scope are inputs, not prose
+### Enforcement stage and managed scope are inputs, not prose
 
 `[adoption].stage` carries the enforcement stage from
 `docs/contracts/project-adoption.md` into the checker. In `observed` and
@@ -256,7 +256,7 @@ walk, so cost stays proportional to the project rather than to what it vendors.
 
 - from: source[3]
 
-### H9 — Findings carry a severity, and only errors block
+### Findings carry a severity, and only errors block
 
 Every finding is an error, an advisory, or off. Structural contradictions —
 missing metadata, unresolved citations, broken links, absent templates,
@@ -278,7 +278,7 @@ told how to migrate rather than losing the setting silently.
 
 - from: source[3]
 
-### H10 — Mechanical scope is honest
+### Mechanical scope is honest
 
 Every stable syntactic rule above has a checker or test. Rules requiring human
 judgment remain explicit review gates and evidence requirements rather than
@@ -286,7 +286,7 @@ being represented by a vacuous automated pass.
 
 - from: source[1], source[2]
 
-### H11 — Style ownership is declared by the project, or not at all
+### Style ownership is declared by the project, or not at all
 
 `style-ownership.toml` does not ship. A project that owns no style creates no
 file, the harness asks nothing of it, and that absence is a decision rather
@@ -309,12 +309,12 @@ the syntax expressing them differ per stack.
 
 - from: source[4]
 
-### H12 — Projection coupling and document stock stay visible
+### Projection coupling and document stock stay visible
 
 The documentation authority map owns the semantic rules for creating, merging,
 summarizing, and retiring documents. The checker does not impose file-count,
 line-count, directory-depth, or blanket retention-age budgets as quality or
-deletion proxies and does not infer duplication from similar prose. H3's
+deletion proxies and does not infer duplication from similar prose. The lifecycle-aging invariant's
 target-review, promise, and pending-evidence deadlines remain in force.
 
 Only a canonical current guide may declare `projection_of`, and it may target
@@ -345,7 +345,7 @@ project is allowed to retain.
 
 - from: source[5]
 
-### H13 — Invariant citations resolve to headings
+### Invariant citations resolve to headings
 
 A normative invariant is identified by its owning document and its heading,
 not by a letter code. New and migrated contracts title their invariants in
@@ -365,6 +365,11 @@ Letter-prefixed codes (D, G, A, O, H, INV, J) remain valid in contracts that
 have not migrated. A contract migrates wholesale — headings and incoming
 references in one change — and records the cutover in its reconciliation log.
 Mixed form within one contract is a transition defect, not a style choice.
+References inside completed plans, dated evidence files, blockquoted source
+anchors, and reconciliation-log entries are history: they stay as written,
+and a reader resolves an old code through the owning contract's
+reconciliation log. Dated verification entries inside a living contract's
+acceptance-evidence section are a current status surface, not history.
 
 - from: source[6]
 
@@ -514,4 +519,13 @@ Verification run on 2026-08-28:
   contract, newest first: the target engineering-judgment contract is the
   pilot. Letter codes remain valid in unmigrated contracts. Plan:
   `docs/plans/2026-08-28-invariant-identifier-redesign.md`.
+  - from: source[6]
+- **2026-08-28 — remaining namespaces migrated:** the owner directed the
+  cutover of the remaining contracts the same day. D, G, A, O, INV, and this
+  contract's own H codes were retired; foundational-runtime's labeled list
+  items became `###` headings so every invariant is a linkable target.
+  References in completed plans and dated evidence stay as written — they are
+  history, and old codes resolve through these log entries. With no unmigrated
+  contract left, this repository pins `fragment_resolution` to `error`; the
+  advisory default remains for adopters mid-cutover.
   - from: source[6]

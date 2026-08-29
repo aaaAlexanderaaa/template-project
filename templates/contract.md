@@ -55,9 +55,9 @@ Context: {{where the request, incident, standard, or decision was recorded}}
 
 ## Activated quality attributes
 
-List only concerns activated through development D8. This contract, or the
+List only concerns activated through [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). This contract, or the
 linked normative contract, must own the boundary and failure policy; do not
-copy the D8 trigger table.
+copy the [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) trigger table.
 
 | Quality concern | Scenario | Boundary/response | Guard or observation | Escalation/exception policy |
 |---|---|---|---|---|

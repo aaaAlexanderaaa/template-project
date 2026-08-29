@@ -125,7 +125,7 @@ blocker merely because the framework strongly prefers it.
 
 ## Normative invariants
 
-### G1 — Humans own direction and priority
+### Humans own direction and priority
 
 The framework consumes a declared priority source. It may identify missing
 outcomes, dependency conflicts, aging work, concentrated risk, or likely
@@ -138,7 +138,7 @@ own ranking into project authority.
 
 - from: source[1], source[2]
 
-### G2 — Blockers are narrow and evidence-backed
+### Blockers are narrow and evidence-backed
 
 An `execution_blocker` is allowed only for:
 
@@ -156,7 +156,7 @@ the human decision available where applicable.
 
 - from: source[2], source[3]
 
-### G3 — Advice preserves disagreement
+### Advice preserves disagreement
 
 Recommendations state their evidence, assumptions, expected benefit, cost,
 alternatives, and limitations. A rejected recommendation remains evidence or
@@ -172,7 +172,7 @@ decision carries the same fields plus its reversibility or switching cost.
 
 - from: source[2], source[7]
 
-### G4 — Exceptions are explicit, scoped, and reviewable
+### Exceptions are explicit, scoped, and reviewable
 
 An authorized owner may accept a governance exception when the governing rule
 permits human waiver. The record names the rule, scope, reason, date, owner,
@@ -182,7 +182,7 @@ authority owned elsewhere.
 
 - from: source[1], source[3]
 
-### G5 — Work selection consumes authority
+### Work selection consumes authority
 
 An agent may resume already authorized in-progress work, follow a declared
 priority order, and perform read-only portfolio diagnosis. When it discovers
@@ -192,7 +192,7 @@ existing policy already determines it.
 
 - from: source[1], source[2]
 
-### G6 — Delegated engineering work proceeds by default
+### Delegated engineering work proceeds by default
 
 Within an authorized outcome and managed scope, an agent or contributor may
 make a local engineering choice without requesting approval when the choice is
@@ -217,17 +217,17 @@ governance blocker.
 
 - from: source[4]
 
-### G7 — Missing knowledge is routed, not automatically escalated
+### Missing knowledge is routed, not automatically escalated
 
 Route uncertainty by what resolves it and by the cost of being wrong:
 
-- an unfamiliar, externally checkable fact or reference uses development D10's
+- an unfamiliar, externally checkable fact or reference uses [development § research-unknowns](development-discipline.md#unknown-references-are-researched-not-reconstructed)'s
   authoritative-source research rather than guessing;
-- an unavailable tool uses development D11's capability-preserving fallback
+- an unavailable tool uses [development § capability-fallback](development-discipline.md#tool-failure-triggers-capability-preserving-fallback)'s capability-preserving fallback
   before the task is described as blocked;
 - a missing technical fact first produces bounded read-only investigation and,
-  when necessary, the controlled experiment defined by development D1;
-- a locally reversible implementation choice inside G6 is made and verified by
+  when necessary, the controlled experiment defined by [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty);
+- a locally reversible implementation choice inside the decision-envelope invariant is made and verified by
   the implementer rather than returned for serial approval;
 - unknown product intent, a material design or decision trade-off, authority,
   expensive-to-reverse preference, or risk acceptance produces
@@ -253,7 +253,7 @@ the resulting material contract or beginning dependent delivery.
 
 The frontier is a sequencing method, not a reason to interrogate every local
 choice. Researchable facts, controlled technical learning, and choices inside
-G6 stay on their existing routes. If the decision scope cannot remain coherent
+the decision-envelope invariant stay on their existing routes. If the decision scope cannot remain coherent
 in one session, split it by user outcome or contract boundary rather than
 substituting an arbitrary question limit for unresolved branches.
 
@@ -271,12 +271,12 @@ recommendation or contract, but cannot silently become either.
 - Missing priority produces a decision request, not agent-authored direction.
 - Choices inside the engineering decision envelope proceed without serial human
   approval; material assumptions remain visible in the plan or evidence.
-- Missing knowledge follows G7: research checkable references, seek a
+- Missing knowledge follows the route-uncertainty invariant: research checkable references, seek a
   capability-preserving tool fallback, investigate technical facts, make
   reversible local choices, and present bounded options only for decisions
   that belong to the human owner.
-- Dependent human decisions use G7's decision frontier and explicit
-  shared-understanding confirmation without moving facts or G6 choices into an
+- Dependent human decisions use the route-uncertainty invariant's decision frontier and explicit
+  shared-understanding confirmation without moving facts or the decision-envelope invariant choices into an
   interview.
 - A blocker includes scope, evidence, recovery, and available human authority.
 - A risk or problem report names who bears the impact, its rough magnitude,
@@ -339,9 +339,9 @@ Verified on 2026-07-28:
 
 Verified on 2026-08-06:
 
-- D10-D12 and G7 have one explicit uncertainty route across the agent,
+- [development § research-unknowns](development-discipline.md#unknown-references-are-researched-not-reconstructed), [development § capability-fallback](development-discipline.md#tool-failure-triggers-capability-preserving-fallback), [development § causal-mechanism](development-discipline.md#analysis-exposes-the-decisive-causal-mechanism), and the route-uncertainty invariant have one explicit uncertainty route across the agent,
   contributor, README, and current operating-guide projections;
-- dependency-aware human decisions have one normative trigger in G7; the
+- dependency-aware human decisions have one normative trigger in the route-uncertainty invariant; the
   operating guide may explain frontier sequencing but cannot broaden the set
   of decisions returned to the owner;
 - the fixed-date documentation fixtures were reconciled with the new canonical
@@ -387,3 +387,8 @@ Verified on 2026-08-06:
 - **2026-08-20 — publication language:** source anchors are published as
   English renderings of the original authorizations. Contracts that cite the
   same statement use the same wording; meaning is unchanged.
+- **2026-08-28 — cutover to heading-slug identifiers:** the G1–G7 codes were
+  retired; headings are now the identifiers per [documentation-harness § invariant-citations](documentation-harness.md#invariant-citations-resolve-to-headings).
+  Incoming references across living documents were rewritten to slug links in
+  the same change. Earlier entries in this log, completed plans, and dated
+  evidence keep the codes as written.

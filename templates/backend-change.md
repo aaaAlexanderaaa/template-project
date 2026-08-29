@@ -30,7 +30,7 @@ supersedes: []
 
 ## Activated quality attributes
 
-Retain only rows activated through development D8. Link another current/target
+Retain only rows activated through [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). Link another current/target
 contract when it owns the boundary; do not restate its threshold here.
 
 | Concern | Normative owner | Scenario and boundary | Failure/escalation policy | Evidence surface |
@@ -86,7 +86,7 @@ Invalid transitions:
 
 ## Time and calendar
 
-Delete this section unless development D8 activates Time and calendar.
+Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar.
 
 - Business timezone: `{{IANA name or not_applicable rationale}}`
 - Instant storage: `{{timezone-aware absolute moments; representation changes do not rewrite history}}`
@@ -98,7 +98,7 @@ Delete this section unless development D8 activates Time and calendar.
 
 ## Demonstration data
 
-Delete this section unless development D8 activates Demonstration data.
+Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Demonstration data.
 
 - Relative business day: `{{in-progress / upcoming / completed relative to clock}}`
 - Environment gate: `{{environments that may rewrite; production fail-closed}}`
@@ -108,7 +108,7 @@ Delete this section unless development D8 activates Demonstration data.
 
 ## Authorization and capability boundary
 
-Delete this section unless development D8 activates the security/privacy
+Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates the security/privacy
 concern for this change.
 
 | Caller/role | Necessary operations | Explicitly hidden operations | Enforcement |

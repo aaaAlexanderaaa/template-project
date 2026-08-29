@@ -253,13 +253,13 @@ rationale = "{rationale}"
     def test_template_repository_passes(self) -> None:
         self.assert_passes(root=REPOSITORY_ROOT)
 
-    def test_d8_routes_foundational_runtime_concerns(self) -> None:
-        """Time and demo stay D8 concerns with a method owner, not a pit catalog.
+    def test_activated_concerns_route_foundational_runtime(self) -> None:
+        """Time and demo stay activated concerns with a method owner.
 
         The wiring exists because undeclared clocks and hardcoded demo dates
         become full-system retrofits. A mandatory sibling-incident register
-        would be ceremony; deleting D8 routing without a successor owner is
-        the original defect class.
+        would be ceremony; deleting the concern routing without a successor
+        owner is the original defect class.
         """
 
         development = (REPOSITORY_ROOT / "docs/contracts/development-discipline.md").read_text(
@@ -272,8 +272,8 @@ rationale = "{rationale}"
         ).read_text(encoding="utf-8")
         self.assertIn("contract_role: governance", contract)
         self.assertIn("## How to read this", contract)
-        self.assertIn("INV-T1", contract)
-        self.assertIn("INV-D1", contract)
+        self.assertIn("### One business timezone", contract)
+        self.assertIn("### Demo data is a runtime", contract)
         self.assertNotIn("Asia/Shanghai", contract)
         self.assertNotIn("Sibling retrofit classes", contract)
         architecture = (REPOSITORY_ROOT / "ARCHITECTURE.md").read_text(encoding="utf-8")
@@ -1126,7 +1126,10 @@ last_reconciled: 2026-07-26
         output = self.assert_passes()
         self.assertNotIn("heading fragment", output)
 
-    def test_broken_heading_fragment_is_advisory(self) -> None:
+    def test_broken_heading_fragment_is_advisory_when_retuned(self) -> None:
+        self.set_policy(
+            'fragment_resolution = "error"', 'fragment_resolution = "advisory"'
+        )
         self.write(
             "docs/contracts/frag-target.md",
             self.basic_contract(body="## Purpose\n\nOwned behavior.\n"),
@@ -1138,9 +1141,21 @@ last_reconciled: 2026-07-26
         )
         self.assert_advises("heading fragment does not resolve")
 
+    def test_broken_heading_fragment_blocks_by_default(self) -> None:
+        self.write(
+            "docs/contracts/frag-target.md",
+            self.basic_contract(body="## Purpose\n\nOwned behavior.\n"),
+        )
+        self.write(
+            "docs/guides/linker.md",
+            self.canonical_guide()
+            + "\nSee [gone](../contracts/frag-target.md#removed-section).\n",
+        )
+        self.assert_fails_with("heading fragment does not resolve")
+
     def test_fragment_resolution_off_survives_strict(self) -> None:
         self.set_policy(
-            'fragment_resolution = "advisory"', 'fragment_resolution = "off"'
+            'fragment_resolution = "error"', 'fragment_resolution = "off"'
         )
         self.write(
             "docs/contracts/frag-target.md",

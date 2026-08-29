@@ -61,26 +61,26 @@ about technical reversibility before turning it into a human decision.
 
 ### 3. Resolve uncertainty without guessing or serial approval
 
-Use the uncertainty route owned by development D10-D12 and governance G7:
+Use the uncertainty route owned by [development § research-unknowns](../contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed), [development § capability-fallback](../contracts/development-discipline.md#tool-failure-triggers-capability-preserving-fallback), and [development § causal-mechanism](../contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism), plus [governance § route-uncertainty](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated):
 
 - inspect repository evidence, then consult primary or official external
   sources with available network or retrieval tools for unfamiliar checkable
   references;
 - when one tool is unavailable, identify its required capability and seek a
   fallback that preserves semantics, safety, and evidence strength;
-- investigate missing technical facts, using a bounded D1 experiment only when
+- investigate missing technical facts, using a bounded [development § contract-first](../contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty) experiment only when
   read-only evidence cannot answer them;
-- make and verify locally reversible engineering choices inside G6;
+- make and verify locally reversible engineering choices inside [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default);
 - present a bounded option set when the human owner must decide product intent,
   a material trade-off, an expensive-to-reverse preference, authority, or risk
   acceptance.
 
 #### Work a dependent decision frontier
 
-When G7 classifies several unresolved items as genuine human decisions and
+When [governance § route-uncertainty](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated) classifies several unresolved items as genuine human decisions and
 their answers depend on one another:
 
-1. write the decision dependencies, keeping researched facts and G6 local
+1. write the decision dependencies, keeping researched facts and [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) local
    choices outside the graph;
 2. identify the current frontier: every decision whose prerequisites are
    settled and whose answer does not depend on another open item in this round;
@@ -107,21 +107,21 @@ expand its scope.
 
 ### 4. Run the change-execution loop
 
-Use A8 in the agent execution contract to choose the smallest route. Routine
+Use [agent-execution § smallest-route](../contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route) in the agent execution contract to choose the smallest route. Routine
 work consumes existing authority and focused guards without creating a plan.
-An unresolved technical fact uses development D1's disposable experiment path
+An unresolved technical fact uses [development § contract-first](../contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable experiment path
 before delivery. Material delivery uses the seven-phase plan and only the
-concerns activated through development D8. Date/time and operator-visible
+concerns activated through [development § activate-concerns](../contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). Date/time and operator-visible
 demo or seed data route to
 [foundational runtime](../contracts/foundational-runtime-discipline.md)
 rather than being treated as optional localization. High-risk work adds the independent
-design and fresh-context completion evidence required by A1/A3/A4.
+design and fresh-context completion evidence required by [agent-execution § risk-selects-depth](../contracts/agent-execution-discipline.md#risk-selects-the-execution-depth), [agent-execution § independent-lenses](../contracts/agent-execution-discipline.md#high-risk-design-uses-independent-lenses), and [agent-execution § independence-evidence](../contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label).
 
 The route links its normative owners rather than restating their boundaries in
 the plan. Use the agent execution profile only at the depth selected during
 onboarding or subsequently authorized by the project owner.
 
-When several agents or sessions work the repository concurrently, A9 requires
+When several agents or sessions work the repository concurrently, [agent-execution § written-coordination](../contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing) requires
 written coordination: check the declared coordination surface and register
 scope before starting, announce shared-surface changes, re-read files before
 editing, and let the guard suite catch collisions.
@@ -141,7 +141,7 @@ Return higher-layer results to the human-owned portfolio source; the governance
 framework does not silently reprioritize remaining work.
 
 Before reporting a layer closed, propose durable recording for any general
-rule the owner stated during the work (development D13); a rule left only in
+rule the owner stated during the work ([development § durable-recording](../contracts/development-discipline.md#recurring-verbal-rules-are-proposed-for-durable-recording)); a rule left only in
 chat history decays with the context that carries it.
 
 ## Verification
@@ -152,7 +152,7 @@ chat history decays with the context that carries it.
   have capability-preserving fallback evidence or explicit limitations, and
   human option sets are reserved for decisions the owner actually owns.
 - Dependent human decisions move through prerequisite-safe rounds, exclude
-  facts and G6 choices, and end with explicit shared-understanding confirmation.
+  facts and [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) choices, and end with explicit shared-understanding confirmation.
 - Analysis explains the causal mechanism and bounds any surfaced unasked issue
   to evidence and authorized scope.
 - The execution plan links the applicable current/target contracts.

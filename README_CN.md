@@ -12,9 +12,9 @@
 
 | 基础优先级 | 优先理解 | 为什么先看 | 现有 owner |
 |---|---|---|---|
-| **P0** | 人与 agent 的交互和认知纪律 | 它决定事实是否被查清、问题是否问对、用户权威和任务范围是否被保留，并影响之后的每一次判断 | [development discipline](docs/contracts/development-discipline.md) D10-D12；[governance boundary](docs/contracts/governance-decision-boundary.md) G1-G7 |
-| **P1** | 当前事实、权威、所有权、依赖边界与历史债务 | 它决定会不会覆盖现有真相、复制规则或把局部债务扩散到整个项目 | [architecture](ARCHITECTURE.md)；[development discipline](docs/contracts/development-discipline.md) D2-D3；[project adoption](docs/contracts/project-adoption.md) O2-O5 |
-| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护、失败恢复，以及「未命名就会渗到全系统」的识别规则 | 它决定如何把正确理解变成可验证的完整交付，以及一个未声明的默认会不会变成日后的全量切换 | [agent execution](docs/contracts/agent-execution-discipline.md) A1-A8；[development discipline](docs/contracts/development-discipline.md) D4-D9；识别规则见 [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
+| **P0** | 人与 agent 的交互和认知纪律 | 它决定事实是否被查清、问题是否问对、用户权威和任务范围是否被保留，并影响之后的每一次判断 | [development discipline](docs/contracts/development-discipline.md) § research-unknowns – causal-mechanism；[governance boundary](docs/contracts/governance-decision-boundary.md)（全部 invariant） |
+| **P1** | 当前事实、权威、所有权、依赖边界与历史债务 | 它决定会不会覆盖现有真相、复制规则或把局部债务扩散到整个项目 | [architecture](ARCHITECTURE.md)；[development discipline](docs/contracts/development-discipline.md) § one-owner – coherent-end-state；[project adoption](docs/contracts/project-adoption.md) § current-vs-target – visible-debt |
+| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护、失败恢复，以及「未命名就会渗到全系统」的识别规则 | 它决定如何把正确理解变成可验证的完整交付，以及一个未声明的默认会不会变成日后的全量切换 | [agent execution](docs/contracts/agent-execution-discipline.md) § risk-selects-depth – smallest-route；[development discipline](docs/contracts/development-discipline.md) § outcomes-first – decisions-not-volume；识别规则见 [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P3** | 前端、后端、跨端、样式、数据、运维、安全、性能、时钟/日历、演示数据等条件性纪律 | 它们在目标项目激活相关边界时价值很高，并应按真实风险上调 | [development discipline](docs/contracts/development-discipline.md) 的对应领域契约及被激活的 concern owner；时间与演示的不变量：[foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P4** | 文档拓扑、模板、adoption stage、policy manifest、检查器和 CI 示例 | 它们承载或执行前面的纪律，但可复制性不等于价值优先级 | [documentation map](docs/README.md)；[documentation harness](docs/contracts/documentation-harness.md) |
 
@@ -36,12 +36,12 @@
    `[adoption].stage`、`source_roots`、`managed_paths` 与
    `[templates].profile`。检查器读取这些字段，而不是假设某一种项目形态。
 5. 在写首个受治理的产品变更前完成当前态 `ARCHITECTURE.md` 和相关契约。
-   日期时间和操作员可见的演示数据是 D8 concern：用到时再读，不要在
+   日期时间和操作员可见的演示数据是 [development § activate-concerns](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concern：用到时再读，不要在
    用不到时填一份踩坑表。
-6. material 交付必须先落盘契约；只读调查无法回答的技术事实，可以先走 D1
+6. material 交付必须先落盘契约；只读调查无法回答的技术事实，可以先走 [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)
    的一次性受控实验路径，实验结果不能直接成为产品行为。
 7. 如果由 agent 推进变更，按
-   `docs/contracts/agent-execution-discipline.md` A8 选择最小执行路径；只有
+   [agent-execution § smallest-route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route) 选择最小执行路径；只有
    high-risk 路径要求独立设计评审与换上下文验收。
 8. 配置 `architecture-rules.toml`，或明确记录为什么不适用。
 9. 使用 Python 3.11+ 运行单元测试和 `python3 scripts/check_docs.py`。

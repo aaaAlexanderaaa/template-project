@@ -30,7 +30,7 @@ In scope:
 
 - naming complexity by symptom and weighting it by contact frequency;
 - checkable triggers for refactoring and rewriting;
-- the comparison procedure for non-trivial choices inside governance G6's
+- the comparison procedure for non-trivial choices inside [governance § decision-envelope](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)'s
   engineering decision envelope;
 - build-vs-reuse accounting;
 - standpoint declaration in material analysis;
@@ -38,11 +38,11 @@ In scope:
 
 Out of scope:
 
-- product direction, priority, and risk acceptance (governance G1);
-- the reporting fields for risks and recommendations (governance G3 owns
+- product direction, priority, and risk acceptance ([governance § human-direction](governance-decision-boundary.md#humans-own-direction-and-priority));
+- the reporting fields for risks and recommendations ([governance § advice-preserves-disagreement](governance-decision-boundary.md#advice-preserves-disagreement) owns
   those; this contract's standpoint vocabulary informs them);
 - universal numeric targets, coverage gates, or file-size limits
-  (development D9 rejects them);
+  ([development § decisions-not-volume](development-discipline.md#govern-document-decisions-not-document-volume) rejects them);
 - a catalog of scenario rules. Specific problems get specific analysis, but
   the scenario has usually been trodden before: the rule-format invariant
   below defines how such knowledge is written down, not what it must say.
@@ -74,14 +74,14 @@ Out of scope:
 > “How many symbol systems does the project have now? I see different
 > encodings like J, D, and G, and it feels off.”
 
-The owner approved the citation redesign in
-`docs/contracts/documentation-harness.md` H13 and named this contract — one
-day old, target status, fourteen references — as the pilot cutover.
+The owner approved the citation redesign in [documentation-harness § invariant-citations](documentation-harness.md#invariant-citations-resolve-to-headings)
+and named this contract — one day old, target status, fourteen references —
+as the pilot cutover.
 
 ## Source materials
 
 The invariants below were mined from an archived reading set, triaged by
-authorship per adoption O8: *A Philosophy of Software Design* (Ousterhout;
+authorship per [adoption § authorship-triage](project-adoption.md#external-material-is-triaged-by-authorship-before-adoption): *A Philosophy of Software Design* (Ousterhout;
 named human author), the Google SRE book and workbook (named organization),
 TigerBeetle's TIGER_STYLE (named engineering organization), the Grug Brained
 Developer essay (pseudonymous practitioner essay), *97 Things Every Software
@@ -105,7 +105,7 @@ frequency: complexity in code nobody touches is nearly harmless, while
 complexity on a hot path compounds.
 
 *Taking it too far:* the symptoms are a vocabulary for judgment, not a
-counting metric. One-off scripts and disposable D1 experiments are exempt.
+counting metric. One-off scripts and disposable [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty) experiments are exempt.
 A low-traffic region that is a failure source is still a defect, not a
 complexity bargain.
 
@@ -135,14 +135,14 @@ what new concept, abstraction, or moving part this change introduces and
 what it buys.
 
 *Taking it too far:* triggers are pause-and-compare signals, not mandates
-and not CI counters. D6 still bounds expansion: a trigger is not permission
+and not CI counters. [development § fix-the-category](development-discipline.md#fix-the-category-not-only-the-symptom) still bounds expansion: a trigger is not permission
 for unbounded cleanup, and scope discipline still applies.
 
 - from: source[1], source[2]
 
 ### Non-trivial choices inside the envelope use a comparison procedure
 
-Governance G6 lets reversible engineering choices proceed without serial
+[governance § decision-envelope](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) lets reversible engineering choices proceed without serial
 approval. When such a choice is non-trivial — several defensible shapes,
 different long-term costs — the implementer:
 
@@ -159,8 +159,8 @@ different long-term costs — the implementer:
 5. when only one solution seems to exist for a material choice, seeks a
    second opinion or records why no alternative exists.
 
-*Taking it too far:* routine A8 work uses none of this. The procedure
-produces decision evidence, not approval requests; G6's default still
+*Taking it too far:* routine [agent-execution § smallest-route](agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route) work uses none of this. The procedure
+produces decision evidence, not approval requests; [governance § decision-envelope](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)'s default still
 stands. When every candidate is bad, the findings drive a third candidate —
 they do not license endless divergence.
 
@@ -193,7 +193,7 @@ product, engineering, or budget — and keeps per-standpoint conclusions
 separate instead of averaging them into one verdict. The same fact can be a
 defect from one standpoint and immaterial from another; naming the
 standpoint is what makes "impact" and "does not matter under these
-conditions" decidable in governance G3's reports. A project may declare its
+conditions" decidable in [governance § advice-preserves-disagreement](governance-decision-boundary.md#advice-preserves-disagreement)'s reports. A project may declare its
 own goal ordering (for example safety above performance above developer
 experience) as the referee when standpoints conflict; the ordering is the
 owner's declaration, not this contract's default.
@@ -215,12 +215,13 @@ instruction, the reason, the constraint that grounds it, and the conditions
 under which it does not apply. Scenario-specific knowledge — CSS
 architecture, container build caching, memory-exhaustion behavior, schema
 evolution, distributed-system assumptions — is written in this format and
-mounted as a D8-style activated concern: present when the scenario is
+mounted as an activated concern in the sense of
+[development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony): present when the scenario is
 triggered, absent when it is not, never a universal questionnaire.
 
 Before writing a new scenario rule, look for the existing map: the scenario
 has usually been trodden, and the trodden map — with its authorship triaged
-per O8 — beats a freshly invented one.
+per [adoption § authorship-triage](project-adoption.md#external-material-is-triaged-by-authorship-before-adoption) — beats a freshly invented one.
 
 *Taking it too far:* a rule without a boundary is incomplete, but a boundary
 without a rule is not a deliverable; this format serves real rules, it does
@@ -231,11 +232,11 @@ not manufacture them.
 ## Forbidden behaviors
 
 - Do not convert red flags, symptom counts, or assertion densities into
-  mechanical targets; D9 rejects numeric proxies for judgment.
+  mechanical targets; [development § decisions-not-volume](development-discipline.md#govern-document-decisions-not-document-volume) rejects numeric proxies for judgment.
 - Do not manufacture options, standpoints, or complexity claims to look
   thorough.
 - Do not import vocabulary, metaphors, or slogans from source materials into
-  project documents; O8's pollution rule applies.
+  project documents; [adoption § authorship-triage](project-adoption.md#external-material-is-triaged-by-authorship-before-adoption)'s pollution rule applies.
 - Do not use the refactor triggers to expand an authorized change beyond its
   scope.
 - Do not average conflicting standpoints into a single false consensus.
@@ -244,11 +245,11 @@ not manufacture them.
 
 This contract is implemented when:
 
-- the D8 rows strengthened on 2026-08-28 route to this contract where the
+- the [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) rows strengthened on 2026-08-28 route to this contract where the
   judgment method is needed, and entrypoints expose it without restating it;
 - at least one real material change has used the comparison procedure and
   recorded its outcome as decision evidence;
-- at least one real problem report has used the G3 fields informed by
+- at least one real problem report has used the [governance § advice-preserves-disagreement](governance-decision-boundary.md#advice-preserves-disagreement) fields informed by
   declared standpoints.
 
 Verification stays `pending` until then: the text is mined and reviewed,

@@ -45,9 +45,9 @@ Do not downgrade risk merely because an independent reviewer is unavailable.
 
 ## Activated concerns and owners
 
-List only concerns activated through development D8. The linked current or
+List only concerns activated through [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). The linked current or
 target contract owns each boundary, failure policy, and escalation/exception
-policy; this plan owns only steps and evidence. Do not copy the D8 trigger table.
+policy; this plan owns only steps and evidence. Do not copy the [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) trigger table.
 
 | Activated concern | Normative owner and section | Implementation steps | Evidence |
 |---|---|---|---|

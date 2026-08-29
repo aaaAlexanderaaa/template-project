@@ -136,7 +136,7 @@ Do not restate the shared layer's rules here; name what this surface consumes.
 
 ## Time, locale, and demonstration data
 
-Delete this section unless development D8 activates Time and calendar or
+Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar or
 Demonstration data. Device names are not the business timezone.
 
 - Business timezone consumed: `{{IANA or not_applicable}}`
@@ -149,7 +149,7 @@ Demonstration data. Device names are not the business timezone.
 ## Activated quality attributes
 
 Experience concerns above are intrinsic to this surface. List only additional
-D8 concerns activated by its implementation or operation, and link their
+[development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns activated by its implementation or operation, and link their
 normative owner rather than copying a threshold.
 
 | Concern | Normative owner | Boundary/failure policy | Surface evidence |

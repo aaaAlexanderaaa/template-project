@@ -32,7 +32,7 @@ The normative behavior is defined by the
 
 ### 1. Orient by transfer value
 
-Before selecting files or enforcement mechanisms, use project-adoption O7's
+Before selecting files or enforcement mechanisms, use [project-adoption § transfer-value-order](../contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers)'s
 base order:
 
 `interaction and epistemic discipline` → `truth, ownership, and boundaries` →
@@ -44,7 +44,7 @@ state, security, reliability, data, or other boundary promotes its applicable
 discipline. Learning and adoption draw from the same values, while any write or
 enforcement change remains subject to the target project's authority.
 
-Within the first tier, weigh external material by authorship (O8) before it
+Within the first tier, weigh external material by authorship ([adoption § authorship-triage](../contracts/project-adoption.md#external-material-is-triaged-by-authorship-before-adoption)) before it
 informs any selection: dated human decisions and instructions are primary
 evidence, machine-generated narrative is a lead to verify, and its vocabulary
 does not enter project documents.

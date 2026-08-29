@@ -24,7 +24,7 @@ current-state preservation, managed scope, and staged enforcement.
 
 `foundational-runtime-discipline.md` owns the recognition rule for facts
 that leak across the system if left unnamed, and the Time and calendar and
-Demonstration data invariants when development D8 activates those rows.
+Demonstration data invariants when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates those rows.
 It is not a catalog of historical pits. Adopters name project values in
 `ARCHITECTURE.md` runtime prompts only when the concern applies.
 

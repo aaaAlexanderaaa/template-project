@@ -20,7 +20,7 @@ or newer and have no third-party package dependencies.
 7. For template adoption, follow `docs/guides/onboarding.md`, preserve existing
    authority, and record the human-confirmed profile, managed scope, priority
    source, and adoption stage before enabling broad gates.
-8. Resolve uncertainty through development D10-D12 and governance G7: research
+8. Resolve uncertainty through [development § research-unknowns](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed), [development § capability-fallback](docs/contracts/development-discipline.md#tool-failure-triggers-capability-preserving-fallback), and [development § causal-mechanism](docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism), plus [governance § route-uncertainty](docs/contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated): research
    unfamiliar references, seek a capability-preserving tool fallback, and ask
    for a bounded human choice only when the decision belongs outside the
    reversible engineering envelope. When several such decisions depend on one

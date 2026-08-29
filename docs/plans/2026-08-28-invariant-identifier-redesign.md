@@ -114,3 +114,10 @@ Remaining transition debt: D, G, A, O, H, and INV namespaces keep their
 letter codes until each contract's wholesale cutover; `fragment_resolution`
 stays advisory until then. No date is promised for those cutovers — each is
 recorded in its contract's reconciliation log when it happens.
+
+**2026-08-28 addendum:** the owner directed the remaining cutovers the same
+day. All six namespaces (D, G, A, O, H, INV) migrated wholesale, references
+in living documents were rewritten to slug links, completed plans and dated
+evidence were left as history, and `fragment_resolution` is now pinned to
+`error` in this repository. Each contract's reconciliation log carries its
+own cutover entry.

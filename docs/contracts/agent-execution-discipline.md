@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-08-27
+last_reconciled: 2026-08-28
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -91,13 +91,13 @@ Out of scope:
   answer a named technical question that read-only investigation cannot answer;
   it creates evidence but no product contract or public behavior.
 - **Activated concern:** a quality, compatibility, state, experience, or
-  operational boundary triggered by the change traits in development D8.
+  operational boundary triggered by the change traits in [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony).
 
 - from: source[1], source[2]
 
 ## Normative invariants
 
-### A1 — Risk selects the execution depth
+### Risk selects the execution depth
 
 Routine work may use the base development discipline. Material work uses the
 phased loop below. High-risk work additionally requires independent
@@ -108,7 +108,7 @@ not made routine merely to avoid review.
 
 - from: source[1]
 
-### A2 — Material delivery uses a fixture- and test-first loop
+### Material delivery uses a fixture- and test-first loop
 
 When delivery intent and the material facts are known, the default seven phases
 are:
@@ -125,16 +125,16 @@ are:
 If a phase is not applicable, the plan records why. Skipping a phase silently
 is not allowed.
 
-Fresh context is not required for phase 7 unless A1 classifies the work as
-high-risk. If a material technical fact is still unknown, use development D1's
-controlled experiment before this delivery loop. Its record satisfies D1's
+Fresh context is not required for phase 7 unless the risk-selects-depth invariant classifies the work as
+high-risk. If a material technical fact is still unknown, use [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s
+controlled experiment before this delivery loop. Its record satisfies [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s
 containment, expiry, cleanup, and concern-routing requirements and records the
 result and disposition. It does not require a fictional product contract or
 failing acceptance test for behavior not yet selected.
 
 - from: source[1], source[4]
 
-### A3 — High-risk design uses independent lenses
+### High-risk design uses independent lenses
 
 Before implementation, reviewers evaluate the same contract and baseline
 evidence through at least these lenses:
@@ -144,13 +144,13 @@ evidence through at least these lenses:
 - engineering cost, maintenance, and extensibility.
 
 A separate synthesis identifies agreement, disagreement, residual risk, and
-decisions requiring human authority. Every concern activated by development D8
+decisions requiring human authority. Every concern activated by [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
 selects an appropriate specialist or domain lens when that concern can affect
 the high-risk outcome, and adds no review obligation when absent.
 
 - from: source[1]
 
-### A4 — Independence is evidence, not a label
+### Independence is evidence, not a label
 
 The implementer cannot manufacture independence by writing several sections in
 the same context. Review records identify the verifier context, inputs,
@@ -163,7 +163,7 @@ evidence.
 
 - from: source[2]
 
-### A5 — Work selection has no silent idle state or invented priority
+### Work selection has no silent idle state or invented priority
 
 When no explicit executable task exists, an autonomous agent:
 
@@ -188,7 +188,7 @@ product work. The output classes and allowed blocker conditions are defined by
 
 - from: source[1], source[3]
 
-### A6 — Completion is layered
+### Completion is layered
 
 - A task is complete when its acceptance evidence and affected regression pass.
 - A task group or key result is complete when its integrated outcome is
@@ -203,7 +203,7 @@ Lower-level completion does not imply higher-level completion.
 
 - from: source[1], source[2]
 
-### A7 — Evidence classes remain explicit
+### Evidence classes remain explicit
 
 Verification records name which class they provide, such as:
 
@@ -221,20 +221,21 @@ another but do not silently replace one another.
 
 - from: source[1], source[2]
 
-### A8 — The harness selects the smallest executable route
+### The harness selects the smallest executable route
 
 Before creating records, the agent determines which route applies:
 
 - **Routine:** consume existing authority, make the bounded reversible change,
   run focused guards, and hand off without a new contract or plan.
-- **Material with sufficient facts:** activate development D8 concerns and run
-  the A2 delivery loop.
+- **Material with sufficient facts:** activate [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns and run
+  the fixture- and test-first delivery loop.
 - **Material with an unresolved technical fact:** route the experiment method
-  through development D8, run it inside development D1's existing safety and
+  through [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony), run it inside [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s existing safety and
   disposal boundaries, then discard it or enter material delivery with its
   findings as evidence.
-- **High-risk:** use the applicable material route plus A3/A4 independent review
-  and fresh-context evaluation.
+- **High-risk:** use the applicable material route plus independent review
+  and fresh-context evaluation per the independent-lenses and
+  independence-evidence invariants.
 
 The current development discipline owns concern triggers and the governance
 decision boundary owns engineering discretion and escalation. This contract
@@ -244,7 +245,7 @@ choice inside the declared envelope proceeds without serial approval.
 
 - from: source[4]
 
-### A9 — Parallel work is coordinated in writing
+### Parallel work is coordinated in writing
 
 When more than one agent or session works the same repository concurrently,
 coordination is written, not assumed:
@@ -340,12 +341,12 @@ Verified on 2026-07-28:
   high-risk review cases;
 - normal and strict repository checks pass for the current guide projections,
   template inventory, and lifecycle state;
-- scoped audits find no copied D8 trigger table or obsolete fresh-context
+- scoped audits find no copied [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) trigger table or obsolete fresh-context
   requirement outside the high-risk route.
 
 Verified on 2026-08-27:
 
-- A9 added for written parallel-work coordination; the full Python 3.11
+- the written-coordination invariant added for written parallel-work coordination; the full Python 3.11
   fixture suite and both repository checker modes pass;
 - behavioral effectiveness remains partial: no real multi-session project has
   exercised the coordination surface yet.
@@ -387,3 +388,8 @@ Verified on 2026-08-27:
 - **2026-08-20 — publication language:** remaining Chinese source anchors are
   published as English renderings of the original authorizations. Contracts
   that cite the same statement use the same wording; meaning is unchanged.
+- **2026-08-28 — cutover to heading-slug identifiers:** the A1–A9 codes were
+  retired; headings are now the identifiers per [documentation-harness § invariant-citations](documentation-harness.md#invariant-citations-resolve-to-headings).
+  Incoming references across living documents were rewritten to slug links in
+  the same change. Earlier entries in this log, completed plans, and dated
+  evidence keep the codes as written.

@@ -64,7 +64,7 @@ but does not select them.
 - Authoritative priority source: {{tracker, document, owner, or not yet declared}}
 - Risk-acceptance authority: {{identity and limits}}
 - Declared engineering risk budget: {{budget or none; absence uses governance
-  G6's locally reversible, no-uncontracted-durable-effect default}}
+  [governance § decision-envelope](../docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)'s locally reversible, no-uncontracted-durable-effect default}}
 - Governance-exception authority: {{identity and limits}}
 - Decisions still required: {{decision, options, and requested owner}}
 

@@ -39,7 +39,7 @@ Same-context role-play must be labeled non-independent.
 
 {{Complexity, testing, observability, extensibility, and migration findings.}}
 
-Add only the specialist lenses activated through development D8. Their
+Add only the specialist lenses activated through [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). Their
 normative contracts own the boundary being reviewed.
 
 ## Synthesis

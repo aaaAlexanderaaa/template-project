@@ -82,7 +82,7 @@ controlled learning.
 
 ## Core invariants
 
-### D1 — Contract before material delivery, evidence before certainty
+### Contract before material delivery, evidence before certainty
 
 Do not deliver a material feature or behavior change until its contract exists
 on disk. The contract must name the behavior, relevant states and triggers,
@@ -91,7 +91,7 @@ ownership boundary, failure behavior, non-goals, and acceptance evidence.
 When a material fact cannot be learned through read-only investigation, a
 bounded experiment may precede the delivery contract. The experiment is
 evidence, not product implementation. Before it runs, route the experiment's
-own actions through D8. Every activated concern uses an existing normative
+own actions through the activate-concerns invariant. Every activated concern uses an existing normative
 owner and safety boundary; an experiment record cannot create either one.
 
 The experiment records its question, disposable path, expiry, abort trigger,
@@ -115,7 +115,7 @@ context; they are not substitutes for the normative contract.
 
 - from: source[1]
 
-### D2 — One owner for every invariant
+### One owner for every invariant
 
 Every state transition, data rule, API shape, layout rule, shared visual value,
 cross-cutting quality attribute, and operational decision has one authoritative
@@ -139,7 +139,7 @@ escalation path does not imply that an exception is available.
 
 - from: source[1]
 
-### D3 — Coherent end state
+### Coherent end state
 
 Design migrations around one complete end state. Real dependency order may
 produce multiple execution checkpoints and explicit transitional states, but
@@ -149,10 +149,10 @@ intentionally half-migrated architecture, indefinite compatibility layer, or
 placeholder that is merely promised to be corrected later.
 
 If a coherent end state cannot yet be described or verified, do not start the
-delivery migration. Use the bounded experiment path in D1 to learn the missing
+delivery migration. Use the bounded experiment path in the contract-first invariant to learn the missing
 facts without presenting the experiment as the destination.
 
-### D4 — Outcomes before means
+### Outcomes before means
 
 Define success in terms of observable outcomes before listing implementation
 or test mechanics. The default quality outcomes are:
@@ -168,7 +168,7 @@ or test mechanics. The default quality outcomes are:
 Tests, probes, selectors, thresholds, and scripts explain how those outcomes
 are guaranteed; they are not the outcome themselves.
 
-### D5 — Environment over memory
+### Environment over memory
 
 A recurring rule needs an enforcement surface outside human memory. Depending
 on the rule, use types, schema validation, static checks, unit tests,
@@ -178,7 +178,7 @@ probes.
 Prose explains intent and trade-offs. Mechanical guards stop the same class of
 mistake from recurring.
 
-### D6 — Fix the category, not only the symptom
+### Fix the category, not only the symptom
 
 Before fixing a defect, name its category and root mechanism. When that
 mechanism has repeatable sibling variants, the change includes a class-level
@@ -188,8 +188,8 @@ original report.
 A symptom-only patch is incomplete when the same mechanism can fail elsewhere.
 When evidence shows no repeatable sibling mechanism, a stable guard is not
 possible, or the guard would cost more than the bounded risk warrants, record
-that fact and keep the change local. D6 is not permission to expand an
-authorized fix into an unbounded cleanup.
+that fact and keep the change local. This invariant is not permission to
+expand an authorized fix into an unbounded cleanup.
 
 When the project operates incidents or postmortems, their output feeds this
 invariant: a postmortem names the root-cause category — possibly several —
@@ -199,14 +199,14 @@ a local fix without a named category is incomplete.
 
 - from: source[7]
 
-### D7 — Preserve decisions and evidence
+### Preserve decisions and evidence
 
 Requirements, translations, implementation plans, issues, and evidence have
 different authority. Do not overwrite one with another. Superseded material
 keeps an explicit replacement link so later contributors can reconstruct why a
 decision changed.
 
-### D8 — Activate concerns instead of expanding ceremony
+### Activate concerns instead of expanding ceremony
 
 Governance depth follows the change's observable traits, not the size of its
 template or the caution of its implementer. A concern that is not triggered
@@ -217,7 +217,7 @@ A plan records only the selected concern, owner link, execution steps, and
 proportionate evidence.
 
 If no normative owner exists, material delivery waits for a contract to
-establish one. A D1 experiment may proceed only through safety boundaries that
+establish one. An experiment under the contract-first invariant may proceed only through safety boundaries that
 already exist for its own activated actions; it cannot use a plan or scratch
 record to invent a temporary quality boundary.
 
@@ -240,7 +240,7 @@ trigger semantics.
 
 - from: source[1], source[5], source[7]
 
-### D9 — Govern document decisions, not document volume
+### Govern document decisions, not document volume
 
 Document count and length are consequences of bounded contexts, risk, and the
 number of durable decisions; they are not quality targets. Long-term governance
@@ -257,7 +257,7 @@ subtraction mechanics; this invariant does not redefine them.
 
 - from: source[2]
 
-### D10 — Unknown references are researched, not reconstructed
+### Unknown references are researched, not reconstructed
 
 When a request, contract, source, or discussion relies on an unfamiliar term,
 named reference, publication, external system, or other checkable fact, do not
@@ -276,7 +276,7 @@ concerns.
 
 - from: source[3]
 
-### D11 — Tool failure triggers capability-preserving fallback
+### Tool failure triggers capability-preserving fallback
 
 Failure or absence of one tool is not by itself failure of the task. Identify
 the capability and evidence the step requires, then try an available fallback
@@ -290,11 +290,11 @@ Do not silently substitute a path that changes product behavior, mutates a
 different system, weakens an adopted guard, or supports a weaker completion
 claim. If no permitted fallback can preserve a required capability, report the
 attempts, exact missing capability, affected claim, and recovery options; only
-then may the condition enter the blocker routing owned by governance G2.
+then may the condition enter the blocker routing owned by [governance § narrow-blockers](governance-decision-boundary.md#blockers-are-narrow-and-evidence-backed).
 
 - from: source[3]
 
-### D12 — Analysis exposes the decisive causal mechanism
+### Analysis exposes the decisive causal mechanism
 
 Analysis and explanation are complete when they identify the relevant
 conditions, the mechanism by which those conditions produce the observed or
@@ -311,7 +311,7 @@ or expand implementation scope without authorization.
 
 - from: source[3]
 
-### D13 — Recurring verbal rules are proposed for durable recording
+### Recurring verbal rules are proposed for durable recording
 
 A rule the owner states in conversation binds from the moment it is stated,
 but conversation is not durable storage. When a general rule is stated — and
@@ -333,12 +333,12 @@ than returning as an unwritten rule.
 Every material delivery change follows this order:
 
 1. **Classify and route.** Establish the decision envelope, evidence state, risk
-   profile, and concerns activated by D8.
+   profile, and concerns activated by the activate-concerns invariant.
 2. **Investigate.** Inspect current contracts, code, state, tests, and existing
-   evidence before asking questions that the repository can answer. Apply D10
-   to unfamiliar external references and D11 when an investigation tool is
-   unavailable. Use a D1 bounded experiment only when read-only evidence cannot
-   answer a material technical fact.
+   evidence before asking questions that the repository can answer. Apply the research-unknowns invariant
+   to unfamiliar external references and the capability-fallback invariant when an investigation tool is
+   unavailable. Use a bounded experiment under the contract-first invariant
+   only when read-only evidence cannot answer a material technical fact.
 3. **Resolve authority.** Identify the current normative document and the code
    or service that owns the behavior.
 4. **Reconcile intent.** Record ambiguity, contradiction, or changed
@@ -375,9 +375,9 @@ Frontend work translates product intent into observable states and geometry.
 - Locale, text expansion, and input-method behavior when the surface
   activates those concerns.
 - If the surface displays or accepts date/time, consume the Time and
-  calendar owner from D8: business timezone, instant vs calendar-day vs
+  calendar owner from the activate-concerns invariant: business timezone, instant vs calendar-day vs
   duration, naive-input interpretation, and the injectable clock. If it
-  does not, D8 creates no extra obligation. Omission is not UTC and not
+  does not, the activate-concerns invariant creates no extra obligation. Omission is not UTC and not
   the device timezone.
 - If the surface shows seed, synthetic, or sample data to an operator or
   customer, consume the Demonstration data owner. Hardcoded live-demo
@@ -392,7 +392,7 @@ missing product intent. Ground each surface in a concrete subject, audience,
 and single user job found in its raw layer. Use the subject's real materials,
 instruments, artifacts, language, and workflows where they improve recognition
 or use. When a missing subject, audience, job, or expensive-to-reverse
-preference would materially change the result, use governance G7 rather than
+preference would materially change the result, use [governance § route-uncertainty](governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated) rather than
 silently choosing a plausible theme.
 
 Before implementation, work in two design passes:
@@ -430,7 +430,7 @@ does not authorize delivery or become the accepted design by survival.
 ### Style ownership and layering
 
 Style decay is a dependency-direction and precedence problem that happens to
-render. The rules below are the frontend instance of D2; they do not create a
+render. The rules below are the frontend instance of the one-owner invariant; they do not create a
 second authority for frontend work.
 
 - **Precedence is declared, not emergent.** The project declares one ordered
@@ -523,7 +523,7 @@ interfaces.
 - Permission boundaries and the minimum capabilities each caller needs.
 - Activated performance/capacity, reliability, security/privacy, dependency,
   production-learning, time/calendar, and demonstration-data boundaries
-  from D8.
+  from the activate-concerns invariant.
 - When Time and calendar is activated: the unique business timezone,
   instant vs calendar-day vs duration, naive-input policy, public
   representation, injectable clock, and fail-loud drift check.
@@ -562,7 +562,8 @@ For a change spanning frontend and backend:
    and terminal error states as applicable.
 5. Cut over producer and consumers within one coherent compatibility decision.
 6. Verify both API consistency and the user-visible projection.
-7. Carry every activated D8 concern through its authoritative owner rather than
+7. Carry every concern activated under the activate-concerns invariant
+   through its authoritative owner rather than
    duplicating hidden thresholds or policy in both stacks.
 
 ## Documentation lifecycle
@@ -672,3 +673,8 @@ No side may resolve a conflict silently.
   fixture-backed projection and lifecycle checks implement the stable syntax.
   Real-project effectiveness remains covered by the existing partial
   verification posture.
+- **2026-08-28 — cutover to heading-slug identifiers:** the D1–D13 codes were
+  retired; headings are now the identifiers per [documentation-harness § invariant-citations](documentation-harness.md#invariant-citations-resolve-to-headings).
+  Incoming references across living documents were rewritten to slug links in
+  the same change. Earlier entries in this log, completed plans, and dated
+  evidence keep the codes as written.

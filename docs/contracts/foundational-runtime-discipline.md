@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-24
+last_reconciled: 2026-08-28
 review_due: 2026-11-22
 supersedes: []
 ---
@@ -14,7 +14,7 @@ supersedes: []
 
 ## Purpose
 
-This contract owns two D8 concerns — Time and calendar, and Demonstration
+This contract owns two [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns — Time and calendar, and Demonstration
 data — and the recognition rule that decides whether a fact belongs with
 them.
 
@@ -32,16 +32,16 @@ This is not a backlog of pits to audit, and it is not a questionnaire that
 every adopter must complete.
 
 1. Take the recognition rule. That is the P2 method.
-2. When development D8 activates Time and calendar or Demonstration data,
+2. When [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar or Demonstration data,
    use the matching invariants as the method owner. Project values (zone
    name, representation, demo gate) live in the adopting project's
    `ARCHITECTURE.md` runtime section, not in this file.
-3. When some other change has the same shape, use the D8 concern it already
+3. When some other change has the same shape, use the [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concern it already
    belongs to. Do not open a parallel register of scars.
 4. Source anchors explain why the method exists. They are not adoption work.
 
 A library, batch job, or project with no user-visible date/time and no
-operator-visible seed owes this contract nothing beyond D8's default: an
+operator-visible seed owes this contract nothing beyond [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)'s default: an
 untriggered concern creates no section-filling exercise.
 
 - from: source[4], source[5]
@@ -51,8 +51,8 @@ untriggered concern creates no section-filling exercise.
 ### In scope
 
 - the recognition rule for leak-across-the-system facts;
-- Time and calendar when D8 activates it;
-- Demonstration data when D8 activates it.
+- Time and calendar when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates it;
+- Demonstration data when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates it.
 
 ### Out of scope
 
@@ -60,8 +60,8 @@ untriggered concern creates no section-filling exercise.
 - choosing a product's IANA zone, offset text, demo dataset, or seed
   identities;
 - copying another project's framework, port, or compose profile;
-- replacing development D2, D5, or D8; this contract is the owner those
-  two D8 rows route to;
+- replacing [development § one-owner](development-discipline.md#one-owner-for-every-invariant), [development § environment-over-memory](development-discipline.md#environment-over-memory), or [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony); this contract is the owner those
+  two [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) rows route to;
 - treating a completed demo as a production release gate.
 
 ## Source anchors
@@ -112,7 +112,8 @@ product's numbers.
 > How much value do those pits have? And how should a user look at them?”
 
 Context: a mandatory register of sibling incidents was rejected as
-ceremony. Consumption follows D8 and the transfer-value order.
+ceremony. Consumption follows [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
+and the transfer-value order.
 
 ## Vocabulary
 
@@ -129,8 +130,8 @@ ceremony. Consumption follows D8 and the transfer-value order.
 
 ## Ownership and boundary
 
-- Recognition rule and the two D8 method bodies: this contract.
-- Trigger table: development D8. Do not invent a second list.
+- Recognition rule and the two [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) method bodies: this contract.
+- Trigger table: [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony). Do not invent a second list.
 - Project values: the adopting `ARCHITECTURE.md` runtime section and the
   product contracts that consume them.
 - Consumers format, parse, and refresh through that owner. They must not
@@ -151,7 +152,7 @@ these hold:
 Timezone and live demo dates are the teaching cases because they fail the
 “decide later” test hardest. Other health repairs in a source project are
 useful only as evidence that this shape recurs. If the repair already has a
-D8 owner — state integrity, security, compatibility, capacity, experience —
+[development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) owner — state integrity, security, compatibility, capacity, experience —
 use that owner. Listing the repair again here would make volume look like
 coverage.
 
@@ -159,123 +160,181 @@ coverage.
 
 ## Time and calendar
 
-Applies only when D8 activates Time and calendar. Splitting “API is UTC”,
+Applies only when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar. Splitting “API is UTC”,
 “UI is local”, “jobs use the server”, and “the database session is
 something else” is the defect this section exists to prevent.
 
-- **INV-T1 — One business timezone.** All business runtime units use one
-  IANA timezone. Host, browser, device, and container defaults do not
-  select it.
-  - from: source[1]
-  Enforcement: one named setting; startup fails when a subsystem zone
-  differs.
+### One business timezone
 
-- **INV-T2 — Instants stay instants.** Durable datetime values are stored
-  as timezone-aware absolute moments. Changing session, display, or public
-  text does not rewrite history or add hours.
-  - from: source[1]
-  Enforcement: round-trip tests that the instant is unchanged when
-  representation changes.
+All business runtime units use one
+IANA timezone. Host, browser, device, and container defaults do not
+select it.
 
-- **INV-T3 — Calendar is not duration.** “Today”, grouping by day, and
-  “day N after an anchor” use the business timezone's civil date. TTL,
-  locks, age, retry delay, ordering, and expiry use instants.
-  - from: source[1]
-  Enforcement: a civil-midnight case and a duration-crossing case in the
-  same suite.
+- from: source[1]
 
-- **INV-T4 — Public representation is declared.** System-generated
-  date-times that leave the process use one declared text form. Mixing
-  offset-less text, `Z`, and numeric offsets in the same public contract is
-  a compatibility defect. Dependents must not match a suffix character as
-  a substitute for parsing.
-  - from: source[1]
-  Enforcement: shared formatter/parser; production projections do not
-  hand-write offset suffixes.
+Enforcement: one named setting; startup fails when a subsystem zone
+differs.
 
-- **INV-T5 — Naive input is interpreted or rejected, never guessed per
-  device.** Offset-less controls and payloads have one declared rule:
-  attach the business timezone, reject, or accept only a date. A device
-  timezone must not silently interpret business input.
-  - from: source[1]
-  Enforcement: the same naive string yields the same instant under at
-  least two process timezones, including UTC.
+### Instants stay instants
 
-- **INV-T6 — External timestamps keep their source offset.** A record with
-  a declared offset is stored as that instant. A record with neither
-  offset nor a protocol-declared zone is rejected or held unknown.
-  - from: source[1]
-  Enforcement: a foreign-offset fixture and a naive-reject case.
+Durable datetime values are stored
+as timezone-aware absolute moments. Changing session, display, or public
+text does not rewrite history or add hours.
 
-- **INV-T7 — One injectable clock.** Production and tests obtain “now” and
-  “today” from the same clock and business timezone.
-  - from: source[1]
-  Enforcement: clock injection; a civil-date test that would fail if tests
-  used UTC while production used another zone.
+- from: source[1]
 
-- **INV-T8 — Drift fails loudly.** Notification, reporting, database
-  session, job, and container timezone settings either equal the business
-  timezone or prevent startup.
-  - from: source[1]
-  Enforcement: boot or config check with a mismatched subsystem zone.
+Enforcement: round-trip tests that the instant is unchanged when
+representation changes.
+
+### Calendar is not duration
+
+“Today”, grouping by day, and
+“day N after an anchor” use the business timezone's civil date. TTL,
+locks, age, retry delay, ordering, and expiry use instants.
+
+- from: source[1]
+
+Enforcement: a civil-midnight case and a duration-crossing case in the
+same suite.
+
+### Public representation is declared
+
+System-generated
+date-times that leave the process use one declared text form. Mixing
+offset-less text, `Z`, and numeric offsets in the same public contract is
+a compatibility defect. Dependents must not match a suffix character as
+a substitute for parsing.
+
+- from: source[1]
+
+Enforcement: shared formatter/parser; production projections do not
+hand-write offset suffixes.
+
+### Naive input is interpreted or rejected, never guessed per device
+
+Offset-less controls and payloads have one declared rule:
+attach the business timezone, reject, or accept only a date. A device
+timezone must not silently interpret business input.
+
+- from: source[1]
+
+Enforcement: the same naive string yields the same instant under at
+least two process timezones, including UTC.
+
+### External timestamps keep their source offset
+
+A record with
+a declared offset is stored as that instant. A record with neither
+offset nor a protocol-declared zone is rejected or held unknown.
+
+- from: source[1]
+
+Enforcement: a foreign-offset fixture and a naive-reject case.
+
+### One injectable clock
+
+Production and tests obtain “now” and
+“today” from the same clock and business timezone.
+
+- from: source[1]
+
+Enforcement: clock injection; a civil-date test that would fail if tests
+used UTC while production used another zone.
+
+### Drift fails loudly
+
+Notification, reporting, database
+session, job, and container timezone settings either equal the business
+timezone or prevent startup.
+
+- from: source[1]
+
+Enforcement: boot or config check with a mismatched subsystem zone.
 
 ## Demonstration data
 
-Applies only when D8 activates Demonstration data. Unit-test rows that
+Applies only when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Demonstration data. Unit-test rows that
 never reach an operator or customer are not this concern.
 
-- **INV-D1 — Demo data is a runtime.** Visible seed or sample data has an
-  owner, an environment gate, and a refresh path. Leftover fixture files
-  are not a demo strategy.
-  - from: source[2]
-  Enforcement: a named command; unknown environments refuse it.
+### Demo data is a runtime
 
-- **INV-D2 — Live demo dates are relative to the clock.** In-progress items
-  fall on the current business day, upcoming items on later business days,
-  and completed items on recent ones, using the same civil-date rules as
-  production. Hardcoded calendar dates in a live demo dataset are a
-  defect: after one midnight they fight the product's “today” language.
-  - from: source[2]
-  Enforcement: refresh anchored at an injected civil date; UI “today”
-  labels derived from that same date.
+Visible seed or sample data has an
+owner, an environment gate, and a refresh path. Leftover fixture files
+are not a demo strategy.
 
-- **INV-D3 — Same-day refresh is idempotent; cross-day refresh replaces the
-  allowlist.** Repeating the refresh on the same business day yields the
-  same natural keys. Crossing a civil date replaces the previous
-  allowlisted scenes rather than accumulating expired rows.
-  - from: source[2]
-  Enforcement: same-day identity assertion; next-day rebuild drops
-  yesterday's expired allowlisted scenes.
+- from: source[2]
 
-- **INV-D4 — Production cannot inherit demo rewrite.** Refresh and scene
-  reset run only in an explicit demo or synthetic environment. Missing
-  flags fail closed before any write. Refresh is not a generic boot hook.
-  - from: source[2]
-  Enforcement: production and unset-flag cases refuse the command with no
-  mutation.
+Enforcement: a named command; unknown environments refuse it.
 
-- **INV-D5 — Scope is allowlisted and atomic.** A refresh names the
-  identities it may rewrite. Failure leaves no half-applied scene.
-  - from: source[2]
-  Enforcement: unknown scenario id and mid-reset failure cases.
+### Live demo dates are relative to the clock
 
-- **INV-D6 — Demo does not impersonate production.** Where a viewer could
-  mistake the dataset for production evidence, the surface says it is a
-  demo. A successful demo does not close a production gate.
-  - from: source[2]
-  Enforcement: the completion claim names the demo layer.
+In-progress items
+fall on the current business day, upcoming items on later business days,
+and completed items on recent ones, using the same civil-date rules as
+production. Hardcoded calendar dates in a live demo dataset are a
+defect: after one midnight they fight the product's “today” language.
 
-- **INV-D7 — Standard and demo share one runtime authority.** Demo is not a
-  second client-side state machine or a build flag that ships different
-  business rules.
-  - from: source[2]
-  Enforcement: build or import scan for a second authority path.
+- from: source[2]
+
+Enforcement: refresh anchored at an injected civil date; UI “today”
+labels derived from that same date.
+
+### Same-day refresh is idempotent; cross-day refresh replaces the allowlist
+
+Repeating the refresh on the same business day yields the
+same natural keys. Crossing a civil date replaces the previous
+allowlisted scenes rather than accumulating expired rows.
+
+- from: source[2]
+
+Enforcement: same-day identity assertion; next-day rebuild drops
+yesterday's expired allowlisted scenes.
+
+### Production cannot inherit demo rewrite
+
+Refresh and scene
+reset run only in an explicit demo or synthetic environment. Missing
+flags fail closed before any write. Refresh is not a generic boot hook.
+
+- from: source[2]
+
+Enforcement: production and unset-flag cases refuse the command with no
+mutation.
+
+### Scope is allowlisted and atomic
+
+A refresh names the
+identities it may rewrite. Failure leaves no half-applied scene.
+
+- from: source[2]
+
+Enforcement: unknown scenario id and mid-reset failure cases.
+
+### Demo does not impersonate production
+
+Where a viewer could
+mistake the dataset for production evidence, the surface says it is a
+demo. A successful demo does not close a production gate.
+
+- from: source[2]
+
+Enforcement: the completion claim names the demo layer.
+
+### Standard and demo share one runtime authority
+
+Demo is not a
+second client-side state machine or a build flag that ships different
+business rules.
+
+- from: source[2]
+
+Enforcement: build or import scan for a second authority path.
 
 ## Failure, recovery, and intervention
 
 | Failure class | Detection | Response |
 |---|---|---|
-| Time or demo activated but unnamed | Missing runtime owner in architecture or product contract | Stop that concern's material delivery; declare or record why D8 does not apply |
+| Time or demo activated but unnamed | Missing runtime owner in architecture or product contract | Stop that concern's material delivery; declare or record why [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) does not apply |
 | Subsystem timezone drift | Boot/config check | Refuse startup; do not pick a winner silently |
 | Naive or unzoned external time | Parser/guard | Reject or hold unknown |
 | Demo refresh outside a demo environment | Environment gate | No write; a deployment that required refresh is incomplete |
@@ -283,7 +342,7 @@ never reach an operator or customer are not this concern.
 | Partial scene apply | Transaction/audit | Roll back |
 
 Changing a public timestamp representation is a compatibility cutover of
-text, not a data migration of instants, unless INV-T2 was already
+text, not a data migration of instants, unless the instants-stay-instants invariant was already
 violated. If stored values were naive or were rewritten by a zone change,
 stop and obtain a human data-risk decision.
 
@@ -300,7 +359,7 @@ a claim that “UTC everywhere” is universally right.
 | Outcome | Guard or verification | Durable evidence |
 |---|---|---|
 | Readers are told how to use this, and a pit catalog is not the interface | This contract's reading section; no adopter register of sibling incidents | this file; `ARCHITECTURE.md` runtime prompts only |
-| D8 routes Time and calendar and Demonstration data here | Repository wiring test | `tests/test_check_docs.py` |
+| [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) routes Time and calendar and Demonstration data here | Repository wiring test | `tests/test_check_docs.py` |
 | Time and demo invariants are testable as a class | Clock injection, naive-input stability, relative seed, environment gate | adopting project's tests when the concern is activated |
 | Product numbers were not copied | Domain-neutral wording | this contract |
 
@@ -324,3 +383,9 @@ correct.
   live-demo dates are a named class rather than an unstated surprise.
   Independent effectiveness in an adopting product remains open.
   - from: source[1], source[2], source[4]
+- **2026-08-28 — cutover to heading-slug identifiers:** the INV-T/INV-D codes
+  were retired and the labeled list items were restructured into `###`
+  headings so every invariant is a linkable target, per [documentation-harness § invariant-citations](documentation-harness.md#invariant-citations-resolve-to-headings).
+  Incoming references across living documents were rewritten to slug links in
+  the same change. Earlier entries in this log, completed plans, and dated
+  evidence keep the codes as written.
