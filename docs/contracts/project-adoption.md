@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-06
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -221,7 +221,7 @@ mechanics:
    keep one owner per invariant, publish interfaces deliberately, preserve
    dependency direction, and keep historical debt visible and bounded.
 3. **Delivery discipline:** describe one coherent end state, select execution
-   depth by risk, use fixture- and test-first delivery for material behavior,
+   depth by risk, choose credible evidence for the requested material outcome,
    guard repeatable defect mechanisms, verify failure and recovery, and
    recognize facts that leak across the system if left unnamed.
 4. **Conditionally activated disciplines:** frontend, backend, cross-stack,
@@ -346,6 +346,10 @@ Verified on 2026-08-27:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-09-06 — delivery method aligned:** the transfer value order still
+  prioritizes complete delivery over its carriers; evidence methods now follow
+  the outcome-driven agent execution owner rather than a fixed test-first loop.
 
 - **2026-08-27 — authorship triage added:** O8 requires separating external
   material by authorship before adoption: dated human instructions and

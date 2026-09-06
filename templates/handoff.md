@@ -10,18 +10,31 @@ subject: {{initiative}}
 
 ## Outcome sought
 
-{{One paragraph describing the complete end state.}}
+{{Original request/source, accepted interpretation, and the complete end state.}}
 
 ## Read first
 
 1. `ARCHITECTURE.md` § “{{section}}”
-2. `docs/contracts/{{contract}}.md`
-3. `docs/plans/{{plan}}.md`
+2. `docs/contracts/{{contract}}.md` § “{{applicable section and exceptions}}”
+3. `docs/plans/{{plan}}.md` § “{{current executable work}}”
 4. `{{baseline evidence}}`
+
+Include only context needed for the next action, plus its original requirements
+and governing boundaries. History is linked for investigation, not copied here.
+Recheck current files; a handoff or agent memory cannot override their authority.
+
+## Delegated assignment
+
+Delete this section for an ordinary session handoff. For delegated work, record
+the parent outcome, expected result, allowed writes/external effects,
+baseline/revision, verification, and stop/cancel condition. Return changed
+artifacts, checks actually run, unresolved assumptions, and remaining work to
+the named integrating owner: {{owner}}. Follow the [delegation owner](../docs/contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner).
 
 ## Verified current facts
 
 - {{fact with exact evidence}}
+- Working revision, relevant uncommitted changes, and environment: {{identity}}
 
 ## Completed work
 

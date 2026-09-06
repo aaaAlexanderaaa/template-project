@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-06
 supersedes: []
 ---
 
@@ -79,6 +79,22 @@ controlled learning.
 > trodden by many before. Keep enough text to remind an agent to consider
 > what it has not considered — to avoid drilling into a dead end,
 > over-optimizing, or over-designing.”
+
+### source[8] — 2026-09-06
+
+Original maintainer wording in this task:
+
+> “仍然不够目标驱动”
+>
+> “声明应该发生，但实现不存在”；“实现产生了未声明的效果”；
+> “效果发生次数过多”；“效果被错误压制，发生次数过少”。
+
+Maintainer feedback in the template review task, rendered in English: delivery
+must serve the user's goal, not merely pass tests. Check for promised effects
+that are absent, undeclared effects, and effects that occur too often or too
+rarely. Include functional and nonfunctional requirements, user costs, boundary
+cases, and what the user can do after a result. Improve recurring mistakes in
+the harness instead of accumulating reminders and startup reading.
 
 ## Core invariants
 
@@ -166,7 +182,54 @@ or test mechanics. The default quality outcomes are:
 7. production-only assumptions have an observation and rollback decision.
 
 Tests, probes, selectors, thresholds, and scripts explain how those outcomes
-are guaranteed; they are not the outcome themselves.
+are checked; they are not the outcome themselves. Preserve the original request
+or its source alongside the accepted interpretation. Before closing delivery,
+compare the observed result with both. A correct implementation of a mistaken
+interpretation still needs reconciliation; passing its tests does not close
+the requested outcome.
+
+### Verify promised and observed behavior in both directions
+
+The owning contract's acceptance matrix lists functional outcomes and activated
+nonfunctional requirements by user or operator scenario. Each names a trigger,
+starting state, observable response, and applicable boundary. Link an existing
+quality owner instead of duplicating its threshold. Do not derive this list
+solely from the tests or the implementation. The future reconciliation
+`promise[...]` register is not a product feature inventory.
+
+For effects such as requests, writes, events, notifications, or repeated user
+actions, define the affected identity and scope, allowed count or bound per
+logical operation, and relevant timing/order. Where repetition matters, also
+define which triggers create an operation, any cadence or bound across an
+observation window, and the freshness or maximum silence the outcome permits.
+Include concurrency, retries, cache reuse, and suppression when they can
+change those effects. State what is unknown; do not invent a safe request rate
+or claim exactly-once behavior from
+an idempotency key alone. User cost includes unnecessary requests, account
+exposure, latency, attention, and recovery effort when applicable.
+
+Verification runs in both directions:
+
+- For each promised result, observe whether it occurs under its trigger and
+  meets its functional and quality boundaries.
+- Inspect actual externally visible effects at the affected boundary, including
+  effects absent from the expected-result list. Map each to an authorized
+  requirement or report it for reconciliation. Evidence drawn only from a
+  helper's return value cannot establish effects at another boundary.
+- Distinguish missing, undeclared, excessive, and wrongly suppressed effects.
+  Also inspect wrong identity/scope, premature or stale effects, partial
+  completion, and misleading success when applicable. These are prompts for
+  analysis, not an exhaustive taxonomy or a mandatory test count.
+- Exercise failure and recovery from the user's position: what is known, what
+  remains unresolved, what was changed, and what action is available next.
+
+Use the smallest credible evidence for each claim. A failing regression test,
+an instrumented process, a packaged artifact, a browser observation, or a
+bounded manual review may be appropriate. Record the relevant conditions and
+limits. Missing observations remain unknown or not run, never a pass. Required
+evidence for a completion claim cannot be replaced by a cheaper unrelated check.
+
+- from: source[8]
 
 ### Environment over memory
 
@@ -177,6 +240,13 @@ probes.
 
 Prose explains intent and trade-offs. Mechanical guards stop the same class of
 mistake from recurring.
+
+Agent memory and summaries may help locate evidence; they do not create
+authority. Recheck their source, scope, and current applicability before using
+them for a material decision. Reconcile conflict with current authority rather
+than treating confident recall as a new instruction.
+
+- from: source[8]
 
 ### Fix the category, not only the symptom
 
@@ -197,7 +267,15 @@ and the class-level action for each, and a monitoring failure (a user noticed
 before the system did) is itself a defect category. A postmortem that ends in
 a local fix without a named category is incomplete.
 
-- from: source[7]
+When the harness contributed to a repeated error, correct the smallest owner
+that caused it: a default, interface, example, context route, check, or rule.
+Verify a plausible sibling case and remove any reminder made redundant by the
+fix. Keep the useful mechanism and its limits, not the whole incident in the
+startup context. If no proportionate guard exists, keep a short example or
+review cue at the relevant owner and say what it cannot prevent. More recorded
+lessons alone are not evidence of improvement.
+
+- from: source[7], source[8]
 
 ### Preserve decisions and evidence
 
@@ -321,6 +399,9 @@ contract invariant, a guide procedure, a template field, or an agent
 entrypoint. The proposal states the rule in plain wording, its reason, how it
 applies, and its source and date. The owner confirms before it lands.
 
+An explicit instruction to adopt or implement the rule supplies that
+confirmation for its stated scope. Do not request the same confirmation again.
+
 A rule that lives only in chat history or agent memory decays with the context
 that carries it. Recording is proposed, not assumed: the decision to adopt
 remains with the human owner, and a rejected proposal stays as history rather
@@ -330,7 +411,11 @@ than returning as an unwritten rule.
 
 ## Change workflow
 
-Every material delivery change follows this order:
+Material delivery satisfies the following obligations in dependency order.
+Contract reconciliation precedes dependent implementation; required design
+review precedes implementation and completion review precedes closure.
+Investigation, implementation, and verification may iterate. This list does
+not prescribe user approval checkpoints or require a record for every item.
 
 1. **Classify and route.** Establish the decision envelope, evidence state, risk
    profile, and concerns activated by the activate-concerns invariant.
@@ -606,6 +691,13 @@ When intent and implementation disagree, classify the mismatch:
 No side may resolve a conflict silently.
 
 ## Reconciliation log
+
+- **2026-09-06 — outcome and effect verification:** separated original intent,
+  accepted requirements, and observed delivery; added bidirectional acceptance
+  and bounded learning at the existing owners. The maintainer's request to
+  improve this template authorizes this adoption. Structural checks cannot
+  prove that future agents apply these rules effectively.
+  - from: source[8]
 
 - **2026-08-28 — D8 minimum questions extended to settled engineering
   scenarios:** five rows gained the questions industry practice has already

@@ -14,6 +14,9 @@ supersedes: []
 
 {{What becomes possible or correct for the user?}}
 
+Original request/source and accepted interpretation: {{wording or link and
+intended user job}}.
+
 ## Shared vocabulary
 
 | Term/state | Canonical meaning | Authoritative owner | Frontend label/projection |
@@ -83,9 +86,14 @@ terminal failure states where applicable.
 
 ## Acceptance matrix
 
-| Scenario | Backend assertion | Frontend assertion | End-to-end evidence |
+| User scenario / promise | Backend result and quality boundary | Frontend result and next action | Actual effects / end-to-end evidence / status |
 |---|---|---|---|
-| {{scenario}} | {{state/API}} | {{display/interaction}} | {{test/probe}} |
+| {{trigger, starting state, requirement}} | {{state/API; link to quality owner}} | {{display/interaction/recovery}} | {{observed targets, counts, timing; probe; pass/fail/partial/not_run}} |
+
+Apply [bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
+at the integrated boundary. Account for effects absent from the expected list
+and compare with the original request. Individually passing producer and
+consumer checks do not establish the combined user outcome.
 
 ## Failure-category guards
 

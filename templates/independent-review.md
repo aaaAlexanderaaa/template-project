@@ -20,6 +20,8 @@ Same-context role-play must be labeled non-independent.
 
 ## Inputs
 
+- Original request/source: {{wording or exact source section}}
+- Accepted interpretation: {{intended user job; compare with the original}}
 - Contract/design: `{{path}}`
 - Baseline evidence and fixtures: `{{paths}}`
 - Constraints supplied to every perspective: {{constraints}}
@@ -33,7 +35,8 @@ Same-context role-play must be labeled non-independent.
 
 ### User or operator experience
 
-{{Reachable states, usability, recovery, accessibility, and operational findings.}}
+{{Does the interpretation preserve the user's goal? Review reachable states,
+user cost, actual effects, recovery, accessibility, and operational findings.}}
 
 ### Engineering and maintenance
 

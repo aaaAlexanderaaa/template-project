@@ -11,7 +11,7 @@ supersedes: []
 
 ## Cold-start summary
 
-State the requested outcome, verified current facts, governing contract, and
+State the original request/source, accepted outcome, verified current facts, governing contract, and
 the next executable action so another context can continue without chat
 history. Routine work and disposable experiments do not use this delivery-plan
 template solely to prove their classification.
@@ -58,33 +58,28 @@ policy; this plan owns only steps and evidence. Do not copy the [development § 
 Describe the coherent final behavior. Temporary sequencing is not permission
 to leave an undocumented coexistence state behind.
 
-## Seven-phase execution loop
+## Execution and verification
 
-| Phase | Required output | Applicability or evidence |
+List actual dependencies and the smallest coherent implementation. Follow
+[outcome-driven delivery](../docs/contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence):
+record a relevant baseline and select credible evidence for each claim. Use a
+failing test first when it can expose the defect or protect the behavior; use
+artifact, interaction, or review evidence when that is what the claim needs.
+
+| Dependency / step | Complete result | Verification and relevant baseline |
 |---|---|---|
-| 1. Domain and authority | Terms, owners, current behavior, conflicts | {{record}} |
-| 2. Fixture or controlled boundary | Realistic sanitized input or deterministic seam | {{record}} |
-| 3. Contract and design | Landed normative behavior and boundaries | {{record}} |
-| 4. Test first | Acceptance guard and observed pre-implementation failure | {{record}} |
-| 5. Implementation | Smallest coherent complete change | {{record}} |
-| 6. Regression | Affected class, integration, and compatibility checks | {{record}} |
-| 7. Holistic evaluation | Result against the contract and activated quality outcomes | {{record}} |
+| {{actual dependency}} | {{observable result}} | {{test/probe/review and limits}} |
 
-For any non-applicable phase, record the concrete reason.
+Once the listed human decisions are settled and delivery is authorized,
+continue through implementation, integration, verification, and corrections to
+closure. Internal checkpoints do not request user approval. A new material
+decision or actual blocker pauses its affected path under the governance owner.
 
 ## Work-selection fallback
 
-When the named task cannot proceed, record which step selected the next work:
-
-1. resume truthful in-progress work that is already authorized;
-2. diagnose the blocker without treating it as project-wide;
-3. consume the highest-priority ready work from the declared priority source;
-4. review the active portfolio read-only for uncovered outcomes or quality gaps;
-5. record candidate work with facts, risk, dependencies, and limitations;
-6. when priority is absent, request a human decision before non-trivial work;
-7. verify completed task groups against their parent outcome.
-
-Selected action and authority: {{decision}}
+For a bounded task, stop when its outcome is complete. Only an authorized
+ongoing portfolio assignment uses the [work-selection fallback](../docs/contracts/agent-execution-discipline.md#work-selection-has-no-silent-idle-state-or-invented-priority).
+If it applies, record the selected action and its authority: {{decision}}.
 
 ## Review topology
 
@@ -100,9 +95,9 @@ Human governance exception, if any: {{scope, authority, date, residual risk}}
 
 ## Verification and evidence matrix
 
-| Claim | Evidence class | Command/probe | Expected failure/negative path | Durable record |
+| User outcome / quality boundary | Evidence class | Command/probe | Missing, extra, repeated or suppressed effect / recovery | Result and durable record |
 |---|---|---|---|---|
-| {{observable claim}} | {{unit/integration/artifact/real-runtime/manual}} | `{{command}}` | {{negative check}} | {{path-or-pending}} |
+| {{requirement and source}} | {{unit/integration/artifact/real-runtime/manual}} | `{{command}}` | {{applicable negative check or bounded rationale}} | {{path-or-pending; pass/fail/partial/not_run}} |
 
 ## Layered completion
 

@@ -4,8 +4,8 @@ status: current
 authority: normative
 contract_role: governance
 implementation: implemented
-verification_status: enforced
-last_reconciled: 2026-08-28
+verification_status: partial
+last_reconciled: 2026-09-06
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -16,7 +16,7 @@ supersedes: []
 
 This contract extends the repository's contract-first discipline with an
 execution profile for autonomous or semi-autonomous coding agents. It governs
-work selection, fixture- and test-first implementation, independent design
+work selection, outcome-driven implementation and verification, independent design
 review, fresh-context evaluation, layered completion, and truthful handling of
 missing review authority.
 
@@ -73,6 +73,14 @@ Out of scope:
 > “Multiple parallel sessions need a written coordination method, and
 > handoffs at context exhaustion have mature practices to follow.”
 
+### source[6] — 2026-09-06
+
+Maintainer feedback in the template review task, rendered in English: the
+template must accommodate memory, long conversations, and delegated work
+without losing the user's goal. Avoid compulsory phase approvals and excessive
+startup documents. Deliver and verify the agreed task as a whole rather than
+treating tests or process completion as the goal.
+
 ## Vocabulary and risk profiles
 
 - **Routine change:** bounded implementation with an existing contract, no new
@@ -100,7 +108,7 @@ Out of scope:
 ### Risk selects the execution depth
 
 Routine work may use the base development discipline. Material work uses the
-phased loop below. High-risk work additionally requires independent
+outcome-driven method below. High-risk work additionally requires independent
 multi-perspective design review and fresh-context holistic evaluation.
 
 The classification and rationale are recorded before implementation. A task is
@@ -108,36 +116,39 @@ not made routine merely to avoid review.
 
 - from: source[1]
 
-### Material delivery uses a fixture- and test-first loop
+### Material delivery follows the outcome and its evidence
 
-When delivery intent and the material facts are known, the default seven phases
-are:
+Establish the original request, accepted contract, current facts, and smallest
+credible verification for each claim before dependent implementation. The
+plan describes dependencies and one complete end state, not mandatory numbered
+phases. It applies [development § bidirectional verification](development-discipline.md#verify-promised-and-observed-behavior-in-both-directions).
 
-1. understand the domain and current authority;
-2. prepare realistic, sanitized fixtures or controlled boundaries;
-3. land the functional contract and design;
-4. encode acceptance behavior in tests and confirm the new behavior fails;
-5. implement the smallest coherent end state;
-6. run affected regression and integration checks;
-7. evaluate the result holistically against its contract and activated quality
-   outcomes.
+Use fixtures and a failing test first when they can expose the claimed defect
+or protect a stable behavior. When the claim instead requires a built artifact,
+real interaction, observation, or review, name that method and its limitations;
+do not invent a meaningless failing test to satisfy a ritual. Record the
+baseline relevant to the claim. A cheaper method cannot waive evidence or
+independence required by the governing contract.
 
-If a phase is not applicable, the plan records why. Skipping a phase silently
-is not allowed.
+Implement, integrate, run affected guards, and evaluate the result against the
+user's original outcome as well as the accepted contract. Correct discrepancies
+within scope and continue through closure under [governance § authorized execution](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default).
+Progress checkpoints do not request user approval. Fresh context is required
+for completion evaluation when the risk classification requires it.
 
-Fresh context is not required for phase 7 unless the risk-selects-depth invariant classifies the work as
-high-risk. If a material technical fact is still unknown, use [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s
-controlled experiment before this delivery loop. Its record satisfies [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s
-containment, expiry, cleanup, and concern-routing requirements and records the
-result and disposition. It does not require a fictional product contract or
-failing acceptance test for behavior not yet selected.
+For an unresolved material technical fact, use the existing [controlled
+experiment](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)
+path with its containment, expiry, cleanup, and concern-routing requirements.
+It does not require a fictional product contract or failing test for behavior
+not yet selected.
 
-- from: source[1], source[4]
+- from: source[1], source[4], source[6]
 
 ### High-risk design uses independent lenses
 
-Before implementation, reviewers evaluate the same contract and baseline
-evidence through at least these lenses:
+Before implementation, reviewers receive the original request or its source,
+the accepted interpretation and contract, and baseline evidence. They evaluate
+these through at least these lenses:
 
 - system and contract consistency;
 - user or operator experience;
@@ -156,6 +167,11 @@ The implementer cannot manufacture independence by writing several sections in
 the same context. Review records identify the verifier context, inputs,
 limitations, and whether independence was required and achieved.
 
+Completion reviewers also receive the original request/source, accepted
+interpretation, and observed results. They check for lost user intent as well
+as conformance to the contract; a fresh context supplied only a mistaken
+interpretation can repeat that mistake.
+
 When the required independent context is unavailable, the work remains
 `blocked` or `verifying` unless a human grants a documented governance
 exception. Passing technical checks does not substitute for missing governance
@@ -165,7 +181,11 @@ evidence.
 
 ### Work selection has no silent idle state or invented priority
 
-When no explicit executable task exists, an autonomous agent:
+This fallback applies only when the owner has authorized ongoing autonomous
+work against a portfolio or objective. Completing a bounded task is a valid
+stopping point. Do not turn its completion into an unsolicited portfolio scan.
+Within an authorized ongoing assignment, when no explicit executable task
+exists, an autonomous agent:
 
 1. resumes truthful in-progress work that is already authorized;
 2. diagnoses blocked work without treating one blocker as project-wide;
@@ -186,11 +206,13 @@ analysis do not grant the agent authority to rank or execute newly discovered
 product work. The output classes and allowed blocker conditions are defined by
 `governance-decision-boundary.md`.
 
-- from: source[1], source[3]
+- from: source[1], source[3], source[6]
 
 ### Completion is layered
 
-- A task is complete when its acceptance evidence and affected regression pass.
+- A task is complete when its requested outcome is observed under the accepted
+  functional and quality boundaries, bidirectional effect verification closes,
+  and its required evidence and affected regression pass.
 - A task group or key result is complete when its integrated outcome is
   independently checked where required.
 - An objective is complete when all outcomes pass, holistic evaluation closes,
@@ -228,7 +250,7 @@ Before creating records, the agent determines which route applies:
 - **Routine:** consume existing authority, make the bounded reversible change,
   run focused guards, and hand off without a new contract or plan.
 - **Material with sufficient facts:** activate [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns and run
-  the fixture- and test-first delivery loop.
+  the outcome-driven delivery method.
 - **Material with an unresolved technical fact:** route the experiment method
   through [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony), run it inside [development § contract-first](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s existing safety and
   disposal boundaries, then discard it or enter material delivery with its
@@ -270,6 +292,28 @@ landed work.
 
 - from: source[5]
 
+### Delegated work carries bounded context and returns to an owner
+
+Delegation is an optional execution strategy. Use it when a bounded part can
+proceed independently and its integration cost is justified. Do not split a
+tightly coupled decision merely to occupy agents.
+
+Each assignment carries the parent outcome, the delegated result, current
+authority and baseline, allowed writes and external effects, relevant context,
+expected verification, and the stop/cancel condition. A short read-only task
+may carry this in the native invocation; ongoing or concurrent writes use the
+existing plan or handoff. Do not create a second task registry for compliance.
+Unknown context inheritance is not evidence that a worker received a rule.
+
+Workers return changed artifacts or observations, baseline/revision identity,
+checks actually run, unresolved assumptions, and remaining work. The parent
+checks stale baselines and conflicts, integrates the result, and verifies the
+parent outcome. Several passing worker tasks do not establish that the combined
+result works. Cancelled or late output is reviewed before use and must not
+silently overwrite a newer decision or another worker's change.
+
+- from: source[5], source[6]
+
 ## Required records
 
 Material delivery work records only what its activated route requires:
@@ -277,8 +321,8 @@ Material delivery work records only what its activated route requires:
 - the governing contract and risk profile;
 - the priority source or explicit human authorization for the selected work;
 - a cold-start-capable implementation plan;
-- fixture or controlled-boundary strategy;
-- acceptance tests and their pre-implementation result;
+- claim-specific verification strategy and applicable controlled boundaries;
+- relevant baseline, including a failing test result when that method is used;
 - commands, environment, and evidence class for verification;
 - independent review or the exact blocked/exception state when the risk profile
   requires it;
@@ -309,6 +353,11 @@ solely to prove that it is routine.
 
 ## Acceptance evidence
 
+Mechanical enforcement covers record structure, template inventory, and links.
+Behavioral effectiveness remains partial until adoption exercises actual agent
+decisions and delivered outcomes. These are separate claims; a checker pass
+does not establish the second.
+
 This contract is implemented when:
 
 - reusable templates exist for agent execution plans, independent review,
@@ -322,6 +371,13 @@ This contract is implemented when:
   and high-risk routes without requiring the agent to infer them from several
   documents;
 - the correct Python runtime has a canonical, actionable verification path.
+
+Verified on 2026-09-06:
+
+- The [completed template change](../plans/2026-09-06-outcome-driven-template.md#progress-and-closure)
+  records independent design and completion review, 114 passing fixtures, and
+  normal/strict checker results. These support the revised template and routing
+  claims. Native-agent adoption effectiveness remains partial.
 
 Verified on 2026-07-26:
 
@@ -356,6 +412,14 @@ Verified on 2026-08-27:
 - promise[independent-adoption-review]: due=2026-10-24; status=open; owner=template-maintainer; description=obtain an independent adoption review after the first real product uses the agent execution profile
 
 ## Reconciliation log
+
+- **2026-09-06 — outcome-driven execution:** replaced the fixed seven-phase
+  default with dependency order and claim-specific verification; retained
+  contract-before-delivery and required independent review. Bounded tasks may
+  stop at completion. Delegation carries explicit scope and returns to an
+  integrating owner. Verification status now states the outstanding behavioral
+  limitation instead of implying that mechanical enforcement covers it.
+  - from: source[6]
 
 - **2026-08-27 — parallel coordination added:** A9 requires written
   coordination between concurrent agents or sessions: registered scope,

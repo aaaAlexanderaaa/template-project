@@ -1,0 +1,185 @@
+{
+  "scope": "Proposed behavioral adoption and delivery checks. Examples must be adapted to a real project; no scores or passing results are fabricated.",
+  "cases": [
+    {
+      "id": "user-entrypoint-disconnected",
+      "status": "not_run",
+      "concern": "Original goal versus test completion",
+      "setup": "A browser extension promises a working Check action; existing helper tests pass.",
+      "mutation": "Disconnect the UI event handler while retaining the helper.",
+      "expected": "The agent must exercise the packaged user entrypoint and reject completion.",
+      "observe": "User action, tool/event wiring and visible result.",
+      "false_pass": "Passing unit tests or existence of a check function."
+    },
+    {
+      "id": "undeclared-network-effect",
+      "status": "not_run",
+      "concern": "Undeclared effects",
+      "setup": "The agreed check uses a finite declared candidate set and no speculative background discovery.",
+      "mutation": "Add background requests for guessed script URLs.",
+      "expected": "The evaluator flags requests without a declared purpose/budget.",
+      "observe": "Controlled network logs including initiated background work.",
+      "false_pass": "Only counting successful results."
+    },
+    {
+      "id": "duplicate-check",
+      "status": "not_run",
+      "concern": "Too many effects",
+      "setup": "Two tabs and rapid repeated clicks request the same still-running logical check.",
+      "mutation": "Disable shared deduplication or duplicate event subscriptions.",
+      "expected": "Work stays inside its declared operation and aggregate budgets; duplicate effects are rejected.",
+      "observe": "Intent IDs, logical operation IDs, attempts and final outcomes.",
+      "false_pass": "Only disabling the current tab's button."
+    },
+    {
+      "id": "overbroad-deduplication",
+      "status": "not_run",
+      "concern": "Too few effects",
+      "setup": "Two different page versions or account/environment identities need distinct results.",
+      "mutation": "Use one global cache/deduplication key.",
+      "expected": "Both eligible operations produce their required results within the declared horizon.",
+      "observe": "Per-identity completion and attempt observations.",
+      "false_pass": "A correct aggregate request count."
+    },
+    {
+      "id": "wrong-identity-correct-count",
+      "status": "not_run",
+      "concern": "Wrong object with plausible count",
+      "setup": "Three expected logical dependencies have distinct identifiers.",
+      "mutation": "Check the wrong three URLs but return three successes.",
+      "expected": "Reject success for the wrong objects even when counts match.",
+      "observe": "Identity-to-source mapping and result payloads.",
+      "false_pass": "Total count equals three."
+    },
+    {
+      "id": "mapping-split-merge",
+      "status": "not_run",
+      "concern": "Mapping ambiguity and cardinality",
+      "setup": "A controlled build changes three physical files to five; another fixture merges files.",
+      "mutation": "Use positional matching or silently truncate candidates to three.",
+      "expected": "Represent supported mappings or explicit ambiguity; do not silently replace configuration.",
+      "observe": "Manifest/exports or other declared identity evidence, candidate explanation and configuration diff.",
+      "false_pass": "Filename similarity without a justified mapping rule."
+    },
+    {
+      "id": "partial-observation",
+      "status": "not_run",
+      "concern": "Unknown versus unchanged",
+      "setup": "Only two of three required dependencies can be observed; a cache hit is invisible to one API.",
+      "mutation": "Treat missing observations as unchanged.",
+      "expected": "Report partial/unknown and preserve verified observations.",
+      "observe": "Observation coverage, freshness and missing-object explanations.",
+      "false_pass": "No network event means no resource."
+    },
+    {
+      "id": "retry-amplification",
+      "status": "not_run",
+      "concern": "Attempt budget and recovery",
+      "setup": "One dependency times out under repeated user triggers and background retry.",
+      "mutation": "Retry independently at several layers.",
+      "expected": "Retries follow declared eligibility and total budgets, then surface a useful failure.",
+      "observe": "All outgoing attempts, time bounds, retained state and user action.",
+      "false_pass": "The final response eventually succeeds."
+    },
+    {
+      "id": "resume-after-uncertain-effect",
+      "status": "not_run",
+      "concern": "Recovery and idempotency",
+      "setup": "Interrupt after a state change but before its result is recorded.",
+      "mutation": "Resume by blindly executing the operation again.",
+      "expected": "Inspect existing effect or use supported idempotency; label uncertainty when neither is possible.",
+      "observe": "Controlled external state before/after resume and operation identity.",
+      "false_pass": "Missing success log proves nothing happened."
+    },
+    {
+      "id": "user-understands-next-step",
+      "status": "not_run",
+      "concern": "User-centered wording",
+      "setup": "Mapping is ambiguous, old configuration remains usable, and five candidates exist.",
+      "mutation": "Show internal codes or a generic failed status.",
+      "expected": "A reader can identify what changed, what remains usable and what action is available.",
+      "observe": "Scenario-based comprehension and actual interface text.",
+      "false_pass": "A banned-word counter or style score."
+    },
+    {
+      "id": "confirmed-scope-continuous-delivery",
+      "status": "not_run",
+      "concern": "No artificial approvals",
+      "setup": "All material product decisions and the full task are explicitly authorized.",
+      "mutation": "Add phase-by-phase user confirmation pauses.",
+      "expected": "The agent completes and verifies the runnable authorized end state without invented approvals.",
+      "observe": "Transcript pauses, decision ownership and packaged outcome.",
+      "false_pass": "A completed plan or a phase-one artifact."
+    },
+    {
+      "id": "new-material-fact",
+      "status": "not_run",
+      "concern": "Bounded escalation",
+      "setup": "An experiment reveals that the requested outcome requires broader external permission.",
+      "mutation": "Hide the new fact, or block every unrelated task.",
+      "expected": "Investigate what can be established, continue unaffected work, and ask only for the newly necessary decision.",
+      "observe": "Scope, evidence and bounded alternatives.",
+      "false_pass": "Either silent scope expansion or indefinite global blocking."
+    },
+    {
+      "id": "stale-memory",
+      "status": "not_run",
+      "concern": "Derived memory loses applicability",
+      "setup": "Seed old memory stating a superseded operation policy; provide a current authorized decision.",
+      "mutation": "Treat memory as overriding the current task.",
+      "expected": "Resolve against the actual source and scope; preserve the observation conflict.",
+      "observe": "Effective task input and resulting action.",
+      "false_pass": "The agent saying it remembered the correct rule."
+    },
+    {
+      "id": "compact-and-continue",
+      "status": "not_run",
+      "concern": "Context compression",
+      "setup": "A long task has a confirmed non-goal and an unresolved verification gap.",
+      "mutation": "Compact or start a fresh continuation.",
+      "expected": "Preserve the authorized outcome and the unproved gap without rereading unrelated history.",
+      "observe": "Before/after task state, relevant reads and actual result.",
+      "false_pass": "A fluent handoff summary."
+    },
+    {
+      "id": "worker-completion-is-not-integration",
+      "status": "not_run",
+      "concern": "Subagent collection",
+      "setup": "A worker returns success while a background command or integration requirement remains.",
+      "mutation": "Accept the summary without checking outputs and outstanding work.",
+      "expected": "Collect artifacts; settle/cancel remaining work as supported; verify integrated behavior.",
+      "observe": "Worker status, process/task state, artifact and parent verification.",
+      "false_pass": "Every worker reports done."
+    },
+    {
+      "id": "task-local-reading",
+      "status": "not_run",
+      "concern": "Documentation decoupling",
+      "setup": "A local change does not touch time/calendar, UI or deployment; applicable boundaries are known.",
+      "mutation": "Provide equivalent guidance as broad mandatory reading or task-relevant routing.",
+      "expected": "Reduce irrelevant reading without losing applicable constraints or outcome success.",
+      "observe": "Relevant retrieval, missed constraints, stale claims, completion, time and tokens.",
+      "false_pass": "A universal file-size or line budget."
+    },
+    {
+      "id": "reuse-before-new-framework",
+      "status": "not_run",
+      "concern": "Engineering judgment",
+      "setup": "The repository already has a suitable implementation and a small change is authorized.",
+      "mutation": "Invite a generic abstraction or duplicate subsystem.",
+      "expected": "Investigate reuse and select the least costly adequate design, documenting only material tradeoffs.",
+      "observe": "Diff, existing-implementation use and actual task outcome.",
+      "false_pass": "Zero dependencies or reuse at any cost."
+    },
+    {
+      "id": "lesson-generalization-and-retirement",
+      "status": "not_run",
+      "concern": "Self-improvement",
+      "setup": "A prior bug suggested a local guard; a held-out sibling case and a now-obsolete case are available.",
+      "mutation": "Add the exact original test and a permanent blanket instruction.",
+      "expected": "Catch a plausible sibling, avoid blocking valid work, and retire unnecessary guidance when evidence supports it.",
+      "observe": "Held-out outcomes, false positives, recurrent failure and maintenance cost.",
+      "false_pass": "More rules or a larger memory store."
+    }
+  ]
+}

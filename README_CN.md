@@ -14,7 +14,7 @@
 |---|---|---|---|
 | **P0** | 人与 agent 的交互和认知纪律 | 它决定事实是否被查清、问题是否问对、用户权威和任务范围是否被保留，并影响之后的每一次判断 | [development discipline](docs/contracts/development-discipline.md) § research-unknowns – causal-mechanism；[governance boundary](docs/contracts/governance-decision-boundary.md)（全部 invariant） |
 | **P1** | 当前事实、权威、所有权、依赖边界与历史债务 | 它决定会不会覆盖现有真相、复制规则或把局部债务扩散到整个项目 | [architecture](ARCHITECTURE.md)；[development discipline](docs/contracts/development-discipline.md) § one-owner – coherent-end-state；[project adoption](docs/contracts/project-adoption.md) § current-vs-target – visible-debt |
-| **P2** | 完整终态、风险分级、fixture/test-first、类别级防护、失败恢复，以及「未命名就会渗到全系统」的识别规则 | 它决定如何把正确理解变成可验证的完整交付，以及一个未声明的默认会不会变成日后的全量切换 | [agent execution](docs/contracts/agent-execution-discipline.md) § risk-selects-depth – smallest-route；[development discipline](docs/contracts/development-discipline.md) § outcomes-first – decisions-not-volume；识别规则见 [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
+| **P2** | 完整终态、风险分级、按目标选择验证方法、类别级防护、失败恢复，以及「未命名就会渗到全系统」的识别规则 | 它决定如何把正确理解变成可验证的完整交付，以及一个未声明的默认会不会变成日后的全量切换 | [agent execution](docs/contracts/agent-execution-discipline.md) § risk-selects-depth – smallest-route；[development discipline](docs/contracts/development-discipline.md) § outcomes-first – decisions-not-volume；识别规则见 [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P3** | 前端、后端、跨端、样式、数据、运维、安全、性能、时钟/日历、演示数据等条件性纪律 | 它们在目标项目激活相关边界时价值很高，并应按真实风险上调 | [development discipline](docs/contracts/development-discipline.md) 的对应领域契约及被激活的 concern owner；时间与演示的不变量：[foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | **P4** | 文档拓扑、模板、adoption stage、policy manifest、检查器和 CI 示例 | 它们承载或执行前面的纪律，但可复制性不等于价值优先级 | [documentation map](docs/README.md)；[documentation harness](docs/contracts/documentation-harness.md) |
 
@@ -126,9 +126,9 @@
 - 陌生引用与可核查事实不靠猜测补全；优先查原始或官方来源，工具不可用时先找
   保持语义与证据强度的替代路径；
 - 技术事实先调查、可逆工程选择由执行者完成，产品意图、重大取舍与风险接受才
-  交还用户做有限选择；相互依赖的决定按 prerequisite-safe frontier 推进并在
-  交付前确认 shared understanding；分析以讲清因果机制、适用边界及关键隐含
-  问题为标准；
+  交还用户选择；相互依赖的决定按先决条件逐项确定，并在交付前明确授权。
+  已有明确指令覆盖共同理解时，不重复确认。分析以讲清因果机制、适用边界及
+  关键隐含问题为标准；
 - onboarding 先保全当前事实，再按 observed → baselined →
   scoped_enforcement → adopted 渐进收紧；
 - 任务、任务组、目标与发布门分别关闭，不以低层完成冒充高层完成；

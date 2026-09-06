@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-06
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -77,6 +77,19 @@ Out of scope:
 > than reporting a problem without saying what impact it has or under what
 > conditions it does not matter. The standpoint matters: the user, the
 > product manager, and the architect cut into the same problem differently.”
+
+### source[8] — 2026-09-06
+
+Original maintainer wording in this task:
+
+> “如果所有的待确认项都确定好了，那就直接瀑布式开发到本次任务结束，
+> 不要分什么阶段123来让用户review或确认”
+
+Maintainer feedback in the template review task, rendered in English: once
+the pending decisions are settled, continue through the authorized task to a
+working end state. Do not stop for user review at artificial phases. Stop when
+new facts actually prevent completion or require a decision outside the agreed
+scope.
 
 ## Vocabulary
 
@@ -215,7 +228,19 @@ or a later decision; it does not turn every ordinary choice into a decision
 request. A preference difference inside the envelope is review feedback, not a
 governance blocker.
 
-- from: source[4]
+Authorization covers the agreed outcome through implementation, integration,
+verification, and necessary corrections. Internal plans, test failures that
+can be fixed within scope, and dependency checkpoints do not create new human
+approval gates. Give progress updates and continue. Required independent
+reviews remain execution work; they are not requests for the user to approve
+each phase.
+
+If new evidence exposes a material change of intent, authority, accepted risk,
+or a bounded execution blocker, pause the affected path, explain what changed,
+and present a concrete decision with its available evidence. Continue unaffected
+authorized work. Do not infer authority for a new task after this one is done.
+
+- from: source[4], source[8]
 
 ### Missing knowledge is routed, not automatically escalated
 
@@ -247,9 +272,11 @@ When several human-owned decisions depend on one another, map those
 dependencies and work the current **decision frontier**: ask only decisions
 whose prerequisites are settled, and do not place two questions in the same
 round when one answer could change the other. Recompute the frontier after each
-round. An empty frontier is not delivery authorization by itself; obtain the
-owner's confirmation that the shared understanding is complete before landing
-the resulting material contract or beginning dependent delivery.
+round. An empty frontier is not delivery authorization by itself. Establish the
+owner's authorization for the shared understanding before landing the resulting
+material contract or beginning dependent delivery. An existing explicit
+instruction that covers that understanding is sufficient; ask only when that
+authority is missing or the understanding materially changed.
 
 The frontier is a sequencing method, not a reason to interrogate every local
 choice. Researchable facts, controlled technical learning, and choices inside
@@ -261,7 +288,7 @@ An experiment does not authorize product behavior, production exposure,
 privileged access, or irreversible mutation. Its result may inform a later
 recommendation or contract, but cannot silently become either.
 
-- from: source[4], source[5], source[6]
+- from: source[4], source[5], source[6], source[8]
 
 ## Required behaviors
 
@@ -275,9 +302,10 @@ recommendation or contract, but cannot silently become either.
   capability-preserving tool fallback, investigate technical facts, make
   reversible local choices, and present bounded options only for decisions
   that belong to the human owner.
-- Dependent human decisions use the route-uncertainty invariant's decision frontier and explicit
-  shared-understanding confirmation without moving facts or the decision-envelope invariant choices into an
-  interview.
+- Dependent human decisions use the route-uncertainty invariant's decision
+  frontier and establish authorization for the shared understanding without
+  moving facts or local engineering choices into an interview, or asking for
+  the same confirmation again.
 - A blocker includes scope, evidence, recovery, and available human authority.
 - A risk or problem report names who bears the impact, its rough magnitude,
   the conditions under which it does not matter, and what accepting it would
@@ -349,6 +377,11 @@ Verified on 2026-08-06:
 - `python scripts/check_docs.py --strict` passes with no findings.
 
 ## Reconciliation log
+
+- **2026-09-06 — continuous authorized delivery:** clarified that existing
+  authorization persists through internal checkpoints and independent reviews;
+  only a new material decision or actual blocker pauses its affected path.
+  - from: source[8]
 
 - **2026-08-28 — problem reports carry impact context:** G3 and the risk
   state now require who bears the impact, its rough magnitude, the

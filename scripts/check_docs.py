@@ -1094,6 +1094,25 @@ class DocumentationChecker:
                 if normalized_heading(section) not in headings:
                     self.add(path, f"template missing required section: {section}")
 
+            if metadata.get("doc_type") == "contract":
+                lines = text.splitlines()
+                bounds = section_bounds(lines, "Normative invariants")
+                if bounds:
+                    start, end = bounds
+                    # New scaffolds must not reintroduce the identifiers that
+                    # adopters already retired. Legacy documents stay valid.
+                    coded_label = re.compile(
+                        r"^(?:#{3,6}\s+|[-*+]\s+)(?:\*\*)?"
+                        r"(?:INV|[DGAOHJ])-?\d+\b"
+                    )
+                    if any(coded_label.match(line) for line in lines[start + 1:end]):
+                        self.add(path, "contract template invariant uses a retired code")
+                    if not any(
+                        H3_RE.match(line) and not coded_label.match(line)
+                        for line in lines[start + 1:end]
+                    ):
+                        self.add(path, "contract template needs a plain-language ### invariant")
+
             if filename == "frontend-surface.md":
                 if "### raw[1] — {{YYYY-MM-DD}}" not in text:
                     self.add(path, "surface template missing dated raw[1] example")

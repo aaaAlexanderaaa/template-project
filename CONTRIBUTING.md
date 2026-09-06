@@ -43,8 +43,11 @@ or newer and have no third-party package dependencies.
 - Answer the stated question while surfacing any evidence-backed premise or
   risk that is materially more consequential. Explain its causal mechanism;
   do not turn it into unrequested implementation.
-- For material work, preserve fixture identity and the observed failing
-  acceptance check before implementation.
+- For material work, preserve the relevant baseline and select credible
+  verification for each claim. Use a failing test first when it can expose the
+  defect; artifact, interaction, and review claims need their own evidence.
+- Continue authorized delivery through its working end state and verification.
+  Internal checkpoints do not require new user approval.
 - Link every activated concern to the current/target contract that owns its
   boundary and failure/escalation policy. Plans carry steps and evidence, not
   duplicate policy.
@@ -57,8 +60,11 @@ or newer and have no third-party package dependencies.
 - Is there exactly one authoritative owner for every changed invariant?
 - Can a future contributor distinguish current, target, historical, and
   superseded documents?
-- Does the implementation match the contract's states, triggers, errors, and
-  non-goals?
+- Does the delivered result fulfill the original request as well as its
+  accepted interpretation and contract?
+- Do actual effects match the promised functional and quality boundaries in
+  both directions, including missing, undeclared, excessive, or suppressed
+  behavior and the user's recovery action?
 - Does the test suite guard the failure category, not only the reported input?
 - Are frontend and backend projections self-consistent?
 - If the change displays, stores, or schedules time, does it consume the
@@ -90,8 +96,8 @@ or newer and have no third-party package dependencies.
   requested human choice represent a genuine product, trade-off, authority, or
   risk decision rather than a resolvable fact or reversible local choice?
 - When human decisions depended on one another, did the inquiry work only the
-  prerequisite-safe frontier and obtain shared-understanding confirmation
-  before dependent material work?
+  prerequisite-safe frontier and establish authorization before dependent
+  material work, without asking for the same confirmation again?
 
 ## Definition of done
 

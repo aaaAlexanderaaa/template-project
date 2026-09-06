@@ -1,0 +1,109 @@
+{
+  "as_of": "2026-09-06 Asia/Shanghai",
+  "activity": "Research and design; no project-governance implementation authorized or performed.",
+  "selection": "User-named product families plus Pi, Gemini CLI, OpenCode and Copilot CLI as semantic boundary checks. No market-share completeness claim.",
+  "retrieval": {
+    "requested": "grok-search with extra_sources=20",
+    "available": false,
+    "discovery": "Searched callable tool metadata for search/browse/fetch; no grok-search capability was exposed.",
+    "fallback": "web search plus direct official documentation and release/repository pages",
+    "queries": [
+      "Codex AGENTS hooks subagents memory",
+      "DeepSeek Harness plugins release github",
+      "ZCode memory subagents changelog",
+      "Claude Code auto memory subagents changelog 2.1.261",
+      "Kimi Code CLI migration 0.41.0",
+      "Amp code models custom modes BYOK",
+      "Codex AGENTS subagents hooks",
+      "site.mariozechner.at pi coding agent 2025 11 30",
+      "site.anthropic.com engineering effective harnesses long running agents",
+      "site.arxiv.org Evaluating AGENTS.md repository context files coding agents",
+      "site.cognition.ai dont build multi agents context engineering",
+      "site.sre.google book handling overload retry budget",
+      "site.developer.chrome.com docs extensions webRequest cache request",
+      "site.rfc-editor.org rfc 9110 conditional requests If-None-Match",
+      "site.research.google pubs measuring user experience large scale HEART",
+      "site.cursor.com docs import sessions Claude Codex",
+      "site.research.google \"Measuring the User Experience on a Large Scale\"",
+      "site.lamport.azurewebsites.net safety liveness properties",
+      "site.docs.github.com \"Copilot CLI\" \"All\" \"AGENTS.md\"",
+      "site.aws.amazon.com/builders-library \"Making retries safe\"",
+      "site.sei.cmu.edu \"quality attribute scenario\" stimulus response"
+    ],
+    "source_policy": "First-party sources for technical claims. Product details generally remain single-source-family descriptions, not independently verified runtime behavior. Research findings are bounded by each study's methods.",
+    "recording": "Retained selected source identity, dates, bounded observations, conflicts and local repository hashes. Did not mirror full copyrighted pages or retain private account state.",
+    "excluded_from_claims": [
+      "Search-only third-party plugin directories",
+      "Unverified community anecdotes about Cursor history import",
+      "Unopened or insufficiently inspected academic leads"
+    ],
+    "failed_then_recovered": [
+      {
+        "url": "https://learn.chatgpt.com/docs/getting-started/import",
+        "recovery": "Followed the official navigation link to https://learn.chatgpt.com/docs/import"
+      },
+      {
+        "url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-custom-instructions",
+        "recovery": "Used official Copilot CLI command-reference instruction locations."
+      }
+    ]
+  },
+  "critical_method": [
+    "Test each supplied diagnosis against both supporting and contrary repository evidence.",
+    "Separate declaration, structural enforcement, delivery of context, behavior and user outcome.",
+    "Inspect recent changes that alter context, authority, side effects or completion semantics.",
+    "Do not infer the user's preferences from another assistant's unsupplied conversation.",
+    "Propose an intervention at the earliest evidenced point of failure; avoid adding a generalized subsystem without need."
+  ],
+  "comparison_design": {
+    "status": "not_run",
+    "discipline_arms": [
+      "current repository instructions",
+      "shorter entry with equivalent applicable constraints",
+      "targeted promise/effect and task-context revision"
+    ],
+    "runtime_factor": "Old and new harness versions only where reproducibly available; otherwise record the inability to roll back hosted behavior.",
+    "hold_fixed": [
+      "repository commit and dirty diff",
+      "task and original user intent",
+      "model identifier and visible effort/configuration",
+      "available tools and permissions",
+      "initial external fixtures and clock",
+      "initial memory and compaction state where relevant",
+      "execution and cost budgets"
+    ],
+    "blocking_unit": "Repeat each task/configuration pair; interleave conditions; distinguish between-task from within-task variation.",
+    "memory_conditions": [
+      "controlled clean start",
+      "seeded stale-memory challenge",
+      "representative accumulated state where reproducibly available"
+    ],
+    "primary_outcomes": [
+      "original user outcome achieved",
+      "undeclared/incorrect side effects",
+      "false completion",
+      "inappropriate stopping or scope expansion",
+      "human correction/rework"
+    ],
+    "secondary_outcomes": [
+      "wall-clock time",
+      "token and API cost",
+      "irrelevant context read",
+      "maintenance burden"
+    ],
+    "oracle_checks": [
+      "Four effect-mutation classes",
+      "Wrong identity/content with matching counts",
+      "Partial observation and delayed results",
+      "Original-intent versus translated-contract disagreement"
+    ],
+    "reporting": "Publish per-case observations and failures, not only a composite score. Do not claim equivalence from a non-significant difference. Choose thresholds and repetitions for the actual decisions and risk.",
+    "limits": [
+      "Unknown server-side model/system-prompt rollouts can prevent clean causal attribution.",
+      "Hidden tests do not exhaust product requirements.",
+      "Fresh-context reviewers may share model and specification errors.",
+      "Finite observations do not prove an unbounded absence of side effects."
+    ]
+  },
+  "proposal_acceptance": "A bounded runnable pilot with an original-goal-to-observed-result record; no repeated user sign-off at internal steps once authorized. New material facts may create a new bounded decision."
+}

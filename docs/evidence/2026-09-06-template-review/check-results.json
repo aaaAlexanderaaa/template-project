@@ -1,0 +1,31 @@
+{
+  "observed_on": "2026-09-06 Asia/Shanghai",
+  "baseline_commit": "b0e5a8196fc529cb38da76d29d1d00c06e128403",
+  "python_version": "3.14.2",
+  "scope": "Checks run before adding the evidence package. These are repository structural/fixture results, not native coding-agent adoption results.",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+      "exit_code": 0,
+      "test_count": 111,
+      "elapsed_seconds_reported": 12.001,
+      "result": "OK"
+    },
+    {
+      "command": "python3 scripts/check_docs.py",
+      "exit_code": 0,
+      "stdout": "check_docs: OK — 25 canonical document(s), 15 template(s) (profile: full), adoption stage: adopted, links and policy valid"
+    }
+  ],
+  "not_run": [
+    "Native commercial harness loading probes",
+    "Behavioral adoption evaluation",
+    "Downstream browser-extension verification",
+    "Independent agent review"
+  ],
+  "after_evidence_added": {
+    "command": "python3 scripts/check_docs.py",
+    "exit_code": 0,
+    "stdout": "check_docs: OK — 26 canonical document(s), 15 template(s) (profile: full), adoption stage: adopted, links and policy valid"
+  }
+}

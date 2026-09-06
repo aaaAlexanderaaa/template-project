@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-06
 supersedes: []
 ---
 
@@ -365,6 +365,12 @@ Letter-prefixed codes (D, G, A, O, H, INV, J) remain valid in contracts that
 have not migrated. A contract migrates wholesale — headings and incoming
 references in one change — and records the cutover in its reconciliation log.
 Mixed form within one contract is a transition defect, not a style choice.
+New contract templates must expose invariants as plain-language third-level
+headings. The checker requires at least one such heading in their Normative
+invariants section and rejects letter-number identifiers used as headings or
+list labels there. This guard applies to selected contract templates, not to
+unmigrated adopter contracts, source quotations, or historical records. It
+validates addressable syntax, not the quality or completeness of a rule.
 References inside completed plans, dated evidence files, blockquoted source
 anchors, and reconciliation-log entries are history: they stay as written,
 and a reader resolves an old code through the owning contract's
@@ -413,6 +419,12 @@ acceptance-evidence section are a current status surface, not history.
   similarity as proof that two documents conflict.
 
 ## Acceptance evidence
+
+The [2026-09-06 completed change](../plans/2026-09-06-outcome-driven-template.md#progress-and-closure)
+records the failing-before/passing-after scaffold guard, including coded
+heading and list variants and preserved legacy history. The full 114-test
+suite and normal/strict checks passed. This establishes the declared syntax
+boundary, not semantic quality or agent behavior.
 
 | Outcome | Enforcement | Evidence |
 |---|---|---|
@@ -464,6 +476,11 @@ Verification run on 2026-08-28:
   with the pilot contract's slug citations in place.
 
 ## Reconciliation log
+
+- **2026-09-06 — copied invariant syntax:** extended the existing heading
+  convention to a fixture-backed check of new contract scaffolds, which still
+  shipped `INV-1` list items after the original migration.
+  - from: source[6]
 
 - **2026-07-26 — contract created:** the original minimal metadata checker is
   retained as a foundation but is insufficient for the template's declared

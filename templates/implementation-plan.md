@@ -15,6 +15,9 @@ Write enough that a fresh contributor can continue without conversation
 history: what is changing, why now, current verified facts, and which contract
 is authoritative.
 
+Link the original request/source and its accepted interpretation. Read the
+relevant current sections; do not copy their history into this plan.
+
 ## Authority and prerequisites
 
 - Structural authority: `ARCHITECTURE.md` § “{{section}}”
@@ -38,6 +41,11 @@ The linked contract owns boundaries and failure/escalation policy. This plan
 must not restate them.
 
 ## Execution order within one coherent change
+
+Replace the example steps below with actual dependencies. They are internal
+checkpoints, not requests for user approval. Continue the authorized outcome
+through integration and verification; escalate only newly exposed decisions
+outside its authority or an actual blocker.
 
 ### 1. {{Dependency/contract foundation}}
 
@@ -77,6 +85,9 @@ must not restate them.
 | Outcome | Unit/class guard | Integration/lifecycle | User-visible/probe | Evidence path |
 |---|---|---|---|---|
 | {{outcome}} | {{check}} | {{check}} | {{check}} | {{path/pending}} |
+
+Select the credible evidence needed per claim; unused methods need no invented
+test. Include activated quality boundaries and apply [bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions).
 
 ## Rollout, migration, and rollback
 

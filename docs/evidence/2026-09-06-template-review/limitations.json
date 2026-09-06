@@ -1,0 +1,62 @@
+[
+  {
+    "topic": "Downstream incidents",
+    "known": "User reports recurrent goal, wording, documentation and side-effect failures.",
+    "unknown": "Actual task transcripts, original contracts, repository commits, runtime versions and observed traffic.",
+    "consequence": "No causal attribution to a particular model, harness or rule change."
+  },
+  {
+    "topic": "Assistant 1 preference attribution",
+    "known": "The supplied answer assumes the user selected a Pi-like single-agent setup.",
+    "unknown": "That earlier user correction is not present in the supplied conversation.",
+    "consequence": "Do not use the assumed preference to remove memory/delegation semantics from scope."
+  },
+  {
+    "topic": "Assistant 2 evidence bundle",
+    "known": "The 47,593-byte report exists under tmp.",
+    "unknown": "Its referenced evidence/version-history.json and experiment files were not supplied in the inspected tmp directory.",
+    "consequence": "Its counts and underlying collection cannot be reproduced from this checkout; selected claims were re-researched."
+  },
+  {
+    "topic": "ZCode hook support",
+    "known": "3.8.1 release notes advertise workspace hooks; current docs explicitly ignore project config hooks.",
+    "unknown": "Which exact build/configuration implements which policy.",
+    "consequence": "Require a version-specific controlled observation before enabling a critical project hook."
+  },
+  {
+    "topic": "Cursor cross-brand resume",
+    "known": "User reports it; search located a feature request and community anecdotes. Codex has first-party import documentation.",
+    "unknown": "A sufficient current first-party specification for the exact Cursor capability.",
+    "consequence": "Neither deny the user's observation nor claim this capability is exclusive."
+  },
+  {
+    "topic": "Kimi reasoning protocol",
+    "known": "Current providers and new/legacy runtime boundary were verified.",
+    "unknown": "All reasoning-state replay requirements by provider/model in the new runtime.",
+    "consequence": "Do not repeat the universal claim that Kimi uniquely requires exposed reasoning replay."
+  },
+  {
+    "topic": "Runtime effectiveness",
+    "known": "Mechanisms and release notes were examined.",
+    "unknown": "Native commercial harness trial results, latency/cost and long-project adoption benefits.",
+    "consequence": "Compatibility probes and behavioral scenarios in this package are not_run."
+  },
+  {
+    "topic": "Web provenance",
+    "known": "43 selected source identities and bounded observations were saved.",
+    "unknown": "Complete historical webpage content or inaccessible server-side behavior.",
+    "consequence": "Rolling pages can change; saved notes are not full archival snapshots."
+  },
+  {
+    "topic": "Browsing capability",
+    "known": "No callable grok-search tool was found in the active tool registry.",
+    "unknown": "The requested extra_sources=20 behavior cannot be reproduced by the fallback.",
+    "consequence": "Used web search and direct primary pages; no provider-specific breadth guarantee."
+  },
+  {
+    "topic": "Source independence",
+    "known": "Product details commonly have one first-party source family.",
+    "unknown": "Independent reproduction of each vendor mechanism.",
+    "consequence": "State single-family evidence for product claims; use separately authored sources for broader conclusions."
+  }
+]

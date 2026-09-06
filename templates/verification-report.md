@@ -11,6 +11,7 @@ subject: {{initiative-or-contract}}
 ## Claim being verified
 
 - Contract and section: `{{path}}`
+- Original request/source and accepted interpretation: {{wording or links}}
 - Revision/build: `{{commit/build id}}`
 - Observable outcomes: {{outcomes}}
 - Verifier: {{person/context}}
@@ -28,15 +29,30 @@ subject: {{initiative-or-contract}}
 
 ## Result matrix
 
-| Scenario/state | Expected | Structural evidence | Perceptual/operational evidence | Result |
+| User scenario / trigger | Promised result / quality boundary | Observed result | Evidence at affected boundary | Result |
 |---|---|---|---|---|
-| {{scenario}} | {{contract claim}} | {{measurement/test}} | {{observation}} | pass/fail |
+| {{starting state and action}} | {{functional requirement or quality owner}} | {{actual result and user next action}} | {{measurement, process/browser/artifact observation, or review}} | pass/fail/partial/not_run |
+
+### Actual effects
+
+Apply [bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions).
+Inspect requests, writes, events, notifications, and other relevant effects,
+including ones absent from the expected-result list. A pure text correction may
+state that no external effects are involved instead of filling an empty table.
+
+| Observed effect / target | Authorizing requirement | Expected vs actual count and timing | Disposition |
+|---|---|---|---|
+| {{boundary observation}} | {{owning section or undeclared}} | {{per operation and relevant window/freshness}} | {{within boundary / missing / extra / excessive / suppressed / unknown}} |
+
+Compare the delivered user outcome with the original request, not only the
+accepted interpretation. Record observation coverage and limits; no observation
+means unknown, not zero effects.
 
 ## Failure and negative-path checks
 
 | Failure class | Injection/reproduction | Expected recovery/error | Observed | Result |
 |---|---|---|---|---|
-| {{class}} | {{method}} | {{contract}} | {{observation}} | pass/fail |
+| {{class}} | {{method}} | {{contract and user's next action}} | {{observation}} | pass/fail/partial/not_run |
 
 ## Anomalies
 

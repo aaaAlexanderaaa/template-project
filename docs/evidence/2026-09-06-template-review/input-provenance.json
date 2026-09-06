@@ -1,0 +1,11 @@
+{
+  "user_request": "Current user request: critical research and recommendations, including eight field-feedback points. No governance rewrite authorized in this request.",
+  "assistant_1": "Supplied inline in the user request; not treated as the user confirming a Pi-only runtime preference.",
+  "assistant_2": {
+    "path": "tmp/template-harness-audit-2026-09-05.md",
+    "bytes": 47593,
+    "sha256": "f8d307cdfbabfb21e09566328e77dbad258320be6a2075cd6cf0b22448d5fafe",
+    "referenced_companion_data_present_in_supplied_tmp": false
+  },
+  "interpretation": "Source interpretations are discussed in the report; they are not adopted project authority."
+}

@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-08-28"
+FIXED_TODAY = "2026-09-06"
 
 
 def load_checker_module():
@@ -435,6 +435,48 @@ rationale = "{rationale}"
     def test_missing_required_template_section_fails(self) -> None:
         self.replace("templates/guide.md", "## Purpose", "## Goal")
         self.assert_fails_with("template missing required section: Purpose")
+
+    def test_contract_scaffold_requires_addressable_invariant_heading(self) -> None:
+        relative = "templates/contract.md"
+        content = self.read(relative)
+        start = content.index("## Normative invariants\n")
+        end = content.index("## Required behaviors\n", start)
+        self.write(relative, content[:start] + (
+            "## Normative invariants\n\n"
+            "- A plain but unaddressable rule.\n"
+            "  - from: source[{{N}}]\n\n"
+        ) + content[end:])
+        self.assert_fails_with("contract template needs a plain-language ### invariant")
+
+    def test_contract_scaffolds_reject_coded_invariant_variants(self) -> None:
+        for relative in ("templates/contract.md", "templates/backend-change.md"):
+            original = self.read(relative)
+            start = original.index("## Normative invariants\n")
+            end = original.index("\n## ", start + 1)
+            for coded_rule in (
+                "- **INV-1 — Retry identity.** Use one identity.",
+                "### D8 — Retry identity",
+                "### INV-2: Retry identity",
+            ):
+                with self.subTest(template=relative, rule=coded_rule):
+                    self.write(relative, original[:start] + (
+                        "## Normative invariants\n\n"
+                        "### Retry uses the same identity\n\n"
+                        "- from: source[{{N}}]\n\n" + coded_rule + "\n"
+                    ) + original[end:])
+                    self.assert_fails_with("contract template invariant uses a retired code")
+            self.write(relative, original)
+
+    def test_plain_invariant_template_keeps_historical_codes_outside_guard(self) -> None:
+        self.write("templates/contract.md", self.read("templates/contract.md") + (
+            "\n## Historical example\n\n"
+            "A prior contract used INV-1; its source remains historical.\n"
+            "- **D8 — Prior wording.** Preserved as history.\n"
+        ))
+        self.write("docs/contracts/legacy-fixture.md", self.basic_contract(
+            body="- **INV-1 — Legacy rule.** This unmigrated contract stays valid."
+        ))
+        self.assert_passes()
 
     def test_missing_agent_execution_template_fails(self) -> None:
         self.path("templates/agent-execution-plan.md").unlink()
@@ -1072,10 +1114,13 @@ last_reconciled: 2026-07-26
         )
 
     def test_later_dated_projection_source_is_advisory(self) -> None:
+        self.write("docs/contracts/projection-source.md", self.basic_contract(
+            reconciled="2026-08-28"
+        ))
         self.write(
             "docs/guides/projection.md",
             self.canonical_guide(
-                projection_of="docs/contracts/development-discipline.md",
+                projection_of="docs/contracts/projection-source.md",
                 reconciled="2026-07-27",
             ),
         )
@@ -1101,10 +1146,13 @@ last_reconciled: 2026-07-26
         self.assertNotIn("projection review is stale", output)
 
     def test_same_day_projection_dates_do_not_claim_drift(self) -> None:
+        self.write("docs/contracts/projection-source.md", self.basic_contract(
+            reconciled="2026-08-28"
+        ))
         self.write(
             "docs/guides/projection.md",
             self.canonical_guide(
-                projection_of="docs/contracts/development-discipline.md",
+                projection_of="docs/contracts/projection-source.md",
                 reconciled="2026-08-28",
             ),
         )

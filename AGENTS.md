@@ -1,236 +1,93 @@
 # Repository working agreement
 
-This repository uses contract-first development. These instructions apply to
-human contributors and automated coding agents.
+The requested observable outcome is the objective. Contracts, tests, documents,
+and checks preserve intent and expose mistakes; completing them alone is not
+completion of the task. Compare delivery with the original request as well as
+its accepted interpretation.
 
-## Transfer value order
+When transferring practices, preserve the [adoption value order](docs/contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers):
+interaction and epistemic discipline; truth, ownership, and boundaries; coherent
+verified delivery; activated domain disciplines; then documentation and tooling.
+This order guides attention, not authority or mandatory copying.
 
-When an agent enters this template to decide what is worth carrying into
-another project, do not rank content by file volume, copyability, or checker
-visibility. Use this base attention order:
+## Start with the task
 
-1. interaction and epistemic discipline: investigate, verify, preserve evidence
- strength, route uncertainty, weigh external material by authorship, and keep
- human direction and risk authority;
-2. current truth, ownership, public boundaries, dependency direction, and
-   bounded historical debt;
-3. coherent end states, risk-scaled execution, fixture- and test-first material
-   delivery, class-level guards, failure/recovery verification, and the test
-   for facts that leak across the system if left unnamed;
-4. frontend, backend, cross-stack, style, data, operational, security,
-   performance, time/calendar, demonstration data, and other disciplines
-   activated by the target project;
-5. documentation layout, templates, adoption stages, manifests, checkers, and
-   CI examples that carry or enforce the selected practices.
+1. Identify the requested outcome, existing authorization, relevant current
+   facts, and affected owner. Investigate before asking questions the repository
+   or available primary sources can answer.
+2. Read the relevant structural boundaries in `ARCHITECTURE.md`, the authority
+   and [task-context rules](docs/README.md#task-context), and applicable current
+   contracts or accepted target changes. Include an active plan only when it
+   applies. Follow dependencies and exceptions; do not recursively load history
+   or every linked domain document.
+3. Read `docs-policy.toml` before reporting a governance gap. Declared adoption
+   stage, source roots, managed scope, and template profile determine what is
+   enforced. Do not widen scope or weaken a rule to make a check pass.
+4. Choose the [smallest execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route).
+   Routine work uses existing authority and focused guards, without a new plan.
+   Material delivery reconciles its contract before dependent implementation
+   and uses a plan with actual dependencies and claim-specific verification.
+   An unknown material technical fact may use a [bounded experiment](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
+   High-risk work requires [independent design and completion review](docs/contracts/agent-execution-discipline.md#high-risk-design-uses-independent-lenses).
 
-This is the transfer-value order owned by
-[adoption § transfer-value-order](docs/contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers), not the document authority order below
-or a mandate to copy everything. Target evidence may promote an activated item
-from step 4. Learning and adoption use the same ranking; actual changes still
-require the target project's authority.
+## Execute the authorized outcome
 
-## Read order
+- Once intent and authority are settled, continue through implementation,
+  integration, verification, and necessary corrections to task completion.
+  Internal checkpoints and required reviews are execution work, not new user
+  approval gates. Apply the [engineering decision envelope](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default).
+- Investigate technical uncertainty and make locally reversible choices within
+  that envelope. Ask for a human decision only when new facts change material
+  intent, authority, accepted risk, or expose an actual blocker. Pause its
+  affected path and continue unaffected authorized work.
+- Keep human direction, priority, and risk acceptance with the owner. A bounded
+  task ends at its outcome; ongoing portfolio work needs its own authorization.
+  Classify governance findings using the [decision boundary](docs/contracts/governance-decision-boundary.md#states-and-triggers).
+- Preserve unrelated changes and explicit public boundaries. Keep one owner for
+  each rule, investigate existing implementations before adding another, and
+  complete one coherent end state. A diagnosis request authorizes investigation
+  and explanation, not an unrequested implementation.
+- Reconcile conflicts before editing dependent code. Plans, summaries, memory,
+  and worker reports do not override current authority. Record adopted general
+  rules at their existing owner; an explicit instruction to adopt supplies
+  confirmation for that scope.
+- Name a defect's mechanism and add a proportionate sibling guard where useful.
+  Correct the responsible default, interface, example, or context route; retire
+  redundant reminders instead of appending every incident to this entrypoint.
+- Research unfamiliar checkable claims, preserve source strength and uncertainty,
+  and try a capability-preserving fallback when a tool fails. Explain the
+  decisive cause and its limits in plain language; follow the [inquiry rules](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed)
+  and [language standard](docs/README.md#language-style).
 
-Before changing code or behavior, read in this order:
+## Read domain rules when activated
 
-1. `ARCHITECTURE.md` for structural ownership and dependency direction.
-2. `docs/README.md` for document authority, lifecycle, and language style.
-3. The relevant `status: current` contract and any applicable accepted
-   `status: target` contract under `docs/contracts/`. When the change
-   displays, stores, schedules, or seeds date/time or demo data, read
-   `docs/contracts/foundational-runtime-discipline.md`.
-4. For UI work, the relevant current and accepted target surface contracts
-   under `docs/design/`.
-5. The active implementation plan under `docs/plans/`, if one exists.
-6. For material agent-driven work, the risk and review requirements in
-   `docs/contracts/agent-execution-discipline.md`.
+[Development discipline](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
+owns concern triggers. Read its applicable owner before changing the boundary.
 
-For greenfield or brownfield adoption, read
-`docs/contracts/project-adoption.md` and `docs/guides/onboarding.md` before
-rewriting existing authority or enabling project-wide gates.
+| Task touches | Read |
+|---|---|
+| User-facing interface | Applicable `docs/design/` surface; development's [frontend rules](docs/contracts/development-discipline.md#frontend-development-contract) |
+| Service, state, persistence, or API | Development's [backend rules](docs/contracts/development-discipline.md#backend-and-service-development-contract) |
+| Producer and consumer together | Development's [cross-stack rules](docs/contracts/development-discipline.md#cross-stack-coordination) |
+| Time/calendar or operator-visible demo data | Applicable sections of [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
+| Concurrent agents or delegated work | [Written coordination](docs/contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing) and [bounded delegation](docs/contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner) |
+| Adoption into another project | [Project adoption](docs/contracts/project-adoption.md) and [onboarding](docs/guides/onboarding.md) before rewriting authority or enabling gates |
 
-Do not infer authority from recency, filename, or document length.
-`docs-policy.toml` owns mechanical lifecycle defaults;
-`architecture-rules.toml` owns the portable baseline fitness declarations.
+## Verify and close
 
-Governance depth is declared, not assumed. `[adoption].stage`,
-`[adoption].source_roots`, `[adoption].managed_paths`, and
-`[templates].profile` in `docs-policy.toml` state which scope is governed and
-how strictly. Read them before reporting a gap: at an early stage the checker
-reports adoption work without blocking, and that is the intended state, not a
-finding. Change the declared scope by proposing it to the owner, never by
-weakening a rule to make a check pass.
+Use [bidirectional verification](docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions):
+check each functional promise and activated quality boundary, then inspect actual
+external effects for missing, undeclared, excessive, or wrongly suppressed
+behavior. Include relevant identity, frequency, freshness, failure/recovery,
+and the user's next action. Passing tests cannot substitute for observing the
+claimed outcome; missing evidence remains unknown or not run.
 
-## Contract-first gate
+Run checks appropriate to the affected risk. Reconcile changed owners and
+projections, update plan/issue/verification states, and retire obsolete working
+context before claiming the relevant completion layer. For harness or template
+changes, run both commands with Python 3.11 or newer:
 
-- Do not deliver a material behavior change without a landed contract.
-- When a material technical fact is unknown, use the controlled experiment
-  path in [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty); the experiment is disposable evidence, not delivery.
-- Routine work may consume an applicable current contract without creating a
-  standalone contract or plan.
-- If a material delivery contract is missing, draft and confirm it first.
-- If conversation, code, tests, and contract disagree, stop and surface the
- conflict. Reconcile before editing dependent code.
-- Plans describe execution; they do not override current contracts.
-- Code comments and commit messages do not replace a normative contract.
-- A rule stated in conversation is not durable authority. When a general rule
- is stated or recurs, propose recording it in the document that owns its
- topic ([development § durable-recording](docs/contracts/development-discipline.md#recurring-verbal-rules-are-proposed-for-durable-recording)).
-
-The full discipline lives in
-`docs/contracts/development-discipline.md`.
-
-## Governance decision boundary
-
-- Product direction, priority, trade-offs, and risk acceptance remain with the
-  declared human owner. The framework supplies decision evidence; it does not
-  replace that authority.
-- Classify material governance output as `fact`, `risk`, `recommendation`,
-  `human_decision_required`, or `execution_blocker`.
-- Use `execution_blocker` only for the bounded conflict, authorization,
-  configuration/dependency, adopted evidence/review, and coherent-end-state
-  conditions in `docs/contracts/governance-decision-boundary.md`.
-- A blocker pauses one execution path, not the product idea. Name its evidence,
-  exact scope, recovery options, and available human decision.
-- When priority is missing, present candidates and request direction; do not
-  silently promote an agent recommendation into project priority.
-- Inside an authorized outcome, proceed with locally reversible engineering
-  choices in the [governance § decision-envelope](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default). Investigate technical uncertainty before
-  escalating it as a product or risk decision.
-
-## Working safely
-
-- Investigate read-only before asking questions the repository can answer.
-- Preserve unrelated and pre-existing work in a dirty worktree.
-- Do not perform destructive operations unless the exact target and authority
-  are clear.
-- Keep changes inside the requested scope; do not infer permission for a
-  materially different migration or cleanup.
-- A diagnosis request authorizes investigation and explanation, not an
-  unrequested implementation.
-
-## Inquiry and collaboration
-
-Follow [development § research-unknowns](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed), [development § capability-fallback](docs/contracts/development-discipline.md#tool-failure-triggers-capability-preserving-fallback), and [development § causal-mechanism](docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism), plus [governance § route-uncertainty](docs/contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated), rather than guessing or seeking
-approval indiscriminately:
-
-- Research unfamiliar terms, named references, publications, and other
-  checkable external facts with available network or retrieval tools; prefer
-  primary and official sources, and distinguish sourced fact from inference.
-- If a tool is unavailable, identify the capability it provided and try a
-  semantics- and evidence-preserving fallback before reporting a blocker. Do
-  not silently weaken the claim or switch product behavior.
-- Route uncertainty by kind: investigate facts, make and verify locally
-  reversible engineering choices, and present bounded options when product
-  intent, material trade-offs, expensive-to-reverse preferences, authority, or
-  risk acceptance belong to the user.
-- When several such human decisions depend on one another, use the
-  decision-frontier procedure in `docs/guides/project-operation.md`; do not use
-  it to return researchable facts or [governance § decision-envelope](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) choices for serial approval.
-- Answer the explicit question and point out an evidence-backed unasked issue
-  when it is materially more consequential to the user's goal. Explain the
-  causal connection without expanding implementation scope silently.
-- Judge analytical depth by whether the causal mechanism, conditions,
-  boundaries, and distinguishing evidence are clear, not by the number of
-  headings or abstraction layers.
-
-## Planning and implementation
-
-- Describe one coherent end state. Dependency order is not permission to leave
-  temporary architecture behind indefinitely.
-- For material delivery, identify owner, public contract, states, triggers,
-  failure behavior, non-goals, risks, and acceptance evidence first.
-- Name the defect category before fixing a bug.
-- Add a sibling-variant guard when the root mechanism is repeatable and the
-  guard is proportionate to the bounded risk; otherwise record why the fix stays
-  local.
-- Prefer cohesion and a single reason for change over arbitrary file-size
-  targets. Split modules that mix bounded contexts.
-
-## Agent execution profile
-
-Choose the smallest route in
-[agent-execution § smallest-route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route):
-
-- **Routine:** use existing authority, make the bounded reversible change, and
-  run focused guards without a new plan.
-- **Controlled experiment:** when read-only investigation cannot answer a
-  technical fact, use [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable, contained evidence path.
-- **Material delivery:** land the contract, link only concern owners
-  activated through [development § activate-concerns](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony),
-  and use the seven-phase fixture- and test-first loop.
-- **High-risk delivery:** add independent design review ([agent-execution § independent-lenses](docs/contracts/agent-execution-discipline.md#high-risk-design-uses-independent-lenses))
-  and fresh-context completion evaluation ([agent-execution § independence-evidence](docs/contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label))
-  to the material route.
-
-Record the rationale for material/high-risk work; do not downgrade risk to
-bypass a missing reviewer. If required independent context is unavailable, keep
-only the affected completion layer open unless a human records a scoped
-exception. When no named task is executable, follow [agent-execution § no-invented-priority](docs/contracts/agent-execution-discipline.md#work-selection-has-no-silent-idle-state-or-invented-priority) and consume human-owned
-portfolio priority rather than inventing it. When several agents or sessions
-work concurrently, follow [agent-execution § written-coordination](docs/contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing): register scope on the project's written
-coordination surface, announce shared-surface changes, and re-read files
-before editing them.
-
-## Frontend work
-
-- Preserve dated stakeholder language in a raw layer and translate it into
-  states, layout, size, interaction, style, accessibility, and responsive
-  behavior.
-- Ground the accepted direction in the surface's concrete subject, audience,
-  and user job. Critique type, layout, content, motion, and any signature
-  element against the brief and generic defaults before implementation; route
-  missing product intent through [governance § route-uncertainty](docs/contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated) instead of inventing it.
-- Treat interface language as design: use user-recognizable terms, consistent
-  action/result names, and actionable empty/error states. Keep disposable
-  visual alternatives in `tmp/` and record stakeholder reactions in the raw
-  layer before accepted choices enter surface/style owners.
-- Enumerate relevant reachable states instead of checking one sample.
-- Date/time display and naive input consume the declared business timezone
-  and clock; the device timezone must not interpret business input.
-- Consume the declared style layer and value tiers; do not introduce a second
-  source of visual truth. A value restated where it is used has no owner.
-- Change another unit's appearance only through the surface that unit
-  published. Being able to select something is not permission to style it.
-- When the shared layer publishes no suitable value, record the exception with
-  an owner and a removal condition instead of overriding privately.
-- For layout work, combine perceptual review with rendered structural evidence.
-- Check repeated instances, both axes, intermediate responsive ranges, and
-  actual usability.
-- Use an independent verifier for high-risk visual or interaction changes.
-
-## Backend and service work
-
-- Keep domain truth and mutation authorization with one declared owner.
-- Version interfaces that cross module or process boundaries.
-- Specify invalid transitions, idempotency, concurrency, persistence,
-  timeouts, retry eligibility, recovery, observability, and permissions.
-- Fail loudly on invalid configuration or unavailable dependencies.
-- Test lifecycle and failure behavior with controlled boundaries.
-- Consume the Time and calendar owner for instants, civil dates, durations,
-  naive input, public representation, and the injectable clock. Do not treat
-  host or browser locale as the business timezone.
-- If operators or customers will see seed or synthetic data, keep it
-  clock-relative, environment-gated, and idempotent on the same business
-  day. Hardcoded live-demo calendar dates are a class defect.
-
-## Cross-stack work
-
-- Define the shared state and interface contract before producer or consumer
-  code changes.
-- Backend owns domain truth; frontend owns its user-visible projection.
-- Do not duplicate hidden business rules in the client.
-- Cut over all required participants under one explicit compatibility decision.
-
-## Verification and handoff
-
-- Lead with observable outcomes: functionality, presentation, interaction,
-  design/domain logic, and failure/recovery behavior.
-- Run checks in proportion to the affected risk and boundary surface.
-- Record durable evidence for durable claims; keep scratch artifacts in `tmp/`.
-- Update contract implementation/verification status, plan status, issue
-  status, and supersession links before declaring work complete.
-- State which layer is complete: task, task group/key result, objective, or
-  release gate. Completion at one layer does not close the next.
-- When changing the documentation harness or templates, run both the fixture
-  suite and the repository check with Python 3.11 or newer.
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/check_docs.py
+```

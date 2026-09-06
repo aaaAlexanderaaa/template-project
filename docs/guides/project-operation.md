@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-06
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -91,8 +91,9 @@ their answers depend on one another:
    of that instead of a manufactured preference;
 4. wait for the owner's answers, record disagreements or unknowns without
    converting them into assent, and recompute the frontier;
-5. when no branch remains, ask the owner to confirm the shared understanding
-   before landing a material contract or beginning dependent delivery.
+5. when no branch remains, establish authorization for the shared understanding
+   before dependent delivery. An existing explicit instruction covering that
+   understanding is sufficient; ask only if it is missing or materially changed.
 
 If one session cannot hold a coherent frontier, split it by user outcome or
 contract boundary. If a visual preference needs something concrete to react
@@ -110,7 +111,8 @@ expand its scope.
 Use [agent-execution § smallest-route](../contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route) in the agent execution contract to choose the smallest route. Routine
 work consumes existing authority and focused guards without creating a plan.
 An unresolved technical fact uses [development § contract-first](../contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable experiment path
-before delivery. Material delivery uses the seven-phase plan and only the
+before delivery. Material delivery uses actual dependencies, claim-specific
+verification, and only the
 concerns activated through [development § activate-concerns](../contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). Date/time and operator-visible
 demo or seed data route to
 [foundational runtime](../contracts/foundational-runtime-discipline.md)
@@ -125,6 +127,12 @@ When several agents or sessions work the repository concurrently, [agent-executi
 written coordination: check the declared coordination surface and register
 scope before starting, announce shared-surface changes, re-read files before
 editing, and let the guard suite catch collisions.
+
+Continue an authorized task through its working end state and verification;
+internal checkpoints do not ask the user to approve phases. A bounded task may
+end when it is complete. Portfolio discovery applies only to an authorized
+ongoing assignment. Delegated work uses the existing plan or a bounded native
+assignment, and the parent verifies the integrated result before closure.
 
 ### 5. Report governance output precisely
 
@@ -152,7 +160,7 @@ chat history decays with the context that carries it.
   have capability-preserving fallback evidence or explicit limitations, and
   human option sets are reserved for decisions the owner actually owns.
 - Dependent human decisions move through prerequisite-safe rounds, exclude
-  facts and [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) choices, and end with explicit shared-understanding confirmation.
+  facts and [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) choices, and establish authorization without asking for the same confirmation again.
 - Analysis explains the causal mechanism and bounds any surfaced unasked issue
   to evidence and authorized scope.
 - The execution plan links the applicable current/target contracts.
@@ -161,6 +169,49 @@ chat history decays with the context that carries it.
 - Acceptance evidence covers the declared risk and boundary surface.
 - Completion is reported at the correct layer.
 - Newly discovered work is recorded but not assigned silent priority.
+
+### Worked example: checking three page scripts
+
+This is an illustrative application of [bidirectional verification](../contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions),
+not a shipped extension design or a claim about any provider's safe rate.
+
+Original maintainer questions include:
+
+> “它真的是确保了是最少、最小必要的 check 吗？”
+> “对不上的时候会告诉我更新成了哪三个吗？”
+> “原本的三个被映射成不止三个怎么办？”
+
+For this example, assume the owner has accepted a **manual check of the loaded
+page's dependency identities**, with no polling or content downloads. The
+loaded page exposes authoritative role-to-script metadata for its current
+load. Checking server freshness or content at unchanged URLs is a different
+promise; this example cannot establish either. If that is the actual user job,
+the contract must specify its source and authorized network behavior first.
+
+| Scenario / starting state | Promised result and boundary | Observation that could disprove it |
+|---|---|---|
+| User checks a supported loaded page with three known roles | Compare the page's captured role-to-script mapping with the stored baseline; show source and observation time | A supported role is silently skipped or a stale page result is presented as a server freshness check |
+| User double-clicks while a check is in progress | Join the same operation for that page instance; one comparison result, zero additional network requests, no baseline write | Instrument all extension-caused requests and storage writes, not just a helper's return; look for retries, hidden fetches, or duplicate notifications |
+| Page opens, refreshes, or a timer fires without a click | No new check operation; there is no polling in this accepted scope | Count operation starts over these events, separately from requests per operation |
+| A prior check is finished and the loaded page's dependency set changes | A new explicit check reads the current page metadata; a stale cached success cannot suppress it | Change metadata while preserving the page instance and check again; inspect whether the comparison actually runs |
+| All three known roles point to new scripts | Show each old role and its observed successor(s), plus the mapping basis; do not overwrite the baseline during Check | Compare using role metadata rather than URL ordering or guessing from filenames |
+| A role splits into several scripts, two roles merge, or evidence conflicts | Preserve the observed sets; label split, merge, or unresolved mapping; do not invent a three-to-three mapping | Supply one-to-many, many-to-one, unrelated additions, missing roles, and conflicting metadata; inspect the displayed associations |
+| Metadata is unavailable, page changes during the read, or access fails | Report unknown/partial state with reason and next action; keep the accepted baseline | A failure becomes "unchanged", partial data replaces the baseline, or an automatic retry adds requests |
+| User needs to act after a difference | Show what changed and offer copying the mapping or inspecting ambiguous roles | A generic "mismatch" leaves the user to rediscover the changed files; accepting a new baseline must be a separately specified action |
+
+The example's resource boundary is zero **extension-caused** network requests
+for Check, not a claim that the webpage itself makes none. Count actual effects
+independently of expected responses. Trigger eligibility prevents excessive
+operations; operation identity prevents duplicate work; re-reading after a new
+explicit check prevents wrong suppression. None alone proves the other two.
+
+If an adopted product needs network content checks, extend its owning contract
+with the actual user requirement: resource discovery and identity, existing
+request/cache reuse, physical request attempts including redirects/retries,
+per-operation and cross-operation bounds, stale-data policy, and user recovery.
+Derive limits from that service's documented or authorized conditions; do not
+call a guessed threshold "safe". Reconcile what happens when identity metadata
+is missing or ambiguous before claiming to map changed dependencies.
 
 ## Failure and recovery
 

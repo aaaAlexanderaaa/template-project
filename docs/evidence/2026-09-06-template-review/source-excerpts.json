@@ -1,0 +1,31 @@
+{
+  "scope": "Short source excerpts for disputed or high-impact mechanisms; not full page snapshots. All other source observations are paraphrases.",
+  "observed_on": "2026-09-06",
+  "excerpts": [
+    {
+      "source": "zcode-hooks",
+      "section": "Configuration Sources",
+      "text": "Project-level hooks are not executed in the current version."
+    },
+    {
+      "source": "zcode-changelog",
+      "section": "3.8.1, New Features",
+      "text": "Support secure workspace-level Hooks configuration and execution"
+    },
+    {
+      "source": "claude-261",
+      "section": "What's changed",
+      "text": "Fixed resuming a session losing hook output and other context around parallel tool calls, which changed the resumed request"
+    },
+    {
+      "source": "cognition-2026",
+      "section": "Opening",
+      "text": "setups where multiple agents contribute intelligence to a task while writes stay single-threaded"
+    },
+    {
+      "source": "codex-memory",
+      "section": "Memories",
+      "text": "Keep required team guidance in `AGENTS.md` or checked-in documentation."
+    }
+  ]
+}

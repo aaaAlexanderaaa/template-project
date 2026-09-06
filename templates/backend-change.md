@@ -13,6 +13,7 @@ supersedes: []
 ## Outcome and scope
 
 - User/system outcome: {{outcome}}
+- Original request and accepted interpretation: {{source and intended user job}}
 - In scope: {{behavior}}
 - Out of scope: {{non-goals}}
 
@@ -39,9 +40,12 @@ contract when it owns the boundary; do not restate its threshold here.
 
 ## Normative invariants
 
-- **INV-1 — {{name}}.** {{durable backend rule}}
-  - from: source[{{N}}]
-  - enforcement: `{{type/test/runtime guard}}`
+### {{Plain-language invariant name}}
+
+{{durable backend rule}}
+
+- from: source[{{N}}]
+- Enforcement: `{{type/test/runtime guard or bounded review}}`
 
 ## Public interface
 
@@ -126,6 +130,14 @@ concern for this change.
 
 ## Class-level acceptance tests
 
+Start from the user outcome and activated quality owners; use
+[bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
+instead of treating existing tests as the requirement inventory.
+
+| Scenario and trigger | Promised result / quality boundary | Actual effects at service boundary | Verification / result |
+|---|---|---|---|
+| {{starting state and action}} | {{requirement or owning section}} | {{requests, writes, events; targets, counts, timing; undeclared effects}} | {{probe/test/review; pass/fail/partial/not_run}} |
+
 Retain only lifecycle behavior and activated-concern cases applicable to this
 change.
 
@@ -136,6 +148,8 @@ change.
 - {{restart or partial-write recovery}}
 - {{permission denial when security/privacy is activated}}
 - {{API/persistence/count self-consistency}}
+- {{missing or unexpected effects, including excess triggers and stale suppression}}
+- {{user-visible partial result and actionable recovery}}
 
 When no repeatable sibling mechanism exists or a broader guard would cost more
 than the bounded risk warrants, record that reason and keep the correction

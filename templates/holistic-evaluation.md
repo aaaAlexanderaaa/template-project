@@ -11,6 +11,7 @@ subject: {{initiative-or-objective}}
 ## Claim and completion layer
 
 - Claim under evaluation: {{observable outcome}}
+- Original request/source and accepted interpretation: {{wording or links}}
 - Completion layer: `{{task / task-group / objective / release-gate}}`
 - Governing contracts: `{{paths-and-revisions}}`
 - Implementation revision/build: `{{identity}}`
@@ -32,12 +33,19 @@ subject: {{initiative-or-objective}}
 
 | Dimension | Questions | Finding | Evidence | Result |
 |---|---|---|---|---|
-| Functional outcome | Does the complete intended behavior work? | {{finding}} | {{evidence}} | pass/fail/partial |
+| Functional outcome | Does the delivered result fulfill the original request as well as the contract? | {{finding}} | {{evidence}} | pass/fail/partial/not_run |
 | Contract and domain logic | Are ownership, states, and invariants coherent? | {{finding}} | {{evidence}} | pass/fail/partial |
 | User/operator experience | Are reachable states understandable and usable? | {{finding}} | {{evidence}} | pass/fail/partial |
 | Failure and recovery | Do negative paths fail and recover as contracted? | {{finding}} | {{evidence}} | pass/fail/partial |
 | Integration and compatibility | Do producers, consumers, artifacts, and migrations align? | {{finding}} | {{evidence}} | pass/fail/partial |
 | Maintainability and operations | Are tests, observability, docs, and rollback sufficient? | {{finding}} | {{evidence}} | pass/fail/partial |
+
+Apply [bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
+to the integrated result. Account for actual external effects, including those
+absent from the acceptance list, and inspect applicable identity, frequency,
+freshness, user cost, and recovery boundaries. Link existing observations;
+do not create a second requirements inventory. Missing observations are unknown
+or not run, never a pass.
 
 ### Activated quality outcomes
 

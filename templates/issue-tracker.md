@@ -55,4 +55,6 @@ initiative: {{initiative-slug}}
 - Sibling-variant guard: {{test/check and sibling case it catches, or local-only
   rationale when no repeatable mechanism or proportionate guard exists}}
 - Verification evidence: {{path}}
+- If the harness contributed: {{corrected default/interface/example/route/guard,
+  sibling case checked, and redundant reminder retired; omit otherwise}}
 - Final status: `resolved`

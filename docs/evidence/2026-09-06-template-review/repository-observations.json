@@ -1,0 +1,154 @@
+{
+  "python": "3.14.2 (main, Dec  5 2025, 16:49:16) [Clang 17.0.0 (clang-1700.4.4.1)]",
+  "baseline": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "b0e5a8196fc529cb38da76d29d1d00c06e128403\n",
+    "stderr": ""
+  },
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 14512,
+      "lines": 236,
+      "sha256": "a316117c4823e49f5a6602911373909a0b4ce8c1c1ca09b16e2405c83106f46e",
+      "source_and_history_section_bytes": {}
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "bytes": 6012,
+      "lines": 150,
+      "sha256": "55451b64b2e53c4bd769bbdfc10b3de19a487fc405ccf8641943dd71b423e703",
+      "source_and_history_section_bytes": {}
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 10449,
+      "lines": 216,
+      "sha256": "bbfaa8f163eadfd02715c15fcee6b256c925dd73ae6f04308e03d92212b46f19",
+      "source_and_history_section_bytes": {}
+    },
+    {
+      "path": "docs/contracts/development-discipline.md",
+      "bytes": 37053,
+      "lines": 680,
+      "sha256": "809dfb65e26bf6e87950cc378972a7248558b61bd4b8e73a5022a27b9f4152f5",
+      "source_and_history_section_bytes": {
+        "Source anchors": 2578,
+        "Reconciliation log": 4934
+      }
+    },
+    {
+      "path": "docs/contracts/agent-execution-discipline.md",
+      "bytes": 18670,
+      "lines": 395,
+      "sha256": "485466c968fc20c03f13a543c2401a73db9343360a12acae661bea9642621e31",
+      "source_and_history_section_bytes": {
+        "Source anchors": 1114,
+        "Reconciliation log": 2573
+      }
+    },
+    {
+      "path": "docs/contracts/governance-decision-boundary.md",
+      "bytes": 20753,
+      "lines": 394,
+      "sha256": "8f8bc82a8d0f4ab453f609c46f1500bfc6bec49ac714e5ddd15691822ce61dc1",
+      "source_and_history_section_bytes": {
+        "Source anchors": 1651,
+        "Reconciliation log": 3152
+      }
+    },
+    {
+      "path": "docs/contracts/documentation-harness.md",
+      "bytes": 27524,
+      "lines": 531,
+      "sha256": "81c0d0351e31acb50a7841fc0fa9b237dce4c0d99bbcac5c7f3ae3f71e799933",
+      "source_and_history_section_bytes": {
+        "Source anchors": 2227,
+        "Reconciliation log": 4500
+      }
+    },
+    {
+      "path": "docs/contracts/engineering-judgment-discipline.md",
+      "bytes": 14552,
+      "lines": 278,
+      "sha256": "ea94b7f685e390172fb8d6aea51ae24a1c86fb74d1ab5855e3c4048232e2aae3",
+      "source_and_history_section_bytes": {
+        "Source anchors": 1429,
+        "Reconciliation log": 1273
+      }
+    },
+    {
+      "path": "docs/contracts/project-adoption.md",
+      "bytes": 19057,
+      "lines": 389,
+      "sha256": "002f1e6029c95a3e45ccd194d4e5e7c12f2e4c5724c7926387e5bd9c38acac6d",
+      "source_and_history_section_bytes": {
+        "Source anchors": 1785,
+        "Reconciliation log": 2814
+      }
+    },
+    {
+      "path": "docs-policy.toml",
+      "bytes": 7907,
+      "lines": 185,
+      "sha256": "798e92b4a67542112d522e1d390bb8c632e1c79affda2cf52ec04a08e19b780c",
+      "source_and_history_section_bytes": {}
+    },
+    {
+      "path": "templates/contract.md",
+      "bytes": 3589,
+      "lines": 120,
+      "sha256": "03aad2c41bc21c73318b4978b393a559fe1bb050aded9facaba91bb9796f73d5",
+      "source_and_history_section_bytes": {
+        "Source anchors": 352,
+        "Reconciliation log": 154
+      }
+    },
+    {
+      "path": "templates/backend-change.md",
+      "bytes": 5569,
+      "lines": 152,
+      "sha256": "9efd32fd7fa897c94fa45d11d8bc2a53d97f13610db87a31d51010b960b18544",
+      "source_and_history_section_bytes": {
+        "Source anchors": 89,
+        "Reconciliation log": 81
+      }
+    },
+    {
+      "path": "scripts/check_docs.py",
+      "bytes": 80920,
+      "lines": 2027,
+      "sha256": "647256a39156fbe7ddff40f95585e4b40a7e767715a6fa3fe02bad0c34033699",
+      "source_and_history_section_bytes": {}
+    },
+    {
+      "path": "tests/test_check_docs.py",
+      "bytes": 57161,
+      "lines": 1509,
+      "sha256": "911368c0ea918ae3a6f04a3d03175dcee152d37a92bf79de73f19bab4d588534",
+      "source_and_history_section_bytes": {
+        "Source anchors": 146
+      }
+    }
+  ],
+  "entry_three_bytes": 30973,
+  "six_document_example_bytes": 107449,
+  "scope_limit": "Bytes on disk, not injected tokens or observed causal harm. The six-document set is an illustrative governance read path, not a claim that every task must read all six.",
+  "repository_history": {
+    "command": [
+      "git",
+      "log",
+      "-12",
+      "--date=iso-strict",
+      "--format=%h %ad %s"
+    ],
+    "exit_code": 0,
+    "stdout": "b0e5a81 2026-08-29T13:39:13+08:00 feat: retire letter-code invariant identifiers for heading slugs\nb705127 2026-08-28T13:40:40+08:00 feat: add engineering judgment discipline and heading-slug identifiers\nddd530e 2026-08-28T10:24:46+08:00 feat: add foundational runtime and collaboration discipline\nf7858ed 2026-08-20T20:34:22+08:00 chore: publish English homepage and English source wording\n421edf9 2026-08-20T19:26:44+08:00 chore: add MIT license and redact local identity\nb7680da 2026-08-06T13:41:59+08:00 feat: adopt decision frontier and frontend design guidance\n5023b0a 2026-08-06T09:47:43+08:00 feat: add evidence and collaboration discipline\n72b881c 2026-07-28T13:36:45+08:00 feat: make engineering harness proportional\nffdb064 2026-07-27T07:37:52+08:00 feat: govern style ownership and layering\n3874272 2026-07-26T21:53:46+08:00 feat: scale the documentation harness to project size\naf16d72 2026-07-26T14:35:22+08:00 feat: add bounded governance and project onboarding\n3b7d88a 2026-07-26T11:32:04+08:00 feat: enforce documentation harness invariants\n",
+    "stderr": ""
+  }
+}

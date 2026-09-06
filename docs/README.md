@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-08-27
+last_reconciled: 2026-09-06
 ---
 
 # Documentation authority map
@@ -61,6 +61,31 @@ The active read set consists of applicable `current`, `target`, `active`, and
 documents remain searchable history but do not join normal change authority or
 work selection merely because they remain on disk.
 
+### Task context
+
+For each task, start with the requested outcome, relevant structural owner,
+applicable contract sections, active plan if required, and the baseline needed
+to act. A link to a document does not require recursively reading every link
+or loading all domain contracts. Expand this set when a dependency, conflict,
+or activated concern makes another section relevant. Read the whole owning
+document before changing its rules if section-level reading leaves its scope
+or interactions unclear.
+
+Original requirements, applicable owner scope, exceptions, and activated
+boundaries remain part of the task context. Additional source anchors and
+reconciliation history explain provenance; they are read when intent is
+disputed or a prior decision needs investigation. They are not
+mandatory startup payload merely because they share a file with current rules.
+Plans and handoffs link to precise current sections and state only the facts
+needed for the next action. Memory or a generated summary is a locator, not a
+replacement for current authority.
+
+At closure, merge still-live decisions into their owner, mark the plan
+completed, and replace startup links to old working records with links to the
+current decision. Preserve history that supports a live claim or recovery;
+delete scratch material that no longer serves either. Do not create a fresh
+summary that requires reading every older summary to understand it.
+
 Implementation states: `not_started`, `in_progress`, `partial`, `implemented`,
 `retired`.
 
@@ -115,6 +140,14 @@ vocabulary section and use that name consistently.
 Wording is not decoration. The phrasing of a descriptive document guides the
 language of the work that follows it, so plain writing keeps later writing
 plain.
+
+Write canonical rules in English. Preserve original stakeholder wording when
+interpretation matters and label translations. Review instructions and user
+messages from the reader's position: name the actor, condition, action, result,
+and available next step when relevant. Explain an internal term before relying
+on it. Replace a vague promise such as "state reconciled" with what changed or
+remains unresolved. Word lists and an "AI writing" detector cannot establish
+that a reader understands the result; inspect a concrete task or message.
 
 When citing a normative invariant from another document, link to its owning
 contract and heading slug rather than quoting a letter code; within a

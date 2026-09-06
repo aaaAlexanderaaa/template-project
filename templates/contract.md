@@ -15,6 +15,9 @@ supersedes: []
 What durable problem does this contract solve? State the user or system outcome,
 not only the implementation mechanism.
 
+Original request/source: {{dated wording or link}}.
+Accepted interpretation: {{what the user will be able to accomplish}}.
+
 ## Scope
 
 ### In scope
@@ -73,17 +76,20 @@ List invalid transitions explicitly.
 
 ## Normative invariants
 
-- **INV-1 — {{name}}.** {{rule}}
-  - from: source[{{N}}]
-  Enforcement: `{{type/test/runtime guard}}`
+### {{Plain-language invariant name}}
+
+{{rule}}
+
+- from: source[{{N}}]
+- Enforcement: `{{type/test/runtime guard or bounded review}}`
 
 ## Required behaviors
 
-- **RB-1.** {{positive requirement}}
+- {{positive requirement}}
 
 ## Forbidden behaviors
 
-- **FB-1.** {{behavior that would violate ownership or intent}}
+- {{behavior that would violate ownership or intent}}
 
 ## Failure, recovery, and intervention
 
@@ -103,9 +109,20 @@ List invalid transitions explicitly.
 
 ## Acceptance evidence
 
-| Outcome | Guard or verification | Durable evidence |
-|---|---|---|
-| {{observable outcome}} | {{test/probe/review}} | {{path or pending}} |
+Use [bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions).
+Include functional outcomes and activated quality boundaries; do not build the
+requirements list from existing tests. Link the owner of a shared threshold.
+
+| User scenario and trigger | Promised result and boundary | Verification at affected boundary | Observed result / evidence / status |
+|---|---|---|---|
+| {{starting state and action}} | {{functional or nonfunctional requirement}} | {{test/probe/review and relevant baseline}} | {{pending, then actual result and limitation}} |
+
+For repeated or external effects, state target identity, allowed effects and
+counts per operation, trigger frequency/freshness, and applicable timing. In
+the result column or linked verification report, account for actual effects
+that were absent from the expected list. Explain failure, partial/unknown
+results, and the user's next action. Compare the final result with the original
+request as well as this interpretation.
 
 ## Promise register
 

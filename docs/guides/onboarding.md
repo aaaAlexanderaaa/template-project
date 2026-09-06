@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-06
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -164,6 +164,12 @@ Update root and local `AGENTS.md`, contributor guidance, architecture ownership,
 source roots, CI entrypoints, and applicable contracts for the selected scope.
 Preserve or supersede existing instructions explicitly; never assume copied
 template files outrank project-specific authority.
+
+Keep the root entrypoint short and route to task-relevant owner sections.
+Preserve current requirements and exceptions; move completed work and supporting
+chronology out of routine startup reading. The confirmed adoption scope remains
+authorized through its implementation and verification. Internal checkpoints
+do not require repeating that confirmation.
 
 ## Verification
 

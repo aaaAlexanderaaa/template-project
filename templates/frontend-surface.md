@@ -43,7 +43,7 @@ anchor is used.
 
 ### Outcomes
 
-- **O1 — {{outcome}}**
+- {{observable outcome in plain language}}
   - from: raw[{{N}}]
 
 ### Reachable states
@@ -177,6 +177,13 @@ by a screenshot, which shows what rendered rather than who owned it.
 Perceptual review checks subject and user-job fidelity, hierarchy, content
 voice, action-name continuity, deliberate restraint, and whether a generic
 default survived without a brief-specific reason.
+
+For interactions that cause requests, writes, notifications, or repeated work,
+apply [bidirectional verification](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
+at the actual boundary. Link observed effects, including unexpected ones, from
+the Functional column; inspect duplicates, suppressed valid actions, stale or
+partial results, user cost, and the next available action. Compare the result
+with the original raw brief, not only its accepted translation.
 
 ## Reconciliation log
 
