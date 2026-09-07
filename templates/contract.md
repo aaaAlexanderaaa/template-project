@@ -28,21 +28,6 @@ Accepted interpretation: {{what the user will be able to accomplish}}.
 
 - {{explicit non-goal}}
 
-## Source anchors
-
-Record dated stakeholder language, incidents, standards, or prior decisions.
-Quote source language when interpretation matters.
-
-### source[1] — {{YYYY-MM-DD}}
-
-> “{{verbatim statement}}”
-
-Context: {{where the request, incident, standard, or decision was recorded}}
-
-### source[2] — {{YYYY-MM-DD}}
-
-{{Evidence or decision}}
-
 ## Vocabulary
 
 | Term | Meaning | Excluded meaning |
@@ -130,6 +115,21 @@ Use this only for a concrete future reconciliation commitment. Every open
 promise has an explicit owner and due date; delete the example when none exist.
 
 - promise[{{stable-id}}]: due={{YYYY-MM-DD}}; status=open; owner={{owner}}; description={{concrete promised alignment}}
+
+## Source anchors
+
+Record dated stakeholder language, incidents, standards, or prior decisions.
+Quote source language when interpretation matters.
+
+### source[1] — {{YYYY-MM-DD}}
+
+> “{{verbatim statement}}”
+
+Context: {{where the request, incident, standard, or decision was recorded}}
+
+### source[2] — {{YYYY-MM-DD}}
+
+{{Evidence or decision}}
 
 ## Reconciliation log
 

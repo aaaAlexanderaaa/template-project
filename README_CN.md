@@ -117,9 +117,10 @@
 - 样式有唯一所有者：层级顺序、共享视觉值的分层与可覆盖面都显式声明，
   消费方只组合已发布的契约，越权升级记为有主、有回收条件的债务；
 - 后端明确状态所有权、失败和恢复；
-- 项目会存或展示日期时间时，时间、日历和时钟只有一个 owner；操作员或
-  客户会看到的演示数据相对该时钟生成并受环境门约束。来源项目的其他修补
-  只证明同一形状，不是要抄的额外行；
+- Scoped time policy and demonstration temporal promises follow the
+  [current runtime owner](docs/contracts/foundational-runtime-discipline.md).
+  For authorized lightweight delivery, follow the
+  [current execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route).
 - agent 风险决定执行深度，高风险设计与验收使用真实独立上下文；
 - 被激活的质量关注点只在一个规范契约中拥有边界，计划只记录链接、步骤和证据；
 - 开发者拥有方向和优先级，框架只提供事实、风险、建议与有限执行门；

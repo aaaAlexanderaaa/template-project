@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -109,7 +109,9 @@ expand its scope.
 ### 4. Run the change-execution loop
 
 Use [agent-execution § smallest-route](../contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route) in the agent execution contract to choose the smallest route. Routine
-work consumes existing authority and focused guards without creating a plan.
+work consumes existing authority and focused guards without creating a plan;
+authorized local behavior updates its existing owner before implementation
+under [development's delivery-contract rule](../contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
 An unresolved technical fact uses [development § contract-first](../contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable experiment path
 before delivery. Material delivery uses actual dependencies, claim-specific
 verification, and only the
@@ -163,7 +165,8 @@ chat history decays with the context that carries it.
   facts and [governance § decision-envelope](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) choices, and establish authorization without asking for the same confirmation again.
 - Analysis explains the causal mechanism and bounds any surfaced unasked issue
   to evidence and authorized scope.
-- The execution plan links the applicable current/target contracts.
+- When the route requires an execution plan, it links the applicable
+  current/target contracts; routine work uses its existing task context.
 - Every activated concern links the contract that owns its boundary and
   failure/escalation policy.
 - Acceptance evidence covers the declared risk and boundary surface.

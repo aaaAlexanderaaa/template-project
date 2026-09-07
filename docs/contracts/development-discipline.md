@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 supersedes: []
 ---
 
@@ -21,80 +21,6 @@ The objective is to move project intent out of chat history and individual
 memory into durable, reviewable contracts and reproducible evidence while
 preserving a clear, low-friction path for reversible engineering work and
 controlled learning.
-
-## Source anchors
-
-### source[1] — 2026-07-28
-
-> “Enable rather than obstruct. An agent should know clearly what it should
-> and should not do, instead of constantly fearing mistakes because it has
-> not understood the user's needs and situation.”
-
-### source[2] — 2026-07-28
-
-> “Avoid mere expansion. Long-term governance should manage the existing
-> stock: retirement, distillation, and summary, not only increment. Document
-> coupling makes it easy for the same matter to appear in several documents.”
-
-### source[3] — 2026-08-06
-
-> “When you encounter an unfamiliar named reference, publication, or anything
-> else you do not know, use network tools to look it up; do not guess. If a
-> tool is unavailable, do not give up; find a fallback. When the user asks a
-> question, identify the unasked issue that may be more important and point it
-> out. Break problems down to make the causal mechanism clear, not to add
-> layers, and not to pile empty abstraction for an appearance of depth.”
-
-### source[4] — 2026-08-06
-
-> “Agreed with your understanding: adopt frontend-design, uninstall
-> ui-ux-pro-max, and learn what is worth learning.”
-
-### source[5] — 2026-08-24
-
-> “This should not remain only in the current project; it also needs to be
-> exported, for example by updating the Template Project.”
-
-### source[6] — 2026-08-27
-
-> “When a rule stated in conversation recurs, propose recording it as a
-> durable rule in the document that owns its topic. Keep document wording in
-> plain style, because the wording of descriptive documents guides future
-> language style.”
-
-### source[7] — 2026-08-28
-
-> “Many of our disciplines are collaboration disciplines, and many are
-> AI-facing or documentation disciplines, but we have neglected the
-> disciplines of engineering practice itself: how to define and evaluate
-> user experience — a good engineering implementation is not necessarily
-> good user experience; how to manage project complexity and what should
-> trigger refactoring; how to avoid reinventing the wheel; how to decide
-> between solutions. Reference settled industry practice such as the Google
-> SRE books while avoiding over-design, and mind the standpoint: the user,
-> the product manager, and the architect each cut into the same problem
-> differently.”
->
-> “Specific problems need specific analysis, but the scenarios have been
-> trodden by many before. Keep enough text to remind an agent to consider
-> what it has not considered — to avoid drilling into a dead end,
-> over-optimizing, or over-designing.”
-
-### source[8] — 2026-09-06
-
-Original maintainer wording in this task:
-
-> “仍然不够目标驱动”
->
-> “声明应该发生，但实现不存在”；“实现产生了未声明的效果”；
-> “效果发生次数过多”；“效果被错误压制，发生次数过少”。
-
-Maintainer feedback in the template review task, rendered in English: delivery
-must serve the user's goal, not merely pass tests. Check for promised effects
-that are absent, undeclared effects, and effects that occur too often or too
-rarely. Include functional and nonfunctional requirements, user costs, boundary
-cases, and what the user can do after a result. Improve recurring mistakes in
-the harness instead of accumulating reminders and startup reading.
 
 ## Core invariants
 
@@ -119,17 +45,26 @@ experiment creates no such authority. Useful findings may move into durable
 evidence and inform a later contract, but scratch implementation is discarded
 at expiry or conclusion even when its findings are adopted.
 
-Routine corrections and mechanically bounded refactors may rely on an existing
-current contract when they introduce no new semantics, state, boundary, or
-failure behavior. They do not require a standalone contract solely to satisfy a
-ritual. If no applicable contract exists for a material change, write one
-first. If current discussion conflicts with a landed contract, stop dependent
-implementation, record the conflict, reconcile it, and only then continue.
+Use [execution risk and routing](agent-execution-discipline.md#risk-selects-the-execution-depth)
+to determine the delivery depth. Routine work may include explicitly
+authorized, low-impact local behavior. Before implementing new behavior, update
+its existing normative owner with the trigger, observable result, relevant
+failure behavior and boundaries, and acceptance evidence. Unchanged behavior
+can rely on the existing contract. Neither case requires a standalone contract
+or plan. Preserve the original request or source and the evidence actually
+obtained in the existing task context; an unrequested behavior change gains no
+authorization from being routine.
+
+If no applicable owner exists, establish the contract through material delivery.
+If current discussion conflicts with a landed contract, pause dependent
+implementation, record and reconcile the conflict, then continue. An explicit
+instruction covering the new behavior authorizes that reconciliation; do not
+request the same decision again.
 
 Comments, tickets, commit messages, and conversation summaries are supporting
 context; they are not substitutes for the normative contract.
 
-- from: source[1]
+- from: source[1], source[9]
 
 ### One owner for every invariant
 
@@ -312,8 +247,8 @@ trigger semantics.
 | Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective and its error budget, dependency failure, observability, actionable-alert test, postmortem trigger, alert/rollback trigger |
 | External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Existing-solution search before building, owner, provenance, reproducibility, compatibility, cost categories, unavailable-dependency behavior |
 | User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals |
-| Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | Unique zone, instant vs calendar vs duration, naive-input policy, public representation, injectable clock, fail-loud drift |
-| Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | Clock-relative validity, environment gate, idempotent refresh, production isolation, labeled demo |
+| Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | [Time policy](foundational-runtime-discipline.md#time-and-calendar): scope and role resolution, instant vs calendar vs duration, naive-input policy, representation, injectable clock, policy-conformance checks |
+| Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | [Demo policy](foundational-runtime-discipline.md#demonstration-data): temporal promise and labels, freshness when promised, refresh/retention strategy, repeat safety, environment gate, production isolation |
 | Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner |
 
 - from: source[1], source[5], source[7]
@@ -460,13 +395,13 @@ Frontend work translates product intent into observable states and geometry.
 - Locale, text expansion, and input-method behavior when the surface
   activates those concerns.
 - If the surface displays or accepts date/time, consume the Time and
-  calendar owner from the activate-concerns invariant: business timezone, instant vs calendar-day vs
-  duration, naive-input interpretation, and the injectable clock. If it
+  calendar owner from the activate-concerns invariant: scope and role resolution,
+  instant vs calendar-day vs duration, naive-input interpretation, and the injectable clock. If it
   does not, the activate-concerns invariant creates no extra obligation. Omission is not UTC and not
   the device timezone.
 - If the surface shows seed, synthetic, or sample data to an operator or
-  customer, consume the Demonstration data owner. Hardcoded live-demo
-  calendar dates are a defect.
+  customer, consume the Demonstration data owner. Dates and labels must meet
+  the declared temporal promise, including freshness when promised.
 - The style layer, value tiers, and published override surface the change
   consumes, plus any value it must define locally and why.
 
@@ -609,11 +544,12 @@ interfaces.
 - Activated performance/capacity, reliability, security/privacy, dependency,
   production-learning, time/calendar, and demonstration-data boundaries
   from the activate-concerns invariant.
-- When Time and calendar is activated: the unique business timezone,
+- When Time and calendar is activated: timezone scope and role resolution,
   instant vs calendar-day vs duration, naive-input policy, public
-  representation, injectable clock, and fail-loud drift check.
-- When Demonstration data is activated: clock-relative validity,
-  environment gate, same-day idempotent refresh, and production isolation.
+  representation, injectable clock, and policy-conformance checks.
+- When Demonstration data is activated: temporal promise, freshness when
+  promised, refresh and retention policy, repeat safety, environment gate,
+  and production isolation.
 
 ### Verification discipline
 
@@ -690,7 +626,95 @@ When intent and implementation disagree, classify the mismatch:
 
 No side may resolve a conflict silently.
 
+## Source anchors
+
+### source[1] — 2026-07-28
+
+> “Enable rather than obstruct. An agent should know clearly what it should
+> and should not do, instead of constantly fearing mistakes because it has
+> not understood the user's needs and situation.”
+
+### source[2] — 2026-07-28
+
+> “Avoid mere expansion. Long-term governance should manage the existing
+> stock: retirement, distillation, and summary, not only increment. Document
+> coupling makes it easy for the same matter to appear in several documents.”
+
+### source[3] — 2026-08-06
+
+> “When you encounter an unfamiliar named reference, publication, or anything
+> else you do not know, use network tools to look it up; do not guess. If a
+> tool is unavailable, do not give up; find a fallback. When the user asks a
+> question, identify the unasked issue that may be more important and point it
+> out. Break problems down to make the causal mechanism clear, not to add
+> layers, and not to pile empty abstraction for an appearance of depth.”
+
+### source[4] — 2026-08-06
+
+> “Agreed with your understanding: adopt frontend-design, uninstall
+> ui-ux-pro-max, and learn what is worth learning.”
+
+### source[5] — 2026-08-24
+
+> “This should not remain only in the current project; it also needs to be
+> exported, for example by updating the Template Project.”
+
+### source[6] — 2026-08-27
+
+> “When a rule stated in conversation recurs, propose recording it as a
+> durable rule in the document that owns its topic. Keep document wording in
+> plain style, because the wording of descriptive documents guides future
+> language style.”
+
+### source[7] — 2026-08-28
+
+> “Many of our disciplines are collaboration disciplines, and many are
+> AI-facing or documentation disciplines, but we have neglected the
+> disciplines of engineering practice itself: how to define and evaluate
+> user experience — a good engineering implementation is not necessarily
+> good user experience; how to manage project complexity and what should
+> trigger refactoring; how to avoid reinventing the wheel; how to decide
+> between solutions. Reference settled industry practice such as the Google
+> SRE books while avoiding over-design, and mind the standpoint: the user,
+> the product manager, and the architect each cut into the same problem
+> differently.”
+>
+> “Specific problems need specific analysis, but the scenarios have been
+> trodden by many before. Keep enough text to remind an agent to consider
+> what it has not considered — to avoid drilling into a dead end,
+> over-optimizing, or over-designing.”
+
+### source[8] — 2026-09-06
+
+Original maintainer wording in this task:
+
+> “仍然不够目标驱动”
+>
+> “声明应该发生，但实现不存在”；“实现产生了未声明的效果”；
+> “效果发生次数过多”；“效果被错误压制，发生次数过少”。
+
+Maintainer feedback in the template review task, rendered in English: delivery
+must serve the user's goal, not merely pass tests. Check for promised effects
+that are absent, undeclared effects, and effects that occur too often or too
+rarely. Include functional and nonfunctional requirements, user costs, boundary
+cases, and what the user can do after a result. Improve recurring mistakes in
+the harness instead of accumulating reminders and startup reading.
+
+### source[9] — 2026-09-07
+
+English rendering of the maintainer's accepted adjustment: authorized,
+low-impact new behavior may update its existing owner without a standalone
+plan. Runtime disciplines must declare their applicable scope and promises
+instead of imposing one source project's time or demo solution on every adopter.
+Current task rules should precede optional methods and historical provenance.
+
 ## Reconciliation log
+
+- **2026-09-07 — proportionate delivery and runtime scope:** routine behavior
+  changes update their existing normative owner without a standalone plan.
+  Time and demonstration-data triggers route to scoped policy and temporal
+  promises; existing quality concerns and frontend design methods remain.
+  - from: source[9]
 
 - **2026-09-06 — outcome and effect verification:** separated original intent,
   accepted requirements, and observed delivery; added bidirectional acceptance

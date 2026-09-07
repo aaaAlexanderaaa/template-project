@@ -1,7 +1,7 @@
 ---
 document_role: structural-authority
 template_state: unconfigured
-last_reconciled: 2026-08-24
+last_reconciled: 2026-09-07
 ---
 
 # Architecture
@@ -86,8 +86,8 @@ If the project has a frontend, define:
   the shared layer does not publish;
 - routing and extension points;
 - accessibility, browser, input, and responsive support policy;
-- which business timezone, clock, and naive-input rule the surfaces consume
-  when they display or accept date/time.
+- which time-policy scope, clock, input interpretation, and display role the
+  surfaces consume when they display or accept date/time.
 
 Per-surface behavior belongs under `docs/design/`, not in this structural map.
 
@@ -100,8 +100,8 @@ Per-surface behavior belongs under `docs/design/`, not in this structural map.
 - Deployment and rollback unit: `{{unit}}`
 - Data migration and compatibility window: `{{policy}}`
 - Recovery objectives: `{{recovery-objectives}}`
-- Business timezone and clock: `{{iana-zone-representation-clock-or-n/a}}`
-- Demonstration-data runtime: `{{relative-refresh-gate-or-n/a}}`
+- Time policy and clock: `{{scope-resolution-storage-calendar-input-display-clock-or-n/a}}`
+- Demonstration-data runtime: `{{temporal-promise-labels-refresh-retention-gate-or-n/a}}`
 
 ## 8. Hard and soft boundaries
 
@@ -135,13 +135,16 @@ remains true:
 - `{{state-and-recovery-lifecycle-test}}`
 - `{{permission-or-capability-isolation-test}}`
 - `{{frontend-ownership-or-geometry-guard}}`
-- `{{clock-timezone-and-naive-input-guard}}`
+- `{{scoped-time-policy-clock-and-input-guard}}`
 - `{{demo-refresh-idempotency-and-environment-gate}}`
 
 ## 10. Reconciliation log
 
 Record dated structural changes, superseded decisions, and links to the
 contracts and plans that implemented them.
+
+- **2026-09-07:** runtime prompts identify policy scope and role resolution,
+  demo temporal promises, and the selected refresh/retention strategy.
 
 - **2026-08-24:** runtime prompts name business timezone/clock and
   demonstration-data only when those exist. A 15-row early-declaration

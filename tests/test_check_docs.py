@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-09-06"
+FIXED_TODAY = "2026-09-07"
 
 
 def load_checker_module():
@@ -256,30 +256,33 @@ rationale = "{rationale}"
     def test_activated_concerns_route_foundational_runtime(self) -> None:
         """Time and demo stay activated concerns with a method owner.
 
-        The wiring exists because undeclared clocks and hardcoded demo dates
-        become full-system retrofits. A mandatory sibling-incident register
-        would be ceremony; deleting the concern routing without a successor
-        owner is the original defect class.
+        The wiring protects declared time and demo policy without choosing
+        the adopter's timezone scope or temporal promise. Product correctness
+        requires scenario evidence beyond these structural routes.
         """
 
         development = (REPOSITORY_ROOT / "docs/contracts/development-discipline.md").read_text(
             encoding="utf-8"
         )
-        self.assertRegex(development, r"\| Time and calendar \|")
-        self.assertRegex(development, r"\| Demonstration data \|")
+        for concern, section in (
+            ("Time and calendar", "time-and-calendar"),
+            ("Demonstration data", "demonstration-data"),
+        ):
+            row = next(
+                line for line in development.splitlines()
+                if f"| {concern} |" in line
+            )
+            self.assertIn(f"foundational-runtime-discipline.md#{section}", row)
         contract = (
             REPOSITORY_ROOT / "docs/contracts/foundational-runtime-discipline.md"
         ).read_text(encoding="utf-8")
         self.assertIn("contract_role: governance", contract)
         self.assertIn("## How to read this", contract)
-        self.assertIn("### One business timezone", contract)
-        self.assertIn("### Demo data is a runtime", contract)
         self.assertNotIn("Asia/Shanghai", contract)
         self.assertNotIn("Sibling retrofit classes", contract)
         architecture = (REPOSITORY_ROOT / "ARCHITECTURE.md").read_text(encoding="utf-8")
         self.assertNotIn("## 4. Early implementation declarations", architecture)
-        self.assertIn("Business timezone and clock:", architecture)
-        self.assertIn("Demonstration-data runtime:", architecture)
+        self.assertIn("docs/contracts/foundational-runtime-discipline.md", architecture)
 
     def test_valid_surface_citations_pass(self) -> None:
         self.write("docs/design/sample-surface.md", self.surface_contract())
@@ -330,6 +333,59 @@ rationale = "{rationale}"
             self.source_contract("- from: source[1]"),
         )
         self.assert_fails_with("source[2] defined but never cited")
+
+    def test_source_reconciliation_accepts_front_middle_and_end_placement(self) -> None:
+        original = self.source_contract("- from: source[1], source[2]")
+        prefix, remainder = original.split("## Source anchors\n", 1)
+        anchors, invariants = remainder.split("## Normative invariants\n", 1)
+        sources = "## Source anchors\n" + anchors
+        placements = {
+            "front": original,
+            "middle": (
+                prefix + "## Normative invariants\n\n- from: source[1]\n\n"
+                + sources + "## Acceptance evidence\n\n- from: source[2]\n"
+            ),
+            "end": prefix + "## Normative invariants\n" + invariants + "\n" + sources,
+        }
+        for placement, content in placements.items():
+            with self.subTest(placement=placement):
+                self.write("docs/contracts/source-example.md", content)
+                self.assert_passes()
+
+    def test_unresolved_source_before_definitions_fails(self) -> None:
+        content = self.source_contract("- from: source[1], source[2]").replace(
+            "## Source anchors", "- from: source[3]\n\n## Source anchors", 1
+        )
+        self.write("docs/contracts/source-example.md", content)
+        self.assert_fails_with("citation does not resolve: source[3]")
+
+    def test_source_block_cannot_cite_itself_into_coverage(self) -> None:
+        content = self.source_contract("- from: source[1]").replace(
+            "> Preserve the second invariant.",
+            "> Preserve the second invariant.\n\n- from: source[2]",
+            1,
+        )
+        self.write("docs/contracts/source-example.md", content)
+        self.assert_fails_with("source[2] defined but never cited")
+
+    def test_reordered_sources_retain_definition_validation(self) -> None:
+        original = self.source_contract("- from: source[1], source[2]")
+        prefix, remainder = original.split("## Source anchors\n", 1)
+        anchors, invariants = remainder.split("## Normative invariants\n", 1)
+        content = (
+            prefix + "## Normative invariants\n" + invariants
+            + "\n## Source anchors\n" + anchors
+        )
+        for invalid, finding in (
+            ("### source[1] — 2026-07-25", "duplicate source[1]"),
+            ("### source[2] — 2026-02-30", "source[2] date must be YYYY-MM-DD"),
+        ):
+            with self.subTest(definition=invalid):
+                self.write(
+                    "docs/contracts/source-example.md",
+                    content.replace("### source[2] — 2026-07-25", invalid, 1),
+                )
+                self.assert_fails_with(finding)
 
     def test_overdue_target_is_advisory_by_default(self) -> None:
         self.write(

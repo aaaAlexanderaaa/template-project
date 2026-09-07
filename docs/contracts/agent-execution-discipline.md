@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -28,8 +28,8 @@ own work.
 
 In scope:
 
-- material feature, migration, cross-stack, and governance work performed by
-  coding agents;
+- risk classification and delivery of local features, migrations, cross-stack,
+  and governance work performed by coding agents;
 - work selection when no explicit executable task is available;
 - written coordination between concurrently running agents or sessions;
 - independence requirements for high-risk design and final evaluation;
@@ -42,54 +42,26 @@ Out of scope:
 - replacing human authority for unresolved product or safety decisions;
 - redefining a project's product or architecture contracts.
 
-## Source anchors
-
-### source[1] — 2026-07-26
-
-> “The reusable template should absorb the multi-perspective design
-> review, fresh-context evaluation, fixture-first engineering loop, KR sweep,
-> and no-idle work-selection protocol.”
-
-### source[2] — 2026-07-26
-
-> “Do not present same-context analysis as independent review evidence; use a
-> truthful blocked or governance-exception state when independent review is not
-> available.”
-
-### source[3] — 2026-07-26
-
-> “The governance framework should not help developers define priority. It may
-> identify risks and long-term abnormalities, but it must not, when the
-> developer already has an idea, judge that idea wrong on their behalf.”
-
-### source[4] — 2026-07-28
-
-> “Enable rather than obstruct. An agent should know clearly what it should
-> and should not do, instead of constantly fearing mistakes because it has
-> not understood the user's needs and situation.”
-
-### source[5] — 2026-08-27
-
-> “Multiple parallel sessions need a written coordination method, and
-> handoffs at context exhaustion have mature practices to follow.”
-
-### source[6] — 2026-09-06
-
-Maintainer feedback in the template review task, rendered in English: the
-template must accommodate memory, long conversations, and delegated work
-without losing the user's goal. Avoid compulsory phase approvals and excessive
-startup documents. Deliver and verify the agreed task as a whole rather than
-treating tests or process completion as the goal.
-
 ## Vocabulary and risk profiles
 
-- **Routine change:** bounded implementation with an existing contract, no new
-  semantics, no migration, and a small failure surface.
-- **Material change:** changes behavior, a public contract, a durable state,
-  more than one consumer, or an operator workflow.
-- **High-risk change:** changes architecture, product semantics, authorization,
-  irreversible data behavior, cross-process compatibility, or a high-impact UI
-  interaction.
+- **Routine change:** authorized, bounded work within an existing owner, with
+  low-impact effects that are inexpensive to recover and credible focused
+  verification. It may add local behavior under the delivery-contract rule;
+  none of the material or high-risk conditions below may apply.
+- **Material change:** changes a published API, event, schema, or integration
+  contract (including compatible additions), durable-state semantics, or a
+  migration; requires a new normative owner, coordinated changes to separately
+  owned commitments, or substantial dependency or recovery planning. Updating
+  an existing surface contract for local behavior is not itself a published
+  integration change. File count and incidental consumer edits do not select
+  this profile. After investigation, delivery that does not meet the routine
+  conditions uses this profile unless high-risk conditions apply.
+- **High-risk change:** changes authorization or isolation enforcement, or has
+  a credible failure path to serious confidentiality, integrity, availability,
+  financial, safety, or critical user/operator harm. Broad exposure,
+  difficult-to-recover effects, or a consequential compatibility failure can
+  establish this profile. Architecture and product-meaning changes prompt this
+  assessment; their names alone do not establish high risk.
 - **Independent review:** a review context that did not produce the proposal or
   implementation and receives the governing contract plus evidence rather than
   the implementer's unfiltered reasoning trace.
@@ -101,7 +73,7 @@ treating tests or process completion as the goal.
 - **Activated concern:** a quality, compatibility, state, experience, or
   operational boundary triggered by the change traits in [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony).
 
-- from: source[1], source[2]
+- from: source[1], source[2], source[7]
 
 ## Normative invariants
 
@@ -111,10 +83,23 @@ Routine work may use the base development discipline. Material work uses the
 outcome-driven method below. High-risk work additionally requires independent
 multi-perspective design review and fresh-context holistic evaluation.
 
-The classification and rationale are recorded before implementation. A task is
-not made routine merely to avoid review.
+Assess actual effects, affected users and owners, failure impact, and recovery
+cost before implementation. Reverting code does not undo a disclosure, an
+incorrect privilege grant, or a destructive write. A one-line isolation change
+is high-risk; a local list sort with bounded effects can be routine. Apply the
+highest profile whose conditions hold. Investigate unknown technical impact
+before claiming it is low; unavailable evidence or a reviewer cannot justify a
+downgrade.
 
-- from: source[1]
+Record the classification and rationale in the existing task context for
+routine work and in the execution plan for material/high-risk work. Routine
+work creates no separate classification record. Risk selects execution depth,
+not authorization: [governance](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)
+still owns permission to change behavior. Activated quality boundaries apply
+on every route. Activation alone creates no new plan or review requirement;
+explicit evidence and review requirements in the owning contract remain binding.
+
+- from: source[1], source[7]
 
 ### Material delivery follows the outcome and its evidence
 
@@ -247,8 +232,10 @@ another but do not silently replace one another.
 
 Before creating records, the agent determines which route applies:
 
-- **Routine:** consume existing authority, make the bounded reversible change,
-  run focused guards, and hand off without a new contract or plan.
+- **Routine:** consume existing authority, update the existing behavior owner
+  when authorized behavior changes under [development's delivery-contract rule](development-discipline.md#contract-before-material-delivery-evidence-before-certainty),
+  implement and verify the bounded effects, and hand off without a standalone
+  contract or plan. Preserve applicable concern boundaries and exceptions.
 - **Material with sufficient facts:** activate [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns and run
   the outcome-driven delivery method.
 - **Material with an unresolved technical fact:** route the experiment method
@@ -358,6 +345,10 @@ Behavioral effectiveness remains partial until adoption exercises actual agent
 decisions and delivered outcomes. These are separate claims; a checker pass
 does not establish the second.
 
+The [September 7 change record](../plans/2026-09-06-proportionate-execution.md#progress-and-closure)
+records the consequence-based routing review and focused/full checks. Its
+scenario evidence covers reusable guidance, not measured adopter effectiveness.
+
 This contract is implemented when:
 
 - reusable templates exist for agent execution plans, independent review,
@@ -411,7 +402,60 @@ Verified on 2026-08-27:
 
 - promise[independent-adoption-review]: due=2026-10-24; status=open; owner=template-maintainer; description=obtain an independent adoption review after the first real product uses the agent execution profile
 
+## Source anchors
+
+### source[1] — 2026-07-26
+
+> “The reusable template should absorb the multi-perspective design
+> review, fresh-context evaluation, fixture-first engineering loop, KR sweep,
+> and no-idle work-selection protocol.”
+
+### source[2] — 2026-07-26
+
+> “Do not present same-context analysis as independent review evidence; use a
+> truthful blocked or governance-exception state when independent review is not
+> available.”
+
+### source[3] — 2026-07-26
+
+> “The governance framework should not help developers define priority. It may
+> identify risks and long-term abnormalities, but it must not, when the
+> developer already has an idea, judge that idea wrong on their behalf.”
+
+### source[4] — 2026-07-28
+
+> “Enable rather than obstruct. An agent should know clearly what it should
+> and should not do, instead of constantly fearing mistakes because it has
+> not understood the user's needs and situation.”
+
+### source[5] — 2026-08-27
+
+> “Multiple parallel sessions need a written coordination method, and
+> handoffs at context exhaustion have mature practices to follow.”
+
+### source[6] — 2026-09-06
+
+Maintainer feedback in the template review task, rendered in English: the
+template must accommodate memory, long conversations, and delegated work
+without losing the user's goal. Avoid compulsory phase approvals and excessive
+startup documents. Deliver and verify the agreed task as a whole rather than
+treating tests or process completion as the goal.
+
+### source[7] — 2026-09-07
+
+English rendering of the maintainer's accepted proposal and instruction to
+continue: classify changes by consequences, permit authorized low-impact new
+behavior without a standalone plan, and make current task facts and boundaries
+easy to locate. Keep required independent review for high-risk work.
+
 ## Reconciliation log
+
+- **2026-09-07 — consequence-based execution:** broadened routine work to
+  authorized low-impact local behavior and retained material planning for
+  published contracts, state semantics, and substantive coordination. Risk
+  follows effects and recovery cost; authorization and isolation retain
+  independent review. Classification creates no routine-only record.
+  - from: source[7]
 
 - **2026-09-06 — outcome-driven execution:** replaced the fixed seven-phase
   default with dependency order and claim-specific verification; retained

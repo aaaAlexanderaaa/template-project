@@ -9,6 +9,11 @@ supersedes: []
 
 # {{Initiative}} implementation plan
 
+Use for material delivery under [execution risk and routing](../docs/contracts/agent-execution-discipline.md#risk-selects-the-execution-depth).
+Routine work updates its existing behavior owner when needed and uses focused
+evidence without this standalone plan. Keep records proportionate to the
+actual dependency, coordination, and recovery work.
+
 ## Cold-start summary
 
 Write enough that a fresh contributor can continue without conversation

@@ -969,7 +969,9 @@ class DocumentationChecker:
             "source",
         )
         citations: set[int] = set()
-        for line in lines[bounds[1] :]:
+        # Provenance may follow operative rules; its own block cannot cite
+        # itself into coverage. Surface translation has a separate scope.
+        for line in lines[: bounds[0]] + lines[bounds[1] :]:
             if match := FROM_RE.match(line):
                 citations.update(
                     int(value) for value in SOURCE_REF_RE.findall(match.group(1))

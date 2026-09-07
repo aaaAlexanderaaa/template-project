@@ -137,14 +137,17 @@ Do not restate the shared layer's rules here; name what this surface consumes.
 ## Time, locale, and demonstration data
 
 Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar or
-Demonstration data. Device names are not the business timezone.
+Demonstration data. Consume the declared policy rather than infer business
+meaning from a device default.
 
-- Business timezone consumed: `{{IANA or not_applicable}}`
+- Time-policy owner and scope: `{{system / tenant / object / other; zone resolution}}`
 - Instant vs calendar-day vs duration on this surface: `{{which}}`
-- Naive input interpretation: `{{offset-less control policy or none}}`
-- Device/OS timezone must not: `{{interpret business input / switch the business display zone}}`
+- Naive input interpretation: `{{scope, offset-less input/disambiguation policy, missing-scope response}}`
+- Display role: `{{business-scoped / explicitly user-local / other declared representation}}`
+- Environment independence: `{{undeclared process/device defaults cannot change scoped input meaning}}`
 - Locale and copy: `{{language, numbers, dates}}`
-- Demonstration or sample data visible here: `{{clock-relative / none}}`
+- Demonstration or sample data: `{{present / fixed reference / historical / none}}`
+- Dates, labels, and freshness: `{{visible reference; consistency at the promised validity boundary}}`
 
 ## Activated quality attributes
 

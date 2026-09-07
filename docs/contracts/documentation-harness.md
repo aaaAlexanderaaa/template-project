@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 supersedes: []
 ---
 
@@ -45,62 +45,6 @@ correct.
 - visual measurement, browser automation, or product test frameworks;
 - executing arbitrary commands declared by repository documentation;
 - deciding product intent from prose.
-
-## Source anchors
-
-### source[1] — 2026-07-26
-
-> “The template's own signature feature is not actually enforced.”
-
-The review identified that the surface template requires raw-to-translated
-citations while the shipped checker does not validate them.
-
-### source[2] — 2026-07-26
-
-> “Agreed. Optimize it according to your understanding.”
-
-The operator approved a domain-neutral hardening pass, including the review's
-valuable findings with configurable rather than project-specific mechanisms.
-
-### source[3] — 2026-07-26
-
-> "pls help me optimize this template project to make it suite to different
-> scale of projects because sometimes the project is not such big or sometimes
-> my project need CI... we need to make the workflow work smoothly instead of
-> make agent pay a lot attention to fit it."
-
-The harness described staged, scoped, and profiled adoption in prose while the
-checker enforced exactly one profile, at one stage, with every finding blocking.
-The operator asked for the mechanism to carry that variation instead of the
-reader.
-
-### source[4] — 2026-07-27
-
-> "I noticed that in the front-end discipline of this project, the part about
-> CSS modularization doesn't seem to have been emphasized. In fact, this is a
-> very common and significant issue."
-
-The frontend discipline specified reachable states, geometry, interaction,
-accessibility, and evidence, but never named who owns a shared visual value or
-in what order style layers win. The operator asked for that gap to be closed
-against how large frontends actually decay.
-
-### source[5] — 2026-07-28
-
-> “Long-term governance should manage the existing stock: retirement,
-> distillation, and summary, not only increment. Document coupling makes it
-> easy for the same matter to appear in several documents, so that an update
-> touches only one of them.”
-
-### source[6] — 2026-08-28
-
-> “How many symbol systems does the project have now? I see different
-> encodings like J, D, and G, and it feels off.”
-
-The owner approved the redesign direction: identify invariants by owning
-contract and heading slug instead of letter codes, validate citation
-fragments mechanically, and migrate contract by contract starting with the
-newest.
 
 ## Operating modes
 
@@ -149,9 +93,13 @@ translated layer do not satisfy reconciliation.
 ### Contract source anchors are conditionally bidirectional
 
 A canonical contract may omit `## Source anchors`. If it declares that section,
-it defines unique, dated `### source[N] — YYYY-MM-DD` anchors. Material after
-the source-anchor section must cite every defined anchor, and every
-`source[N]` citation must resolve.
+it defines unique, dated `### source[N] — YYYY-MM-DD` anchors. Contract text
+outside that section must cite every defined anchor through `from:` lines,
+and every such `source[N]` citation must resolve. Citations may precede or
+follow the source section; citations inside it cannot satisfy coverage.
+This permits operative rules before provenance while retaining missing,
+unused, duplicate, and invalid-date findings. Surface raw-to-translated
+reconciliation retains its separate, layer-specific scope.
 
 - from: source[1]
 
@@ -420,6 +368,10 @@ acceptance-evidence section are a current status surface, not history.
 
 ## Acceptance evidence
 
+The [September 7 change record](../plans/2026-09-06-proportionate-execution.md#progress-and-closure)
+records passing source-order, unresolved-reference, self-citation, and
+definition-validation fixtures. Surface translation checks remain unchanged.
+
 The [2026-09-06 completed change](../plans/2026-09-06-outcome-driven-template.md#progress-and-closure)
 records the failing-before/passing-after scaffold guard, including coded
 heading and list variants and preserved legacy history. The full 114-test
@@ -475,7 +427,75 @@ Verification run on 2026-08-28:
 - The same repository check with `--strict` -> PASS, zero fragment findings
   with the pilot contract's slug citations in place.
 
+## Source anchors
+
+### source[1] — 2026-07-26
+
+> “The template's own signature feature is not actually enforced.”
+
+The review identified that the surface template requires raw-to-translated
+citations while the shipped checker does not validate them.
+
+### source[2] — 2026-07-26
+
+> “Agreed. Optimize it according to your understanding.”
+
+The operator approved a domain-neutral hardening pass, including the review's
+valuable findings with configurable rather than project-specific mechanisms.
+
+### source[3] — 2026-07-26
+
+> "pls help me optimize this template project to make it suite to different
+> scale of projects because sometimes the project is not such big or sometimes
+> my project need CI... we need to make the workflow work smoothly instead of
+> make agent pay a lot attention to fit it."
+
+The harness described staged, scoped, and profiled adoption in prose while the
+checker enforced exactly one profile, at one stage, with every finding blocking.
+The operator asked for the mechanism to carry that variation instead of the
+reader.
+
+### source[4] — 2026-07-27
+
+> "I noticed that in the front-end discipline of this project, the part about
+> CSS modularization doesn't seem to have been emphasized. In fact, this is a
+> very common and significant issue."
+
+The frontend discipline specified reachable states, geometry, interaction,
+accessibility, and evidence, but never named who owns a shared visual value or
+in what order style layers win. The operator asked for that gap to be closed
+against how large frontends actually decay.
+
+### source[5] — 2026-07-28
+
+> “Long-term governance should manage the existing stock: retirement,
+> distillation, and summary, not only increment. Document coupling makes it
+> easy for the same matter to appear in several documents, so that an update
+> touches only one of them.”
+
+### source[6] — 2026-08-28
+
+> “How many symbol systems does the project have now? I see different
+> encodings like J, D, and G, and it feels off.”
+
+The owner approved the redesign direction: identify invariants by owning
+contract and heading slug instead of letter codes, validate citation
+fragments mechanically, and migrate contract by contract starting with the
+newest.
+
+### source[7] — 2026-09-07
+
+The maintainer authorized current task rules before historical provenance.
+The source checker must preserve bidirectional reconciliation without forcing
+the source-anchor block ahead of operative contract text.
+
 ## Reconciliation log
+
+- **2026-09-07 — source placement is independent of reconciliation:** contract
+  citations count outside the source block regardless of order, permitting
+  current rules before provenance without weakening reference integrity or
+  changing surface translation checks.
+  - from: source[7]
 
 - **2026-09-06 — copied invariant syntax:** extended the existing heading
   convention to a fixture-backed check of new contract scaffolds, which still

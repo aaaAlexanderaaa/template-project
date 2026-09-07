@@ -10,54 +10,54 @@ interaction and epistemic discipline; truth, ownership, and boundaries; coherent
 verified delivery; activated domain disciplines; then documentation and tooling.
 This order guides attention, not authority or mandatory copying.
 
-## Start with the task
+## Establish the current task context
 
-1. Identify the requested outcome, existing authorization, relevant current
-   facts, and affected owner. Investigate before asking questions the repository
-   or available primary sources can answer.
-2. Read the relevant structural boundaries in `ARCHITECTURE.md`, the authority
-   and [task-context rules](docs/README.md#task-context), and applicable current
-   contracts or accepted target changes. Include an active plan only when it
-   applies. Follow dependencies and exceptions; do not recursively load history
-   or every linked domain document.
-3. Read `docs-policy.toml` before reporting a governance gap. Declared adoption
-   stage, source roots, managed scope, and template profile determine what is
-   enforced. Do not widen scope or weaken a rule to make a check pass.
-4. Choose the [smallest execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route).
-   Routine work uses existing authority and focused guards, without a new plan.
-   Material delivery reconciles its contract before dependent implementation
-   and uses a plan with actual dependencies and claim-specific verification.
-   An unknown material technical fact may use a [bounded experiment](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
-   High-risk work requires [independent design and completion review](docs/contracts/agent-execution-discipline.md#high-risk-design-uses-independent-lenses).
+Use the [task-context rule](docs/README.md#task-context) to locate:
+
+| Needed fact | Read or observe |
+|---|---|
+| Requested outcome | User request, accepted interpretation, and original source |
+| Reliable current facts | Relevant code/state, baseline evidence, and current contracts |
+| Decision authority | Existing authorization and the [governance boundary](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) |
+| Boundaries and exceptions | Relevant `ARCHITECTURE.md` and owning contract sections |
+| Completion evidence | The owner's acceptance conditions and [bidirectional verification](docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions) |
+
+Investigate facts before asking the user. Choose the
+[smallest execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route)
+and include an active plan only when that route requires one. Read methods when
+activated and history when a dispute, provenance question, or recovery needs it;
+do not recursively load every link. These facts stay at their existing owners.
+Read `docs-policy.toml` before reporting a governance gap; its declared scope
+and profile determine enforcement.
 
 ## Execute the authorized outcome
 
 - Once intent and authority are settled, continue through implementation,
-  integration, verification, and necessary corrections to task completion.
-  Internal checkpoints and required reviews are execution work, not new user
-  approval gates. Apply the [engineering decision envelope](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default).
+  integration, verification, and corrections. Internal checkpoints and required
+  independent reviews are execution work, not new user approval gates.
 - Investigate technical uncertainty and make locally reversible choices within
   that envelope. Ask for a human decision only when new facts change material
   intent, authority, accepted risk, or expose an actual blocker. Pause its
   affected path and continue unaffected authorized work.
-- Keep human direction, priority, and risk acceptance with the owner. A bounded
-  task ends at its outcome; ongoing portfolio work needs its own authorization.
-  Classify governance findings using the [decision boundary](docs/contracts/governance-decision-boundary.md#states-and-triggers).
+- Keep direction, priority, and risk acceptance with the owner. Risk
+  classification does not grant authorization. A bounded task ends at its
+  outcome; ongoing portfolio work needs its own authorization.
 - Preserve unrelated changes and explicit public boundaries. Keep one owner for
   each rule, investigate existing implementations before adding another, and
   complete one coherent end state. A diagnosis request authorizes investigation
   and explanation, not an unrequested implementation.
-- Reconcile conflicts before editing dependent code. Plans, summaries, memory,
-  and worker reports do not override current authority. Record adopted general
-  rules at their existing owner; an explicit instruction to adopt supplies
-  confirmation for that scope.
+- Reconcile changed behavior at its existing owner before dependent code;
+  follow the [delivery-contract rule](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
+  Plans, summaries, memory, and worker reports do not override current authority.
+  An explicit instruction to adopt a rule supplies confirmation for that scope.
 - Name a defect's mechanism and add a proportionate sibling guard where useful.
   Correct the responsible default, interface, example, or context route; retire
   redundant reminders instead of appending every incident to this entrypoint.
-- Research unfamiliar checkable claims, preserve source strength and uncertainty,
-  and try a capability-preserving fallback when a tool fails. Explain the
-  decisive cause and its limits in plain language; follow the [inquiry rules](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed)
-  and [language standard](docs/README.md#language-style).
+- Research unfamiliar checkable claims and try a capability-preserving fallback
+  when a tool fails. Preserve evidence strength and uncertainty under the
+  [inquiry rules](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed).
+  Use English for repository edits and plain explanations under the
+  [language standard](docs/README.md#language-style).
 
 ## Read domain rules when activated
 

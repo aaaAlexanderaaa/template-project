@@ -11,8 +11,9 @@ or newer and have no third-party package dependencies.
 3. Confirm the behavior owner and dependency boundary in `ARCHITECTURE.md`.
 4. Check for contradictory contracts, active plans, or unresolved issues.
 5. For agent-driven work, select the smallest route in the agent execution
-   contract. Routine work uses existing authority and no plan; a controlled
-   experiment answers an unknown technical fact without becoming delivery.
+   contract. Routine work uses an existing behavior owner, updates it when
+   authorized local behavior changes, and needs no standalone plan. A
+   controlled experiment answers an unknown technical fact without becoming delivery.
 6. For material delivery, land the contract. Human contributors normally use
    `templates/implementation-plan.md`; agent-driven material work uses
    `templates/agent-execution-plan.md`, with its independent review sections
@@ -29,8 +30,9 @@ or newer and have no third-party package dependencies.
 
 ## During the change
 
-- Keep an active plan current enough that a fresh contributor can continue
-  without conversation history.
+- When the route requires a plan, keep it current enough for a fresh
+  contributor to continue. Otherwise keep the next action, baseline, and
+  verification facts in the existing task context.
 - Record decisions and changed requirements in the relevant contract, not only
   in chat or commits.
 - Preserve unrelated changes.
@@ -67,10 +69,11 @@ or newer and have no third-party package dependencies.
   behavior and the user's recovery action?
 - Does the test suite guard the failure category, not only the reported input?
 - Are frontend and backend projections self-consistent?
-- If the change displays, stores, or schedules time, does it consume the
-  Time and calendar owner rather than the host or browser zone?
-- If operators or customers will see seed or demo data, is it relative to
-  that clock, environment-gated, and free of hardcoded live calendar dates?
+- If the change displays, stores, or schedules time, does it resolve scope and
+  roles through the Time and calendar owner, with visible policy failures?
+- If operators or customers see seed or demo data, do dates and labels match
+  its temporal promise, with freshness when promised and safe, environment-gated
+  mutations under the declared refresh/retention policy?
 - Does every visual value the change introduces resolve to a declared owner, or
   to a registered exception with an owner and a removal condition?
 - Does each frontend direction trace to a concrete subject, audience, user job,

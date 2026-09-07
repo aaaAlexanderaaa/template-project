@@ -17,12 +17,6 @@ supersedes: []
 - In scope: {{behavior}}
 - Out of scope: {{non-goals}}
 
-## Source anchors
-
-### source[1] — {{YYYY-MM-DD}}
-
-{{Request, incident, or decision}}
-
 ## Ownership
 
 | Concern | Authoritative owner | Public consumers | Forbidden duplicate owner |
@@ -92,21 +86,24 @@ Invalid transitions:
 
 Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar.
 
-- Business timezone: `{{IANA name or not_applicable rationale}}`
-- Instant storage: `{{timezone-aware absolute moments; representation changes do not rewrite history}}`
+- Policy owner and scope: `{{owner; system / tenant / object / other; zone resolution}}`
+- Storage, calendar, input, and display roles: `{{representations/zones and allowed differences}}`
+- Persisted time meaning: `{{instants retain absolute meaning; civil dates/schedules retain declared type}}`
 - Calendar-day rules vs duration: `{{today / day-N / grouping vs TTL / locks / age}}`
 - Public representation: `{{declared offset or zone form}}`
-- Naive input: `{{attach business zone / reject / date-only}}`
-- Clock: `{{injectable owner shared by production and tests}}`
-- Drift: `{{subsystem mismatch fails startup}}`
+- Naive input: `{{scope and disambiguation rule / reject / date-only}}`
+- Clock: `{{injectable owner consumed by runtime and tests}}`
+- Policy conformance: `{{static validation; absent/invalid dynamic scope rejected before effects; recovery}}`
 
 ## Demonstration data
 
 Delete this section unless [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Demonstration data.
 
-- Relative business day: `{{in-progress / upcoming / completed relative to clock}}`
+- Temporal promise and labels: `{{present / fixed reference / historical period; how viewers recognize it}}`
+- Freshness when promised: `{{clock/calendar, validity boundary, refresh or none for a static example}}`
 - Environment gate: `{{environments that may rewrite; production fail-closed}}`
-- Same-day identity / cross-day replacement: `{{natural keys; allowlist not accumulated}}`
+- Repeat identity and effects: `{{logical operation/reference; duplicate prevention}}`
+- Retention or replacement: `{{strategy, bounds, validity transition, failure/recovery}}`
 - Allowlisted scope: `{{identities the refresh may touch}}`
 - Demo vs production completion: `{{labeled demo; does not close a production gate}}`
 
@@ -160,6 +157,12 @@ local.
 | Stage | Preconditions | Checks | Abort/rollback condition |
 |---|---|---|---|
 | {{stage}} | {{conditions}} | {{checks}} | {{condition}} |
+
+## Source anchors
+
+### source[1] — {{YYYY-MM-DD}}
+
+{{Request, incident, or decision}}
 
 ## Reconciliation log
 

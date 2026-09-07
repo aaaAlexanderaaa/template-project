@@ -19,10 +19,12 @@ template solely to prove their classification.
 ## Risk classification
 
 - Profile: `{{material / high-risk}}`
-- Rationale: {{changed semantics, boundaries, data, users, or failure surface}}
+- Rationale: {{affected commitments/users, actual effects, failure impact, and recovery cost}}
 - Required independent review: {{yes/no and governing reason}}
 
-Do not downgrade risk merely because an independent reviewer is unavailable.
+Use the [risk owner](../docs/contracts/agent-execution-discipline.md#risk-selects-the-execution-depth).
+Routine work uses its existing context instead of this template. Classification
+does not grant authorization; do not downgrade because a reviewer is unavailable.
 
 ## Authority and prerequisites
 

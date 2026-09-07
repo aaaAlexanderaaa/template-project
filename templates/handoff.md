@@ -14,14 +14,19 @@ subject: {{initiative}}
 
 ## Read first
 
-1. `ARCHITECTURE.md` § “{{section}}”
-2. `docs/contracts/{{contract}}.md` § “{{applicable section and exceptions}}”
-3. `docs/plans/{{plan}}.md` § “{{current executable work}}”
-4. `{{baseline evidence}}`
+1. `{{original request/source and accepted outcome}}`
+2. `ARCHITECTURE.md` § “{{relevant boundary}}” and
+   `docs/contracts/{{contract}}.md` § “{{applicable section and exceptions}}”
+3. `{{verified baseline and completion evidence}}`
+4. Only if this route needs an active plan:
+   `docs/plans/{{plan}}.md` § “{{current executable work}}”
 
 Include only context needed for the next action, plus its original requirements
 and governing boundaries. History is linked for investigation, not copied here.
 Recheck current files; a handoff or agent memory cannot override their authority.
+Locate the outcome, facts, decision authority, boundaries, and completion
+evidence through these sources. An ordinary handoff requires no new plan or
+prior handoff chain.
 
 ## Delegated assignment
 
@@ -43,6 +48,7 @@ the named integrating owner: {{owner}}. Follow the [delegation owner](../docs/co
 ## Remaining work
 
 - {{next dependency-ordered action and completion condition}}
+- {{material unresolved assumption and how the next action resolves it, if any}}
 
 ## Decisions that must not be re-derived
 
@@ -80,4 +86,4 @@ Expected durable evidence: `{{path}}`.
 
 - Prepared by: {{agent or session identifier}}, {{YYYY-MM-DD}}
 - Context state when written: {{fresh / partial / nearly exhausted}}
-- Prior handoff this continues: {{path/none}}
+- Prior handoff, only if needed for provenance or recovery: {{path/none}}

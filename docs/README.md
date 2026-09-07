@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 ---
 
 # Documentation authority map
@@ -24,6 +24,40 @@ time, filename, or length.
 7. `docs/evidence/` supports claims but cannot override a contract.
 8. `templates/` has no authority until copied, completed, and landed in the
    appropriate authoritative directory.
+
+## Task context
+
+Start with enough current context to determine five things: the requested
+outcome; facts and their evidence; who may decide; applicable boundaries and
+exceptions; and evidence sufficient for completion. Obtain these from the
+request, relevant architecture and contract sections, observed baseline, and
+an active plan only when required. This is a reading rule, not a new document
+or a form to fill for every task. Do not copy a second set of product facts
+into the agent entrypoint.
+
+Read detailed methods when a task activates them. A link does not require
+recursive reading. Expand context for a dependency, conflict, missing fact, or
+activated concern, and read the whole owner when section-level reading leaves
+its scope or interactions unclear. Short context never waives an applicable
+constraint, exception, or original requirement.
+
+Source anchors and reconciliation history explain provenance; read them when
+intent is disputed, a prior decision needs investigation, or recovery needs
+that evidence. They are not mandatory startup context merely because they
+share a file with current rules.
+Place operative rules before source chronology when reorganizing an owner;
+preserve source anchors and live references. Source-placement validation is
+owned by [the harness](contracts/documentation-harness.md#contract-source-anchors-are-conditionally-bidirectional).
+Plans and handoffs link to precise current sections and state the next action,
+verified baseline, material unresolved assumptions, and completion evidence.
+They do not require a prior handoff chain or a plan when the route needs none.
+Memory or a generated summary is a locator, not a replacement for current authority.
+
+At closure, merge still-live decisions into their owner, mark the plan
+completed, and replace startup links to old working records with links to the
+current decision. Preserve history that supports a live claim or recovery;
+delete scratch material that no longer serves either. Do not create a fresh
+summary that requires reading every older summary to understand it.
 
 ## Required metadata
 
@@ -60,31 +94,6 @@ The active read set consists of applicable `current`, `target`, `active`, and
 `needs_reconciliation` documents. `completed`, `historical`, and `superseded`
 documents remain searchable history but do not join normal change authority or
 work selection merely because they remain on disk.
-
-### Task context
-
-For each task, start with the requested outcome, relevant structural owner,
-applicable contract sections, active plan if required, and the baseline needed
-to act. A link to a document does not require recursively reading every link
-or loading all domain contracts. Expand this set when a dependency, conflict,
-or activated concern makes another section relevant. Read the whole owning
-document before changing its rules if section-level reading leaves its scope
-or interactions unclear.
-
-Original requirements, applicable owner scope, exceptions, and activated
-boundaries remain part of the task context. Additional source anchors and
-reconciliation history explain provenance; they are read when intent is
-disputed or a prior decision needs investigation. They are not
-mandatory startup payload merely because they share a file with current rules.
-Plans and handoffs link to precise current sections and state only the facts
-needed for the next action. Memory or a generated summary is a locator, not a
-replacement for current authority.
-
-At closure, merge still-live decisions into their owner, mark the plan
-completed, and replace startup links to old working records with links to the
-current decision. Preserve history that supports a live claim or recovery;
-delete scratch material that no longer serves either. Do not create a fresh
-summary that requires reading every older summary to understand it.
 
 Implementation states: `not_started`, `in_progress`, `partial`, `implemented`,
 `retired`.
@@ -141,7 +150,8 @@ Wording is not decoration. The phrasing of a descriptive document guides the
 language of the work that follows it, so plain writing keeps later writing
 plain.
 
-Write canonical rules in English. Preserve original stakeholder wording when
+Use English for repository rules, templates, and working records, following
+the maintainer's language preference. Preserve original stakeholder wording when
 interpretation matters and label translations. Review instructions and user
 messages from the reader's position: name the actor, condition, action, result,
 and available next step when relevant. Explain an internal term before relying
@@ -217,7 +227,9 @@ an agent product-direction or priority authority. Review records and holistic
 evaluations remain evidence, plans remain planning, and product behavior still
 belongs in contracts.
 
-Routine work uses no plan solely for governance. Use
+Routine work uses existing owners, including an update for authorized local
+behavior when required by [development](contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty),
+and no standalone plan. Use
 `templates/agent-execution-plan.md` for material execution and retain its review
 block only for high-risk work. `templates/independent-review.md` records
 genuinely independent perspectives; `templates/holistic-evaluation.md` records

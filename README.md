@@ -53,9 +53,10 @@ The minimum version is Python 3.11.
 6. Material delivery must land a contract first. When a technical fact cannot
    be learned read-only, use [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable controlled-experiment path; the
    experiment must not become product behavior.
-7. If an agent drives the change, choose the smallest route in
-   [agent-execution § smallest-route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route). Only the high-risk route
-   requires independent design review and a fresh-context evaluation.
+7. Choose the [smallest execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route).
+   Authorized low-impact local behavior may update its existing owner without
+   a standalone plan. Only the high-risk route requires independent design
+   review and a fresh-context evaluation. Classification does not grant authority.
 8. Configure `architecture-rules.toml`, or record why it does not apply.
 9. Run the unit tests and `python3 scripts/check_docs.py` with Python 3.11+.
 10. Adapt `templates/ci/docs-check.example.yml` to the project's own CI.
@@ -141,10 +142,10 @@ Migrate the method, not the original project's tools or numbers:
   contracts; unauthorized escalation is recorded as owned debt with a removal
   condition.
 - Backend work names state ownership, failure, and recovery.
-- Time, calendar, and clock have one owner when the project stores or
-  shows date/time; demonstration data that operators or customers will see
-  is relative to that clock and environment-gated. Other source-project
-  repairs are evidence of the same shape, not extra rows to copy.
+- Time policy declares scope and the roles of storage, calendar calculation,
+  input, and display. Visible demonstration data meets its declared temporal
+  promise; mutations remain environment-gated. Read the
+  [runtime owner](docs/contracts/foundational-runtime-discipline.md) when activated.
 - Agent risk decides execution depth; high-risk design and acceptance use a
   genuinely independent context.
 - Each activated quality concern has one normative contract as owner; plans

@@ -3,7 +3,10 @@
 Plans describe how one coherent change reaches its end state. They carry
 `authority: planning` and never override current contracts.
 
-Use `templates/implementation-plan.md`. A useful plan includes:
+Use `templates/implementation-plan.md` when the
+[execution route](../contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route)
+requires a plan; agent-driven material work uses the agent execution template.
+Routine work needs no standalone plan. A useful plan includes:
 
 - authoritative contracts;
 - current facts and baseline evidence;

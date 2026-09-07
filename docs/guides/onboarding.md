@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -141,8 +141,9 @@ If the project stores or shows date/time, or shows seed data to operators
 or customers, name the owner in the `ARCHITECTURE.md` runtime prompts and
 read [foundational runtime](../contracts/foundational-runtime-discipline.md).
 Do not fill a catalog of historical pits. A brownfield inventory records an
-implicit clock or hardcoded demo dates as facts; rewriting them is a
-separately authorized cutover.
+implicit clock, zone resolution, or fixed demo dates as facts. Determine the
+applicable scope and temporal promise before calling those values defects;
+rewriting them is a separately authorized cutover.
 
 ### 7. Plan one bounded migration
 

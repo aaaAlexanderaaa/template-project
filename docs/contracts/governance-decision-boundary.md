@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-07
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -34,62 +34,6 @@ Out of scope:
 - scoring one universal portfolio model;
 - preventing an authorized owner from changing a contract or accepting risk;
 - replacing legal, security, safety, or domain-specific authority.
-
-## Source anchors
-
-### source[1] — 2026-07-26
-
-> “As a governance framework, it should not help developers define priority.
-> It may only assist; it does not make the decision.”
-
-### source[2] — 2026-07-26
-
-> “It may help developers see risks they have not identified and abnormalities
-> that matter for long-term project health. It must not, when the developer
-> already has an idea, block them by saying that idea is wrong.”
-
-### source[3] — 2026-07-26
-
-> “Agreed” to adopt bounded governance authority, AI-guided onboarding, and
-> staged tightening for brownfield projects.
-
-### source[4] — 2026-07-28
-
-> “Enable rather than obstruct. An agent should know clearly what it should
-> and should not do, instead of constantly fearing mistakes because it has
-> not understood the user's needs and situation.”
-
-### source[5] — 2026-08-06
-
-> “When something is uncertain in development, decision-making, or design,
-> give the user a multiple-choice question instead of thrashing on your own
-> and paying a high cost later to change work they do not want.”
-
-### source[6] — 2026-08-06
-
-> “Agreed with your understanding: adopt frontend-design, uninstall
-> ui-ux-pro-max, and learn what is worth learning.”
-
-### source[7] — 2026-08-28
-
-> “When presenting a choice to the user, provide the context needed to trade
-> off — the ROI and the assumptions accepted along with the risk — rather
-> than reporting a problem without saying what impact it has or under what
-> conditions it does not matter. The standpoint matters: the user, the
-> product manager, and the architect cut into the same problem differently.”
-
-### source[8] — 2026-09-06
-
-Original maintainer wording in this task:
-
-> “如果所有的待确认项都确定好了，那就直接瀑布式开发到本次任务结束，
-> 不要分什么阶段123来让用户review或确认”
-
-Maintainer feedback in the template review task, rendered in English: once
-the pending decisions are settled, continue through the authorized task to a
-working end state. Do not stop for user review at artificial phases. Stop when
-new facts actually prevent completion or require a decision outside the agreed
-scope.
 
 ## Vocabulary
 
@@ -215,6 +159,13 @@ semantics, an activated quality-attribute boundary, or another owner's private
 rule. Normal naming, decomposition, test organization, and equivalent internal
 implementation choices belong to this envelope.
 
+An explicit request for new behavior can authorize updating its normative
+owner and delivering that behavior under [development's delivery-contract rule](development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
+That authorization is separate from discretion over implementation mechanics.
+[Execution risk](agent-execution-discipline.md#risk-selects-the-execution-depth)
+selects records and reviews after authority is established; a routine label
+never grants permission to invent product behavior or relax a boundary.
+
 When no risk budget is declared, the default envelope permits a choice that is
 inside current authority, managed scope, and every activated boundary, is
 locally reversible, and creates no uncontracted durable-state or external
@@ -240,7 +191,7 @@ or a bounded execution blocker, pause the affected path, explain what changed,
 and present a concrete decision with its available evidence. Continue unaffected
 authorized work. Do not infer authority for a new task after this one is done.
 
-- from: source[4], source[8]
+- from: source[4], source[8], source[9]
 
 ### Missing knowledge is routed, not automatically escalated
 
@@ -376,7 +327,75 @@ Verified on 2026-08-06:
   dates, and all 106 tests pass under Python 3.11;
 - `python scripts/check_docs.py --strict` passes with no findings.
 
+## Source anchors
+
+### source[1] — 2026-07-26
+
+> “As a governance framework, it should not help developers define priority.
+> It may only assist; it does not make the decision.”
+
+### source[2] — 2026-07-26
+
+> “It may help developers see risks they have not identified and abnormalities
+> that matter for long-term project health. It must not, when the developer
+> already has an idea, block them by saying that idea is wrong.”
+
+### source[3] — 2026-07-26
+
+> “Agreed” to adopt bounded governance authority, AI-guided onboarding, and
+> staged tightening for brownfield projects.
+
+### source[4] — 2026-07-28
+
+> “Enable rather than obstruct. An agent should know clearly what it should
+> and should not do, instead of constantly fearing mistakes because it has
+> not understood the user's needs and situation.”
+
+### source[5] — 2026-08-06
+
+> “When something is uncertain in development, decision-making, or design,
+> give the user a multiple-choice question instead of thrashing on your own
+> and paying a high cost later to change work they do not want.”
+
+### source[6] — 2026-08-06
+
+> “Agreed with your understanding: adopt frontend-design, uninstall
+> ui-ux-pro-max, and learn what is worth learning.”
+
+### source[7] — 2026-08-28
+
+> “When presenting a choice to the user, provide the context needed to trade
+> off — the ROI and the assumptions accepted along with the risk — rather
+> than reporting a problem without saying what impact it has or under what
+> conditions it does not matter. The standpoint matters: the user, the
+> product manager, and the architect cut into the same problem differently.”
+
+### source[8] — 2026-09-06
+
+Original maintainer wording in this task:
+
+> “如果所有的待确认项都确定好了，那就直接瀑布式开发到本次任务结束，
+> 不要分什么阶段123来让用户review或确认”
+
+Maintainer feedback in the template review task, rendered in English: once
+the pending decisions are settled, continue through the authorized task to a
+working end state. Do not stop for user review at artificial phases. Stop when
+new facts actually prevent completion or require a decision outside the agreed
+scope.
+
+### source[9] — 2026-09-07
+
+English rendering of the maintainer's approval: implement the scoped proposal
+for consequence-based risk, lightweight authorized local behavior, scoped
+runtime policy, and task-relevant context. Use English for repository edits.
+
 ## Reconciliation log
+
+- **2026-09-07 — authorization and execution depth separated:** an authorized
+  local behavior change can update its existing owner through the lightweight
+  route. Classification cannot create authorization or expand implementation
+  discretion into product direction.
+  - from: source[9]
 
 - **2026-09-06 — continuous authorized delivery:** clarified that existing
   authorization persists through internal checkpoints and independent reviews;

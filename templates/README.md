@@ -25,11 +25,14 @@ are replaced, and lifecycle metadata is set correctly.
 Clock, calendar, and demonstration-data rules are not a separate copyable
 template. They are owned by `docs/contracts/foundational-runtime-discipline.md`
 and named in `ARCHITECTURE.md` runtime prompts when [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates them.
-Backend, frontend, and cross-stack templates add delete-unless-activated
-sections for those concerns. Do not copy a pit catalog into an adopting
+Backend and frontend templates provide conditional prompts for scoped time
+policy and demo temporal promises; cross-stack work links the same owners
+through its activated-concern table. Do not copy a pit catalog into an adopting
 architecture.
 
-Routine work uses existing authority and no plan template. A controlled
+Routine work uses existing authority, updates its behavior owner when required
+by [development](../docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty),
+and uses no plan template. A controlled
 experiment uses a disposable scratch record unless its findings support a
 durable decision. `agent-execution-plan.md` is for material delivery; retain
 its review topology only for high-risk work.
