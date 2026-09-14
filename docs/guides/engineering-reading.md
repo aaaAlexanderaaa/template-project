@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-14
 ---
 
 # Engineering reading list
@@ -70,6 +70,9 @@ new evidence:
 User-experience evaluation has the thinnest base in this set: Tesler,
 Fitts/Hick, and Goodhart give foundations, and the frontend contract's
 perceptual review gives a procedure, but no mined source provides a full
-evaluation method. A dedicated source (Google's HEART framework or Nielsen's
-usability engineering) is the candidate for a future mining pass when a real
-project activates that need.
+evaluation method. First-party projects activated that need after 2026-07;
+the adopted partial answer is the fresh-context consumer in
+[development § bidirectional-verification](../contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions) —
+acceptance by an independent consumer with none of the author's assumptions.
+A dedicated source (Google's HEART framework or Nielsen's usability
+engineering) remains the candidate for a future mining pass.

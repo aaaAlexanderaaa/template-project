@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-14
 ---
 
 # Documentation authority map
@@ -51,6 +51,9 @@ owned by [the harness](contracts/documentation-harness.md#contract-source-anchor
 Plans and handoffs link to precise current sections and state the next action,
 verified baseline, material unresolved assumptions, and completion evidence.
 They do not require a prior handoff chain or a plan when the route needs none.
+A plan, handoff, or task description is written for a reader who has none of
+the current context — goal, expected end state, current state, and gap — and
+a fresh reader's misreading is a defect in the document, not in the reader.
 Memory or a generated summary is a locator, not a replacement for current authority.
 
 At closure, merge still-live decisions into their owner, mark the plan
@@ -158,6 +161,13 @@ and available next step when relevant. Explain an internal term before relying
 on it. Replace a vague promise such as "state reconciled" with what changed or
 remains unresolved. Word lists and an "AI writing" detector cannot establish
 that a reader understands the result; inspect a concrete task or message.
+
+State conclusions and own them: precise uncertainty is required, but
+dissolving a verdict into hedging, borrowed authority, or defensive citation
+is a clarity defect, not caution. Examples and defaults are teaching
+material — write the usage you want copied, because readers copy them.
+Reason in the order the problem needs; write in the order the reader needs —
+compression that costs the reader more than it saves is not brevity.
 
 When citing a normative invariant from another document, link to its owning
 contract and heading slug rather than quoting a letter code; within a

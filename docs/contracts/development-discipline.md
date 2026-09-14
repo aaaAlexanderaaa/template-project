@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-14
 supersedes: []
 ---
 
@@ -157,6 +157,16 @@ Verification runs in both directions:
   analysis, not an exhaustive taxonomy or a mandatory test count.
 - Exercise failure and recovery from the user's position: what is known, what
   remains unresolved, what was changed, and what action is available next.
+- Never attribute a failure to the user's environment without evidence. A fix
+  is verified in the environment where the failure was reported; reproducing
+  a similar failure elsewhere establishes a hypothesis, not the fix. When a
+  failure class will need cross-environment diagnosis, the product ships its
+  own diagnostic surface instead of relying on the reporter's description.
+- For a user- or operator-facing deliverable, proportionate to risk,
+  acceptance includes a fresh-context consumer: an independent agent or
+  reviewer who receives only what a real consumer would have and uses the
+  deliverable to its stated end. A context-free consumer's failure is a
+  defect in the deliverable, not in the consumer.
 
 Use the smallest credible evidence for each claim. A failing regression test,
 an instrumented process, a packaged artifact, a browser observation, or a
@@ -164,7 +174,7 @@ bounded manual review may be appropriate. Record the relevant conditions and
 limits. Missing observations remain unknown or not run, never a pass. Required
 evidence for a completion claim cannot be replaced by a cheaper unrelated check.
 
-- from: source[8]
+- from: source[8], source[10]
 
 ### Environment over memory
 
@@ -196,6 +206,9 @@ possible, or the guard would cost more than the bounded risk warrants, record
 that fact and keep the change local. This invariant is not permission to
 expand an authorized fix into an unbounded cleanup.
 
+Investigation tooling enriches the raw failure record but never pre-filters
+it; filtering failure data before analysis hides the mechanism being sought.
+
 When the project operates incidents or postmortems, their output feeds this
 invariant: a postmortem names the root-cause category — possibly several —
 and the class-level action for each, and a monitoring failure (a user noticed
@@ -210,7 +223,7 @@ startup context. If no proportionate guard exists, keep a short example or
 review cue at the relevant owner and say what it cannot prevent. More recorded
 lessons alone are not evidence of improvement.
 
-- from: source[7], source[8]
+- from: source[7], source[8], source[10]
 
 ### Preserve decisions and evidence
 
@@ -218,6 +231,23 @@ Requirements, translations, implementation plans, issues, and evidence have
 different authority. Do not overwrite one with another. Superseded material
 keeps an explicit replacement link so later contributors can reconstruct why a
 decision changed.
+
+### Real content is never deleted or fabricated for presentation
+
+Presentation never rewrites the underlying record. Real content is masked,
+folded, or paginated — never dropped or invented — and a derived view can be
+rebuilt from the authoritative source. Addition precedes reduction, and
+reduction happens in the display layer, never the storage layer.
+
+Research and measurement that support a decision keep their intermediate
+evidence chain and state their basis — scope, weights, sources, and time
+reference — before their conclusions. An unreproducible conclusion is not
+established.
+
+Deletion is reserved for an explicitly authorized cleanup that first
+classifies what it removes.
+
+- from: source[10]
 
 ### Activate concerns instead of expanding ceremony
 
@@ -240,18 +270,18 @@ trigger semantics.
 
 | Change trait | Activated concern | Minimum questions |
 |---|---|---|
-| Public interface, event, schema, or consumer-visible meaning | Compatibility | Version, consumers, cutover, deprecation, rollback |
+| Public interface, event, schema, or consumer-visible meaning | Compatibility | Version, consumers, cutover, deprecation, rollback, release-artifact identity (location, naming, structure) |
 | Durable state, migration, concurrency, or replay | State integrity | Atomicity, idempotency, ordering, recovery, manual intervention, schema evolution and extensibility |
 | Permission, identity, untrusted input, sensitive data, or cross-tenant access | Security and privacy | Trust boundary, least privilege, abuse/failure case, audit, retention |
-| Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation, named resource bounds and chosen exhaustion behavior |
+| Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation, named resource bounds and chosen exhaustion behavior, guards calibrated to the actual operation's cost and verified on the real environments they protect |
 | Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective and its error budget, dependency failure, observability, actionable-alert test, postmortem trigger, alert/rollback trigger |
 | External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Existing-solution search before building, owner, provenance, reproducibility, compatibility, cost categories, unavailable-dependency behavior |
-| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals |
+| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals, environment interruptions a session must survive, visibility and bypass of automation the user depends on |
 | Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | [Time policy](foundational-runtime-discipline.md#time-and-calendar): scope and role resolution, instant vs calendar vs duration, naive-input policy, representation, injectable clock, policy-conformance checks |
 | Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | [Demo policy](foundational-runtime-discipline.md#demonstration-data): temporal promise and labels, freshness when promised, refresh/retention strategy, repeat safety, environment gate, production isolation |
 | Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner |
 
-- from: source[1], source[5], source[7]
+- from: source[1], source[5], source[7], source[10]
 
 ### Govern document decisions, not document volume
 
@@ -281,13 +311,15 @@ official documentation, standard, or owning institution over a secondary
 summary, and preserve enough source identity for another contributor to check
 the claim.
 
-Separate what the source states from inference and recommendation. If neither
+Separate what the source states from inference and recommendation. Material
+that exists to sell, to rank, or to fill a content farm is not a source of
+truth about its subject; screen it out before it becomes evidence. If neither
 local nor external evidence can establish the fact, name the unknown and its
 effect instead of inventing a plausible answer. Research is still bounded by
 the request's permissions, privacy boundary, and activated security or cost
 concerns.
 
-- from: source[3]
+- from: source[3], source[10]
 
 ### Tool failure triggers capability-preserving fallback
 
@@ -332,7 +364,17 @@ especially when the same rule is stated again, or is phrased as something to
 remember — propose recording it in the document that owns the topic: a
 contract invariant, a guide procedure, a template field, or an agent
 entrypoint. The proposal states the rule in plain wording, its reason, how it
-applies, and its source and date. The owner confirms before it lands.
+applies, and its source and date. It also states the rule's scope and the
+conditions that suspend it: a rule stated for one situation, or under
+exceptional pressure, is recorded with that situation rather than promoted
+into a standing rule, and an explicit current instruction suspends a default
+for its scope without repealing it. The owner confirms before it lands.
+
+A recording proposal also names where the rule ranks among its neighbors and
+how the rule set reads once it lands. Record the principle, not the
+incident: the next reader never made your mistake and should not have to
+learn it; cite a past failure only when it strengthens the rule's
+description.
 
 An explicit instruction to adopt or implement the rule supplies that
 confirmation for its stated scope. Do not request the same confirmation again.
@@ -342,7 +384,7 @@ that carries it. Recording is proposed, not assumed: the decision to adopt
 remains with the human owner, and a rejected proposal stays as history rather
 than returning as an unwritten rule.
 
-- from: source[6]
+- from: source[6], source[10]
 
 ## Change workflow
 
@@ -387,6 +429,10 @@ Frontend work translates product intent into observable states and geometry.
   engineering translation.
 - An explicit state catalog: empty, loading, populated, error, disabled,
   selected, expanded, or other reachable variants relevant to the surface.
+  Where the surface can outlive its environment, the catalog includes the
+  states that environment change produces — sleep, display or network loss,
+  reload, permission change — because real usage produces them as a matter of
+  course.
 - Layout and size expectations, including narrow, intermediate, and wide
   containers where applicable.
 - Interaction expectations: trigger, state transition, focus behavior,
@@ -438,6 +484,13 @@ control through result feedback; let labels, examples, and supporting text each
 do one job; and make empty and failure states explain the available recovery or
 next action without vague apology or promotional filler.
 
+A product surface carries no meta-discourse: no "this is a demo", no
+developer-facing notes, no internal codenames, and no defensive disclaimers.
+The surface speaks to its user as the product, not about the product;
+explanation about the product belongs to its documents. A visible control that
+does not function is worse than an absent one — remove it or present its
+honest state, and never paint a placeholder.
+
 When a human-owned visual preference cannot be decided usefully from prose,
 prepare a bounded set of low-cost alternatives or a disposable visual probe in
 `tmp/`. State the question it resolves, keep it out of production and public
@@ -445,7 +498,7 @@ interfaces, record the owner's reaction as dated raw surface input, and remove
 the probe when it supports no live evidence. The probe informs the contract; it
 does not authorize delivery or become the accepted design by survival.
 
-- from: source[4]
+- from: source[4], source[10]
 
 ### Style ownership and layering
 
@@ -541,6 +594,10 @@ interfaces.
 - Persistence, transaction, migration, and rollback expectations.
 - Observability: logs, events, metrics, audit fields, and diagnostic identity.
 - Permission boundaries and the minimum capabilities each caller needs.
+- When an interface's consumer is an agent, the error surface is part of the
+  contract: errors name the cause and the available correction, defaults do
+  not silently downgrade capability below the common case, and the published
+  description states what the interface cannot do.
 - Activated performance/capacity, reliability, security/privacy, dependency,
   production-learning, time/calendar, and demonstration-data boundaries
   from the activate-concerns invariant.
@@ -563,6 +620,8 @@ interfaces.
   and replay must describe the same reality.
 - Fail loudly on invalid configuration or missing dependencies; never silently
   switch to a different behavior.
+- When invalid inputs cannot be enumerated, validate against a definition of
+  the valid and let violations surface, rather than enumerating the invalid.
 
 ### Backend completion criteria
 
@@ -708,7 +767,36 @@ plan. Runtime disciplines must declare their applicable scope and promises
 instead of imposing one source project's time or demo solution on every adopter.
 Current task rules should precede optional methods and historical provenance.
 
+### source[10] — 2026-09-14
+
+English rendering of maintainer feedback distilled from first-party adoption
+of this discipline across the maintainer's own projects since 2026-07:
+presentation must never delete or fabricate real content; a failure is
+attributed to an environment only with evidence, and a fix is verified where
+the failure was reported; product surfaces carry no meta-discourse and no
+non-functional controls; real usage includes environment interruption; guards
+are calibrated to the actual operation rather than its theoretical maximum;
+and a recorded rule carries its scope and suspension conditions. The same
+feedback requires that a new rule name its home and its rank among
+neighboring rules, that what is recorded is the principle rather than the
+incident, and that investigation tooling never pre-filters the failure
+record.
+
 ## Reconciliation log
+
+- **2026-09-14 — first-party adoption feedback reconciled:** the discipline
+  has been exercised in the maintainer's own projects since 2026-07, and
+  their corrections landed at the existing owners: data fidelity for
+  presentation, environment-grounded fault attribution, fresh-context
+  consumer acceptance, zero meta-discourse and no dead controls in surfaces,
+  environment-change states, agent-consumable error surfaces,
+  validity-defined validation, guard calibration, and scoped rule recording.
+  A second pass weighted by institutionalization rather than recurrence
+  added: new rules name their home and rank, records carry principles rather
+  than incidents, and investigation tooling never pre-filters the failure
+  record.
+  Evidence: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md).
+  - from: source[10]
 
 - **2026-09-07 — proportionate delivery and runtime scope:** routine behavior
   changes update their existing normative owner without a standalone plan.

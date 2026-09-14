@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-09-07"
+FIXED_TODAY = "2026-09-14"
 
 
 def load_checker_module():

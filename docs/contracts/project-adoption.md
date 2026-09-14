@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-06
+last_reconciled: 2026-09-14
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -84,6 +84,14 @@ Out of scope:
 
 > “When adopting external material, triage it by authorship before deciding
 > how much to trust it.”
+
+### source[8] — 2026-09-14
+
+English rendering of maintainer feedback distilled from the maintainer's
+collaboration archive: when mining history for rules, recurrence measures a
+problem's stubbornness, not a preference's weight; the weight signal is
+whether the rule was institutionalized — written into standing rules or
+tooling — not how often it was said.
 
 ## Vocabulary
 
@@ -256,10 +264,13 @@ each part:
 - material whose authorship cannot be determined is treated as unverified.
 
 The volume and polish of generated narrative is not evidence of value, and
-importing its vocabulary can pollute the receiving documents. An adoption or
+importing its vocabulary can pollute the receiving documents. Recurrence is
+also not a weight signal: repetition measures how stubborn a problem is, not
+how much a preference weighs, and a rule institutionalized after one
+statement can outweigh a complaint repeated weekly. An adoption or
 learning record states which class each adopted lesson came from.
 
-- from: source[7]
+- from: source[7], source[8]
 
 ## Required onboarding record
 
@@ -327,9 +338,11 @@ Verified on 2026-08-06:
 - the full 106-test Python 3.11 fixture suite, normal repository check, strict
   repository check, and whitespace audit pass.
 
-Verification remains `partial`: no real greenfield or brownfield repository has
-yet completed this onboarding path, so usability, proportionality, and stage
-transition behavior are not independently proven.
+Verification remains `partial`: first-party greenfield and brownfield
+repositories have completed this onboarding path since 2026-07 (see the
+2026-09-14 entry), but no adopter independent of the maintainer has completed
+it, so independent usability, proportionality, and stage-transition behavior
+are not independently proven.
 
 Verified on 2026-08-27:
 
@@ -337,6 +350,15 @@ Verified on 2026-08-27:
   and both repository checker modes pass;
 - verification remains partial: no visiting agent has yet applied the
   authorship triage to real external material under this contract.
+
+Verified on 2026-09-14:
+
+- first-party greenfield and brownfield adoptions have completed this
+  onboarding path since 2026-07, and their corrections are reconciled in the
+  contracts they exercised. Evidence:
+  [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
+- adoption by a repository independent of the maintainer remains unproven, so
+  verification stays `partial`.
 
 ## Explicit non-goals
 
@@ -346,6 +368,11 @@ Verified on 2026-08-27:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-09-14 — first-party adoption evidence recorded:** the onboarding
+  path has now been completed by first-party greenfield and brownfield
+  projects; the independent-adoption gap is stated explicitly instead of a
+  blanket no-real-project note.
 
 - **2026-09-06 — delivery method aligned:** the transfer value order still
   prioritizes complete delivery over its carriers; evidence methods now follow

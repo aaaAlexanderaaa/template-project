@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-14
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -117,7 +117,10 @@ the human decision available where applicable.
 
 Recommendations state their evidence, assumptions, expected benefit, cost,
 alternatives, and limitations. A rejected recommendation remains evidence or
-history; it does not silently return as a mandatory rule.
+history; it does not silently return as a mandatory rule. Agreement is held
+to the same standard: a recommendation or plan is endorsed because its
+evidence was checked, not because agreeing is smoother — instant agreement
+without independent judgment is a failure mode, not alignment.
 
 A problem report is incomplete when it stops at "something is wrong". A risk
 or recommendation that asks for attention also states: who bears the impact
@@ -127,7 +130,7 @@ finding out, is acceptable; the conditions under which the problem does not
 matter; and what accepting the risk would assume. An option presented for
 decision carries the same fields plus its reversibility or switching cost.
 
-- from: source[2], source[7]
+- from: source[2], source[7], source[10]
 
 ### Exceptions are explicit, scoped, and reviewable
 
@@ -191,7 +194,12 @@ or a bounded execution blocker, pause the affected path, explain what changed,
 and present a concrete decision with its available evidence. Continue unaffected
 authorized work. Do not infer authority for a new task after this one is done.
 
-- from: source[4], source[8], source[9]
+The boundary runs in both directions. Destructive, irreversible, or externally
+visible action without explicit authorization is a violation — and so is
+returning authorized, reversible, or read-only work for approval. Both spend
+what the boundary exists to protect.
+
+- from: source[4], source[8], source[9], source[10]
 
 ### Missing knowledge is routed, not automatically escalated
 
@@ -327,6 +335,16 @@ Verified on 2026-08-06:
   dates, and all 106 tests pass under Python 3.11;
 - `python scripts/check_docs.py --strict` passes with no findings.
 
+Verified on 2026-09-14:
+
+- first-party projects applying this boundary under delivery pressure since
+  2026-07 confirmed the bounded option set with trade-off context as the
+  stable decision interface, and produced the bidirectional-boundary and
+  genuine-agreement clarifications recorded in the reconciliation log.
+  Evidence: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
+- the partial note above still holds for adopters independent of the
+  maintainer.
+
 ## Source anchors
 
 ### source[1] — 2026-07-26
@@ -389,7 +407,22 @@ English rendering of the maintainer's approval: implement the scoped proposal
 for consequence-based risk, lightweight authorized local behavior, scoped
 runtime policy, and task-relevant context. Use English for repository edits.
 
+### source[10] — 2026-09-14
+
+English rendering of maintainer feedback distilled from first-party adoption:
+the authorization boundary is bidirectional — unauthorized destructive or
+externally visible action is a violation, and so is interrupting the owner to
+approve authorized, reversible, or read-only work. During alignment, instant
+agreement without independent judgment is a failure mode.
+
 ## Reconciliation log
+
+- **2026-09-14 — bidirectional boundary and genuine agreement:** first-party
+  adoption feedback confirmed the option-set interface and added two
+  clarifications: the authorization boundary punishes over-asking as well as
+  unauthorized action, and agreement without independent judgment is a
+  failure mode during alignment.
+  - from: source[10]
 
 - **2026-09-07 — authorization and execution depth separated:** an authorized
   local behavior change can update its existing owner through the lightweight

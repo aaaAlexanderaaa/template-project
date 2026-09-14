@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-14
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -226,7 +226,40 @@ Verification records name which class they provide, such as:
 Each report states what it does not prove. Evidence classes may complement one
 another but do not silently replace one another.
 
-- from: source[1], source[2]
+A simulation, mock, or controlled fake establishes that the system runs; it
+does not establish that the outcome holds under real data, real counterparts,
+or a real environment. A demonstration that required invisible manual
+correction is evidence about the correction, not about the system.
+Real-environment verification carries its own cost and risk, so bound it and
+set its stop conditions before running it.
+
+- from: source[1], source[2], source[8]
+
+### Billed, rate-limited, and account-bound resources are spent deliberately
+
+Work that spends billed, rate-limited, or account-bound resources declares
+its expected volume and stop condition before running, and reports actual
+spend against that declaration.
+
+A rate-limit or quota response is a defect in our own mechanism — missing
+idempotency, missing caching, unbounded concurrency, or blind retry — not
+evidence that the other side raised its limits. The response is to
+circuit-break and fix the mechanism, never to retry into the limit. Writes to
+external systems are idempotent and atomic: a retry never replays a completed
+effect, because account safety outranks feature completion.
+
+When parallel calls share a cacheable prefix, a first call establishes the
+cache before fan-out; when the cache demonstrably misses, the work falls back
+to sequential execution without sunk-cost attachment. Concurrency — including
+the number of delegated workers — is a knob set by upstream quota and task
+shape: cross-validation and exhaustive collection justify more, single-thread
+diagnosis justifies none. It is not a fixed preference.
+
+Cost-awareness is the default, not a ceiling on declared-important work: the
+owner may lift limits explicitly. Quotas exist to protect accounts and
+attention, not to ration compute.
+
+- from: source[8]
 
 ### The harness selects the smallest executable route
 
@@ -299,7 +332,14 @@ parent outcome. Several passing worker tasks do not establish that the combined
 result works. Cancelled or late output is reviewed before use and must not
 silently overwrite a newer decision or another worker's change.
 
-- from: source[5], source[6]
+When the owner will be unavailable, shape the work to fit the authorized
+operation set and pre-name the decision points that must pause, rather than
+letting the work collide with an approval wall; prefer a read-only equivalent
+over an approval-requiring step when it serves the same purpose. When
+delegated work fails, first suspect the assignment's context, contracts, and
+descriptions — not the worker.
+
+- from: source[5], source[6], source[8]
 
 ## Required records
 
@@ -341,9 +381,10 @@ solely to prove that it is routine.
 ## Acceptance evidence
 
 Mechanical enforcement covers record structure, template inventory, and links.
-Behavioral effectiveness remains partial until adoption exercises actual agent
-decisions and delivered outcomes. These are separate claims; a checker pass
-does not establish the second.
+Behavioral effectiveness is a separate claim: first-party adoption has
+exercised these routes since 2026-07 (see the 2026-09-14 entry), and
+independent adoption review remains open. A checker pass establishes only the
+first.
 
 The [September 7 change record](../plans/2026-09-06-proportionate-execution.md#progress-and-closure)
 records the consequence-based routing review and focused/full checks. Its
@@ -398,6 +439,16 @@ Verified on 2026-08-27:
 - behavioral effectiveness remains partial: no real multi-session project has
   exercised the coordination surface yet.
 
+Verified on 2026-09-14:
+
+- first-party adoption since 2026-07 exercised the risk routes, written
+  parallel coordination, and delegation in the maintainer's own projects;
+  their feedback produced the resource-spending invariant, the delegation
+  envelope, and the simulation boundary recorded in the reconciliation log.
+  Evidence: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
+- behavioral effectiveness outside the maintainer's portfolio remains
+  unproven; the independent adoption review promise below stays open.
+
 ## Promise register
 
 - promise[independent-adoption-review]: due=2026-10-24; status=open; owner=template-maintainer; description=obtain an independent adoption review after the first real product uses the agent execution profile
@@ -448,7 +499,25 @@ continue: classify changes by consequences, permit authorized low-impact new
 behavior without a standalone plan, and make current task facts and boundaries
 easy to locate. Keep required independent review for high-risk work.
 
+### source[8] — 2026-09-14
+
+English rendering of maintainer feedback distilled from first-party adoption:
+work that spends billed, rate-limited, or account-bound resources declares
+its volume and stops at its bound; a rate-limit response is a defect in our
+own mechanism, so circuit-break and fix the mechanism rather than retrying
+into it; a retry never replays a completed effect; concurrency follows
+upstream quota and task shape; and when the owner is unavailable, work is
+shaped to fit the authorized operation set with pre-named pause points.
+
 ## Reconciliation log
+
+- **2026-09-14 — resource spending and delegation envelope:** added the
+  billed, rate-limited, and account-bound resource invariant; the simulation
+  and manual-correction boundary in evidence classes; and the
+  unattended-execution and failure-attribution rules for delegation. Source:
+  first-party adoption feedback, including an incident in which repeated
+  non-atomic writes suspended a real account.
+  - from: source[8]
 
 - **2026-09-07 — consequence-based execution:** broadened routine work to
   authorized low-impact local behavior and retained material planning for

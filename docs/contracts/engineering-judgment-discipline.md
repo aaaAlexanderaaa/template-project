@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: not_started
 verification_status: pending
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-14
 review_due: 2026-11-26
 supersedes: []
 ---
@@ -252,8 +252,12 @@ This contract is implemented when:
 - at least one real problem report has used the [governance § advice-preserves-disagreement](governance-decision-boundary.md#advice-preserves-disagreement) fields informed by
   declared standpoints.
 
-Verification stays `pending` until then: the text is mined and reviewed,
-but no real project has exercised it.
+Verification stays `pending` for the full procedure: first-party projects
+applying this template's discipline since 2026-07 have exercised parts of
+this judgment — complexity-cost rejection of over-engineered proposals and
+impact-surface triage of review findings — but no material change has yet
+run the comparison procedure end to end and recorded its outcome as decision
+evidence.
 
 ## Reconciliation log
 

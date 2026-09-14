@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-14
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -57,7 +57,10 @@ blocker on one item does not make unrelated authorized work blocked.
 Inside an authorized outcome, use the engineering decision envelope in the
 governance contract: locally reversible choices inside current authority and
 activated boundaries proceed without serial approval. Investigate uncertainty
-about technical reversibility before turning it into a human decision.
+about technical reversibility before turning it into a human decision. The
+boundary is bidirectional: unauthorized destructive or externally visible
+action is a violation, and so is requesting approval for authorized,
+reversible, read-only work.
 
 ### 3. Resolve uncertainty without guessing or serial approval
 
@@ -135,6 +138,11 @@ internal checkpoints do not ask the user to approve phases. A bounded task may
 end when it is complete. Portfolio discovery applies only to an authorized
 ongoing assignment. Delegated work uses the existing plan or a bounded native
 assignment, and the parent verifies the integrated result before closure.
+When the owner will be unavailable, shape the work to fit the authorized
+operation set and pre-name the decision points that must pause. Work that
+spends billed, rate-limited, or account-bound resources declares its volume
+and stop condition before running; a rate-limit response circuit-breaks into
+a mechanism fix, never a blind retry.
 
 ### 5. Report governance output precisely
 

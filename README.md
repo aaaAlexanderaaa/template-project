@@ -8,6 +8,23 @@ implementation. Its most important product is not the directories, templates,
 or checker, but the judgment and delivery discipline those carriers exist to
 hold.
 
+This repository is a harness: a working institution under which a cognitive
+subject with high local intelligence and low native executive function — one
+that acts on the real world through tools — can be delegated work over the
+long term, with its failures sedimenting into organizational learning instead
+of organizational debt. Everything here serves the requested observable
+outcome; contracts, tests, documents, and checks preserve intent and expose
+mistakes, and completing them alone is never completion of the task.
+
+Two further observations shape the discipline: the owner's attention is the
+most expensive resource and compute is the cheapest, so cost is pushed toward
+the machine side by default — while staying cost-aware, because quotas and
+circuit breakers protect accounts and attention rather than ration compute;
+and a claim that was not verified is not true, however plausible it sounds.
+The discipline has been exercised and corrected in the maintainer's own
+projects since 2026-07, and feeding that experience back is a standing
+practice; independent adoption remains the open frontier.
+
 ## Transfer value order
 
 When an agent enters this repository and decides for itself what to take away,

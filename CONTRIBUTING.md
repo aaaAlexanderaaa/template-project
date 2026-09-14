@@ -101,6 +101,16 @@ or newer and have no third-party package dependencies.
 - When human decisions depended on one another, did the inquiry work only the
   prerequisite-safe frontier and establish authorization before dependent
   material work, without asking for the same confirmation again?
+- Was a failure attributed to the user's environment only with evidence, and
+  was the fix verified in the environment where the failure was reported?
+- Does every visible control function, and is the surface free of
+  meta-discourse — demo disclaimers, developer notes, internal codenames?
+- Did work that spends billed, rate-limited, or account-bound resources declare
+  its volume and stop condition, and are external writes idempotent under
+  retry?
+- For a user- or operator-facing deliverable, where risk warranted it, did a
+  fresh-context consumer — one without the author's assumptions — use it to
+  its stated end?
 
 ## Definition of done
 
