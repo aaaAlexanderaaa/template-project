@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-15
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -148,9 +148,13 @@ An agent may resume already authorized in-progress work, follow a declared
 priority order, and perform read-only portfolio diagnosis. When it discovers
 untracked work, it records the candidate and evidence before non-trivial
 implementation, but the portfolio owner decides its priority unless an
-existing policy already determines it.
+existing policy already determines it. A standing charter under
+[autonomous operation](autonomous-operation-discipline.md) is one form of
+declared authorization for unattended execution: it pre-authorizes a bounded
+operation set and pre-names the decision points that must pause. It never
+transfers direction, priority, or risk acceptance.
 
-- from: source[1], source[2]
+- from: source[1] (2026-07-26 no framework-defined priority), source[2] (2026-07-26 advisory-not-blocking boundary)
 
 ### Delegated engineering work proceeds by default
 
@@ -416,6 +420,12 @@ approve authorized, reversible, or read-only work. During alignment, instant
 agreement without independent judgment is a failure mode.
 
 ## Reconciliation log
+
+- **2026-09-15 — standing charter as declared authorization:** the
+  work-selection invariant now names a charter under
+  `autonomous-operation-discipline.md` as one form of declared authorization
+  for unattended execution, with pre-named pause points. The authority classes
+  are unchanged.
 
 - **2026-09-14 — bidirectional boundary and genuine agreement:** first-party
   adoption feedback confirmed the option-set interface and added two

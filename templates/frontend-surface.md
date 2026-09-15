@@ -44,7 +44,7 @@ anchor is used.
 ### Outcomes
 
 - {{observable outcome in plain language}}
-  - from: raw[{{N}}]
+  - from: raw[{{N}}] ({{source date and topic}})
 
 ### Reachable states
 
@@ -52,7 +52,7 @@ anchor is used.
 |---|---|---|---|---|
 | `{{state}}` | {{condition}} | {{result}} | {{actions}} | {{behavior}} |
 
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 Include applicable empty, loading, populated, error, stale, disabled, selected,
 expanded, unauthorized, offline, and archived states.
@@ -63,7 +63,7 @@ expanded, unauthorized, offline, and archived states.
 |---|---|---|---|---|
 | `{{stable handle}}` | {{min/max/intrinsic}} | {{min/max/content}} | {{owner}} | {{state/container}} |
 
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 Define narrow, intermediate, and wide container behavior from the layout's own
 constraints. Device names may be used as verification fixtures, not as the sole
@@ -75,7 +75,7 @@ source of breakpoints.
 |---|---|---|---|---|---|
 | `{{id}}` | `{{selector/role/test id}}` | {{click/key/touch/etc.}} | {{state}} | {{delta}} | {{result}} |
 
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 ### Design direction and content
 
@@ -98,7 +98,7 @@ source of breakpoints.
   cleanup, or none}}
 - Shared component variants used: {{variants}}
 - Surface-specific exceptions and owner: {{exceptions or none}}
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 Candidates and probes do not own values. Carry accepted decisions through the
 style and theming contract below; remove decoration that cannot be justified by
@@ -112,7 +112,7 @@ the subject, hierarchy, or user job.
 - Theme, mode, density, or direction variants supported: {{axes}}
 - Values defined locally, with owner and removal condition: {{values or none}}
 - Escalations held by this surface: {{registered ids or none}}
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 Record a value the shared layer does not publish as an exception with an owner.
 Do not restate the shared layer's rules here; name what this surface consumes.
@@ -124,7 +124,7 @@ Do not restate the shared layer's rules here; name what this surface consumes.
 - Touch and pointer: {{targets/gestures/hover alternatives}}
 - Screen reader announcements: {{dynamic state}}
 - Contrast, motion, zoom, and text scaling: {{support}}
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 ### Responsive and browser support
 
@@ -132,7 +132,7 @@ Do not restate the shared layer's rules here; name what this surface consumes.
 |---|---|---|---|
 | {{range derived from constraints}} | {{state}} | {{changes}} | {{targets}} |
 
-- from: raw[{{N}}]
+- from: raw[{{N}}] ({{source date and topic}})
 
 ## Time, locale, and demonstration data
 

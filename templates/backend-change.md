@@ -38,7 +38,7 @@ contract when it owns the boundary; do not restate its threshold here.
 
 {{durable backend rule}}
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 - Enforcement: `{{type/test/runtime guard or bounded review}}`
 
 ## Public interface

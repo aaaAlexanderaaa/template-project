@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-15
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -167,7 +167,10 @@ evidence.
 ### Work selection has no silent idle state or invented priority
 
 This fallback applies only when the owner has authorized ongoing autonomous
-work against a portfolio or objective. Completing a bounded task is a valid
+work against a portfolio or objective. The standing form of that authorization —
+a charter with expiry, epoch records, role identities, and calibration — is
+owned by [autonomous operation](autonomous-operation-discipline.md); this
+invariant governs work selection within it. Completing a bounded task is a valid
 stopping point. Do not turn its completion into an unsolicited portfolio scan.
 Within an authorized ongoing assignment, when no explicit executable task
 exists, an autonomous agent:
@@ -191,7 +194,7 @@ analysis do not grant the agent authority to rank or execute newly discovered
 product work. The output classes and allowed blocker conditions are defined by
 `governance-decision-boundary.md`.
 
-- from: source[1], source[3], source[6]
+- from: source[1] (2026-07-26 execution-profile origin), source[3] (2026-07-26 no agent-defined priority), source[6] (2026-09-06 outcome-driven feedback)
 
 ### Completion is layered
 
@@ -510,6 +513,11 @@ upstream quota and task shape; and when the owner is unavailable, work is
 shaped to fit the authorized operation set with pre-named pause points.
 
 ## Reconciliation log
+
+- **2026-09-15 — standing authorization routed:** the work-selection invariant
+  now names `autonomous-operation-discipline.md` as the owner of the standing
+  charter form of authorized ongoing work — expiry, epoch records, role
+  identities, and calibration. The selection rules themselves are unchanged.
 
 - **2026-09-14 — resource spending and delegation envelope:** added the
   billed, rate-limited, and account-bound resource invariant; the simulation

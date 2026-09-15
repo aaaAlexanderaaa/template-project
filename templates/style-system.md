@@ -58,7 +58,7 @@ layer.
 |---|---|---|---|---|---|
 | 1 | `{{layer}}` | `{{owner}}` | `{{what lives here}}` | `{{lower layers}}` | `{{compose/extend/never touch}}` |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 - Realizing mechanism: {{how the declared order is actually enforced at
   delivery}}
@@ -79,7 +79,7 @@ A tier may reference only tiers below it. Nothing references upward.
 | 1 | `{{raw values}}` | `{{owner}}` | {{the value itself}} | `{{internal only, or declared exception}}` |
 | 2 | `{{roles}}` | `{{owner}}` | {{the decision the value serves}} | `{{consumers}}` |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 - Governed value classes: {{color, spacing, type, radius, elevation, motion,
   z-order, or the subset this project governs}}
@@ -100,7 +100,7 @@ What consumers may set is finite and listed. Everything else is private.
 |---|---|---|---|
 | `{{unit}}` | `{{named values a consumer may set}}` | `{{variants}}` | `{{internals}}` |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 Reachability is not publication. A handle a consumer can technically select but
 the owner never published is private, and depending on it is a boundary
@@ -112,7 +112,7 @@ violation rather than a supported extension.
 |---|---|---|---|
 | `{{mode/brand/density/direction}}` | `{{values}}` | `{{owner}}` | `{{re-pointed names, not duplicated rules}}` |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 A variant implemented as a parallel copy of a unit's rules is a fork, not a
 theme.
@@ -123,7 +123,7 @@ theme.
 |---|---|---|---|
 | `{{band}}` | `{{the unit's own allotted space, or the display}}` | `{{owner}}` | `{{declared fallback}}` |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 Thresholds derive from the layout's own constraints. Device names are
 verification fixtures, not the source of a threshold.
@@ -141,7 +141,7 @@ create an exception where the contract declares one unavailable.
 |---|---|---|---|---|
 | `{{id}}` | `{{forced priority, weight inflation, boundary reach}}` | `{{owner}}` | {{why}} | {{condition}} |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 Record any exception carrying a committed removal date as a promise below, so
 the date is mechanically aged rather than remembered.
@@ -156,7 +156,7 @@ declaring a metric nobody maintains.
 |---|---|---|---|---|---|---|---|
 | `{{metric}}` | {{unit}} | {{how}} | {{what it misses}} | {{value}} | {{cap}} | {{non-increasing}} | {{YYYY-MM-DD}} |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 Choose the caps from this project's own measured baseline. A threshold copied
 from another organization's published figure is not a budget.

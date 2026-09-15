@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-15
 supersedes: []
 ---
 
@@ -101,7 +101,19 @@ This permits operative rules before provenance while retaining missing,
 unused, duplicate, and invalid-date findings. Surface raw-to-translated
 reconciliation retains its separate, layer-specific scope.
 
-- from: source[1]
+Every citation line carries a short human gloss — the anchor's date and topic
+in parentheses — so provenance is readable where it is cited rather than only
+at the anchor list: `- from: source[2] (2026-09-15 alignment decisions)`.
+Raw citations follow the same convention. The checker still validates only the
+anchor ids; the gloss is prose, and it states facts that cannot rot: the date
+and subject of a dated source. New citations are glossed when written;
+existing bare citations are backfilled when their section is next touched, not
+in one sweeping edit. `scripts/scan_letter_codes.py` reports letter-number
+tokens grouped by document liveness as health-assessment material; it is
+deliberately outside the checker's blocking surface, because a code in frozen
+history is expected and only accumulation in living prose is a signal.
+
+- from: source[1] (2026-07-26 enforcement-gap review), source[8] (2026-09-15 readable-citation instruction)
 
 ### Lifecycle aging is explicit and configurable
 
@@ -489,7 +501,26 @@ The maintainer authorized current task rules before historical provenance.
 The source checker must preserve bidirectional reconciliation without forcing
 the source-anchor block ahead of operative contract text.
 
+### source[8] — 2026-09-15
+
+> English rendering of the maintainer's instruction: internal numbering used
+> as a point-of-use reference is a baseline readability defect — citations
+> should describe themselves, and a quick repository scan for letter-number
+> tokens should exist as health-assessment material, not as a mechanical
+> test.
+
+Context: alignment follow-up after the autonomous-operation contract landed;
+the maintainer approved the citation-gloss convention and requested the scan.
+
 ## Reconciliation log
+
+- **2026-09-15 — citations carry glosses; letter codes stay visible:** source
+  and raw citation lines now carry a date-and-topic gloss so provenance is
+  readable at the point of citation, with bare citations backfilled as
+  sections are touched; `scripts/scan_letter_codes.py` reports letter-number
+  tokens grouped by document liveness as health-assessment material,
+  deliberately outside the checker's blocking surface.
+  - from: source[8] (2026-09-15 readable-citation instruction)
 
 - **2026-09-07 — source placement is independent of reconciliation:** contract
   citations count outside the source block regardless of order, permitting

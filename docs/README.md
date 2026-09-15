@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-15
 ---
 
 # Documentation authority map
@@ -246,6 +246,12 @@ genuinely independent perspectives; `templates/holistic-evaluation.md` records
 completion review when a separate record is warranted. If required independence
 is unavailable, record a blocked state or an explicit human governance
 exception; never relabel same-context analysis as independent.
+
+Work the owner has authorized to continue across unattended wakes — scheduled
+or around-the-clock — is governed by
+`docs/contracts/autonomous-operation-discipline.md`: its charter is the
+standing authorization form, and its epoch, role-identity, calibration, and
+deferral rules apply instead of per-task interaction.
 
 ## Governance and onboarding
 

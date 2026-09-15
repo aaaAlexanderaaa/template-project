@@ -14,6 +14,9 @@ or newer and have no third-party package dependencies.
    contract. Routine work uses an existing behavior owner, updates it when
    authorized local behavior changes, and needs no standalone plan. A
    controlled experiment answers an unknown technical fact without becoming delivery.
+   Agent work authorized to continue across unattended wakes reads
+   `docs/contracts/autonomous-operation-discipline.md`; its standing charter
+   starts from `templates/charter.md`.
 6. For material delivery, land the contract. Human contributors normally use
    `templates/implementation-plan.md`; agent-driven material work uses
    `templates/agent-execution-plan.md`, with its independent review sections

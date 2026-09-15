@@ -81,7 +81,8 @@ standard = [
   "verification-report.md",
   "handoff.md",
 ]
-# Adds agent risk governance, independent review, and adoption records.
+# Adds agent risk governance, independent review, adoption records, and the
+# standing-authorization charter for unattended operation.
 full = [
   "agent-execution-plan.md",
   "independent-review.md",
@@ -89,12 +90,14 @@ full = [
   "evidence-preserving-data.md",
   "style-system.md",
   "adoption-assessment.md",
+  "charter.md",
 ]
 
 [templates.doc_types]
 "contract.md" = "contract"
 "backend-change.md" = "contract"
 "cross-stack-change.md" = "contract"
+"charter.md" = "contract"
 "evidence-preserving-data.md" = "contract"
 "style-system.md" = "contract"
 "frontend-surface.md" = "surface-contract"
@@ -120,6 +123,16 @@ full = [
   "Failure, recovery, and intervention",
   "Acceptance evidence",
   "Promise register",
+  "Reconciliation log",
+]
+"charter.md" = [
+  "Purpose and objective",
+  "Issuer and authority",
+  "Base layer",
+  "Objective layer",
+  "Role and review triggers",
+  "Renewal and amendment",
+  "Source anchors",
   "Reconciliation log",
 ]
 "frontend-surface.md" = [

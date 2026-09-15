@@ -65,7 +65,7 @@ List invalid transitions explicitly.
 
 {{rule}}
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 - Enforcement: `{{type/test/runtime guard or bounded review}}`
 
 ## Required behaviors

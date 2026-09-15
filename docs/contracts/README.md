@@ -19,6 +19,13 @@ completion.
 and risk acceptance with declared human owners while defining the framework's
 advisory outputs and narrow execution blockers.
 
+`autonomous-operation-discipline.md` governs standing authorized work that
+continues toward a high-level objective across unattended wakes: the two-layer
+charter, the epoch protocol, the planner/executor/reviewer identities, taste
+calibration, idle reflection, and deferral control. It extends rather than
+replaces `agent-execution-discipline.md`, which still owns per-change risk
+depth.
+
 `project-adoption.md` defines AI-guided greenfield and brownfield onboarding,
 current-state preservation, managed scope, and staged enforcement.
 

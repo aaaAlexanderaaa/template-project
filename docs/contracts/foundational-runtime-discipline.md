@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-07
+last_reconciled: 2026-09-15
 review_due: 2026-11-22
 supersedes: []
 ---
@@ -31,7 +31,9 @@ that test stay in the source project.
 This is not a backlog of pits to audit, and it is not a questionnaire that
 every adopter must complete.
 
-1. Take the recognition rule. That is the P2 method.
+1. Take the recognition rule. That is the delivery-discipline method — the
+   [transfer-value order](project-adoption.md#transfer-value-is-ranked-before-its-carriers)
+   tier the README table abbreviates as P2.
 2. When [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar or Demonstration data,
    use the matching invariants as the method owner. Project policy (scope,
    zone resolution, representation, temporal promise, demo gate) lives in the
@@ -410,6 +412,12 @@ historical scenes can use different temporal policies while retaining write
 safety and truthful outcomes.
 
 ## Reconciliation log
+
+- **2026-09-15 — P2 reference made self-describing:** the "How to read this"
+  pointer now names the delivery-discipline tier and links its owning
+  contract instead of relying on the README table's bare P2 label. Flagged by
+  the letter-code health scan; the label remains defined in the README table
+  itself.
 
 - **2026-09-07 — scoped time and demo policies:** replaced global zone equality
   with declared role/scope resolution and checks at configuration or operation

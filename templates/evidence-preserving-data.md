@@ -37,7 +37,7 @@ Context: {{source context}}
 | 2 | {{interaction/process/statistical context}} | {{policy}} | {{why}} |
 | 3 | {{derived optimization or architectural mechanism}} | {{rebuild/evict policy}} | {{why}} |
 
-- from: source[{{N}}]
+- from: source[{{N}}] ({{source date and topic}})
 
 ## Authoritative input and derived output
 

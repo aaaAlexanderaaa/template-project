@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-15
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -136,7 +136,9 @@ editing, and let the guard suite catch collisions.
 Continue an authorized task through its working end state and verification;
 internal checkpoints do not ask the user to approve phases. A bounded task may
 end when it is complete. Portfolio discovery applies only to an authorized
-ongoing assignment. Delegated work uses the existing plan or a bounded native
+ongoing assignment. When that assignment becomes a standing charter across
+unattended wakes, [autonomous operation](../contracts/autonomous-operation-discipline.md)
+owns the charter, epoch, role-identity, and calibration rules. Delegated work uses the existing plan or a bounded native
 assignment, and the parent verifies the integrated result before closure.
 When the owner will be unavailable, shape the work to fit the authorized
 operation set and pre-name the decision points that must pause. Work that
@@ -248,4 +250,6 @@ materially expansive work.
 - [Project adoption contract](../contracts/project-adoption.md)
 - [Development discipline](../contracts/development-discipline.md)
 - [AI agent execution discipline](../contracts/agent-execution-discipline.md)
+- [Autonomous operation discipline](../contracts/autonomous-operation-discipline.md) —
+  when an authorized ongoing assignment becomes a standing charter
 - [AI-guided onboarding](onboarding.md)
