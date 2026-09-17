@@ -1,7 +1,5 @@
 # Engineering Discipline Template
 
-[English](README.md) | [中文](README_CN.md)
-
 This is a domain-neutral engineering template. It is independent of any
 particular product, framework, or runtime, and it contains no product
 implementation. Its most important product is not the directories, templates,
@@ -116,7 +114,6 @@ That produces these working modes:
 ```text
 .
 ├── README.md                 # English homepage
-├── README_CN.md              # Chinese homepage
 ├── AGENTS.md                 # working agreement for automated developers
 ├── CONTRIBUTING.md           # shared workflow for humans and agents
 ├── ARCHITECTURE.md           # structural authority template for the adopting project to fill

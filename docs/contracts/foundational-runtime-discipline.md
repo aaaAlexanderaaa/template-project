@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 review_due: 2026-11-22
 supersedes: []
 ---
@@ -356,52 +356,39 @@ negative cases. No product runtime was deployed or certified by that review.
 
 ### source[1] — 2026-08-24
 
-> “What I care about is the engineering-implementation issues that were not
-> taken seriously at first but later become expensive to change, for example
-> time zone. At the start nobody declared using UTC+8, and now we have to make
-> a full-system adjustment. That is a fairly bad outcome.”
-
-Context: the owner named timezone as an exemplar of late, system-wide
-repair, not as a zone to copy.
+The maintainer reported a project where components assumed different time
+policies because no policy had been declared early. Aligning them later
+required system-wide changes. The example motivates explicit time-policy
+ownership; the original project's chosen UTC offset is not an adopter default.
 
 ### source[2] — 2026-08-24
 
-> “Demo data times should be generated relative to now. At the start there was
-> also no policy about demo-data validity and time, so they became hardcoded,
-> and it became impossible to run an effective demo.”
-
-Context: hardcoded calendar dates fought the product's own “today”
-language after a civil-day rollover.
+The maintainer reported demonstration data with fixed dates while the UI
+promised current-day activity. After time passed, the displayed scenes no
+longer met that promise. This motivates choosing an explicit temporal promise
+and an appropriate refresh strategy; intentionally historical scenes need not
+be rewritten to the present.
 
 ### source[3] — 2026-08-24
 
-> “There are many other changes made for project health, completeness, and
-> viability. Those changes were repairing debt created, left behind, or
-> unnoticed earlier. That experience is real engineering experience, and it is
-> worth depositing into a Template Project.”
-
-Context: the portable deposit is the recognition rule those repairs share.
-It is not a requirement to restate each repair as an adopter row.
+The maintainer asked the template to learn from expensive repairs to omitted
+engineering decisions. The reusable result is a way to recognize a decision
+that will spread across components, not a catalog of another project's debt.
 
 ### source[4] — 2026-08-24
 
-> “This should not remain only in the current project; it also needs to be
-> exported, for example by updating the Template Project.”
-
-Context: export the method into this template; do not copy the source
-product's numbers.
+The maintainer authorized applying the time-policy and demonstration-data
+lessons to this template. Each adopter still selects its own product policies
+under the template's concern-activation method.
 
 ### source[5] — 2026-08-24
 
-> “I agree that you should make the change in the Template project. But you
-> also need to think about whether that change matches that project's own
-> expectations, and you need to evaluate the value of this backfilled
-> information. You cannot simply put down the historical pits you stepped in.
-> How much value do those pits have? And how should a user look at them?”
-
-Context: a mandatory register of sibling incidents was rejected as
-ceremony. Consumption follows [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
-and the transfer-value order.
+A proposed mandatory register of past incidents was rejected because it
+created work even when the adopter had no corresponding concern. The accepted
+method routes applicable time and demonstration-data work through
+[development's concern triggers](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
+and the transfer-value order. These source entries summarize maintainer-reported
+experience; the original incident records are not supplied as public evidence.
 
 ### source[6] — 2026-09-07
 

@@ -26,6 +26,8 @@ prematurely choosing pixel values.
 > rejected generic direction}}
 
 Context: {{where/when this was observed}}
+Attribution: {{speaker, contextual English account, and accessible record or
+evidence limit; identify the proposal and acceptance scope where applicable}}
 
 ### raw[2] — {{YYYY-MM-DD}}
 
@@ -40,6 +42,12 @@ Every `###` translated subsection cites at least one raw anchor with a
 claim when a subsection translates multiple sources. The checker enforces that
 every subsection is cited, every citation resolves, and every defined raw
 anchor is used.
+
+Those checks establish citation structure, not that a translation preserves
+intent. Apply [decision preservation](../docs/contracts/development-discipline.md#preserve-decisions-and-evidence):
+distinguish owner requirements, accepted design choices, and implementer
+inferences. An example user job does not by itself exclude other authorized
+jobs. Record any material assumption at the affected claim.
 
 ### Outcomes
 

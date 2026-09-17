@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -339,13 +339,13 @@ Verified on 2026-08-06:
   dates, and all 106 tests pass under Python 3.11;
 - `python scripts/check_docs.py --strict` passes with no findings.
 
-Verified on 2026-09-14:
+Maintainer-reported adoption on 2026-09-14:
 
-- first-party projects applying this boundary under delivery pressure since
-  2026-07 confirmed the bounded option set with trade-off context as the
-  stable decision interface, and produced the bidirectional-boundary and
-  genuine-agreement clarifications recorded in the reconciliation log.
-  Evidence: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
+- the maintainer reports that projects applying this boundary since 2026-07
+  found bounded options with trade-off context useful and motivated the
+  bidirectional-boundary and genuine-agreement clarifications. These are
+  reported outcomes, not independently reproduced observations.
+  Report and limits: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
 - the partial note above still holds for adopters independent of the
   maintainer.
 
@@ -381,8 +381,13 @@ Verified on 2026-09-14:
 
 ### source[6] — 2026-08-06
 
-> “Agreed with your understanding: adopt frontend-design, uninstall
-> ui-ux-pro-max, and learn what is worth learning.”
+The maintainer accepted a proposal to learn selected visual-design and
+question-sequencing practices from external material. The accepted repository
+change gives genuine human decisions their prerequisite context and carries
+visual choices through the existing surface and style owners. The
+[change record](../plans/2026-08-06-decision-frontier-and-frontend-design.md)
+explains that scope. Personal tool installation was separate from the portable
+method and is not a dependency for adopters.
 
 ### source[7] — 2026-08-28
 
@@ -393,11 +398,6 @@ Verified on 2026-09-14:
 > product manager, and the architect cut into the same problem differently.”
 
 ### source[8] — 2026-09-06
-
-Original maintainer wording in this task:
-
-> “如果所有的待确认项都确定好了，那就直接瀑布式开发到本次任务结束，
-> 不要分什么阶段123来让用户review或确认”
 
 Maintainer feedback in the template review task, rendered in English: once
 the pending decisions are settled, continue through the authorized task to a
@@ -428,7 +428,7 @@ agreement without independent judgment is a failure mode.
   are unchanged.
 
 - **2026-09-14 — bidirectional boundary and genuine agreement:** first-party
-  adoption feedback confirmed the option-set interface and added two
+  adoption feedback motivated the option-set clarification and added two
   clarifications: the authorization boundary punishes over-asking as well as
   unauthorized action, and agreement without independent judgment is a
   failure mode during alignment.

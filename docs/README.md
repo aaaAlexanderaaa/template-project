@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 ---
 
 # Documentation authority map
@@ -153,10 +153,12 @@ Wording is not decoration. The phrasing of a descriptive document guides the
 language of the work that follows it, so plain writing keeps later writing
 plain.
 
-Use English for repository rules, templates, and working records, following
-the maintainer's language preference. Preserve original stakeholder wording when
-interpretation matters and label translations. Review instructions and user
-messages from the reader's position: name the actor, condition, action, result,
+Use plain English throughout published rules, templates, working records, and
+history. Render stakeholder feedback in English with enough context to explain
+the issue and the accepted decision. Distinguish a translated quotation from
+a paraphrase; preserve its meaning and scope without requiring the reader to
+understand a private conversation. Review instructions and user messages from
+the reader's position: name the actor, condition, action, result,
 and available next step when relevant. Explain an internal term before relying
 on it. Replace a vague promise such as "state reconciled" with what changed or
 remains unresolved. Word lists and an "AI writing" detector cannot establish
@@ -207,9 +209,9 @@ detect same-day source changes made after a guide was checked; same-day coupling
 remains a review limitation rather than a mechanically proven freshness claim.
 
 Root entrypoints such as `README.md`, `AGENTS.md`, and `CONTRIBUTING.md` should
-prefer routing and a compact executable path. `README_CN.md` is the Chinese
-homepage companion to `README.md`; it is not a second authority. They are
-intentionally not made canonical merely to obtain a checker field; their
+prefer routing and a compact executable path. `README_CN.md` retains a short
+English link to the main overview for existing inbound links. Root entrypoints
+are intentionally not made canonical merely to obtain a checker field; their
 duplication risk is handled by keeping normative trigger semantics out of them
 and reviewing their links when an owning contract changes.
 
@@ -223,6 +225,10 @@ direction is current, and preserve an explicit supersession chain.
 
 - Working evidence belongs in `tmp/` and may disappear.
 - Durable evidence supporting a current contract belongs in `docs/evidence/`.
+  Reproduction instructions identify supplied materials or obtainable public
+  sources and required conditions. Unpublished maintainer experience can
+  explain a decision, but its summary does not make the original evidence
+  available to readers or verify an adopting project.
 - Large binaries should remain outside Git unless the project explicitly
   chooses a binary-artifact store. Commit structured summaries and stable
   references instead.

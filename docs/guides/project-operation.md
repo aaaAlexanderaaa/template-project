@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -50,6 +50,11 @@ A work item is ready when its intended outcome, authority, owner, dependencies,
 managed scope, risk profile, and acceptance evidence are sufficiently clear for
 its change class. Missing product preference is a human decision, not a fact the
 agent fills in.
+
+Use [decision preservation](../contracts/development-discipline.md#preserve-decisions-and-evidence)
+when relying on a statement or accepted proposal. Keep implementer assumptions
+distinct, and trace any narrowing from the requested goal to its supporting
+decision. Examples and current inventory alone do not supply that decision.
 
 Resume authorized in-progress work before discovering replacement work. A
 blocker on one item does not make unrelated authorized work blocked.
@@ -188,11 +193,11 @@ chat history decays with the context that carries it.
 This is an illustrative application of [bidirectional verification](../contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions),
 not a shipped extension design or a claim about any provider's safe rate.
 
-Original maintainer questions include:
-
-> “它真的是确保了是最少、最小必要的 check 吗？”
-> “对不上的时候会告诉我更新成了哪三个吗？”
-> “原本的三个被映射成不止三个怎么办？”
+The example addresses three concrete questions: does the check perform only
+the work needed for its stated result; does it identify the replacement files
+when dependencies change; and can it represent one logical role moving into
+several files? The initial count of three is sample data, not a limit on the
+allowed mapping.
 
 For this example, assume the owner has accepted a **manual check of the loaded
 page's dependency identities**, with no polling or content downloads. The

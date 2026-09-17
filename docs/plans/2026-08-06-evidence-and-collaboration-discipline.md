@@ -2,7 +2,7 @@
 doc_type: plan
 status: completed
 authority: planning
-last_reconciled: 2026-08-06
+last_reconciled: 2026-09-17
 implements: [docs/contracts/development-discipline.md, docs/contracts/governance-decision-boundary.md]
 supersedes: []
 ---
@@ -11,8 +11,7 @@ supersedes: []
 
 ## Cold-start summary
 
-The template owner requires five collaboration defaults in every adopting
-project: research unfamiliar references instead of guessing, seek fallbacks
+The template owner selected five collaboration defaults for this template: research unfamiliar references instead of guessing, seek fallbacks
 when a tool is unavailable, return material preference and trade-off decisions
 as bounded choices, surface more consequential unasked issues, and explain
 causal mechanisms instead of manufacturing abstract depth. The normative
@@ -38,8 +37,8 @@ and close this plan.
   `docs/contracts/development-discipline.md` D10-D12 and
   `docs/contracts/governance-decision-boundary.md` G6-G7.
 - Human authorization: the template owner confirmed on 2026-08-06 that these
-  personal preferences are mandatory general discipline for this private
-  template and accepted the proposed uncertainty routing.
+  collaboration defaults apply within this template and accepted the proposed
+  uncertainty routing. An adopter chooses its own scope and authority.
 - Baseline evidence: repository inspection found existing technical-unknown
   and reversible-choice routing but no explicit external-reference,
   tool-fallback, latent-question, or causal-explanation rules.
@@ -61,7 +60,7 @@ the plan records only reconciliation and verification steps.
 
 ## Complete end state
 
-The owner's raw language remains dated in the two applicable contracts. Those
+Dated English accounts of the accepted decisions remain in the two contracts. Those
 contracts define one uncertainty route: research checkable facts, use
 capability-preserving fallbacks, investigate technical unknowns, decide
 reversible internal mechanics, and offer bounded options for human-owned

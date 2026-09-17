@@ -1,11 +1,17 @@
 {
-  "user_request": "Current user request: critical research and recommendations, including eight field-feedback points. No governance rewrite authorized in this request.",
-  "assistant_1": "Supplied inline in the user request; not treated as the user confirming a Pi-only runtime preference.",
-  "assistant_2": {
-    "path": "tmp/template-harness-audit-2026-09-05.md",
-    "bytes": 47593,
-    "sha256": "f8d307cdfbabfb21e09566328e77dbad258320be6a2075cd6cf0b22448d5fafe",
-    "referenced_companion_data_present_in_supplied_tmp": false
-  },
-  "interpretation": "Source interpretations are discussed in the report; they are not adopted project authority."
+  "review_date": "2026-09-06",
+  "publication_revision": "2026-09-17",
+  "maintainer_request": "Research and recommendations about goal fidelity, wording, repeated failures, document burden, continuous authorized delivery, actual effects, and user recovery. The research task did not authorize a governance rewrite.",
+  "prior_proposals": [
+    {
+      "claim": "Prefer a minimal runtime, disable memory, and use only one agent.",
+      "attribution_limit": "An earlier assistant proposed or attributed this preference; no supplied owner decision established it. It was not accepted as a requirement."
+    },
+    {
+      "claim": "An earlier assessment reported an extensive source inventory and experiments.",
+      "availability": "The assessment and companion materials are not distributed with this repository.",
+      "use_in_review": "Its evidence counts and experimental conclusions were not inherited. The review assembled the public source inventory included here."
+    }
+  ],
+  "scope": "This is an English account of research inputs and their limits, not a publication of the original private conversation or reports. The review explains the relevant claims without requiring those inputs."
 }

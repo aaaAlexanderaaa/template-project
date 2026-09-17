@@ -2,7 +2,7 @@
 doc_type: plan
 status: completed
 authority: planning
-last_reconciled: 2026-08-24
+last_reconciled: 2026-09-17
 implements: [docs/contracts/foundational-runtime-discipline.md, docs/contracts/development-discipline.md]
 supersedes: []
 ---
@@ -87,7 +87,7 @@ Adopters see:
 
 | Phase | Required output | Applicability or evidence |
 |---|---|---|
-| 1. Domain and authority | Method vs product numbers; D8 as router | source-project plans for timezone unification and relative demo refresh; template README P0–P4 |
+| 1. Domain and authority | Method vs product numbers; D8 as router | maintainer-reported time-policy and demo-date repairs summarized in the foundational runtime source entries; template transfer-value order |
 | 2. Fixture or controlled boundary | Checker today remains clock-controlled; new wiring test | `FIXED_TODAY` moved with last_reconciled; D8 routing test |
 | 3. Contract and design | Landed foundational-runtime contract and D8 rows | this plan's implements list |
 | 4. Test first | Wiring test fails before the contract and D8 rows exist | `test_d8_routes_foundational_runtime_concerns` |

@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -384,8 +384,8 @@ solely to prove that it is routine.
 ## Acceptance evidence
 
 Mechanical enforcement covers record structure, template inventory, and links.
-Behavioral effectiveness is a separate claim: first-party adoption has
-exercised these routes since 2026-07 (see the 2026-09-14 entry), and
+Behavioral effectiveness is a separate claim: the maintainer reports use of
+these routes since 2026-07 (see the 2026-09-14 entry), and
 independent adoption review remains open. A checker pass establishes only the
 first.
 
@@ -442,13 +442,13 @@ Verified on 2026-08-27:
 - behavioral effectiveness remains partial: no real multi-session project has
   exercised the coordination surface yet.
 
-Verified on 2026-09-14:
+Maintainer-reported adoption on 2026-09-14:
 
-- first-party adoption since 2026-07 exercised the risk routes, written
+- the maintainer reports that adoption since 2026-07 exercised risk routes, written
   parallel coordination, and delegation in the maintainer's own projects;
   their feedback produced the resource-spending invariant, the delegation
   envelope, and the simulation boundary recorded in the reconciliation log.
-  Evidence: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
+  Report and limits: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
 - behavioral effectiveness outside the maintainer's portfolio remains
   unproven; the independent adoption review promise below stays open.
 
@@ -523,7 +523,7 @@ shaped to fit the authorized operation set with pre-named pause points.
   billed, rate-limited, and account-bound resource invariant; the simulation
   and manual-correction boundary in evidence classes; and the
   unattended-execution and failure-attribution rules for delegation. Source:
-  first-party adoption feedback, including an incident in which repeated
+  maintainer-reported adoption feedback, including an incident in which repeated
   non-atomic writes suspended a real account.
   - from: source[8]
 
@@ -546,8 +546,9 @@ shaped to fit the authorized operation set with pre-named pause points.
   coordination between concurrent agents or sessions: registered scope,
   announced shared-surface changes, re-reads before edits, and the guard
   suite as the collision net. Handoffs carry parallel-work context. Source:
-  an external project archive whose human instruction stream showed parallel
-  sessions colliding through stale reads and unannounced shared edits.
+  maintainer-reported experience of parallel sessions colliding through stale
+  reads and unannounced shared edits. The original session records are not
+  distributed here; the entry explains motivation, not independent verification.
   - from: source[5]
 - **2026-07-26 — contract created:** combined the template's contract-first
   governance with a risk-based AI execution profile derived from a concrete

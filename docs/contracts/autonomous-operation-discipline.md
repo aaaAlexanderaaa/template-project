@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 review_due: 2026-12-14
 supersedes: []
 ---
@@ -348,7 +348,10 @@ alignment round.
 > require a written response; the charter is layered (project-level base plus
 > per-objective) with mechanical expiry; the contract lands as `current`.
 
-Context: the maintainer's answers to the seven alignment choices.
+Context: the accepted proposal specified owner preference evidence, human
+ratification, proportionate role cadence, responses to review findings, layered
+authorization, mechanical expiry, and current contract status. This English
+account contains the decision scope; the original conversation is not supplied.
 
 ### source[3] — 2026-09-15
 

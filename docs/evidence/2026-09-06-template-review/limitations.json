@@ -1,21 +1,21 @@
 [
   {
     "topic": "Downstream incidents",
-    "known": "User reports recurrent goal, wording, documentation and side-effect failures.",
+    "known": "The maintainer reported recurrent failures involving goals, wording, documentation, and external effects.",
     "unknown": "Actual task transcripts, original contracts, repository commits, runtime versions and observed traffic.",
     "consequence": "No causal attribution to a particular model, harness or rule change."
   },
   {
-    "topic": "Assistant 1 preference attribution",
-    "known": "The supplied answer assumes the user selected a Pi-like single-agent setup.",
-    "unknown": "That earlier user correction is not present in the supplied conversation.",
-    "consequence": "Do not use the assumed preference to remove memory/delegation semantics from scope."
+    "topic": "Attribution of a proposed runtime preference",
+    "known": "An earlier assistant account treated a minimal single-agent setup as an owner preference.",
+    "unknown": "A supporting owner decision was not supplied and the original discussion is not public.",
+    "consequence": "Do not exclude memory or delegation based on that attribution."
   },
   {
-    "topic": "Assistant 2 evidence bundle",
-    "known": "The 47,593-byte report exists under tmp.",
-    "unknown": "Its referenced evidence/version-history.json and experiment files were not supplied in the inspected tmp directory.",
-    "consequence": "Its counts and underlying collection cannot be reproduced from this checkout; selected claims were re-researched."
+    "topic": "Unavailable prior assessment",
+    "known": "The review considered an earlier assessment that claimed a larger evidence collection.",
+    "unknown": "The assessment and its companion dataset and experiments are not published here.",
+    "consequence": "Readers cannot reproduce that collection; its counts and conclusions were not inherited. The public inventory in this package stands separately."
   },
   {
     "topic": "ZCode hook support",
@@ -25,7 +25,7 @@
   },
   {
     "topic": "Cursor cross-brand resume",
-    "known": "User reports it; search located a feature request and community anecdotes. Codex has first-party import documentation.",
+    "known": "The maintainer reported cross-brand session recovery. The review found a feature request and community anecdotes, and separate first-party Codex import documentation.",
     "unknown": "A sufficient current first-party specification for the exact Cursor capability.",
     "consequence": "Neither deny the user's observation nor claim this capability is exclusive."
   },
@@ -49,9 +49,9 @@
   },
   {
     "topic": "Browsing capability",
-    "known": "No callable grok-search tool was found in the active tool registry.",
-    "unknown": "The requested extra_sources=20 behavior cannot be reproduced by the fallback.",
-    "consequence": "Used web search and direct primary pages; no provider-specific breadth guarantee."
+    "known": "The review used web search and direct public primary sources.",
+    "unknown": "The fallback did not establish the breadth claimed for another search provider.",
+    "consequence": "The source list records selected inspected material, not an exhaustive or provider-equivalent search."
   },
   {
     "topic": "Source independence",

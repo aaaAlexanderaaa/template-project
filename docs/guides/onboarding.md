@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md]
 ---
 
@@ -45,9 +45,11 @@ discipline. Learning and adoption draw from the same values, while any write or
 enforcement change remains subject to the target project's authority.
 
 Within the first tier, weigh external material by authorship ([adoption § authorship-triage](../contracts/project-adoption.md#external-material-is-triaged-by-authorship-before-adoption)) before it
-informs any selection: dated human decisions and instructions are primary
-evidence, machine-generated narrative is a lead to verify, and its vocabulary
-does not enter project documents.
+informs any selection: inspect original decision records where available,
+retain the limits of later quotations, and use machine-generated narrative as
+a lead to verify. Compare each lesson's mechanism with the target's existing
+owners and coverage before adopting it; source vocabulary and approval labels
+do not become target policy by copying them.
 
 ### 2. Classify the adoption
 

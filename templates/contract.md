@@ -15,8 +15,10 @@ supersedes: []
 What durable problem does this contract solve? State the user or system outcome,
 not only the implementation mechanism.
 
-Original request/source: {{dated wording or link}}.
+Original request/source: {{dated English account or accessible source link}}.
 Accepted interpretation: {{what the user will be able to accomplish}}.
+Decision basis: {{owner statement or accepted proposal and reply; distinguish
+implementer assumptions and unresolved items under [decision preservation](../docs/contracts/development-discipline.md#preserve-decisions-and-evidence)}}.
 
 ## Scope
 
@@ -27,6 +29,10 @@ Accepted interpretation: {{what the user will be able to accomplish}}.
 ### Out of scope
 
 - {{explicit non-goal}}
+
+Identify which exclusions follow from the authorized scope. Examples, a first
+batch, and available inventory are not exclusions by themselves; use
+[outcomes before means](../docs/contracts/development-discipline.md#outcomes-before-means).
 
 ## Vocabulary
 
@@ -119,7 +125,11 @@ promise has an explicit owner and due date; delete the example when none exist.
 ## Source anchors
 
 Record dated stakeholder language, incidents, standards, or prior decisions.
-Quote source language when interpretation matters.
+Explain the relevant situation and decision in English; identify the speaker
+and distinguish a translated quotation, a paraphrase, and a reported statement.
+For accepted proposals, describe the proposal and acceptance scope. Link
+accessible source material when available; otherwise state the evidence limit.
+A private path or an isolated quotation is not a reproducible source.
 
 ### source[1] — {{YYYY-MM-DD}}
 

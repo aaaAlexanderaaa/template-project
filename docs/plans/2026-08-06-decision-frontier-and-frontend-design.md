@@ -2,136 +2,115 @@
 doc_type: plan
 status: completed
 authority: planning
-last_reconciled: 2026-08-06
+last_reconciled: 2026-09-17
 implements: [docs/contracts/development-discipline.md, docs/contracts/governance-decision-boundary.md]
 supersedes: []
 ---
 
-# Decision frontier and frontend design adoption plan
+# Decision sequencing and frontend design adoption
 
 ## Cold-start summary
 
-The template owner approved the prior evaluation: adopt Anthropic's
-`frontend-design` skill, uninstall `ui-ux-pro-max`, extract the dependency-aware
-decision-frontier method from the reviewed grilling skills, and absorb only the
-frontend practices that fit this repository's existing authority model. The
-normative owners remain development's frontend contract and governance G7;
-guides, entrypoints, and templates will project those rules without introducing
-`CONTEXT.md`, ADRs, or a second design-system authority.
+On August 6, the maintainer accepted selected practices from visual-design and
+structured-questioning material. The portable outcome was a method for asking
+human-owned decisions in dependency order and carrying visual choices through
+existing surface and style contracts. Personal tool installation was performed
+in the original task but is not part of the template's requirements or public
+verification surface.
+
+This public account was revised on September 17 to remove private installation
+fingerprints and machine-inventory instructions. It retains the repository
+change, its rationale, and the limits of the recorded verification. Historical
+invariant codes below describe the names used at the time; current rules use
+linked heading titles.
 
 ## Risk classification
 
-- Profile: `material`
-- Rationale: the change alters reusable collaboration and frontend-delivery
-  behavior consumed by adopters, but changes no product architecture,
-  authorization, durable state, cross-process compatibility, or high-impact
-  user interaction.
-- Required independent review: no; A1 reserves independent design and
-  fresh-context completion review for high-risk work.
+Material documentation work changed collaboration and frontend guidance. It
+changed no product runtime, durable state, or authorization boundary. The
+August 6 execution profile did not require independent design review for this
+scope. The recorded audit is not independent consumer-effectiveness evidence.
 
 ## Authority and prerequisites
 
-- Structural authority: `ARCHITECTURE.md` remains an unconfigured product
-  template; no product boundary changes.
-- Behavioral contracts: `docs/contracts/development-discipline.md` owns
-  frontend delivery and document ownership; `docs/contracts/governance-decision-boundary.md`
-  G7 owns uncertainty routing and human-decision triggers.
-- Human authorization: on 2026-08-06 the template owner approved the evaluated
-  adoption, uninstall, and project-level learning scope.
-- External source baseline: Anthropic `frontend-design` at commit
-  `2235be7c60b551f5de82ade908fd3816455afcda`, Matt Pocock `grilling` at
-  `1495d014303e041c51c29f9e442485ba06f5878d`, and `domain-modeling` at
-  `ee8bae40062cd6b435073368ed0c540f48c35862`. The installed Anthropic
-  `SKILL.md` and `LICENSE.txt` SHA-256 values are respectively
-  `1608ea77fbb6fc30d13a97d12cfa8ebf31358d40f0dd97beed24829d6b3f45dd`
-  and `0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594`,
-  matching the upstream `main` content retrieved during installation.
-- Repository baseline: no active target contract or plan conflicts with this
-  work; the worktree was clean before edits.
+The maintainer accepted the repository-level extraction of useful practices.
+[Governance](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
+owns genuine human decisions and their prerequisite context.
+[Development](../contracts/development-discipline.md#frontend-development-contract)
+owns frontend design direction and its verification.
+`ARCHITECTURE.md` remained an unconfigured product template.
+
+The source assessment and personal installation inventory were not published.
+The resulting rules, template fields, and repository history are the available
+outputs. The task did not establish those external tools as dependencies for
+adopters or certify their current behavior.
 
 ## Engineering decision envelope
 
-- Authorized outcome and managed scope: personal Codex skill installation and
-  the repository's collaboration/frontend contracts, current operation guide,
-  compact entrypoints, and frontend surface template.
-- Applicable boundaries: one normative rule keeps one owner; design candidates
-  must resolve into existing surface/style owners and cannot become a parallel
-  `MASTER.md`, glossary, or ADR authority.
-- Reversible choices: wording, section placement, guide examples, template
-  prompts, and a recoverable archive location for the uninstalled skill.
-- Human decisions still required: none; the owner selected the skill and
-  approved the previously described extraction boundary.
+The authorized repository scope covered collaboration/frontend contracts,
+current guides, compact entrypoints, and the frontend-surface template.
+Naming, placement, and examples were implementation choices. The change could
+not create another glossary, design master, or decision authority alongside
+existing surface and style owners.
 
 ## Activated concerns and owners
 
-No product-facing D8 concern is activated because this repository contains no
-product UI and will not depend on either personal skill at runtime. Document
-lifecycle and owner uniqueness remain governed by `docs/README.md` and
-development D9. The external skill operation is verified separately as local
-tool configuration rather than represented as a product dependency.
+The repository had no product UI or dependency on a personal tool installation.
+The change concerned documentation lifecycle, ownership, and reusable design
+instructions. Product-specific experience concerns activate in the adopter
+when it implements a surface.
 
 ## Complete end state
 
-`frontend-design` is installed under the Codex skills directory with its
-upstream license and instructions intact; `ui-ux-pro-max` no longer appears in
-the active skills directory and remains recoverable outside it. G7 defines a
-dependency-aware frontier only for genuine human decisions and retains its
-fact/local-choice routing. The frontend contract requires brief-specific,
-subject-grounded direction, intentional type/layout/content, bounded visual
-exploration, and self-critique while preserving surface/style ownership.
-Current guidance, root entrypoints, and the reusable surface template expose
-the adopted method without becoming competing authorities. All fixture,
-repository, source-audit, and skill-installation checks pass.
+The governance contract routes technical facts to investigation, reversible
+local choices to the implementer, and unresolved material preferences to the
+owner. A decision is asked after its prerequisites are understood; this does
+not require approval at every internal stage.
 
-## Seven-phase execution loop
+The frontend contract requires a direction grounded in the brief, deliberate
+type/layout/content choices, bounded visual exploration when useful, and
+review of the result. Accepted choices belong in the existing surface and
+style owners. Guides, entrypoints, and the frontend template expose the method
+without defining competing authority.
 
-| Phase | Required output | Applicability or evidence |
+## Recorded execution and verification
+
+These are recorded August 6 outcomes, not results of a new tool-installation
+or product trial. The dated checker commands apply to that historical state;
+run the current commands without the historical date on today's checkout.
+
+| Claim | Recorded evidence | Limit |
 |---|---|---|
-| 1. Domain and authority | Current architecture, documentation map, D1-D12, G1-G7, A1-A8, design README, and active plan set inspected | Completed before edits |
-| 2. Fixture or controlled boundary | Current repository plus exact local skill directories form the controlled boundary | Clean worktree and resolved paths recorded |
-| 3. Contract and design | G7 decision-frontier boundary and frontend design-direction contract land before projections | Completed before guide, entrypoint, and template edits |
-| 4. Test first | Template-required design-direction section is declared before the template supplies it, and the focused repository check must fail for that absence | Completed: Python 3.11 check failed only with `template missing required section: Design direction and content`, then passed after the template change |
-| 5. Implementation | Install/archive skills; update guide, entrypoints, design README, and frontend template | Completed; old skill archived in the local Codex skill-backup directory as `ui-ux-pro-max-2026-08-06` |
-| 6. Regression | Run Python 3.11+ fixture suite, normal/strict repository checks, source audits, and skill inventory checks | Completed: 106 tests and both repository modes pass; diff and inventory audits are clean |
-| 7. Holistic evaluation | Audit owner uniqueness, G6 proportionality, brief fidelity, second-authority absence, and recovery path | Completed: G7 owns the frontier trigger, development owns frontend direction, and projections introduce no glossary, ADR, or design master |
+| Frontend template contains design-direction prompts | Declaring the required section first produced `template missing required section: Design direction and content`; adding it passed | Structural fixture, not visual quality |
+| Harness regressions remain covered | Python 3.11 fixture suite: 106 tests passed | Repository fixtures only |
+| Canonical links, templates, and projections reconcile | Normal and strict documentation checks passed at the August 6 baseline | Does not establish adoption effectiveness |
+| One owner remains for each decision | Source audit found no competing decision trigger or visual authority | Same-context review |
+| Personal tool replacement | Reported by the original task; machine records are not supplied | Excluded from public reproduction and adopter requirements |
+
+Current structural checks use Python 3.11 or newer:
+
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/check_docs.py
+python3 scripts/check_docs.py --strict
+```
 
 ## Work-selection fallback
 
-If the GitHub installation helper fails, use the skill installer's documented
-download-to-git fallback and preserve the same repository/path/ref identity. If
-contract or checker evidence conflicts, stop only the affected projection,
-reconcile its owner, and do not substitute unrelated portfolio work.
-
-## Verification and evidence matrix
-
-| Claim | Evidence class | Command/probe | Expected failure/negative path | Durable record |
-|---|---|---|---|---|
-| Frontend template exposes the adopted design-direction owner | fixture/repository structure | `uv run --python 3.11 python scripts/check_docs.py --today 2026-08-06` | missing required template section produced the expected pre-implementation failure | Plan completion record |
-| Documentation harness remains stable | fixture suite | `uv run --python 3.11 python -m unittest discover -s tests -p 'test_*.py'` | malformed templates or lifecycle records fail | 106 tests pass |
-| Canonical graph and projections reconcile | repository checks | `uv run --python 3.11 python scripts/check_docs.py --today 2026-08-06` and the same command with `--strict` | invalid source/projection/template relationships fail | Both modes pass |
-| Frontier and frontend rules retain one owner | source audit | `rg -n "decision frontier|design thesis|generic default|second.*authority" AGENTS.md CONTRIBUTING.md README.md docs templates` | competing triggers or unowned design sources keep the plan active | Plan completion record |
-| Skill replacement is complete and recoverable | local inventory | inspect the local Codex skills directory and the dated backup | both active skills or missing replacement fails handoff | Plan completion record |
+A source or evidence conflict pauses only the affected projection until its
+owner is reconciled. It does not authorize unrelated portfolio work.
 
 ## Layered completion
 
-- Task acceptance: complete; contract, skill replacement, projections, template
-  guard, and verification all match the authorized outcome.
-- Task-group outcome: complete; the owner-uniqueness and coherent-end-state
-  audit found no competing decision trigger or visual authority.
-- Objective outcome: outside this plan; this closes only the approved skill and
-  discipline adoption.
-- Release gate: not applicable.
+The repository task was recorded complete on August 6: the contract changes,
+projections, template guard, and structural checks were delivered. This does
+not certify real-adopter design quality, commercial tool compatibility, or an
+outside reader's personal environment.
 
 ## Progress and closure
 
-- Current executable step: none; plan complete.
-- Blockers and unaffected ready work: none.
-- Closure updates: contract source/reconciliation notes, guide and design
-  projections, template guard, skill inventory, and this plan status are
-  reconciled.
-- Final revision and verdict: completed on 2026-08-06. The task and task-group
-  layers are complete; real-adopter design and decision effectiveness remains
-  covered by the contracts' existing partial verification posture.
-- **2026-08-20 — publication redaction:** local skill-directory paths were
-  replaced with host-independent descriptions; the recorded skill names and
-  backup date are unchanged.
+- Completed on 2026-08-06; no active execution remains in this plan.
+- Publication editing on 2026-08-20 removed absolute machine paths.
+- Publication editing on 2026-09-17 also removed inaccessible installation
+  fingerprints and instructions that assumed the reader had that machine.
+  The portable decision and design methods remain unchanged.

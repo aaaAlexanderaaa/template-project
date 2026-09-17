@@ -2,7 +2,7 @@
 doc_type: evidence
 status: historical
 authority: evidence
-last_reconciled: 2026-09-15
+last_reconciled: 2026-09-17
 subject: autonomous-operation-independent-review
 ---
 
@@ -21,8 +21,9 @@ trace. It re-ran every mechanical claim itself.
 
 ## Inputs
 
-- the seven accepted design decisions and the readability directives, in
-  plain language;
+- the design decisions summarized in the
+  [autonomous-operation source entries](../contracts/autonomous-operation-discipline.md#source-anchors)
+  and the [citation convention](../contracts/documentation-harness.md#contract-source-anchors-are-conditionally-bidirectional);
 - `git diff` and `git status` of the full change set;
 - the repository's own check commands.
 
@@ -54,7 +55,7 @@ owner:
 
 ## Synthesis
 
-The reviewer verified all seven accepted decisions encoded without drift,
+The review reported that the seven design decisions were encoded without drift,
 including the two failure modes the owner named (counted deferral with
 two-strike escalation; reflection-artifact-or-drift). The wiring edits
 preserve the existing owners' invariants, and all mechanical claims
@@ -67,8 +68,10 @@ only non-consensus item, recorded with its reasoning.
 
 ## Limitations
 
-One reviewer pass by a single agent context; this is design-level
-consistency, not runtime behavioral evidence. Behavioral verification remains
+The review process and context separation are reported here; the original
+reviewer session is not supplied for independent inspection. Repository
+structure and check commands remain inspectable. This was one reviewer pass
+about design consistency, not runtime behavioral evidence. Behavioral verification remains
 the 2026-11-14 first-party-epoch promise in the contract.
 
 ## Verdict and follow-up

@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: not_started
 verification_status: pending
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-17
 review_due: 2026-11-26
 supersedes: []
 ---
@@ -89,8 +89,8 @@ Architect Should Know* (multi-author book, consumed through a second-hand
 summary), hacker-laws (curated compilation; each law traces to its own
 origin), and an unattributed agent-rules gist (treated as unverified leads).
 `docs/guides/engineering-reading.md` holds the full list, what each source
-is for, and what was deliberately rejected. The raw archive is local under
-`archive/external/` and is not project authority.
+is for, and what was deliberately rejected. Use its public source links; the
+maintainer's working copies are not required or distributed with this template.
 
 ## Normative invariants
 
@@ -252,8 +252,8 @@ This contract is implemented when:
 - at least one real problem report has used the [governance § advice-preserves-disagreement](governance-decision-boundary.md#advice-preserves-disagreement) fields informed by
   declared standpoints.
 
-Verification stays `pending` for the full procedure: first-party projects
-applying this template's discipline since 2026-07 have exercised parts of
+Verification stays `pending` for the full procedure: the maintainer reports
+that projects applying the discipline since 2026-07 exercised parts of
 this judgment — complexity-cost rejection of over-engineered proposals and
 impact-surface triage of review findings — but no material change has yet
 run the comparison procedure end to end and recorded its outcome as decision

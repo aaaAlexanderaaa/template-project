@@ -2,7 +2,7 @@
 doc_type: plan
 status: completed
 authority: planning
-last_reconciled: 2026-08-27
+last_reconciled: 2026-09-17
 implements: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 supersedes: []
 ---
@@ -11,16 +11,18 @@ supersedes: []
 
 ## Cold-start summary
 
-The owner reviewed an external project archive (a long agent-driven build with
-its session records) and selected five constraints to deposit into this
-template. Four come from the archive's dated human instruction stream; the
-fifth is a language-style rule the owner stated during the review. The change
+The maintainer selected five constraints after reviewing a long-running
+agent-assisted project. Reported problems included concurrent sessions editing
+from stale reads and handoffs omitting known pitfalls or active parallel work.
+The original project records are not distributed here. This plan preserves the
+selected changes and their rationale rather than asking readers to inspect
+those records. The change
 edits three governance contracts, the documentation authority map, the handoff
 template, the policy manifest, both guides, and the agent entrypoint. No
 product code exists in this repository; the governed surface is the
 documentation system itself.
 
-The five constraints, in the owner's wording as translated:
+The five constraints, summarized in English:
 
 1. multiple parallel sessions need a written coordination method;
 2. when a verbal rule recurs, proactively propose writing it as a durable
@@ -40,8 +42,9 @@ The five constraints, in the owner's wording as translated:
   `docs/contracts/project-adoption.md`
 - Documentation authority: `docs/README.md`
 - Carrier policy: `docs-policy.toml` (handoff required sections)
-- Baseline evidence: the archive review conversation of 2026-08-27; the
-  archive itself remains outside the repository as scratch material
+- Motivation: maintainer-reported project experience on 2026-08-27; underlying
+  session records are unavailable to readers. Repository changes and their
+  mechanical checks are the inspectable outputs.
 - Decisions already confirmed: the owner selected exactly these five
   constraints and asked for placement, ordering, and system-impact analysis
 

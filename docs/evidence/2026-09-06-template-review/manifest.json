@@ -1,10 +1,10 @@
 {
-  "scope": "Hashes of saved research artifacts, not remote webpage content hashes. This package records evidence and unrun proposals; it changes no normative contract.",
+  "scope": "Integrity hashes of the current public edition of the saved research artifacts. Historical observations retain their own dates; these hashes are not webpage hashes or proof of access to unpublished inputs.",
   "files": [
     {
       "path": "docs/evidence/2026-09-06-template-review.md",
-      "bytes": 38398,
-      "sha256": "f8b6e946201a19cd26ba401219f6e2a745bc56035e9ee0f7e5f130be8b06ed57"
+      "bytes": 31653,
+      "sha256": "ebcc2e40743440e918936a228babbf3f758583600f784df4727831db1e5d9918"
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/behavioral-cases.json",
@@ -18,18 +18,18 @@
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/input-provenance.json",
-      "bytes": 656,
-      "sha256": "8a7b5f86978023f53fa8014e3ec2e7605b70af90570671f668764824e818599b"
+      "bytes": 1206,
+      "sha256": "8e7f5963289dcfe5a5a9ae38aac294941298047c3ea2730d2806c25022c32cee"
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/limitations.json",
-      "bytes": 3410,
-      "sha256": "4dd2795971e40b5e08e24386e680c96dca89dc8c38fac79eedd99264c4729810"
+      "bytes": 3562,
+      "sha256": "ad20c71027a2444c0c513c2a31e360e511d885be9fcc00a150aa96609331d1c9"
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/methods.json",
-      "bytes": 6020,
-      "sha256": "a461c9ecd7f058dd2a7669dcafc83b1af530b6b12a8cb4457db2e943cd0c9730"
+      "bytes": 6132,
+      "sha256": "f0c7771fdba8e492ba1d697023079de1437de1ff2bfcc0609060cc66939abcda"
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/repository-observations.json",
@@ -48,13 +48,14 @@
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/sources.json",
-      "bytes": 35798,
-      "sha256": "b95f007c0658c8a4a780e9ec6502aa5554df5d3d3c99413def9ac0c71a4110b9"
+      "bytes": 35832,
+      "sha256": "cfe6439ab32d96443204edba1f716efcb965dcc1cfdb85ac539bbce4b3f3238e"
     },
     {
       "path": "docs/evidence/2026-09-06-template-review/version-history.json",
       "bytes": 5034,
       "sha256": "42aaa67adc6854e3e52b20807bf4301f84c516407d71ecd729c32825fb739e16"
     }
-  ]
+  ],
+  "publication_reconciled": "2026-09-17"
 }

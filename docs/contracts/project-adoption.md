@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-17
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -69,16 +69,18 @@ Out of scope:
 
 ### source[5] — 2026-08-24
 
-> “This should not remain only in the current project; it also needs to be
-> exported, for example by updating the Template Project.”
+Maintainer feedback asked this template to capture the mechanism behind late
+repairs to time policy and demonstration data. A missing shared decision can
+spread through several components until repair requires coordinated changes.
+The accepted transfer is early recognition of that condition, with policy
+chosen by each adopting project rather than copied from the original system.
 
 ### source[6] — 2026-08-24
 
-> “I agree that you should make the change in the Template project. But you
-> also need to think about whether that change matches that project's own
-> expectations, and you need to evaluate the value of this backfilled
-> information. You cannot simply put down the historical pits you stepped in.
-> How much value do those pits have? And how should a user look at them?”
+The maintainer rejected a proposed checklist of incidents from another
+project. The template should teach how to recognize an applicable engineering
+risk, not require every adopter to revisit unrelated repairs. Adoption value
+and target-project scope govern what is transferred.
 
 ### source[7] — 2026-08-27
 
@@ -92,6 +94,16 @@ collaboration archive: when mining history for rules, recurrence measures a
 problem's stubbornness, not a preference's weight; the weight signal is
 whether the rule was institutionalized — written into standing rules or
 tooling — not how often it was said.
+
+### source[9] — 2026-09-10
+
+The maintainer authorized lessons about decision attribution and requirement
+scope from experience in an assistant-assisted project. The
+[learning record](../plans/2026-09-10-reference-feedback-learning.md#source-evidence-and-selection)
+provides self-contained examples: an assistant-authored classification must not
+be presented as the owner's wording, and an accepted example does not establish
+an exhaustive requirement. The underlying project is not part of this public
+repository; these are reported motivations and the template's synthesis.
 
 ## Vocabulary
 
@@ -257,7 +269,9 @@ of it informs a contract, template, or practice, separate it by who authored
 each part:
 
 - dated human decisions, instructions, and corrections are primary evidence of
-  what the human owner actually wanted;
+  what the human owner actually wanted when their origin is available; a later
+  quotation with a missing original remains a reported statement with that
+  limitation, rather than becoming direct evidence merely through quote marks;
 - machine-generated summaries, self-described methodologies, and retrospective
   narratives are leads, not evidence: they may propose hypotheses, but an
   adopted claim must trace to a primary record or be independently verified;
@@ -270,7 +284,16 @@ how much a preference weighs, and a rule institutionalized after one
 statement can outweigh a complaint repeated weekly. An adoption or
 learning record states which class each adopted lesson came from.
 
-- from: source[7], source[8]
+Inspect the source artifact and relevant changes before accepting a report's
+explanation of what happened. A commit establishes a change, not who originated
+every statement or whether users benefited. Use [decision preservation](development-discipline.md#preserve-decisions-and-evidence)
+for attribution and acceptance; do not copy a source project's approval labels
+or stricter ceremony into the target by default. For each selected lesson,
+identify its mechanism, target owner, existing coverage, and applicability
+limit. Keep already-covered lessons as corroboration rather than adding a
+second rule. Rejected or uncertain source claims remain evidence, not policy.
+
+- from: source[7] (2026-08-27 authorship triage), source[8] (2026-09-14 recurrence and preference weight), source[9] (2026-09-10 attribution and applicability)
 
 ## Required onboarding record
 
@@ -338,11 +361,10 @@ Verified on 2026-08-06:
 - the full 106-test Python 3.11 fixture suite, normal repository check, strict
   repository check, and whitespace audit pass.
 
-Verification remains `partial`: first-party greenfield and brownfield
-repositories have completed this onboarding path since 2026-07 (see the
-2026-09-14 entry), but no adopter independent of the maintainer has completed
-it, so independent usability, proportionality, and stage-transition behavior
-are not independently proven.
+Verification remains `partial`: the maintainer reports greenfield and
+brownfield adoption since 2026-07 (see the September 14 account). The underlying
+project evidence is not public. Independent usability, proportionality, and
+stage-transition behavior remain unproven.
 
 Verified on 2026-08-27:
 
@@ -351,11 +373,11 @@ Verified on 2026-08-27:
 - verification remains partial: no visiting agent has yet applied the
   authorship triage to real external material under this contract.
 
-Verified on 2026-09-14:
+Maintainer-reported adoption on 2026-09-14:
 
-- first-party greenfield and brownfield adoptions have completed this
-  onboarding path since 2026-07, and their corrections are reconciled in the
-  contracts they exercised. Evidence:
+- the maintainer reports greenfield and brownfield adoption since 2026-07.
+  The resulting corrections are inspectable in this repository; the original
+  adoption records are not public. Report and limits:
   [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md);
 - adoption by a repository independent of the maintainer remains unproven, so
   verification stays `partial`.
@@ -369,10 +391,18 @@ Verified on 2026-09-14:
 
 ## Reconciliation log
 
-- **2026-09-14 — first-party adoption evidence recorded:** the onboarding
-  path has now been completed by first-party greenfield and brownfield
-  projects; the independent-adoption gap is stated explicitly instead of a
-  blanket no-real-project note.
+- **2026-09-14 — maintainer adoption account recorded:** the maintainer reported
+  completed greenfield and brownfield adoptions. This replaces the blanket
+  no-real-project note with a qualified account; independent adoption remains
+  unproven and underlying records are not public.
+
+- **2026-09-10 — provenance limits applied to learning:** distinguished direct
+  records from later quotations and behavior changes from intent or outcome
+  claims. Learning now checks target applicability and existing coverage;
+  decision attribution routes to its development owner. The
+  [learning record](../plans/2026-09-10-reference-feedback-learning.md#progress-and-closure)
+  records verification and limits.
+  - from: source[9]
 
 - **2026-09-06 — delivery method aligned:** the transfer value order still
   prioritizes complete delivery over its carriers; evidence methods now follow

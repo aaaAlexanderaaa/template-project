@@ -21,7 +21,8 @@ Same-context role-play must be labeled non-independent.
 ## Inputs
 
 - Original request/source: {{wording or exact source section}}
-- Accepted interpretation: {{intended user job; compare with the original}}
+- Accepted interpretation and decision basis: {{intended user job; proposal and
+  acceptance scope where applicable; distinguish implementer assumptions}}
 - Contract/design: `{{path}}`
 - Baseline evidence and fixtures: `{{paths}}`
 - Constraints supplied to every perspective: {{constraints}}
@@ -37,6 +38,12 @@ Same-context role-play must be labeled non-independent.
 
 {{Does the interpretation preserve the user's goal? Review reachable states,
 user cost, actual effects, recovery, accessibility, and operational findings.}}
+
+Use [decision preservation](../docs/contracts/development-discipline.md#preserve-decisions-and-evidence)
+and [outcomes before means](../docs/contracts/development-discipline.md#outcomes-before-means)
+to inspect any attribution or scope discrepancy. Trace whether a sample,
+inventory, or assistant summary became a requirement, including in a guard;
+name the introducing record and supporting owner decision or evidence gap.
 
 ### Engineering and maintenance
 

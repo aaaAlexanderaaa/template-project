@@ -2,35 +2,33 @@
 doc_type: evidence
 status: historical
 authority: evidence
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-17
 subject: first-party-adoption-feedback
 ---
 
 # First-party adoption feedback, distilled
 
-This record supports one claim: since 2026-07 this template's discipline has
-been exercised by real first-party projects, and their feedback — positive
-and negative — has been reconciled into the contracts they exercised. It
-supersedes earlier acceptance-evidence notes that said no real project had
-exercised the discipline; those dated notes stay as written, because they
-were true when written.
+This record explains the maintainer's reported experience applying the template
+in their own projects since July 2026, and how that feedback informed the
+September 14 changes. The underlying project records are not published. The
+account is evidence of the stated rationale, not an independently reproducible
+adoption study. Earlier dated observations remain historical snapshots.
 
 ## Source and privacy boundary
 
-The source is the maintainer's private cross-project collaboration archive:
-distilled preferences, correction chains, and project retrospectives spanning
-2025-11 to 2026-09 across several machines and several agent platforms,
-covering dozens of real projects, including a subset that adopted this
-template's discipline from 2026-07 onward and kept developing under it.
+The maintainer supplied a retrospective account of collaboration and project
+corrections. This public record retains the mechanisms needed to understand
+the resulting rules. It does not require access to the maintainer's machines,
+accounts, conversations, or project archives, and contains no reproduction
+instructions for those unavailable inputs.
 
-The archive is private. Project identities, credentials, internal topology,
-client details, and personal context are deliberately withheld, and lessons
-were adopted only in domain-neutral form. This record is the public pointer;
-the underlying material cannot be linked.
+Readers can inspect the resulting repository changes and exercise the rules
+in their own projects. That does not reproduce the reported incidents or prove
+their frequency, effectiveness, or applicability to every adopter.
 
 ## Selection method
 
-Selection ran in two passes. The first pass leaned on recurrence across
+The original review reported two selection passes. The first pass leaned on recurrence across
 projects; review against the archive's own weighting rule — recurrence
 measures a problem's stubbornness, while institutionalization is the weight
 signal — found it under-weighted rules that were stated once and immediately
@@ -49,9 +47,10 @@ Dumping a catalog of historical incidents was explicitly rejected, per
 [project-adoption § authorship-triage](../contracts/project-adoption.md#external-material-is-triaged-by-authorship-before-adoption)
 and the template's existing rejection of pit registers as ceremony.
 
-## What confirmed the existing rules
+## Reported support for existing rules
 
-Positive feedback, summarized without private detail:
+The maintainer reported the following outcomes; no underlying trial data are
+published here:
 
 - Contract-first delivery with the raw/translated dual track survived the
   hardest frontend battles and became the reconciliation mechanism when
@@ -68,7 +67,7 @@ Positive feedback, summarized without private detail:
 
 ## What corrected or added rules
 
-Negative feedback and incidents, adopted at their existing owners:
+The reported problems motivated the following changes at their existing owners:
 
 - [development § data-fidelity](../contracts/development-discipline.md#real-content-is-never-deleted-or-fabricated-for-presentation):
   presentation must never delete or fabricate real content; reduction happens

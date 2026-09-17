@@ -25,7 +25,8 @@ subject: {{initiative-or-contract}}
 - Runtime/platform/browser/device: {{environment}}
 - Configuration and fixture identity: {{non-secret identity}}
 - Starting state: {{state}}
-- Reproduction command: `{{command}}`
+- Required materials: {{supplied paths or obtainable public sources; access limits}}
+- Reproduction command: `{{command runnable with those materials}}`
 
 ## Result matrix
 
@@ -48,11 +49,21 @@ Compare the delivered user outcome with the original request, not only the
 accepted interpretation. Record observation coverage and limits; no observation
 means unknown, not zero effects.
 
+For a [scope or interpretation discrepancy](../docs/contracts/development-discipline.md#outcomes-before-means),
+trace where it entered and which decision supports it; inspect affected guards
+as well as prose. When broader coverage is claimed, include a plausible case
+beyond the initial sample. For a proposed local correction, inspect the whole
+result in context under [causal analysis](../docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism).
+A correct library rule or complete fields alone do not prove its application.
+
 ## Failure and negative-path checks
 
 | Failure class | Injection/reproduction | Expected recovery/error | Observed | Result |
 |---|---|---|---|---|
 | {{class}} | {{method}} | {{contract and user's next action}} | {{observation}} | pass/fail/partial/not_run |
+
+When applicable, distinguish a valid empty result from missing coverage,
+unmatched input, or rejected findings; follow the owning failure policy.
 
 ## Anomalies
 

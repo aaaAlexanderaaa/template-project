@@ -3,9 +3,6 @@
   "activity": "Research and design; no project-governance implementation authorized or performed.",
   "selection": "User-named product families plus Pi, Gemini CLI, OpenCode and Copilot CLI as semantic boundary checks. No market-share completeness claim.",
   "retrieval": {
-    "requested": "grok-search with extra_sources=20",
-    "available": false,
-    "discovery": "Searched callable tool metadata for search/browse/fetch; no grok-search capability was exposed.",
     "fallback": "web search plus direct official documentation and release/repository pages",
     "queries": [
       "Codex AGENTS hooks subagents memory",
@@ -31,7 +28,7 @@
       "site.sei.cmu.edu \"quality attribute scenario\" stimulus response"
     ],
     "source_policy": "First-party sources for technical claims. Product details generally remain single-source-family descriptions, not independently verified runtime behavior. Research findings are bounded by each study's methods.",
-    "recording": "Retained selected source identity, dates, bounded observations, conflicts and local repository hashes. Did not mirror full copyrighted pages or retain private account state.",
+    "recording": "Retained selected source identity, dates, bounded observations, conflicts and hashes of this repository at the stated baseline. Did not mirror full copyrighted pages or retain private account state.",
     "excluded_from_claims": [
       "Search-only third-party plugin directories",
       "Unverified community anecdotes about Cursor history import",
@@ -46,13 +43,15 @@
         "url": "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-custom-instructions",
         "recovery": "Used official Copilot CLI command-reference instruction locations."
       }
-    ]
+    ],
+    "method": "Web search and direct public technical sources as recorded on 2026-09-06.",
+    "coverage_limit": "This was a selected-source review. No exhaustive search or equivalence to an unavailable provider-specific retrieval mode was established."
   },
   "critical_method": [
     "Test each supplied diagnosis against both supporting and contrary repository evidence.",
     "Separate declaration, structural enforcement, delivery of context, behavior and user outcome.",
     "Inspect recent changes that alter context, authority, side effects or completion semantics.",
-    "Do not infer the user's preferences from another assistant's unsupplied conversation.",
+    "Do not infer the user's preferences from an assistant interpretation without an accessible supporting decision.",
     "Propose an intervention at the earliest evidenced point of failure; avoid adding a generalized subsystem without need."
   ],
   "comparison_design": {

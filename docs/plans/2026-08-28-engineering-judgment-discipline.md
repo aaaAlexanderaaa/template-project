@@ -2,7 +2,7 @@
 doc_type: plan
 status: completed
 authority: planning
-last_reconciled: 2026-08-28
+last_reconciled: 2026-09-17
 implements: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/engineering-judgment-discipline.md]
 supersedes: []
 ---
@@ -20,14 +20,14 @@ ROI, the conditions under which they do not matter, and the assumptions that
 accepting a risk would make. The owner directed mining of settled industry
 material — the Google SRE books, *A Philosophy of Software Design*,
 TigerBeetle's TIGER_STYLE, hacker-laws, the Grug Brained Developer essay, a
-97-things architecture summary, and an agent-rules gist — with the raw
-sources archived locally first so future mining can re-read originals rather
-than trust summaries.
+97-things architecture summary, and an agent-rules gist — using the public sources listed in the
+[reading guide](../guides/engineering-reading.md).
 
-The raw archive lives in `archive/external/` (gitignored, checker-skipped)
-with an authorship-triaged manifest. Seven parallel mining passes produced
-candidate disciplines, each with provenance, material strength, a suggested
-owner, and an over-design boundary. The owner confirmed the landing shape:
+The original task reported seven parallel reading passes that produced
+candidates with a source, an evidence limit, a suggested owner, and a boundary
+against over-design. The intermediate reports and working archive are not
+published. Public source links support new reading; they do not reproduce the
+original selection process. The owner confirmed the landing shape:
 small strengthenings to current contracts, one new target contract, and a
 reading-list guide.
 
@@ -37,8 +37,9 @@ reading-list guide.
   `docs/contracts/governance-decision-boundary.md` (G3, G7)
 - New contract target: `docs/contracts/engineering-judgment-discipline.md`
 - Documentation authority: `docs/README.md`
-- Baseline evidence: the owner conversation of 2026-08-28; the seven mining
-  reports; the local raw archive under `archive/external/`
+- Inspectable basis: the named public reading sources, resulting contract, and
+  repository changes. The private discussion and intermediate reading reports
+  are not part of the public evidence.
 - Decisions already confirmed: the three-part landing shape (strengthen
   existing, draft new target contract, land reading list)
 

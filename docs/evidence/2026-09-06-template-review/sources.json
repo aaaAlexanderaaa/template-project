@@ -123,7 +123,7 @@
       "url": "https://learn.chatgpt.com/docs/customization/memories",
       "observed_on": "2026-09-06",
       "observation": "Local Codex memory differs from ChatGPT web memory. Required team guidance belongs in checked-in instructions; background memory updates can be delayed.",
-      "limitation": "The user's private memory configuration was not inspected.",
+      "limitation": "No adopter-specific memory configuration was inspected; this is a documentation observation.",
       "evidence_strength": "primary-source description",
       "independence": "Single first-party publication family unless compared with a separately authored source.",
       "reproduction": "URL and bounded observation retained; full source page not mirrored; runtime not executed."

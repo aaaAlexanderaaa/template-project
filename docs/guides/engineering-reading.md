@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-17
 ---
 
 # Engineering reading list
@@ -22,9 +22,9 @@ owns the writing format for anything adopted.
 
 ## How to mine
 
-1. Read the original, not a summary. If a local raw archive exists under
-   `archive/external/`, use it; otherwise fetch the URL below. The archive
-   is gitignored local material, so its absence means re-fetch, not loss.
+1. Read the named sources through the public links below. Record the edition
+   or revision actually consulted; a rolling page may differ from the one
+   reviewed in 2026. This guide does not depend on a maintainer-local archive.
 2. Triage authorship before trusting: dated human decisions and named
    authors are primary; curated compilations are leads whose items must
    trace to their own origins; unattributed or machine-polished narrative
@@ -39,7 +39,7 @@ owns the writing format for anything adopted.
 
 | Source | Authorship ([adoption § authorship-triage](../contracts/project-adoption.md#external-material-is-triaged-by-authorship-before-adoption)) | Mine it for |
 |---|---|---|
-| [A Philosophy of Software Design, 2e (Chinese translation)](https://yingang.github.io/aposd2e-zh/) | Primary: named author (Ousterhout) | Complexity symptoms (change amplification, cognitive load, unknown unknowns), contact-frequency weighting, red-flag list, design-twice, "taking it too far" as a rule section |
+| [A Philosophy of Software Design, 2e](https://web.stanford.edu/~ouster/cgi-bin/book.php) | Primary: author's English page and extracts; the full book is separately available | Complexity symptoms (change amplification, cognitive load, unknown unknowns), contact-frequency weighting, red-flag list, design-twice, "taking it too far" as a rule section |
 | [Google SRE book](https://sre.google/sre-book/table-of-contents/) and [Workbook](https://sre.google/workbook/table-of-contents/) | Primary: named organization | Error budgets as quantified risk acceptance, actionable-alert tests, blameless postmortems feeding defect categories, toil definition, per-system-type SLI selection |
 | [TIGER_STYLE](https://github.com/tigerbeetle/tigerbeetle/blob/main/docs/TIGER_STYLE.md) | Primary: named engineering organization | How to write scenario rules as mechanism + checkable instruction + reason + grounded constraint; bounds on everything and chosen exhaustion behavior; back-of-envelope decision sketches |
 | [hacker-laws](https://github.com/dwmkerr/hacker-laws) | Second-hand compilation; cite each law's own origin | Tesler's law (simplification displaces complexity onto someone — often the user), Fitts/Hick (interaction cost is measurable), Goodhart (a metric turned target distorts), Hyrum (observable behavior is the contract), Postel-vs-strict as a worked contradiction pair, Chesterton's fence, second-system effect, Amdahl for comparing options |

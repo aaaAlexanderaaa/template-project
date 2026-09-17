@@ -16,7 +16,7 @@ Use the [task-context rule](docs/README.md#task-context) to locate:
 
 | Needed fact | Read or observe |
 |---|---|
-| Requested outcome | User request, accepted interpretation, and original source |
+| Requested outcome | User request, accepted interpretation, and original source with [decision attribution](docs/contracts/development-discipline.md#preserve-decisions-and-evidence) |
 | Reliable current facts | Relevant code/state, baseline evidence, and current contracts |
 | Decision authority | Existing authorization and the [governance boundary](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) |
 | Boundaries and exceptions | Relevant `ARCHITECTURE.md` and owning contract sections |

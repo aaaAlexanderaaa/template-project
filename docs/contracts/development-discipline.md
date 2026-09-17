@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-14
+last_reconciled: 2026-09-17
 supersedes: []
 ---
 
@@ -123,6 +123,23 @@ compare the observed result with both. A correct implementation of a mistaken
 interpretation still needs reconciliation; passing its tests does not close
 the requested outcome.
 
+Examples, initial batches, available inventory, and passing fixtures do not
+establish the full requirement or its exclusions. When a broad goal has become
+a few scenarios, trace where that narrowing entered the request translation,
+plan, implementation, or guard and what owner decision supports it. A prototype
+or first delivery step may be deliberately small without redefining the parent
+goal. Preserve an explicitly authorized narrow scope; do not expand a bounded
+task into an entire domain merely because its parent goal is broader.
+
+Select representative cases from the requested problem before choosing a
+reusable form or scaling existing content. Exercise that form on real or
+source-shaped cases, including a plausible case outside the initial example
+when broader coverage is claimed. This is verification work under the existing
+route, not an automatic user-approval checkpoint. Counts describe coverage;
+they cannot replace evidence that the user can accomplish the intended task.
+
+- from: source[11] (2026-09-10 attribution and scope feedback)
+
 ### Verify promised and observed behavior in both directions
 
 The owning contract's acceptance matrix lists functional outcomes and activated
@@ -168,13 +185,19 @@ Verification runs in both directions:
   deliverable to its stated end. A context-free consumer's failure is a
   defect in the deliverable, not in the consumer.
 
+When results depend on a catalog, classifier, parser, or filter, inspect what
+was unmatched, rejected, or omitted before interpreting an empty result as
+success. Lack of a known match is not evidence that no problem exists. Preserve
+the owning contract's policy for unknown and partial results; do not silently
+invent an answer or suppress the unresolved case to keep the result clean.
+
 Use the smallest credible evidence for each claim. A failing regression test,
 an instrumented process, a packaged artifact, a browser observation, or a
 bounded manual review may be appropriate. Record the relevant conditions and
 limits. Missing observations remain unknown or not run, never a pass. Required
 evidence for a completion claim cannot be replaced by a cheaper unrelated check.
 
-- from: source[8], source[10]
+- from: source[8] (2026-09-06 outcome and effect verification), source[10] (2026-09-14 reported adoption feedback), source[11] (2026-09-10 attribution and scope feedback)
 
 ### Environment over memory
 
@@ -231,6 +254,30 @@ Requirements, translations, implementation plans, issues, and evidence have
 different authority. Do not overwrite one with another. Superseded material
 keeps an explicit replacement link so later contributors can reconstruct why a
 decision changed.
+
+When recording or relying on a material decision, distinguish what the owner
+stated, what proposal the owner accepted, what the implementer inferred or
+chose, and what remains unresolved. Preserve the dated statement or decision
+reference; for an accepted proposal, retain enough of the proposal and reply
+to establish what was accepted. Missing source material stays an evidence
+limit. A quotation, heading, commit author, or repeated summary alone does not
+establish attribution or agreement.
+
+An accepted proposal authorizes its agreed scope even though its wording and
+design originated with the implementer. Do not rewrite it as an owner-authored
+requirement or an immutable preference. Silence is not acceptance; an
+implementer's permissible choice remains an implementer choice. Existing
+authorization and the [engineering decision envelope](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)
+still permit work without re-asking settled questions or requiring a verbatim
+approval for every local choice.
+
+If feedback exposes a mistaken attribution, correct the existing decision
+owner and affected projections, including tests or gates that encoded it.
+Preserve the correction's provenance without spreading a second decision
+ledger into plans and summaries. Recheck conclusions that depended on the
+mistake; a later citation of the same summary is not independent support.
+
+- from: source[11] (2026-09-10 attribution and scope feedback)
 
 ### Real content is never deleted or fabricated for presentation
 
@@ -347,6 +394,16 @@ expected outcome, the boundary where that explanation stops holding, and the
 evidence that could distinguish it from alternatives. More headings, layers,
 or abstract categories are not evidence of deeper understanding.
 
+Apply the mechanism to the actual input: explain which condition holds here,
+why the proposed action addresses it, and how to check the resulting whole.
+A general rule, library example, or filled explanation field cannot substitute
+for that work. When proposing a local correction, inspect it in its surrounding
+context and preserve the intended meaning and unaffected behavior. If the
+meaning is ambiguous, label the interpretation and use the existing
+[uncertainty route](governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated).
+Complete the analysis and verification available within the authorized task;
+do not ask the user to perform that work as a substitute for delivery.
+
 Answer the user's explicit question, and also surface an unasked premise,
 constraint, outcome, or risk when evidence shows it is materially more
 consequential to the user's goal. State the causal connection and classify the
@@ -354,7 +411,7 @@ observation through the governance vocabulary. Do not use this obligation to
 speculate without evidence, replace the requested task, manufacture priority,
 or expand implementation scope without authorization.
 
-- from: source[3]
+- from: source[3] (2026-08-06 inquiry and causal analysis), source[11] (2026-09-10 attribution and scope feedback)
 
 ### Recurring verbal rules are proposed for durable recording
 
@@ -710,13 +767,21 @@ No side may resolve a conflict silently.
 
 ### source[4] — 2026-08-06
 
-> “Agreed with your understanding: adopt frontend-design, uninstall
-> ui-ux-pro-max, and learn what is worth learning.”
+The maintainer accepted a proposal to learn selected visual-design and
+question-sequencing practices from external material. The accepted repository
+change gives genuine human decisions their prerequisite context and carries
+visual choices through the existing surface and style owners. The
+[change record](../plans/2026-08-06-decision-frontier-and-frontend-design.md)
+explains that scope. Personal tool installation was separate from the portable
+method and is not a dependency for adopters.
 
 ### source[5] — 2026-08-24
 
-> “This should not remain only in the current project; it also needs to be
-> exported, for example by updating the Template Project.”
+Maintainer feedback asked this template to capture the mechanism behind late
+repairs to time policy and demonstration data. A missing shared decision can
+spread through several components until repair requires coordinated changes.
+The accepted transfer is early recognition of that condition, with policy
+chosen by each adopting project rather than copied from the original system.
 
 ### source[6] — 2026-08-27
 
@@ -744,13 +809,6 @@ No side may resolve a conflict silently.
 > over-optimizing, or over-designing.”
 
 ### source[8] — 2026-09-06
-
-Original maintainer wording in this task:
-
-> “仍然不够目标驱动”
->
-> “声明应该发生，但实现不存在”；“实现产生了未声明的效果”；
-> “效果发生次数过多”；“效果被错误压制，发生次数过少”。
 
 Maintainer feedback in the template review task, rendered in English: delivery
 must serve the user's goal, not merely pass tests. Check for promised effects
@@ -782,6 +840,20 @@ neighboring rules, that what is recorded is the principle rather than the
 incident, and that investigation tooling never pre-filters the failure
 record.
 
+### source[11] — 2026-09-10
+
+Maintainer-reported feedback concerned three failures in an assistant-assisted
+project: an assistant's classification was later attributed to the owner;
+a small example became the whole requirement; and a generic rule replaced
+analysis of the actual input. A related implementation report described
+unmatched or rejected findings being mistaken for a valid empty result.
+
+The [learning record](../plans/2026-09-10-reference-feedback-learning.md#source-evidence-and-selection)
+explains each mechanism and its adoption limit. The underlying project and
+conversation records are not distributed here. This is an account of why the
+maintainer selected these refinements, not publicly reproducible evidence of
+those incidents or proof that the refinements improve every adopter.
+
 ## Reconciliation log
 
 - **2026-09-14 — first-party adoption feedback reconciled:** the discipline
@@ -797,6 +869,15 @@ record.
   record.
   Evidence: [2026-09-14 first-party adoption feedback](../evidence/2026-09-14-first-party-adoption-feedback.md).
   - from: source[10]
+
+- **2026-09-10 — reference feedback applied:** clarified decision attribution
+  and acceptance scope, traced sample-driven narrowing into its consumers,
+  and required concrete application of analysis. Bidirectional verification
+  now calls out discarded and unmatched results. Templates expose these
+  checks at their existing source, scope, and verification sections. Evidence
+  and limitations are in the [learning record](../plans/2026-09-10-reference-feedback-learning.md#progress-and-closure);
+  effectiveness in a future adopter remains partial.
+  - from: source[11]
 
 - **2026-09-07 — proportionate delivery and runtime scope:** routine behavior
   changes update their existing normative owner without a standalone plan.
@@ -824,7 +905,8 @@ record.
   build-vs-reuse accounting, standpoint declaration — is drafted in the
   target contract `docs/contracts/engineering-judgment-discipline.md`.
   Sources: owner direction of 2026-08-28; external materials mined from the
-  local archive under `archive/external/`, authorship-triaged per O8.
+  public reading sources listed in `docs/guides/engineering-reading.md`,
+  triaged by authorship. Working copies are not a public dependency.
   Verification remains partial until a real change answers these questions.
   Plan: `docs/plans/2026-08-28-engineering-judgment-discipline.md`.
   - from: source[7]
