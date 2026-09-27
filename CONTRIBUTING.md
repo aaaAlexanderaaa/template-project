@@ -62,6 +62,10 @@ or newer and have no third-party package dependencies.
 
 ## Review questions
 
+- For a requested or selected focused challenge, use the [Grill role](docs/guides/grill.md)
+  to inspect actual outcomes against the current owner's goal and supported
+  standards. It can question direction and repeated defaults without prescribing
+  a repair; its recurring questions support later reassessment.
 - Is there exactly one authoritative owner for every changed invariant?
 - Can a future contributor distinguish current, target, historical, and
   superseded documents?

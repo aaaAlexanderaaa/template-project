@@ -45,6 +45,11 @@ does not grant authorization; do not downgrade because a reviewer is unavailable
 - Human decisions still required: {{product intent, authority, or risk
   acceptance; none if absent}}
 
+If a focused challenge is requested or selected for this work, invoke the
+[Grill role](../docs/guides/grill.md). Keep its decision-changing answers,
+unresolved assumptions, and revisit conditions at their relevant locations in
+this plan or its existing owners; no second question ledger is required.
+
 ## Activated concerns and owners
 
 List only concerns activated through [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony). The linked current or

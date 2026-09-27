@@ -34,6 +34,15 @@ finding names the important problem and evidence; it need not design the repair.
 - Constraints supplied to every perspective: {{constraints}}
 - Deliberately withheld information, if any: {{item and reason}}
 
+The [Grill role](../docs/guides/grill.md) can support this review against the
+original high-level purpose and current owner's supported standards. Its
+invocation uses existing onboarding and permitted context; personal material
+stays within its audience boundary. Leave the inspection open to problems in
+direction, task selection, or value beyond the changed items. Retain the first
+judgment before executor explanation. Findings need not prescribe repairs;
+recurring questions support inspection, and the role name does not establish
+independence.
+
 ## Perspective findings
 
 ### System and contract consistency

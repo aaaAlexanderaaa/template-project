@@ -32,6 +32,11 @@ context, start with [the collaboration entry path](docs/guides/onboarding.md#sta
 Read `docs-policy.toml` before reporting a governance gap; its declared scope
 and profile determine enforcement.
 
+For a requested Grill review, use the [Grill role](docs/guides/grill.md) to
+find problems important to the current owner's goal and supported standards,
+including in the direction or task itself. Its invocation uses existing
+context and review boundaries; a finding need not include a repair plan.
+
 ## Execute the authorized outcome
 
 - Once intent and authority are settled, continue through implementation,

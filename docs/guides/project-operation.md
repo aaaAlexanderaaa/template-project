@@ -90,6 +90,17 @@ context, resolve consequential unknowns, act when understanding is sufficient,
 and revisit only decisions affected by new evidence. The conditions do not
 require a new interview or approval for a clear task.
 
+#### Invoke a focused Grill review
+
+When a focused challenge is requested or selected for a review, use the
+[Grill role](grill.md). Its reusable invocation and procedure question goals,
+direction, actual value under the current owner's supported standards, and the
+cumulative effects of standing defaults. Findings need not prescribe repairs. The
+[governance owner](../contracts/governance-decision-boundary.md#recurring-questions-challenge-consequential-decisions)
+keeps the stable core questions and revisit conditions in one place. This
+optional role uses the decision frontier below and adds no automatic worker,
+interview, or review schedule.
+
 #### Work a dependent decision frontier
 
 When [governance § route-uncertainty](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated) classifies several unresolved items as genuine human decisions and

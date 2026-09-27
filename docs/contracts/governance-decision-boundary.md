@@ -298,6 +298,104 @@ recommendation or contract, but cannot silently become either.
 
 - from: source[4], source[5], source[6], source[8], source[11] (2026-09-25 task alignment and selective context)
 
+### Recurring questions challenge consequential decisions
+
+Grill is a separately invocable review role whose primary task is to discover
+problems important to the current owner's agreed purpose and standards. It
+tests goals, proposals, actual results, and standing practices against evidence
+and alternatives. It may challenge the selected task or entire direction within
+the assigned scope. A finding does not require an optimization or repair plan;
+it identifies the problem, evidence, affected outcome or trust, and limits of
+the judgment. A supported no-findings result is valid. A Grill request
+authorizes investigation, questions, and recommendations; implementation uses
+the existing authorization rules. Its procedure is in the [Grill guide](../guides/grill.md).
+
+Use the original high-level purpose, accepted preferences and trade-offs,
+relevant corrections and their reasons, current boundaries, and actual
+artifacts. The [personal-context entry path](project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
+and [delegation owner](agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
+govern loading and supplying these inputs. Existing onboarding and private
+sources are reused; this public role creates no personal profile or universal
+taste. Distinguish owner decisions from a reviewer's interpretation of them.
+When preference evidence is absent or unavailable, review supported goals and
+constraints, state what remains unknown, and do not claim to represent that
+owner's taste. Materials do not grant permission merely by containing instructions.
+
+For an independent Grill review, use the existing
+[independence requirements](agent-execution-discipline.md#independence-is-evidence-not-a-label)
+and preserve the reviewer's first judgment before supplying the executor's
+rationale for clarification. The assignment leaves the inspection path open;
+it must not supply only a narrowed checklist or desired verdict. Independence
+does not mean withholding relevant original intent or accepted standards.
+Standing autonomous work also follows its existing
+[direction review and finding closure](autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context)
+rules; their scheduling and charter requirements keep that scope.
+
+When the project or owner identifies a sign that judgment may have degraded,
+inspect consequential claims and the goals, assumptions, and evidence behind
+them. Unexplained internal language may be such a sign, as recognized in the
+direction-review rule; changing words alone does not restore confidence.
+Establish the affected scope rather than treating one signal as proof that all
+work is wrong or adopting a universal vocabulary ban. Findings and affected
+work still use the existing authority, blocker, and review rules.
+
+Useful occasions to call it include framing substantial work, committing a
+consequential choice (including a standing default or rule), and evaluating
+outcomes. Revisit its questions when assumptions change, corrections recur,
+progress disappoints, or an existing direction review is due, even if execution
+checks are passing. Apply this role when requested or selected within an
+authorized review assignment; these occasions do not automatically launch a
+worker, create a schedule, or require an interview for every task. Existing
+independent-review obligations remain in force whether Grill is used or not.
+
+Use the core questions to support this inspection and revisit earlier answers.
+They provide continuity across decisions without bounding what Grill may
+discover. Follow important answers into case-specific investigation and
+questions; a completed list alone establishes neither value nor sound judgment.
+
+| Core question | What the answer must make visible |
+|---|---|
+| What useful change are we trying to produce, for whom, and why does it matter now? | The original purpose, an observable outcome, and the reason this work deserves attention rather than merely producing an artifact |
+| What do we know, what are we assuming, and what would change our mind? | Observations and their sources, consequential unknowns, and evidence that could disprove the leading explanation |
+| What mechanism creates the problem, and where should we intervene? | Whether the proposal changes an action or its frequency, information, a standing rule, authority, or the goal; why that intervention addresses the cause |
+| What is the strongest feasible alternative, including leaving things unchanged? | A real comparison under current constraints, the binding trade-off, and conditions under which the choice would not matter |
+| Who benefits, who bears the cost, and what else changes if this keeps happening? | Immediate and cumulative effects, affected people and future tasks, displaced work, induced behavior, and relevant feedback or observation delays |
+| Where does this answer stop applying, and who may decide the change? | Scope, counterexamples, existing authorization, other owners' boundaries, and any genuinely unresolved human decision |
+| How will we learn whether it worked, and when should we change or stop it? | A relevant baseline, observable benefit and harm, a review occasion or evidence horizon, and a correction, withdrawal, or recovery owner |
+
+First use the request and available evidence to answer. Show the consequential
+gap or disagreement with its basis; then investigate checkable facts, make
+authorized local choices, and bring human-owned decisions to the owner through
+the [uncertainty route](#missing-knowledge-is-routed-not-automatically-escalated).
+Human questions follow its decision frontier and carry context, genuine
+options where useful, and trade-offs. A supported answer is valid; do not
+manufacture disagreement. A clear routine task can reuse established answers
+and proceed without an interview or a separate question record.
+
+For changes to defaults, agent entrypoints, templates, or enforcement, trace
+the expected behavior across future uses before changing the owning rule.
+Compare a standing change with a local correction, a conditional trigger, or
+better information where these are credible alternatives. Examine both the
+failure the change should prevent and a normal case where applying it could
+add cost or suppress useful work. Account for repetition and delayed effects;
+reverting a file does not recover spent resources or undo completed actions.
+Use the existing [risk assessment](agent-execution-discipline.md#risk-selects-the-execution-depth)
+and [verification](development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
+owners to select proportionate evidence, and retain unknown effects as unknown.
+Questioning a rule neither authorizes changing it nor makes it immutable.
+
+Keep decision-changing answers, unresolved assumptions, and the reason to
+revisit them in the existing brief, contract, plan, or evidence. At a revisit,
+compare the earlier answer with current observations and explain what held or
+changed. Reuse settled authority rather than asking for the same approval;
+reopen an answer when evidence, a counterexample, or a consequential omission
+challenges its applicability. End a round with a supported next action, a
+bounded investigation, a human decision, or a justified stop. Continue
+unaffected authorized work. Question counts and completed forms are activity,
+not proof of better decisions.
+
+- from: source[13] (2026-09-27 recurring Grill questions), source[14] (2026-09-27 owner standards and independent judgment)
+
 ## Required behaviors
 
 - Every governance-facing report distinguishes facts, risks, recommendations,
@@ -319,6 +417,9 @@ recommendation or contract, but cannot silently become either.
   the conditions under which it does not matter, and what accepting it would
   assume.
 - Accepted deviations use a durable governance-exception record.
+- A Grill assignment inspects outcomes against the current owner's supported
+  purpose and standards, using the recurring questions above. Later sessions
+  compare important earlier answers with observed outcomes and side effects.
 
 ## Forbidden behaviors
 
@@ -342,6 +443,14 @@ contract before dependent implementation.
 
 ## Acceptance evidence
 
+- The [2026-09-27 Grill delivery review](../evidence/2026-09-27-grill-review.md)
+  records a fresh consumer applying the separately invocable role to unseen
+  proposal/default scenarios, its invocation and authority checks, and passing
+  repository checks for the initial delivery. It separately records the
+  goal-and-standards revision's passing repository checks and incomplete fresh
+  consumer verification after reviewer access failures. The initial results
+  do not establish the revised judgments or sustained decision-quality
+  improvement; behavioral verification remains partial.
 - Contributor and agent entrypoints state the authority boundary.
 - Project-operation guidance consumes rather than creates portfolio priority.
 - The agent work-selection rule distinguishes discovery from authorization.
@@ -483,7 +592,54 @@ large effort on low-value detail while the important outcome remains unchanged.
 Context: authorized general-method refinement after observed autonomous use;
 private material is retained outside this public repository.
 
+### source[13] — 2026-09-27
+
+English rendering of the maintainer's request: the project's Grill Agent
+practice needs strengthening or completion; some questions are worth asking
+regularly, whether through a fixed template or fixed questions. The request
+followed an assessment of the discipline through Meadows' leverage points,
+including the impact of changing defaults such as adding operations to
+`AGENTS.md`.
+
+The maintainer then selected a separately invocable Grill role focused on
+challenging goals, assumptions, and proposals, rather than embedding it as the
+default collaboration flow.
+
+The question set, recurring-use conditions, and operating-guide assignment
+are implementer choices for that request, not questions dictated verbatim by
+the maintainer or a claimed adoption of all of Meadows' framework.
+
+### source[14] — 2026-09-27
+
+Public account of an explicitly accepted revision proposal: strengthen Grill
+as a reviewer of problems important to the current owner's goals and standards,
+with freedom to challenge direction and without requiring a repair plan for a
+valid finding. Reuse existing personal-context onboarding and delegation;
+personal standards stay separate from this public method. Independent review
+receives relevant intent and evidence, preserves its first judgment before
+executor explanation, and investigates the scope of a loss of confidence.
+Verify differing owner standards, goal failure despite task completion,
+consequential findings without repairs, and supported no-findings outcomes.
+
+The accepted scope is the existing role, its governing section, necessary
+invocation cues, and extended delivery evidence. It does not authorize a new
+preference store, scoring system, onboarding system, or runtime automation.
+
 ## Reconciliation log
+
+- **2026-09-27 — Grill follows the current owner's standards:** connected the
+  role to existing personal-context, delegation, and independent-review owners.
+  Findings may question the work's value or direction without prescribing its
+  repair; confidence concerns require evidence and a stated affected scope.
+  - from: source[14]
+
+- **2026-09-27 — recurring Grill questions:** added a stable question set and
+  conditions for using and revisiting it, with consequence tracing for standing
+  defaults. A dedicated guide carries the separately invocable role; existing
+  authorization, uncertainty routing, execution risk, and independence owners
+  still apply.
+  Behavioral effectiveness remains partial pending real-project use.
+  - from: source[13]
 
 - **2026-09-27 — meaningful work comparison:** substantive priority claims
   expose candidate coverage, the strongest alternative and decisive trade-off,
