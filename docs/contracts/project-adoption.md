@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-17
+last_reconciled: 2026-09-25
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -105,6 +105,16 @@ be presented as the owner's wording, and an accepted example does not establish
 an exhaustive requirement. The underlying project is not part of this public
 repository; these are reported motivations and the template's synthesis.
 
+### source[10] — 2026-09-25
+
+English paraphrase of the maintainer's request: support learning this template
+and loading separately supplied collaboration background and decision
+preferences in a new or existing project. Publish the general onboarding,
+alignment, and context-selection method; keep personal material separate.
+Earlier feedback asked for a coarse alignment process and context appropriate
+to the recipient's task. This account states the authorized public scope; it
+does not reproduce the private conversation or imply access to its records.
+
 ## Vocabulary
 
 - **Greenfield:** a project without product implementation or established
@@ -176,6 +186,36 @@ existing documentation, contracts, tests, CI/release paths, trackers, owners,
 and active delivery obligations before proposing replacements.
 
 - from: source[1], source[2]
+
+### Learning and personal context have a bounded entry path
+
+A request to learn the discipline authorizes reading and applying relevant
+practices within the current assignment. It does not by itself request a
+governance migration, new CI gates, or replacement of the target's instructions.
+Inspect the target's current entrypoints, relevant boundaries, and active work;
+then select the practices the task needs. Use the formal adoption assessment
+and stages when adoption or enforcement changes are requested. Existing
+authorization covers its stated scope without a second confirmation ritual.
+
+When the user supplies collaboration background and decision preferences,
+start at that material's onboarding entrypoint and use the applicable context.
+Treat background, preference, inference, and permission as distinct. Reconcile
+a material conflict with the current task and target authority; an ordinary
+preference difference within the decision envelope is not a blocker. Personal
+context is optional: its absence does not prevent authorized work, and a
+missing path is reported without searching unrelated private locations.
+
+Keep personal material at the location and visibility authorized by its owner.
+Learning it does not authorize copying it, its local paths, or derived personal
+details into a public repository, issue, review, or worker assignment. A general
+lesson can enter the target's existing owner after removing identifying and
+personal context and checking applicability. A project-specific choice may be
+recorded in an audience-appropriate form under
+[decision preservation](development-discipline.md#preserve-decisions-and-evidence).
+Use a private or session-local locator for personal context; this public
+template must remain usable without any individual's memory or account.
+
+- from: source[10] (2026-09-25 separate personal context and public method)
 
 ### Current and target truth stay separate
 
@@ -390,6 +430,12 @@ Maintainer-reported adoption on 2026-09-14:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-09-25 — learning with optional personal context:** added an entry path
+  distinct from formal migration, with source and visibility boundaries.
+  Alignment and delegated context remain at their existing owners.
+  [Change and verification](../plans/2026-09-25-personal-context-onboarding.md).
+  - from: source[10] (2026-09-25 separate personal context and public method)
 
 - **2026-09-14 — maintainer adoption account recorded:** the maintainer reported
   completed greenfield and brownfield adoptions. This replaces the blanket

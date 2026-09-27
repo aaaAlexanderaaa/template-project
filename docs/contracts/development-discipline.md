@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-17
+last_reconciled: 2026-09-26
 supersedes: []
 ---
 
@@ -138,7 +138,14 @@ when broader coverage is claimed. This is verification work under the existing
 route, not an automatic user-approval checkpoint. Counts describe coverage;
 they cannot replace evidence that the user can accomplish the intended task.
 
-- from: source[11] (2026-09-10 attribution and scope feedback)
+A design method names the problem it helps solve and the conditions that make
+it useful. Choose or adapt it against the brief and observed result; completing
+the method does not establish quality. An alternative must still satisfy the
+applicable behavior, accessibility, integrity, and authority boundaries. A
+project's accepted design decisions remain in force until reconciled at their
+owner; a method's flexibility does not waive those commitments.
+
+- from: source[11] (2026-09-10 attribution and scope feedback), source[12] (2026-09-25 conditional design methods)
 
 ### Verify promised and observed behavior in both directions
 
@@ -510,30 +517,36 @@ Frontend work translates product intent into observable states and geometry.
 
 ### Design direction and content
 
-Visual direction translates authorized product intent; it does not create
-missing product intent. Ground each surface in a concrete subject, audience,
-and single user job found in its raw layer. Use the subject's real materials,
-instruments, artifacts, language, and workflows where they improve recognition
-or use. When a missing subject, audience, job, or expensive-to-reverse
-preference would materially change the result, use [governance § route-uncertainty](governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated) rather than
-silently choosing a plausible theme.
+Visual direction translates authorized product intent. Ground each surface
+in the concrete subject, audience, and supported user tasks found in its raw
+layer. Establish their relationships and relative emphasis without discarding
+authorized tasks to fit a simpler composition. Use the subject's real content,
+materials, language, and workflows where they improve recognition or use.
+When missing intent or an expensive-to-reverse preference would materially
+change the result, use [uncertainty routing](governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated).
 
-Before implementation, work in two design passes:
+For a new or materially changed visual direction, a useful starting method is
+to propose a compact candidate, then critique it against the raw brief and
+generic defaults likely to recur across unrelated products. Cover the color,
+typography, layout, content voice, and motion decisions that actually change.
+A local correction within an accepted direction uses that direction and
+focused verification without reopening the whole design.
 
-1. propose a compact candidate direction covering named color roles,
-   typography roles, layout concept, content voice, motion intent, and at most
-   one signature element that serves the user job;
-2. critique that direction against the raw brief, the product's own world, and
-   the generic defaults likely to recur across unrelated products, then revise
-   any choice that cannot be justified specifically.
+A single primary task and one strong visual focal point can help a focused
+transaction or introduction. A comparison surface may need several equally
+legible items; a working environment may need related tasks visible together.
+Choose hierarchy and emphasis for the actual use. Neither a task count nor a
+signature-element count is an acceptance criterion. An expressive or restrained
+appearance may be part of the accepted experience in its own right. Assess
+it against that intent and the applicable usability and accessibility
+boundaries; remove generic decoration that serves none of them.
 
-Candidate directions are decision evidence, not a new source of visual truth.
-Only the accepted translation enters the surface contract and consumes or
-extends the declared style owner. A generated palette, token file, design
-master, mockup, or skill output cannot override those owners. Concentrate
-visual emphasis in the signature element, match execution complexity to the
-accepted direction, and remove decoration that communicates nothing true about
-the subject or hierarchy.
+Candidate directions are decision evidence. Only the accepted translation
+enters the surface contract and consumes or extends the declared style owner.
+A palette, mockup, token file, or skill output cannot override those owners.
+Record the reason for material choices and match implementation complexity to
+the value sought; alternative methods need no separate approval when they stay
+within the existing decision envelope.
 
 Interface language is part of the design contract. Use the user's vocabulary
 and active, specific action names; keep an action's name consistent from
@@ -541,12 +554,14 @@ control through result feedback; let labels, examples, and supporting text each
 do one job; and make empty and failure states explain the available recovery or
 next action without vague apology or promotional filler.
 
-A product surface carries no meta-discourse: no "this is a demo", no
-developer-facing notes, no internal codenames, and no defensive disclaimers.
-The surface speaks to its user as the product, not about the product;
-explanation about the product belongs to its documents. A visible control that
-does not function is worse than an absent one — remove it or present its
-honest state, and never paint a placeholder.
+Product surfaces speak in terms of the user's task. Keep development-process
+commentary, internal codenames, and defensive filler out of them. Show a
+product state when it changes how the user should interpret or act on the
+result: for example, sample data or a sandbox whose actions have different
+effects. The surface contract owns that wording under the applicable data and
+behavior contracts; necessary state information must remain visible. A visible
+control that does not function is worse than an absent one — remove it or
+present its honest state, and never paint a placeholder.
 
 When a human-owned visual preference cannot be decided usefully from prose,
 prepare a bounded set of low-cost alternatives or a disposable visual probe in
@@ -555,7 +570,7 @@ interfaces, record the owner's reaction as dated raw surface input, and remove
 the probe when it supports no live evidence. The probe informs the contract; it
 does not authorize delivery or become the accepted design by survival.
 
-- from: source[4], source[10]
+- from: source[4], source[10], source[12], source[13]
 
 ### Style ownership and layering
 
@@ -854,7 +869,38 @@ conversation records are not distributed here. This is an account of why the
 maintainer selected these refinements, not publicly reproducible evidence of
 those incidents or proof that the refinements improve every adopter.
 
+### source[12] — 2026-09-25
+
+English account of the accepted proposal: qualify specific frontend recipes by
+the problem they solve, preserve the brief's actual tasks and aesthetic intent,
+and verify useful collaboration through fresh-agent use. The maintainer then
+explicitly authorized implementing the proposed changes in this repository.
+This refines the design method accepted in source[4]; it does not replace an
+adopter's existing surface decisions or authority boundaries.
+
+### source[13] — 2026-09-26
+
+The independent review requested by the maintainer found that a blanket ban on
+visible demo wording could suppress product state needed for correct use, and
+that a surface-template field could imply a rejected alternative existed when
+none had been tested. The [review record](../evidence/2026-09-26-design-and-onboarding-review.md)
+separates these reading-based findings from the actual onboarding task. The
+clarifications preserve source[10]'s purpose and existing decision attribution.
+
 ## Reconciliation log
+
+- **2026-09-26 — independent review reconciled:** distinguished necessary
+  product-state information from development commentary, and made absent or
+  untested alternatives explicit in the surface template. Reviewer inferences
+  do not become fabricated owner feedback.
+  - from: source[13]
+
+- **2026-09-26 — design methods follow the brief:** replaced universal single-job
+  and signature-count instructions with conditional methods; preserved
+  accepted product boundaries and aesthetic intent. Surface teaching material
+  was reconciled. [Evidence](../evidence/2026-09-26-design-and-onboarding-review.md)
+  distinguishes implementer checks from the unperformed fresh-agent trial.
+  - from: source[12]
 
 - **2026-09-14 — first-party adoption feedback reconciled:** the discipline
   has been exercised in the maintainer's own projects since 2026-07, and

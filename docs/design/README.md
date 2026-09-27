@@ -27,9 +27,10 @@ shared layer's rules: those belong to the style system contract, and a surface
 that repeats them becomes a second owner of the same decision.
 
 The translated `Design direction and content` section records why the accepted
-type, layout, motion, hierarchy, copy, and optional signature element fit this
-subject and user job. Candidate palettes, mockups, visual probes, generated
-tokens, and skill output are evidence or alternatives, not authority. Record
+type, layout, motion, hierarchy, copy, and visual emphasis fit this subject,
+supported tasks, and intended experience under the
+[design method](../contracts/development-discipline.md#design-direction-and-content).
+Candidate palettes, mockups, visual probes, generated tokens, and skill output are evidence or alternatives, not authority. Record
 accepted values through the declared style tiers; keep rejected generic
 defaults and stakeholder reactions in the raw/reconciliation history when they
 explain the resulting direction.

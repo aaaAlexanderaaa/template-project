@@ -23,6 +23,10 @@ subject: {{initiative}}
 
 Include only context needed for the next action, plus its original requirements
 and governing boundaries. History is linked for investigation, not copied here.
+Include relevant accepted trade-offs and their reasons when the next decision
+depends on them. Use only context permitted for this record's audience; retain
+personal profiles and private source paths outside public handoffs. Name how
+to obtain missing context without exposing it.
 Recheck current files; a handoff or agent memory cannot override their authority.
 Locate the outcome, facts, decision authority, boundaries, and completion
 evidence through these sources. An ordinary handoff requires no new plan or

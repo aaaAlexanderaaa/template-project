@@ -14,9 +14,9 @@ supersedes: []
 
 ## Purpose and user outcome
 
-What concrete subject does the surface represent, who uses it, and what single
-job does it help them complete? Describe intended feel and hierarchy without
-prematurely choosing pixel values.
+What concrete subject does the surface represent, who uses it, and which
+tasks does it support? Explain their relationships and priority, and describe
+the intended feel without prematurely choosing pixel values.
 
 ## Raw layer
 
@@ -87,16 +87,17 @@ source of breakpoints.
 
 ### Design direction and content
 
-- Concrete subject, audience, and single user job: {{accepted translation}}
+- Concrete subject, audience, and supported user tasks: {{accepted translation}}
 - Design thesis: {{one sentence tying the presentation to that subject/job}}
 - Subject-specific anchors: {{materials, artifacts, language, workflows, or
   real content that justify the direction}}
 - Candidate direction reviewed: {{named color roles, typography roles, layout
   concept, content voice, and motion intent}}
-- Generic defaults or rejected alternatives: {{what was rejected and why it
-  did not fit this brief}}
-- Hierarchy and layout signature: {{primary/secondary/supporting and the one
-  memorable element, or none}}
+- Generic-default concerns or alternatives considered: {{relevant findings,
+  or none / not tested; label implementer inferences and cite a raw anchor for
+  any rejection attributed to the owner}}
+- Hierarchy and visual emphasis: {{how tasks and content relate, and why the
+  chosen focal points or equal emphasis fit their use}}
 - Typography and density roles: {{contract and brief-specific rationale}}
 - Motion purpose and reduced-motion equivalent: {{purpose/equivalent or none}}
 - Interface vocabulary and action/result continuity: {{canonical terms and
@@ -108,9 +109,12 @@ source of breakpoints.
 - Surface-specific exceptions and owner: {{exceptions or none}}
 - from: raw[{{N}}] ({{source date and topic}})
 
-Candidates and probes do not own values. Carry accepted decisions through the
-style and theming contract below; remove decoration that cannot be justified by
-the subject, hierarchy, or user job.
+Use the [design method](../docs/contracts/development-discipline.md#design-direction-and-content)
+proportionately: record choices relevant to this change and retain existing
+accepted direction elsewhere. Task and visual-element counts are not quality
+criteria. Candidates and probes do not own values. Carry accepted decisions
+through the style contract below and assess presentation against the brief's
+practical and aesthetic intent and applicable accessibility boundaries.
 
 ### Style and theming contract
 
@@ -185,8 +189,8 @@ Geometric claims must cite rendered measurements, not static stylesheet values.
 Theme and mode variants are environments in the range column, not new columns.
 A style-ownership claim is structural: it is proved by the declared guard, not
 by a screenshot, which shows what rendered rather than who owned it.
-Perceptual review checks subject and user-job fidelity, hierarchy, content
-voice, action-name continuity, deliberate restraint, and whether a generic
+Perceptual review checks fidelity to the subject, supported tasks and intended
+feel, hierarchy, content voice, action-name continuity, and whether a generic
 default survived without a brief-specific reason.
 
 For interactions that cause requests, writes, notifications, or repeated work,

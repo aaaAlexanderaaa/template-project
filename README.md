@@ -48,7 +48,23 @@ decide whether this repository's files and tools are needed.
 The documentation checker depends only on the Python standard library.
 The minimum version is Python 3.11.
 
-## How to use it
+## Start from a new or existing project
+
+You can ask an agent:
+
+> Learn the applicable disciplines from template-project, then read the
+> onboarding entrypoint of the user memory I supply for collaboration
+> background and decision preferences. Inspect this project's current
+> instructions and work, resolve only unknowns that change the next action,
+> and continue the authorized task. Keep personal material private.
+
+The [collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration)
+works without copying this repository or requiring a personal memory. Supply
+the actual source locations to the agent; this template has no dependency on a
+particular user's profile, account, local path, or memory format. A request to
+learn practices does not by itself request a governance migration.
+
+## How to adopt the governance files and checks
 
 1. Read `docs/README.md` for the document authority order.
 2. Start a new project from this repository. For a running project, first do

@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-17
+last_reconciled: 2026-09-27
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -116,8 +116,25 @@ the human decision available where applicable.
 ### Advice preserves disagreement
 
 Recommendations state their evidence, assumptions, expected benefit, cost,
-alternatives, and limitations. A rejected recommendation remains evidence or
-history; it does not silently return as a mandatory rule. Agreement is held
+alternatives, and limitations. For a substantive claim that some next work is
+most valuable, show the real candidates considered, the strongest feasible
+alternative not chosen, and why
+it loses under the current purpose and constraints. Explain where the candidates
+came from and which plausible direction remains unexamined. Compare expected
+user value, reduction of a binding constraint or important uncertainty, reuse
+where relevant, whole-life cost, and cost of delay. Use evidence and reasons
+rather than a total score that hides decisive differences. Exploration stops
+when further search is unlikely to change the immediate choice or an authorized
+reversible step can answer the uncertainty more cheaply; retain that limit.
+Do not invent a weak second option or a claim of exhaustive coverage. A direct
+local fix needs no portfolio comparison.
+
+State this reasoning with the recommendation; in unattended work retain it for
+the next review or owner sync and revisit it when facts change. This comparison
+does not create a new approval gate or override the issuer's priorities.
+
+A rejected recommendation remains evidence or history; it does not silently
+return as a mandatory rule. Agreement is held
 to the same standard: a recommendation or plan is endorsed because its
 evidence was checked, not because agreeing is smoother — instant agreement
 without independent judgment is a failure mode, not alignment.
@@ -130,7 +147,7 @@ finding out, is acceptable; the conditions under which the problem does not
 matter; and what accepting the risk would assume. An option presented for
 decision carries the same fields plus its reversibility or switching cost.
 
-- from: source[2], source[7], source[10]
+- from: source[2], source[7], source[10], source[12]
 
 ### Exceptions are explicit, scoped, and reviewable
 
@@ -247,11 +264,39 @@ the decision-envelope invariant stay on their existing routes. If the decision s
 in one session, split it by user outcome or contract boundary rather than
 substituting an arbitrary question limit for unresolved branches.
 
+Use a coarse alignment state to decide what is needed next. These are
+conditions of understanding, not mandatory meetings, recorded status fields,
+or a sequence every task must traverse:
+
+| Current understanding | Next action | Ready to proceed when |
+|---|---|---|
+| The intended result is unclear | Read the request and relevant context; establish who benefits, in what situation, and what should change | There is a supported interpretation of the purpose |
+| An unknown could change the choice | Investigate checkable facts; bring only human-owned choices to the owner with a recommendation, alternatives, and consequences | The decisive information is known or can be learned within an authorized reversible step |
+| Purpose and boundaries are sufficient | Capture a proportionate brief in the existing task or behavior owner and proceed under current authorization | The next action has a meaningful result and evidence path |
+| Feedback changes an assumption | Reopen the affected interpretation or choice and continue unaffected work | The changed assumption has been reconciled |
+
+For an open-ended task, a useful brief identifies the problem and intended
+value, current state and available evidence or data, real constraints, material
+risks or assumptions, and what observable progress is sufficient now. Extract
+what is already available before asking. Preserve room to explore the product
+and implementation; settle UI, metrics, algorithms, or architecture only when
+the outcome or a real constraint requires it. A clear local fix needs no
+separate brief or interview.
+
+Examples help expose a mechanism and its applicability. Their number does not
+determine the requirement categories, document sections, or solution scope.
+Investigate the class of problem and relevant counterexamples, while preserving
+the authorized delivery boundary. If purpose or opportunity cost is material,
+explain the strongest alternative and what further investigation would change;
+learning, exploration, and creative experience can themselves be valid goals.
+Use an authorized bounded trial when it answers the remaining question better
+than another discussion. Do not invent a new approval between these states.
+
 An experiment does not authorize product behavior, production exposure,
 privileged access, or irreversible mutation. Its result may inform a later
 recommendation or contract, but cannot silently become either.
 
-- from: source[4], source[5], source[6], source[8]
+- from: source[4], source[5], source[6], source[8], source[11] (2026-09-25 task alignment and selective context)
 
 ## Required behaviors
 
@@ -419,7 +464,37 @@ externally visible action is a violation, and so is interrupting the owner to
 approve authorized, reversible, or read-only work. During alignment, instant
 agreement without independent judgment is a failure mode.
 
+### source[11] — 2026-09-25
+
+English paraphrase of the maintainer's request: generalize a coarse requirement
+alignment process that uses existing context, collects only information that
+changes the decision, and supports both new and existing projects. Examples
+identify a class of problem rather than an exhaustive list. The public scope
+is stated in [adoption source 10](project-adoption.md#source10--2026-09-25);
+personal background and preferences are not part of this source account.
+
+### source[12] — 2026-09-27
+
+Public interpretation of the maintainer's request: use leverage in choosing
+important work; explain the real candidates, the strongest alternative not
+chosen, and whether the search omitted more valuable directions. Avoid spending
+large effort on low-value detail while the important outcome remains unchanged.
+
+Context: authorized general-method refinement after observed autonomous use;
+private material is retained outside this public repository.
+
 ## Reconciliation log
+
+- **2026-09-27 — meaningful work comparison:** substantive priority claims
+  expose candidate coverage, the strongest alternative and decisive trade-off,
+  with a bounded search and no additional approval ritual.
+  - from: source[12]
+
+
+- **2026-09-25 — alignment follows missing understanding:** added coarse
+  conditions for investigation, human choice, action, and scoped realignment
+  within the existing uncertainty route. No new approval state is introduced.
+  - from: source[11] (2026-09-25 task alignment and selective context)
 
 - **2026-09-15 — standing charter as declared authorization:** the
   work-selection invariant now names a charter under

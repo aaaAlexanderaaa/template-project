@@ -2,8 +2,8 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-17
-projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md]
+last_reconciled: 2026-09-27
+projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
 # Project operation after onboarding
@@ -39,6 +39,8 @@ When priority is absent or ambiguous, present a bounded candidate set with:
 - risk and long-term cost;
 - dependencies and readiness;
 - expected benefit and evidence limits;
+- the strongest alternative not chosen and why it loses, with candidate sources
+  and important unexplored directions for substantive priority claims;
 - reversible options and required owner.
 
 Wait for human direction before non-trivial implementation unless an existing
@@ -82,6 +84,11 @@ Use the uncertainty route owned by [development § research-unknowns](../contrac
 - present a bounded option set when the human owner must decide product intent,
   a material trade-off, an expensive-to-reverse preference, authority, or risk
   acceptance.
+
+Follow the coarse alignment conditions in that governance owner: use existing
+context, resolve consequential unknowns, act when understanding is sufficient,
+and revisit only decisions affected by new evidence. The conditions do not
+require a new interview or approval for a clear task.
 
 #### Work a dependent decision frontier
 
@@ -143,8 +150,17 @@ internal checkpoints do not ask the user to approve phases. A bounded task may
 end when it is complete. Portfolio discovery applies only to an authorized
 ongoing assignment. When that assignment becomes a standing charter across
 unattended wakes, [autonomous operation](../contracts/autonomous-operation-discipline.md)
-owns the charter, epoch, role-identity, and calibration rules. Delegated work uses the existing plan or a bounded native
+owns work across wakes: retain the selected outcome and its baseline, carry
+meaningful work through recoverable checkpoints, and use independently
+dispatched fresh review of direction and value. Review deadlines and progress
+horizons survive task changes; the harness must demonstrate that an overdue
+review cannot be self-approved by its executor. The charter template names
+these controls and their evidence. Its periodic review remains necessary when
+individual tasks are low-risk or the backlog is full. Delegated work uses the existing plan or a bounded native
 assignment, and the parent verifies the integrated result before closure.
+Use [bounded delegation](../contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
+to select relevant preference reasons and original intent for the recipient
+while respecting the permitted audience of personal material.
 When the owner will be unavailable, shape the work to fit the authorized
 operation set and pre-name the decision points that must pause. Work that
 spends billed, rate-limited, or account-bound resources declares its volume

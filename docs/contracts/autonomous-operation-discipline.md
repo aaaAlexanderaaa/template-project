@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-17
+last_reconciled: 2026-09-27
 review_due: 2026-12-14
 supersedes: []
 ---
@@ -24,10 +24,12 @@ written artifacts, and a taste corpus, and its characteristic failures are
 direction drift, self-confirming judgment, and triggers deferred forever.
 
 Original request/source: source[1], with the alignment decisions in source[2]
-and source[3].
+and source[3], refined by source[6] after an actual autonomous-use failure.
 Accepted interpretation: an owner can hand an agent a bounded objective, leave,
 and return to a system that stayed inside its authorization, recorded what it
-did, and escalated what it could not decide.
+did, and escalated what it could not decide. It must also produce observable
+progress toward the original value, with independent challenge capable of
+rejecting a busy but unproductive direction.
 
 ## Scope
 
@@ -36,8 +38,8 @@ did, and escalated what it could not decide.
 - the standing charter as the vehicle of continuous authorization;
 - the epoch protocol: how one unattended wake orients, acts, verifies, and
   records;
-- the planner, executor, and reviewer identities and their separation when one
-  agent plays all three;
+- planning and execution continuity, with a separate fresh review context;
+- work selection by expected contribution and progress across multiple wakes;
 - representation and calibration of owner taste;
 - behavior when no authorized work is executable;
 - deferral control for triggers the agent evaluates itself;
@@ -45,7 +47,8 @@ did, and escalated what it could not decide.
 
 ### Out of scope
 
-- scheduling or orchestration machinery (cron, daemons, CI triggers);
+- implementation of scheduling machinery (cron, daemons, CI triggers);
+  the review dispatch and continuation behavior it must enforce is in scope;
 - per-task collaboration mode, which needs no charter;
 - risk classification, execution depth, and independence evidence within one
   change, owned by [agent execution](agent-execution-discipline.md);
@@ -95,7 +98,7 @@ did, and escalated what it could not decide.
 | `dormant` | No live charter, an expired charter, or no scheduled wake | Read-only diagnosis; preparing renewal material | A wake begins under a live charter | Expiry never self-renews; silence keeps the state dormant |
 | `orienting` | A wake begins under a live charter | Read the charter, current contracts, current state, and open questions; select the route | Route selected: execute, reflect, halt, or escalate | Charter ambiguity halts the affected scope |
 | `executing` | Authorized work selected | Implement and verify per [agent-execution § smallest-route](agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route) | Work verified and recorded, a stop condition reached, or the wake budget spent | A halt condition moves the scope to `halted` |
-| `reflecting` | No authorized executable work remains | Multi-perspective reflection that ends in a reflection artifact | Artifact recorded, including an explicit no-findings note | Reflection without an artifact is recorded as drift |
+| `reflecting` | Scheduled review is due, progress or quality raises doubt, or no worthwhile executable work remains | Fresh independent challenge of direction and results; bounded investigation | Findings addressed under the review rule, or a supported no-findings result | Further work depending on the questioned direction waits; unaffected authorized maintenance can continue |
 | `halted` | A halt condition, a repeated deferral, or charter ambiguity | Write the owner question; read-only preservation | An owner answer or charter renewal | Never self-resumes on silence |
 
 Invalid transitions: `dormant` to `executing` without `orienting`; `halted` to
@@ -108,7 +111,8 @@ expiry.
 
 No autonomous work begins or continues without a live charter. The base
 charter names the taste corpus location, forbidden zones, resource ceilings,
-sync cadence, and halt conditions; each objective charter names one high-level
+sync cadence, independently dispatched review cadence, limits on unreviewed
+work, and halt conditions; each objective charter names one high-level
 goal, its scope, its stop conditions, and an expiry date. Expiry downgrades
 the agent to `dormant` or read-only mechanically — by date, not by the agent's
 judgment that work remains. Renewal is an explicit owner act; silence is not
@@ -124,10 +128,17 @@ epoch begins by reading the charter, the applicable contracts, the recorded
 current state, and the open questions left by earlier epochs — not by trusting
 impressions. Plans are re-derived per epoch from the objective and current
 facts; a previous epoch's plan is input, not authority. Each epoch ends by
-recording what changed, what was verified, and what remains open. Work that
-was not recorded is treated as not done.
+recording the useful change or learning, its evidence, and what remains open.
+Execution evidence identifies the artifact version, check actually run,
+observed result and time, with a durable reference to the direct tool result
+or artifact. A model-written success summary cannot stand in for that result;
+missing execution remains unknown. After compressing or moving history, verify
+that the evidence needed for current claims is still retrievable.
+Keep active state concise at its existing owner; link history for investigation
+rather than copying the growing run log into every wake. A claimed change
+without a record needs reconstruction and verification before it is relied on.
 
-- from: source[1] (2026-09-15 autonomy design question)
+- from: source[1] (2026-09-15 autonomy design question), source[6]
 
 ### Trigger evaluation is recorded and deferral is counted
 
@@ -145,50 +156,136 @@ mode, not a scheduling choice.
 
 ### Roles are identities with loyalties, not pipeline stages
 
-The planner, executor, and reviewer are standing relationships to the same
-objective, defined by loyalty and prohibition. The planner is loyal to the
-objective's meaning — why the work exists and whether the direction still
-holds — and does not deliver. The executor is loyal to observed fact — what
-actually happened when the work ran — and never absorbs friction silently;
-it surfaces execution problems upward. The reviewer is loyal to the standard
-and the taste corpus, and never edits; editing would make it complicit in the
-output it judges. All three share the same contracts, evidence discipline,
-and taste corpus. A conflict between identities is a signal to escalate, not
-material to average into a compromise the charter did not authorize. An
-identity persists across epochs and accumulates a track record — planner
-direction calls, reviewer finding validity — which feeds calibration.
+Planning protects the objective's meaning and compares worthwhile directions.
+Execution implements the selected work and reports observed effects and
+friction. Review challenges whether the work deserves confidence, including
+its interpretation of the objective. Switching role names in an ongoing
+context does not make that judgment independent.
 
-- from: source[1] (2026-09-15 autonomy design question)
+The implementer owns integration and repair. A reviewer identifies consequential
+problems and the evidence that supports them; supplying an implementation plan
+is not a condition for a valid finding. Severity follows the effect on the
+owner's outcome and trust, including product value and taste, not only technical
+risk. A supported no-findings conclusion is valid; strictness never requires
+inventing faults or maximizing their count.
 
-### Role separation survives single-agent operation
+- from: source[1], source[6]
 
-One agent may hold all three identities, but never in one pass. The reviewer
-pass receives the governing contract and the evidence, not the executor's
-reasoning trace; [agent-execution § independence-evidence](agent-execution-discipline.md#independence-is-evidence-not-a-label)
-still governs, and high-risk work still requires its fresh-context review.
-Cadence is layered: the executor acts every wake; the planner acts at epoch
-boundaries and whenever direction is in doubt; the reviewer acts at
-milestones and on high-risk triggers. Running the full three-identity ritual
-on every trivial wake is ceremony, not discipline.
+### Direction review uses a fresh independently dispatched context
 
-- from: source[1] (2026-09-15 autonomy design question), source[2] (2026-09-15 alignment decisions)
+For standing autonomous work, a fresh agent that did not plan or produce the
+work reviews direction and value. Separate passes in the execution context
+cannot satisfy this requirement. The reviewer receives the original agreed
+high-level purpose, relevant accepted preferences and trade-offs, real
+boundaries, baseline and current artifacts, and access to needed evidence.
+Private context follows the existing audience boundary. It receives an open
+question about what matters and what is missing, with freedom to inspect beyond
+the changed items, reject the selected work, and identify overlooked directions.
+Do not narrow this assignment to a defect list, approved answer, or optimization
+recipe. Record its first judgment before showing the executor's rationale;
+then allow factual clarification without replacing the original finding.
 
-### Reviewer findings are answered in writing
+The charter names a finite review interval, a bound on work or exposure before
+review, and the dispatch mechanism and its owner. The harness checks these
+before assigning more work, including when the backlog remains full. Neither
+a favorable executor report nor a new task resets the deadline. Material
+changes in assumptions, repeated corrections, loss of credible progress, and
+project-defined signs of degraded judgment bring review forward. Unexplained
+internal language may be such a signal: investigate the current assumptions
+and outputs instead of only substituting words. A vocabulary or punctuation
+check cannot establish sound judgment.
 
-A high-risk finding blocks the affected path until resolved or waived by the
-owner. Every other finding requires the executor's written response — accept,
-or rebut with the recorded basis — because silently absorbed feedback is
-feedback lost. A role conflict that cannot be resolved under the charter goes
-to the owner at the next sync, or immediately when it is high-risk. The
-reviewer's loyalty is to the standard, so planner urgency never overrules a
-finding on its own.
+Before enabling unattended expansion, exercise this dispatch once: retain the
+reviewer's context identity, supplied inputs, artifact version, due/observed
+review time, and returned findings. Demonstrate that a due but unavailable
+review cannot be cleared by the executor's own approval. Persist that state
+through task changes and restarts using harness-owned scheduling or review
+records outside the executor's unilateral control. A Markdown reminder alone
+is not operational enforcement. If the environment cannot supply this
+separation, report the limit and keep affected expansion paused, unless the
+owner grants a scoped exception. Review availability cannot reduce the required
+evidence. Routine authorized repair outside the questioned scope may continue.
+High-risk changes retain their additional independent design requirements.
 
-- from: source[2] (2026-09-15 alignment decisions)
+- from: source[2], source[6]
+
+### Reviewer findings are answered and independently closed
+
+A finding that undermines the intended value or confidence in the current work
+pauses further work relying on the challenged assumption while it is resolved.
+A high-risk finding also blocks its affected path under the existing risk rules.
+Preserve the finding and respond with a correction, evidence-backed rebuttal,
+or a precise unresolved owner decision. The implementer cannot close a
+consequential finding using its own verdict, passing mechanical checks, or a
+claim that the criticized convention is already familiar internally.
+
+The reviewer or another fresh qualified context checks the response against
+the finding and actual artifacts. An owner settles unresolved preference,
+direction, or risk-acceptance choices. Keep contradictory evidence visible;
+do not repeatedly replace reviewers until one approves. If repeated reviews
+agree while real use or owner feedback keeps disagreeing, revisit their shared
+brief, evidence, method, and capability before commissioning another identical
+pass. Continue unaffected authorized work. Review is execution work, not a new
+human approval gate for every correction. A formal `halted` state still follows
+its owner-answer recovery rule.
+
+- from: source[2], source[6]
+
+### Work selection compares value before committing effort
+
+Within the issuer's priorities and delegated selection criteria, use
+[governance's recommendation rule](governance-decision-boundary.md#advice-preserves-disagreement)
+to compare substantive candidates and explain the strongest alternative not
+chosen. Work outside that envelope remains a recommendation for the owner.
+Include unfinished important outcomes and plausible changes to the approach;
+small, easy, well-sourced or easily counted tasks cannot define the candidate
+set on their own. Enabling work is valuable when evidence connects it to a
+useful result or a consequential uncertainty it will resolve.
+
+Do not restart this comparison for every mechanical step. Retain the choice,
+its decisive assumption, and the observation that would justify switching.
+Reopen it when evidence changes the ranking or at the next direction review.
+A mandatory repair justifies urgency by the failure it prevents or the work it
+actually unblocks; the word "maintenance" is not a blanket priority.
+
+- from: source[6]
+
+### A sequence of wakes advances a coherent outcome
+
+A wake's budget bounds exposure; it does not bound the ambition to an easy task
+that fits one wake. Carry a worthwhile effort across wakes using a recoverable
+checkpoint: the outcome and selection reason, observed baseline, completed
+useful change or learning, next step and dependencies, accepted limitations,
+and evidence that would change the approach. Keep this at the existing task
+owner, with links to decisions and artifacts, separate from the issuer-only
+charter. The executor updates this state within the delegated criteria; a state
+update cannot amend authorization or reset due review. Finish coherent work before
+switching to a fresh easy task unless new evidence warrants the switch.
+
+At selection time, name what progress should become observable by the next
+review and how much time or resource can be spent learning before re-evaluation.
+The horizon follows the work: research may resolve a critical uncertainty
+before it changes a product. Do not require a commit or feature on every wake.
+Review compares the baseline and current result, remaining distance to the
+purpose, resource use, and owner intervention, across the whole interval.
+Checks passed, entries produced, issues closed, and self-predicted next tasks
+are activity evidence; none substitutes for that comparison.
+
+If the expected result or learning has not appeared by the agreed horizon,
+record the absent evidence and obtain the fresh review before repeating the
+same approach or enlarging its budget. That review can support continuation
+with a revised evidence horizon inside the existing charter, a different
+approach, a bounded experiment, or a stop. Finishing a batch does not reset the
+missing progress. Preserve negative results and rejected approaches so later
+wakes do not rediscover them. Workflow prediction is separate from predicting
+owner choices; only actual owner responses calibrate the latter.
+
+- from: source[6]
 
 ### Idle produces reflection artifacts or rest, never busywork
 
 When no authorized executable work remains, dormancy is a legitimate epoch
-outcome, not a failure. The alternative is a reflection pass, never
+outcome, not a failure. The alternative is the fresh review defined above, never
 manufactured activity: re-examine the objective against the current state,
 re-open historical trade-offs and test whether their assumptions still hold
 so past decisions stay re-examinable rather than fossilized, walk the product
@@ -203,17 +300,58 @@ linkage is drift and is recorded as such.
 ### Taste lives in a corpus; the model is a hypothesis
 
 The taste corpus — the owner's corrections and decisions — is the highest
-authority on preference, outranking any text derived from it, including this
-discipline's own summaries. The taste model is a hypothesis and is labeled as
-one wherever it is used. Before each sync, the agent records its predictions
-of pending owner decisions; the calibration ritual compares predictions with
-the owner's actual answers, and the corpus absorbs every correction. The
-per-epoch override rate is the primary health metric of autonomous operation.
-A rising override rate, or a conflict between corpus and model, is a
-top-priority escalation and shrinks autonomous scope until calibration. The
-owner may carve taste-dense domains out of the charter entirely.
+authority on preference, outranking derived summaries. Retain each decision's
+date, context, and scope; a choice for one brief does not automatically become
+a universal preference. The taste model is a hypothesis and is labeled as such
+wherever used. Before each sync, record predictions of pending owner decisions
+and the assumptions behind them. Compare them with actual answers and retain
+corrections without rewriting the original prediction. Silence is not agreement.
 
-- from: source[1] (2026-09-15 autonomy design question), source[2] (2026-09-15 alignment decisions)
+Apply the [personal-context boundary](project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
+to the corpus, derived model, and prediction records. Keep them within their
+permitted audience. Public charters use references that reveal no private
+content or location; resolve private sources through approved private context or a persistent locator.
+Public records contain only project-relevant decisions authorized for that
+repository's readers.
+
+A correction is evidence to explain. Compare what the owner said, what context
+was available at the decision, what was inferred, and what the agent did. The
+following examples call for different responses and may coexist:
+
+| Supported cause | Response |
+|---|---|
+| An applicable, established requirement was misunderstood or ignored | Correct the affected interpretation or execution and the input, example, or guard that allowed recurrence; verify before repeating the affected decision |
+| Necessary context was missing, stale, or never loaded | Repair its retrieval or handoff at the decision point and revisit dependent choices |
+| The owner changed the goal or constraint | Date and reconcile the change at its owner; record whether the earlier choice fit the earlier conditions |
+| An authorized exploration revealed an unexpressed preference | Preserve the alternative, reaction, and applicable scope as new evidence; update the hypothesis without inventing a prior requirement |
+
+These are causal explanations supported by records. Calling an action an
+exploration does not excuse violating known requirements or exceeding its
+permission. If the cause is uncertain, retain that uncertainty and investigate.
+
+Review correction patterns at sync alongside progress toward the objective,
+observed quality, and the owner's intervention cost. If reporting an override
+rate, show corrected and reviewed decision counts, decision types, and the
+period; unreviewed decisions do not count as agreement. A small or changing
+sample cannot establish a trend. Agreement rate alone is not a health score,
+and avoiding useful authorized exploration merely to lower it defeats the
+objective.
+
+Investigate a rising rate or a corpus-model conflict at the next orientation;
+do not defer this signal indefinitely. Apply known owner decisions immediately
+within their scope. If unresolved interpretation or repeated failure could
+cause another material error, pause those affected decisions and seek early
+calibration through the charter's channel. Continue unaffected authorized work.
+A local pause under this rule does not itself enter `halted`. Resume those
+decisions when the cause is resolved and verified within the current charter,
+or after the owner settles the outstanding decision. If a charter halt condition,
+repeated deferral, or charter ambiguity triggers `halted`, the state table's
+owner-answer requirement governs recovery; internal repair cannot release it.
+A numeric increase alone neither changes the charter nor requires blanket
+scope reduction. The owner may exclude taste-dense domains from autonomy
+entirely.
+
+- from: source[1] (2026-09-15 autonomy design question), source[2] (2026-09-15 alignment decisions), source[4] (2026-09-25 cause-based calibration), source[5] (2026-09-26 review clarifications)
 
 ### The discipline evolves by ratified proposal
 
@@ -241,6 +379,10 @@ not an invitation.
   executor's written response.
 - Predictions of pending owner decisions are written before each sync and
   compared at the calibration ritual.
+- Scheduled direction review runs even with executable work remaining; the
+  harness retains due state and cannot accept executor self-approval.
+- Each multi-wake effort retains its baseline, reason for selection, strongest
+  alternative, progress horizon, and recoverable next step at its existing owner.
 - Every reflection pass ends in a reflection artifact.
 - Charter and discipline amendments arrive at a sync as proposals with their
   motivating evidence.
@@ -262,6 +404,8 @@ not an invitation.
 - Do not average a role conflict into a compromise the charter did not
   authorize.
 - Do not treat a previous epoch's plan as authority.
+- Do not count workflow prediction as owner-preference calibration, or reset a
+  progress/review deadline by changing tasks, compressing logs, or restarting.
 - Do not repair an out-of-charter action silently; stop, record, restore what
   is reversible, and report.
 
@@ -273,8 +417,10 @@ not an invitation.
   options; resume only on an owner answer.
 - Second consecutive deferral of a trigger: escalate at the earliest contact
   channel the base charter names; the affected scope pauses.
-- Rising override rate or corpus-model conflict: request calibration early
-  and shrink autonomous scope to lower-risk routes until it happens.
+- Rising correction rate or corpus-model conflict: investigate under
+  [preference calibration](#taste-lives-in-a-corpus-the-model-is-a-hypothesis).
+  Pause affected decisions when unresolved interpretation or recurring failure
+  risks another material error; continue unaffected authorized work.
 - Discovered out-of-charter action: stop the affected scope, record, restore
   what is reversible, and report at the earliest channel.
 - Lost or corrupt epoch records: reconstruct from artifacts; claimed work
@@ -282,7 +428,7 @@ not an invitation.
 
 ## Acceptance evidence
 
-This contract is implemented when:
+Repository integration is present when:
 
 - agent and contributor entrypoints route standing autonomous work to this
   contract;
@@ -290,6 +436,19 @@ This contract is implemented when:
   authorization form;
 - the documentation checker and fixture suite pass with the contract in
   place.
+
+Operational adoption additionally demonstrates independently dispatched review,
+a due-review failure that prevents affected expansion, a consequential finding
+resolved with fresh verification, and a multi-wake outcome or useful negative
+result compared with its baseline. Records distinguish reported behavior from
+observed dispatch and artifacts. A record of activity is not proof of value.
+This template contains no scheduler implementation; an adopting harness must
+provide and exercise these controls before claiming enforced autonomy.
+
+The [2026-09-27 delivery review](../evidence/2026-09-27-autonomous-progress-review.md)
+records the historical challenge, independent rule review, correction recheck
+and structural verification for these additions. None is a multi-epoch runtime
+test of the new controls.
 
 Verified on 2026-09-15:
 
@@ -367,7 +526,62 @@ account contains the decision scope; the original conversation is not supplied.
 Context: the maintainer's corrections to the idle-behavior and charter-expiry
 choices in the same alignment round.
 
+### source[4] — 2026-09-25
+
+English account of the accepted proposal: distinguish repeated misunderstanding,
+missing context, changed goals, and discovery through authorized exploration
+when responding to corrections. Treat correction frequency as a signal for
+investigation, not the main measure of autonomy or an automatic reason for
+blanket scope reduction. The maintainer explicitly authorized implementing this
+proposal. Existing charter authority, halt conditions, and deferral controls
+remain in force; no live charter is amended by this template change.
+
+### source[5] — 2026-09-26
+
+The maintainer requested a fresh independent review with a named model. The
+review identified ambiguous recovery wording between a local preference pause
+and the existing `halted` state, and a missing privacy route where charter
+fields invite references to personal source material. These are reading-based
+findings, recorded with their limits in the [review evidence](../evidence/2026-09-26-design-and-onboarding-review.md).
+The corrections clarify existing state authority and apply the adoption
+contract's personal-context boundary at the point of use.
+
+### source[6] — 2026-09-27
+
+Public interpretation of the maintainer's authorized refinement after actual
+autonomous use: challenge direction in a genuinely fresh agent context using
+the agreed high-level goal and an open review assignment; identify consequential
+quality failures without requiring an optimization plan; compare the chosen
+work with its strongest alternative and inspect candidate coverage; preserve
+meaningful progress across a long-running loop.
+
+Context: this request authorizes the general discipline changes. Private case
+records and personal preferences remain outside this public repository. The
+review dispatch, progress horizons and independent closure are implementation
+choices to make the requested separation effective, not measured guarantees.
+
 ## Reconciliation log
+
+- **2026-09-27 — direction and value across autonomous wakes:** replaced the
+  single-context reviewer allowance with independently dispatched fresh review;
+  added candidate comparison, progress horizons and independent closure.
+  Operational enforcement belongs to the adopting harness and requires observed
+  evidence; multi-epoch effectiveness remains partial.
+  - from: source[6]
+
+
+- **2026-09-26 — independent review reconciled:** distinguished a local pause
+  from formal `halted` recovery and routed corpus, model, and prediction records
+  through the existing personal-context boundary. Charter fields now carry
+  the permitted audience and safe source reference.
+  - from: source[5]
+
+- **2026-09-26 — corrections interpreted by cause:** replaced override-rate
+  optimization and automatic blanket narrowing with evidence-based responses
+  and containment of affected decisions. Reconciled recovery instructions and
+  the charter template. [Evidence](../evidence/2026-09-26-design-and-onboarding-review.md)
+  records review limits; multi-epoch effectiveness remains unverified.
+  - from: source[4]
 
 - **2026-09-15 — contract created from the alignment round:** records the
   agreed positions on taste representation, discipline evolution, role

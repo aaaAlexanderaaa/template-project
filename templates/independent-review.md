@@ -16,7 +16,13 @@ subject: {{initiative-or-contract}}
 - Independence basis: {{why this context did not produce the proposal}}
 - Independence required and achieved: {{yes/no with reason}}
 
-Same-context role-play must be labeled non-independent.
+Same-context role-play must be labeled non-independent. For standing autonomy,
+use the [fresh direction-review requirements](../docs/contracts/autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context):
+record dispatch, supplied context, artifact version and whether the due review
+actually ran. Its open assignment may challenge the interpretation, work selection
+or entire direction; the headings below do not bound what it may discover.
+Capture the first judgment before supplying the executor's rationale. A valid
+finding names the important problem and evidence; it need not design the repair.
 
 ## Inputs
 
@@ -73,4 +79,5 @@ normative contracts own the boundary being reviewed.
 `{{PASS / FAIL / BLOCKED / PARTIAL}}`
 
 - Required follow-up: {{action or none}}
+- Consequential finding closure: {{fresh verifier and evidence, or issuer decision}}
 - Evidence/issue links: `{{paths}}`

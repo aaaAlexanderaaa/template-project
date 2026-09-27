@@ -2,17 +2,18 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-17
-projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md]
+last_reconciled: 2026-09-27
+projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
 # AI-guided project onboarding
 
 ## Purpose
 
-Adopt this repository's governance in a greenfield or running project without
-mistaking template content for project truth, overwriting existing authority,
-or turning onboarding into an unbounded cleanup program.
+Learn applicable practices and begin collaboration in a new or running
+project. When governance adoption is requested, carry out a bounded migration
+that preserves existing authority. Separately supplied personal context can
+inform decisions without becoming public project content.
 
 The normative behavior is defined by the
 [project adoption contract](../contracts/project-adoption.md) and the
@@ -20,8 +21,9 @@ The normative behavior is defined by the
 
 ## Preconditions
 
-- An adopting human owner is available to confirm scope, profile, priority
-  authority, and risk acceptance.
+- The task's current authorization is known. In a formal migration, unresolved
+  scope, profile, priority authority, or risk acceptance needs its human owner;
+  an existing instruction may already settle those choices.
 - The AI or contributor has read-only access to the target repository and its
   existing project-control sources.
 - Active incidents, releases, migrations, and destructive operations are known
@@ -29,6 +31,52 @@ The normative behavior is defined by the
 - Existing changes and local instructions will be preserved.
 
 ## Procedure
+
+### Start collaborating without a migration
+
+For a request to learn the discipline and use supplied personal context,
+follow [the bounded entry path](../contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path):
+
+1. Read the source template's working agreement and transfer-value order.
+   Inspect the target's own entrypoint, current work, and boundaries relevant
+   to the task. An existing project keeps its current owners; an empty one
+   supplies no facts merely by resembling this template.
+2. If personal context was supplied, read its onboarding entrypoint. Use its
+   collaboration background and decision preferences where they matter;
+   follow its reading conditions for deeper material. Keep it at its supplied
+   private location. If unavailable, state the missing source and continue
+   work that does not depend on it.
+3. Use [the alignment route](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
+   to investigate facts and resolve only choices that change the outcome.
+   Preserve useful design freedom in an open-ended brief. For a clear task,
+   proceed directly within existing authorization.
+4. Carry relevant decisions and reasons into an assignment under
+   [bounded delegation](../contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner).
+   Retain session state or an existing private locator for later use; do not
+   commit a profile or its private path to create a permanent startup hook.
+
+Onboarding is sufficient when the agent can explain the current outcome,
+applicable authority, material preferences or unknowns, and the next action.
+Give a concise account of consequential choices or conflicts; no adoption
+report, policy manifest, interview, or migration is needed for learning alone.
+Continue the task already requested. If the request was only to onboard,
+report readiness and material unresolved items without inventing product work.
+
+For example, an existing service with established architecture and a known
+local defect keeps those commitments and receives the bounded fix. A new
+product with an unclear audience first resolves that choice because it changes
+the design. A worker checking a parser needs its input/output and failure
+contract; a reviewer judging a product experience also needs the original user
+goal and the relevant accepted trade-offs.
+
+For explicitly authorized standing autonomy, also read the
+[autonomous operation contract](../contracts/autonomous-operation-discipline.md).
+Before unattended expansion, exercise independent review dispatch and its
+unavailable-review behavior in the actual harness. Merely loading these files
+does not supply a scheduler, a fresh context, or enforced review due state.
+
+The steps below apply when the user requests formal adoption or enforcement
+changes. They are not prerequisites for the learning route above.
 
 ### 1. Orient by transfer value
 
@@ -175,6 +223,24 @@ authorized through its implementation and verification. Internal checkpoints
 do not require repeating that confirmation.
 
 ## Verification
+
+For learning and personal-context onboarding, verify the relevant source was
+actually read, the target's authority was preserved, private material stayed
+within its permitted audience, and the next action follows the agreed task.
+Check a material preference against its source and context when relying on it;
+mere agreement with a generated summary is not corroboration.
+
+To test whether this route helps actual work, give a fresh agent a bounded
+real task, the target's entrypoint, and the supplied sources without the
+implementer's conversation. Observe the inputs it actually reads, what it
+does, and where it needs help. Inspect the resulting artifact or action against
+the original task. If it misreads intent or stalls, trace the failure to the
+source, example, or missing context at that decision point and repair that
+owner. Record the case and its limits; a hypothetical walkthrough or successful
+link check does not establish real adoption. This can use the next authorized
+task and creates no separate approval or universal benchmark gate.
+
+For formal governance adoption:
 
 - The assessment names evidence for every current-state claim.
 - The adopting human confirmed profile, scope, priority authority, and stage.

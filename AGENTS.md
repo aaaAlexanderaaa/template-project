@@ -27,6 +27,8 @@ Investigate facts before asking the user. Choose the
 and include an active plan only when that route requires one. Read methods when
 activated and history when a dispute, provenance question, or recovery needs it;
 do not recursively load every link. These facts stay at their existing owners.
+For a request to learn this template and load separately supplied personal
+context, start with [the collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration).
 Read `docs-policy.toml` before reporting a governance gap; its declared scope
 and profile determine enforcement.
 
@@ -71,7 +73,7 @@ owns concern triggers. Read its applicable owner before changing the boundary.
 | Producer and consumer together | Development's [cross-stack rules](docs/contracts/development-discipline.md#cross-stack-coordination) |
 | Time/calendar or operator-visible demo data | Applicable sections of [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
 | Concurrent agents or delegated work | [Written coordination](docs/contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing) and [bounded delegation](docs/contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner) |
-| Standing autonomous work under a charter | [Autonomous operation discipline](docs/contracts/autonomous-operation-discipline.md) |
+| Standing autonomous work under a charter | [Autonomous operation discipline](docs/contracts/autonomous-operation-discipline.md): independent direction review, work selection and progress across wakes |
 | Adoption into another project | [Project adoption](docs/contracts/project-adoption.md) and [onboarding](docs/guides/onboarding.md) before rewriting authority or enabling gates |
 
 ## Verify and close

@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-09-17
+last_reconciled: 2026-09-25
 ---
 
 # Documentation authority map
@@ -40,6 +40,14 @@ recursive reading. Expand context for a dependency, conflict, missing fact, or
 activated concern, and read the whole owner when section-level reading leaves
 its scope or interactions unclear. Short context never waives an applicable
 constraint, exception, or original requirement.
+
+When separately supplied personal context is relevant, read its onboarding
+entrypoint for collaboration background, decision preferences, and deeper
+reading conditions. Apply [the adoption boundary](contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
+before transferring any material. The [alignment route](contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
+decides which unknowns require conversation; the [delegation owner](contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
+decides what a recipient needs. A private profile does not join every worker's
+startup context or replace the target project's current authority.
 
 Source anchors and reconciliation history explain provenance; read them when
 intent is disputed, a prior decision needs investigation, or recovery needs

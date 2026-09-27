@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-17
+last_reconciled: 2026-09-27
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -151,6 +151,11 @@ the high-risk outcome, and adds no review obligation when absent.
 The implementer cannot manufacture independence by writing several sections in
 the same context. Review records identify the verifier context, inputs,
 limitations, and whether independence was required and achieved.
+
+Standing autonomous work additionally follows
+[direction review](autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context),
+including its cadence and independent closure; this applies to accumulated
+direction and value even when individual changes are not high-risk.
 
 Completion reviewers also receive the original request/source, accepted
 interpretation, and observed results. They check for lost user intent as well
@@ -328,6 +333,25 @@ may carry this in the native invocation; ongoing or concurrent writes use the
 existing plan or handoff. Do not create a second task registry for compliance.
 Unknown context inheritance is not evidence that a worker received a rule.
 
+Select context by the judgment the recipient must make. The agent talking
+with the owner may need collaboration background and detailed preference
+evidence. A scheduled task, recurring loop, or worker usually needs the
+agreed outcome, current state, constraints, relevant decisions and their
+reasons, and completion evidence. A designer or independent evaluator may
+need richer original intent. Use [the task-context rule](../README.md#task-context)
+to expand reading when a dependency, ambiguity, or conflict requires it.
+
+Carry consequential source statements or an audience-appropriate account,
+label assumptions, and name how to obtain missing context. Do not give a
+reviewer only the implementer's interpretation. Check the receiving context
+where the runtime makes that possible; if a worker inherits the full session,
+do not claim it received a reduced or independent context. Receiving private
+material requires the owner's authorization for that audience under
+[adoption's personal-context boundary](project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path).
+Persist the state needed to resume work at its existing owner rather than
+relying on a worker's implied memory. The harness may automate routing and
+state delivery; files and explicit assignments remain a usable fallback.
+
 Workers return changed artifacts or observations, baseline/revision identity,
 checks actually run, unresolved assumptions, and remaining work. The parent
 checks stale baselines and conflicts, integrates the result, and verifies the
@@ -342,7 +366,7 @@ over an approval-requiring step when it serves the same purpose. When
 delegated work fails, first suspect the assignment's context, contracts, and
 descriptions — not the worker.
 
-- from: source[5], source[6], source[8]
+- from: source[5], source[6], source[8], source[9] (2026-09-25 context selected for recipient judgment)
 
 ## Required records
 
@@ -512,7 +536,27 @@ into it; a retry never replays a completed effect; concurrency follows
 upstream quota and task shape; and when the owner is unavailable, work is
 shaped to fit the authorized operation set with pre-named pause points.
 
+### source[9] — 2026-09-25
+
+English paraphrase of the maintainer's request: publish the general method of
+loading context according to the recipient's work. Direct collaboration may
+need a fuller understanding of the owner; delegated, recurring, and scheduled
+work should receive what its decisions require. The public/private boundary is
+recorded in [adoption source 10](project-adoption.md#source10--2026-09-25).
+
 ## Reconciliation log
+
+- **2026-09-27 — standing autonomy review route:** linked the autonomous
+  operation owner's independently dispatched direction review, including
+  cadence and finding closure for low-risk individual work in a long loop.
+  The [delivery record](../evidence/2026-09-27-autonomous-progress-review.md)
+  distinguishes rule review from runtime enforcement.
+
+- **2026-09-25 — recipient-specific context:** extended bounded assignments
+  with relevant preference reasons, original intent, visibility, context
+  inheritance checks, and resumable state. Existing independence obligations
+  and authorization remain unchanged.
+  - from: source[9] (2026-09-25 context selected for recipient judgment)
 
 - **2026-09-15 — standing authorization routed:** the work-selection invariant
   now names `autonomous-operation-discipline.md` as the owner of the standing

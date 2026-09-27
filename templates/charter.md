@@ -37,13 +37,27 @@ Project-wide; filled once per project.
 
 ### Taste corpus and calibration
 
-- Taste corpus (the issuer's corrections and decisions) lives at: {{path}}
-- The agent's derivative taste model lives at: {{path}}, labeled as a
-  hypothesis wherever used
+- Taste corpus (the issuer's corrections and decisions): {{reference}}
+- The agent's derivative taste model: {{reference}}, labeled as a hypothesis
+  wherever used
 - Predictions of pending issuer decisions are recorded before each sync at:
-  {{path}}
-- The per-epoch override rate is reviewed at every sync; a rising rate shrinks
-  autonomous scope until calibration
+  {{reference}}
+- Permitted audience and use of these sources: {{who may read and write them}}
+
+Use references safe for this document's audience under the [personal-context
+boundary](../docs/contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path).
+Resolve private locations through approved private context or a persistent locator. Public charters
+contain neither private paths nor raw personal material; only project-relevant
+decisions authorized for their readers enter public records.
+
+- At sync, review corrections and their causes alongside objective progress,
+  result quality, and owner intervention cost under [preference calibration](../docs/contracts/autonomous-operation-discipline.md#taste-lives-in-a-corpus-the-model-is-a-hypothesis).
+  Workflow forecasts remain separate; only actual issuer decisions calibrate
+  preference predictions. A rising correction rate prompts investigation; pause affected decisions
+  when unresolved interpretation or repeated failure risks another material
+  error. Continue unaffected work within this charter. This local pause does
+  not release a formal `halted` state, which retains its owner-answer recovery
+  requirement.
 - Taste-dense domains excluded from autonomy entirely: {{domains or "none"}}
 
 ### Forbidden zones and resource ceilings
@@ -64,9 +78,22 @@ One per objective; copy this section when adding an objective.
 
 ### Goal and scope
 
-- Objective: {{high-level goal}}
+- Objective: {{high-level goal and the value it should create}}
+- Delegated work-selection criteria within the issuer's priorities: {{criteria}}
+- Active checkpoint and durable evidence owner: {{existing task/state location}}
+- Execution-state update authority: {{who may update that record within the
+  delegated criteria and ceilings}}
 - In scope: {{boundaries}}
 - Out of scope: {{exclusions}}
+
+Keep changing execution state at that checkpoint, outside this issuer-only
+authorization: selected effort and baseline, strongest alternative and why it
+loses, significant candidate gaps, expected result or learning by review, next
+step, and evidence. The executor may revise its approach within this charter;
+updates do not amend the goal, priorities, ceilings, expiry, or review bounds.
+A missed progress horizon needs fresh review before the same approach continues
+or its budget grows. Preserve the original horizon and review decision rather
+than silently resetting it in the checkpoint.
 
 ### Stop conditions and expiry
 
@@ -90,8 +117,20 @@ One per objective; copy this section when adding an objective.
 ## Role and review triggers
 
 - Planner pass: at epoch boundaries and whenever direction is in doubt.
-- Reviewer pass — given the governing contract and evidence, never the
-  executor's reasoning trace — fires at: {{milestones or triggers}}
+- Fresh direction reviewer: {{separate context, inputs and access; who dispatches it}}
+- Maximum review interval and limit on unreviewed work/exposure: {{finite bounds}}
+- Dispatch and due-state owner outside executor self-approval: {{harness mechanism}}
+- Bring review forward on: {{consequential new assumptions, repeated corrections,
+  missing progress, or project-specific signs that judgment is degrading}}
+- Review asks openly whether actual results serve the agreed high-level purpose,
+  what important problems or alternatives have been missed, and what would change
+  that judgment. Give the original intent, relevant accepted taste and trade-offs,
+  baseline and artifacts; record first findings before supplying execution rationale.
+- A due review waits for a real fresh context; affected expansion pauses until
+  reviewed or explicitly excepted by the issuer. Unaffected maintenance can continue.
+- Consequential findings are resolved with fresh verification or an issuer decision.
+- Before unattended expansion: {{evidence that fresh dispatch works and a missing
+  reviewer cannot be replaced by executor approval, including after restart}}
 - High-risk here means: {{local high-risk definition}}; it additionally
   requires fresh-context independent review per
   [agent execution](../docs/contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label).
