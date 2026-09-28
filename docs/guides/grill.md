@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-27
+last_reconciled: 2026-09-28
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 

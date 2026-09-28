@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-27
+last_reconciled: 2026-09-28
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -89,6 +89,18 @@ Follow the coarse alignment conditions in that governance owner: use existing
 context, resolve consequential unknowns, act when understanding is sufficient,
 and revisit only decisions affected by new evidence. The conditions do not
 require a new interview or approval for a clear task.
+
+#### Select an inquiry method when needed
+
+Use [research](research.md) when the question needs exploration, comparison,
+or assessment of consequential evidence. Use [information access](information-access.md)
+when obtaining a source is difficult, recurring, or sensitive to what the tool
+can observe. A simple lookup stays direct. These guides provide on-demand
+procedures and separate invocations without requiring separate agents.
+The task owner retains the original purpose, resource envelope, integration,
+and final claims; a worker receives the relevant context under existing
+delegation rules. Reusable access experience stays at its permitted owner,
+with a locator available to the next matching task.
 
 #### Invoke a focused Grill review
 

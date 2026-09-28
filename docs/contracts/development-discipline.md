@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-26
+last_reconciled: 2026-09-28
 supersedes: []
 ---
 
@@ -373,7 +373,40 @@ effect instead of inventing a plausible answer. Research is still bounded by
 the request's permissions, privacy boundary, and activated security or cost
 concerns.
 
-- from: source[3], source[10]
+For exploratory, comparative, disputed, or consequential multi-claim inquiry,
+select observations that could distinguish plausible explanations, uncover
+important omissions, or independently reduce uncertainty. Expand beyond the
+initial query through relevant entities, references, data, viewpoints, and
+history. Choose breadth for the question; a fixed source, platform, query, or
+perspective count cannot establish coverage. A direct factual lookup can remain
+direct. The [research method](../guides/research.md) explains this route.
+
+Keep observations, provisional interpretations, and final claims distinguishable.
+For decisive evidence, preserve its origin, relevant date and context, actual
+reading or measurement scope, and important limitations through the existing
+evidence chain. Assess independence for the claim: different documents may
+repeat one observation, while one source may contain several measurements.
+Citation count and topical variety alone do not establish independent support.
+
+Provisional synthesis may guide investigation and new evidence may change the
+question. Before delivering the main synthesis, check the decisive claims,
+relevant alternative explanations and contradictory evidence, and important
+unexplored directions against the promised scope. Checking that a citation
+exists cannot substitute for checking the assertion or inference it supports.
+Preserve unresolved disagreement without assigning equal weight to unsupported
+positions. State the actual stopping basis: resolution, bounded diminishing
+returns, inaccessible evidence, or exhausted budget. Repetition within one
+search path or budget exhaustion does not establish comprehensive coverage.
+Narrow unsupported claims or expose the gap; fluency is not a substitute.
+
+Assess progress by useful evidence and resolved or newly identified important
+questions, not generated prose or self-awarded information-gain scores. Match
+delivery to the reader's purpose; an annotated reference, evidence comparison,
+or precise unknown may serve better than rewriting existing material. Use the
+existing task record proportionately; this rule requires no separate ledger
+for every question and grants no new delegation or resource authority.
+
+- from: source[3], source[10], source[14]
 
 ### Tool failure triggers capability-preserving fallback
 
@@ -391,7 +424,32 @@ claim. If no permitted fallback can preserve a required capability, report the
 attempts, exact missing capability, affected claim, and recovery options; only
 then may the condition enter the blocker routing owned by [governance § narrow-blockers](governance-decision-boundary.md#blockers-are-narrow-and-evidence-backed).
 
-- from: source[3]
+Successful output also has limits: establish that the method can observe the
+property being claimed. Incomplete extraction, inaccessible content, and
+evidence of absence are different states. A substitute that provides weaker
+evidence can support an explicitly narrower result; it cannot silently satisfy
+the original stronger claim. The [information-access method](../guides/information-access.md)
+explains source retrieval and observation limits, including outside research.
+
+Before repeating costly or recurring access exploration, retrieve applicable
+method knowledge from its existing permitted owner. Preserve reusable success
+or failure evidence with the source and capability, relevant conditions,
+procedure or attempts, observed result and date, limitations, and revalidation
+conditions. Keep it findable at the next matching decision, not only in an old
+conversation. Use an existing guide, task handoff, or tool-local store; do not
+create another registry or record every transient failure. Private account and
+machine details remain within their permitted audience.
+
+Revalidate against current conditions: a past failure is not a permanent
+blacklist, and a working access method does not establish fresh source data.
+Compare further attempts with the question's value and remaining authorized
+budget under [resource spending](agent-execution-discipline.md#billed-rate-limited-and-account-bound-resources-are-spent-deliberately).
+Changing tool, worker, or session does not reset accumulated effort. Continue
+when changed conditions or an alternative justify it; stop blind repetition
+and report the affected claim and recovery path. A reuse claim needs a later
+task that locates and applies the method or correctly invalidates it.
+
+- from: source[3], source[14]
 
 ### Analysis exposes the decisive causal mechanism
 
@@ -887,7 +945,34 @@ none had been tested. The [review record](../evidence/2026-09-26-design-and-onbo
 separates these reading-based findings from the actual onboarding task. The
 clarifications preserve source[10]'s purpose and existing decision attribution.
 
+### source[14] — 2026-09-28
+
+English paraphrase of the discussion and accepted implementation scope: the
+maintainer questioned recurring defaults through a leverage-point perspective,
+kept public method separate from personal taste, and identified premature
+storytelling, repeated topic queries, shallow fact checking, and repeated
+expensive source access as failures. They asked for selective methods and
+reasoned division of work rather than loading all discipline into every agent.
+They supplied two fallible references, then explicitly authorized the proposed
+first implementation while requiring fidelity to the whole discussion.
+
+The [assessment](../evidence/2026-09-28-research-and-information-acquisition.md)
+distinguishes direct feedback, reported experience, research findings, and
+implementer choices. The [implementation plan](../plans/2026-09-28-research-and-information-access.md)
+records the accepted scope. Neither reference authorizes unrelated host,
+review-gate, quota, or personal-context changes. This source informs the
+[inquiry](#unknown-references-are-researched-not-reconstructed) and
+[fallback](#tool-failure-triggers-capability-preserving-fallback) invariants.
+
 ## Reconciliation log
+
+- **2026-09-28 — research and access methods:** strengthened evidence discovery,
+  claim-level independence, synthesis and stopping boundaries, successful-output
+  limitations, and reusable access knowledge at the two existing owners.
+  On-demand guides preserve direct lookup, optional bounded delegation, and
+  private-context boundaries. The implementation plan records verification;
+  cross-project effectiveness remains unproved.
+  - from: source[14]
 
 - **2026-09-26 — independent review reconciled:** distinguished necessary
   product-state information from development commentary, and made absent or

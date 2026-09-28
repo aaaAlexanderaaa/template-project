@@ -63,6 +63,9 @@ context and review boundaries; a finding need not include a repair plan.
 - Research unfamiliar checkable claims and try a capability-preserving fallback
   when a tool fails. Preserve evidence strength and uncertainty under the
   [inquiry rules](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed).
+  Use [research](docs/guides/research.md) for evidence discovery and assessment,
+  and [information access](docs/guides/information-access.md) for difficult or
+  recurring retrieval and reusable methods. Load the applicable route on demand.
   Use English for repository edits and plain explanations under the
   [language standard](docs/README.md#language-style).
 

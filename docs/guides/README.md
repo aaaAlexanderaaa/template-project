@@ -15,6 +15,12 @@ goal and supported standards. It provides a separate invocation, connects to
 existing personal-context and review rules, and uses recurring questions to
 support judgment without requiring a repair plan.
 
+Use [research](research.md) to choose useful observations, assess evidence and
+alternatives, and return conclusions within their support. Use
+[information access](information-access.md) to obtain material, check observation
+limits, and reuse verified methods. Both have bounded role invocations; they can
+be used by the current agent without a separate worker or full-library loading.
+
 `engineering-reading.md` records the external sources this template has
 mined for engineering-judgment discipline, with authorship classes, mining
 angles, and rejected candidates. It is reading guidance, not authority.
