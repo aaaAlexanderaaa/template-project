@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-28
+last_reconciled: 2026-10-02
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -169,8 +169,14 @@ scope before starting, announce shared-surface changes, re-read files before
 editing, and let the guard suite catch collisions.
 
 Continue an authorized task through its working end state and verification;
-internal checkpoints do not ask the user to approve phases. A bounded task may
-end when it is complete. Portfolio discovery applies only to an authorized
+internal checkpoints do not ask the user to approve phases. When the owner has
+named an end and said to keep working until it is reached, one finished slice
+is not that end, and writing the remaining step is not doing it. A later note
+from a system or a tool that no further action is required does not cancel
+the end. The owner's own later stop, or a newly named end, replaces it. Stop
+short of it only when the end is reached, or when only the owner can decide
+something required to continue. If git cannot be initialized, stop adding
+template files and tell the owner. Portfolio discovery applies only to an authorized
 ongoing assignment. When that assignment becomes a standing charter across
 unattended wakes, [autonomous operation](../contracts/autonomous-operation-discipline.md)
 owns work across wakes: retain the selected outcome and its baseline, carry

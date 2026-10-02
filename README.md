@@ -41,9 +41,12 @@ This is an **attention and extraction order**, not the document authority
 order, and not a requirement to copy everything. Target-project evidence can
 promote a P3 domain into P1/P2; for example, a complex UI immediately moves
 user states, interaction, accessibility, and style ownership forward. Learning
-and adoption use the same ranking; only the latter writes into the target
-project and requires governance authorization. Take the method first, then
-decide whether this repository's files and tools are needed.
+and adoption use the same ranking. Learning writes its applicability judgment
+into the target, or states that nothing needs to change and gives the
+repository fact for each rule that does not apply, or stops to confirm the
+method of the remaining changes. Adoption writes governance scope and
+enforcement when that is requested and the method is confirmed. Take the
+method first. Copying this repository's files waits for that confirmation.
 
 The documentation checker depends only on the Python standard library.
 The minimum version is Python 3.11.
@@ -52,24 +55,33 @@ The minimum version is Python 3.11.
 
 You can ask an agent:
 
-> Learn the applicable disciplines from template-project, then read the
-> onboarding entrypoint of the user memory I supply for collaboration
-> background and decision preferences. Inspect this project's current
-> instructions and work, resolve only unknowns that change the next action,
-> and continue the authorized task. Keep personal material private.
+> Learn the applicable disciplines from template-project. Open every current
+> rule the learning path names, compare each one with this repository, and
+> finish by writing the settled changes, by stating that nothing needs to
+> change and why each unused rule does not apply, or by listing the changes
+> whose method needs confirmation. Then read the onboarding entrypoint of the
+> user memory I supply for collaboration background and decision preferences.
+> Keep personal material private, and continue the authorized task.
 
 The [collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration)
 works without copying this repository or requiring a personal memory. Supply
 the actual source locations to the agent; this template has no dependency on a
 particular user's profile, account, local path, or memory format. A request to
-learn practices does not by itself request a governance migration.
+learn practices writes the applicability judgment or asks before copying this
+template, enabling enforcement, replacing existing instructions, or changing
+product code.
 
 ## How to adopt the governance files and checks
 
 1. Read `docs/README.md` for the document authority order.
-2. Start a new project from this repository. For a running project, first do
-   the read-only inventory in `docs/guides/onboarding.md`; do not overwrite
-   existing authority.
+2. Use this repository as the starting tree when the target directory is
+   empty. Say what the project is first. When the directory already has files
+   and the owner also asks to start from this repository, ask before copying
+   or refusing. If it has files and no git repository, say so, initialize git,
+   and commit those files before adding anything. If git cannot be
+   initialized, stop adding template files and tell the owner. For a running
+   project, first do the read-only inventory in `docs/guides/onboarding.md`;
+   do not overwrite existing authority.
 3. Record current facts, governance scope, priority authority, and adoption
    stage in `templates/adoption-assessment.md`, and have the project owner
    confirm them.

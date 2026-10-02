@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-09-15
+last_reconciled: 2026-10-02
 supersedes: []
 ---
 
@@ -245,6 +245,19 @@ judgment remain explicit review gates and evidence requirements rather than
 being represented by a vacuous automated pass.
 
 - from: source[1], source[2]
+
+### A copied template entrypoint is unfinished onboarding
+
+When `AGENTS.md` still contains any identity claim listed in
+[the existing-directory rule](project-adoption.md#an-existing-directory-is-described-before-template-files-are-added)
+and the directory has a `.git` directory, the checker requires a git remote
+for https://github.com/aaaAlexanderaaa/template-project. One remaining claim
+is enough. Another remote, or no remote, is unfinished onboarding. A tree
+without `.git` is outside this check. The adoption contract still requires
+git before template files are added to a directory that already holds files.
+The template's own checkout passes because its remote is that repository.
+
+- from: source[9] (2026-10-02 copied entrypoint is unfinished onboarding), source[10] (2026-10-02 any remaining identity claim is enough)
 
 ### Style ownership is declared by the project, or not at all
 
@@ -512,7 +525,33 @@ the source-anchor block ahead of operative contract text.
 Context: alignment follow-up after the autonomous-operation contract landed;
 the maintainer approved the citation-gloss convention and requested the scan.
 
+### source[9] — 2026-10-02
+
+English paraphrase of the maintainer's decision: onboarding is unfinished
+while the agent entrypoint still describes the checkout as the documentation
+and project-discipline template and the git remote is not this template's
+repository. The checker reports that mismatch when the directory is a git
+repository.
+
+### source[10] — 2026-10-02
+
+English paraphrase of the maintainer's choice: the checker reports unfinished
+onboarding when any listed identity claim remains in the agent entrypoint and
+the git remote is not this template's repository. Removing one sentence while
+leaving another claim is still unfinished.
+
 ## Reconciliation log
+
+- **2026-10-02 — any remaining identity claim fails the checker:** one claim
+  that the checkout is this discipline template, with a git remote that is
+  not the template repository, is unfinished onboarding.
+  - from: source[10]
+
+- **2026-10-02 — copied template entrypoint fails the checker:** an agent
+  entrypoint that still describes the checkout as this discipline template
+  must have a git remote for the template repository. Another remote, or no
+  remote, is unfinished onboarding.
+  - from: source[9]
 
 - **2026-09-15 — citations carry glosses; letter codes stay visible:** source
   and raw citation lines now carry a date-and-topic gloss so provenance is

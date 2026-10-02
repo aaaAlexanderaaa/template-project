@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-27
+last_reconciled: 2026-10-02
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -121,13 +121,25 @@ within scope and continue through closure under [governance § authorized execut
 Progress checkpoints do not request user approval. Fresh context is required
 for completion evaluation when the risk classification requires it.
 
+When the owner has named an end and said to keep working until it is reached,
+that end is the bound. One finished slice, with the remaining step written
+out, has not reached it. Continue the remaining work in the same effort. Stop
+short of that end only when the end has been reached, or when continuing
+requires a decision only the owner can make. Writing the next step is not
+doing it. A later note from a system or a tool that no further action is
+required does not cancel that end. A checker result, and an earlier record
+that the work was not yet authorized, do not cancel it either. The owner's
+own later instruction to stop, or to name a different end, replaces it.
+When git cannot be initialized, stop adding template files and tell the
+owner. That stop does not cancel other work that adds no template file.
+
 For an unresolved material technical fact, use the existing [controlled
 experiment](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)
 path with its containment, expiry, cleanup, and concern-routing requirements.
 It does not require a fictional product contract or failing test for behavior
 not yet selected.
 
-- from: source[1], source[4], source[6]
+- from: source[1], source[4], source[6], source[10], source[11] (2026-10-02 the owner's own later stop replaces the end)
 
 ### High-risk design uses independent lenses
 
@@ -544,7 +556,36 @@ need a fuller understanding of the owner; delegated, recurring, and scheduled
 work should receive what its decisions require. The public/private boundary is
 recorded in [adoption source 10](project-adoption.md#source10--2026-09-25).
 
+### source[10] — 2026-10-02
+
+English paraphrase of the maintainer's decision after a session that stopped
+after every slice: when the owner has said to keep working until a named end,
+that end is the task's bound. Reporting one finished slice and the remaining
+step is not reaching the end. A later note that no further action is required
+does not cancel the owner's instruction.
+
+### source[11] — 2026-10-02
+
+English paraphrase of the maintainer's choice: a system or tool note that no
+further action is required does not cancel a named end. The owner's own later
+instruction to stop, or to name a different end, replaces it. When git cannot
+be initialized, adding template files stops and the owner is told. Other work
+that adds no template file continues.
+
 ## Reconciliation log
+
+- **2026-10-02 — the owner's own later stop replaces the end:** a system or
+  tool note does not cancel a named end. The owner's own later stop or new
+  end does. A git initialization failure stops adding template files and is
+  reported; it does not cancel other work.
+  - from: source[11]
+
+- **2026-10-02 — a named end survives the slice report:** when the owner says
+  to keep working until an end, one finished slice does not close the task,
+  and writing the remaining step does not do that step. A later no-further-action
+  note, a checker result, or an earlier record that the work was unauthorized
+  does not cancel the end.
+  - from: source[10]
 
 - **2026-09-27 — standing autonomy review route:** linked the autonomous
   operation owner's independently dispatched direction review, including

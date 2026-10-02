@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-09-27
+last_reconciled: 2026-10-02
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -24,8 +24,9 @@ The normative behavior is defined by the
 - The task's current authorization is known. In a formal migration, unresolved
   scope, profile, priority authority, or risk acceptance needs its human owner;
   an existing instruction may already settle those choices.
-- The AI or contributor has read-only access to the target repository and its
-  existing project-control sources.
+- Formal adoption inventory is read-only until the owner confirms scope and
+  method. Learning may write its judgment and other changes whose method does
+  not need a further decision, and needs write access for that ending.
 - Active incidents, releases, migrations, and destructive operations are known
   before governance files are changed.
 - Existing changes and local instructions will be preserved.
@@ -35,39 +36,75 @@ The normative behavior is defined by the
 ### Start collaborating without a migration
 
 For a request to learn the discipline and use supplied personal context,
-follow [the bounded entry path](../contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path):
+follow [the bounded entry path](../contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path).
+Assume the discipline now in force has not met the owner's expectation. Find
+what they had to repeat and what the loaded rules caused. A filled policy, a
+declared stage, or an earlier assessment that reported no gap is not that
+finding. Open every rule that path names. A title or a link is not enough. Plans,
+evidence, and source chronology stay closed unless a judgment depends on them.
 
-1. Read the source template's working agreement and transfer-value order.
-   Inspect the target's own entrypoint, current work, and boundaries relevant
-   to the task. An existing project keeps its current owners; an empty one
-   supplies no facts merely by resembling this template.
-2. If personal context was supplied, read its onboarding entrypoint. Use its
-   collaboration background and decision preferences where they matter;
-   follow its reading conditions for deeper material. Keep it at its supplied
-   private location. If unavailable, state the missing source and continue
-   work that does not depend on it.
-3. Use [the alignment route](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
-   to investigate facts and resolve only choices that change the outcome.
-   Preserve useful design freedom in an open-ended brief. For a clear task,
-   proceed directly within existing authorization.
-4. Carry relevant decisions and reasons into an assignment under
-   [bounded delegation](../contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner).
-   Retain session state or an existing private locator for later use; do not
-   commit a profile or its private path to create a permanent startup hook.
+The set is the documentation authority map, including language style; every
+current contract (development discipline, governance, adoption, agent
+execution, the documentation harness, foundational runtime, and autonomous
+operation); the engineering-judgment contract, recorded as a target draft;
+every row of development discipline's concern table, followed into the section
+that owns that row; and the behavior guides for onboarding, project operation,
+research, information access, and Grill.
 
-Onboarding is sufficient when the agent can explain the current outcome,
-applicable authority, material preferences or unknowns, and the next action.
-Give a concise account of consequential choices or conflicts; no adoption
-report, policy manifest, interview, or migration is needed for learning alone.
-Continue the task already requested. If the request was only to onboard,
-report readiness and material unresolved items without inventing product work.
+Inspect the target's own entrypoint, current work, and boundaries. An existing
+project keeps its current owners; an empty one supplies no facts merely by
+resembling this template. If personal context was supplied, read its onboarding
+entrypoint and follow its reading conditions. Keep it at its supplied private
+location. If unavailable, state the missing source and continue work that does
+not depend on it. Use
+[the alignment route](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
+for choices that change the outcome. When work is handed on, carry the
+relevant decisions under
+[bounded delegation](../contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner).
+Do not commit a profile or its private path to create a permanent startup hook.
 
-For example, an existing service with established architecture and a known
-local defect keeps those commitments and receives the bounded fix. A new
-product with an unclear audience first resolves that choice because it changes
-the design. A worker checking a parser needs its input/output and failure
-contract; a reviewer judging a product experience also needs the original user
-goal and the relevant accepted trade-offs.
+For each opened rule, record one result: it applies and is already satisfied;
+it applies and is not yet satisfied; or it does not apply, with the repository
+fact that makes that so. "Not triggered" without that fact is not a result.
+
+Learning ends in one of these ways. A session may both write and ask:
+
+1. The repository contains the judgment and the changes whose method did not
+   need a further decision. Say what changed. Write the judgment in the
+   existing agent entrypoint, and change the contract that owns each changed
+   rule. The entrypoint names the rule, the result, and the contract section.
+   It does not paste that section or a second copy of a product fact. After
+   the contract holds the rule, the entrypoint keeps the pointer. If there is
+   none, add one that carries the judgment and leaves other instructions
+   untouched. A copied claim that this checkout is the engineering discipline
+   template is not an existing instruction; replace it here with what this
+   project is.
+2. Nothing needs to change. Say so. Name the rules that apply and are already
+   satisfied, and give the repository fact for every rule that does not apply.
+   Use this only after the comparison with the owner's expectation, and only
+   when no applicable rule is unsatisfied. A filled policy file is not that
+   comparison.
+3. Some changes need a decision about method. List each change and the
+   intended method, and wait. Copying this template wholesale, enabling
+   enforcement, replacing existing instructions, and changing product code
+   are in this group.
+
+Finishing in conversation alone, while a change in the first group is still
+unwritten, is not learning. Before that ending, state what the project is.
+When the ending will write a file into a directory that already holds files
+and is not a git repository, initialize git and commit those files first. If
+git cannot be initialized, stop adding files and tell the owner. No adoption
+report or migration is required for learning. Continue a product task the
+owner already requested after the ending. Learning does not start a
+product-code change. If the request was only to learn, stop at that ending.
+
+For example, an existing service with established architecture keeps those
+commitments. A known local defect that the owner has not already requested is
+listed with the intended method and waits. A new product with an unclear
+audience first resolves that choice because it changes the design. A worker
+checking a parser needs its input/output and failure contract; a reviewer
+judging a product experience also needs the original user goal and the
+relevant accepted trade-offs.
 
 For explicitly authorized standing autonomy, also read the
 [autonomous operation contract](../contracts/autonomous-operation-discipline.md).
@@ -75,8 +112,9 @@ Before unattended expansion, exercise independent review dispatch and its
 unavailable-review behavior in the actual harness. Merely loading these files
 does not supply a scheduler, a fresh context, or enforced review due state.
 
-The steps below apply when the user requests formal adoption or enforcement
-changes. They are not prerequisites for the learning route above.
+The assessment, stage, and enforcement steps below apply when formal adoption
+or enforcement is requested. They are not prerequisites for learning. The
+project statement, and the git commit before a write, are part of learning.
 
 ### 1. Orient by transfer value
 
@@ -99,13 +137,48 @@ a lead to verify. Compare each lesson's mechanism with the target's existing
 owners and coverage before adopting it; source vocabulary and approval labels
 do not become target policy by copying them.
 
-### 2. Classify the adoption
+### 2. Say what the project is, then classify
 
-- **Greenfield:** no product implementation or established project authority.
-  Use the template as the starting repository, establish current structural
-  authority, select the initial managed boundary, then begin implementation.
-- **Brownfield:** existing code, decisions, workflows, or delivery obligations.
-  Begin with an `observed` read-only assessment and use staged enforcement.
+Before a class label and before any copy, state what this project is. Name
+the material already in the directory, the use the owner has given it, and
+what is absent. A class label does not replace that statement. In the
+adoption contract, an empty start is called greenfield and an already-running
+project is called brownfield. Either name only classifies the directory.
+[The existing-directory rule](../contracts/project-adoption.md#an-existing-directory-is-described-before-template-files-are-added)
+owns it.
+
+A directory that already contains files is not an empty start. No product
+code, no agent entrypoint, and no contract do not make it empty. When those
+files are present and the owner also asks to start from this repository, stop
+and ask whether to copy. Do not copy, and do not treat the request as already
+refused.
+
+When those files are present and the directory is not a git repository, say
+so in the same account. Initialize git and commit the current files as the
+first revision before adding any template file, and before a learning ending
+writes a file there. If git cannot be initialized, stop adding template files
+and tell the owner.
+
+Onboarding is unfinished while `AGENTS.md` still treats this checkout as the
+engineering discipline template and no git remote is
+https://github.com/aaaAlexanderaaa/template-project. Any one of these claims
+is enough: this repository is the engineering discipline template; its work
+is documentation and project discipline; onboarding into any other checkout
+is unfinished while the entrypoint still says this; a task is to learn this
+template; a task is adoption into another project. A checkout with no remote
+is unfinished. Finishing replaces those claims with what this project is,
+without a separate confirmation of method. Where the directory is a git
+repository, the checker reports any remaining claim.
+
+- **Empty start:** the directory has no files. This repository is then the
+  starting tree. Establish current structural authority, select the initial
+  managed boundary, then begin implementation.
+- **Already running:** the project has code, decisions, workflows, or delivery
+  obligations. The adoption contract calls this brownfield. Begin with an
+  `observed` read-only assessment and use staged enforcement.
+- A directory that already holds data, notes, or other owner files, and is
+  not a running product, still gets the statement above. It is not an empty
+  start.
 
 ### 3. Inventory before proposing
 
@@ -224,9 +297,13 @@ do not require repeating that confirmation.
 
 ## Verification
 
-For learning and personal-context onboarding, verify the relevant source was
-actually read, the target's authority was preserved, private material stayed
-within its permitted audience, and the next action follows the agreed task.
+For learning and personal-context onboarding, verify that every rule in the
+learning set was opened, that each has one of the three results, and that the
+session ended by writing the settled changes, by stating that nothing needs
+to change together with the facts, or by listing the changes whose method
+needs confirmation. Verify that existing instructions were left in place,
+private material stayed within its permitted audience, and the next action
+follows the agreed task.
 Check a material preference against its source and context when relying on it;
 mere agreement with a generated summary is not corroboration.
 
@@ -242,6 +319,17 @@ task and creates no separate approval or universal benchmark gate.
 
 For formal governance adoption:
 
+- The assessment states what the project is: material already present, the
+  use the owner has given it, and what is absent. A class label alone is not
+  that statement.
+- A directory that already held files was not treated as an empty start. If
+  the owner also asked to start from this repository, the account shows the
+  question and the owner's answer before any copy.
+- If those files had no git repository, the account says so, and the first
+  revision is that tree before any template file.
+- The agent entrypoint states what this project is. If it still says the
+  checkout is the engineering discipline template, a git remote is
+  https://github.com/aaaAlexanderaaa/template-project.
 - The assessment names evidence for every current-state claim.
 - The adopting human confirmed profile, scope, priority authority, and stage.
 - Current and target descriptions are visibly separate.
@@ -271,7 +359,9 @@ project-wide adoption.
 Onboarding is additive until a separately reviewed supersession or migration is
 authorized. Do not delete existing documentation, tests, CI, deployment paths,
 or tracker records as part of inventory. Keep a recoverable revision for every
-entrypoint changed during adoption.
+entrypoint changed during adoption. When the directory already holds files and
+has no git repository, that revision is the git commit of those files made
+before any template file is added.
 
 ## Related authority
 

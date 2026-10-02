@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import os
 import re
+import subprocess
 import sys
 from collections import defaultdict
 from collections.abc import Iterable, Iterator, Sequence
@@ -41,6 +42,18 @@ def require_supported_python(version_info: Sequence[int] = sys.version_info) -> 
 require_supported_python()
 
 import tomllib
+
+
+def _normalize_repository(url: str) -> str:
+    value = url.strip().rstrip("/")
+    if value.endswith(".git"):
+        value = value[: -len(".git")]
+    if value.startswith("git@"):
+        value = value[len("git@") :].replace(":", "/", 1)
+    else:
+        value = re.sub(r"^[a-z][a-z0-9+.-]*://", "", value, count=1)
+        value = re.sub(r"^[^@/]+@", "", value, count=1)
+    return value.lower()
 
 VALID_DOC_TYPES = {
     "authority-map",
@@ -74,6 +87,16 @@ VALID_PROMISE_STATUSES = {"open", "resolved", "cancelled"}
 VALID_ABNORMALITY_STATES = {"pending", "active", "retired"}
 VALID_ABNORMALITY_RESULTS = {"pass", "fail", "not_run"}
 VALID_CONTRACT_ROLES = {"product", "governance"}
+TEMPLATE_REPOSITORY = "https://github.com/aaaAlexanderaaa/template-project"
+# Any one of these claims means the entrypoint still treats the checkout as
+# this discipline template. The list is the one in the adoption contract.
+TEMPLATE_IDENTITY_MARKERS = (
+    "This repository is the engineering discipline template.",
+    "Its work is documentation and project discipline.",
+    "Onboarding into any other checkout is unfinished",
+    "For a request to learn this template",
+    "Adoption into another project",
+)
 
 # Declaration manifests share one lifecycle vocabulary so an adopter learns it
 # once: shipped-but-unfilled, in force, or deliberately not applicable.
@@ -1942,6 +1965,51 @@ class DocumentationChecker:
                                 f"line {lineno}: architecture rule {rule_id} forbids {forbidden!r}",
                             )
 
+    def validate_template_entrypoint(self) -> None:
+        """A copied discipline-template entrypoint is unfinished onboarding.
+
+        The check runs only when AGENTS.md still carries the template's
+        self-description and the directory is a git repository. Fixture trees
+        copied without .git stay outside it. The adoption contract owns the
+        rule for directories that are not yet repositories.
+        """
+
+        path = self.root / "AGENTS.md"
+        if not path.is_file() or not (self.root / ".git").exists():
+            return
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            self.add(path, "AGENTS.md is not valid text")
+            return
+        compact = re.sub(r"\s+", " ", text)
+        if not any(re.sub(r"\s+", " ", marker) in compact for marker in TEMPLATE_IDENTITY_MARKERS):
+            return
+        try:
+            completed = subprocess.run(
+                ["git", "-C", str(self.root), "remote", "-v"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+        except OSError as error:
+            self.add(path, f"onboarding is unfinished: git remote could not be read ({error})")
+            return
+        if completed.returncode != 0:
+            detail = completed.stderr.strip() or "git remote failed"
+            self.add(path, f"onboarding is unfinished: git remote could not be read ({detail})")
+            return
+        urls = [line.split()[1] for line in completed.stdout.splitlines() if len(line.split()) >= 2]
+        expected = _normalize_repository(TEMPLATE_REPOSITORY)
+        if any(_normalize_repository(url) == expected for url in urls):
+            return
+        self.add(
+            path,
+            "onboarding is unfinished: this entrypoint still treats the checkout "
+            "as the engineering discipline template, and its git remote is not "
+            f"{TEMPLATE_REPOSITORY}",
+        )
+
     def run(self) -> bool:
         self.policy = self.load_toml(self.root / "docs-policy.toml", "docs policy")
         self.validate_policy_shape()
@@ -1961,6 +2029,7 @@ class DocumentationChecker:
         self.validate_local_links()
         self.validate_architecture()
         self.validate_style_ownership()
+        self.validate_template_entrypoint()
         return not self.errors
 
     def print_group(self, findings: list[Finding]) -> None:

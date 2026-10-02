@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-09-25
+last_reconciled: 2026-10-02
 ---
 
 # Documentation authority map
@@ -33,10 +33,15 @@ exceptions; and evidence sufficient for completion. Obtain these from the
 request, relevant architecture and contract sections, observed baseline, and
 an active plan only when required. This is a reading rule, not a new document
 or a form to fill for every task. Do not copy a second set of product facts
-into the agent entrypoint.
+into the agent entrypoint. A learning judgment names the rule, the result,
+and the contract section that holds the fact.
 
 Read detailed methods when a task activates them. A link does not require
-recursive reading. Expand context for a dependency, conflict, missing fact, or
+recursive reading. A request to learn the discipline is the exception: open
+every current rule named by
+[the learning path](contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
+before judging which apply. Later tasks return to opening a rule when the work
+reaches it. Expand context for a dependency, conflict, missing fact, or
 activated concern, and read the whole owner when section-level reading leaves
 its scope or interactions unclear. Short context never waives an applicable
 constraint, exception, or original requirement.
@@ -166,8 +171,10 @@ history. Render stakeholder feedback in English with enough context to explain
 the issue and the accepted decision. Distinguish a translated quotation from
 a paraphrase; preserve its meaning and scope without requiring the reader to
 understand a private conversation. Review instructions and user messages from
-the reader's position: name the actor, condition, action, result,
-and available next step when relevant. Explain an internal term before relying
+the reader's position: name the actor, condition, action, and result.
+Name the next step when the owner must act before work can continue. When
+the owner has already said to continue, the next step is the work itself.
+Explain an internal term before relying
 on it. Replace a vague promise such as "state reconciled" with what changed or
 remains unresolved. Word lists and an "AI writing" detector cannot establish
 that a reader understands the result; inspect a concrete task or message.

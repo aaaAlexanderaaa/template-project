@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-25
+last_reconciled: 2026-10-02
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -24,7 +24,8 @@ unbounded compliance migration.
 In scope:
 
 - source-template transfer-value ordering for a visiting agent;
-- AI-guided discovery and onboarding;
+- AI-guided discovery and onboarding, including the learning survey of every
+  current rule and the requirement to leave a result;
 - greenfield initialization and brownfield adoption;
 - governance profile, managed scope, and enforcement-stage decisions;
 - current-state baselines, staged migration, verification, and recovery.
@@ -115,12 +116,68 @@ Earlier feedback asked for a coarse alignment process and context appropriate
 to the recipient's task. This account states the authorized public scope; it
 does not reproduce the private conversation or imply access to its records.
 
+### source[11] — 2026-10-02
+
+English paraphrase of the maintainer's decision: learning this discipline must
+change the target repository, or explicitly say that nothing needs to change,
+or explicitly list the changes whose method needs confirmation before they are
+made. During learning, every current rule is opened and compared with that
+repository. Seeing a name without opening the rule is not learning. Sessions
+after learning still open a rule when the work reaches it. Copying the
+template wholesale, enabling enforcement, replacing existing instructions, and
+changing product code wait for confirmation of method.
+
+### source[12] — 2026-10-02
+
+English paraphrase of the maintainer's decision: a request to learn assumes
+the discipline now in force has not met the owner's expectation. The survey
+starts from what the owner had to repeat and what the loaded rules caused the
+agent to do. A filled policy, a declared stage, or an assessment that reported
+no gap does not show the expectation was met.
+
+### source[13] — 2026-10-02
+
+English paraphrase of the maintainer's decision after a landing copied this
+repository into a directory that already held the owner's files: that
+directory was not empty, so the copy was not starting a new project. The
+landing never said what the project was, and a greenfield label stood in for
+that statement. The directory was not a git repository; the landing never
+said so and did not initialize one before adding files.
+
+### source[14] — 2026-10-02
+
+English paraphrase of the maintainer's decision: onboarding is unfinished
+while the agent entrypoint still describes the checkout as a documentation
+and project-discipline repository, or its text still matches this template,
+and the checkout's git remote is not this template's repository.
+
+### source[15] — 2026-10-02
+
+English paraphrase of the maintainer's choices after two reviews found the
+new sentences requiring two actions. When a directory already holds files and
+the owner also asks to start from this repository, ask before copying or
+refusing. Learning states what the project is, and initializes git and
+commits the current files before it writes into a directory that has files
+and no repository. A copied entrypoint that still treats the checkout as this
+discipline template is replaced with what the project is, without waiting for
+a method confirmation. The checker reports that unfinished entrypoint when
+any of its identity claims remain. A system or tool note that no further
+action is required does not cancel a named end; the owner's own later stop
+or new end does. If git cannot be initialized, adding template files stops
+and the owner is told. A correction of a rule is written into the entrypoint
+and into the contract that owns the sentence; once the contract holds it,
+the entrypoint keeps the pointer and drops the repeated full text.
+
 ## Vocabulary
 
-- **Greenfield:** a project without product implementation or established
-  project authority.
-- **Brownfield:** a running project with existing code, decisions, workflows,
-  or delivery obligations.
+- **Greenfield:** an empty directory, before product implementation or project
+  authority exists. The name only says the directory started empty. Files
+  already in the target directory are not this case. If those files are
+  present and the owner asks to start from this repository, ask before
+  copying or refusing.
+- **Brownfield:** a project that is already running. It has code, decisions,
+  workflows, or delivery obligations. The name only says that; it does not
+  describe what the project is.
 - **Managed scope:** the paths, boundaries, contracts, and workflows currently
   governed by this framework.
 - **Baseline debt:** a truthful, bounded pre-adoption gap that has an owner and
@@ -136,10 +193,12 @@ does not reproduce the private conversation or imply access to its records.
 ## Ownership and boundary
 
 The adopting human owner selects the profile, managed scope, priority source,
-and enforcement stage. AI performs read-only inventory, identifies conflicts
-and risks, drafts the assessment and migration plan, and executes only the
-confirmed scope. Existing product and organizational authorities retain their
-ownership until explicitly reconciled or superseded.
+and enforcement stage. For formal adoption, AI performs read-only inventory,
+identifies conflicts and risks, drafts the assessment and migration plan, and
+executes only the confirmed scope. A learning ending may write its judgment
+and a contract change whose method did not need a further decision. Existing
+product and organizational authorities retain their ownership until explicitly
+reconciled or superseded.
 
 The template owner ranks the source template's transfer value. Existing
 development, governance, architecture, and surface contracts continue to own
@@ -148,7 +207,7 @@ attention and decide what is relevant to carry forward; target-project evidence
 may change applicability, while target authority still governs any resulting
 write or enforcement decision.
 
-- from: source[1], source[2], source[3], source[4]
+- from: source[1], source[2], source[3], source[4], source[15] (2026-10-02 learning may write a settled contract change)
 
 ## States and triggers
 
@@ -181,21 +240,93 @@ the owner explicitly chooses and can verify an immediate cutover.
 
 ### Discover before translating
 
-Onboarding begins read-only. It inventories architecture, source roots,
+Onboarding begins by reading. It inventories architecture, source roots,
 existing documentation, contracts, tests, CI/release paths, trackers, owners,
-and active delivery obligations before proposing replacements.
+and active delivery obligations before proposing replacements. The first
+result of that reading is a statement of what the project is, under
+[the existing-directory rule](#an-existing-directory-is-described-before-template-files-are-added).
+Learning then writes only as its ending allows. Formal adoption does not
+rewrite authority during that inventory.
 
-- from: source[1], source[2]
+- from: source[1], source[2], source[11], source[13]
 
 ### Learning and personal context have a bounded entry path
 
-A request to learn the discipline authorizes reading and applying relevant
-practices within the current assignment. It does not by itself request a
-governance migration, new CI gates, or replacement of the target's instructions.
-Inspect the target's current entrypoints, relevant boundaries, and active work;
-then select the practices the task needs. Use the formal adoption assessment
-and stages when adoption or enforcement changes are requested. Existing
-authorization covers its stated scope without a second confirmation ritual.
+A request to learn the discipline assumes the discipline now in force has not
+met the owner's expectation. Find that mismatch first: what the owner had to
+repeat, and what the loaded rules caused the agent to do. A filled policy, a
+declared stage, a passing or failing checker, or an earlier assessment that
+reported no gap does not show the expectation was met.
+
+The request also authorizes a survey of every current rule against the target
+repository, and it requires one of the endings below. Seeing a title, a table
+row, or a link without opening the rule is not a survey. It does not by itself
+authorize a governance migration, new CI gates,
+replacement of the target's existing instructions, or product-code changes.
+Use the formal adoption assessment and stages when adoption or enforcement
+changes are requested.
+
+Learning opens:
+
+- the documentation authority map, including its language-style section;
+- every current contract: development discipline, the governance decision
+  boundary, this contract, agent execution, the documentation harness,
+  foundational runtime, and autonomous operation;
+- the engineering-judgment contract, recorded as a target draft rather than
+  a current rule;
+- every row of development discipline's concern table, followed into the
+  section that owns that row;
+- the behavior guides: onboarding, project operation, research, information
+  access, and Grill.
+
+Plans, evidence, and source chronology stay closed unless a judgment depends
+on a disputed decision or a recovery. After learning, a later task still opens
+a rule when the work reaches it. The written judgment is how that later task
+sees what this repository was already compared with.
+
+For each opened rule, record one result:
+
+- it applies, and the repository already satisfies it;
+- it applies, and the repository does not yet satisfy it;
+- it does not apply, together with the repository fact that makes that so.
+
+A note that only says "not triggered" is not a result.
+
+Learning ends in one of these ways, and a session may both write and ask:
+
+1. The target repository contains the judgment and the changes whose method
+   did not need a further decision. Tell the owner what changed. Write the
+   judgment in the existing agent entrypoint, the text the next session loads,
+   and change the contract that owns each changed rule. The entrypoint names
+   the rule, the result, and the contract section. It does not paste that
+   section or a second copy of a product fact. After the contract holds the
+   rule, the entrypoint keeps the pointer and drops the repeated full text.
+   If that entrypoint does not exist, add one that carries the judgment and
+   leaves other instructions untouched. A copied description that still treats
+   this checkout as the engineering discipline template is not an existing
+   project instruction; replace it in this ending with what this project is.
+2. Nothing in the repository needs to change. Say so. Name the rules that
+   apply and are already satisfied, and give the repository fact for every
+   rule that does not apply. This ending is available only when the comparison
+   with the owner's expectation has been made and no applicable rule is
+   unsatisfied. A filled policy file is not that comparison. A summary that
+   omits those results is not this ending.
+3. One or more changes need a decision about how they will be made. List each
+   change and the intended method, and wait. Do not make those changes yet.
+   Copying this template wholesale, enabling enforcement, replacing existing
+   instructions, and changing product code are in this group.
+
+Finishing in conversation alone, while a change in the first group is still
+unwritten, is not learning.
+
+Before that ending, state what the project is: the material already in the
+directory, the use the owner has given it, and what is absent. When the ending
+will write a file into a directory that already holds files and is not a git
+repository, say so, initialize git, and commit those files first. If git
+cannot be initialized, stop adding files and tell the owner. An ending that
+writes nothing does not require that commit.
+
+- from: source[10], source[11], source[12], source[15] (2026-10-02 learning states the project and commits before a write)
 
 When the user supplies collaboration background and decision preferences,
 start at that material's onboarding entrypoint and use the applicable context.
@@ -217,6 +348,45 @@ template must remain usable without any individual's memory or account.
 
 - from: source[10] (2026-09-25 separate personal context and public method)
 
+### An existing directory is described before template files are added
+
+Before any file from this template is copied into a target, state what that
+project is. Name the material already in the directory, the use the owner has
+given it, and what is absent. A class label does not replace that statement.
+The statement decides whether a template file may be added.
+
+A directory that already holds the owner's files is not an empty start.
+Missing product code, a missing agent entrypoint, and missing contracts do
+not make it empty. This repository is the starting tree when the target
+directory is empty. When the directory already holds files and the owner also
+asks to start from this repository, stop and ask whether to copy. Do not copy
+and do not treat the request as already refused.
+
+When the directory already holds files and is not a git repository, say so.
+Initialize git and commit that tree as the first revision before any template
+file is added, and before a learning ending writes a file there. The owner's
+material and the added files then stay separable. If git cannot be
+initialized, stop adding template files and tell the owner. That stop does
+not cancel other work that adds no template file. Leaving the missing
+repository unmentioned is not a finished look at the project.
+
+Onboarding is unfinished while the agent entrypoint still treats the checkout
+as this discipline template and the git remote is not
+https://github.com/aaaAlexanderaaa/template-project. It still treats the
+checkout that way while any of these claims remain: that this repository is
+the engineering discipline template; that its work is documentation and
+project discipline; that onboarding into any other checkout is unfinished
+while the entrypoint still says this; that a task is to learn this template;
+or that a task is adoption into another project. A checkout with no git
+remote still has that unfinished entrypoint. The template's own checkout is
+the case where those claims and that remote belong together. Finishing
+replaces those claims with what this project is, without waiting for a
+separate confirmation of method. The documentation checker reports the
+unfinished entrypoint when any of those claims remain and the directory is a
+git repository.
+
+- from: source[13] (2026-10-02 existing directory is not an empty start), source[14] (2026-10-02 template entrypoint means onboarding is unfinished), source[15] (2026-10-02 ask before copying, replace the template claims)
+
 ### Current and target truth stay separate
 
 The baseline records what is true now, including contradictions and debt. An
@@ -229,10 +399,15 @@ rewrite history or label an incomplete migration adopted.
 ### Existing authority is preserved until reconciled
 
 Onboarding does not overwrite ADRs, contracts, tracker ownership, release
-procedures, or local agent instructions. Conflicts are catalogued and resolved
-through the normal authority and supersession process.
+procedures, or local agent instructions. Learning may add its judgment to the
+local agent entrypoint and must leave the existing instructions in place.
+Replacing those instructions waits for confirmation of method. A copied claim
+that this checkout is the engineering discipline template is not one of those
+instructions; replacing it with what this project is does not wait. Conflicts
+are catalogued and resolved through the normal authority and supersession
+process.
 
-- from: source[2], source[3]
+- from: source[2], source[3], source[11], source[15] (2026-10-02 a copied template claim is not an existing instruction)
 
 ### Adoption is explicitly scoped
 
@@ -350,8 +525,9 @@ The durable assessment contains:
 
 ## Failure, recovery, and intervention
 
-- If onboarding begins rewriting product behavior, stop and return to read-only
-  inventory plus a separately authorized implementation plan.
+- If onboarding begins rewriting product behavior, stop and return to the
+  inventory plus a separately authorized implementation plan. A learning
+  judgment added to the agent entrypoint is not a product rewrite.
 - If existing and template authorities conflict, keep the affected boundary in
   `observed` or `baselined` until reconciled.
 - If governance causes disproportionate delivery interruption, narrow managed
@@ -361,7 +537,14 @@ The durable assessment contains:
 
 ## Acceptance evidence
 
-- A current onboarding guide covers separate greenfield and brownfield paths.
+- A current onboarding guide covers an empty start and a brownfield path, and
+  requires a statement of what the project is before either label. A directory
+  that already holds files is not an empty start: the guide forbids copying
+  this repository over it, and requires git to be initialized and the current
+  tree committed before template files are added.
+- Onboarding stays unfinished while the agent entrypoint still describes the
+  checkout as this discipline template and the git remote is not
+  https://github.com/aaaAlexanderaaa/template-project.
 - A reusable adoption-assessment template captures every required record field.
 - Root, contributor, agent, and documentation entrypoints route onboarding to
   this contract and guide.
@@ -369,6 +552,9 @@ The durable assessment contains:
   adoption mechanics, with interaction and epistemic discipline first.
 - The onboarding guide explains that target evidence may promote a conditional
   discipline without changing document authority or requiring wholesale copy.
+- The learning path names every current rule to open, the three results for
+  each rule, and the three endings. Later tasks still open a rule when the
+  work reaches it.
 - Project-operation guidance preserves human priority authority after adoption.
 - The documentation harness validates the assessment template and fixture tests
   cover missing-file and missing-section variants.
@@ -430,6 +616,35 @@ Maintainer-reported adoption on 2026-09-14:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-10-02 — an existing directory is not an empty start:** before template
+  files are added, state what the project is. Files already present block
+  copying this repository in as the starting tree. When those files have no
+  git repository, say so, initialize git, and commit that tree first.
+  Onboarding stays unfinished while the entrypoint still describes the
+  checkout as this discipline template and the git remote is not this
+  template's repository. When files are already present and the owner asks to
+  start from this repository, ask before copying or refusing. A copied
+  template claim is replaced in the learning ending. A rule change is written
+  in the owning contract, and the entrypoint then keeps the pointer.
+  - from: source[13], source[14], source[15]
+
+- **2026-10-02 — learning assumes the current discipline missed the expectation:**
+  a learning request starts from the mismatch between what the owner had to
+  repeat and what the loaded rules caused. A filled policy or an earlier
+  no-gap assessment is not evidence that the expectation was met. Ending with
+  nothing to change requires that comparison.
+  - from: source[12]
+
+- **2026-10-02 — learning must survey every current rule and leave a result:**
+  a learning request opens every current rule, records whether it applies,
+  and ends by writing the settled changes, by stating that nothing needs to
+  change together with the facts, or by listing changes whose method needs
+  confirmation. Later tasks still open a rule when the work reaches it.
+  Wholesale copy, enforcement, replacement of existing instructions, and
+  product-code changes stay in the confirmation group. Personal context
+  boundaries are unchanged.
+  - from: source[11]
 
 - **2026-09-25 — learning with optional personal context:** added an entry path
   distinct from formal migration, with source and visibility boundaries.

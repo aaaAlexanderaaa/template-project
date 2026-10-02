@@ -14,7 +14,7 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-09-27"
+FIXED_TODAY = "2026-10-02"
 
 
 def load_checker_module():
@@ -1607,6 +1607,54 @@ This evidence cannot replace normative authority.
         self.assert_fails_with(
             "template missing required section: Layer order and ownership"
         )
+
+    def git(self, *args: str) -> None:
+        subprocess.run(
+            ["git", *args],
+            cwd=self.root,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+    def test_copied_template_entrypoint_without_the_template_remote_is_unfinished(self) -> None:
+        self.git("init")
+        self.assert_fails_with("onboarding is unfinished")
+
+    def test_template_entrypoint_accepts_the_template_remote(self) -> None:
+        self.git("init")
+        self.git(
+            "remote",
+            "add",
+            "origin",
+            "git@github.com:aaaAlexanderaaa/template-project.git",
+        )
+        self.assert_passes()
+
+    def test_one_remaining_identity_claim_is_still_unfinished(self) -> None:
+        self.replace(
+            "AGENTS.md",
+            "This repository is the engineering discipline template. ",
+            "",
+        )
+        self.git("init")
+        self.assert_fails_with("onboarding is unfinished")
+
+    def test_local_entrypoint_does_not_require_the_template_remote(self) -> None:
+        text = self.read("AGENTS.md")
+        for claim in (
+            "This repository is the engineering discipline template. Its work is\n"
+            "documentation and project discipline. Onboarding into any other checkout is\n"
+            "unfinished while that checkout's agent entrypoint still says this and its\n"
+            "git remote is not https://github.com/aaaAlexanderaaa/template-project.\n",
+            "For a request to learn this template",
+            "Adoption into another project",
+        ):
+            self.assertIn(claim, text)
+            text = text.replace(claim, "Local project work", 1)
+        self.write("AGENTS.md", text)
+        self.git("init")
+        self.assert_passes()
 
 
 if __name__ == "__main__":

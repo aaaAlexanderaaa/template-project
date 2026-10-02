@@ -84,7 +84,11 @@ decision or actual blocker pauses its affected path under the governance owner.
 
 ## Work-selection fallback
 
-For a bounded task, stop when its outcome is complete. Only an authorized
+For a bounded task, stop when the outcome the owner named is reached. One
+finished slice is not that outcome when the owner said to continue until a
+later end. A system or tool note that no further action is required does not
+cancel that end. The owner's own later stop, or a newly named end, replaces
+it. Only an authorized
 ongoing portfolio assignment uses the [work-selection fallback](../docs/contracts/agent-execution-discipline.md#work-selection-has-no-silent-idle-state-or-invented-priority).
 If it applies, record the selected action and its authority: {{decision}}.
 
