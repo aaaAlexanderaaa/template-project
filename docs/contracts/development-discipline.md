@@ -333,6 +333,7 @@ trigger semantics.
 | User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals, environment interruptions a session must survive, visibility and bypass of automation the user depends on |
 | Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | [Time policy](foundational-runtime-discipline.md#time-and-calendar): scope and role resolution, instant vs calendar vs duration, naive-input policy, representation, injectable clock, policy-conformance checks |
 | Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | [Demo policy](foundational-runtime-discipline.md#demonstration-data): temporal promise and labels, freshness when promised, refresh/retention strategy, repeat safety, environment gate, production isolation |
+| Analysis, metrics, ranking, or mining deliverable over a dataset; or a surface whose primary job is presenting analytical claims | Analytical claims | [Data analysis discipline](data-analysis-discipline.md): stage checklist and invariants — functions over values, constants have origins, marks resolve to records, sample size visible, control scope equals computation scope |
 | Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner |
 
 - from: source[1], source[5], source[7], source[10]
