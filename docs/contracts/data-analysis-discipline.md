@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-04
+last_reconciled: 2026-10-10
 supersedes: []
 ---
 
@@ -135,6 +135,33 @@ Every threshold, window, and cutoff either names its origin — who chose it
 and what trade-off it encodes — or is exposed for the reader to vary. A
 constant with neither is an unexamined assumption baked into the display.
 
+### Measures support fallible judgment and remain open to correction
+
+An operational or quality measure names the decision it informs, the observed
+population or sample, artifact and method versions, raw cases, and known limits.
+Use repeatable observations to expose missed defects, recurrence, uneven
+coverage, unnecessary waiting, or a completion claim contradicted by results.
+Several measures can illuminate different parts of a decision without being
+collapsed into a single progress score. Choose them for the current question;
+this rule does not require a dashboard for every task.
+
+Calibrate detectors against known failures, valuable acceptable cases, and
+unfamiliar material. These respectively test detection, excessive rejection,
+and blind spots; a fixed regression set serves only the first two. Inspect
+false positives and missed cases against the actual quality purpose. Record
+coverage and method changes before comparing periods. Deterministic violations
+can enforce their contracted boundary; a semantic proxy usually directs
+inspection and cannot silently become a ban on useful work.
+
+A zero reading can mean improvement, an unrun or broken check, changed inputs,
+or a detector that no longer sees the problem. Distinguish these using execution
+evidence and raw cases before declaring success or retiring the detector.
+Keep open qualitative review and external evidence capable of challenging the
+measurement itself. Correct an instrument that rewards avoidance or hides
+useful variation; do not remove observability merely to improve its score.
+
+- from: source[3]
+
 ### Statistics precede semantics
 
 Where counts and distributions can answer the question, do not answer it
@@ -234,7 +261,23 @@ contract and confirmed its shape: question checklist first, invariants
 second, fully generic wording. Each adopter still supplies its own dataset,
 questions, and surfaces.
 
+### source[3] — 2026-10-10
+
+The maintainer requested that metrics make agent judgment more tolerant of
+error and easier to correct, drawing on longitudinal autonomous writing work.
+Its feedback distinguished useful measurement from fixed proxies, shared
+blind spots, and misleading zero readings. The accepted implementation adds
+decision-linked calibration, including valuable cases a detector must preserve.
+See [the adoption evidence](../evidence/2026-10-10-experience-and-adaptive-operation.md).
+
 ## Reconciliation log
+
+- **2026-10-10 — instruments participate in learning:** added positive uses
+  of measurement, calibration against failures and acceptable variation, and
+  investigation of zeros and changed methods. This does not make semantic
+  quality mechanically decidable or mandate an analytical interface for
+  ordinary execution.
+  - from: source[3]
 
 - **2026-10-04 — contract created:** distilled from the maintainer's data
   analysis retrospective. The checklist and invariants were exercised in one

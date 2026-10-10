@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 ---
 
 # Documentation authority map
@@ -45,6 +45,30 @@ reaches it. Expand context for a dependency, conflict, missing fact, or
 activated concern, and read the whole owner when section-level reading leaves
 its scope or interactions unclear. Short context never waives an applicable
 constraint, exception, or original requirement.
+
+For an ongoing project, purpose guides choices, goals name desired changes,
+methods organize work, and tasks execute bounded steps. Task completion may
+leave its goal open; a finished goal need not exhaust the project's purpose.
+The owner's named end still bounds the current assignment.
+
+Choose context by the decision being made. Routine execution uses the current
+task and its parent outcome; selecting work needs goals and alternatives;
+changing an approach needs its assumptions and evidence; questioning direction
+needs the original purpose and accepted trade-offs. Purpose and boundaries
+remain binding at every level without reopening them at every step. Retain a
+settled choice while its authority and decisive assumptions remain valid;
+new evidence reopens the affected choice, not the whole project by default.
+Later feedback refines the ongoing outcome unless the owner replaces it.
+Check the combined requirements before closure, not only the latest correction.
+
+Development's [active comparison rule](contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+owns when consequential inquiry needs deliberate differences in evidence,
+questions, standpoint or model, and how their results retain usable limits.
+
+At a recurring decision, follow the permitted locator for
+[reusable experience](contracts/development-discipline.md#experience-changes-the-next-matching-action)
+before rediscovering a method. Carry applicable experience and return conditions
+with a handoff, rather than making every task reread all historical lessons.
 
 When separately supplied personal context is relevant, read its onboarding
 entrypoint for collaboration background, decision preferences, and deeper

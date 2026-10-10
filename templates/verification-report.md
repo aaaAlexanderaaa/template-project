@@ -24,6 +24,8 @@ subject: {{initiative-or-contract}}
 - Date/time: {{timestamp/timezone}}
 - Runtime/platform/browser/device: {{environment}}
 - Configuration and fixture identity: {{non-secret identity}}
+- Agent workflow claims only: {{model/runtime, supplied context/tools,
+  observed execution span, and human or stronger-model intervention}}
 - Starting state: {{state}}
 - Required materials: {{supplied paths or obtainable public sources; access limits}}
 - Reproduction command: `{{command runnable with those materials}}`
@@ -55,6 +57,23 @@ as well as prose. When broader coverage is claimed, include a plausible case
 beyond the initial sample. For a proposed local correction, inspect the whole
 result in context under [causal analysis](../docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism).
 A correct library rule or complete fields alone do not prove its application.
+
+For [deliberate comparisons](../docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism),
+record the actual experiment: uncertainty, evidence groups and acquisition
+origins, changed and held-fixed factors, questions/standpoints, model/context,
+first results and the observation used to reconcile them. Retain unsuccessful
+and inconclusive variants. State when shared sources remain dependent or joint
+changes prevent attributing a difference to one factor. A planned comparison,
+role switch or model consensus is not an observed verification result.
+
+For claims of learning or acceleration, observe the next matching task through
+its normal entrypoint: did it find, validate, and use the method? Include a
+changed-condition case where reuse should stop. Compare available end-to-end
+effort, waiting and rework on stated comparable work; distinguish a walkthrough
+from actual fresh-context or repeated runtime use. Identify artifact, dependency,
+method, and freshness conditions when reusing earlier verification. Quality
+detectors use [measurement calibration](../docs/contracts/data-analysis-discipline.md#measures-support-fallible-judgment-and-remain-open-to-correction),
+including useful cases they must preserve. Omit this analysis for unrelated claims.
 
 ## Failure and negative-path checks
 

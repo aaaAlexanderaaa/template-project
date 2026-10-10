@@ -91,6 +91,12 @@ authorization: selected effort and baseline, strongest alternative and why it
 loses, significant candidate gaps, expected result or learning by review, next
 step, and evidence. The executor may revise its approach within this charter;
 updates do not amend the goal, priorities, ceilings, expiry, or review bounds.
+Keep applicable experience locators and conditions for continuing or reopening
+the effort there too. Exploration can be part of the delegated scope; its
+checkpoint carries the question, bounded effort, and actual learning without
+requiring a predicted product payoff. Use the existing
+[method adaptation rule](../docs/contracts/autonomous-operation-discipline.md#learning-includes-exploration-and-revision-of-the-operating-method)
+for implementation changes; required review and issuer authority remain binding.
 A missed progress horizon needs fresh review before the same approach continues
 or its budget grows. Preserve the original horizon and review decision rather
 than silently resetting it in the checkpoint.
@@ -116,7 +122,9 @@ than silently resetting it in the checkpoint.
 
 ## Role and review triggers
 
-- Planner pass: at epoch boundaries and whenever direction is in doubt.
+- Planner pass: at epoch boundaries validate authority, state, assumptions,
+  and review due; continue a valid commitment. Reopen affected choices when
+  evidence changes or direction is in doubt.
 - Fresh direction reviewer: {{separate context, inputs and access; who dispatches it}}
 - Maximum review interval and limit on unreviewed work/exposure: {{finite bounds}}
 - Dispatch and due-state owner outside executor self-approval: {{harness mechanism}}

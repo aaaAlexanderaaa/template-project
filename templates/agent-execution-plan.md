@@ -73,6 +73,19 @@ record a relevant baseline and select credible evidence for each claim. Use a
 failing test first when it can expose the defect or protect the behavior; use
 artifact, interaction, or review evidence when that is what the claim needs.
 
+For recurring work, include the relevant experience locator, what can be
+reused, what invalidates it, and the observation that would change the approach.
+For activated [scale analysis](../docs/contracts/agent-execution-discipline.md#scale-separates-collection-size-repetition-and-execution-rate),
+name the growth, accumulation or rate mechanism, affected axis, and smallest
+scenario that can test the assumption. Stable bounded repetition keeps its
+existing route. A 1,000-object or execution probe is used only when relevant.
+
+When [active comparison](../docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+is needed, state the uncertainty, chosen evidence/question/standpoint/model
+variation, what is held fixed, observable result, effort bound and stopping
+basis here. Identify source dependence and retain first results before
+cross-comparison. Use the existing verification record for outcomes and limits.
+
 | Dependency / step | Complete result | Verification and relevant baseline |
 |---|---|---|
 | {{actual dependency}} | {{observable result}} | {{test/probe/review and limits}} |

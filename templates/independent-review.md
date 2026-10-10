@@ -33,6 +33,15 @@ finding names the important problem and evidence; it need not design the repair.
 - Baseline evidence and fixtures: `{{paths}}`
 - Constraints supplied to every perspective: {{constraints}}
 - Deliberately withheld information, if any: {{item and reason}}
+- Deliberate comparisons, when applicable: {{uncertainty; evidence groups and
+  actual origins; shared inputs/dependencies; questions/standpoints and models;
+  changed factors, held-fixed conditions, effort bound and stopping basis}}
+
+Use [active comparison](../docs/contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+for the relevant uncertainty. Preserve each comparison's first result before
+sharing other judgments. Identify whether variation tested evidence, framing
+or model dependence, and what its result cannot isolate. Model variation and
+source independence do not replace the required independent reviewer context.
 
 The [Grill role](../docs/guides/grill.md) can support this review against the
 original high-level purpose and current owner's supported standards. Its

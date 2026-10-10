@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -111,6 +111,11 @@ For explicitly authorized standing autonomy, also read the
 Before unattended expansion, exercise independent review dispatch and its
 unavailable-review behavior in the actual harness. Merely loading these files
 does not supply a scheduler, a fresh context, or enforced review due state.
+Use the existing task/checkpoint owner for execution continuity and relevant
+experience locators. When claiming that the adopted workflow retains learning,
+observe a fresh continuation finding and applying it, including a changed
+condition that requires revision. This is evidence for the claim, not a new
+recording system or an extra approval phase.
 
 The assessment, stage, and enforcement steps below apply when formal adoption
 or enforcement is requested. They are not prerequisites for learning. The

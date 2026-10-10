@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-28
+last_reconciled: 2026-10-11
 supersedes: []
 ---
 
@@ -255,6 +255,39 @@ lessons alone are not evidence of improvement.
 
 - from: source[7], source[8], source[10]
 
+### Experience changes the next matching action
+
+Retain experience when it can improve a future decision or repeated operation:
+successful methods and examples as well as failed attempts. Keep the problem,
+observed result, causal explanation or unresolved hypothesis, applicable
+conditions, and conditions that would invalidate the lesson. A successful
+example explains what made it useful; copying its surface can lose that value.
+A failure under one condition is not a permanent prohibition.
+
+Update the smallest existing owner: a default, tool, interface, method, example,
+or focused review cue. Put a permitted locator where matching work begins and
+retire superseded advice. Keep current execution state separate from reusable
+knowledge and historical evidence. A completion transcript alone is not an
+effective retrieval path. The [access method](../guides/information-access.md#retain-experience-at-the-next-decision-point)
+is one application, not a separate general memory authority.
+
+When a repeated operation has stable semantics, move its proven steps into a
+script or narrow interface with failure reporting and revalidation conditions.
+Keep judgment-dependent methods conditional and supported by examples; do not
+turn an unexplained correlation into an automatic veto. Automation preserves
+the original outcome and exception behavior, not just the easiest count.
+
+To claim adoption, observe a subsequent matching task finding and using the
+change through its normal entrypoint. Check a plausible sibling case and, when
+overgeneralization matters, a case where the lesson should not apply. Use fresh
+context when the claim depends on knowledge surviving a restart; otherwise
+label the weaker observation. Record recurrence, avoided rediscovery or rework,
+and observed effort where available. Saving a lesson proves retention; only
+changed subsequent work supports reuse or acceleration. Correct a failed
+retrieval/default before adding another reminder to the agent entrypoint.
+
+- from: source[15]
+
 ### Preserve decisions and evidence
 
 Requirements, translations, implementation plans, issues, and evidence have
@@ -470,6 +503,38 @@ meaning is ambiguous, label the interpretation and use the existing
 Complete the analysis and verification available within the authorized task;
 do not ask the user to perform that work as a substitute for delivery.
 
+For consequential or disputed conclusions, recurring corrections, or a
+credible shared blind spot in otherwise agreeing reviews, actively design and
+run a bounded comparison that could change the judgment. State the uncertainty
+and what observation would distinguish plausible explanations. Choose a useful
+difference: acquire evidence from a different origin, partition separately
+acquired evidence for independent examination, reorganize the same material,
+change the evaluative question or standpoint, or use a different model.
+When model dependence is the suspected mechanism, include a different available
+model within the authorized resource and privacy envelope. Select variation
+for the uncertainty; ordinary settled work keeps its direct verification path.
+
+Keep the original goal and binding constraints common to the comparisons.
+Record the relevant artifact and evidence identity, what changed and what was
+held fixed, the actual question and standpoint, model/context identity, and
+first results before sharing another evaluator's conclusion. Splitting one
+source or dataset does not create independent acquisition; state shared origin
+and dependencies. A model change is a variation, not a guarantee against shared
+error. A fresh context and independent evidence establish different things.
+When several factors change together, the result cannot isolate one factor's
+effect. Reconcile agreement and disagreement against observations, scope and
+accepted standards; a vote or repeated confident answer does not settle truth.
+
+Read-only comparisons and permitted bounded trials proceed under existing
+authority. Implementation experiments use the [controlled experiment boundary](#contract-before-material-delivery-evidence-before-certainty).
+Declare the question, useful observation, effort bound and stopping basis in
+the existing task record. Stop when the uncertainty is sufficiently resolved,
+the comparison has bounded diminishing returns, or an access/resource limit is
+reached; preserve failed, inconclusive and contrary results. If a model or source
+is unavailable, try a capability-preserving variation and expose the remaining
+dependence. Required independent review still follows its owning contract.
+Critical attitude and planned experiments alone do not provide observed evidence.
+
 Answer the user's explicit question, and also surface an unasked premise,
 constraint, outcome, or risk when evidence shows it is materially more
 consequential to the user's goal. State the causal connection and classify the
@@ -477,7 +542,7 @@ observation through the governance vocabulary. Do not use this obligation to
 speculate without evidence, replace the requested task, manufacture priority,
 or expand implementation scope without authorization.
 
-- from: source[3] (2026-08-06 inquiry and causal analysis), source[11] (2026-09-10 attribution and scope feedback)
+- from: source[3] (2026-08-06 inquiry and causal analysis), source[11] (2026-09-10 attribution and scope feedback), source[16]
 
 ### Recurring verbal rules are proposed for durable recording
 
@@ -965,7 +1030,42 @@ review-gate, quota, or personal-context changes. This source informs the
 [inquiry](#unknown-references-are-researched-not-reconstructed) and
 [fallback](#tool-failure-triggers-capability-preserving-fallback) invariants.
 
+### source[15] — 2026-10-10
+
+The maintainer authorized adopting the integrated lessons of the
+`between-ideas` autonomous research and writing experiment: learn from its
+growth and successful operation as well as its errors; carry experience into
+future execution, allow external evidence to change understanding, and assess
+the whole requested outcome rather than only the latest correction. This is
+a public paraphrase of the accepted request, not a transcript or a claim that
+the template already supplies the experiment's operational capabilities.
+Implementation and evidence: [adoption record](../evidence/2026-10-10-experience-and-adaptive-operation.md).
+
+### source[16] — 2026-10-11
+
+The maintainer requests active additional experiments to create differences
+that aid judgment: separately examine independent evidence and vary material
+organization, evaluative questions or standpoint, and models. Critical attitude
+alone is insufficient. The motivating concern is that the same model using the
+same material may retain the same bias. This authorizes bounded comparisons
+inside existing permissions; the source states a concern, not a measured
+probability or proof that changing models removes it.
+
 ## Reconciliation log
+
+- **2026-10-11 — conclusions receive discriminating comparisons:** extended
+  causal analysis with an active comparison duty, genuine evidence origins,
+  available model variation, retained first results and stopping conditions.
+  Research and review consumers use this owner. Independence requirements and
+  resource authority remain at their existing owners.
+  - from: source[16]
+
+- **2026-10-10 — experience enters the next decision:** added conditional
+  reuse of successful and failed methods, entrypoint retrieval, promotion into
+  defaults or tools, and evidence for actual uptake. Existing failure-category
+  repair remains the owner of defect guards. Task context now selects decision
+  depth and preserves the combined outcome across corrections.
+  - from: source[15]
 
 - **2026-09-28 — research and access methods:** strengthened evidence discovery,
   claim-level independence, synthesis and stopping boundaries, successful-output

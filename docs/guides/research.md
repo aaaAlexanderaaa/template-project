@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 ---
 
@@ -119,6 +119,23 @@ additional favorable examples. Independence and contradiction are separate:
 opposed opinions can share a source, and independent observations can agree.
 Do not manufacture a balanced debate when support is unequal.
 
+Use [active comparisons](../contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+when the conclusion needs that test. Name the uncertainty and select an
+observation that could change the explanation. For example, separately examine
+records from different acquisition origins before combining their explanations;
+keep the source groups and shared dependencies visible. If only one dataset is
+available, a partition can reveal subgroup differences or omissions while still
+sharing that collection's errors. Keep original goals and constraints available
+to every examiner; partitioning evidence does not justify withholding authority.
+
+To inspect interpretation, compare material organization, evaluative questions
+or substantive standpoints. Include a different available model when model
+dependence is the concern, within the same resource and privacy bounds. Retain
+actual questions, model/context, changed factors and first results before
+sharing explanations. Check the underlying records to reconcile differences.
+A joint change of model and question can expose fragility without isolating
+which caused it. A direct source lookup can still remain direct.
+
 Temporary synthesis is useful for identifying missing evidence. Keep it
 revisable, and let a draft send the inquiry back to acquisition. Before final
 delivery, inspect the decisive claims, important alternatives, unexplored
@@ -130,6 +147,34 @@ inaccessible; or the authorized budget is exhausted. State the searched scope
 and consequential remaining gaps. Lack of novelty within one source cluster
 does not prove broad saturation. Do not claim statistical coverage without a
 defined population, method, and supporting observations.
+
+### Develop research into worthwhile content
+
+When inquiry supports writing or another creative artifact, select a question
+for the understanding, experience, or useful disagreement it can give the
+intended audience. A well-polished answer to an empty question still needs a
+better premise. Study positive work as well as defects: which material opened
+the question, which relationship made it understandable, and which structural
+choice held attention? Preserve those reasons and their limits as
+[reusable experience](../contracts/development-discipline.md#experience-changes-the-next-matching-action),
+not a universal outline, tone, or list of forbidden expressions.
+
+Let substantive external material change the question, selection of examples,
+argument, or form. Sources supply facts and perspectives; they are not ornaments
+attached after the structure is fixed. Recheck decisive facts against their
+sources when an internal summary or fluent rewrite may have changed meaning,
+units, chronology, or certainty. Independent sourcing can expose mistakes that
+several reviewers sharing the same notes miss.
+
+Use author, editor, subject expert, and reader perspectives where their
+different responsibilities expose real trade-offs. A vote count or several
+role names alone supplies no independent evidence. Integrate their judgment
+against the intended effect, preserve useful unresolved tension, and read the
+whole artifact for duplication, progression, and coherence after local edits.
+If comparing creative alternatives, state what actually differs and what the
+observation supports; two versions that share the suspected cause cannot
+establish that cause's effect. New material can warrant abandoning the first
+draft rather than polishing it again.
 
 ### Return the useful result
 

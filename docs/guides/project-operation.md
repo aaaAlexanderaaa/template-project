@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -60,6 +60,11 @@ decision. Examples and current inventory alone do not supply that decision.
 
 Resume authorized in-progress work before discovering replacement work. A
 blocker on one item does not make unrelated authorized work blocked.
+Validate the commitment's decisive assumptions and due review; retain it when
+they hold. Follow the [task-context rule](../README.md#task-context) to bring in
+goals or original purpose when the decision needs them, and find applicable
+[experience](../contracts/development-discipline.md#experience-changes-the-next-matching-action)
+before repeating exploration.
 
 Inside an authorized outcome, use the engineering decision envelope in the
 governance contract: locally reversible choices inside current authority and
@@ -196,6 +201,22 @@ spends billed, rate-limited, or account-bound resources declares its volume
 and stop condition before running; a rate-limit response circuit-breaks into
 a mechanism fix, never a blind retry.
 
+For recurring work, use [validity-aware reuse](../contracts/agent-execution-discipline.md#repeated-work-amortizes-effort-without-hiding-changed-conditions)
+to avoid unchanged repeated checks. Advance ready work within the current
+envelope. Use [scale analysis](../contracts/agent-execution-discipline.md#scale-separates-collection-size-repetition-and-execution-rate)
+when a concrete growth, accumulation or rate mechanism could affect the result;
+stable bounded repetition keeps its existing route. At an
+existing direction review, use [method adaptation](../contracts/autonomous-operation-discipline.md#learning-includes-exploration-and-revision-of-the-operating-method)
+to examine the workflow's responsibilities, costs, retained experience, and
+remaining exploration space. These are parts of this loop, not extra passes
+after each mechanical step.
+
+For consequential uncertainties or a credible shared review blind spot, use
+[active comparisons](../contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+inside the same envelope. Select an observation and a useful variation; record
+evidence origins, actual models/questions, first results and limits at the
+existing task owner. Model availability does not expand the charter or budget.
+
 ### 5. Report governance output precisely
 
 Classify every material output as `fact`, `risk`, `recommendation`,
@@ -232,6 +253,41 @@ chat history decays with the context that carries it.
 - Acceptance evidence covers the declared risk and boundary surface.
 - Completion is reported at the correct layer.
 - Newly discovered work is recorded but not assigned silent priority.
+
+### Worked example: a research and writing effort across sessions
+
+This is an illustrative use of the rules, not a measured autonomous run.
+Assume an owner has authorized an explanatory series, including bounded topic
+exploration, and has supplied its audience, purpose, limits, and review cadence.
+The current effort asks how two plausible explanations of an event differ.
+Its checkpoint names the question, selected approach and reason, relevant source
+versions, completed work, next observation, review due, and a link to a proven
+source-verification method. Historical run logs remain linked, not recopied.
+
+| Observation or change | Action through the existing route |
+|---|---|
+| A new session starts; evidence and review bounds remain valid | Resume the next observation using the method locator; no fresh mission essay or wholesale plan |
+| An external primary source contradicts the shared notes | Recheck dependent claims and revise the explanation or article structure; preserve what changed the judgment |
+| A known rewriting error returns despite an existing lesson | Inspect whether retrieval, adoption, execution, or the method failed; fix that entry or operation and check a sibling example |
+| A repetitive-style detector also flags a valuable quotation | Inspect the raw cases and detector definition; preserve source fidelity and correct the proxy rather than erase the useful material |
+| The detector now reports zero | Establish that it ran on the current objects; inspect known cases and unfamiliar material before deciding whether quality improved |
+| The next source check is ready while a disjoint write is locked | Continue permitted, stable read work within the same budget; preserve dependencies, integration ownership, and due review |
+| The unchanged draft's source or evaluation method changes | Invalidate affected cached evidence, recheck dependents, and keep unrelated valid evidence |
+| Fresh reviews agree on a shared summary while a raw source contradicts it | Examine separately acquired evidence, vary the consequential question or available model, and compare first results against the source; preserve shared dependencies |
+| Repeated work stays small, bounded and stable | Reuse valid checks and methods through the routine route |
+| Each run is small but reads an ever-growing history | Inspect the cumulative retrieval mechanism with a discriminating scenario before its cost becomes excessive |
+| All local tasks pass but the reader learns little | Revisit the question and approach against the intended effect; polishing and task counts do not settle that judgment |
+| A surprising theme may be useful | Explore within the delegated topic scope and budget; retain learning even if no article results. A proposed new objective returns to its owner |
+| Repeated runs accumulate useful methods and obsolete notes | Keep current state small, replace superseded guidance at its owner, and check fresh retrieval; retain history supporting live claims or recovery |
+
+The [content method](research.md#develop-research-into-worthwhile-content)
+connects question, material, reader effect, and form. The
+[measurement rule](../contracts/data-analysis-discipline.md#measures-support-fallible-judgment-and-remain-open-to-correction)
+keeps checks useful and revisable. Compare later work for recurrence, rediscovery,
+waiting, useful results, and human intervention on stated comparable cases.
+Faster work buys capacity for a better question or more careful inquiry; it
+does not require producing more entries. A method change can be retained,
+revised, or reversed inside its authority. The goal and due review survive it.
 
 ### Worked example: checking three page scripts
 

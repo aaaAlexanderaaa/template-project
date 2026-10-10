@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-27
+last_reconciled: 2026-10-11
 review_due: 2026-12-14
 supersedes: []
 ---
@@ -24,7 +24,8 @@ written artifacts, and a taste corpus, and its characteristic failures are
 direction drift, self-confirming judgment, and triggers deferred forever.
 
 Original request/source: source[1], with the alignment decisions in source[2]
-and source[3], refined by source[6] after an actual autonomous-use failure.
+and source[3], refined by source[6] after an actual autonomous-use failure
+and source[7] through study of a growing research and writing workflow.
 Accepted interpretation: an owner can hand an agent a bounded objective, leave,
 and return to a system that stayed inside its authorization, recorded what it
 did, and escalated what it could not decide. It must also produce observable
@@ -126,8 +127,12 @@ extend it, and it never edits the charter itself.
 A wake is a cold start. Continuity exists only in written artifacts, so each
 epoch begins by reading the charter, the applicable contracts, the recorded
 current state, and the open questions left by earlier epochs — not by trusting
-impressions. Plans are re-derived per epoch from the objective and current
-facts; a previous epoch's plan is input, not authority. Each epoch ends by
+impressions. Validate the previous commitment against current authority, state,
+decisive assumptions, and due review. Continue it when these remain valid;
+replan the affected choice when new evidence or review warrants it. A previous
+plan is neither authority nor disposable simply because a new epoch began.
+Use [task context](../README.md#task-context) to choose the needed decision depth.
+Each epoch ends by
 recording the useful change or learning, its evidence, and what remains open.
 Execution evidence identifies the artifact version, check actually run,
 observed result and time, with a durable reference to the direct tool result
@@ -138,7 +143,7 @@ Keep active state concise at its existing owner; link history for investigation
 rather than copying the growing run log into every wake. A claimed change
 without a record needs reconstruction and verification before it is relied on.
 
-- from: source[1] (2026-09-15 autonomy design question), source[6]
+- from: source[1] (2026-09-15 autonomy design question), source[6], source[7]
 
 ### Trigger evaluation is recorded and deferral is counted
 
@@ -262,6 +267,14 @@ charter. The executor updates this state within the delegated criteria; a state
 update cannot amend authorization or reset due review. Finish coherent work before
 switching to a fresh easy task unless new evidence warrants the switch.
 
+Carry applicable [reusable experience](development-discipline.md#experience-changes-the-next-matching-action)
+and its locator with that checkpoint. Advance ready authorized work while the
+wake's budget and review bounds allow; one completed subtask is not a reason
+to wait for the next scheduled wake. If writes are blocked, permitted reads,
+analysis, or disjoint work can proceed when they do not depend on disputed or
+unstable state. Concurrency follows existing coordination and resource rules,
+not a throughput quota. A blocked path does not create authority elsewhere.
+
 At selection time, name what progress should become observable by the next
 review and how much time or resource can be spent learning before re-evaluation.
 The horizon follows the work: research may resolve a critical uncertainty
@@ -280,7 +293,51 @@ missing progress. Preserve negative results and rejected approaches so later
 wakes do not rediscover them. Workflow prediction is separate from predicting
 owner choices; only actual owner responses calibrate the latter.
 
-- from: source[6]
+- from: source[6], source[7]
+
+### Learning includes exploration and revision of the operating method
+
+Within an authorized exploratory scope, unfamiliar questions, competing
+explanations, and accidental discoveries can precede a complete classification,
+plan, or predicted payoff. Bound the effort and external effects, distinguish
+hypotheses from facts, and preserve what changed the understanding, including
+failed attempts. Exploration can be selected before the backlog is empty.
+External material may change a question, explanation, or creative form; adding
+citations while preserving a disproved frame is not learning. The
+[research method](../guides/research.md) supplies a revisable inquiry path.
+
+At the existing direction review, inspect the operating method as well as its
+outputs: what responsibility each role, rule, check, or record serves; which
+failure or uncertainty led to it; and whether present conditions still need
+that structure. Repeated instructions or deliberately demanding standards can
+compensate for a limited executor. Judge their contribution and cost before
+removing them for elegance. Successful operation and fewer repeated mistakes
+are evidence worth preserving, even when the arrangement is cumbersome.
+
+Inside the existing engineering envelope, the executor may combine, replace,
+automate, or retire implementation steps, records, and role arrangements while
+preserving required responsibilities, actual independence, and authorization.
+Record a consequential method change and why it should help at the existing
+owner; compare subsequent work and reverse or revise it if the effect fails.
+Changing a mandated review, accepted risk, goal, or authority follows the
+[ratification boundary](#the-discipline-evolves-by-ratified-proposal) below.
+Self-inspection is executable maintenance, not permission to approve oneself.
+
+Use [calibrated measures](data-analysis-discipline.md#measures-support-fallible-judgment-and-remain-open-to-correction)
+to reveal recurrence, blind spots, waiting, or rework and to test improvement.
+Include successful cases and external material in open review so the system
+can discover standards it has not yet encoded. A measure, a reviewer, and its
+dispatch method can share a blind spot. Reuse the existing review and evidence
+path to investigate that possibility instead of adding an endless hierarchy
+of reviewers. Retain one integration owner for the resulting changes.
+Use [active comparisons](development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+to test consequential uncertainties with real differences in evidence, question,
+standpoint or available model; retain the first results and their limits.
+Distinguish [collection growth, repeated execution, and execution rate](agent-execution-discipline.md#scale-separates-collection-size-repetition-and-execution-rate)
+when assessing cumulative effects; progress should build usable capacity for
+subsequent work rather than only enlarge the operating record.
+
+- from: source[7]
 
 ### Idle produces reflection artifacts or rest, never busywork
 
@@ -356,7 +413,8 @@ entirely.
 ### The discipline evolves by ratified proposal
 
 Changes sort into three tiers. Implementation choices inside the envelope
-proceed under existing governance. Behavior changes update their existing
+proceed under existing governance, including method adaptations that preserve
+the required functions above. Behavior changes update their existing
 contract owners under the delivery-contract rule. Changes to a charter or to
 this discipline are proposal-only for the agent: the proposal names the
 observed failure or evidence that motivates it, and takes effect only when
@@ -364,7 +422,7 @@ the owner ratifies it. The agent never edits its own authorization source,
 including to fix a charter defect; a defective charter is a halt condition,
 not an invitation.
 
-- from: source[2] (2026-09-15 alignment decisions)
+- from: source[2] (2026-09-15 alignment decisions), source[7]
 
 ## Required behaviors
 
@@ -427,6 +485,12 @@ not an invitation.
   that cannot be verified is treated as not done.
 
 ## Acceptance evidence
+
+The [2026-10-10 adoption record](../evidence/2026-10-10-experience-and-adaptive-operation.md)
+covers instruction consistency and scenarios for experience, exploration,
+adaptation, and acceleration. It separates those artifacts from observed
+runtime reuse and longitudinal outcomes; the behavioral promise below remains
+open. Required reviewer separation and issuer-only authority are unchanged.
 
 Repository integration is present when:
 
@@ -560,7 +624,30 @@ records and personal preferences remain outside this public repository. The
 review dispatch, progress horizons and independent closure are implementation
 choices to make the requested separation effective, not measured guarantees.
 
+### source[7] — 2026-10-10
+
+The maintainer authorized absorption of the integrated study of the
+`between-ideas` experiment. The request connects mission, goals and tasks with
+creative inquiry, self-inspection, autonomy, room for disorder and discovery,
+useful experience, fallible measurement, acceleration, and long-term scale.
+Strong corrective structures may serve weaker execution; learn what they make
+possible before judging their elegance. The requested general mechanisms are
+recorded in [the adoption evidence](../evidence/2026-10-10-experience-and-adaptive-operation.md).
+Method adaptation remains inside existing authority; this authorization does
+not transfer the issuer's charter powers to an unattended executor.
+
 ## Reconciliation log
+
+- **2026-10-11 — active inquiry routed:** method inspection and shared-blind-spot
+  investigation use development's active comparison duty. Its bounded trials
+  remain inside the live charter and existing review requirements.
+
+- **2026-10-10 — continuity and adaptive operation:** replaced unconditional
+  per-epoch plan derivation with validation and affected-choice reopening;
+  connected checkpoints to reuse and ready work; made exploration and method
+  inspection part of existing operation. Measurement and scale analysis use
+  their existing owners. No new review tier or autonomous permission was added.
+  - from: source[7]
 
 - **2026-09-27 — direction and value across autonomous wakes:** replaced the
   single-context reviewer allowance with independently dispatched fresh review;

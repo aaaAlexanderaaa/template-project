@@ -14,7 +14,9 @@ from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
-FIXED_TODAY = "2026-10-04"
+# The copied repository and this clock form one reviewed fixture baseline.
+# Advance together when repository reconciliation dates move forward.
+FIXED_TODAY = "2026-10-10"
 
 
 def load_checker_module():

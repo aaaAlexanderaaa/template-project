@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -164,6 +164,15 @@ The implementer cannot manufacture independence by writing several sections in
 the same context. Review records identify the verifier context, inputs,
 limitations, and whether independence was required and achieved.
 
+Distinguish context independence, evidence acquisition, and variation in the
+question, standpoint or model. Repeated fresh reviews may still share source
+errors and model assumptions. For comparisons, follow [development's active
+variation rule](development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+and record the actual supplied material and model, not only a role name.
+Changing the model within the producing context does not satisfy a required
+independent review; splitting shared material does not establish independent
+sources. Agreements and disagreements retain their stated comparison limits.
+
 Standing autonomous work additionally follows
 [direction review](autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context),
 including its cadence and independent closure; this applies to accumulated
@@ -179,7 +188,7 @@ When the required independent context is unavailable, the work remains
 exception. Passing technical checks does not substitute for missing governance
 evidence.
 
-- from: source[2]
+- from: source[2], source[13]
 
 ### Work selection has no silent idle state or invented priority
 
@@ -250,10 +259,15 @@ A simulation, mock, or controlled fake establishes that the system runs; it
 does not establish that the outcome holds under real data, real counterparts,
 or a real environment. A demonstration that required invisible manual
 correction is evidence about the correction, not about the system.
+When attributing sustained capability to an agent workflow, identify the
+model/runtime, supplied context and tools, intervention or rescue, and observed
+execution span. A stronger evaluator's repaired answer does not establish that
+the intended executor can sustain the workflow. Compare changes under stated
+conditions and retain failed runs as well as successful examples.
 Real-environment verification carries its own cost and risk, so bound it and
 set its stop conditions before running it.
 
-- from: source[1], source[2], source[8]
+- from: source[1], source[2], source[8], source[12]
 
 ### Billed, rate-limited, and account-bound resources are spent deliberately
 
@@ -280,6 +294,55 @@ owner may lift limits explicitly. Quotas exist to protect accounts and
 attention, not to ration compute.
 
 - from: source[8]
+
+### Repeated work amortizes effort without hiding changed conditions
+
+Use verified experience through [development's reuse rule](development-discipline.md#experience-changes-the-next-matching-action).
+Reuse a check result only when its artifact identity, relevant dependencies,
+method or criteria version, and freshness still support the claim. A changed
+input, expired source, or discovery that the check missed a defect invalidates
+the affected result even if the file itself is unchanged. Unknown validity
+requires rechecking; a cached success cannot suppress necessary work.
+
+Prefer incremental checks for unchanged large collections, with proportionate
+whole-result checks for interactions and open review for unknown failure modes.
+Evaluate acceleration by time and effort to a useful verified result, including
+waiting, rediscovery, rework, integration, and recovery. More calls or commits,
+and shorter prompts alone, do not establish it. An up-front research or
+governance investment can be worthwhile when it improves later work; there is
+no universal ratio between administration and production.
+
+- from: source[12]
+
+### Scale separates collection size, repetition, and execution rate
+
+At existing work selection or review, activate scale analysis when a known or
+credible mechanism of object/dependency growth, accumulated state or effects,
+or changed execution rate/concurrency could materially affect cost, correctness,
+recovery, or the authorized outcome. State that mechanism before selecting the
+relevant axis. Stable, bounded repetition with still-valid assumptions uses the
+existing routine route and verified reuse. Analyze foreseeable accumulation
+before a failure or budget overrun occurs; current small size alone does not
+establish that it will remain harmless.
+
+| Axis | What can change | Design and observation questions |
+|---|---|---|
+| More objects and relationships | Retrieval, dependency fan-out, context volume, blast radius | Can matching knowledge and affected dependents be found without reading everything? What still needs a whole-collection check? |
+| More executions over time | Accumulated state and history, recurring mistakes, stale experience, drift | Do restart, retry, interruption, cleanup, and knowledge reuse remain correct? Do review and progress obligations survive? |
+| Higher rate or concurrency | Ready-work delay, resource contention, overlapping writes, integration load | What can proceed independently, what must serialize, and who integrates and recovers partial work? |
+
+Choose the smallest scenario that can test the consequential assumption. Use a
+substantially larger scenario, such as 1,000 objects or executions, when it can
+expose the relevant growth or accumulation mechanism; this is an optional probe,
+not a per-task requirement. State which axis changed, which conditions were held
+constant, and whether the result is a calculation, simulation, artifact inspection,
+or observed runtime. Consider accumulated failure and recovery. Retain an
+analysis while its decisive conditions hold; revisit the affected axis when
+they change. Keep that decision in the existing task or review. Introduce
+machinery where the expected repeated cost or failure warrants it. Resource
+ceilings, coordination and authorization still bound acceleration.
+
+- from: source[12], source[13]
 
 ### The harness selects the smallest executable route
 
@@ -345,6 +408,12 @@ may carry this in the native invocation; ongoing or concurrent writes use the
 existing plan or handoff. Do not create a second task registry for compliance.
 Unknown context inheritance is not evidence that a worker received a rule.
 
+For continued or judgment-bearing work, also carry the selection reason,
+decisive assumptions, freedom to revise the approach, and evidence that would
+require returning to the parent decision. Include the locator for relevant
+reusable experience. These belong in the same assignment or handoff, not an
+additional reporting layer.
+
 Select context by the judgment the recipient must make. The agent talking
 with the owner may need collaboration background and detailed preference
 evidence. A scheduled task, recurring loop, or worker usually needs the
@@ -378,7 +447,7 @@ over an approval-requiring step when it serves the same purpose. When
 delegated work fails, first suspect the assignment's context, contracts, and
 descriptions — not the worker.
 
-- from: source[5], source[6], source[8], source[9] (2026-09-25 context selected for recipient judgment)
+- from: source[5], source[6], source[8], source[9] (2026-09-25 context selected for recipient judgment), source[12]
 
 ## Required records
 
@@ -572,7 +641,37 @@ instruction to stop, or to name a different end, replaces it. When git cannot
 be initialized, adding template files stops and the owner is told. Other work
 that adds no template file continues.
 
+### source[12] — 2026-10-10
+
+The maintainer's integrated adoption request includes acceleration through
+retained experience, avoiding repeated checks and artificial waiting, and
+separate reasoning about much larger collections and repeated execution.
+The current request authorizes general execution rules and their projections;
+it does not authorize a new runtime or promise a particular model's throughput.
+See [the adoption evidence](../evidence/2026-10-10-experience-and-adaptive-operation.md).
+
+### source[13] — 2026-10-11
+
+The maintainer asks for active evidence and model variation to test conclusions,
+and accepts the proposed scale refinement: inspect a concrete growth or
+accumulation mechanism, retain stable bounded work's simple route, choose the
+smallest discriminating scenario, and treat 1,000 as an optional pressure case.
+The accepted proposal retains proactive analysis of cumulative effects before
+observed harm and reuses valid conclusions until their conditions change.
+
 ## Reconciliation log
+
+- **2026-10-11 — variation and conditional scale analysis:** distinguished
+  context, source, question and model dependence; routed active comparisons to
+  development. Scale analysis now follows a material mechanism and an appropriate
+  probe instead of recurrence alone. Existing budgets and coordination still apply.
+  - from: source[13]
+
+- **2026-10-10 — cumulative execution and useful acceleration:** specified
+  validity-aware reuse, distinct scale axes, and decision continuity in
+  assignments. Claims retain their evidence class; routine work gains no
+  mandatory capacity plan or new record.
+  - from: source[12]
 
 - **2026-10-02 — the owner's own later stop replaces the end:** a system or
   tool note does not cancel a named end. The owner's own later stop or new

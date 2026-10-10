@@ -24,7 +24,8 @@ subject: {{initiative}}
 Include only context needed for the next action, plus its original requirements
 and governing boundaries. History is linked for investigation, not copied here.
 Include relevant accepted trade-offs and their reasons when the next decision
-depends on them. Use only context permitted for this record's audience; retain
+depends on them, plus a locator for applicable reusable experience. Use only
+context permitted for this record's audience; retain
 personal profiles and private source paths outside public handoffs. Name how
 to obtain missing context without exposing it.
 Recheck current files; a handoff or agent memory cannot override their authority.
@@ -54,14 +55,25 @@ the named integrating owner: {{owner}}. Follow the [delegation owner](../docs/co
 - {{next dependency-ordered action and completion condition}}
 - {{material unresolved assumption and how the next action resolves it, if any}}
 
-## Decisions that must not be re-derived
+## Decisions to retain while their conditions hold
 
-- {{confirmed decision, authority, and source}}
+- {{confirmed decision, authority, reason, and source; material condition
+  that would reopen it, if any}}
 
-## Known pitfalls
+Validate these conditions on resume; retain a still-valid commitment. For
+ongoing work, carry the selected effort's connection to the parent outcome and
+the freedom to revise its approach. A new session alone does not reopen it.
 
-- {{trap already hit: symptom, root cause where known, and where to look
-  first, so the next session does not re-derive it}}
+## Reusable experience
+
+- {{relevant successful method or example: locator, observed benefit,
+  applicability and invalidation conditions; omit when none is relevant}}
+- {{prior failure: locator, symptom and observed conditions, root cause
+  or unresolved hypothesis, where to look first, applicability and
+  invalidation conditions; omit when none is relevant}}
+
+Follow [experience reuse](../docs/contracts/development-discipline.md#experience-changes-the-next-matching-action).
+Link its existing owner; do not paste a growing lesson log into each handoff.
 
 ## Parallel work in progress
 

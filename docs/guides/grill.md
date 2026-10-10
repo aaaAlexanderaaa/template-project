@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -128,6 +128,17 @@ Keep supported answers. Find the assumption or omission that could most change
 the outcome. A sensible proposal may survive Grill; the role need not reject
 it to demonstrate value.
 
+Where [development's active comparison duty](../contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
+applies, run a bounded comparison that can challenge the conclusion. Select the
+uncertainty and vary relevant evidence groups, material organization, question,
+standpoint or available model. For example, compare understanding the context
+and reflecting on the result with examining it from an external user's position,
+while supplying the same original goal and boundaries. Preserve first judgments
+before sharing a defense. Record shared evidence origins and the actual model;
+different role names, evidence chunks or models do not by themselves establish
+independent support. Reconcile findings against observations and the standard,
+including when agreeing reviews miss contrary material.
+
 ### Follow the most consequential answer
 
 Investigate technical facts through the existing
@@ -155,6 +166,16 @@ Ordinary Grill keeps the existing authority and blocker boundaries; this method
 does not add a charter, schedule, or blanket halt to a one-off review.
 
 ### Examine repeated effects when defaults change
+
+For an evolving workflow, trace the problem each responsibility and structure
+was introduced to solve, including what it successfully made possible. A
+cumbersome arrangement may compensate for a limited executor; inspect those
+effects before simplifying it. Follow the
+[method adaptation rule](../contracts/autonomous-operation-discipline.md#learning-includes-exploration-and-revision-of-the-operating-method)
+for standing operation and the
+[scale axes](../contracts/agent-execution-discipline.md#scale-separates-collection-size-repetition-and-execution-rate)
+for cumulative consequences. Judge measures and review procedures themselves
+against raw work and external evidence, within this same bounded review.
 
 Consider a proposal to run full repository checks at the beginning of every
 task. Inspect current triggers, coverage, measured cost, and evidence of the

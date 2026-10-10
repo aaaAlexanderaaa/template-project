@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-11
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 ---
 
@@ -106,6 +106,10 @@ everywhere. Return the specific capability gap and its effect on the parent
 claim. A lower-evidence substitute may enable a narrower result.
 
 ### Retain experience at the next decision point
+
+Apply [development's experience rule](../contracts/development-discipline.md#experience-changes-the-next-matching-action)
+to source access. The details below specialize its retrieval and invalidation
+conditions; other recurring work uses the same owner, not a copy of this guide.
 
 For costly or recurring work, update the smallest useful note at an existing
 owner, and put its permitted locator where matching future tasks begin. A note
