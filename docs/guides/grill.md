@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-20
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -112,6 +112,11 @@ optimize something the owner does not value. The reviewer may identify that
 failure without knowing the best replacement design. Explain the relevant
 standard and concrete shortcoming so a disagreement can be examined.
 
+Use [claim-specific inspection](../contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
+to choose the actual object and reading scope. A full source record and its
+reader-facing projection can support different findings; identify which you
+examined. Compare useful gains and losses when the work replaces an earlier form.
+
 For an independent review, use a fresh context that did not produce the work.
 Give it the relevant intent and standards, with an open inspection assignment;
 retain its first judgment before supplying the executor's defense. Subsequent
@@ -155,7 +160,9 @@ questions before their prerequisites are known.
 Use the signs identified by the current project or owner. If unexplained
 internal language accompanies a confident success report, examine what the
 report claims, the underlying observations, and any narrowing of the original
-purpose. Establish which conclusions need rechecking and why. A terminology
+purpose. Use [judgment diagnosis](../contracts/development-discipline.md#improve-judgment-before-amplifying-effort)
+to distinguish missing observation from a finding that the decision rule
+discounted. Establish which conclusions need rechecking and why. A terminology
 edit alone cannot resolve a missing observation or mistaken goal; familiar
 specialist vocabulary with clear meaning need not be a defect.
 

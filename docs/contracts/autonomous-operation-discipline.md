@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-19
 review_due: 2026-12-14
 supersedes: []
 ---
@@ -253,7 +253,14 @@ Reopen it when evidence changes the ranking or at the next direction review.
 A mandatory repair justifies urgency by the failure it prevents or the work it
 actually unblocks; the word "maintenance" is not a blanket priority.
 
-- from: source[6]
+When activity succeeds but value or understanding disappoints, use
+[judgment diagnosis](development-discipline.md#improve-judgment-before-amplifying-effort)
+before repeating or accelerating the approach. Inspect what observations
+reached selection and review, which were discounted, and why. Work that already
+has sound grounds and a demonstrated throughput bottleneck can accelerate
+within its existing bounds; reflection is not a per-step prerequisite.
+
+- from: source[6], source[8]
 
 ### A sequence of wakes advances a coherent outcome
 
@@ -318,7 +325,11 @@ Inside the existing engineering envelope, the executor may combine, replace,
 automate, or retire implementation steps, records, and role arrangements while
 preserving required responsibilities, actual independence, and authorization.
 Record a consequential method change and why it should help at the existing
-owner; compare subsequent work and reverse or revise it if the effect fails.
+owner. Use development's [before/after capability comparison](development-discipline.md#coherent-end-state),
+including authorized exploration and self-improvement duties. A prohibition on
+publication, for example, does not imply a prohibition on permitted learning.
+Exercise those duties under the replacement method, then compare subsequent
+work and reverse or revise it if the effect fails.
 Changing a mandated review, accepted risk, goal, or authority follows the
 [ratification boundary](#the-discipline-evolves-by-ratified-proposal) below.
 Self-inspection is executable maintenance, not permission to approve oneself.
@@ -337,7 +348,7 @@ Distinguish [collection growth, repeated execution, and execution rate](agent-ex
 when assessing cumulative effects; progress should build usable capacity for
 subsequent work rather than only enlarge the operating record.
 
-- from: source[7]
+- from: source[7], source[8]
 
 ### Idle produces reflection artifacts or rest, never busywork
 
@@ -485,6 +496,11 @@ not an invitation.
   that cannot be verified is treated as not done.
 
 ## Acceptance evidence
+
+The [2026-10-19 delivery record](../evidence/2026-10-19-recursive-improvement.md)
+adds bounded baseline/revised instruction trials for judgment, observation and
+method preservation. It keeps successful baseline behavior visible and does
+not replace the operational adoption evidence required below.
 
 The [2026-10-10 adoption record](../evidence/2026-10-10-experience-and-adaptive-operation.md)
 covers instruction consistency and scenarios for experience, exploration,
@@ -636,7 +652,22 @@ recorded in [the adoption evidence](../evidence/2026-10-10-experience-and-adapti
 Method adaptation remains inside existing authority; this authorization does
 not transfer the issuer's charter powers to an unattended executor.
 
+### source[8] — 2026-10-19
+
+The maintainer's implementation request and judgment/effort distinction are
+preserved at [development source[17]](development-discipline.md#source17--2026-10-19).
+For standing work, the adopted application is conditional diagnosis before
+amplifying a disappointing approach, and verification that method replacement
+preserves authorized learning and improvement duties. It changes implementation
+guidance, not the issuer's authority or the required independent review.
+
 ## Reconciliation log
+
+- **2026-10-19 — judgment and positive duties survive adaptation:** connected
+  work selection to diagnosis of observation and decision response; method
+  replacement now exercises useful duties, including exploration and improvement,
+  rather than crediting fewer jobs alone. Sound ready work retains acceleration.
+  - from: source[8]
 
 - **2026-10-11 — active inquiry routed:** method inspection and shared-blind-spot
   investigation use development's active comparison duty. Its bounded trials

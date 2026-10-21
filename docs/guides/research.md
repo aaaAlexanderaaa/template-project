@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-20
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 ---
 
@@ -90,6 +90,13 @@ source class or search path. A new query string is not necessarily a new
 perspective. Preserve significant avenues not reached. Do not substitute many
 low-value searches for investigating the strongest unresolved question.
 
+For a claim about an evolving project, distinguish the indexed history from
+the changes actually inspected. Follow important decisions into before/after
+artifacts and subsequent use, including successful cases, reversals and
+recurrence. Merges, consolidated commits and archived branches can change what
+the visible sequence contains. Compare the relevant periods and accepted goals;
+commit counts, messages and a later date alone do not establish improvement.
+
 ### Keep claims attached to observations
 
 Read the material needed for each decisive assertion. Search snippets and
@@ -158,6 +165,8 @@ the question, which relationship made it understandable, and which structural
 choice held attention? Preserve those reasons and their limits as
 [reusable experience](../contracts/development-discipline.md#experience-changes-the-next-matching-action),
 not a universal outline, tone, or list of forbidden expressions.
+Treat constructive feedback as material for the next question or method, not
+only as a request to repair a draft.
 
 Let substantive external material change the question, selection of examples,
 argument, or form. Sources supply facts and perspectives; they are not ornaments
@@ -174,7 +183,30 @@ whole artifact for duplication, progression, and coherence after local edits.
 If comparing creative alternatives, state what actually differs and what the
 observation supports; two versions that share the suspected cause cannot
 establish that cause's effect. New material can warrant abandoning the first
-draft rather than polishing it again.
+draft rather than polishing it again. For a consequential rewrite, use the
+[before/after comparison](../contracts/development-discipline.md#coherent-end-state):
+what explanatory work did the earlier material do, what does the revision add,
+and which voices, distinctions or productive contradictions disappear? If an
+important finding conflicts with the governing question, try a bounded whole
+reframing; inserting a paragraph can leave the old explanation intact. Judge
+the resulting whole and its losses as well as the new passage.
+
+For example, a reader calls the paragraphs of a fictional garden essay
+interchangeable. The essay asks why its beds contain different flowers and
+answers with a species list. Varying the paragraph openings could leave that
+explanation unchanged. Inspecting planting records instead reveals that early
+and late varieties were deliberately placed along the same walk. That material
+opens a better question: how does the garden make spring last? A
+possible opening is: "The yellow flowers by the gate are fading when the blue
+ones farther along begin. The walk is planted as a sequence: the visitor can
+return to the same path and meet a different spring."
+The essay can now follow the timing of the beds, then explain the planting
+choices. It retains the useful species information where it explains that
+sequence, and sacrifices exhaustive catalog coverage. The new material changes
+the organizing question and reading experience; it does more than decorate
+the list. The criticism becomes a way to find an explanatory relationship,
+rather than another forbidden sentence pattern. A useful catalog brief could
+instead warrant keeping the list.
 
 ### Return the useful result
 

@@ -31,6 +31,8 @@ finding names the important problem and evidence; it need not design the repair.
   acceptance scope where applicable; distinguish implementer assumptions}}
 - Contract/design: `{{path}}`
 - Baseline evidence and fixtures: `{{paths}}`
+- Actual object and reading scope: {{artifact/revision, source or consumer
+  surface, sections/cases examined; why these can establish the review claim}}
 - Constraints supplied to every perspective: {{constraints}}
 - Deliberately withheld information, if any: {{item and reason}}
 - Deliberate comparisons, when applicable: {{uncertainty; evidence groups and
@@ -77,6 +79,12 @@ Add only the specialist lenses activated through [development § activate-concer
 normative contracts own the boundary being reviewed.
 
 ## Synthesis
+
+For consequential findings, distinguish what was observed from the decision
+made about it and its basis under
+[judgment diagnosis](../docs/contracts/development-discipline.md#improve-judgment-before-amplifying-effort).
+An already observed problem can require a different selection or release rule,
+rather than another identical review.
 
 | Finding | Perspectives agreeing | Severity | Required action | Owner |
 |---|---|---|---|---|

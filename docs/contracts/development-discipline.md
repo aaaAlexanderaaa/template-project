@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-20
 supersedes: []
 ---
 
@@ -103,6 +103,16 @@ If a coherent end state cannot yet be described or verified, do not start the
 delivery migration. Use the bounded experiment path in the contract-first invariant to learn the missing
 facts without presenting the experiment as the destination.
 
+When replacing, simplifying, compressing, or standardizing an artifact or
+operating method, compare useful capabilities and distinctions before and
+after, including duties to explore, evaluate, and improve. Trace live duties
+to their successors and exercise their relevant triggers; fewer jobs, fields
+or words do not establish preservation. Compare gains, losses and accepted
+trade-offs in the resulting whole, within the existing decision envelope.
+Keep this in the existing migration or verification record, not a new inventory.
+
+- from: source[17]
+
 ### Outcomes before means
 
 Define success in terms of observable outcomes before listing implementation
@@ -146,6 +156,30 @@ project's accepted design decisions remain in force until reconciled at their
 owner; a method's flexibility does not waive those commitments.
 
 - from: source[11] (2026-09-10 attribution and scope feedback), source[12] (2026-09-25 conditional design methods)
+
+### Improve judgment before amplifying effort
+
+When corrections recur, checks pass while intended value disappoints, or new
+material leaves the same narrow choices intact, investigate how the next
+decision is made before prescribing more runs, rules, or review. Distinguish
+an unsound question, candidate set or standard from missing evidence, failed
+execution, and a throughput bottleneck in sound work. More activity can amplify
+a mistaken judgment; sound ready work can still accelerate.
+
+At the affected decision, distinguish a problem never observed from one
+observed but discounted under the release or selection rule. Inspect the
+grounds, what could change the judgment, and what observations actually changed.
+Another observer may add little if the decision keeps dismissing the finding.
+The observation method, scope and standard remain open to correction too.
+
+Use existing [causal analysis and bounded comparisons](#analysis-exposes-the-decisive-causal-mechanism)
+and [experience reuse](#experience-changes-the-next-matching-action) to change
+the next choice or artifact, rather than count checks or declarations of
+humility. Locally verified decisions support decisive action while remaining
+revisable. This conditional diagnosis creates no recurring reflection form or
+additional reviewer tier; ordinary settled work keeps its direct route.
+
+- from: source[17]
 
 ### Verify promised and observed behavior in both directions
 
@@ -192,6 +226,14 @@ Verification runs in both directions:
   deliverable to its stated end. A context-free consumer's failure is a
   defect in the deliverable, not in the consumer.
 
+Match the inspected object and scope to the claim: a source record, generated
+summary, rendered main text, and whole collection expose different properties.
+Record which was actually available and inspected. A schema review may need
+the full record; a reader trial needs the actual reader surface. One cannot
+silently stand in for the other. When a proposed fix changes hidden or unused
+material, compare its effect at the claimed boundary before crediting it with
+improving that outcome.
+
 When results depend on a catalog, classifier, parser, or filter, inspect what
 was unmatched, rejected, or omitted before interpreting an empty result as
 success. Lack of a known match is not evidence that no problem exists. Preserve
@@ -204,7 +246,7 @@ bounded manual review may be appropriate. Record the relevant conditions and
 limits. Missing observations remain unknown or not run, never a pass. Required
 evidence for a completion claim cannot be replaced by a cheaper unrelated check.
 
-- from: source[8] (2026-09-06 outcome and effect verification), source[10] (2026-09-14 reported adoption feedback), source[11] (2026-09-10 attribution and scope feedback)
+- from: source[8] (2026-09-06 outcome and effect verification), source[10] (2026-09-14 reported adoption feedback), source[11] (2026-09-10 attribution and scope feedback), source[17]
 
 ### Environment over memory
 
@@ -264,6 +306,17 @@ conditions, and conditions that would invalidate the lesson. A successful
 example explains what made it useful; copying its surface can lose that value.
 A failure under one condition is not a permanent prohibition.
 
+Owner feedback can supply a new question, distinction, example or method, as
+well as reveal a defect. Learn from a negative example by identifying the
+understanding or capability the next attempt should gain: a better question,
+different material, a clearer explanation, a reliable operation or a useful
+worked example. Choose the response from the diagnosed mechanism. A stable
+boundary may need a guard; a weak premise may need investigation or a different
+artifact. Pair a needed restriction with a usable route for legitimate work.
+Preserve the scope of a rejection and test the proposed response on a matching
+case; its opposite is not automatically a universal preference. More avoidance
+rules alone do not establish that the desired capability now exists.
+
 Update the smallest existing owner: a default, tool, interface, method, example,
 or focused review cue. Put a permitted locator where matching work begins and
 retire superseded advice. Keep current execution state separate from reusable
@@ -286,7 +339,7 @@ and observed effort where available. Saving a lesson proves retention; only
 changed subsequent work supports reuse or acceleration. Correct a failed
 retrieval/default before adding another reminder to the agent entrypoint.
 
-- from: source[15]
+- from: source[15], source[17], source[18] (2026-10-20 constructive learning from negative experience)
 
 ### Preserve decisions and evidence
 
@@ -1051,7 +1104,56 @@ same material may retain the same bias. This authorizes bounded comparisons
 inside existing permissions; the source states a concern, not a measured
 probability or proof that changing models removes it.
 
+### source[17] — 2026-10-19
+
+The maintainer authorized improving the template from the full renewed study
+and discussion of recursive self-improvement. Their explicit distinction is
+judgment quality versus diligence: amplifying poor judgment can worsen a
+system, so an intervention intended to improve judgment must not be reduced
+to more effort. They also emphasize observability and continued openness to
+discovering inadequate understanding, and relate the rules to attenuating
+harmful feedback while enabling useful feedback in Meadows's framework.
+
+The maintainer had required evidence, comparisons and actual rethinking, and
+valued the constructive knowledge in their feedback. The implementation
+interprets these purposes as conditional diagnosis, revisable observation,
+consequential use of findings, and preservation of useful capabilities during
+method changes. These are authorized engineering choices, not a claim that
+the owner dictated each procedure. The [delivery evidence](../evidence/2026-10-19-recursive-improvement.md)
+separates source observations, implementation and bounded trials.
+
+### source[18] — 2026-10-20
+
+The maintainer asks to incorporate the applicable lessons of the renewed
+autonomous-project study into this repository. They explicitly identify a
+preference shift: negative experience can support constructive reconsideration,
+while accumulating negative constraints does not by itself solve the problem.
+They also ask whether the assessment considered the project's changes and
+turning points across hundreds of commits. This authorizes the bounded
+documentation adoption and historical assessment; it does not authorize
+changes to the studied project or its running system.
+
+The implementation refines the existing experience rule and normal research
+and operating examples. The [delivery evidence](../evidence/2026-10-20-autonomous-learning.md)
+separates the historical reading, local probes, interpretation and untested
+model or runtime effects. The chosen examples and procedures are implementer
+choices inside that scope, not the maintainer's verbatim specification.
+
 ## Reconciliation log
+
+- **2026-10-20 — negative experience enables a better attempt:** refined the
+  existing experience rule to connect a diagnosed failure to useful capability,
+  material or explanation, while retaining necessary boundaries and legitimate
+  work. Research and operating examples make that response concrete. The
+  historical assessment preserves real growth and recurrence separately.
+  - from: source[18] (2026-10-20 constructive learning and historical assessment)
+
+- **2026-10-19 — improvement reaches the judgment:** added conditional diagnosis
+  before activity amplification, observation of what findings change, claim-specific
+  inspection scope, and before/after preservation of useful capabilities and
+  improvement duties. Positive feedback retains its constructive contribution.
+  Existing authority, evidence and direct execution routes remain in force.
+  - from: source[17]
 
 - **2026-10-11 — conclusions receive discriminating comparisons:** extended
   causal analysis with an active comparison duty, genuine evidence origins,

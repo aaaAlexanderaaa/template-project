@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-19
 ---
 
 # Documentation authority map
@@ -64,6 +64,11 @@ Check the combined requirements before closure, not only the latest correction.
 Development's [active comparison rule](contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
 owns when consequential inquiry needs deliberate differences in evidence,
 questions, standpoint or model, and how their results retain usable limits.
+
+When corrections recur or successful execution produces disappointing value,
+use [judgment diagnosis](contracts/development-discipline.md#improve-judgment-before-amplifying-effort)
+to locate the affected choice, observation or response before prescribing more
+activity. Settled ordinary work does not reopen its whole direction.
 
 At a recurring decision, follow the permitted locator for
 [reusable experience](contracts/development-discipline.md#experience-changes-the-next-matching-action)

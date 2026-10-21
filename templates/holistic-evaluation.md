@@ -25,6 +25,13 @@ subject: {{initiative-or-objective}}
 
 ## Evidence inventory
 
+Identify the actual object and scope inspected: {{source record, published
+surface, collection or runtime; revision; sections/cases actually examined}}.
+Explain how that scope can establish the claim above, including any relevant
+gap between available inputs and what the real consumer receives. Use the
+[claim-specific inspection rule](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions);
+reviewer independence cannot supply a missing observation at the claimed boundary.
+
 | Evidence | Class | Claim supported | Reproduction path | What it does not prove |
 |---|---|---|---|---|
 | {{record}} | {{unit/integration/artifact/real-runtime/manual}} | {{claim}} | `{{command-or-path}}` | {{limitation}} |
@@ -33,7 +40,7 @@ subject: {{initiative-or-objective}}
 
 | Dimension | Questions | Finding | Evidence | Result |
 |---|---|---|---|---|
-| Functional outcome | Does the delivered result fulfill the original request as well as the contract? | {{finding}} | {{evidence}} | pass/fail/partial/not_run |
+| Functional outcome | Does the result fulfill the original request and contract? For a replacement, what useful capability or distinction was gained or lost? | {{finding}} | {{evidence}} | pass/fail/partial/not_run |
 | Contract and domain logic | Are ownership, states, and invariants coherent? | {{finding}} | {{evidence}} | pass/fail/partial |
 | User/operator experience | Are reachable states understandable and usable? | {{finding}} | {{evidence}} | pass/fail/partial |
 | Failure and recovery | Do negative paths fail and recover as contracted? | {{finding}} | {{evidence}} | pass/fail/partial |

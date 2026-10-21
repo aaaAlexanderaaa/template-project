@@ -1,0 +1,475 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "subject": "constructive learning and longitudinal source assessment",
+  "source": {
+    "revision": "166818ee4a8c99d9bcf363ad06fc42d143092a1f",
+    "reachable_commit_count": 1696,
+    "first_parent_commit_count": 1426,
+    "recent_window_count": 600,
+    "recent_window_author_dates": [
+      "2026-10-13T13:05:37+08:00",
+      "2026-10-20T16:32:27+08:00"
+    ],
+    "all_reachable_author_date_span": [
+      "2026-09-06T20:52:19+08:00",
+      "2026-10-20T16:32:27+08:00"
+    ],
+    "archived_branch_unique_commits": 44,
+    "additional_archive": {
+      "ref": "origin/backup/pre-squash-2026-09-21",
+      "tip": "12b9dd379b300fec8325c0b3be3559e870136b20",
+      "commits_outside_HEAD": 124,
+      "not_summed_with_other_archive": true
+    }
+  },
+  "metadata_method": {
+    "all_reachable": "git log HEAD --format=%H%x00%P%x00%aI%x00%s%x1e",
+    "integration_line": "git log --first-parent HEAD",
+    "recent_window": "git log -600 HEAD",
+    "archive_count": "git rev-list --count origin/archive/local-main-2026-09-27 ^HEAD",
+    "date_semantics": "Commit author dates with their recorded offsets, not independently observed runtime or human-decision dates.",
+    "additional_archive_count": "git rev-list --count origin/backup/pre-squash-2026-09-21 ^HEAD"
+  },
+  "coverage": {
+    "metadata": "All reachable commits indexed for candidate selection; latest 600 examined as a bounded window, not 600 full diff reviews.",
+    "historical_inspection_count": 26,
+    "selection": "Earlier governance and content pivots; repeated cleanup; method redesign and recovery; substantive positive content changes; recent tool failures. Purposive selection, not a representative statistical sample.",
+    "archive": "Two available archive refs were counted relative to HEAD: 44 and 124 commits outside it. These are not summed because overlap was not established. The 124-commit branch metadata and compression map were read; its tip tree equals the corresponding consolidated tip. Neither archive received a full semantic audit.",
+    "unobserved": [
+      "Unreachable or unavailable pre-consolidation history",
+      "Real Windows scheduler and injected context",
+      "Real reader outcomes",
+      "All source claims and external URLs",
+      "Longitudinal effect of a particular model or prompt change"
+    ]
+  },
+  "historical_inspections": [
+    {
+      "revision": "b9d9e5d4b3adea9a156426fd9d8292cf08bd5a16",
+      "commit_author_date": "2026-09-06T20:52:19+08:00",
+      "source_relative_paths": [
+        "README.md"
+      ],
+      "actual_inspection": "Complete initial README snapshot.",
+      "bounded_inference": "Scoped source-reading claims and limits were explicit in the initial product documentation; their wording is not evidence of runtime compliance."
+    },
+    {
+      "revision": "383ff39117360bf5313eb2d3bd1c63947dafa00d",
+      "commit_author_date": "2026-09-07T18:19:04+08:00",
+      "source_relative_paths": [
+        "README.md"
+      ],
+      "actual_inspection": "Complete changed README text, with file change overview used only to locate the product transition.",
+      "bounded_inference": "Problem-led exploration and versioned content maintenance preceded charter-based autonomous work; implementation outcomes were not rerun."
+    },
+    {
+      "revision": "73714b994b7a9fb67771a60e8b3b3fc0c0deb41f",
+      "commit_author_date": "2026-09-10T21:14:21+08:00",
+      "source_relative_paths": [
+        "lib/evidence.ts",
+        "lib/source-review.ts"
+      ],
+      "actual_inspection": "Complete added evidence type and source-review classification function.",
+      "bounded_inference": "Claim locators, evidence boundaries and partial-reading distinctions were already implemented before the later autonomous redesign."
+    },
+    {
+      "revision": "a68c5f7ceeebcd23b04cd53f35cd201f5d25a6e4",
+      "commit_author_date": "2026-09-19T10:24:19+08:00",
+      "source_relative_paths": [
+        "CHARTER.md"
+      ],
+      "actual_inspection": "Complete initial charter, including upstream attribution, startup reads, quotas, selection, halt conditions and calibration.",
+      "bounded_inference": "The source explicitly attributed its initial method to this template; repeated governance failures are relevant transfer feedback, without establishing a specific upstream causal defect."
+    },
+    {
+      "revision": "bc772b5828a2feea550f2f121fe3daafeb69ae18",
+      "commit_author_date": "2026-09-19T23:58:02+08:00",
+      "source_relative_paths": [
+        "STYLE-CORPUS.md"
+      ],
+      "actual_inspection": "The added eight prohibitions and the accompanying changed prose were inspected.",
+      "bounded_inference": "Language governance and reader-facing repair existed by September 19."
+    },
+    {
+      "revision": "2a7785773288b40d4aa1fb8dfa668f35465f63f5",
+      "commit_author_date": "2026-09-21T17:46:16+08:00",
+      "source_relative_paths": [
+        "data/history-squash-2026-09-21.md"
+      ],
+      "actual_inspection": "Complete compression map; available original branch metadata and tip-tree comparison.",
+      "bounded_inference": "The map records 124 original commits consolidated into 29. The two boundary trees compare equal; original intermediate changes were not all semantically reviewed."
+    },
+    {
+      "revision": "d77e9d6f14b45fde932daacd830d3535e41f07a9",
+      "commit_author_date": "2026-09-23T12:12:24+08:00",
+      "source_relative_paths": [
+        "data/hourly-optimization-task-prompt-2026-09-21.md"
+      ],
+      "actual_inspection": "Changed startup, health reporting and commit instructions.",
+      "bounded_inference": "Conditional context and reduced recording ceremony preceded the latest cleanup."
+    },
+    {
+      "revision": "8465431dc528c9d821f46c3d38103ae469d4d7ee",
+      "commit_author_date": "2026-09-24T13:14:04+08:00",
+      "source_relative_paths": [
+        "STYLE-CORPUS.md"
+      ],
+      "actual_inspection": "Added metrics-versus-purpose passage, explicitly labeled an agent transcription pending confirmation.",
+      "bounded_inference": "The principle was already recorded; its human attribution is not independently established here."
+    },
+    {
+      "revision": "331026a9ca765d5a268a3339aabbc095439f70ab",
+      "commit_author_date": "2026-09-25T16:48:02+08:00",
+      "source_relative_paths": [
+        "content/categories.ts",
+        "content/order.ts",
+        "data/bad-cases/internet-words/"
+      ],
+      "actual_inspection": "Category/order removal and preserved bad-case paths.",
+      "bounded_inference": "A rejected vocabulary-production direction was withdrawn while source cases remained available."
+    },
+    {
+      "revision": "fab4612d7eb430861ae914698dad5b264142a74d",
+      "commit_author_date": "2026-09-26T11:04:54+08:00",
+      "source_relative_paths": [
+        "AGENTS.md",
+        "CHARTER.md"
+      ],
+      "actual_inspection": "Changed outcome, content-object, source and scheduled-work sections.",
+      "bounded_inference": "A broad simplification redirected production toward bounded editorial investigation."
+    },
+    {
+      "revision": "d43ef6340e7be29d44afe4cffe928952cc41d8a5",
+      "commit_author_date": "2026-09-29T23:42:11+08:00",
+      "source_relative_paths": [
+        "CHARTER.md",
+        "docs/methods/internet-discourse.md"
+      ],
+      "actual_inspection": "Fresh-context clause, lock handling and material-led inquiry changes.",
+      "bounded_inference": "Fresh review and claim-specific evidence were already operative instructions by September 29."
+    },
+    {
+      "revision": "c38951f7babb3dd9aff35e35f65b5d050be1a5c1",
+      "commit_author_date": "2026-10-07T23:27:03+08:00",
+      "source_relative_paths": [
+        "scripts/baseline-retest.mjs"
+      ],
+      "actual_inspection": "Script addition and its declared pattern-counting scope.",
+      "bounded_inference": "Known pattern measurement became executable; that scope cannot judge all writing quality."
+    },
+    {
+      "revision": "80c91a8115952576ffe7858a4fb1a97026bfdd8d",
+      "commit_author_date": "2026-10-12T00:16:05+08:00",
+      "source_relative_paths": [
+        "docs/research/concept-reader-selfreview-2026-10-12.md",
+        ".zcode/skills/bi-concept-polish/SKILL.md"
+      ],
+      "actual_inspection": "Study report and resulting reader-check instructions.",
+      "bounded_inference": "The project reported failures at the reader projection and added checks; these were not repeated here."
+    },
+    {
+      "revision": "5f5d332a45be7b09597394ae40be2602b7e3a261",
+      "commit_author_date": "2026-10-13T23:15:44+08:00",
+      "source_relative_paths": [
+        "docs/charter-base.md",
+        "docs/charter-objectives.md",
+        "docs/transformation-2026-10-13.md"
+      ],
+      "actual_inspection": "Initial charter, role design and migration sequence.",
+      "bounded_inference": "Responsibilities and job arrangements were redesigned; the record is not direct scheduler observation."
+    },
+    {
+      "revision": "a35eb572f340dd130eb23ff0648285c4852b5aae",
+      "commit_author_date": "2026-10-14T00:11:40+08:00",
+      "source_relative_paths": [
+        "docs/transformation-2026-10-13.md"
+      ],
+      "actual_inspection": "Added execution-results table.",
+      "bounded_inference": "The project reported replacing twelve old jobs with six fresh jobs; runtime execution remains reported evidence."
+    },
+    {
+      "revision": "b1274fde6ebe19492056c797968ba60561c7ae4f",
+      "commit_author_date": "2026-10-16T12:45:32+08:00",
+      "source_relative_paths": [
+        "docs/charter-base.md"
+      ],
+      "actual_inspection": "Night rule before and after.",
+      "bounded_inference": "The successor restored permitted nighttime improvement that earlier simplification had suppressed."
+    },
+    {
+      "revision": "87bf0f3415b3d51889a9e259af9133a812182b1c",
+      "commit_author_date": "2026-10-16T12:59:14+08:00",
+      "source_relative_paths": [
+        "docs/charter-base.md"
+      ],
+      "actual_inspection": "Further night-rule clarification.",
+      "bounded_inference": "The positive improvement duty was clarified again, beyond absence of production."
+    },
+    {
+      "revision": "5538e3ef594590be8e3ee2ecd59a62db8e5a4dc2",
+      "commit_author_date": "2026-10-16T16:31:15+08:00",
+      "source_relative_paths": [
+        "docs/research/stranger-review-2026-10-16.md"
+      ],
+      "actual_inspection": "Added context-injection report, clean-directory comparison and provenance discussion.",
+      "bounded_inference": "The project corrected its own claim of context-free review; host behavior was not independently rerun here."
+    },
+    {
+      "revision": "925b10c47e48e6fc2e20fa711c37337812ea4881",
+      "commit_author_date": "2026-10-17T23:50:31+08:00",
+      "source_relative_paths": [
+        "content/concepts/postcolonial.ts"
+      ],
+      "actual_inspection": "Complete changed mechanism field.",
+      "bounded_inference": "A negative limit became an explanation naming what continues and where it operates; reader impact remains unmeasured."
+    },
+    {
+      "revision": "bf0c774336ba6770c51c08723e14d97cb8d94121",
+      "commit_author_date": "2026-10-19T17:39:59+08:00",
+      "source_relative_paths": [
+        "content/concepts/degrowth.ts"
+      ],
+      "actual_inspection": "Changed opening and surrounding unchanged explanation.",
+      "bounded_inference": "Collection comparison found another repeated opening pattern and changed it; surface variation alone cannot establish better understanding."
+    },
+    {
+      "revision": "1d97a198a9b36eb7845d5369a90235efd24cb011",
+      "commit_author_date": "2026-10-19T23:30:31+08:00",
+      "source_relative_paths": [
+        "content/concepts/repression.ts"
+      ],
+      "actual_inspection": "Changed comparative ending and revision entry.",
+      "bounded_inference": "The project continued correcting a recurring collection-level pattern after individually reviewed batches."
+    },
+    {
+      "revision": "d36e1eb14a0edcde55ac51b3d434ca441b248698",
+      "commit_author_date": "2026-10-20T12:54:14+08:00",
+      "source_relative_paths": [
+        "AGENTS.md",
+        "scripts/context-budget.mjs"
+      ],
+      "actual_inspection": "Changed entrypoint and budget-reader behavior.",
+      "bounded_inference": "Current purpose became more visible and startup text shrank, while actual consumed context still needs observation."
+    },
+    {
+      "revision": "a5acad184a6ab9a953516e49e4f99a57947befd1",
+      "commit_author_date": "2026-10-20T13:35:17+08:00",
+      "source_relative_paths": [
+        "AGENTS.md",
+        "docs/open-questions.md"
+      ],
+      "actual_inspection": "Changed retirement clause and compressed live-state excerpts.",
+      "bounded_inference": "The record became shorter; preservation and actual subsequent use are separate properties."
+    },
+    {
+      "revision": "9b00d482c88da6a7637b426a398d5edb3ca56a5e",
+      "commit_author_date": "2026-10-20T13:48:32+08:00",
+      "source_relative_paths": [
+        "content/concepts/nationalism.ts",
+        "docs/research/source-reviews/nationalism-crowd-voices-batch-2026-10-20.md"
+      ],
+      "actual_inspection": "Changed speaker passages, complete source-review note and earlier/current concept fields.",
+      "bounded_inference": "Review led to source revisiting and differentiated participant versus observer voices; this is artifact growth, not a general reader-effect estimate."
+    },
+    {
+      "revision": "b9414e899627cfbe8bb07981c890f29fbedeb119",
+      "commit_author_date": "2026-10-20T15:51:19+08:00",
+      "source_relative_paths": [
+        "content/concepts/feminism.ts",
+        "content/concepts/public-sphere.ts"
+      ],
+      "actual_inspection": "Complete changed explanatory fields and nearby relation notes.",
+      "bounded_inference": "Plain explanation retained substantive distinctions and a technical term, supporting improvement beyond word avoidance."
+    },
+    {
+      "revision": "fa9da8590f29d4decf999922f6c7d9cbb36e4e63",
+      "commit_author_date": "2026-10-20T16:17:52+08:00",
+      "source_relative_paths": [
+        "scripts/quote-store.mjs",
+        "scripts/empty-room-review.mjs"
+      ],
+      "actual_inspection": "Current full scripts plus local synthetic probes.",
+      "bounded_inference": "New tools operationalized intentions while retaining concrete identity and failure-reporting defects."
+    }
+  ],
+  "content_comparisons": [
+    {
+      "path": "content/concepts/nationalism.ts",
+      "versions": [
+        "7e47e286",
+        "24fb4f59",
+        "9b00d482"
+      ],
+      "scope": "Mechanism, scene, explanation and takeaway fields; reading field excerpts does not establish the rendered whole or verify every reported event.",
+      "observation": "General illustration develops into a source-anchored episode, then gains additional situations and identifiable voices."
+    },
+    {
+      "path": "content/concepts/institution.ts",
+      "versions": [
+        "7e47e286",
+        "166818ee4a8c99d9bcf363ad06fc42d143092a1f"
+      ],
+      "scope": "Mechanism, scene, explanation and takeaway fields.",
+      "observation": "A hypothetical workplace example becomes a concrete account linking formal constraints, informal practices and enforcement costs; reader effects remain unmeasured."
+    }
+  ],
+  "local_probes": {
+    "source_script_sha256": {
+      "quote-store.mjs": "0bc4a472039b99c80507f829b4320e8e664ea3f8d4dfa45463dd0543b07f093e",
+      "empty-room-review.mjs": "29c1aa65d91dd5be71647f4c9166d6c80e18ab330290d4bff1c8292142faf63b",
+      "feedback-register.mjs": "efcfe1fbb22885bfd91fca00b01f95d8c439c41857a4b17122fc173d88ff94c2"
+    },
+    "node": "v22.18.0",
+    "source_status_unchanged": true,
+    "method": "Unmodified script copies with synthetic files and local adapters; no external model or network calls.",
+    "recipes": [
+      {
+        "id": "quote-identity",
+        "input": "Three synthetic distinct strings, delete Q-0002, add a fourth string.",
+        "observed": "Q-0003 occurs twice.",
+        "source": "scripts/quote-store.mjs"
+      },
+      {
+        "id": "quote-event",
+        "input": "Add Approved. from two distinct synthetic session and turn identities.",
+        "observed": "The second source occurrence is rejected as duplicate wording.",
+        "source": "scripts/quote-store.mjs"
+      },
+      {
+        "id": "review-failure",
+        "input": "A local node backend stub exits 23; run an unchanged copy of the review wrapper.",
+        "observed": "Wrapper exits 0 and creates a report; its removed-room statement disagrees with the retained directory.",
+        "source": "scripts/empty-room-review.mjs"
+      },
+      {
+        "id": "review-inputs",
+        "input": "Supply left/sample.txt and right/sample.txt with distinct text.",
+        "observed": "Only right/sample.txt content survives under sample.txt in the review room.",
+        "source": "scripts/empty-room-review.mjs"
+      },
+      {
+        "id": "review-instruction",
+        "input": "Supply a synthetic AGENTS.md as review data.",
+        "observed": "AGENTS.md is copied under the active basename. Actual runtime injection is untested.",
+        "source": "scripts/empty-room-review.mjs"
+      },
+      {
+        "id": "ordinary-match",
+        "input": "Local search adapter supplies matching synthetic text and expected source identifiers.",
+        "observed": "The quote is marked verified; ordinary matching remains possible. This is only a fixture result.",
+        "source": "scripts/quote-store.mjs"
+      }
+    ],
+    "source_validation": {
+      "command": "node scripts/feedback-register.mjs validate",
+      "observed_exit": 1,
+      "observed_problem": "FB-0216 uses verified outside the accepted status enumeration."
+    },
+    "limits": "No repaired source implementation, live host isolation or model-consumption comparison was tested."
+  },
+  "implementation_validation": {
+    "baseline": {
+      "python": "3.14.2",
+      "unit_tests": 122,
+      "unit_result": "passed",
+      "unit_seconds": 27.776,
+      "documentation_result": "passed after adding the active plan; 52 canonical documents and 16 templates"
+    },
+    "final": {
+      "python": "3.14.2",
+      "unit_command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+      "unit_tests": 122,
+      "unit_seconds": 26.618,
+      "unit_result": "passed",
+      "documentation_command": "python3 scripts/check_docs.py",
+      "documentation_result": "passed",
+      "strict_documentation_result": "passed",
+      "canonical_documents": 53,
+      "templates": 16,
+      "whitespace_command": "git diff --check",
+      "whitespace_result": "passed",
+      "evidence_identity_and_script_hash_inspection": "passed",
+      "source_checkout": "clean at the stated baseline",
+      "review_scope": "Same-context semantic and route inspection, not independent review or model-effect evaluation."
+    },
+    "corrected_failure": {
+      "documentation": "Initial final check rejected one non-resolving operating-example heading fragment.",
+      "unit_tests": "Initial suite ran 122 tests with 34 failures, each reporting the same broken fragment from the copied repository fixture.",
+      "repair": "Corrected the link to the actual existing heading; stable-tree unit rerun and documentation checks passed."
+    }
+  },
+  "interpretation": "Artifact capability grew while known judgment and operational failures recurred. This neither establishes uniform progress nor proves that all added constraints were useless.",
+  "archive_tree_comparison": {
+    "command": "git diff --stat df5eea69 origin/backup/pre-squash-2026-09-21",
+    "observed_diff": "empty",
+    "consolidated_tip": "df5eea69d308b91e3c56226482c3551dbd8fb3da",
+    "original_tip": "12b9dd379b300fec8325c0b3be3559e870136b20",
+    "scope": "Equality at these two boundaries says nothing about every intermediate state."
+  },
+  "continuation": {
+    "scope": "Upstream design tracing, actual entry-route inspection and proposed next interventions; no source or runtime mutation.",
+    "template_historical_revisions": [
+      {
+        "revision": "203115d1dff37e968def0edce5765b328faa9b86",
+        "paths": [
+          "docs/contracts/autonomous-operation-discipline.md",
+          "templates/charter.md"
+        ],
+        "actual_inspection": "Role-separation and calibration sections, plus the corresponding charter fields.",
+        "observation": "The early template directly linked rising override rate to autonomous contraction and allowed some same-context role passes."
+      },
+      {
+        "revision": "898fcf0b38a82678993d494d020bf05c30a206be",
+        "paths": [
+          "docs/contracts/autonomous-operation-discipline.md",
+          "templates/charter.md"
+        ],
+        "actual_inspection": "Relevant changed calibration, review and work-selection sections, compared with current owners.",
+        "observation": "Current owners distinguish causes, proportional pauses, live charter recovery and actual independently dispatched direction review."
+      }
+    ],
+    "source_current_consumers": [
+      {
+        "paths": [
+          "AGENTS.md",
+          "docs/current-phase.md",
+          ".zcode/skills/bi-concept-polish/SKILL.md",
+          ".zcode/skills/bi-serious-review/SKILL.md",
+          "docs/prompts/current.md"
+        ],
+        "actual_inspection": "The root entrypoint, complete current-phase file, relevant startup instructions and prompt-mirror status index.",
+        "observation": "The default current-work locator and active startup instructions load an October 1 arrangement that still lists jobs the later prompt index labels retired.",
+        "limit": "Repository inconsistency is observed; current host scheduling is unobserved. Identity count and scheduled-job count are not treated as the same quantity."
+      },
+      {
+        "paths": [
+          ".zcode/skills/bi-multi-view-review/SKILL.md"
+        ],
+        "actual_inspection": "Independence, conclusion and handoff clauses.",
+        "observation": "A conclusion clause excludes findings lacking a fixer, time and verification; the template permits supported problems without a known repair.",
+        "limit": "No rate of actually suppressed findings is established."
+      }
+    ],
+    "priority_order": [
+      "repair consumed tool truth",
+      "reconcile the current operating state and its entry paths",
+      "observe consequences of real findings",
+      "evaluate constructive learning on less rehearsed cases"
+    ],
+    "implementation_status": "Recommendations only; no additional normative rule or source repair.",
+    "validation": {
+      "unit_command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+      "unit_tests": 122,
+      "unit_result": "passed",
+      "unit_seconds": 27.28,
+      "strict_documentation_result": "passed",
+      "normal_documentation_result": "passed",
+      "canonical_documents": 53,
+      "templates": 16,
+      "whitespace_result": "passed",
+      "source_checkout": "clean at the stated baseline",
+      "limits": "Checks validate documentation integration; no live scheduler, repaired source implementation, or new model-effect trial was exercised."
+    }
+  }
+}

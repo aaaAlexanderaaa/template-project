@@ -97,6 +97,9 @@ checkpoint carries the question, bounded effort, and actual learning without
 requiring a predicted product payoff. Use the existing
 [method adaptation rule](../docs/contracts/autonomous-operation-discipline.md#learning-includes-exploration-and-revision-of-the-operating-method)
 for implementation changes; required review and issuer authority remain binding.
+When replacing that method, carry any issuer-authorized exploration and
+improvement duties into the successor and exercise their triggers. Publication
+silence alone does not establish that permitted learning still runs.
 A missed progress horizon needs fresh review before the same approach continues
 or its budget grows. Preserve the original horizon and review decision rather
 than silently resetting it in the checkpoint.

@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-20
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -211,6 +211,12 @@ to examine the workflow's responsibilities, costs, retained experience, and
 remaining exploration space. These are parts of this loop, not extra passes
 after each mechanical step.
 
+If corrections recur or activity passes while useful results disappoint,
+start with [judgment diagnosis](../contracts/development-discipline.md#improve-judgment-before-amplifying-effort).
+Inspect the choice and the effect of existing observations before adding effort.
+When replacing the method, [compare useful capabilities before and after](../contracts/development-discipline.md#coherent-end-state),
+including exploration and improvement duties. Use the existing checkpoint.
+
 For consequential uncertainties or a credible shared review blind spot, use
 [active comparisons](../contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
 inside the same envelope. Select an observation and a useful variation; record
@@ -269,6 +275,7 @@ source-verification method. Historical run logs remain linked, not recopied.
 | A new session starts; evidence and review bounds remain valid | Resume the next observation using the method locator; no fresh mission essay or wholesale plan |
 | An external primary source contradicts the shared notes | Recheck dependent claims and revise the explanation or article structure; preserve what changed the judgment |
 | A known rewriting error returns despite an existing lesson | Inspect whether retrieval, adoption, execution, or the method failed; fix that entry or operation and check a sibling example |
+| A correction keeps producing another prohibition | Use the [experience rule](../contracts/development-discipline.md#experience-changes-the-next-matching-action) to identify what the next attempt should understand or accomplish; try different material, a better question, a worked example or a reliable operation, and inspect the result |
 | A repetitive-style detector also flags a valuable quotation | Inspect the raw cases and detector definition; preserve source fidelity and correct the proxy rather than erase the useful material |
 | The detector now reports zero | Establish that it ran on the current objects; inspect known cases and unfamiliar material before deciding whether quality improved |
 | The next source check is ready while a disjoint write is locked | Continue permitted, stable read work within the same budget; preserve dependencies, integration ownership, and due review |
@@ -276,7 +283,13 @@ source-verification method. Historical run logs remain linked, not recopied.
 | Fresh reviews agree on a shared summary while a raw source contradicts it | Examine separately acquired evidence, vary the consequential question or available model, and compare first results against the source; preserve shared dependencies |
 | Repeated work stays small, bounded and stable | Reuse valid checks and methods through the routine route |
 | Each run is small but reads an ever-growing history | Inspect the cumulative retrieval mechanism with a discriminating scenario before its cost becomes excessive |
-| All local tasks pass but the reader learns little | Revisit the question and approach against the intended effect; polishing and task counts do not settle that judgment |
+| All local tasks pass but the reader learns little | Diagnose the question, candidate set and release standard before increasing production; check what readers can now distinguish or explain |
+| A review already noticed the problem but dismissed it as outside the outline | Revisit the selection or release rule and its authority; more fresh observers alone may repeat the same dismissal |
+| Removing an internal field is said to improve the reader's main text | Compare the actual main projection before and after; a full-record judgment tests a different object |
+| A review package contains the project's instruction entrypoint as a file to inspect | Keep that file as review data, preserve each input's identity, and check the runtime's actual injected context before claiming isolation |
+| A new note disproves a closed finding while later tasks still consume its old status | Correct the current finding and affected conclusions at their existing owners; an added explanation alone does not change the consumed state |
+| A source reveals that participants are shaping the event themselves | Try a coherent alternative question and structure; compare gained insight and lost useful material, rather than attach a quotation to an unchanged diagnosis |
+| Several jobs are replaced with one quiet interval | Exercise the authorized learning and improvement duties under the replacement; zero messages and fewer jobs do not prove those duties survived |
 | A surprising theme may be useful | Explore within the delegated topic scope and budget; retain learning even if no article results. A proposed new objective returns to its owner |
 | Repeated runs accumulate useful methods and obsolete notes | Keep current state small, replace superseded guidance at its owner, and check fresh retrieval; retain history supporting live claims or recovery |
 
