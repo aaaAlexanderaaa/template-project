@@ -36,10 +36,13 @@ activated and history when a dispute, provenance question, or recovery needs it;
 do not recursively load every link. These facts stay at their existing owners.
 A request to learn this discipline opens every current rule named by
 [the learning path](docs/contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path),
-compares the owner's expectation with what those rules cause, and finishes
-in one of its endings. Use supplied correction history; first-time learning
-uses the current baseline and keeps unavailable history unknown. A request to
-take one practice uses [bounded extraction](docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task).
+understands why it exists, then judges applicability under
+[read before judgment](docs/contracts/project-adoption.md#understand-rules-before-judging-applicability),
+compares the owner's expectation with what those rules cause, and finishes in
+one of its endings. Use supplied correction history; first-time learning
+uses the current baseline and keeps unavailable history unknown. A narrow
+practice request or method investigation within an authorized concrete task uses
+[bounded extraction](docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task).
 A filled policy file is not that comparison. Later
 tasks still open a rule when the work reaches it.
 For a request to learn this template and load separately supplied personal

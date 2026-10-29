@@ -125,6 +125,26 @@ class RuleReadingTests(unittest.TestCase):
         self.assertIn("docs/contracts/frontend.md#frontend", {u.identity for u in prepared.units})
         self.assertEqual(prepared.units[-1].identity, "docs/contracts/method.md#document")
 
+    def test_practice_entrypoints_obtain_reading_reason_before_extraction(self):
+        reason = "docs/contracts/project-adoption.md#source-understanding"
+        extraction = "docs/contracts/project-adoption.md#practice-extraction"
+        card = "docs/guides/project-operation.md#practice-extraction"
+        for reference in [
+            "docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task",
+            "docs/guides/project-operation.md#take-one-practice-into-a-task",
+        ]:
+            with self.subTest(reference=reference):
+                prepared = RuleRepository(ROOT).prepare(includes=[reference])
+                identities = [unit.identity for unit in prepared.units]
+                self.assertIn(reason, identities)
+                self.assertIn(extraction, identities)
+                self.assertLess(identities.index(reason), identities.index(extraction))
+                if reference.startswith("docs/guides/"):
+                    self.assertIn(card, identities)
+                    self.assertLess(identities.index(extraction), identities.index(card))
+                for path in ["docs/contracts/project-adoption.md", "docs/guides/project-operation.md"]:
+                    self.assertNotIn(path + "#document", identities)
+
     def test_retained_core_is_revalidated_while_new_domain_bodies_are_delivered(self):
         first_repo = self.repo()
         first = first_repo.prepare(context="live-task")

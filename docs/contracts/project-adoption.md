@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-28
+last_reconciled: 2026-10-29
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -168,6 +168,15 @@ and the owner is told. A correction of a rule is written into the entrypoint
 and into the contract that owns the sentence; once the contract holds it,
 the entrypoint keeps the pointer and drops the repeated full text.
 
+### source[16] — 2026-10-29
+
+English paraphrase of the owner's correction: an external agent must read a
+rule and understand why it was established before deciding whether to obtain
+or read it. This follows the request to consider initialization, older
+disciplines and projects with their own rules. Applying this order to broad
+learning and keeping explicitly bounded extraction distinct are implementation
+choices; source reading does not authorize adopting or enforcing a rule.
+
 ## Vocabulary
 
 - **Greenfield:** an empty directory, before product implementation or project
@@ -250,13 +259,66 @@ rewrite authority during that inventory.
 
 - from: source[1], source[2], source[11], source[13]
 
+<!-- required-reading: source-understanding -->
+### Understand rules before judging applicability
+
+Rules can teach a reader to recognize a problem they do not yet know to look
+for. Selecting only rules that already sound relevant can discard that
+recognition before learning it and preserve the original misunderstanding.
+
+An external agent learning, adopting, upgrading or restructuring a project's
+discipline obtains and understands the source rules before judging which apply
+or should be transferred. Use the [complete learning set](#learning-and-personal-context-have-a-bounded-entry-path)
+for a broad discipline request. An apparently inactive domain, an existing local rule,
+transfer rank, filename or short description cannot justify excluding an
+unread rule from that set. The order applies to empty projects, older adopters
+and projects with an independently developed discipline.
+
+For each rule under comparison, obtain its complete operative owner and
+dependencies. Understand the problem it addresses, why its mechanism helps,
+its scope and triggers, exceptions, costs and decision boundaries. Use those
+reasons and observed target facts to judge existing coverage, a gap or
+non-applicability. When the operative source does not explain a decisive
+reason, follow the relevant explanation or evidence; missing understanding
+remains unresolved rather than becoming evidence that the rule is unnecessary.
+No separate explanation form is required: retain consequential reasoning in the
+existing learning judgment or adoption assessment.
+
+Keep acquisition, understanding, applicability and adoption distinct. Reading
+does not impose source authority on the target or authorize copying, replacing
+local instructions or enabling gates. After the learning comparison, ordinary
+tasks use their current core and activated detail rather than repeating the
+full survey. The reading tool's concern selection supports that execution
+route; its manifest is not a substitute for the learning set or understanding.
+
+An explicitly narrow practice request, or an authorized concrete task whose
+purpose is not learning or migrating the discipline, can examine one candidate
+practice through [the extraction route](#take-one-practice-into-an-authorized-task).
+The implementer may locate that
+candidate without asking the owner to name it, then obtains and understands
+its source before judging its fit. The owner's task supplies the scope;
+unread rules are not thereby declared unnecessary. A broad request to
+understand or improve the discipline cannot be silently narrowed to this
+route, and mandatory rules of the governing task remain binding.
+
+- from: source[11], source[16]
+
+<!-- /required-reading: source-understanding -->
+
+<!-- required-reading: practice-extraction -->
 ### Take one practice into an authorized task
 
-A request to inspect the template or take a useful practice can select a
-bounded extraction. Start with the target task, its current authority and the
-specific decision the practice should improve. Obtain that practice's complete
-operative owner and applicable dependencies, try it at the relevant boundary,
-and carry its conditions and evidence limits with the result. The
+- required-reading: [Understand rules before judging applicability](#understand-rules-before-judging-applicability)
+
+Use this route for a narrow practice request or method investigation inside
+an authorized concrete task, under
+[the reading order](#understand-rules-before-judging-applicability).
+Start with the target task, its current authority and a candidate practice.
+The owner need not name that candidate. Obtain its complete operative owner
+and dependencies and understand its reason before deciding whether it improves
+the target decision.
+Try a justified practice at the relevant boundary and carry its conditions and
+evidence limits with the result. The
 [operation card](../guides/project-operation.md#take-one-practice-into-a-task)
 provides a small worked route.
 
@@ -268,6 +330,8 @@ enforcement. A later request to learn the discipline in full takes the survey
 below; work governed by this template still obtains its required core and
 activated detail.
 
+<!-- /required-reading: practice-extraction -->
+
 ### Learning and personal context have a bounded entry path
 
 For corrective learning, first find the mismatch the owner is asking to fix:
@@ -278,9 +342,11 @@ case, a filled policy, declared stage, passing checker or earlier no-gap
 assessment does not establish that the expectation was met.
 
 The request also authorizes a survey of every current rule against the target
-repository, and it requires one of the endings below. Seeing a title, a table
-row, or a link without opening the rule is not a survey. It does not by itself
-authorize a governance migration, new CI gates,
+repository, and it requires one of the endings below. Follow
+[read before judgment](#understand-rules-before-judging-applicability): obtain
+the set and understand its rules before deciding applicability. Seeing a title,
+a table row, or a link without opening the rule is not a survey. It does not
+by itself authorize a governance migration, new CI gates,
 replacement of the target's existing instructions, or product-code changes.
 Use the formal adoption assessment and stages when adoption or enforcement
 changes are requested.
@@ -290,7 +356,7 @@ Learning opens:
 - the documentation authority map, including its language-style section;
 - every current contract: development discipline, the governance decision
   boundary, this contract, agent execution, the documentation harness,
-  foundational runtime, and autonomous operation;
+  foundational runtime, data analysis, and autonomous operation;
 - the engineering-judgment contract, recorded as a target draft rather than
   a current rule;
 - every row of development discipline's concern table, followed into the
@@ -309,7 +375,10 @@ For each opened rule, record one result:
 - it applies, and the repository does not yet satisfy it;
 - it does not apply, together with the repository fact that makes that so.
 
-A note that only says "not triggered" is not a result.
+A note that only says "not triggered" is not a result. Explain the rule's
+reason and the target fact behind a consequential judgment; recognizing a
+familiar title or finding a similarly named local file establishes neither
+understanding nor equivalent coverage.
 
 Learning ends in one of these ways, and a session may both write and ask:
 
@@ -487,7 +556,10 @@ mechanics:
    selected only when they serve the target project's chosen practices.
 
 This is a transfer-value order, not a document-authority order, universal
-mandate, or substitute for target evidence. An activated conditional discipline
+mandate, reading exemption or substitute for target evidence. Reading and
+understanding precede applicability and transfer judgments under
+[read before judgment](#understand-rules-before-judging-applicability).
+An activated conditional discipline
 may move ahead of a general delivery concern for that project. Learning and
 adoption consume the same ranking; they differ in authorized action, not in a
 second body of source knowledge. Root projections stay compact and link to the
@@ -574,6 +646,11 @@ The durable assessment contains:
 - The learning path names every current rule to open, the three results for
   each rule, and the three endings. Later tasks still open a rule when the
   work reaches it.
+- External learning obtains and understands the rule's reason before excluding
+  it. Broad learning and explicitly bounded practice extraction remain distinct
+  at the normal entrypoints, including for older and independently governed
+  projects. Consumer evidence must show actual reading and source-supported
+  reasoning; a list of sources or a passing structural check cannot prove it.
 - Project-operation guidance preserves human priority authority after adoption.
 - The documentation harness validates the assessment template and fixture tests
   cover missing-file and missing-section variants.
@@ -635,6 +712,14 @@ Maintainer-reported adoption on 2026-09-14:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-10-29 — read and understand before applicability judgment:** remove
+  uninformed selection from external learning entrypoints. Broad learning
+  keeps its complete rule set; explicitly bounded extraction reads its source
+  and reason before transfer. Reading does not adopt source authority, and
+  subsequent ordinary tasks retain conditional execution. Add the existing
+  data-analysis owner to the explicit full-learning list.
+  - from: source[16]
 
 - **2026-10-02 — an existing directory is not an empty start:** before template
   files are added, state what the project is. Files already present block

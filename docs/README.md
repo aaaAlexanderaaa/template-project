@@ -102,16 +102,20 @@ already obtained core and direct facts;
 it adds no domain plan or independent review. Current and explicitly selected
 target rules remain distinguishable. Methods are read when used. An ordinary
 link does not require recursive reading; only explicit `required-reading`
-directives create reading dependencies. A request to learn the discipline is the exception: open
+directives create reading dependencies. A request to learn the discipline is the exception: obtain
 every current rule named by
 [the learning path](contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
-before judging which apply. Later tasks return to opening a rule when the work
-reaches it. Expand context for a dependency, conflict, missing fact, or
-activated concern, and read the whole owner when section-level reading leaves
+and understand its reason before judging which apply. The adoption owner's
+[reading order](contracts/project-adoption.md#understand-rules-before-judging-applicability)
+keeps source acquisition separate from applicability and adoption, including
+for projects with an existing discipline. Later tasks return to opening a rule
+when the work reaches it. Expand context for a dependency, conflict, missing
+fact or activated concern, and read the whole owner when section-level reading leaves
 its scope or interactions unclear. Short context never waives an applicable
 constraint, exception, or original requirement.
 
-Taking one useful practice selects [bounded extraction](contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
+Examining one practice within a narrow request or an authorized concrete task uses
+[bounded extraction](contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
 instead of claiming a full learning survey. The
 [operation card](guides/project-operation.md#take-one-practice-into-a-task)
 keeps that choice explicit; governed work still obtains the required core and

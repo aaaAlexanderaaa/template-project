@@ -119,17 +119,26 @@ unobserved. Do not open unrelated work to manufacture a closed learning loop.
 
 <!-- /required-reading: task -->
 
+<!-- required-reading: practice-extraction -->
 ### Take one practice into a task
 
-Use this card for [bounded extraction](../contracts/project-adoption.md#take-one-practice-into-an-authorized-task),
-such as taking a review question or recovery method into an existing project.
-Full learning and formal adoption keep their own broader routes.
+- required-reading: [Practice extraction and its prerequisites](../contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
+
+Use this card to [examine one practice](../contracts/project-adoption.md#take-one-practice-into-an-authorized-task),
+either explicitly requested or investigated as a candidate method for an
+authorized concrete task, such as a review question or recovery technique.
+The owner need not name the candidate. Follow
+[read before judgment](../contracts/project-adoption.md#understand-rules-before-judging-applicability).
+Full learning and discipline migration keep their complete reading route;
+an agent cannot use this card to dismiss unread rules from that assignment.
 
 1. Name the current task, the useful change and its sufficient stopping point.
-2. Inspect the target's facts, existing rule owner and authorization. Choose
-   one practice that improves an actual decision in that task.
-3. Read its complete operative source and applicable dependencies. Carry the
-   conditions that make it useful, including the case where it should not run.
+2. Inspect the target's facts, existing rule owner and authorization. Locate
+   a candidate practice for that task without declaring its fit yet.
+3. Read its complete operative source and dependencies; understand the problem
+   and reason for its mechanism. Then compare its fit with target facts and
+   existing coverage. Carry its useful conditions and the case where it should
+   not run. An unresolved reason is a source question, not non-applicability.
 4. Try it inside the authorized task and inspect the actual result and effects.
    State an untested proposal as a proposal; use focused evidence for a small task.
 5. When retention is requested, put the useful result at the target's existing
@@ -146,6 +155,8 @@ Rules specify the boundary; the task SOP orders the work; a CheatSheet helps
 choose an effective action inside it.
 Work governed by this template still obtains its global core and activated
 detail. The card is a method entrypoint, not a replacement for those sources.
+
+<!-- /required-reading: practice-extraction -->
 
 ### 1. Consume direction; do not manufacture it
 

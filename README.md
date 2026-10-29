@@ -25,9 +25,10 @@ practice; independent adoption remains the open frontier.
 
 ## Transfer value order
 
-When an agent enters this repository and decides for itself what to take away,
-rank attention by breadth of use, downstream leverage, cost of being wrong,
-portability, and how much the target project must already exist:
+When an agent learns from this repository, use the order below to allocate
+reading attention. Follow [read before applicability judgment](docs/contracts/project-adoption.md#understand-rules-before-judging-applicability)
+before deciding what to take away. The ranking considers breadth of use,
+downstream leverage, error cost, portability and dependence on target context:
 
 | Base priority | Understand first | Why first | Current owner |
 |---|---|---|---|
@@ -67,10 +68,12 @@ copyable prompts and examples. Review has its own linked collection.
 
 You can ask an agent:
 
-> Learn the applicable disciplines from template-project. Open every current
-> rule the learning path names, compare each one with this repository, and
-> finish by writing the settled changes, by stating that nothing needs to
-> change and why each unused rule does not apply, or by listing the changes
+> Learn the discipline from template-project. Obtain every current rule named
+> by its learning path, read it and understand why it exists before deciding
+> whether it applies here. Compare the rule's mechanism and limits with this
+> project's facts and existing discipline. Keep source reading separate from
+> adopting or enforcing it. Finish by writing the settled changes, by stating
+> that nothing needs to change and why each unused rule does not apply, or by listing the changes
 > whose method needs confirmation. Then read the onboarding entrypoint of the
 > user memory I supply for collaboration background and decision preferences.
 > Keep personal material private, and continue the authorized task.
@@ -82,6 +85,14 @@ particular user's profile, account, local path, or memory format. A request to
 learn practices writes the applicability judgment or asks before copying this
 template, enabling enforcement, replacing existing instructions, or changing
 product code.
+
+New projects, older adopters and projects with their own discipline use that
+same reading order. Existing local coverage informs the comparison after
+reading. For one-practice examination or a method inquiry within an authorized
+concrete task, use the
+[extraction card](docs/guides/project-operation.md#take-one-practice-into-a-task);
+it reads that practice's complete source and reason without claiming a full
+learning survey.
 
 ## How to adopt the governance files and checks
 

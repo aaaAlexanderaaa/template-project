@@ -1,0 +1,1270 @@
+{
+  "record_type": "independent_nonproducing_consumer_trial",
+  "created_utc": "2026-10-29T06:41:02.834349+00:00",
+  "state": "two_bounded_observations_and_first_verdict_complete",
+  "provided_baseline": "8fe18fd plus current edits; baseline identity supplied by root and not independently inspected",
+  "context_received": {
+    "not_blank": true,
+    "received": [
+      "System and developer instructions describing agent behavior, tools, sandbox, skills, application context, and collaboration.",
+      "The user-supplied repository AGENTS.md working agreement and environment context for this checkout.",
+      "The root assignment describing the two consumer requests, the supplied target facts, and the nonproducing evidence boundary."
+    ],
+    "unsolicited_producer_message_before_first_file_report": "Root said source edits were stable and initial tests and documentation check passed. I did not inspect those outputs or use that assertion to establish consumer success.",
+    "not_read": [
+      "Producing plan",
+      "git diff",
+      "existing review reports",
+      "other chat/thread history"
+    ],
+    "clarification_requested": false
+  },
+  "sources_acquired_for_A": [
+    {
+      "path": "README.md",
+      "sha256": "af770974816847e7d6906c42ebe9a42a9835200d9e867e04c5f6526acc38cbeb",
+      "bytes": 17196,
+      "lines": 247,
+      "acquisition": "direct whole-file read",
+      "complete_body_obtained": true
+    },
+    {
+      "path": "docs/guides/onboarding.md",
+      "sha256": "3bc9c14ff1788cdd1336efb201919e77a1832b165108c636b674d749deaf15a3",
+      "bytes": 23161,
+      "lines": 416,
+      "acquisition": "direct whole-file read",
+      "complete_body_obtained": true
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+      "bytes": 25015,
+      "lines": 433,
+      "acquisition": "direct whole-file read",
+      "complete_body_obtained": true
+    }
+  ],
+  "reading_and_execution_failures": [
+    {
+      "operation": "First parallel whole-file delivery of onboarding and docs authority map",
+      "result": "Combined tool output was truncated; it did not establish complete acquisition.",
+      "recovery": "Reissued the whole files; onboarding was delivered complete. Reissued docs/README.md alone as raw multiline text and obtained its complete body.",
+      "attribution": "Caller output budget/serialization; no source defect established."
+    },
+    {
+      "operation": "Initial preview of redirected preparation output",
+      "result": "Preview code looked for a delimiter absent from the format and printed an initial fragment of unit bodies after the manifest. That fragment did not count as complete body acquisition.",
+      "recovery": "Used the manifest identities and expected file digests to obtain every missing complete unit through read recovery; the source identities still matched before the final report.",
+      "attribution": "Consumer preview code error; no preparation failure or source defect established."
+    }
+  ],
+  "A": {
+    "request": "Learn this template discipline and compare it with existing working rules.",
+    "target_facts_supplied": [
+      "Existing Python CLI service",
+      "Own AGENTS.md",
+      "ADR ownership",
+      "Regression command",
+      "Release policy",
+      "No graphical surface"
+    ],
+    "target_facts_observed_in_target_repository": false,
+    "actual_reading_path": [
+      "README.md (whole file)",
+      "README.md#start-from-a-new-or-existing-project -> docs/guides/onboarding.md#start-collaborating-without-a-migration (whole guide obtained)",
+      "docs/guides/onboarding.md#start-collaborating-without-a-migration -> docs/README.md#task-context (whole authority map obtained)"
+    ],
+    "first_reading_decision": "Treat this as broad learning. Obtain every rule in the named learning set and understand its problem, mechanism and limits before applicability judgments; existing local discipline and the lack of a UI inform the later comparison rather than shrinking source acquisition.",
+    "declared_scope_from_entrypoint": [
+      "Documentation authority map including language style",
+      "Every current contract: development, governance, adoption, agent execution, documentation harness, foundational runtime, data analysis, autonomous operation",
+      "Engineering-judgment target draft, distinguished from current authority",
+      "Every development concern-table row followed into its owning section",
+      "Behavior guides for onboarding, project operation, research, information access, Grill"
+    ],
+    "first_source_acquisition_executed": "Obtained the whole documentation authority map at docs/README.md, including task context, authority order and language style. Obtained the whole onboarding route that declares the learning set.",
+    "first_interpretations": [
+      "This request does not authorize copying, enforcement, replacement of target instructions, or product changes.",
+      "A no-UI fact alone does not justify skipping graphical rule source; the owner guide explicitly says to read before classifying it.",
+      "A CLI also needs the source-defined non-graphical Experience comparison later; no conclusion about that coverage was reached.",
+      "The source separates reading scope, applicability, authority and delivery evidence; a task preparation manifest is not a completed external learning comparison."
+    ],
+    "stop_boundary": "Stopped at the first reading-scope decision and initial source acquisition. No completed learning survey, applicability matrix, target inventory or adoption is claimed.",
+    "remaining_if_assignment_continued": [
+      "Open project-adoption owner reading-order and learning-path rules and the rest of the named learning set.",
+      "Obtain required global core and declared dependencies using the reader protocol or complete direct reading.",
+      "Inspect actual target AGENTS.md, ADR ownership, regression/release procedures, current work and boundaries.",
+      "Compare each understood rule mechanism with observed coverage, gaps or supported non-applicability; then use the authorized learning ending."
+    ],
+    "consumer_facing_problems_observed": [],
+    "supported_positive_findings": [
+      "The README and onboarding guide provide a reachable explicit full-learning route for an existing service with independent discipline.",
+      "The guide gives a concrete no-UI service example that blocks premature omission of source while preserving later applicability judgment and existing authority."
+    ],
+    "first_verdict": "Pass for the bounded first-reading decision. This does not establish full learning or real-project adoption."
+  },
+  "B": {
+    "request": "Examine only the practice of fixing a defect category rather than just a symptom and decide what it could add to a guide that requires reproducing and correcting the reported case.",
+    "target_fact_supplied": "The current guide requires reproducing and correcting the reported case.",
+    "target_guide_source_obtained": false,
+    "target_guide_path_and_identity": "Not supplied; no actual target repository was inspected.",
+    "actual_reading_path": [
+      "README.md -> docs/guides/project-operation.md#take-one-practice-into-a-task",
+      "Operation card -> docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task and #understand-rules-before-judging-applicability",
+      "README.md transfer-value table and migration principle -> docs/contracts/development-discipline.md; located #fix-the-category-not-only-the-symptom with heading search",
+      "docs/README.md#task-context -> docs/contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction",
+      "read_rules.py prepare with the two explicit extraction-method references -> complete required core and method documents; all selected bodies obtained by complete direct reading or digest-checked recovery"
+    ],
+    "selected_practice": {
+      "owner": "docs/contracts/development-discipline.md#fix-the-category-not-only-the-symptom",
+      "enclosing_complete_unit": "docs/contracts/development-discipline.md#development-core",
+      "operative_rule": "Before fixing a defect, name its category and root mechanism. If that mechanism has repeatable sibling variants, include a proportionate class-level guard capable of catching a plausible variant absent from the original report.",
+      "causal_reason": "Correcting only the reported input can leave the shared mechanism able to fail at another input or call site. A guard derived from that mechanism checks a transferable property; exercising an unreported sibling distinguishes category protection from replaying the original example.",
+      "limits": [
+        "Keep the fix local and record why when evidence shows no repeatable sibling, no stable guard is possible, or guard cost exceeds the bounded risk.",
+        "This grants no authority for unbounded cleanup or changes outside the authorized fix.",
+        "Preserve the raw failure record; enrichment can aid investigation, but pre-filtering can hide the causal mechanism.",
+        "Postmortem categories/actions, including monitoring failure, apply when the project operates incidents or postmortems; that target condition was not supplied.",
+        "Correcting a contributing harness default/interface/context route and removing redundant reminders is conditional on a harness contribution; none was established for the target."
+      ]
+    },
+    "first_assessment": {
+      "classification": "recommendation",
+      "finding_from_supplied_fact": "The stated guide covers reproduction and correction of the reported case. That statement does not require identifying a repeatable mechanism, seeking siblings, or justifying the omission of a class guard.",
+      "what_this_practice_could_add": "At the existing guide owner, add a conditional step to identify the category/root mechanism, determine whether it has repeatable siblings, and, when proportionate, protect the mechanism and verify an unreported plausible sibling. Preserve the original reproduction check and allow a reasoned local-only fix under the source exceptions.",
+      "benefit": "A fix can prevent a related recurrence rather than merely close the observed case.",
+      "cost_and_tradeoff": "The step adds investigation and guard maintenance. The exceptions prevent speculative broad cleanup and an expensive guard for a small bounded risk.",
+      "what_does_not_follow": "The supplied sentence cannot establish that the real target lacks equivalent coverage elsewhere or that its current tests are inadequate. No specific defect mechanism or guard was verified.",
+      "non_application_case": "For a genuinely isolated defect without a repeatable sibling, or where no stable proportionate guard exists, retain the local reproduction/correction and record that evidence instead of forcing a class guard.",
+      "proposal_status": "Source-supported recommendation on the bounded supplied fact; not adopted, implemented or empirically tried in a target project."
+    },
+    "reader_execution": {
+      "concerns_selected": [],
+      "concern_reason": "This is source-rule examination and comparison with a supplied guide fact, with no product/interface implementation, dataset analysis or target-state mutation. Merely reading rules about domains does not activate those domains.",
+      "command": "python3 scripts/read_rules.py prepare --include docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task --include docs/guides/project-operation.md#take-one-practice-into-a-task",
+      "prepare_exit_code": 0,
+      "output_location": "Disposable local capture; not an operative source or retained evidence dependency.",
+      "manifest_version": 2,
+      "final_marker": "READING COMPLETE units=11",
+      "body_delivery": "Captured prepare output was not treated as read. Complete selected bodies were subsequently acquired via direct whole-file reading and digest-checked read calls.",
+      "units": [
+        {
+          "authority": "normative",
+          "bytes": 666,
+          "delivery": "emitted",
+          "file_sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+          "heading": "Authority order",
+          "identity": "docs/README.md#authority-order",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+          "status": "current",
+          "unit": "authority-order",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Already obtained through the direct whole-file read in A; current file digest matches the preparation manifest."
+        },
+        {
+          "authority": "normative",
+          "bytes": 6154,
+          "delivery": "emitted",
+          "file_sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+          "heading": "Language style",
+          "identity": "docs/README.md#language-style",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "608735473175666969c2aef9ac27ce736faf204160cd5e65f27fc6e61077108d",
+          "status": "current",
+          "unit": "language-style",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Already obtained through the direct whole-file read in A; current file digest matches the preparation manifest."
+        },
+        {
+          "authority": "normative",
+          "bytes": 43761,
+          "delivery": "emitted",
+          "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+          "heading": "Purpose",
+          "identity": "docs/contracts/development-discipline.md#development-core",
+          "metadata_sha256": "0be2cc520c41aa763d40bc95475bd809d1621339ad900671717cd405509152c3",
+          "path": "docs/contracts/development-discipline.md",
+          "sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+          "status": "current",
+          "unit": "development-core",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "part_size_bytes": 12000
+          }
+        },
+        {
+          "authority": "normative",
+          "bytes": 26775,
+          "delivery": "emitted",
+          "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+          "heading": "Purpose",
+          "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+          "metadata_sha256": "5866758501b88240b43f6f15161eab5ba0ed76dfca73429d79df602465744e30",
+          "path": "docs/contracts/governance-decision-boundary.md",
+          "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+          "status": "current",
+          "unit": "governance-core",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3
+            ],
+            "part_size_bytes": 10000
+          }
+        },
+        {
+          "authority": "normative",
+          "bytes": 2242,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Vocabulary and risk profiles",
+          "identity": "docs/contracts/agent-execution-discipline.md#profiles",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "1ab44f018ce92566feed9b858c16f3fa5c145e683110f21cf533cb59b98471a1",
+          "status": "current",
+          "unit": "profiles",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 1426,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Risk selects the execution depth",
+          "identity": "docs/contracts/agent-execution-discipline.md#risk",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "0b2c893ae8c99be669aca728a997eedefefbdce35c934505f6e295fed6e77e91",
+          "status": "current",
+          "unit": "risk",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 1759,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "The harness selects the smallest executable route",
+          "identity": "docs/contracts/agent-execution-discipline.md#route",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+          "status": "current",
+          "unit": "route",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 1198,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Completion is layered",
+          "identity": "docs/contracts/agent-execution-discipline.md#completion",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+          "status": "current",
+          "unit": "completion",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 10463,
+          "delivery": "emitted",
+          "file_sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+          "heading": "Task context",
+          "identity": "docs/README.md#task-context",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "9365599f1d49c87609f2b0f2d619578c1cc16f0e8a6ec24667491d0c9fcc965f",
+          "status": "current",
+          "unit": "task-context",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Already obtained through the direct whole-file read in A; current file digest matches the preparation manifest."
+        },
+        {
+          "authority": "normative",
+          "bytes": 44003,
+          "delivery": "emitted",
+          "file_sha256": "7aa49d7bd15f3ac4495f64923358a36416b8e187e00e1db25e248a9e06b53b03",
+          "heading": "Project adoption and onboarding discipline",
+          "identity": "docs/contracts/project-adoption.md#document",
+          "metadata_sha256": "7a55e167c3368cdbc4a024582b60d063dda72f8a342540d6eaa620d275f22a9c",
+          "path": "docs/contracts/project-adoption.md",
+          "sha256": "7aa49d7bd15f3ac4495f64923358a36416b8e187e00e1db25e248a9e06b53b03",
+          "status": "current",
+          "unit": "document",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "part_size_bytes": 12000
+          }
+        },
+        {
+          "authority": "guidance",
+          "bytes": 39159,
+          "delivery": "emitted",
+          "file_sha256": "bdddb4f481a9e150beff6f493c40c0ad9ae2f78271f68dd52d0096d7d917e7d8",
+          "heading": "Project operation after onboarding",
+          "identity": "docs/guides/project-operation.md#document",
+          "metadata_sha256": "c5c74ecc5b305a86281f7470dc98f821832761fa8fc1df163f4df49ea4e09492",
+          "path": "docs/guides/project-operation.md",
+          "sha256": "bdddb4f481a9e150beff6f493c40c0ad9ae2f78271f68dd52d0096d7d917e7d8",
+          "status": "current",
+          "unit": "document",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "part_size_bytes": 11000
+          }
+        }
+      ],
+      "entrypoint_source_identities": {
+        "AGENTS.md": "7d32cac6266ebf78af8c166434cc9b42059aa0c23c3c516624ad0cb04f7b17d1",
+        "docs/README.md": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+        "docs/contracts/agent-execution-discipline.md": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+        "docs/contracts/development-discipline.md": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+        "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+        "docs/contracts/project-adoption.md": "7aa49d7bd15f3ac4495f64923358a36416b8e187e00e1db25e248a9e06b53b03",
+        "docs/guides/project-operation.md": "bdddb4f481a9e150beff6f493c40c0ad9ae2f78271f68dd52d0096d7d917e7d8"
+      },
+      "all_file_identities_revalidated_before_report": true,
+      "protocol_direct_read": {
+        "path": "docs/contracts/documentation-harness.md",
+        "scope": "Complete operative section, lines 257-386; other sections were not read",
+        "file_sha256": "aec7f6cc871f8217337ad9a2226d5465f1ff6e3c7e33ae70659fe7a5a3f6ae4a",
+        "scope_sha256": "3e4f47b18dff482e4437eafbdd5cfc409ce7912ee41a4443b53fcfc708644423"
+      },
+      "complete_learning_survey_claimed": false
+    },
+    "consumer_facing_problems_observed": [],
+    "supported_positive_findings": [
+      "The README exposes the one-practice route; its card and normative extraction owner distinguish bounded examination from a full survey and preserve target authority.",
+      "The selected practice contains both the mechanism-based sibling guard and concrete exceptions, which support a useful bounded assessment without adopting the template.",
+      "Preparation and digest-checked recovery successfully delivered the complete selected sources and dependencies."
+    ],
+    "nonblocking_usability_observation": {
+      "observation": "The literal --include method selection resolved the extraction heading to the whole adoption contract (44003 bytes) and the whole project-operation guide (39159 bytes), because neither extraction card has a declared scoped reading unit. Those complete bodies included unrelated adoption procedure, examples and chronology.",
+      "impact": "Extra acquisition cost for this one-practice use. The observed two-method expansion was 83162 bytes within a 177606-byte complete selection; no claim of a universal cost or a blocking defect follows.",
+      "limit": "Whole-document fallback is explicit in the reader protocol. This observation alone does not show the change fails its requested behavior or require a new source split."
+    },
+    "first_verdict": "Pass for bounded extraction and the source-supported recommendation. No target adoption, implementation or recurrence-prevention outcome is established."
+  },
+  "limitations": [
+    "Target facts are trial inputs, not a real target inspection.",
+    "The inherited AGENTS.md already contained learning/extraction routing, so this is a fresh nonproducing use of public sources with project instructions, not blank-context discoverability.",
+    "No private context, external service, target write, commit, source edit, producer plan, diff or review report was used.",
+    "B obtained additional learning-set sources after A was frozen; those reads do not retrospectively turn A into a completed learning survey.",
+    "All complete-body acquisition claims refer to actual delivered source text; the generated manifest and READING COMPLETE marker alone were not used as comprehension or outcome evidence.",
+    "No target code, actual guide text, regression suite, release or ADR content was available for independent coverage comparison.",
+    "Source chronology delivered by the whole-document method fallback was read in B; no linked historical plan or evidence report was opened.",
+    "This report verifies the two assigned consumer decisions and valid JSON only; root owns integration, project checks and any broader completion claim."
+  ],
+  "completed_utc": "2026-10-29T06:47:00.803228+00:00",
+  "first_overall_verdict": "The public routes support both requested bounded reading/use decisions. No actionable source defect was established in these trials. A is only an initial full-learning reading decision; B is only a recommendation against supplied target facts.",
+  "C": {
+    "observation_type": "additional_informed_countercase_after_first_A_B_report",
+    "recorded_utc": "2026-10-29T06:51:32.504018+00:00",
+    "first_A_B_results_unchanged": true,
+    "additional_context_received": [
+      "The owner has authorized fixing a specific CLI retry defect under existing local behavior authority.",
+      "The owner did not request learning or migrating the discipline and did not name a template practice.",
+      "During diagnosis the implementer wants to inspect a candidate template practice to improve that task.",
+      "The original correction says external agents should not judge whether to obtain/read rules before reading them and understanding why they were established.",
+      "The parent goal is useful external learning for new projects, older adopters and independently governed projects while preserving existing authorization boundaries.",
+      "Root said the public source had not changed since the first report; source identities were independently revalidated."
+    ],
+    "target_facts_status": "Supplied countercase facts only; no target repository or defect execution was inspected.",
+    "source_identities_revalidated": [
+      {
+        "path": "README.md",
+        "sha256": "af770974816847e7d6906c42ebe9a42a9835200d9e867e04c5f6526acc38cbeb",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/README.md",
+        "sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/guides/onboarding.md",
+        "sha256": "3bc9c14ff1788cdd1336efb201919e77a1832b165108c636b674d749deaf15a3",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/contracts/project-adoption.md",
+        "sha256": "7aa49d7bd15f3ac4495f64923358a36416b8e187e00e1db25e248a9e06b53b03",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/guides/project-operation.md",
+        "sha256": "bdddb4f481a9e150beff6f493c40c0ad9ae2f78271f68dd52d0096d7d917e7d8",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/contracts/development-discipline.md",
+        "sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/contracts/governance-decision-boundary.md",
+        "sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+        "matches_first_report_identity": true
+      },
+      {
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+        "matches_first_report_identity": true
+      }
+    ],
+    "retention_and_read_scope": {
+      "retained_bodies_available": true,
+      "basis": "The complete bodies recorded as obtained in B remain in this live consumer context. They were reused only after their current whole-file SHA-256 identities matched the first report.",
+      "units_used": [
+        {
+          "authority": "normative",
+          "bytes": 666,
+          "delivery": "emitted",
+          "file_sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+          "heading": "Authority order",
+          "identity": "docs/README.md#authority-order",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+          "status": "current",
+          "unit": "authority-order",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Already obtained through the direct whole-file read in A; current file digest matches the preparation manifest."
+        },
+        {
+          "authority": "normative",
+          "bytes": 6154,
+          "delivery": "emitted",
+          "file_sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+          "heading": "Language style",
+          "identity": "docs/README.md#language-style",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "608735473175666969c2aef9ac27ce736faf204160cd5e65f27fc6e61077108d",
+          "status": "current",
+          "unit": "language-style",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Already obtained through the direct whole-file read in A; current file digest matches the preparation manifest."
+        },
+        {
+          "authority": "normative",
+          "bytes": 43761,
+          "delivery": "emitted",
+          "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+          "heading": "Purpose",
+          "identity": "docs/contracts/development-discipline.md#development-core",
+          "metadata_sha256": "0be2cc520c41aa763d40bc95475bd809d1621339ad900671717cd405509152c3",
+          "path": "docs/contracts/development-discipline.md",
+          "sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+          "status": "current",
+          "unit": "development-core",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "part_size_bytes": 12000
+          }
+        },
+        {
+          "authority": "normative",
+          "bytes": 26775,
+          "delivery": "emitted",
+          "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+          "heading": "Purpose",
+          "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+          "metadata_sha256": "5866758501b88240b43f6f15161eab5ba0ed76dfca73429d79df602465744e30",
+          "path": "docs/contracts/governance-decision-boundary.md",
+          "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+          "status": "current",
+          "unit": "governance-core",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3
+            ],
+            "part_size_bytes": 10000
+          }
+        },
+        {
+          "authority": "normative",
+          "bytes": 2242,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Vocabulary and risk profiles",
+          "identity": "docs/contracts/agent-execution-discipline.md#profiles",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "1ab44f018ce92566feed9b858c16f3fa5c145e683110f21cf533cb59b98471a1",
+          "status": "current",
+          "unit": "profiles",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 1426,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Risk selects the execution depth",
+          "identity": "docs/contracts/agent-execution-discipline.md#risk",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "0b2c893ae8c99be669aca728a997eedefefbdce35c934505f6e295fed6e77e91",
+          "status": "current",
+          "unit": "risk",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 1759,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "The harness selects the smallest executable route",
+          "identity": "docs/contracts/agent-execution-discipline.md#route",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+          "status": "current",
+          "unit": "route",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 1198,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Completion is layered",
+          "identity": "docs/contracts/agent-execution-discipline.md#completion",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+          "status": "current",
+          "unit": "completion",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Digest-checked read delivered the complete unit with UNIT COMPLETE marker."
+        },
+        {
+          "authority": "normative",
+          "bytes": 10463,
+          "delivery": "emitted",
+          "file_sha256": "ae9d69044f47177a41d93bacc34ce034fd224b7381c29f33564435fc74842a65",
+          "heading": "Task context",
+          "identity": "docs/README.md#task-context",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "9365599f1d49c87609f2b0f2d619578c1cc16f0e8a6ec24667491d0c9fcc965f",
+          "status": "current",
+          "unit": "task-context",
+          "complete_body_obtained": true,
+          "actual_acquisition": "Already obtained through the direct whole-file read in A; current file digest matches the preparation manifest."
+        },
+        {
+          "authority": "normative",
+          "bytes": 44003,
+          "delivery": "emitted",
+          "file_sha256": "7aa49d7bd15f3ac4495f64923358a36416b8e187e00e1db25e248a9e06b53b03",
+          "heading": "Project adoption and onboarding discipline",
+          "identity": "docs/contracts/project-adoption.md#document",
+          "metadata_sha256": "7a55e167c3368cdbc4a024582b60d063dda72f8a342540d6eaa620d275f22a9c",
+          "path": "docs/contracts/project-adoption.md",
+          "sha256": "7aa49d7bd15f3ac4495f64923358a36416b8e187e00e1db25e248a9e06b53b03",
+          "status": "current",
+          "unit": "document",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "part_size_bytes": 12000
+          }
+        },
+        {
+          "authority": "guidance",
+          "bytes": 39159,
+          "delivery": "emitted",
+          "file_sha256": "bdddb4f481a9e150beff6f493c40c0ad9ae2f78271f68dd52d0096d7d917e7d8",
+          "heading": "Project operation after onboarding",
+          "identity": "docs/guides/project-operation.md#document",
+          "metadata_sha256": "c5c74ecc5b305a86281f7470dc98f821832761fa8fc1df163f4df49ea4e09492",
+          "path": "docs/guides/project-operation.md",
+          "sha256": "bdddb4f481a9e150beff6f493c40c0ad9ae2f78271f68dd52d0096d7d917e7d8",
+          "status": "current",
+          "unit": "document",
+          "complete_body_obtained": true,
+          "actual_acquisition": "All digest-checked read recovery parts delivered with PART COMPLETE markers.",
+          "recovery": {
+            "parts_obtained": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "part_size_bytes": 11000
+          }
+        }
+      ],
+      "new_source_delivery": "Re-read the complete extraction/read-before-judgment sections of project-adoption (lines 262-321) and the extraction card (project-operation lines 122-151), and located the task-context and governance wording with targeted searches. Other relevant complete bodies were retained from the actual earlier whole-file/digest-checked reads.",
+      "candidate_practice_source": {
+        "practice": "docs/contracts/development-discipline.md#fix-the-category-not-only-the-symptom",
+        "complete_unit": "docs/contracts/development-discipline.md#development-core",
+        "unit_sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+        "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+        "acquisition": "Complete source and core dependencies actually obtained in B, retained here and revalidated; no title-only fit judgment."
+      },
+      "full_learning_survey_completed_or_claimed": false
+    },
+    "governing_wording": [
+      {
+        "source": "docs/README.md#task-context",
+        "scope": "Lines 103-116 within the retained complete authority map",
+        "operative_meaning": "Methods are read when used; ordinary links do not recursively require reading. A request to learn the discipline is the exception requiring the named learning set. Context expands for dependencies, conflicts, missing facts or activated concerns."
+      },
+      {
+        "source": "docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default",
+        "scope": "Retained complete governance-core unit; operative section begins at line 177",
+        "operative_meaning": "Local reversible engineering choices within authorized intent and existing boundaries proceed without per-choice approval. Returning authorized, reversible or read-only work for approval also violates the boundary."
+      },
+      {
+        "source": "docs/contracts/project-adoption.md#understand-rules-before-judging-applicability",
+        "scope": "Lines 262-300 within the retained complete adoption owner",
+        "operative_meaning": "The full learning set is specified for a broad discipline request; each rule compared still requires complete source and reason before applicability judgment. The final paragraph restricts extraction to an explicitly bounded request.",
+        "decisive_exact_wording": "Only an explicitly bounded request to examine or take one practice uses the extraction route below without the full survey."
+      },
+      {
+        "source": "docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task",
+        "scope": "Lines 302-321 within the retained complete adoption owner",
+        "operative_meaning": "An explicitly bounded practice request selects extraction; source understanding precedes fit, target authority is preserved, and extraction does not authorize migration or product behavior changes."
+      },
+      {
+        "source": "docs/guides/project-operation.md#take-one-practice-into-a-task",
+        "scope": "Lines 122-151 within the retained complete guide",
+        "operative_meaning": "The card opens with an explicitly bounded request for one practice and step 2 refers to a practice named by that request.",
+        "decisive_exact_wording": "Locate the practice named by the bounded request without declaring its fit yet."
+      }
+    ],
+    "first_decision": {
+      "decision": "Proceed with bounded read-only inspection of a candidate practice as an ordinary method choice within the authorized CLI retry diagnosis. No full discipline survey or request for the owner to name the candidate is needed.",
+      "authority_reason": "The supplied task already authorizes diagnosis and correction of the retry defect. Inspecting a candidate source is reversible investigation and changes neither target behavior nor local authority. The broad-learning survey trigger was not invoked.",
+      "source_before_fit": "Use the complete retained and identity-revalidated defect-category rule as a candidate. It requires naming the actual root mechanism before judging whether repeatable siblings and a proportionate guard exist. The countercase contains no mechanism evidence, so fit and guard selection remain undecided.",
+      "boundary": "This decision authorizes source investigation only. It neither imports template authority nor expands the CLI fix, changes release policy, enables enforcement, adopts the template or implements anything.",
+      "why_no_owner_question": "The available facts do not reveal a material intent, authority or accepted-risk choice. Asking the owner to choose or name an investigative candidate would return already authorized read-only work for approval."
+    },
+    "material_finding": {
+      "classification": "risk",
+      "severity": "P2",
+      "title": "Extraction wording can gate implementer-selected investigation on an owner-named practice",
+      "mechanism": "The adoption rule makes an explicitly bounded practice request the only stated escape from the full survey, and the operation card assumes the practice is named in that request. C has a bounded authorized task but no named practice. A literal consumer can therefore conclude that it must ask the owner to name the practice or perform a full survey before inspecting a useful candidate. The ordinary task and governance rules support proceeding, leaving the reader to reconcile competing signals.",
+      "affected_consumer": "An implementer diagnosing an authorized task who selects a candidate method from the template, rather than receiving an explicit request to learn the discipline or extract a named practice.",
+      "impact": "An unnecessary owner interruption or a potentially large source survey can delay or discourage useful investigation. The exact frequency and time cost are unknown; this countercase establishes the wording path, not measured adoption incidence.",
+      "when_it_does_not_matter": "A broad discipline-learning request legitimately takes the complete survey, and an owner who explicitly asks for a named practice fits the current extraction card. Those are the cases exercised by A and B.",
+      "conformance_assessment": "Source-before-fit preserves the original correction. Requiring the owner to name the practice, or treating its absence as a full-survey trigger, is an additional gate not needed by that correction and conflicts with preserving ordinary engineering discretion.",
+      "not_an_actual_execution_blocker": "I selected the coherent ordinary-task route and did not pause for a new owner decision. The finding concerns public wording and the plausible decision it induces; it is not evidence that this consumer was unable to proceed.",
+      "repair_authority": "Root owns any source correction; this consumer made none."
+    },
+    "supported_positive_findings": [
+      "The task-context and governance owners already support reading selected methods within authorized work without serial approval.",
+      "The defect-category practice can be examined from complete retained source without importing template authority or prematurely deciding it fits the retry defect.",
+      "The current full-learning distinction correctly protects A from being silently narrowed to B; C exposes a separate ordinary-work case rather than invalidating those first observations."
+    ],
+    "first_C_verdict": "Investigation should proceed under existing task authority, but the extraction route has a material ambiguity that can impose an unnecessary owner-naming or full-survey gate for an implementer-selected candidate. A and B remain unchanged.",
+    "limits": [
+      "This is an additional informed countercase requested after root read the first report; it is not an unhinted first-use trial.",
+      "The original owner correction and parent goal were supplied for this conformance assessment after A and B.",
+      "No actual retry defect, target guide, implementation or consumer stopping behavior was observed; the gate is supported by the public wording and the source-supported decision conflict.",
+      "No broad learning survey, adoption, implementation, external service, commit, target write or source correction occurred.",
+      "The acquired candidate rule was understood before fit was considered; actual fit remains open pending target mechanism evidence."
+    ]
+  },
+  "final_recheck": {
+    "observation_type": "informed_correction_recheck_in_existing_independent_consumer_context",
+    "recorded_utc": "2026-10-29T07:06:21.461248+00:00",
+    "earlier_report_preserved": "Every preexisting JSON field, including first A/B identities and verdicts and the C finding, remains unchanged. This object records the current correction result separately.",
+    "additional_context_received": [
+      "Root reported a correction to the C gate in the current adoption owner and public projections.",
+      "Root reported new complete source-understanding and practice-extraction units with explicit prerequisite edges, plus onboarding dependency on source understanding.",
+      "Root reported an actual-entrypoint integration test first failed and then passed. This consumer did not inspect that test or use its report as a substitute for the current source and command observations below."
+    ],
+    "current_source_identities": {
+      "AGENTS.md": "e432e0aa20f27dd560b708dfe4aaae48bef3d507dade51f8bd6bc41d95027595",
+      "docs/README.md": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+      "docs/contracts/agent-execution-discipline.md": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+      "docs/contracts/development-discipline.md": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+      "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+      "docs/contracts/project-adoption.md": "5400d77f83fa797911ba4511a5b73203cbdf5c459aa3d894bd3412fb0343a0f9",
+      "docs/guides/project-operation.md": "79b1953489e4eb3417f2075eec03d94be09f2b128588fb2bef0d28ce4ff8a944",
+      "docs/guides/onboarding.md": "58c70f29df9e6b40359334168b7bb2ba77febd0fe1587fbff49edf669ca84857",
+      "README.md": "2db4aab969de47df0ea2398338ce44ed7d3e043469459e1744ef280b07984248",
+      "docs/contracts/documentation-harness.md": "aec7f6cc871f8217337ad9a2226d5465f1ff6e3c7e33ae70659fe7a5a3f6ae4a"
+    },
+    "all_recorded_current_file_identities_revalidated_before_append": true,
+    "delivered_and_reused_scopes": {
+      "fresh_whole_files": [
+        {
+          "path": "README.md",
+          "scope": "Complete current public README obtained directly."
+        },
+        {
+          "path": "AGENTS.md",
+          "scope": "Complete current working agreement obtained directly."
+        },
+        {
+          "path": "docs/guides/onboarding.md",
+          "scope": "Complete current guide obtained in two digest-checked parts of size 12000 bytes; both PART COMPLETE markers observed.",
+          "parts_obtained": [
+            1,
+            2
+          ],
+          "bytes": 23392
+        }
+      ],
+      "current_method_units": [
+        {
+          "authority": "normative",
+          "bytes": 666,
+          "delivery": "emitted",
+          "file_sha256": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+          "heading": "Authority order",
+          "identity": "docs/README.md#authority-order",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+          "status": "current",
+          "unit": "authority-order",
+          "preparation_position": 0,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 6154,
+          "delivery": "emitted",
+          "file_sha256": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+          "heading": "Language style",
+          "identity": "docs/README.md#language-style",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "608735473175666969c2aef9ac27ce736faf204160cd5e65f27fc6e61077108d",
+          "status": "current",
+          "unit": "language-style",
+          "preparation_position": 1,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 43761,
+          "delivery": "emitted",
+          "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+          "heading": "Purpose",
+          "identity": "docs/contracts/development-discipline.md#development-core",
+          "metadata_sha256": "0be2cc520c41aa763d40bc95475bd809d1621339ad900671717cd405509152c3",
+          "path": "docs/contracts/development-discipline.md",
+          "sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+          "status": "current",
+          "unit": "development-core",
+          "preparation_position": 2,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 26775,
+          "delivery": "emitted",
+          "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+          "heading": "Purpose",
+          "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+          "metadata_sha256": "5866758501b88240b43f6f15161eab5ba0ed76dfca73429d79df602465744e30",
+          "path": "docs/contracts/governance-decision-boundary.md",
+          "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+          "status": "current",
+          "unit": "governance-core",
+          "preparation_position": 3,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 2242,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Vocabulary and risk profiles",
+          "identity": "docs/contracts/agent-execution-discipline.md#profiles",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "1ab44f018ce92566feed9b858c16f3fa5c145e683110f21cf533cb59b98471a1",
+          "status": "current",
+          "unit": "profiles",
+          "preparation_position": 4,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 1426,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Risk selects the execution depth",
+          "identity": "docs/contracts/agent-execution-discipline.md#risk",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "0b2c893ae8c99be669aca728a997eedefefbdce35c934505f6e295fed6e77e91",
+          "status": "current",
+          "unit": "risk",
+          "preparation_position": 5,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 1759,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "The harness selects the smallest executable route",
+          "identity": "docs/contracts/agent-execution-discipline.md#route",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+          "status": "current",
+          "unit": "route",
+          "preparation_position": 6,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 1198,
+          "delivery": "emitted",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Completion is layered",
+          "identity": "docs/contracts/agent-execution-discipline.md#completion",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+          "status": "current",
+          "unit": "completion",
+          "preparation_position": 7,
+          "actual_model_acquisition": "Previously obtained complete body remains available in this live context; exact unit body, metadata, authority, lifecycle and byte count were revalidated unchanged.",
+          "body_reused_from_first_report": true,
+          "revalidated_fields": [
+            "sha256",
+            "metadata_sha256",
+            "authority",
+            "status",
+            "bytes"
+          ]
+        },
+        {
+          "authority": "normative",
+          "bytes": 10476,
+          "delivery": "emitted",
+          "file_sha256": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+          "heading": "Task context",
+          "identity": "docs/README.md#task-context",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "f61c956043c47942538b5e450ad4c1d33d3775bbb1d18f385924697ea25be658",
+          "status": "current",
+          "unit": "task-context",
+          "preparation_position": 8,
+          "actual_model_acquisition": "Current complete body newly acquired by digest-checked read; UNIT COMPLETE observed.",
+          "body_reused_from_first_report": false
+        },
+        {
+          "authority": "normative",
+          "bytes": 2625,
+          "delivery": "emitted",
+          "file_sha256": "5400d77f83fa797911ba4511a5b73203cbdf5c459aa3d894bd3412fb0343a0f9",
+          "heading": "Understand rules before judging applicability",
+          "identity": "docs/contracts/project-adoption.md#source-understanding",
+          "metadata_sha256": "7a55e167c3368cdbc4a024582b60d063dda72f8a342540d6eaa620d275f22a9c",
+          "path": "docs/contracts/project-adoption.md",
+          "sha256": "c1b0793f9bfadce46b58dc733accaba8e060683a7d3a9642fbe49713e8a31ebc",
+          "status": "current",
+          "unit": "source-understanding",
+          "preparation_position": 9,
+          "actual_model_acquisition": "Current complete body newly acquired by digest-checked read; UNIT COMPLETE observed.",
+          "body_reused_from_first_report": false
+        },
+        {
+          "authority": "normative",
+          "bytes": 1300,
+          "delivery": "emitted",
+          "file_sha256": "5400d77f83fa797911ba4511a5b73203cbdf5c459aa3d894bd3412fb0343a0f9",
+          "heading": "Take one practice into an authorized task",
+          "identity": "docs/contracts/project-adoption.md#practice-extraction",
+          "metadata_sha256": "7a55e167c3368cdbc4a024582b60d063dda72f8a342540d6eaa620d275f22a9c",
+          "path": "docs/contracts/project-adoption.md",
+          "sha256": "bba97ee12a261425306d5410c7cfc6d5f5bb830007be5980c453b0dcea4f61e9",
+          "status": "current",
+          "unit": "practice-extraction",
+          "preparation_position": 10,
+          "actual_model_acquisition": "Current complete body newly acquired by digest-checked read; UNIT COMPLETE observed.",
+          "body_reused_from_first_report": false
+        },
+        {
+          "authority": "guidance",
+          "bytes": 2329,
+          "delivery": "emitted",
+          "file_sha256": "79b1953489e4eb3417f2075eec03d94be09f2b128588fb2bef0d28ce4ff8a944",
+          "heading": "Take one practice into a task",
+          "identity": "docs/guides/project-operation.md#practice-extraction",
+          "metadata_sha256": "c5c74ecc5b305a86281f7470dc98f821832761fa8fc1df163f4df49ea4e09492",
+          "path": "docs/guides/project-operation.md",
+          "sha256": "9d4e1a52fd18469dda5bf0c1a323715d5814eec7d067e700a7580a5255670d84",
+          "status": "current",
+          "unit": "practice-extraction",
+          "preparation_position": 11,
+          "actual_model_acquisition": "Current complete body newly acquired by digest-checked read; UNIT COMPLETE observed.",
+          "body_reused_from_first_report": false
+        }
+      ],
+      "retained_normative_full_learning_path": {
+        "path": "docs/contracts/project-adoption.md",
+        "scope": "#learning-and-personal-context-have-a-bounded-entry-path through the next peer section",
+        "previous_acquisition": "The complete owner was obtained in B and its operative learning-path body is actually retained.",
+        "revalidation": "Compared the previously captured complete body section with the current source bytes; exact scope bytes are unchanged.",
+        "scope_sha256": "063a8a4142859069e02603642643fd03fb13d8fb3e2a16bf4f49bce0e322f356",
+        "bytes": 6051
+      },
+      "retained_reader_protocol": {
+        "path": "docs/contracts/documentation-harness.md",
+        "scope": "#complete-rule-delivery-is-a-read-only-transaction, previously directly obtained complete operative section",
+        "revalidation": "Whole-file identity remains unchanged; retained protocol was used."
+      },
+      "limits": "Changed whole adoption and project-operation documents were not treated as wholly retained. Only newly delivered complete declared units and separately revalidated actual retained scopes were relied on. Other changed document text is not claimed as read."
+    },
+    "actual_method_selection_check": {
+      "command": "python3 scripts/read_rules.py prepare --include docs/guides/project-operation.md#take-one-practice-into-a-task --context external-rule-learning-consumer-recheck",
+      "exit_code": 0,
+      "selected_unit_count": 12,
+      "selected_total_bytes": 100711,
+      "final_marker": "READING COMPLETE units=12",
+      "actual_complete_body_order": [
+        "docs/contracts/project-adoption.md#source-understanding",
+        "docs/contracts/project-adoption.md#practice-extraction",
+        "docs/guides/project-operation.md#practice-extraction"
+      ],
+      "order_checked_at": "BEGIN UNIT positions in the actual preparation output, not merely link order or a planned graph.",
+      "body_positions_in_preparation": [
+        102514,
+        105272,
+        106703
+      ],
+      "prerequisite_before_extraction_before_card": true,
+      "explicit_edges_observed": [
+        "The adoption practice-extraction unit requires the source-understanding rule.",
+        "The project-operation practice-extraction card requires the adoption extraction rule and its prerequisites."
+      ],
+      "current_method_scope_bytes": 6254,
+      "previous_whole_method_scope_bytes": 83162,
+      "acquisition_observation": "The current selection obtains three complete method units totaling 6254 bytes, replacing this consumer previous 83162-byte whole-adoption/whole-operation method selection. Required global core remains selected. This is an observed scope comparison, not a measured universal runtime or adoption saving.",
+      "source_delivery_caveat": "Redirected preparation output alone was not counted as model reading. New unit bodies were explicitly obtained; unchanged complete bodies were retained only after identity checks."
+    },
+    "actual_onboarding_dependency_and_retention_check": {
+      "command": "python3 scripts/read_rules.py prepare --include docs/guides/onboarding.md --context external-rule-learning-consumer-recheck --retained CURRENT_METHOD_MANIFEST",
+      "manifest_parameter_note": "CURRENT_METHOD_MANIFEST denotes the exact unmodified version-2 manifest emitted by the current method preparation, saved to a disposable local file.",
+      "exit_code": 0,
+      "selected_units": [
+        {
+          "authority": "normative",
+          "bytes": 666,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+          "heading": "Authority order",
+          "identity": "docs/README.md#authority-order",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+          "status": "current",
+          "unit": "authority-order"
+        },
+        {
+          "authority": "normative",
+          "bytes": 6154,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+          "heading": "Language style",
+          "identity": "docs/README.md#language-style",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "608735473175666969c2aef9ac27ce736faf204160cd5e65f27fc6e61077108d",
+          "status": "current",
+          "unit": "language-style"
+        },
+        {
+          "authority": "normative",
+          "bytes": 43761,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+          "heading": "Purpose",
+          "identity": "docs/contracts/development-discipline.md#development-core",
+          "metadata_sha256": "0be2cc520c41aa763d40bc95475bd809d1621339ad900671717cd405509152c3",
+          "path": "docs/contracts/development-discipline.md",
+          "sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+          "status": "current",
+          "unit": "development-core"
+        },
+        {
+          "authority": "normative",
+          "bytes": 26775,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+          "heading": "Purpose",
+          "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+          "metadata_sha256": "5866758501b88240b43f6f15161eab5ba0ed76dfca73429d79df602465744e30",
+          "path": "docs/contracts/governance-decision-boundary.md",
+          "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+          "status": "current",
+          "unit": "governance-core"
+        },
+        {
+          "authority": "normative",
+          "bytes": 2242,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Vocabulary and risk profiles",
+          "identity": "docs/contracts/agent-execution-discipline.md#profiles",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "1ab44f018ce92566feed9b858c16f3fa5c145e683110f21cf533cb59b98471a1",
+          "status": "current",
+          "unit": "profiles"
+        },
+        {
+          "authority": "normative",
+          "bytes": 1426,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Risk selects the execution depth",
+          "identity": "docs/contracts/agent-execution-discipline.md#risk",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "0b2c893ae8c99be669aca728a997eedefefbdce35c934505f6e295fed6e77e91",
+          "status": "current",
+          "unit": "risk"
+        },
+        {
+          "authority": "normative",
+          "bytes": 1759,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "The harness selects the smallest executable route",
+          "identity": "docs/contracts/agent-execution-discipline.md#route",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+          "status": "current",
+          "unit": "route"
+        },
+        {
+          "authority": "normative",
+          "bytes": 1198,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "f377a3261ced8657718a78f6328eb19ba75a8757a399e72b031d2dd3533f1e2d",
+          "heading": "Completion is layered",
+          "identity": "docs/contracts/agent-execution-discipline.md#completion",
+          "metadata_sha256": "7eca900bc07eb3b1d75accedcfaf9a9eb227931c4db00cdf72ee0efa0fad7dc7",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+          "status": "current",
+          "unit": "completion"
+        },
+        {
+          "authority": "normative",
+          "bytes": 10476,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "13a2ee30993233af183e9fd94a6347a4b08392904206a6020dc87e44b5306b90",
+          "heading": "Task context",
+          "identity": "docs/README.md#task-context",
+          "metadata_sha256": "6adf6ddc4ba01d78f17424e0746252b6fb8ca64f7c6687e7d84931b57e73f4d4",
+          "path": "docs/README.md",
+          "sha256": "f61c956043c47942538b5e450ad4c1d33d3775bbb1d18f385924697ea25be658",
+          "status": "current",
+          "unit": "task-context"
+        },
+        {
+          "authority": "normative",
+          "bytes": 2625,
+          "delivery": "caller-asserted-retained",
+          "file_sha256": "5400d77f83fa797911ba4511a5b73203cbdf5c459aa3d894bd3412fb0343a0f9",
+          "heading": "Understand rules before judging applicability",
+          "identity": "docs/contracts/project-adoption.md#source-understanding",
+          "metadata_sha256": "7a55e167c3368cdbc4a024582b60d063dda72f8a342540d6eaa620d275f22a9c",
+          "path": "docs/contracts/project-adoption.md",
+          "sha256": "c1b0793f9bfadce46b58dc733accaba8e060683a7d3a9642fbe49713e8a31ebc",
+          "status": "current",
+          "unit": "source-understanding"
+        },
+        {
+          "authority": "guidance",
+          "bytes": 23392,
+          "delivery": "emitted",
+          "file_sha256": "58c70f29df9e6b40359334168b7bb2ba77febd0fe1587fbff49edf669ca84857",
+          "heading": "AI-guided project onboarding",
+          "identity": "docs/guides/onboarding.md#document",
+          "metadata_sha256": "ebf299b08ad3fbebd7f4c6deb18fcb6b5e406aa613cbdfc61370f88974c1f5f9",
+          "path": "docs/guides/onboarding.md",
+          "sha256": "58c70f29df9e6b40359334168b7bb2ba77febd0fe1587fbff49edf669ca84857",
+          "status": "current",
+          "unit": "document"
+        }
+      ],
+      "final_marker": "READING COMPLETE units=11 delivered=1 retained=10",
+      "result": "The source-understanding unit precedes onboarding. Ten complete bodies were caller-asserted retained only after actual acquisition/revalidation in this live context; the current whole onboarding guide was newly emitted and then actually obtained."
+    },
+    "whole_source_fallback_check": {
+      "command": "python3 scripts/read_rules.py prepare --include docs/contracts/project-adoption.md#document",
+      "exit_code": 0,
+      "selected_identity": "docs/contracts/project-adoption.md#document",
+      "whole_owner_bytes": 44616,
+      "whole_owner_body_sha256": "5400d77f83fa797911ba4511a5b73203cbdf5c459aa3d894bd3412fb0343a0f9",
+      "captured_body_exactly_matches_current_owner_bytes": true,
+      "final_marker": "READING COMPLETE units=10",
+      "result": "Explicit whole-source selection remains available and emits the exact complete current owner body. The complete scope covers its declared source-understanding and extraction units while the core closure remains selected.",
+      "evidence_limit": "The fallback body was captured and mechanically compared with the current source to verify availability; it was not re-read in full by the model or claimed as a new full-owner comprehension survey."
+    },
+    "A_current_decision": {
+      "verdict": "Preserved",
+      "decision": "The existing independently governed CLI service broad-learning request still requires the complete named learning set before applicability judgments. Existing local rules and no graphical surface inform the later source-supported comparison; they do not exclude unread sources.",
+      "evidence": "Current whole README and onboarding guide, newly acquired source-understanding unit, and exact revalidation of the unchanged normative full-learning path.",
+      "scope_limit": "This rechecks the initial reading decision and source route only. It does not complete A learning survey or target applicability comparison."
+    },
+    "B_current_decision": {
+      "verdict": "Preserved with narrower complete method acquisition",
+      "decision": "The one-practice request still obtains complete operative source and dependencies, understands the problem/mechanism/limits before fit, preserves existing target owners, and grants no adoption, product-change or enforcement authority by itself.",
+      "practice_source": "The defect-category rule remains in the unchanged, complete retained development-core unit. Its repeatable-sibling guard and proportionate local-only exceptions are unchanged.",
+      "scope_limit": "The recommendation remains bounded to supplied guide facts; no target mechanism, actual local coverage or recurrence-prevention outcome was observed."
+    },
+    "C_current_decision": {
+      "verdict": "Prior gate resolved in the current source",
+      "decision": "An implementer may locate and inspect a candidate method within the authorized concrete CLI retry task without asking the owner to name it or performing a full discipline survey.",
+      "decisive_current_wording": [
+        {
+          "source": "docs/contracts/project-adoption.md#understand-rules-before-judging-applicability",
+          "meaning": "An authorized concrete task whose purpose is not discipline learning/migration may examine a candidate; the implementer may locate it without asking the owner to name it and then obtains/understands source before fit."
+        },
+        {
+          "source": "docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task",
+          "meaning": "The route includes method investigation inside an authorized concrete task, and the owner need not name the candidate."
+        },
+        {
+          "source": "docs/guides/project-operation.md#take-one-practice-into-a-task",
+          "meaning": "The card explicitly covers an investigated candidate method and asks the implementer to locate a candidate for the task."
+        }
+      ],
+      "projection_check": "Current README, AGENTS, task context and onboarding route all accommodate method investigation within an authorized concrete task; no owner-naming requirement was found in those acquired paths.",
+      "boundaries_preserved": "Candidate source must still be obtained and understood before fit. Broad discipline learning cannot be narrowed to extraction; unread rules are not declared unnecessary. Current task rules and target authority remain binding.",
+      "scope_limit": "The earlier C finding remains as originally recorded against the earlier identities. This is informed correction verification in the same context, not a fresh unhinted trial or implementation."
+    },
+    "failed_or_inconclusive_current_checks": [],
+    "prior_failures_preserved": "The earlier output truncation and preview-code failure remain in the original report; they were not removed or recast as successes.",
+    "unresolved_findings_within_recheck_scope": [],
+    "bounded_final_verdict": "Pass for the current A/B/C reading decisions and complete method-selection route. The C owner-naming/full-survey gate is resolved, the full-learning scope and source-before-fit/authority boundaries survive, prerequisite delivery is ordered, and explicit whole-source fallback is available.",
+    "limits": [
+      "This is an informed correction recheck in the original independent consumer context, with root correction details already supplied.",
+      "No fresh target-project trial, full learning survey, adoption, target implementation, external service, commit or source correction was performed.",
+      "Root owns integration, repository checks and broader completion; this consumer did not rerun the unit suite or documentation checker.",
+      "A preparation manifest or retention label alone cannot establish understanding or target usefulness. The report distinguishes newly acquired bodies, revalidated retained bodies, mechanical availability checks and the actual bounded interpretation.",
+      "Current source identities were checked again before appending this object; later source changes require revalidation."
+    ]
+  }
+}

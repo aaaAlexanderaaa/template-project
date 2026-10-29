@@ -33,13 +33,40 @@ The normative behavior is defined by the
 
 ## Procedure
 
+### Read source rules before deciding what to change
+
+- required-reading: [Understand rules before judging applicability](../contracts/project-adoption.md#understand-rules-before-judging-applicability)
+
+Start external learning at [the adoption owner's reading order](../contracts/project-adoption.md#understand-rules-before-judging-applicability).
+For broad learning, adoption, upgrade or discipline restructuring, obtain the
+complete learning set below. Read each rule's operative source and dependencies
+and understand its problem, mechanism and limits before judging applicability.
+Keep a missing explanation unresolved and follow relevant source evidence when
+needed. A title, value tier or apparently familiar local rule cannot do that
+comparison. Reading does not install the template or change local authority.
+
+| Target project | What changes after source understanding |
+|---|---|
+| Empty start | Establish project purpose and owners, then choose what to adopt for its actual work. |
+| Older discipline | Compare the current local rules and exceptions with the newly understood source; preserve valid local decisions during an authorized upgrade. |
+| Independently developed discipline | Map each mechanism to existing coverage, a concrete gap or an evidenced reason it does not apply. Equivalent local coverage needs no duplicate source rule. |
+
+For example, a service with no UI still reads the source learning set before
+classifying the graphical frontend rules. The source's graphical scope and
+the observed absence of a graphical surface support non-applicability; the
+filename alone does not. It separately checks the non-graphical Experience
+requirements for its CLI. This comparison authorizes no UI implementation.
+
 ### Start collaborating without a migration
 
-To inspect or take one useful practice for a current task, use the
+For a narrow practice request or method inquiry within an authorized concrete
+task, use the
 [bounded extraction route](../contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
 and [operation card](project-operation.md#take-one-practice-into-a-task).
-The full learning survey below is selected when that broader learning was
-requested. Neither route requires invented prior corrections.
+The implementer can locate a candidate; the owner need not name it. Read and
+understand its source before deciding its fit. A broad learning or
+discipline request keeps the full survey below; it cannot silently become a
+single-practice extraction. Neither route requires invented prior corrections.
 
 The [complete-reading route](../README.md#task-context) can deliver declared
 units and dependencies. The learning request below keeps its wider, explicitly
@@ -57,8 +84,9 @@ evidence, and source chronology stay closed unless a judgment depends on them.
 
 The set is the documentation authority map, including language style; every
 current contract (development discipline, governance, adoption, agent
-execution, the documentation harness, foundational runtime, and autonomous
-operation); the engineering-judgment contract, recorded as a target draft;
+execution, the documentation harness, foundational runtime, data analysis and
+autonomous operation); the engineering-judgment contract, recorded as a target
+draft;
 every row of development discipline's concern table, followed into the section
 that owns that row; and the behavior guides for onboarding, project operation,
 research, information access, and Grill.
@@ -77,7 +105,9 @@ Do not commit a profile or its private path to create a permanent startup hook.
 
 For each opened rule, record one result: it applies and is already satisfied;
 it applies and is not yet satisfied; or it does not apply, with the repository
-fact that makes that so. "Not triggered" without that fact is not a result.
+fact that makes that so. Use the rule's reason and actual local coverage to
+support consequential judgments. "Not triggered" without that fact is not a
+result; a similar local heading does not establish equivalent coverage.
 
 Learning ends in one of these ways. A session may both write and ask:
 
