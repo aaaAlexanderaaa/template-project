@@ -1,0 +1,428 @@
+{
+  "record_type": "bounded-fresh-context-task-guidance-consumer",
+  "date": "2026-10-29",
+  "consumer": "/root/task_entry_consumer",
+  "purpose": "Assess one grounded scaling cost or strength through normal use of this engineering template, then perform a plain frontend-template lookup and judge the public guidance within this use.",
+  "assigned_scope": {
+    "permitted": "Read-only repository diagnosis/recommendation, disposable /private/tmp trial files, and this evidence JSON.",
+    "excluded": [
+      "Guide or contract edits",
+      "Private histories",
+      "Parent source-selection evidence",
+      "Other worker outputs",
+      "External effects",
+      "Commits",
+      "Other agents",
+      "Full-library cleanup"
+    ],
+    "parent_plan_locator_supplied_but_not_opened": "docs/plans/2026-10-29-source-grounded-task-methods.md",
+    "end": "This task, countercase, and honest evidence record; no ongoing improvement portfolio."
+  },
+  "context_actually_inherited": [
+    "The user-supplied repository working agreement and environment context.",
+    "The assigned bounded consumer task, including the root plan locator and read-only/write boundaries.",
+    "Tool, skill, and agent runtime instructions."
+  ],
+  "context_not_available_or_not_read": [
+    "Producing conversation history",
+    "Private owner history",
+    "Parent source-selection evidence",
+    "Other workers' outputs",
+    "Private personal context",
+    "The supplied parent plan body"
+  ],
+  "first_interpretation": {
+    "recorded_before_evaluation": true,
+    "first_interpretation": "Diagnose one concrete cost or supported scaling strength in normal use of the template as its rules, templates, and methods grow; follow the public README entry path far enough to substantiate it; recommend a next action without changing guide or contract behavior. Separately answer a plain frontend surface-template lookup with proportionate ceremony.",
+    "context_inherited": [
+      "The user-supplied repository working agreement and environment context.",
+      "The assigned bounded consumer task, including the root plan locator and read-only/write boundaries.",
+      "Tool, skill, and agent runtime instructions."
+    ],
+    "context_not_available": [
+      "Producing conversation history",
+      "Private owner history",
+      "Parent source-selection evidence",
+      "Other workers' outputs"
+    ],
+    "initial_path": [
+      "Inventory only entrypoint filenames",
+      "Read current AGENTS.md",
+      "Read README.md",
+      "Read docs/README.md task context",
+      "Follow fitting optional practical guidance found through README",
+      "Exercise an actual bounded diagnostic use",
+      "Perform separate frontend-template lookup"
+    ],
+    "observed_so_far": [
+      "Current AGENTS and README link task context, task procedure, and optional practical task CheatSheet.",
+      "A combined three-document output was truncated; recover complete required text before dependent choices."
+    ],
+    "authority": "Read-only diagnosis and recommendation. Only /private/tmp disposable files and the named JSON evidence output may be written. No product or guide change, other agents, commits, or external effects."
+  },
+  "baseline": {
+    "git_head": "fa01192f094585ff0c1aaa6942ac04e63a11983a",
+    "working_tree": "The working tree already contained many modified and untracked documents/scripts, including the public guidance. This was a trial of current working-tree artifacts, not only committed HEAD. Status filenames were observed; other workers’ evidence contents were not opened.",
+    "runtime": "Python 3.14.2; local shell and standard-library CLI; no network",
+    "required_source_identities": {
+      "AGENTS.md": "7b224a5a0b5cc3e4565f3dd35b4c923bf24025af23f52c2db2b5e6ac311c8af6",
+      "docs/README.md": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+      "docs/contracts/agent-execution-discipline.md": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+      "docs/contracts/development-discipline.md": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+      "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b"
+    },
+    "required_units": [
+      {
+        "authority": "normative",
+        "bytes": 666,
+        "file_sha256": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+        "heading": "Authority order",
+        "identity": "docs/README.md#authority-order",
+        "path": "docs/README.md",
+        "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+        "status": "current",
+        "unit": "authority-order"
+      },
+      {
+        "authority": "normative",
+        "bytes": 4964,
+        "file_sha256": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+        "heading": "Language style",
+        "identity": "docs/README.md#language-style",
+        "path": "docs/README.md",
+        "sha256": "d21f1c8ae199de360e974b07acec6d3ddffb149dfcc553f364cf21564dc35c43",
+        "status": "current",
+        "unit": "language-style"
+      },
+      {
+        "authority": "normative",
+        "bytes": 43761,
+        "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+        "heading": "Purpose",
+        "identity": "docs/contracts/development-discipline.md#development-core",
+        "path": "docs/contracts/development-discipline.md",
+        "sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+        "status": "current",
+        "unit": "development-core"
+      },
+      {
+        "authority": "normative",
+        "bytes": 26775,
+        "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+        "heading": "Purpose",
+        "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+        "path": "docs/contracts/governance-decision-boundary.md",
+        "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+        "status": "current",
+        "unit": "governance-core"
+      },
+      {
+        "authority": "normative",
+        "bytes": 2242,
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+        "heading": "Vocabulary and risk profiles",
+        "identity": "docs/contracts/agent-execution-discipline.md#profiles",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "sha256": "1ab44f018ce92566feed9b858c16f3fa5c145e683110f21cf533cb59b98471a1",
+        "status": "current",
+        "unit": "profiles"
+      },
+      {
+        "authority": "normative",
+        "bytes": 1426,
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+        "heading": "Risk selects the execution depth",
+        "identity": "docs/contracts/agent-execution-discipline.md#risk",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "sha256": "0b2c893ae8c99be669aca728a997eedefefbdce35c934505f6e295fed6e77e91",
+        "status": "current",
+        "unit": "risk"
+      },
+      {
+        "authority": "normative",
+        "bytes": 1759,
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+        "heading": "The harness selects the smallest executable route",
+        "identity": "docs/contracts/agent-execution-discipline.md#route",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+        "status": "current",
+        "unit": "route"
+      },
+      {
+        "authority": "normative",
+        "bytes": 1198,
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+        "heading": "Completion is layered",
+        "identity": "docs/contracts/agent-execution-discipline.md#completion",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+        "status": "current",
+        "unit": "completion"
+      },
+      {
+        "authority": "normative",
+        "bytes": 9710,
+        "file_sha256": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+        "heading": "Task context",
+        "identity": "docs/README.md#task-context",
+        "path": "docs/README.md",
+        "sha256": "7afb6326fc683e41ec9685b251dfa12e56245e675c67f611d2cafa32532a873f",
+        "status": "current",
+        "unit": "task-context"
+      }
+    ],
+    "complete_delivery": "All nine core units were obtained: authority, language and task context from the direct entry read; development core in four digest-checked parts; governance core in two digest-checked parts; execution profiles, risk, route and completion as complete units. A complete prepared transcript also ended READING COMPLETE units=9.",
+    "final_current_file_sha256": {
+      "README.md": "bd880732d3098b395020aa2a016b909efd425633d6b74d6de5f0b26eb7c6fdad",
+      "AGENTS.md": "7b224a5a0b5cc3e4565f3dd35b4c923bf24025af23f52c2db2b5e6ac311c8af6",
+      "docs/README.md": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+      "docs/guides/project-operation.md": "c4a4945ba62f91cff56afcfd2aab2fd4eed8069d06b7f774c3a194b17ec3aaba",
+      "docs/guides/task-cheatsheet.md": "6ad9314b35dc8efffa9ba04acff29a72c3b72f29ff745a939b418e2ad1626011",
+      "docs/guides/task-starters.md": "c5f98cc1cff48a7ff4610de55a068ed8d2b29cb2d292d446ea4eea8362713a9e",
+      "templates/README.md": "a84d6a9ae6d8a8c5a5863d000ab93202c72fef8779322fce1ff92f587731d94e",
+      "templates/frontend-surface.md": "0eb64b92137de471f2b8d2c2e3c6b9390d376eac2a4460e316bc06e7996564e2",
+      "docs-policy.toml": "b87bcd400c86e19ebf581a32f321d56b409662c3b0f337819b124f534ae8a86c",
+      "scripts/read_rules.py": "ab61201c0f692bd14f3bdd23fe0713a8aa128c9f9594c89b3861b58ea7174355",
+      "scripts/rule_reading.py": "30bd40b80e23ab27a243a8caf295e1fc3c525df1242dd87031bd84d5c6984845"
+    },
+    "guide_identity_limit": "Task-starters was first consumed before three minor parent edits, without a pre-read whole-file digest. Its selected growth prompt and use note are preserved below and were unchanged on recheck. The first task-cheatsheet whole-file digest captured while its old navigation row remained was eafde5bf2a530a07131ca903895fcbd7e2b54b91fc7dbb799db48641b84c450b; the final row has the digest recorded above. This does not retroactively identify the entire first task-starters file."
+  },
+  "actual_path_before_effectiveness_judgment": [
+    {
+      "action": "Inventory entrypoint filenames, then read current AGENTS.md and README.md.",
+      "result": "README routes to task context, project-operation and an optional practical task CheatSheet."
+    },
+    {
+      "action": "Read docs/README.md task context and its required dependencies; inspect the complete-reading protocol and read_rules list/help.",
+      "result": "Required core, optional methods and plain lookup are distinguishable; no new plan is required for the bounded diagnosis."
+    },
+    {
+      "action": "Recover a truncated combined document output, then obtain all required core parts with digest-checked read.",
+      "result": "The recovery route worked locally; no owner rescue was needed."
+    },
+    {
+      "action": "Read project-operation through the task procedure and worked decisions, then the CheatSheet selection table, adaptation instructions and Follow one real task recipe.",
+      "result": "The recipe suggested grounding a template judgment in normal use and keeping coverage explicit."
+    },
+    {
+      "action": "Read templates/README.md, the generic and backend change templates, relevant architecture and docs-policy.",
+      "result": "Existing owners, destination link repair, conditional dependencies and inventory policy were visible. This was inspection, not a completed adopted contract."
+    },
+    {
+      "action": "Follow the CheatSheet link to Question starters from practice and select What would ten times the scope expose?",
+      "result": "Its instruction to use one actual addition changed the next step from general growth discussion to a disposable domain-owner edit and command observation."
+    },
+    {
+      "action": "Adapt the real-task recipe to current template maintenance: copy only the six public Markdown inputs needed by the rule reader into /private/tmp, add rules inside existing domain units, and exercise normal prepare/read commands.",
+      "result": "No product contract was authored or accepted. The bounded test observes reader routing and recovery, not semantic quality of the added prose."
+    },
+    {
+      "action": "Read the complete selected Time and calendar unit before the final judgment.",
+      "result": "The selected domain actually contains operative rules; no unrelated demo or frontend unit joined its closure."
+    },
+    {
+      "action": "Answer the separate frontend-template lookup with direct file search and a header/content check.",
+      "result": "The file exists at templates/frontend-surface.md; lookup needs neither domain plan nor review trial."
+    }
+  ],
+  "selected_guidance": {
+    "entry": "README.md -> docs/guides/task-cheatsheet.md -> docs/guides/task-starters.md#what-would-ten-times-the-scope-expose",
+    "supporting_recipe": "docs/guides/task-cheatsheet.md#understand-a-project-through-one-real-task",
+    "selected_prompt": "Keeping [quality and ease of use] intact, what would it take to expand [current scope] to [ten times the scope]? How much work would that require, why, and is it reasonable? Which costs come from the underlying design?",
+    "decisive_use_note": "Use one actual addition to ground the estimate: where must someone edit, check, reconnect or recover? State assumptions instead of inventing precise costs.",
+    "ten_times_interpretation": "A growth probe, not a requirement to manufacture ten times the content or invent a precise large-scale cost estimate."
+  },
+  "trial": {
+    "question": "Can a normal owner edit add a domain rule without loading that rule for unrelated work, and what recovery coupling remains?",
+    "before_observation_expectations": [
+      "Adding a rule inside an unselected domain should leave the no-concern closure unchanged.",
+      "Selecting Time and calendar should add the complete time unit and explicit concern-routing dependency, with no unrelated demo or frontend unit.",
+      "A backend-only edit in the shared development file may change file identity while leaving the development-core body identity unchanged; old digest recovery should be checked rather than assumed."
+    ],
+    "copied_paths": [
+      "AGENTS.md",
+      "docs/README.md",
+      "docs/contracts/development-discipline.md",
+      "docs/contracts/governance-decision-boundary.md",
+      "docs/contracts/agent-execution-discipline.md",
+      "docs/contracts/foundational-runtime-discipline.md"
+    ],
+    "commands": [
+      {
+        "label": "base",
+        "argv": [
+          "python3",
+          "<repository-root>/scripts/read_rules.py",
+          "--root",
+          "<trial-root>",
+          "prepare"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "time-before",
+        "argv": [
+          "python3",
+          "<repository-root>/scripts/read_rules.py",
+          "--root",
+          "<trial-root>",
+          "prepare",
+          "--concern",
+          "time-and-calendar"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "base-after-time-rule",
+        "argv": [
+          "python3",
+          "<repository-root>/scripts/read_rules.py",
+          "--root",
+          "<trial-root>",
+          "prepare"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "time-after",
+        "argv": [
+          "python3",
+          "<repository-root>/scripts/read_rules.py",
+          "--root",
+          "<trial-root>",
+          "prepare",
+          "--concern",
+          "time-and-calendar"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "base-after-backend-rule",
+        "argv": [
+          "python3",
+          "<repository-root>/scripts/read_rules.py",
+          "--root",
+          "<trial-root>",
+          "prepare"
+        ],
+        "exit_code": 0
+      },
+      {
+        "label": "old-core-recovery-after-backend-edit",
+        "argv": [
+          "python3",
+          "<repository-root>/scripts/read_rules.py",
+          "--root",
+          "<trial-root>",
+          "read",
+          "--unit",
+          "docs/contracts/development-discipline.md#development-core",
+          "--digest",
+          "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39"
+        ],
+        "exit_code": 1
+      }
+    ],
+    "contamination_limits": "Only six named public Markdown files were copied. No historical evidence or parent plan was copied. The CLI implementation stayed the current repository implementation; --root directed document reads to the disposable tree.",
+    "disposable_additions": {
+      "time": "### Preserve an explicit calendar boundary in exported summaries\n\nA summary exported for another system declares which calendar and date boundary its labels use. The consumer must not reconstruct that boundary from its own host defaults. This paragraph is a disposable reader-routing probe only.",
+      "backend": "### Keep one operation identity through a rejected duplicate\n\nA rejected duplicate operation exposes the original operation identity so a caller can inspect the already accepted result. This paragraph is a disposable reader-routing probe only.",
+      "status": "Source-shaped payloads in existing normative owner copies, used solely to test reader granularity. No claim that either should be adopted as a new rule."
+    },
+    "observations": {
+      "base_unit_count": 9,
+      "base_body_bytes": 92501,
+      "selected_time_unit_count": 10,
+      "selected_time_body_bytes": 97040,
+      "selected_time_added_units": [
+        "docs/contracts/foundational-runtime-discipline.md#time"
+      ],
+      "time_added_body_bytes": 298,
+      "selected_time_growth_bytes": 298,
+      "unselected_time_edit_left_all_base_unit_bodies_identical": true,
+      "unselected_backend_edit_left_all_base_unit_bodies_identical": true,
+      "old_core_recovery_after_backend_edit": {
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "read_rules: docs/contracts/development-discipline.md: expected file digest changed; rerun prepare"
+      },
+      "complete_markers": [
+        "READING COMPLETE units=9",
+        "READING COMPLETE units=10",
+        "READING COMPLETE units=9",
+        "READING COMPLETE units=10",
+        "READING COMPLETE units=9"
+      ],
+      "body_identity_basis": "Compared every ordered (unit identity, SHA-256 body hash) pair in the no-concern manifest before and after each domain edit, rather than comparing unit count alone."
+    },
+    "interpretation": {
+      "fact": "The no-concern closure stayed nine units / 92,501 body bytes. Selecting Time and calendar added exactly its 4,539-byte unit. A 298-byte addition inside that unit grew the selected closure by exactly 298 bytes and did not grow ordinary startup.",
+      "supported_strength": "Explicit conditional reading units can keep inactive domain bodies out of normal task context as domain content grows. This trial supports that mechanism for these existing units only.",
+      "cost_and_boundary": "The fixed current core is already substantial. A backend-only edit in the shared development file also invalidated old digest recovery of its unchanged core unit. The documented whole-file identity protects metadata and boundary changes; this is an intended transaction trade-off, not automatically a harness defect.",
+      "reuse_limit": "The trial does not establish that unchanged retained units must be reread. A fresh manifest can show the body hash remains unchanged; task context permits reuse while digest, scope and retained context remain valid.",
+      "unmeasured": "No many-domain benchmark, semantic rule-completeness review, overall selection-accuracy measurement, reader-time baseline, quota-cost estimate, or comparative guidance effectiveness test was run."
+    }
+  },
+  "diagnosis_and_useful_next_action": {
+    "classification": "recommendation",
+    "action": "For the next genuinely distinct domain addition, keep its operative body at its existing or new proper domain owner, declare only its necessary reading edges, and repeat a no-concern versus selected-domain closure check. Preserve semantic completeness and exceptions rather than shrinking units to hit a size target.",
+    "why_this_advances_the_goal": "It preserves the observed ability to add relevant detail without forcing inactive domain prose into every ordinary task, while checking what a real recipient will actually receive.",
+    "recovery_action": "When a file edit invalidates a partial read, rerun prepare and use the resulting identities before resuming. Consider separating current shared-file domain owners only if repeated recovery churn proves material; preserve whole-file transaction safety rather than weakening digest checks.",
+    "alternative": "Leave the current file topology intact when domain edits are rare. A split introduces link, dependency and provenance migration work; this trial does not establish that paying that cost now is worthwhile.",
+    "who_bears_cost": "The executing agent and indirectly the owner through context, tool use and interruption costs; only emitted bytes and one rejected recovery were measured. Large-scale impact remains unknown."
+  },
+  "countercase": {
+    "request": "Where is the existing frontend surface template, and does answering that require a plan or a review trial?",
+    "answer": "templates/frontend-surface.md; no plan or review trial is required for the lookup.",
+    "actual_actions": [
+      "The previously read public SOP worked example already named the exact path and proportionate route.",
+      "rg --files templates -g *frontend* returned templates/frontend-surface.md.",
+      "Read the first 34 lines and confirmed a surface-contract template and its frontend dependency."
+    ],
+    "result_scope": "The file is an inert copyable template, with target/future-ui metadata and placeholders. The task was locating it, not creating a governed frontend change.",
+    "ceremony": "Reused retained core and direct facts. No independent review, new plan, frontend redesign or domain trial was launched for answering the lookup. This evidence entry exists because the parent explicitly requested the countercase.",
+    "coverage_limit": "The SOP contains this exact example, so this is a successful explicitly taught lookup, not evidence of general unseen-task routing."
+  },
+  "guidance_assessment": {
+    "bounded_verdict": "The presented guidance was usable without private owner history for this diagnosis. The growth starter supplied a concrete distinguishing observation, the task recipe kept the claim bounded, and the core preserved read-only authority and a direct lookup route.",
+    "observed_help": "The growth use note led to an actual addition and its next command, producing a useful distinction between inactive-domain body growth and whole-file recovery coupling. This supports utility in this use; there is no control trial to attribute all success to the guide.",
+    "ambiguities": [
+      "The optional real-task recipe suggests a normal contract copy for templates, while this task concerns maintaining the template itself. I adapted it to a domain-owner edit and labeled that narrower plumbing test.",
+      "The growth starter is a probe, not a quantified scaling forecast. The guide makes that explicit."
+    ],
+    "rescue": "No parent rescue, private history, additional permissions or unavailable-tool workaround was needed. Truncated output was recovered through the published complete-reading protocol. Parent messages later identified concurrent wording edits; they did not supply the selected question or expected verdict.",
+    "actionable_navigation_finding": {
+      "original": "The CheatSheet linked the growth/direction question collection under Current framing keeps producing the same weak answer. This task needed a growth question on first framing, so that label understated the useful entry conditions.",
+      "suggested_correction": "Name direction, growth or value in the doorway label.",
+      "parent_change": "The parent changed the row to You need a starting question about direction, growth or value -> Choose a question from practice.",
+      "narrow_recheck": "Read the revised selection table and confirmed the row now names this task’s entry condition and still links task-starters.md.",
+      "limit": "This recheck verifies wording and destination only. It is not a fresh unhinted consumer trial or measured findability improvement."
+    },
+    "no_universal_claim": "This bounded local consumer use establishes neither universal effectiveness nor superiority over other task guidance."
+  },
+  "verification_and_effects": {
+    "checks_run": [
+      "Current required core completely obtained",
+      "Read_rules CLI baseline/domain/edit/recovery observations in disposable copied inputs",
+      "Frontend-template path and actual header checked",
+      "JSON evidence parse and allowed-write path check",
+      "Disposable trial cleanup"
+    ],
+    "not_run": [
+      "Full unittest suite",
+      "Full documentation checker",
+      "Product behavior tests"
+    ],
+    "why_not_run": "This consumer changed no harness, template or canonical Markdown behavior. The only repository write is the assigned structured evidence file; full harness tests would not establish this reader-use claim.",
+    "external_effects": "None. No network, messages to outside services, commits or other agents were used. Native coordination messages went only to the assigning parent.",
+    "repository_writes": "This assigned JSON evidence record only. Read-only Python CLI calls may reuse the runtime’s existing bytecode cache; later calls explicitly disabled bytecode generation. No intentional source or guide writes were made.",
+    "cleanup": "Disposable copied-input tree and three named scratch records deleted; observations and reproduction inputs retained in this JSON."
+  },
+  "publication_normalization": {
+    "performed_by": "Parent after the consumer completed its original record.",
+    "scope": "Only the actual absolute repository prefix and disposable copied-input tree prefix are replaced by <repository-root> and <trial-root>. Command argument order, observations, first interpretation and findings are unchanged.",
+    "original_record_sha256": "9327116f09a5e67b922c3fbd71ee6fad4910e5d87c9f55cb75b123780f957326",
+    "exact_record_retention": "The original host-path record is retained session-locally, outside this public template. The copied-input tree itself was deleted by the consumer."
+  }
+}

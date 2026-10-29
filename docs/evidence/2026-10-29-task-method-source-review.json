@@ -1,0 +1,212 @@
+{
+  "review_date": "2026-10-29",
+  "review_role": "independent source and claim assessment",
+  "scope": "The source-grounded task-method delivery, especially the thirteen historical question starters, their transformations, coverage claims and privacy boundary. This is not a full-library adoption survey or an effectiveness evaluation.",
+  "context_and_independence": {
+    "produced_the_artifacts": false,
+    "inherited_producing_conversation": false,
+    "actual_initial_context": [
+      "Host instructions, the supplied repository working agreement and environment context.",
+      "A bounded parent assignment stating the accepted outcome, artifact locations, permitted evidence write and private-source boundary.",
+      "The parent's selected-record ledger, with the wider source available for inspection."
+    ],
+    "later_context": "After my first verdict, the parent reported narrow corrections. I inspected those corrections. I did not receive another evaluator's findings or the producing reasoning trace.",
+    "source_independence": "Independent inspection of the same historical snapshot, not independent acquisition of the original conversations. The initial record selection was supplied by the producer.",
+    "model_identity": "No exact model identifier or model variation was established in this review.",
+    "authority_limit": "The parent supplied the owner's accepted scope. I did not independently inspect the original proposal-and-acceptance turn pair from the producing conversation."
+  },
+  "first_independent_verdict": {
+    "phase": "Sent to the parent before discussing repairs or receiving repair clarification.",
+    "text": "The thirteen starters are substantially supported by the selected original records, and translation/adaptation/synthesis labels are mostly honest. I verified all 21 selected bodies, timestamps, ordinals, source lines and hashes against the identified 580-record snapshot. The source cannot establish human typing or effectiveness, and the evidence correctly keeps those limits. I found one public-boundary issue to assess: the plan still prints the neighboring private source locator while the transfer record says private paths stay local.",
+    "preservation": "The original verdict is retained here. The private locator itself is deliberately omitted."
+  },
+  "baseline": {
+    "git_head": "fa01192f094585ff0c1aaa6942ac04e63a11983a",
+    "working_tree": "Already contained extensive tracked and untracked work. No commit, reset or guidance edit was made by this reviewer.",
+    "source_id": "history-snapshot-A",
+    "source_sha256": "f21244a735b938674e35954d10b5b188398e4d83ecf7252a686f738bda13b52c",
+    "parsed_snapshot_records": 580,
+    "selected_records_checked": 21,
+    "identity_checks": "All 21 ledger records matched the actual snapshot body, timestamp, one-based ordinal, heading line and stripped-body SHA-256. Every supplied before/after context pair also matched the adjacent snapshot entries.",
+    "inspection_scope": "Read the 21 selected original bodies and their supplied nearby context; inspected the source history-access method and extractor as data; checked the companion long record and targeted original exclusion examples. Parsed the whole snapshot for identity and count checks, but did not independently reread all 580 bodies for an exhaustive selection audit.",
+    "artifact_changes_during_review": "The parent edited the plan, case-use note, source-scope explanation and two small guide passages while this review was active. Initial observations retain their initial line locators; the final recheck identities below name the later inspected bytes. Pre-correction artifact digests were not captured."
+  },
+  "source_support": [
+    {
+      "records": ["H01"],
+      "guide_locator": "docs/guides/task-starters.md:34",
+      "assessment": "Supported edited translation. Growth, retained quality/ease and work caused by the underlying design are all present. Parameterizing quantities and adding an actual-addition estimate are clearly separated."
+    },
+    {
+      "records": ["H02"],
+      "guide_locator": "docs/guides/task-starters.md:47",
+      "assessment": "Supported edited translation of whether another agent can use the project's goal to improve or extend it. Observing the recipient's next action is an explicit implementer use note."
+    },
+    {
+      "records": ["H03"],
+      "guide_locator": "docs/guides/task-starters.md:61",
+      "assessment": "Supported translated excerpt after the root's actor correction. The source asks what the addressee promised, the arriving expectation, the departing discovery and the intervening flow. The product-specific navigation inventory is honestly omitted."
+    },
+    {
+      "records": ["H04"],
+      "guide_locator": "docs/guides/task-starters.md:74",
+      "assessment": "Supported edited translation of passage 3, not the entire multi-part message. It retains comparison with the cited explanations and the question of what the new explanation contributes."
+    },
+    {
+      "records": ["H05"],
+      "guide_locator": "docs/guides/task-starters.md:87",
+      "assessment": "Supported adaptation. The original contrasts genuinely changed structure/thinking with decorative citation. The note permitting useful confirmation is a sensible target condition, not falsely attributed source wording."
+    },
+    {
+      "records": ["H06", "H20"],
+      "guide_locator": "docs/guides/task-starters.md:101",
+      "assessment": "H06 directly supports comparing results through one another's strengths and defects. H20 and its nearby context support reducing random bias without making the result mediocre; retaining distinctive findings is an honest derived condition."
+    },
+    {
+      "records": ["H07", "H08"],
+      "guide_locator": "docs/guides/task-starters.md:115",
+      "assessment": "Supported synthesis. The source asks whether the design can operate and raises responsibility, invocation, decisions, quality and recovery. The concrete single-case trace is implementer wording, as the inventory discloses. The broader original questions are now explicitly acknowledged at docs/evidence/2026-10-29-task-method-transfer.md:89."
+    },
+    {
+      "records": ["H09", "H10"],
+      "guide_locator": "docs/guides/task-starters.md:129",
+      "assessment": "Supported synthesis of standing versus on-demand responsibilities and questioning the premise of the current roles. It preserves the distinction between a role and a schedule without transferring a role count."
+    },
+    {
+      "records": ["H11"],
+      "guide_locator": "docs/guides/task-starters.md:144",
+      "assessment": "Supported adaptation. The thousand-run probe and progression beyond a fixed introductory example occur in the source. The note correctly avoids granting indefinite life to a bounded assignment."
+    },
+    {
+      "records": ["H12"],
+      "guide_locator": "docs/guides/task-starters.md:157",
+      "assessment": "Supported adaptation toward a shared-mechanism investigation. The source's stronger suspicion about unsampled defects is deliberately narrowed; one discovered defect is not converted into a whole-population prevalence claim."
+    },
+    {
+      "records": ["H13", "H14"],
+      "guide_locator": "docs/guides/task-starters.md:171",
+      "assessment": "Supported synthesis of searching for how others perform the task and judging selectively what to learn. It retains the method-search move without assuming every internet example is good or every task has an available solution."
+    },
+    {
+      "records": ["H15", "H16"],
+      "guide_locator": "docs/guides/task-starters.md:184",
+      "assessment": "Supported synthesis of reusable method versus task log, subsequent use and recurring operation friction. The copied prompt needs the target task's actual operation, not private account or machine details."
+    },
+    {
+      "records": ["H17"],
+      "guide_locator": "docs/guides/task-starters.md:199",
+      "assessment": "Supported edited translation of observable improvement and solved, absent or persistent problems. Observation-span and bounded-completion conditions are identified as implementer guidance."
+    }
+  ],
+  "findings_and_resolutions": [
+    {
+      "id": "S01",
+      "classification": "fact",
+      "priority": 2,
+      "title": "A public plan exposed the private source locator",
+      "initial_locator": "docs/plans/2026-10-29-source-grounded-task-methods.md:16",
+      "initial_observation": "The initial plan named the adjacent private checkout, contrary to the transfer record's statement that private paths remain session-local.",
+      "affected_outcome": "One unnecessary source-location disclosure in a public delivery artifact. The question collection does not need that location to work.",
+      "standard": "docs/contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path",
+      "status": "resolved by parent and rechecked",
+      "recheck_locator": "docs/plans/2026-10-29-source-grounded-task-methods.md:16",
+      "recheck_result": "The public plan now describes a designated local project. A targeted scan of the five delivery artifacts found no private source checkout, absolute local source path or raw original transcript."
+    },
+    {
+      "id": "S02",
+      "classification": "risk",
+      "priority": 3,
+      "title": "The provenance destination was ambiguous",
+      "initial_locator": "docs/plans/2026-10-29-source-grounded-task-methods.md:67",
+      "initial_observation": "The plan told a later executor to keep private source locators in evidence without distinguishing repository evidence from the private ledger.",
+      "affected_outcome": "A later executor could copy the locators into repository evidence. No further disclosure was observed; the risk does not arise when evidence is understood to mean the session-local ledger.",
+      "status": "clarified by parent and rechecked",
+      "recheck_locator": "docs/plans/2026-10-29-source-grounded-task-methods.md:67",
+      "recheck_result": "The plan now directs public provenance to repository evidence and private source locators to the session-local ledger."
+    },
+    {
+      "id": "S03",
+      "classification": "scope observation",
+      "priority": 3,
+      "title": "The case trace selects part of the original workflow inquiry",
+      "initial_locator": "docs/guides/task-starters.md:115",
+      "initial_observation": "H07/H08 also asks about improving the whole workflow, communication cost, concurrent work, context conflict and competing priorities. A case trace does not preserve all those useful forms. This was not an unsupported-attribution finding because the prompt was labeled synthesis.",
+      "affected_outcome": "The starter remains useful as one design probe; presenting it as a complete workflow-design method would lose relevant original questions.",
+      "status": "scope disclosed and narrow use note improved by parent",
+      "recheck_locators": [
+        "docs/guides/task-starters.md:123",
+        "docs/evidence/2026-10-29-task-method-transfer.md:89"
+      ],
+      "recheck_result": "The use note includes handoffs, waiting and concurrent decisions when material to the case. The transfer record explicitly names the broader original questions and disclaims complete workflow-method coverage. No extra prompt quota or mandatory checklist is needed."
+    }
+  ],
+  "other_root_corrections_rechecked": [
+    {
+      "locator": "docs/guides/task-starters.md:64",
+      "result": "The reader-journey excerpt now retains the source's addressee as the actor who promised the result. Root reported this correction after my first verdict; it was not my independent discovery."
+    },
+    {
+      "locator": "docs/guides/task-starters.md:164",
+      "result": "The broken line hyphen in the sample note is gone. The replacement still limits item-level evidence appropriately. This was also a root-reported correction."
+    }
+  ],
+  "coverage_attribution_and_exclusions": {
+    "breadth": "The delivered starters extend beyond review: growth, project goals, reader experience, source contribution, learning, design operation and repeated work all have concrete question forms. Thirteen starters from seventeen primary selections, with four supporting records, match the inventory.",
+    "selection_limit": "I found no material distortion in the selected records. I did not independently establish that this is the best or exhaustive selection from all 580 records. The implementer's statement that it read all records is an execution report, not a fact proved by the record count.",
+    "extraction_limits": "The inspected extractor filters project directory, role, origin, session type, synthetic and known dispatch forms, then deduplicates by a 120-character prefix and redacts credential-shaped text. These heuristics can omit variants and cannot prove who typed a surviving message. The inspected access method itself warns that real_user and input-history presence do not establish human authorship.",
+    "authorship": "The current evidence properly distinguishes snapshot occurrence from human typing, quoted external opinion and a claim's truth. No verified label or user-message container was accepted as proof of authorship in this review.",
+    "checked_exclusions": [
+      "The early agreement-until-alignment instruction is present as a local instruction; it was not promoted to consensus as truth.",
+      "The long research record explicitly introduces discussion with another AI. Its pasted recommendations and numerical claims were not treated as newly verified owner-authored research.",
+      "The pasted external review identifies itself as outside opinion and expressly warns against recording its prose as the owner's original wording.",
+      "The source contains criticism of fabricated personas and context-conditioned trials; the guide correctly limits simulated-reader evidence and does not claim a native worker is blank by default.",
+      "The small quote CSV contains verified entries that join line breaks, shorten a record or otherwise differ from the snapshot. Comparing the actual source rather than relying on the label is justified.",
+      "Source-specific schedules, resource budgets, model choices and persistent mandates are not needed to use these prompts and were appropriately excluded."
+    ],
+    "conditions": "H18 supports mechanism-level repair rather than hiding a detector symptom. H19 supports attention and elapsed-result cost as relevant questions, not the source project's resource budget. H21 supports leaving review inquiry open rather than prescribing the answer. The delivered source/use notes respect those limits.",
+    "public_techniques": "The changed diagnosis, design-comparison and retrospective entries match the mechanisms described in the local public-method study. They are labeled implementer adaptations. I did not reacquire the online procedures or run their reported examples; this review is not a new validation of rolling public-source contents or comparative benefit.",
+    "private_context_dependency": "The prompts are understandable using a target project's own task inputs. Source identities support provenance; retrieving the private history is not required for normal use."
+  },
+  "final_recheck_identities": [
+    {
+      "path": "docs/guides/task-starters.md",
+      "sha256": "c5f98cc1cff48a7ff4610de55a068ed8d2b29cb2d292d446ea4eea8362713a9e"
+    },
+    {
+      "path": "docs/guides/task-cheatsheet.md",
+      "sha256": "eafde5bf2a530a07131ca903895fcbd7e2b54b91fc7dbb799db48641b84c450b"
+    },
+    {
+      "path": "docs/evidence/2026-10-29-task-method-transfer.md",
+      "sha256": "9f2610cb613f349f35a5ebd13871bb552f4c0a89a0cfbba2d03bef5e6f12f713"
+    },
+    {
+      "path": "docs/evidence/2026-10-29-task-method-sources.json",
+      "sha256": "0a8a3194e29e08a08e0eab7a5b2e77e28af7c08be96fcbe5826dbb2cc6054fba"
+    },
+    {
+      "path": "docs/plans/2026-10-29-source-grounded-task-methods.md",
+      "sha256": "caa40e1ccf4a3fd00919c7e16ad1b4086fec5b9fdf108a90d096a097947106b1"
+    }
+  ],
+  "verification_and_stop": {
+    "rule_reading": "Obtained the task-context core and activated analysis/privacy owners, recovering truncated operative units with digest-checked parts. Read the written-coordination, delegation and independence sections for this assigned review.",
+    "checks": [
+      "Recomputed the snapshot digest and parsed record count.",
+      "Recomputed every selected stripped-body digest and checked timestamp, ordinal, source line and adjacent-context identity.",
+      "Compared every selected prompt with the original record and its stated transformation.",
+      "Inspected source extraction/access rules as data, without executing neighboring code.",
+      "Rechecked the parent's narrow corrections and scanned delivery artifacts for private source locators."
+    ],
+    "not_run_or_not_established": [
+      "Original message-database and typing-provenance audit.",
+      "Exhaustive independent selection review of all 580 message bodies.",
+      "Assistant-response and later-outcome pairing for historical records.",
+      "Fresh-context consumer trial or comparative effectiveness experiment.",
+      "Whole-delivery repository unit and documentation checks; the parent owns those."
+    ],
+    "external_effects": "No network calls, external disclosure, neighboring script execution, commits or subagent dispatch. The only repository write is this sanitized review record.",
+    "final_verdict": "Supported as a bounded, source-grounded collection of optional task questions and explicitly adapted techniques. The initial privacy defect and subsequent provenance ambiguity are corrected; the useful narrowing of H07/H08 is now disclosed. No unresolved source-support finding prevents integration. Human typing, exhaustive selection quality and comparative effectiveness remain unestablished rather than silently passed.",
+    "stopping_basis": "The assigned source/claim assessment and narrow correction rechecks are complete. Parent-level consumer evidence, repository checks and closure remain outside this review's completion claim."
+  }
+}

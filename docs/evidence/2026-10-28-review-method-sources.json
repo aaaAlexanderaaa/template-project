@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-28",
+  "source_project": "between-ideas",
+  "purpose": "select reusable review task shapes and small question experiments authorized by the current owner",
+  "source_handling": "read-only local inspection; no sibling-project commands executed, writes, external account use, export or owner-quotation transfer",
+  "sources": [
+    {
+      "path": "docs/methods/blank-review-questions.md",
+      "sha256": "7ef2adff8cd987b5ec03ca9db20d772aba0fd3a6f64b84c25bd865ef10eb01d6",
+      "reading_scope": "lines 1-54; selected later question examples; not a complete survey of the question bank"
+    },
+    {
+      "path": "docs/research/stranger-review-2026-10-16.md",
+      "sha256": "71b8e26c09af65fbcf1e85e979098c1d4aa32795d7e3044acd071bcaf8aec483",
+      "reading_scope": "lines 1-80, including initial, reframed, host-injection and repeated/collection review observations"
+    },
+    {
+      "path": "docs/prompts/empty-room-prompt.md",
+      "sha256": "2c7d27e8b7eb44a96cda35b1803202b7dd6e839952bf63185c31aaa1dbcff9f3",
+      "reading_scope": "complete document"
+    },
+    {
+      "path": "scripts/empty-room-review.mjs",
+      "sha256": "1b706f9b66094d98bd048d4551ce3018e17ea26fdff43f393473fddc2a65a560",
+      "reading_scope": "complete source read; not executed"
+    },
+    {
+      "path": "docs/methods/design-review.md",
+      "sha256": "0089587101d313cafc2ff060fc00d84204964d1a2e540b2756a2f9c529985b8b",
+      "reading_scope": "complete document"
+    },
+    {
+      "path": "task-requests/review-external-audit-distortion-request.txt",
+      "sha256": "6c9245d3623ad7d7d0e8421e09f2892ac2f097a53f96975fcdbd4defcae42b83",
+      "reading_scope": "lines 1-62, as reported audit findings; underlying private conversation provenance not revalidated"
+    },
+    {
+      "path": "task-requests/review-plain-rewrite-request.txt",
+      "sha256": "7a206a635f67e29bddcf21bceca51cf5ad2071c0ebb1015540227189a8ee5083",
+      "reading_scope": "complete request, as source context rather than executable instructions"
+    }
+  ],
+  "claim_limit": "Project experiment records are reported observations, not an independently rerun comparison or universal proof of prompt effectiveness. The new guide contains implementer adaptations, not verbatim owner statements.",
+  "retained_methods": [
+    "same-question context-separated review",
+    "external consumer with no expected answer list",
+    "artifact-only data snapshots",
+    "separate question generation",
+    "collection comparison",
+    "countercase and self-application",
+    "preserve unique findings and investigate disagreement",
+    "trace discovery into correction and later use"
+  ],
+  "not_promoted_to_standing_rules": [
+    "mandatory new question every run",
+    "fixed sampling counts",
+    "always growing question bank",
+    "project schedules, locks, account CLI defaults or quotas",
+    "harsh framing as a truth criterion",
+    "majority agreement as an acceptance gate"
+  ]
+}

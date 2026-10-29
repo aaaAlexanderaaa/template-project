@@ -1,0 +1,1109 @@
+{
+  "date": "2026-10-28",
+  "baseline": "fa01192f094585ff0c1aaa6942ac04e63a11983a",
+  "assignment": "Two identical open repair review tasks in fresh contexts, plus a separately scoped consumer of two data copies. Native history retains exact dispatches and complete first replies.",
+  "contexts": {
+    "review_a": "/root/repair_review_a",
+    "review_b": "/root/repair_review_b",
+    "consumer": "/root/review_cards_consumer",
+    "history": "fork_turns=none; no executor trace or other first verdict supplied",
+    "model": "same inherited model/settings; no cross-model or independent-source claim"
+  },
+  "initial_source_sha256": {
+    "docs/evidence/2026-10-28-claims-review.json": "7b5410f528e631b6e15a5dc4aecbff0d3dda45c67d40e2fa6f3e588c1d797b3d",
+    "docs/evidence/2026-10-28-independent-template-review-observations.json": "d052d8d72e03df91355c0bbab31c6b49dfdff13e293ac9722ca50de6f7151711",
+    "docs/evidence/2026-10-28-independent-template-reviews.md": "7ab7b18f578f8d5f36308e8407d8b31345521628fd2cf4c1b0c8020b2de0c235",
+    "docs/evidence/2026-10-28-presentation-review.json": "0c5b1f015c80cd5506f193d0a34c9dcfad968994df366fc465e55bf6f8b80b17",
+    "docs/evidence/2026-10-28-reader-review.json": "797bae7b526e42b1cbba3b7bb964efcc51428aa80405acc3d4c8e78444509641",
+    "docs/evidence/2026-10-28-review-method-sources.json": "f53f36c2fde7888ef1be3161c3810a7e72b95dfe0b3432d2a0037e1231f36605",
+    "docs/evidence/2026-10-28-review-method-transfer.md": "44ceca7482c2fc208ad72274034ef87b685f5d15f5bf9aeb994e114934dca5ab",
+    "docs/evidence/2026-10-28-rule-design-review.json": "118757a6b185fa0793ecd5fa397fd0ade46a69ce78cea216b69756ee30517ee0",
+    "docs/evidence/2026-10-28-rule-reading-verification.md": "5a5fbc1621a7998c4fa0b2befee73db10ea2976bcaf84e79bdfdecb88431ce21",
+    "docs/evidence/2026-10-28-template-task-observations.json": "c01b06a523a8dc809d2484d6969dd16ef217f6cdb6273506aad970ec7ebdb601",
+    "docs/evidence/2026-10-28-template-unit-tests.txt": "ad6b9cdf546b24e4b826114fde59743e1df8e1b7fe5df3607f45645d60633574",
+    "docs/evidence/2026-10-28-unit-tests.txt": "50a50574183a7aca12772a34eaad4317a5255de68647d181b39107230737f519",
+    "docs/guides/review-cheatsheet.md": "a1166c061fb957bc566176401aad860cc9b3649423415a075396032369a866e4",
+    "docs/plans/2026-10-28-rule-reading-and-outcome-design.md": "c8fadb8851d70ea390353a4dda5b681a5a76175cfe8dded09e07e12cf426020c",
+    "docs/plans/2026-10-28-rule-reading-implementation.md": "389b7dba1563a497ba6e168ed35d8a6f22cdbb3d5fdddccaf65873f4a2872a50",
+    "scripts/read_rules.py": "ab61201c0f692bd14f3bdd23fe0713a8aa128c9f9594c89b3861b58ea7174355",
+    "scripts/rule_reading.py": "30bd40b80e23ab27a243a8caf295e1fc3c525df1242dd87031bd84d5c6984845",
+    "tests/test_read_rules.py": "ddc30ccc3b4db0d511dfb5b32151c683954ed67cb481f4d28765b50a914b7ff0",
+    ".gitignore": "5bc8a34e8cc65a8f280a1b2f28749c7a98d7bdc5f2e0d275e851ae97c809dce2",
+    "AGENTS.md": "7b224a5a0b5cc3e4565f3dd35b4c923bf24025af23f52c2db2b5e6ac311c8af6",
+    "ARCHITECTURE.md": "822eb5d125ffb3d4661f2736ef678229f4aeef69913536634b99d9073394c007",
+    "CONTRIBUTING.md": "61ba6cf5591114a6f29c5a985ca9c954665ce3851f0e485b7edcf7ba879c3125",
+    "LICENSE": "0da1aaa9452c75eafbd67e69643c94ac45132117c6a94b4440b273b9d3bb9319",
+    "README.md": "64e68feca3d27c228ab627fdc3ecfbcff84cfed1b63876d0a0fe00c76e181336",
+    "README_CN.md": "2eb4feceb3aee6f6d03a3333e56ef3e1548599d01c46ab046972768821fd56da",
+    "architecture-rules.toml": "8f63abc0432017337a92d208c821e3a0f7cab5e79dd74b1454534a978ceaddf3",
+    "archive/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "docs-policy.toml": "b87bcd400c86e19ebf581a32f321d56b409662c3b0f337819b124f534ae8a86c",
+    "docs/README.md": "49361f450365da952518f843206fefe50030d5e8e4c34e1bd277351cea012f85",
+    "docs/contracts/README.md": "d465c82e510766437f3fc398ec8984362ed0924a4ba71536f69148a3bfd77796",
+    "docs/contracts/agent-execution-discipline.md": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+    "docs/contracts/autonomous-operation-discipline.md": "8781d03bcfd29ea1cf3d71b68967bf183e64c2677cb0a5d7572076636f5fb067",
+    "docs/contracts/data-analysis-discipline.md": "d71e4018c2f4ac1bc20b9df99cd995f416f4541c87ffc872036ba458ccbf6d7f",
+    "docs/contracts/development-discipline.md": "67f83392e99d7e04dccea402349edb965790b1d8fc189266148978efbd252684",
+    "docs/contracts/documentation-harness.md": "99635f2164d886844521a6c82b1efaa6fede177d060384c5537073b3e3d6ad2a",
+    "docs/contracts/engineering-judgment-discipline.md": "660487b08512878fe2dd65f080af56e18f3b3d13a2e939a8ebd86ee4291a34b5",
+    "docs/contracts/foundational-runtime-discipline.md": "9163e8c3794f43ba266d78411f2e36e8eb6f8ca9e8705d1f231cee4f020319ce",
+    "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+    "docs/contracts/project-adoption.md": "96b0f2f3a957258879663ca1193dd2c26afcd45a162496af9bb441d9b17d6e7e",
+    "docs/design/README.md": "40c74b245eeea4e2297be4355f5f59c49b5a31b66b0b3a445dc977a8cc260334",
+    "docs/evidence/2026-07-26-bounded-governance-onboarding-evaluation.md": "779d35afc935c152f2d3cfa016b862550a0e47c4e40dda342f6f8ffef2ced0cd",
+    "docs/evidence/2026-07-28-engineering-harness-design-review.md": "3d337931ebafcb84391369bdc71985fad60bb3f558dbf6f8c25b8f1be65f2854",
+    "docs/evidence/2026-07-28-engineering-harness-final-evaluation.md": "5c05f32a01a1c738ddb6336e3b47bf37d10d817fd7651c09a1973da2811f0ac7",
+    "docs/evidence/2026-09-06-template-review.md": "ebcc2e40743440e918936a228babbf3f758583600f784df4727831db1e5d9918",
+    "docs/evidence/2026-09-06-template-review/behavioral-cases.json": "cf29ef22b6b9310472f7bb326d14043eccb9d2eb999bea88ebe21af3e716ce3c",
+    "docs/evidence/2026-09-06-template-review/check-results.json": "12bd010f8c644da49dd94c6fbd238addb6c9d0e449ee1599a5382d11035c7331",
+    "docs/evidence/2026-09-06-template-review/input-provenance.json": "8e7f5963289dcfe5a5a9ae38aac294941298047c3ea2730d2806c25022c32cee",
+    "docs/evidence/2026-09-06-template-review/limitations.json": "ad20c71027a2444c0c513c2a31e360e511d885be9fcc00a150aa96609331d1c9",
+    "docs/evidence/2026-09-06-template-review/manifest.json": "2218448d011de15108293ef475f9542ed2a2cd7146d464e9fadcbacc55ff7f65",
+    "docs/evidence/2026-09-06-template-review/methods.json": "f0c7771fdba8e492ba1d697023079de1437de1ff2bfcc0609060cc66939abcda",
+    "docs/evidence/2026-09-06-template-review/repository-observations.json": "d456ec49c4f9b683106498acaadb7f9a6d9f2d0579a34a8308d24aaa769c0a81",
+    "docs/evidence/2026-09-06-template-review/reproduce.py": "06d44d7acadbc76500bcdf5b3117d7311885dc21a33967e1e35809f42b51782b",
+    "docs/evidence/2026-09-06-template-review/source-excerpts.json": "ed63deb9e312deb1f3f74bd3c67ea109d81e38d986b3af1e1c10f2ddd886e8eb",
+    "docs/evidence/2026-09-06-template-review/sources.json": "cfe6439ab32d96443204edba1f716efcb965dcc1cfdb85ac539bbce4b3f3238e",
+    "docs/evidence/2026-09-06-template-review/version-history.json": "42aaa67adc6854e3e52b20807bf4301f84c516407d71ecd729c32825fb739e16",
+    "docs/evidence/2026-09-14-first-party-adoption-feedback.md": "5b883c4b973810d7ac95ceb42d4ea3bcc34bdbe8ed06cea104217ae8ed07d29c",
+    "docs/evidence/2026-09-15-autonomous-operation-review.md": "6f123005138c4debea1f2a9ef624f9d652194c8d54a1bc0a44029241bfc3a3e2",
+    "docs/evidence/2026-09-26-design-and-onboarding-review.md": "d85ea22525d008f1e06303ac1bb225421726c39281c697b623e84e035fa4cd1c",
+    "docs/evidence/2026-09-27-autonomous-progress-review.md": "7f8157eccb2779a36488c1354d53728c425de45fe1166e39cb7f162f59e7c0f8",
+    "docs/evidence/2026-09-27-grill-review.md": "ddf53002f9bf85d77c6b904288c31f75a8b23f8197cd6a576f2fedba3ca11c2a",
+    "docs/evidence/2026-09-28-inquiry-verification.md": "cba118414b1d1fe0b66a9deb43124bf22b2308df6693983cad41898322c77ab2",
+    "docs/evidence/2026-09-28-research-and-information-acquisition.md": "fb056f5550b1e199d8e43a408a817caf26c2f8b6224c83b8144629e3866c406a",
+    "docs/evidence/2026-10-10-experience-and-adaptive-operation.md": "a7637d8dbede06c8208ccf0de3bcc32854caa4e93593aaef2ad8b8f2171f5280",
+    "docs/evidence/2026-10-19-recursive-improvement-cases.json": "3085d600d602d8b7b63977546b4b17df5ae30a8490cda1353a0a7f0d400f7578",
+    "docs/evidence/2026-10-19-recursive-improvement-trials.json": "feabeaaf6b73f905d5269763bbd7a15fce9163cd4a9aa5281ea82293f963cf27",
+    "docs/evidence/2026-10-19-recursive-improvement.md": "672a2ac9c0bf2e3cef18a37096a18e49dc3886f3cf8dadc8093f245e2f38222a",
+    "docs/evidence/2026-10-20-autonomous-learning-observations.json": "a6fa565b8e435235c92496a90588909c0ac416cab9a1a13f6ece6ae6b48e6170",
+    "docs/evidence/2026-10-20-autonomous-learning.md": "7b35333711554371b6dfa4920b36a2aeb7176c589778403f3168f50ed81ac3cf",
+    "docs/evidence/README.md": "7667b23a5e1e39f4577aca56248fb5615edde53faf38fb9fa5ebbead72f1932c",
+    "docs/guides/README.md": "d89e34f21df3332700c6bcc2673a8bc47a3036a22149ccd82a43d9b6491597ff",
+    "docs/guides/engineering-reading.md": "8e6df1283ff5c4d81538359695f7245aac716a3d7f829e54332425e5b37acf72",
+    "docs/guides/grill.md": "2fd30ecb526b2c69e12ed22d4d3048fa90a5550625e7d3a3fc62b3f369cac590",
+    "docs/guides/information-access.md": "d9262737723158a9b8cd875006405b1812f13f431baacba26af573d7c53d0022",
+    "docs/guides/onboarding.md": "3ae1d47b73a9ab9ccde04d05ad5dc64b38f850c9cc7a51cb609ce09aaee6a778",
+    "docs/guides/project-operation.md": "1a98b3202c5fe4a09c66d2d31ed8a520bf2ae439768dad1c3638cae295dc04a9",
+    "docs/guides/research.md": "163a6501d8b9cfd7416279e8d8e61473e3e993ed990b4bbe3e3750436528b4bb",
+    "docs/issues/README.md": "8f633506461e4188f4a90868fbf9a05c71bf79a945fda6f2a7d5b8cd8bfed519",
+    "docs/plans/2026-07-26-agent-execution-governance.md": "fe7240fcb18c710b30fa72714f8826108a1bc1dc143c331a1b70ce905c977d76",
+    "docs/plans/2026-07-26-bounded-governance-and-onboarding.md": "c77ffcaeeef82f6582b5d3aceaf1ffdefabad9625451415423c7e8f884aef3fe",
+    "docs/plans/2026-07-26-documentation-harness-hardening.md": "9398618dce576fbbc7572cdd1f7a01bab8a719b1c1c4c08cf6aa29a3948823b2",
+    "docs/plans/2026-07-27-style-ownership-discipline.md": "7fe31e2248902e8cf51d4cf1184ccd653a09b255297d2a528e8d4f4d7e4b57af",
+    "docs/plans/2026-07-28-engineering-harness-enablement.md": "f3060448a02f23bd5114d42e3ef2c69180a8d1ee9883e83b7a56fe68c689bb55",
+    "docs/plans/2026-08-06-decision-frontier-and-frontend-design.md": "5a5346357abbe9e83202838a517c4c05889465053c8c10451f69f816c4e4cc12",
+    "docs/plans/2026-08-06-evidence-and-collaboration-discipline.md": "4d5494961d47404bf042ad3c84e7846c3d7efe430c59fb6c1986af4c3f38b0be",
+    "docs/plans/2026-08-24-foundational-runtime-discipline.md": "37f575e91d14095b993a0d115334426affddcb4ce1efc3a1b89d4799e3591c27",
+    "docs/plans/2026-08-27-collaboration-constraints-adoption.md": "575044e2dedd8e695ac000eedecc863ce9f2f837e749517e25bbccc7871b4620",
+    "docs/plans/2026-08-28-engineering-judgment-discipline.md": "35591ad63dca1171f60baacca322b818a834030ec95c76a3ce372109d7c095f2",
+    "docs/plans/2026-08-28-invariant-identifier-redesign.md": "8e299fb0b43a097c55642a580ad8c3ccf1f393ff9ba1428084d5319c933cb4be",
+    "docs/plans/2026-09-06-outcome-driven-template.md": "64756e8d52e3b3f85347ecea5090a7537da5e74ec21866a8b0d5a5c242621ba4",
+    "docs/plans/2026-09-06-proportionate-execution.md": "fe84ddbd908c53ff85b90a5a8cefb54ca5fd710744352fdf2b0fd6cdac6c0bd0",
+    "docs/plans/2026-09-10-reference-feedback-learning.md": "5309cfc826ea3ff54dc8dd4b4360bd20c1345b8de5fcbfc3044185625a343bf2",
+    "docs/plans/2026-09-17-public-documentation-reconciliation.md": "0bc72e571ea498ec8900a74246aebd47dbf402c4801197ba96e28e76857103d4",
+    "docs/plans/2026-09-25-personal-context-onboarding.md": "37634782272ed6d4932c1bb6fa97d80424b27b641a69f5edecdfb9dffbbd0418",
+    "docs/plans/2026-09-26-design-methods-and-calibration.md": "a91da3c515c5fede9f4213d882d80cc6f1f19598a2ca005bbd1b067d537c4beb",
+    "docs/plans/2026-09-27-autonomous-progress-and-review.md": "8338b93a682ed81258b45c41e13cea3849b0840127db9968219eb72d6823c8c5",
+    "docs/plans/2026-09-27-recurring-grill-questions.md": "a88a1031375c32c3c7c73570c517e189d7bedde1855bda3cbb9cc7ca4bafe205",
+    "docs/plans/2026-09-28-research-and-information-access.md": "88b3e0331a7f07616484f3e68dada7b62741593d13e9536ced7b339e64fe1612",
+    "docs/plans/2026-10-10-experience-and-adaptive-operation.md": "7265420f71e257066bbe978004da126ae6b7a42658cd2b44e28433d747c1a12d",
+    "docs/plans/2026-10-19-recursive-improvement.md": "63981142ed223ce3ec3ab76a40a52e1ca12bae14edeeac454f35347024b6bca2",
+    "docs/plans/2026-10-20-autonomous-learning.md": "d4c0d2289ba2262e3ef91aeaf76185036837a0521549fcca12772621b4ad8b5e",
+    "docs/plans/README.md": "5f7f5c4f6aa3dbff7135bd68e944c1c176648808b0854666ec5691863d49de0e",
+    "scripts/check_docs.py": "e0803aacbb9250ab34cafbe5b99a8672482cfe596a52d544ba59985186b8afc4",
+    "scripts/scan_letter_codes.py": "dd11d1e549d05b8e284b254c3e8e0c3afac2c811f2df79ae2d11ccf5222730ab",
+    "src/README.md": "8813720bf0323af888b74b515eab04676ca37de7b12f244b9807f858b0ba1efc",
+    "templates/README.md": "8855bf7bf10d332ac42449e584d2111d419224dca9f0e2c6ef40231106fdce6f",
+    "templates/adoption-assessment.md": "23a67a6d83f5c37726af9597fc7934670096df0b9612cdafc153b4ccef48e3da",
+    "templates/agent-execution-plan.md": "162387df63dd7e4bdc3b85e766e7f89a4ab5ae616b76b965cdd5d0380c80b280",
+    "templates/backend-change.md": "db7eb5f01cd08f0ca6cf6dc01a70ed499c64af5bfde76a04c5128418481165ce",
+    "templates/charter.md": "2674d9cc82e1fc795218df7a9b4d58a11aee586549e5a2135e2ce4d77a771838",
+    "templates/ci/docs-check.example.yml": "3ae2c2959a9ca76b57afeed081311d0456e4e27deba108796f7e52afdf576583",
+    "templates/contract.md": "369bf85c1c59ad57e50460b1461f83f2bb617d757418b315d049cd02be5a9add",
+    "templates/cross-stack-change.md": "dc7186d0ae5c49bd1ec62cd35207166b0ba50366690bd745d6a42fa6b27d69fc",
+    "templates/evidence-preserving-data.md": "24c3f2ec978e45f49494f2a5b2b74dfd3d7cae023fb37c29fdde24778fab34ad",
+    "templates/frontend-surface.md": "0eb64b92137de471f2b8d2c2e3c6b9390d376eac2a4460e316bc06e7996564e2",
+    "templates/guide.md": "dba28a811fe3c344fbda14b8a548d5da7117a6ebc4e1477e53f00c0911ee5ede",
+    "templates/handoff.md": "0e630f647eda2809dcd4aad6c08a4e11b9fc78664435a4908a44a06d9549dbf3",
+    "templates/holistic-evaluation.md": "1d1c27ba3a1493a6666711e7b732e915b59fcb523df5b171bf61c5af5ded8cd4",
+    "templates/implementation-plan.md": "3cd987d4fc5dd744dd8cfcbb8d176cce1f1497f1db4d51989599b011ac3ae894",
+    "templates/independent-review.md": "cab7914206de175779a53727f7fc7c83634904cd304216c974a85ec47fe3fb64",
+    "templates/issue-tracker.md": "28464b576a4900d61fe8162926dc7f22b5f4dc17719295c533d0db6fd592caf2",
+    "templates/style-system.md": "b483c74708b0942f9665cc25f239763975a691e6e2f95ef9cf594b684b2e4f71",
+    "templates/verification-report.md": "2c1d7a54a67379d61c291e2fba69f2920cc9e3455fe1650bdae91eb9445d7aca",
+    "tests/README.md": "03dd3605ba41363350de51503917b841a068ee9f604d3dd89a6b790eac0f2ec3",
+    "tests/test_check_docs.py": "067b8f4374f233bc13ec5eb2b51cea79ca90b2b26c2cebdbb5d11136c45a2a32",
+    "tmp/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  "first_reviews": {
+    "a": "Independent first result — before any other review or executor defense\nBaseline HEAD fa01192f094585ff0c1aaa6942ac04e63a11983a plus frozen worktree; key digests in identity.json.\nOverall: the named role, domain-chain, risk-definition and static-output repairs work in inspected source and local probes. CheatSheet is actionable and bounded.\nCandidate P2: development-discipline global consumer obligation (fresh independent context for every user/operator-facing deliverable, proportionate to risk) leaves the routine-route review boundary ambiguous. A bounded local UI list sort is explicitly routine in execution risk, but development still says acceptance includes a fresh-context consumer. Thus ordinary visible work cannot clearly use only focused self-verification. Evidence is normative scope rehearsal, not an observed extra worker launch.\nPrepare probes: routine 9 units/96927 output bytes; generic omitted role accepted; copied backend and cross-stack owners bring corresponding units; analysis brings full analysis unit; unknown concern rejects. Templates copied into documented docs/contracts destination and relative contract links reconciled. Lifecycle/date made current; remaining content prompts were retained, so this establishes reader/type/dependency compatibility, not adopted product completeness.\nStatic CSV-to-PNG versus interactive chart rehearsal: applicability and invariants permit static references and no parameter widgets; reusable form is conditional. No actual PNG/product built.\nAll 169 tests pass. check_docs passes with one advisory: existing independent-adoption-review promise overdue since 2026-10-24.\nNo repository writes or external effects. Limit: no whole-project formal adoption, no separate consumer run, no raw neighboring-session provenance yet.\n",
+    "b": "独立第一判断（在接收执行者澄清或其他 reviewer 结果前保存）\n\n基线 HEAD fa01192f094585ff0c1aaa6942ac04e63a11983a + 冻结未提交树。\n正常入口 AGENTS→docs/README task-context→read_rules list/prepare；补读全局 core、治理 core、风险/路线/完成、analysis、backend/cross-stack、reader protocol、operation SOP、Grill、CheatSheet 和模板。未读旧 reviewer verdict。\n在独立临时副本正常复制三种契约并重定位链接，默认 product 角色可绑定；backend/cross-stack 依赖实际进入准备链。记录 probes.json。完整主仓 169 tests 通过，check_docs 通过（既存 overdue promise advisory）。\n\n支持的正面判断：全局风险定义进入风险的声明依赖；规则的权威、适用性、读取边界、强度与证据得到区分；目的到任务和指标的联系有明确规则与 SOP；静态交付明确保持静态形式，可用来源表/记录标识；review CheatSheet 是低于 SOP 的可选方法，提供不同目的、真实输入位置、独立性边界和判后行动，不固定配额。\n\nP2 疑点：development-discipline.md 239–243 对所有 user/operator-facing deliverable 用 acceptance includes 强制新上下文消费者。小型 CLI 帮助纠错或有既存 owner 的 routine 静态计算虽可走 routine 无计划路径，仍落入该条；risk 104–106 保留显式 owner review requirement，analysis 73–74 又只在别的 owner 不要求时给小查询免独立评估。proportionate to risk 未说明何时可不启用新消费者，可能把日常小交付也变成独立检查。属规范演练，不是实际调度行为观测；不是最新新增条款，但在整个模板范围内。\n\n没有发现当前四个修复点的剩余确定性阻塞。整体基本成立；上述消费者触发边界应澄清后再声称普通小交付不增加 review。完整采用有效性、长期改善、真实独立消费者或宿主隔离未测。\n"
+  },
+  "actual_template_probe": {
+    "contract": {
+      "units": [
+        "docs/README.md#authority-order",
+        "docs/README.md#language-style",
+        "docs/contracts/development-discipline.md#development-core",
+        "docs/contracts/governance-decision-boundary.md#governance-core",
+        "docs/contracts/agent-execution-discipline.md#profiles",
+        "docs/contracts/agent-execution-discipline.md#risk",
+        "docs/contracts/agent-execution-discipline.md#route",
+        "docs/contracts/agent-execution-discipline.md#completion",
+        "docs/README.md#task-context",
+        "docs/contracts/probe-contract.md#document"
+      ],
+      "last_line": "READING COMPLETE units=10"
+    },
+    "backend-change": {
+      "units": [
+        "docs/README.md#authority-order",
+        "docs/README.md#language-style",
+        "docs/contracts/development-discipline.md#development-core",
+        "docs/contracts/governance-decision-boundary.md#governance-core",
+        "docs/contracts/agent-execution-discipline.md#profiles",
+        "docs/contracts/agent-execution-discipline.md#risk",
+        "docs/contracts/agent-execution-discipline.md#route",
+        "docs/contracts/agent-execution-discipline.md#completion",
+        "docs/README.md#task-context",
+        "docs/contracts/development-discipline.md#backend",
+        "docs/contracts/probe-backend-change.md#document"
+      ],
+      "last_line": "READING COMPLETE units=11"
+    },
+    "cross-stack-change": {
+      "units": [
+        "docs/README.md#authority-order",
+        "docs/README.md#language-style",
+        "docs/contracts/development-discipline.md#development-core",
+        "docs/contracts/governance-decision-boundary.md#governance-core",
+        "docs/contracts/agent-execution-discipline.md#profiles",
+        "docs/contracts/agent-execution-discipline.md#risk",
+        "docs/contracts/agent-execution-discipline.md#route",
+        "docs/contracts/agent-execution-discipline.md#completion",
+        "docs/README.md#task-context",
+        "docs/contracts/development-discipline.md#backend",
+        "docs/contracts/development-discipline.md#cross-stack",
+        "docs/contracts/probe-cross-stack-change.md#document"
+      ],
+      "last_line": "READING COMPLETE units=12"
+    },
+    "static-analysis": {
+      "units": [
+        "docs/README.md#authority-order",
+        "docs/README.md#language-style",
+        "docs/contracts/development-discipline.md#development-core",
+        "docs/contracts/governance-decision-boundary.md#governance-core",
+        "docs/contracts/agent-execution-discipline.md#profiles",
+        "docs/contracts/agent-execution-discipline.md#risk",
+        "docs/contracts/agent-execution-discipline.md#route",
+        "docs/contracts/agent-execution-discipline.md#completion",
+        "docs/README.md#task-context",
+        "docs/contracts/data-analysis-discipline.md#analysis"
+      ],
+      "bytes": 105038
+    },
+    "routine-no-concern": {
+      "units": [
+        "docs/README.md#authority-order",
+        "docs/README.md#language-style",
+        "docs/contracts/development-discipline.md#development-core",
+        "docs/contracts/governance-decision-boundary.md#governance-core",
+        "docs/contracts/agent-execution-discipline.md#profiles",
+        "docs/contracts/agent-execution-discipline.md#risk",
+        "docs/contracts/agent-execution-discipline.md#route",
+        "docs/contracts/agent-execution-discipline.md#completion",
+        "docs/README.md#task-context"
+      ],
+      "bytes": 91743,
+      "standalone_record_created": false
+    },
+    "source_digests": {
+      "AGENTS.md": "7b224a5a0b5cc3e4565f3dd35b4c923bf24025af23f52c2db2b5e6ac311c8af6",
+      "docs/README.md": "49361f450365da952518f843206fefe50030d5e8e4c34e1bd277351cea012f85",
+      "docs/contracts/development-discipline.md": "67f83392e99d7e04dccea402349edb965790b1d8fc189266148978efbd252684",
+      "docs/contracts/agent-execution-discipline.md": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+      "docs/contracts/data-analysis-discipline.md": "d71e4018c2f4ac1bc20b9df99cd995f416f4541c87ffc872036ba458ccbf6d7f",
+      "docs/guides/review-cheatsheet.md": "a1166c061fb957bc566176401aad860cc9b3649423415a075396032369a866e4",
+      "scripts/rule_reading.py": "30bd40b80e23ab27a243a8caf295e1fc3c525df1242dd87031bd84d5c6984845"
+    }
+  },
+  "recheck": {
+    "change": "development fresh-consumer requirement explicitly distinguishes material/high-risk, routine focused verification, and binding brief/domain exceptions; failed trial inputs/environment are investigated",
+    "only_rule_changed_after_first_results": "docs/contracts/development-discipline.md",
+    "source_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+    "review_a": "P2 closed; actual prepare includes new rule and rejects old-digest recovery; scenario/source evidence, no actual UI deployment or rerun of full tests",
+    "review_b": "P2 closed; complete current development core/prepare checked; routine, material/high-risk and explicit domain/brief scenarios; no remaining finding in recheck scope"
+  },
+  "consumer": {
+    "packet_manifest": [
+      {
+        "source": "docs/guides/review-cheatsheet.md",
+        "copy": "review-cards.txt",
+        "bytes": 9807,
+        "sha256": "a1166c061fb957bc566176401aad860cc9b3649423415a075396032369a866e4"
+      },
+      {
+        "source": "docs/guides/project-operation.md",
+        "copy": "operation.txt",
+        "bytes": 1680,
+        "sha256": "baa47fe3155b9fa6eb29ac988866a58260c8a606480e8ef11a614dc97d4e0e49"
+      }
+    ],
+    "first_understanding": "# 初次理解（试验前固定）\n\n这两份材料传达的是：评审不是固定题单，先找能改变当前决定的不确定性，再挑合适的小方法；允许得出有证据的正面结论并停止。重复同一问题考察稳定性，换问题或立场探索另一盲区，真实使用补充消费观察。保留首次判断、材料身份、未知项和后来修正，不能用评审间的一致代替验证。\n\n我现在能选择一张卡，填明对象、意图、可用来源、权限和停止点，并做一个有限本地试用。operation 副本说明如何只取一个做法进入已获授权的任务，按目标现有规则所有者保留有用结果；这不构成完整学习或正式采用模板。\n\n我还不能从这些副本独立执行完整模板治理：SOP 的执行段、Grill 角色、权威边界、全局核心及各卡引用的合同均未随副本交付。遇到相关实质决定需要原文或已有授权；不能凭链接名重构其规则。\n\n已知继承类别：系统和开发者的工具/安全约束，项目工作协定，技能目录，工作区/日期/权限元数据，以及本次派发边界。未获得执行者对话轨迹、旧评审、其他代理结果或原仓库源码。继承并非零上下文；这些材料不能证明模型、平台默认值或训练知识被隔离。\n\n这是独立收到边界任务的消费上下文；接下来若由我编写并评审虚构 CLI，则那部分属于同一上下文的本地模拟，不是又一次独立派发。\n",
+    "assignment": "# Bounded fictional review\n\nCurrent decision: can a consumer carry out the README command and recover from a\nmistyped integer using only this local delivery?\nUseful change: use the CheatSheet's normal-copy trial to inspect behavior rather\nthan accepting a completion assertion.\nSelected practice: \"Try the normal copy\", with a normal command and plausible\ninvalid-input countercases. The card is selected, not the complete template.\nSources: the two supplied card copies; this explicitly fictional README and\nimplementation created for the trial. This README owns the toy behavior.\nAuthorization: the dispatch permits a tiny fictional task in private temporary\nstorage; no repository, account or external effects.\nStop: observe valid invocation, invalid input, corrected-input retry and one\nsibling error, then report evidence and limits. No implementation correction is\nnecessary unless an observed mismatch blocks the stated task.\nIndependence: the consumer task was separately dispatched; this toy's author and\nreviewer are the same context. This is not a second fresh reviewer.\n",
+    "actual_observations": [
+      {
+        "case": "normal",
+        "args": [
+          "7"
+        ],
+        "exit": 0,
+        "stdout": "14\n",
+        "stderr": ""
+      },
+      {
+        "case": "invalid",
+        "args": [
+          "seven"
+        ],
+        "exit": 2,
+        "stdout": "",
+        "stderr": "Expected one ASCII integer in 0..1000000\n"
+      },
+      {
+        "case": "retry",
+        "args": [
+          "7"
+        ],
+        "exit": 0,
+        "stdout": "14\n",
+        "stderr": ""
+      },
+      {
+        "case": "sibling-negative",
+        "args": [
+          "-1"
+        ],
+        "exit": 2,
+        "stdout": "",
+        "stderr": "Expected one ASCII integer in 0..1000000\n"
+      },
+      {
+        "case": "zero-boundary",
+        "args": [
+          "0"
+        ],
+        "exit": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      {
+        "case": "upper-boundary",
+        "args": [
+          "1000000"
+        ],
+        "exit": 0,
+        "stdout": "2000000\n",
+        "stderr": ""
+      },
+      {
+        "case": "above-boundary",
+        "args": [
+          "1000001"
+        ],
+        "exit": 2,
+        "stdout": "",
+        "stderr": "Expected one ASCII integer in 0..1000000\n"
+      },
+      {
+        "case": "unstated-leading-zero-width",
+        "args": [
+          "00000007"
+        ],
+        "exit": 2,
+        "stdout": "",
+        "stderr": "Expected one ASCII integer in 0..1000000\n"
+      }
+    ],
+    "judgment": "# Supported trial judgment\n\nThe documented normal command works. Invalid text and a negative value emit a\ndiagnostic only to stderr and return 2; a corrected command succeeds immediately.\nThe observed endpoints 0 and 1000000 work, and 1000001 is rejected.\n\nAn additional inspection of the contract against the implementation exposed an\nunstated lexical width limit: 00000007 represents 7 but is rejected. The README\nstates a numeric range without stating whether leading zeros are accepted.\nThe observation supports a request to settle that lexical boundary before claiming\nall documented integer spellings work. It does not establish the real owner's\nintended leading-zero policy. No source was provided for such a policy.\n\nThe card helped turn an abstract review into actual normal-use, recovery and\ncountercase observations, and the stop rule permits this bounded conclusion.\nNo repair was requested for a real project; this toy was left intact so the\nobservation remains reviewable. The card did not supply domain acceptance rules,\na runtime, or independent judgment. This is same-context execution evidence,\nnot a demonstrated improvement in independent reviewers' detection rates.\n\nMissing sources for full template operation include the SOP execution section,\nGrill and the governing contracts. They were not read or inferred. A real transfer\nwould additionally need that target's actual intent, current rule owner,\nauthorization and any operative dependencies. None were needed to fabricate and\nrun this expressly authorized temporary toy; it is selected-practice use only.\n",
+    "boundary": "Fresh consumer of guide data; its fictional CLI author/reviewer is the same context. Shared native project/global instructions were known. No zero-context, second independent dispatch or detection-rate claim."
+  },
+  "tests": {
+    "reader_focused": 44,
+    "full": 169,
+    "final_full_seconds": 39.393,
+    "output": "2026-10-28-template-repair-tests.txt"
+  },
+  "source_delivery": {
+    "version": 1,
+    "concerns": [],
+    "owner_bindings": [],
+    "units": [
+      {
+        "identity": "docs/README.md#authority-order",
+        "path": "docs/README.md",
+        "unit": "authority-order",
+        "heading": "Authority order",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 666,
+        "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+        "file_sha256": "49361f450365da952518f843206fefe50030d5e8e4c34e1bd277351cea012f85"
+      },
+      {
+        "identity": "docs/README.md#language-style",
+        "path": "docs/README.md",
+        "unit": "language-style",
+        "heading": "Language style",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 4964,
+        "sha256": "d21f1c8ae199de360e974b07acec6d3ddffb149dfcc553f364cf21564dc35c43",
+        "file_sha256": "49361f450365da952518f843206fefe50030d5e8e4c34e1bd277351cea012f85"
+      },
+      {
+        "identity": "docs/contracts/development-discipline.md#development-core",
+        "path": "docs/contracts/development-discipline.md",
+        "unit": "development-core",
+        "heading": "Purpose",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 43761,
+        "sha256": "c77125799b619422219565520606a1dd4a74f8122b128771c27741321ffd4d51",
+        "file_sha256": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39"
+      },
+      {
+        "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+        "path": "docs/contracts/governance-decision-boundary.md",
+        "unit": "governance-core",
+        "heading": "Purpose",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 26775,
+        "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+        "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b"
+      },
+      {
+        "identity": "docs/contracts/agent-execution-discipline.md#profiles",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "unit": "profiles",
+        "heading": "Vocabulary and risk profiles",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 2242,
+        "sha256": "1ab44f018ce92566feed9b858c16f3fa5c145e683110f21cf533cb59b98471a1",
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe"
+      },
+      {
+        "identity": "docs/contracts/agent-execution-discipline.md#risk",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "unit": "risk",
+        "heading": "Risk selects the execution depth",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 1426,
+        "sha256": "0b2c893ae8c99be669aca728a997eedefefbdce35c934505f6e295fed6e77e91",
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe"
+      },
+      {
+        "identity": "docs/contracts/agent-execution-discipline.md#route",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "unit": "route",
+        "heading": "The harness selects the smallest executable route",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 1759,
+        "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe"
+      },
+      {
+        "identity": "docs/contracts/agent-execution-discipline.md#completion",
+        "path": "docs/contracts/agent-execution-discipline.md",
+        "unit": "completion",
+        "heading": "Completion is layered",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 1198,
+        "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+        "file_sha256": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe"
+      },
+      {
+        "identity": "docs/README.md#task-context",
+        "path": "docs/README.md",
+        "unit": "task-context",
+        "heading": "Task context",
+        "authority": "normative",
+        "status": "current",
+        "bytes": 9474,
+        "sha256": "03b793eeed5872758c5c88043b9ed2293ffd3b52fa8aafc1b222cece50e9209a",
+        "file_sha256": "49361f450365da952518f843206fefe50030d5e8e4c34e1bd277351cea012f85"
+      }
+    ],
+    "sources": {
+      "AGENTS.md": "7b224a5a0b5cc3e4565f3dd35b4c923bf24025af23f52c2db2b5e6ac311c8af6",
+      "docs/README.md": "49361f450365da952518f843206fefe50030d5e8e4c34e1bd277351cea012f85",
+      "docs/contracts/agent-execution-discipline.md": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+      "docs/contracts/development-discipline.md": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+      "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b"
+    }
+  },
+  "limits": [
+    "template/source and canonical fixture compatibility are not full real-product adoption",
+    "static/interactive analysis was a contract scenario, not a rendered product",
+    "different consumer tasks and packet sizes do not establish causal effort savings",
+    "existing independent adoption review remains overdue and open"
+  ],
+  "practical_methods": {
+    "owner_scope_correction": "Review was an example. The template should enable many concise, effective task methods across its scenarios.",
+    "guide": "docs/guides/task-cheatsheet.md",
+    "prompt_examples": 12,
+    "scope": "Optional practical methods across investigation, delivery, explanation, continuity and learning; specialized review remains one family.",
+    "selection_and_construction": "Choose by the current obstacle; connect situation, useful action and observable result/stop; combine or adapt based on what changes the next decision.",
+    "source_sha256": {
+      "README.md": "bd880732d3098b395020aa2a016b909efd425633d6b74d6de5f0b26eb7c6fdad",
+      "docs/README.md": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+      "docs/guides/task-cheatsheet.md": "9e818c21a91fac8adb35ca3ef8fd2766c28386fccff8fae3949c669cac149c26",
+      "docs/guides/project-operation.md": "c4a4945ba62f91cff56afcfd2aab2fd4eed8069d06b7f774c3a194b17ec3aaba",
+      "docs/guides/review-cheatsheet.md": "05e6f8246417461dcd4467d80d497dba0f072a6c06fa1306f1085ceb95663133",
+      "docs/guides/README.md": "21c22a4731249c96b4b9ec4bf2525a14ac22a0dcd92fb92c86522e98fee3a69a",
+      "templates/README.md": "a84d6a9ae6d8a8c5a5863d000ab93202c72fef8779322fce1ff92f587731d94e"
+    },
+    "normal_preparation": {
+      "units": 9,
+      "final_marker": "READING COMPLETE units=9",
+      "sources": {
+        "AGENTS.md": "7b224a5a0b5cc3e4565f3dd35b4c923bf24025af23f52c2db2b5e6ac311c8af6",
+        "docs/README.md": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+        "docs/contracts/agent-execution-discipline.md": "e397b41e4661491ecd4a44e8d85a5c622fdf290abe9ebb27d42ef3606671a7fe",
+        "docs/contracts/development-discipline.md": "2cb5fd96f0f28824653d519ffe3185839d50c2388bba4e53e73240a5fe0ada39",
+        "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b"
+      },
+      "optional_guide_in_required_closure": false
+    },
+    "consumer_assignment": {
+      "agent": "/root/practical_task_consumer",
+      "context": "fork_turns=none; same inherited model/settings; native instruction inheritance remains possible",
+      "entrypoint": "README.md",
+      "task_fixture": "/private/tmp/practical-task-trial-6caqw19e",
+      "initial_input_sha256": {
+        "README.md": "2758600c603fb37c9acc96489340c2cc6652e1f29a64ca3b32557acc910867eb",
+        "sort_names.py": "29a3306b9ff53f88ad9172cc13eb7f6de9c0eb82cd34bbe33252c5213ef73145",
+        "session-handoff.md": "8cc3e6cc0f27a20b656a808877e03bdb67505d16e7b2a23caad1e3039e0a0a99",
+        "names.txt": "d91e763befedbc012b114ff13b4fe7415faffcb0b4ee847bfe6ab13f9c7a71a6",
+        "TASK.txt": "594cf2dd6de3735ce4cd21e20b9b681e498ecf6c706cc370cfb5d3c29a5439c6"
+      },
+      "allowed_effects": "Read-only template sources and local disposable trial writes/processes; no network/export/other agents",
+      "tasks": "Resume and complete the fixture owner request using selected non-review methods; then answer one real maintainer source question of the consumer's choice.",
+      "first_verdict": "Supported pass within the two bounded tasks; no consequential usability defect emerged. This is a parent summary; the complete first evaluation is preserved separately.",
+      "first_understanding": "# First understanding before execution\n\nI entered through the template README, then its task-context, task procedure,\nand practical task CheatSheet. I have not read any prior review report,\nimplementation plan, executor discussion, or another evaluator's judgment.\nKnown inheritance: the runtime supplies system/developer tool, safety, writing,\nskill and collaboration instructions; it also supplies this repository's\nAGENTS.md working agreement. The parent supplied this bounded trial and its\nlimits. This is therefore a fresh consumer of the task-method layer, not a\nclaim of zero prior context.\n\nThe layer currently offers a selection table of obstacles with short methods\nand copyable prompts spanning understanding, clarification, debugging, inquiry,\ntool recovery, comparison, complete delivery, explanation, restart, experience,\nsimplification and completion. It treats them as optional moves inside current\nauthority, with a task procedure to order execution. My initial judgment is\nthat this is broader than review and gives enough of a starting point to do\nan actual small task. Whether it works in use remains unproved at this point.\n\nFor this task I choose “Resume at the next verifiable action,” then “Find the\nfirst failing boundary,” and “Judge against the original outcome.” The local\nREADME expressly preserves repeated names; the handoff's uniqueness suggestion\nwas an executor interpretation, not an owner decision. The requested end is\nto retain duplicates while preserving the CLI's existing lexical ordering,\nempty-line rule, spaces, UTF-8 handling, output/error channels, independent\ninvocations and absence of CLI file writes. No owner clarification is needed.\n\nI will obtain the required core and matching owner rules; record original\ninput identities; reproduce the supplied repeated-name case; compare that\nwith the source's set conversion; make the local correction; and observe the\nactual CLI on normal, sibling and failure/recovery cases. This is a bounded,\nlocally reversible correction under an existing behavior owner, so I expect\nthe smallest route to need no copied governance tree or standalone plan.\nThe correction is sufficient when these observed boundaries support the\nREADME promise. I will stop there, then answer one short maintainer question\nfrom current template source without modifying the template.\n\nInitial retrieval issue: the first multi-file shell read in the trial printed\n`(eval):5: parse error near end` before delivering the requested file bodies.\nI will use a non-login shell for subsequent commands so startup configuration\ndoes not contaminate CLI observations. The CLI has not run yet.\n",
+      "initial_observation": {
+        "expected_initial_inputs": {
+          "README.md": "2758600c603fb37c9acc96489340c2cc6652e1f29a64ca3b32557acc910867eb",
+          "sort_names.py": "29a3306b9ff53f88ad9172cc13eb7f6de9c0eb82cd34bbe33252c5213ef73145",
+          "session-handoff.md": "8cc3e6cc0f27a20b656a808877e03bdb67505d16e7b2a23caad1e3039e0a0a99",
+          "names.txt": "d91e763befedbc012b114ff13b4fe7415faffcb0b4ee847bfe6ab13f9c7a71a6",
+          "TASK.txt": "594cf2dd6de3735ce4cd21e20b9b681e498ecf6c706cc370cfb5d3c29a5439c6"
+        },
+        "observed_initial_inputs": {
+          "README.md": "2758600c603fb37c9acc96489340c2cc6652e1f29a64ca3b32557acc910867eb",
+          "sort_names.py": "29a3306b9ff53f88ad9172cc13eb7f6de9c0eb82cd34bbe33252c5213ef73145",
+          "session-handoff.md": "8cc3e6cc0f27a20b656a808877e03bdb67505d16e7b2a23caad1e3039e0a0a99",
+          "names.txt": "d91e763befedbc012b114ff13b4fe7415faffcb0b4ee847bfe6ab13f9c7a71a6",
+          "TASK.txt": "594cf2dd6de3735ce4cd21e20b9b681e498ecf6c706cc370cfb5d3c29a5439c6"
+        },
+        "all_match": true,
+        "initial_source": "import sys\nfrom pathlib import Path\n\n\ndef main():\n    if len(sys.argv) != 2:\n        print(\"usage: sort_names.py INPUT\", file=sys.stderr)\n        return 2\n    try:\n        names = Path(sys.argv[1]).read_text(encoding=\"utf-8\").splitlines()\n    except (OSError, UnicodeError) as error:\n        print(f\"cannot read input: {error}\", file=sys.stderr)\n        return 2\n    for name in sorted(set(name for name in names if name != \"\")):\n        print(name)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+        "retrieval_failure": "First login-shell multi-file cat printed (eval):5: parse error near end before delivering bodies. Subsequent commands use login=False."
+      },
+      "owner_reader_attempt": {
+        "command": [
+          "python3",
+          "scripts/read_rules.py",
+          "prepare",
+          "--concern",
+          "compatibility",
+          "--owner",
+          "compatibility=/private/tmp/practical-task-trial-6caqw19e/README.md",
+          "--concern",
+          "experience",
+          "--owner",
+          "experience=/private/tmp/practical-task-trial-6caqw19e/README.md",
+          "--concern",
+          "security-and-privacy",
+          "--owner",
+          "security-and-privacy=/private/tmp/practical-task-trial-6caqw19e/README.md",
+          "--concern",
+          "reliability-and-operations",
+          "--owner",
+          "reliability-and-operations=/private/tmp/practical-task-trial-6caqw19e/README.md"
+        ],
+        "cwd": "/Users/alex_m4/workspace/template-project",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "read_rules: reference escapes repository: /private/tmp/practical-task-trial-6caqw19e/README.md\n"
+      },
+      "trial_result": "# Trial result before the repository question\n\nFact: the requested correction is supported. The existing README already\nspecified preservation of repetitions, so no behavior-owner change was needed.\nThe implementation converted nonempty names to a set before sorting; that\nremoved repeats. Removing this conversion preserves the sorting/filtering\npath and retains every repeated entry.\n\nThe original five input identities exactly matched `initial-inputs.json`;\n`initial-observation.json` retains their observed digests and original code.\nThe reported command was reproduced as `python3 sort_names.py names.txt`:\nexit 0, stdout `Ant\\nBee\\n`, empty stderr. The distinct-name comparison passed\nwhile the repeated-name and repeated-space sibling failed. This separates\nloss at set conversion from incorrect lexical ordering or a display artifact.\n\n`python3 verify_cli.py baseline` exited 1 with three failed observations\n(reported repetitions, repeated-space/Alpha sibling, and corrected-input\nrepetitions). `python3 verify_cli.py corrected` exited 0 and all ten focused\nobservations passed. Exact per-invocation commands, return codes, stdout,\nstderr and effects are in `baseline-observations.json` and\n`corrected-observations.json`. The correction is in `correction.diff`.\n`verify_cli.py` supplies the repeatable focused guard, including a sibling the\noriginal handoff did not report. Probe inputs are local test data.\n\nObserved boundaries: repetitions; case-sensitive lexical order; preserved\npadding and UTF-8 text; exactly empty lines ignored; missing-file, directory,\ninvalid-UTF-8 and missing-argument errors; corrected input at the same path;\nand the next independent invocation. Complete path/content snapshots before\nand after every CLI subprocess were unchanged. This establishes no persisted\nfile effects inside the disposable directory. It does not trace transient or\noutside-directory effects. The complete tiny source contains only argument\nvalidation, a text read, sorting, printing and exit; source inspection supports\nthe absence of writes, networking, dependencies or state beyond one invocation.\nNo external network/export action was performed.\n\nThe original README, handoff, names file and TASK remain byte-for-byte\nunchanged. Only the CLI's set conversion changed among original inputs.\nEvidence and focused-check files were added solely inside this disposable\ndirectory. No template file, flag, dependency or governance tree was added.\n\nMethod use: resume recovered the original owner request instead of following\nthe handoff's unaccepted uniqueness interpretation; failing-boundary comparison\nchose a useful distinct/repeated contrast and sibling; outcome judgment checked\nactual stdout, errors, recovery and persisted effects before closing.\nThe routine route fit: an authorized local correction with cheap recovery and\ncredible focused observations. These methods supplied useful actions, not the\ncompletion criterion by themselves.\n\nRetrieval limit and recovery: the reader emitted all nine core units with\n`READING COMPLETE units=9`; large core units were obtained in digest-checked\nparts. Selected CLI concerns were compatibility, experience, untrusted-input\nsecurity and read-error recovery. The attempt to bind their existing external\nREADME owner was rejected with `reference escapes repository`. This is the\ndocumented containment of the template's reader. I used the protocol's direct\ncomplete-source fallback and retained the local owner's SHA-256, under the\ntrial's explicit README authority. `owner-reader-attempt.json` retains the\nexact command, rejection and exit code. No need for extra local documentation\nor a new owner decision was inferred from that tool limitation.\n\nStop decision: close this bounded correction now. The original request and\nthe affected README boundaries have direct supporting observations. There is\nno actual missing owner decision and no authorized open-ended audit. This\nsupports the small CLI task and this method-use trial; it does not establish\nthe template's whole practical-method layer or any broader project objective.\n",
+      "baseline_observations": {
+        "phase": "baseline",
+        "python_version": "3.14.2 (main, Dec  5 2025, 16:49:16) [Clang 17.0.0 (clang-1700.4.4.1)]",
+        "cli_sha256": "29a3306b9ff53f88ad9172cc13eb7f6de9c0eb82cd34bbe33252c5213ef73145",
+        "input_identities": {
+          "names.txt": "d91e763befedbc012b114ff13b4fe7415faffcb0b4ee847bfe6ab13f9c7a71a6",
+          "probe-inputs/unique.txt": "db2ab4397b2854f9a5745ff73910999efbac149f92f34e64f163f336c32906b8",
+          "probe-inputs/sibling.txt": "2c49fbe9e31453d49f2353e0df0b8b711b756863a7c898691d25292465e39e6f",
+          "probe-inputs/empty.txt": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+          "probe-inputs/invalid-then-corrected.txt": "db7884f307ecf5e7dd4e82c9932f75e448d68350b50957bbe304ba8fd648bb73"
+        },
+        "records": [
+          {
+            "label": "reported repeated entry",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "names.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": false
+          },
+          {
+            "label": "distinct entries distinguish sorting from deduplication",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/unique.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "sibling repeated spaces, case, UTF-8 and preserved padding",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/sibling.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": " \n  Ant\nAlpha\nAnt \nalpha\nz\né\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": " \n \n  Ant\nAlpha\nAlpha\nAnt \nalpha\nz\né\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": false
+          },
+          {
+            "label": "only exactly empty lines are ignored",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/empty.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "missing input fails on stderr",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/absent.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "cannot read input: [Errno 2] No such file or directory: 'probe-inputs/absent.txt'\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "cannot read input:",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "directory input fails on stderr",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/directory"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "cannot read input: [Errno 21] Is a directory: 'probe-inputs/directory'\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "cannot read input:",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "invalid UTF-8 fails on stderr",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/invalid-then-corrected.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "cannot read input: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "cannot read input:",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "corrected same-path input succeeds after failed invocation",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/invalid-then-corrected.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": false
+          },
+          {
+            "label": "next invocation remains independent",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/unique.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "missing argument keeps existing usage behavior",
+            "command": [
+              "python3",
+              "sort_names.py"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "usage: sort_names.py INPUT\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "usage: sort_names.py INPUT",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          }
+        ],
+        "passed": false,
+        "effects_scope": "Complete persisted path/content snapshot inside the disposable directory before and after each CLI subprocess. Does not observe transient writes or external filesystem/network effects; source inspection bounds those claims."
+      },
+      "corrected_observations": {
+        "phase": "corrected",
+        "python_version": "3.14.2 (main, Dec  5 2025, 16:49:16) [Clang 17.0.0 (clang-1700.4.4.1)]",
+        "cli_sha256": "6f3a35fcf69cb24e25c3916099bb7aca5af5c8e49589afc886136d975bf8901a",
+        "input_identities": {
+          "names.txt": "d91e763befedbc012b114ff13b4fe7415faffcb0b4ee847bfe6ab13f9c7a71a6",
+          "probe-inputs/unique.txt": "db2ab4397b2854f9a5745ff73910999efbac149f92f34e64f163f336c32906b8",
+          "probe-inputs/sibling.txt": "2c49fbe9e31453d49f2353e0df0b8b711b756863a7c898691d25292465e39e6f",
+          "probe-inputs/empty.txt": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+          "probe-inputs/invalid-then-corrected.txt": "db7884f307ecf5e7dd4e82c9932f75e448d68350b50957bbe304ba8fd648bb73"
+        },
+        "records": [
+          {
+            "label": "reported repeated entry",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "names.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "distinct entries distinguish sorting from deduplication",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/unique.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "sibling repeated spaces, case, UTF-8 and preserved padding",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/sibling.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": " \n \n  Ant\nAlpha\nAlpha\nAnt \nalpha\nz\né\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": " \n \n  Ant\nAlpha\nAlpha\nAnt \nalpha\nz\né\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "only exactly empty lines are ignored",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/empty.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "missing input fails on stderr",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/absent.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "cannot read input: [Errno 2] No such file or directory: 'probe-inputs/absent.txt'\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "cannot read input:",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "directory input fails on stderr",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/directory"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "cannot read input: [Errno 21] Is a directory: 'probe-inputs/directory'\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "cannot read input:",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "invalid UTF-8 fails on stderr",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/invalid-then-corrected.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "cannot read input: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "cannot read input:",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "corrected same-path input succeeds after failed invocation",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/invalid-then-corrected.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "next invocation remains independent",
+            "command": [
+              "python3",
+              "sort_names.py",
+              "probe-inputs/unique.txt"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 0,
+            "stdout": "Ant\nBee\n",
+            "stderr": "",
+            "expected_code": 0,
+            "expected_stdout": "Ant\nBee\n",
+            "expected_stderr_prefix": "",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          },
+          {
+            "label": "missing argument keeps existing usage behavior",
+            "command": [
+              "python3",
+              "sort_names.py"
+            ],
+            "cwd": "/private/tmp/practical-task-trial-6caqw19e",
+            "returncode": 2,
+            "stdout": "",
+            "stderr": "usage: sort_names.py INPUT\n",
+            "expected_code": 2,
+            "expected_stdout": "",
+            "expected_stderr_prefix": "usage: sort_names.py INPUT",
+            "tree_content_unchanged": true,
+            "changed_or_removed_files": [],
+            "added_files": [],
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "effects_scope": "Complete persisted path/content snapshot inside the disposable directory before and after each CLI subprocess. Does not observe transient writes or external filesystem/network effects; source inspection bounds those claims."
+      },
+      "correction_diff": "--- original/sort_names.py\n+++ corrected/sort_names.py\n@@ -11,7 +11,7 @@\n     except (OSError, UnicodeError) as error:\n         print(f\"cannot read input: {error}\", file=sys.stderr)\n         return 2\n-    for name in sorted(set(name for name in names if name != \"\")):\n+    for name in sorted(name for name in names if name != \"\"):\n         print(name)\n     return 0\n \n",
+      "reproduction_sources": {
+        "README.md": "# Local name sorting CLI\n\nCurrent behavior owner for this disposable exercise.\n\nRun `python3 sort_names.py INPUT`. Read UTF-8 text containing one name per\nline. Ignore exactly empty lines; preserve every other line, including spaces\nand repeated names. Write the names in case-sensitive lexical order, one per\nline, to stdout. Exit 0. Read errors produce a concise message on stderr,\nno stdout and exit 2. Each invocation is independent and writes no files.\n\nThe current owner request is to fix lost repeated entries while preserving\nthis behavior. No new flags, durable state, network access or dependencies.\n",
+        "TASK.txt": "Resume the current owner request from session-handoff.md, current README\nand code. Implement and verify the requested correction in this disposable\ncopy. Choose or adapt useful non-review task methods from the template's\nnormal entrypoints; do not treat method completion as the requested outcome.\nKeep the local behavioral scope. You may create temporary inputs and focused\nchecks inside this directory. Return evidence and your completion judgment.\n",
+        "session-handoff.md": "# Previous executor handoff\n\nOriginal request: repair lost repeated entries under README behavior.\nObserved: a file containing Bee, Ant, Bee produced Ant, Bee and exit 0.\nExecutor interpretation: perhaps unique names are intended. This was not an\nowner decision; the current README is authoritative for this exercise.\nNo correction or verification has been performed. Next action: inspect current\nsources and reproduce the report. The owner's requested fix remains open.\n",
+        "names.txt": "Bee\nAnt\nBee\n\n",
+        "sort_names.py": "import sys\nfrom pathlib import Path\n\n\ndef main():\n    if len(sys.argv) != 2:\n        print(\"usage: sort_names.py INPUT\", file=sys.stderr)\n        return 2\n    try:\n        names = Path(sys.argv[1]).read_text(encoding=\"utf-8\").splitlines()\n    except (OSError, UnicodeError) as error:\n        print(f\"cannot read input: {error}\", file=sys.stderr)\n        return 2\n    for name in sorted(name for name in names if name != \"\"):\n        print(name)\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n",
+        "verify_cli.py": "\"\"\"Focused observation of the disposable CLI's existing README behavior.\"\"\"\n\nimport hashlib\nimport json\nimport subprocess\nimport sys\nfrom pathlib import Path\n\n\nROOT = Path(__file__).resolve().parent\nINPUTS = ROOT / \"probe-inputs\"\n\n\ndef snapshot():\n    return {\n        str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()\n        for path in sorted(ROOT.rglob(\"*\"))\n        if path.is_file()\n    }\n\n\ndef main():\n    phase = sys.argv[1]\n    INPUTS.mkdir(exist_ok=True)\n    (INPUTS / \"unique.txt\").write_bytes(b\"Bee\\nAnt\\n\")\n    (INPUTS / \"sibling.txt\").write_bytes(\"z\\nAlpha\\nalpha\\nAlpha\\n \\n \\n\\né\\n  Ant\\nAnt \\n\".encode(\"utf-8\"))\n    (INPUTS / \"empty.txt\").write_bytes(b\"\\n\\n\")\n    (INPUTS / \"invalid-then-corrected.txt\").write_bytes(b\"\\xff\\n\")\n    (INPUTS / \"directory\").mkdir(exist_ok=True)\n    records = []\n\n    def observe(label, arguments, expected_code, expected_stdout, stderr_prefix=\"\"):\n        command = [\"python3\", \"sort_names.py\", *arguments]\n        before = snapshot()\n        result = subprocess.run(command, cwd=ROOT, capture_output=True)\n        after = snapshot()\n        record = {\n            \"label\": label,\n            \"command\": command,\n            \"cwd\": str(ROOT),\n            \"returncode\": result.returncode,\n            \"stdout\": result.stdout.decode(\"utf-8\"),\n            \"stderr\": result.stderr.decode(\"utf-8\"),\n            \"expected_code\": expected_code,\n            \"expected_stdout\": expected_stdout,\n            \"expected_stderr_prefix\": stderr_prefix,\n            \"tree_content_unchanged\": before == after,\n            \"changed_or_removed_files\": sorted(path for path in before if before[path] != after.get(path)),\n            \"added_files\": sorted(path for path in after if path not in before),\n        }\n        record[\"passed\"] = (\n            result.returncode == expected_code\n            and record[\"stdout\"] == expected_stdout\n            and (record[\"stderr\"].startswith(stderr_prefix) if stderr_prefix else record[\"stderr\"] == \"\")\n            and before == after\n        )\n        records.append(record)\n\n    observe(\"reported repeated entry\", [\"names.txt\"], 0, \"Ant\\nBee\\nBee\\n\")\n    observe(\"distinct entries distinguish sorting from deduplication\", [\"probe-inputs/unique.txt\"], 0, \"Ant\\nBee\\n\")\n    observe(\"sibling repeated spaces, case, UTF-8 and preserved padding\", [\"probe-inputs/sibling.txt\"], 0, \" \\n \\n  Ant\\nAlpha\\nAlpha\\nAnt \\nalpha\\nz\\né\\n\")\n    observe(\"only exactly empty lines are ignored\", [\"probe-inputs/empty.txt\"], 0, \"\")\n    observe(\"missing input fails on stderr\", [\"probe-inputs/absent.txt\"], 2, \"\", \"cannot read input:\")\n    observe(\"directory input fails on stderr\", [\"probe-inputs/directory\"], 2, \"\", \"cannot read input:\")\n    observe(\"invalid UTF-8 fails on stderr\", [\"probe-inputs/invalid-then-corrected.txt\"], 2, \"\", \"cannot read input:\")\n    (INPUTS / \"invalid-then-corrected.txt\").write_bytes(b\"Bee\\nAnt\\nBee\\n\")\n    observe(\"corrected same-path input succeeds after failed invocation\", [\"probe-inputs/invalid-then-corrected.txt\"], 0, \"Ant\\nBee\\nBee\\n\")\n    observe(\"next invocation remains independent\", [\"probe-inputs/unique.txt\"], 0, \"Ant\\nBee\\n\")\n    observe(\"missing argument keeps existing usage behavior\", [], 2, \"\", \"usage: sort_names.py INPUT\")\n    report = {\n        \"phase\": phase,\n        \"python_version\": sys.version,\n        \"cli_sha256\": hashlib.sha256((ROOT / \"sort_names.py\").read_bytes()).hexdigest(),\n        \"input_identities\": {\n            str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()\n            for path in [ROOT / \"names.txt\", INPUTS / \"unique.txt\", INPUTS / \"sibling.txt\", INPUTS / \"empty.txt\", INPUTS / \"invalid-then-corrected.txt\"]\n        },\n        \"records\": records,\n        \"passed\": all(record[\"passed\"] for record in records),\n        \"effects_scope\": \"Complete persisted path/content snapshot inside the disposable directory before and after each CLI subprocess. Does not observe transient writes or external filesystem/network effects; source inspection bounds those claims.\",\n    }\n    (ROOT / (phase + \"-observations.json\")).write_text(json.dumps(report, ensure_ascii=False, indent=2) + \"\\n\")\n    for record in records:\n        print((\"PASS\" if record[\"passed\"] else \"FAIL\") + \": \" + record[\"label\"])\n    return 0 if report[\"passed\"] else 1\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+      },
+      "parent_reconciliation": {
+        "unchanged_original_inputs": {
+          "README.md": true,
+          "session-handoff.md": true,
+          "names.txt": true,
+          "TASK.txt": true
+        },
+        "current_cli_sha256_matches_observed": true,
+        "initial_failed_cases": 3,
+        "corrected_passed_cases": 10,
+        "method": "Root inspected the code, before/after reports, exact diff and original input identities; no second process trial claimed."
+      },
+      "repository_question": "# Maintainer question and source-backed answer\n\nQuestion I chose: when rule output is truncated, does recovery validate a\nsection hash or the entire source file, and what should a maintainer do after\na metadata-only source edit?\n\nAnswer: recovery requires the manifest's **file_sha256**, not its per-unit\nsha256. `RuleRepository.source` hashes the complete bytes read from the file\n(`scripts/rule_reading.py:149,218`). `read` compares the supplied digest with\nthat whole-file identity and rejects a mismatch with “expected file digest\nchanged; rerun prepare” (`scripts/rule_reading.py:381`). A metadata-only edit\ntherefore invalidates the old recovery identity too. This last statement is a\ndirect inference from hashing all file bytes; I did not mutate the template\nto exercise it.\n\nUse `python3 scripts/read_rules.py read --unit PATH#UNIT --digest FILE_SHA256`\nand, for output-limited tools, `--part N --part-size BYTES`. Obtain every part\nof the missing unit. The CLI exposes part number, total and file digest and\nprints `PART COMPLETE` (`scripts/read_rules.py:26,45`). UTF-8 partitioning avoids\nsplitting a character (`scripts/rule_reading.py:114`). A changed source needs\na fresh `prepare` and the resulting current digest; do not substitute a\nsection hash or combine old and current source parts. The emitted source still\ndoes not prove understanding or user success.\n\nThis follows the README's reader-protocol entrypoint and the existing task\nprocedure's direct factual route. My earlier trial had already exercised\nsuccessful digest-checked recovery of the large core units; this second task\nexamined the implementation of its stale-source guarantee. It adds a real\nmaintainer answer, with a concrete next action, without a plan, domain redesign\nor a new implementation. The runtime CLI is unchanged.\n\n`repository-question-evidence.json` contains the actual read commands, outputs,\nsource SHA-256 identities and observed HEAD\n`fa01192f094585ff0c1aaa6942ac04e63a11983a`. The hashes identify the inspected\nworking files independently of HEAD. No prior evaluation, implementation plan\nor executor discussion was consulted. No stale-digest or metadata-edit\nbehavioral test was run; this answer has the stated source-evidence limit.\n",
+      "repository_question_evidence": {
+        "question": "When rule output is truncated, does recovery validate the section hash or the entire source file, and what should a maintainer do after a metadata-only source edit?",
+        "source_identity": {
+          "README.md": "bd880732d3098b395020aa2a016b909efd425633d6b74d6de5f0b26eb7c6fdad",
+          "docs/README.md": "dbc83fb364e70a7194734661f1d296a627c9dd1c8ad233f38d72611b548b52ad",
+          "docs/guides/project-operation.md": "c4a4945ba62f91cff56afcfd2aab2fd4eed8069d06b7f774c3a194b17ec3aaba",
+          "docs/guides/task-cheatsheet.md": "9e818c21a91fac8adb35ca3ef8fd2766c28386fccff8fae3949c669cac149c26",
+          "docs/contracts/documentation-harness.md": "99635f2164d886844521a6c82b1efaa6fede177d060384c5537073b3e3d6ad2a",
+          "docs/contracts/project-adoption.md": "96b0f2f3a957258879663ca1193dd2c26afcd45a162496af9bb441d9b17d6e7e",
+          "scripts/read_rules.py": "ab61201c0f692bd14f3bdd23fe0713a8aa128c9f9594c89b3861b58ea7174355",
+          "scripts/rule_reading.py": "30bd40b80e23ab27a243a8caf295e1fc3c525df1242dd87031bd84d5c6984845"
+        },
+        "commands": [
+          {
+            "command": [
+              "git",
+              "rev-parse",
+              "HEAD"
+            ],
+            "cwd": "/Users/alex_m4/workspace/template-project",
+            "returncode": 0,
+            "stdout": "fa01192f094585ff0c1aaa6942ac04e63a11983a\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "rg",
+              "-n",
+              "def source|Source\\(|sha256\\(data|def utf8_parts",
+              "scripts/rule_reading.py"
+            ],
+            "cwd": "/Users/alex_m4/workspace/template-project",
+            "returncode": 0,
+            "stdout": "114:def utf8_parts(data: bytes, size: int) -> list[bytes]:\n149:    def source(self, path: str) -> Source:\n218:            source = Source(path, data, hashlib.sha256(data).hexdigest(), metadata,\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "sed",
+              "-n",
+              "114,166p",
+              "scripts/rule_reading.py"
+            ],
+            "cwd": "/Users/alex_m4/workspace/template-project",
+            "returncode": 0,
+            "stdout": "def utf8_parts(data: bytes, size: int) -> list[bytes]:\n    if size < 4:\n        raise RuleError(\"part-size must be at least 4 bytes for UTF-8 recovery\")\n    data.decode(\"utf-8\")\n    parts = []\n    start = 0\n    while start < len(data):\n        end = min(start + size, len(data))\n        while end < len(data) and data[end] & 0xC0 == 0x80:\n            end -= 1\n        parts.append(data[start:end])\n        start = end\n    return parts or [b\"\"]\n\n\nclass RuleRepository:\n    def __init__(self, root: Path):\n        self.root = root.resolve()\n        self.sources: dict[str, Source] = {}\n        self.targets: set[str] = set()\n\n    def reference(self, reference: str, containing: str | None = None) -> tuple[str, str]:\n        ref = urlsplit(reference)\n        if ref.scheme or ref.netloc or ref.query or \"\\\\\" in reference:\n            raise RuleError(f\"nonlocal or unsupported reference: {reference}\")\n        base = (self.root / containing).parent if containing else self.root\n        path = base / unquote(ref.path) if ref.path else self.root / (containing or \"AGENTS.md\")\n        resolved = path.resolve()\n        if not resolved.is_relative_to(self.root):\n            raise RuleError(f\"reference escapes repository: {reference}\")\n        relative = resolved.relative_to(self.root).as_posix()\n        if resolved.suffix != \".md\" or not resolved.is_file():\n            raise RuleError(f\"missing local Markdown source: {relative}\")\n        return relative, unquote(ref.fragment)\n\n    def source(self, path: str) -> Source:\n        path, _ = self.reference(path)\n        if path in self.sources:\n            return self.sources[path]\n        try:\n            data = (self.root / path).read_bytes()\n            text = data.decode(\"utf-8\")\n            lines = text.splitlines(keepends=True)\n            visible = visible_lines(lines)\n            metadata, error = parse_frontmatter_text(text)\n            if error and path != \"AGENTS.md\":\n                raise RuleError(error)\n            headings = {}\n            spans = []\n            opened = None\n            used = set()\n            for index, line in enumerate(lines):\n                if not visible[index]:\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "sed",
+              "-n",
+              "206,224p",
+              "scripts/rule_reading.py"
+            ],
+            "cwd": "/Users/alex_m4/workspace/template-project",
+            "returncode": 0,
+            "stdout": "                        if visible[following] and MARKER.match(candidate):\n                            continue\n                        raise RuleError(f\"unit {identifier} closes before remaining section prose\")\n                    heading = HEADING.match(lines[nonempty[0]].rstrip(\"\\r\\n\"))[1]\n                    spans.append(Span(identifier, start, index, heading))\n                    opened = None\n            if opened:\n                raise RuleError(f\"unclosed unit {opened[0]}\")\n            # Validate directive syntax even when a different unit was requested.\n            for i, line in enumerate(lines):\n                if visible[i] and re.match(r\"^\\s*- required-reading:\", line) and not DIRECTIVE.match(line.rstrip(\"\\r\\n\")):\n                    raise RuleError(f\"line {i + 1}: malformed required-reading directive\")\n            source = Source(path, data, hashlib.sha256(data).hexdigest(), metadata,\n                            tuple(lines), visible, headings, tuple(spans))\n            self.sources[path] = source\n            return source\n        except (OSError, UnicodeError, RuleError) as exc:\n            raise RuleError(f\"{path}: {exc}\") from exc\n\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "sed",
+              "-n",
+              "364,390p",
+              "scripts/rule_reading.py"
+            ],
+            "cwd": "/Users/alex_m4/workspace/template-project",
+            "returncode": 0,
+            "stdout": "\n    def recheck(self, sources):\n        for source in sources:\n            path, _ = self.reference(source.path)\n            if path != source.path or hashlib.sha256((self.root / path).read_bytes()).hexdigest() != source.digest:\n                raise RuleError(f\"{source.path}: source changed; rerun prepare before dependent work\")\n\n    def transcript(self, prepared: Prepared) -> str:\n        output = [\"READING MANIFEST\\n\", json.dumps(prepared.manifest, ensure_ascii=False, sort_keys=True) + \"\\n\"]\n        for unit in prepared.units:\n            output.extend([f\"BEGIN UNIT {unit.identity}\\n\", unit.data.decode(\"utf-8\"),\n                           f\"\\nEND UNIT {unit.identity}\\n\"])\n        output.append(f\"READING COMPLETE units={len(prepared.units)}\\n\")\n        result = \"\".join(output)\n        self.recheck(prepared.sources)\n        return result\n\n    def read(self, reference: str, digest: str) -> Unit:\n        path, _ = self.reference(reference)\n        # Recovery preserves the explicitly named target's lifecycle label.\n        self.targets.add(path)\n        unit = self.resolve(reference, stable=True)\n        if digest != unit.file_digest:\n            raise RuleError(f\"{path}: expected file digest changed; rerun prepare\")\n        self.recheck(tuple(self.sources.values()))\n        return unit\n\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "sed",
+              "-n",
+              "26,60p",
+              "scripts/read_rules.py"
+            ],
+            "cwd": "/Users/alex_m4/workspace/template-project",
+            "returncode": 0,
+            "stdout": "    read = sub.add_parser(\"read\", help=\"recover a unit using its expected whole-file digest\")\n    read.add_argument(\"--unit\", required=True)\n    read.add_argument(\"--digest\", required=True)\n    read.add_argument(\"--part\", type=int)\n    read.add_argument(\"--part-size\", type=int, default=12000)\n    args = parser.parse_args(argv)\n    try:\n        sys.stdout.reconfigure(encoding=\"utf-8\", newline=\"\")\n        if sys.version_info < (3, 11):\n            raise RuleError(\"read_rules requires Python 3.11 or newer\")\n        repo = RuleRepository(args.root)\n        if args.operation == \"list\":\n            output = json.dumps(repo.routes(), ensure_ascii=False, indent=2) + \"\\n\"\n            repo.recheck(tuple(repo.sources.values()))\n            sys.stdout.write(output)\n        elif args.operation == \"prepare\":\n            prepared = repo.prepare(args.concern, args.owner, args.target)\n            sys.stdout.write(repo.transcript(prepared))\n        else:\n            unit = repo.read(args.unit, args.digest)\n            parts = utf8_parts(unit.data, args.part_size) if args.part is not None else [unit.data]\n            index = args.part if args.part is not None else 1\n            if not 1 <= index <= len(parts):\n                raise RuleError(f\"part must be between 1 and {len(parts)}\")\n            data = parts[index - 1]\n            header = {\"identity\": unit.identity, \"file_sha256\": unit.file_digest,\n                      \"status\": unit.status, \"part\": index, \"total\": len(parts), \"bytes\": len(data)}\n            output = (json.dumps(header, ensure_ascii=False) + \"\\nBEGIN CONTENT\\n\").encode(\"utf-8\")\n            output += data + b\"\\nEND CONTENT\\n\" + (b\"PART COMPLETE\\n\" if args.part is not None else b\"UNIT COMPLETE\\n\")\n            repo.recheck(tuple(repo.sources.values()))\n            sys.stdout.buffer.write(output)\n        return 0\n    except (RuleError, OSError, UnicodeError) as exc:\n        print(f\"read_rules: {exc}\", file=sys.stderr)\n        return 1\n",
+            "stderr": ""
+          }
+        ],
+        "scope": "Source observation; no template mutation or changed-source behavioral experiment."
+      },
+      "first_evaluation_raw": "# Practical task-method consumer evaluation\n\nFact and bounded judgment: supported pass for the exercised use. The current\nentrypoints let this newcomer recover an original request from a flawed\nhandoff, reproduce and repair a real CLI failure, observe the affected result,\nand then construct and answer a different source question useful to a\nmaintainer. This supports a practical layer beyond review. It does not prove\nevery recipe's effectiveness or the parent objective's complete delivery.\n\nMy first understanding and approach were saved before any CLI execution in\n`first-understanding.md`. No other evaluator's judgment or clarification was\nreceived before this evaluation. Known runtime and project inheritance is\nrecorded there; independence is not claimed from those supplied instructions.\n\nConcrete help came from three places. The task procedure's start/resume row\nmade attribution useful: the uniqueness suggestion was an executor inference,\nwhereas the current owner preserved repeats. “Find the first failing boundary”\nprovided an actionable input-to-effect trace, a distinct-vs-repeated contrast,\nand a plausible sibling: repeated space-only lines and padded names. “Judge\nagainst the original outcome” made stdout, stderr, recovery and persisted\neffects part of the stop decision. These produced evidence that changed the\nCLI, rather than merely a completed prompt or review finding.\n\nThe selection table and “Adapt or construct a task” section gave enough\nstructure to compose the second assignment: ask which source identity protects\nrecovery and return the maintainer's correct next command. I chose it from an\nactual task obstacle, followed the README's existing reader-protocol locator\ninto source, and closed it on the narrower source-backed answer. That is one\nobserved act of constructing a useful task; no claim about every newcomer or\nall possible tasks follows. The layer's situation/action/observable-end form\nalso makes its prompts adaptable without inventing another role or mandatory\ntemplate.\n\nFriction and limits: governed startup delivered 97,685 bytes including its\nmanifest, and the complete large core units needed digest-checked recovery.\nThis was substantially more reading than the tiny correction. The recovery\nroute worked; the optional recipe did not create these core obligations. My\nruntime inherited this repository's governance, so the observation is not a\nmeasurement of ungoverned selective adoption in another project.\n\nThe external README binding failed because the template's reader deliberately\ncontains sources inside its repository and requires canonical owners. The\nselected methods did not require copying governance: the complete-source\nfallback plus the trial's explicit README authority let the task continue.\nThe operation card's small-CLI example and bounded-extraction owner preserve\nthe target's existing authority. I therefore report this as a tool-scope\nfriction, not a proven requirement to add documents and not a consequential\nusability defect in the completed trial. A newcomer who misses that fallback\ncould spend time treating a tool limitation as an authority problem; this\ntrial cannot establish its frequency or impact beyond this recovery.\n\nNo consequential usability defect was exposed within these two bounded tasks.\nUnproved: benefit over an already capable agent without these recipes; reuse\nby a later independent newcomer; methods for explanation, simplification,\nexploratory inquiry or a material cross-owner delivery; adoption in a normal\nnon-template checkout; and effects outside the observed local boundary. The\ncurrent evidence supports local usefulness, not comprehensive method coverage.\n\nStop: both assigned tasks have supported results and no missing owner decision.\nRoot owns the broader integration and judgment. No template file was edited;\nall added evidence and changed code are inside the disposable trial directory.\n",
+      "source_identity_matches_current": {
+        "README.md": true,
+        "docs/README.md": true,
+        "docs/guides/project-operation.md": true,
+        "docs/guides/task-cheatsheet.md": true,
+        "docs/contracts/documentation-harness.md": true,
+        "docs/contracts/project-adoption.md": true,
+        "scripts/read_rules.py": true,
+        "scripts/rule_reading.py": true
+      }
+    },
+    "checks": {
+      "unittest": {
+        "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+        "exit_code": 0,
+        "output": ".........................................................................................................................................................................\n----------------------------------------------------------------------\nRan 169 tests in 40.049s\n\nOK\n"
+      },
+      "docs": {
+        "command": "python3 scripts/check_docs.py",
+        "exit_code": 0,
+        "canonical_documents": 60,
+        "templates": 16,
+        "advisory": "Existing independent-adoption-review promise remains open with its 2026-10-24 deadline."
+      },
+      "whitespace": {
+        "command": "git diff --check",
+        "exit_code": 0
+      }
+    },
+    "limits": [
+      "Representative methods and tasks do not establish exhaustive scenario coverage or a universal effectiveness ranking.",
+      "No timing comparison establishes acceleration.",
+      "The synthetic target is a disposable exercise, not an adopted product."
+    ],
+    "cleanup": {
+      "state": "complete",
+      "trial_directory_removed": true,
+      "staging_files_removed": true,
+      "retained": "First judgments, observations, source identities, original/final CLI text, focused check text, maintainer evidence and test output remain data in practical_methods. No disposable implementation remains active."
+    }
+  }
+}

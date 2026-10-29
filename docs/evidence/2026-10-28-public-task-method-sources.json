@@ -1,0 +1,298 @@
+{
+  "observed_on": "2026-10-28",
+  "requested_outcome": "Research public practical task methods, including grill-me, and assess the basis and improvement of this template's CheatSheet.",
+  "source_treatment": "External instructions were read as data. No installation, source execution, credential access, or project-content export to an external agent service.",
+  "source_independence": "Group by originating project/maintainer. Multiple Matt Pocock files and its posts are related evidence; Superpowers and its eval project are related evidence. Same-name skills and forks are not interchangeable or independent confirmations.",
+  "discovery_queries": [
+    "\"grill-me\" skill github",
+    "\"grill me\" \"Matt Pocock\" skill",
+    "github agent skills systematic debugging verification before completion practical skills",
+    "site:github.com/garrytan/gstack \"investigate\" \"SKILL.md\"",
+    "site:github.com/obra/superpowers-evals \"baseline\" \"pressure\"",
+    "site:aihero.dev \"grill\" Matt Pocock skills",
+    "site:anthropic.com engineering skills evals test skills"
+  ],
+  "selected_sources": [
+    {
+      "id": "matt-grill-entry",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md",
+      "read_scope": "Complete seven-line entrypoint preview",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Delegates the user command to the shared interview method.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-grilling",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md",
+      "read_scope": "Complete current raw rendering, lines 0-25",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Decision dependencies, ready-frontier rounds, facts versus human choices.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-grilling-pinned",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/85f83d3fde1d3a90d5c9a657f6998c79a6c37308/skills/productivity/grilling/SKILL.md",
+      "read_scope": "Complete pinned raw rendering, lines 0-23",
+      "evidence_kind": "Versioned repository artifact",
+      "relevance": "Historical version corroborates the main mechanism; it lacks the current main sentence about wording yes as acceptance.",
+      "version": "Pinned commit"
+    },
+    {
+      "id": "matt-frontier-change",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/commit/a4b2009a1a3ac9575506c10b4c84f08f9bba7a38",
+      "read_scope": "Commit message, changeset, documentation and grilling method hunks; other deleted files not fully read",
+      "evidence_kind": "Versioned change, human and AI coauthors shown",
+      "relevance": "Actual transition from single questions to dependency-ready rounds; reported round-count example is not a measured benchmark.",
+      "version": "Pinned commit"
+    },
+    {
+      "id": "matt-self-interview-repair",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/commit/e5932a7a47e5cae312c1b814ce6194b09aa27be1",
+      "read_scope": "Commit explanation and visible wayfinder ticket-type diff, lines 130-204; not every diff hunk",
+      "evidence_kind": "Reported incident plus versioned change, human and AI coauthors shown",
+      "relevance": "Composition led to self-answering design questions; fact/decision ownership was made explicit. Original student sessions not obtained.",
+      "version": "Pinned commit"
+    },
+    {
+      "id": "matt-usage-cautions",
+      "family": "Matt Pocock AI Hero",
+      "url": "https://www.aihero.dev/things-people-get-wrong-with-grill-me-and-grill-with-docs",
+      "read_scope": "Article substantive body, lines 17-165; images not inspected",
+      "evidence_kind": "Named maintainer practitioner account; page also markets a course",
+      "relevance": "Prototype-needed questions, scope, excessive questioning and preservation of decisions; generic numeric claims not adopted.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-origin-post",
+      "family": "Matt Pocock AI Hero",
+      "url": "https://www.aihero.dev/my-grill-me-skill-has-gone-viral",
+      "read_scope": "Article body including embedded original prompt and results account, lines 17-117; images/video not inspected",
+      "evidence_kind": "Named maintainer self-report; page also markets a course",
+      "relevance": "Original compact interview prompt and reported uses; no comparative effectiveness estimate accepted.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-diagnosing-bugs",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/diagnosing-bugs/SKILL.md",
+      "read_scope": "Complete raw method, lines 0-114",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Failure-sensitive loop, minimized reproduction, predictions, original-case recheck and instrumentation cleanup.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "superpowers-tracing",
+      "family": "Superpowers",
+      "url": "https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/root-cause-tracing.md",
+      "read_scope": "Complete raw reference, lines 0-155",
+      "evidence_kind": "Repository technique and reported debugging example",
+      "relevance": "Follow a bad directory value through its producer/callers. The reported 2025-10-03 test outcome was not rerun.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "superpowers-debugging",
+      "family": "Superpowers",
+      "url": "https://github.com/obra/superpowers/blob/main/skills/systematic-debugging/SKILL.md",
+      "read_scope": "Complete raw method, lines 0-257, through overlapping excerpts",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Working/broken comparison and hypotheses; source-wide mandates, fixed failure counts and unsourced percentages do not transfer automatically.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-tickets",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md",
+      "read_scope": "Complete raw method, lines 0-91",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Behavioral vertical slices, blocking edges and the wide-refactor exception.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-design-twice",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+      "read_scope": "Complete raw reference, lines 0-36",
+      "evidence_kind": "Repository technique citing Ousterhout",
+      "relevance": "Different constraints produce substantively different interface proposals; no fixed agent count adopted.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-design-reference",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/codebase-design/SKILL.md",
+      "read_scope": "Complete raw reference, lines 0-97",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Caller complexity/deletion probe; not a universal ban on interfaces with one implementation.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-architecture-survey",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/improve-codebase-architecture/SKILL.md",
+      "read_scope": "Complete raw method, lines 0-54; linked HTML scaffold not read",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Experienced architectural friction and changed areas; report packaging and vocabulary mandates remain source-specific.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-retro",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/retro/SKILL.md",
+      "read_scope": "Complete raw method, lines 0-38",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Primary-session analysis, unwired checks, pointers, no-op instructions and environment correction.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "matt-writing-for-agents",
+      "family": "Matt Pocock skills",
+      "url": "https://github.com/mattpocock/skills/blob/main/skills/productivity/writing-for-agents/SKILL.md",
+      "read_scope": "Complete raw reference, lines 0-60; linked mechanics file not read",
+      "evidence_kind": "Repository artifact",
+      "relevance": "Trigger pointers and information placement; speculative causal claims about negation not treated as universal experimental findings.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "josh-quiz",
+      "family": "Joshua Wheelock grill-me",
+      "url": "https://github.com/joshuawheelock/grill-me/blob/main/skills/grill-me/SKILL.md",
+      "read_scope": "Complete raw skill, lines 0-27; native picker source and binary not run or audited",
+      "evidence_kind": "Distinct maintained repository artifact",
+      "relevance": "Focused behavior prediction and semantic grading against inspected implementation.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "josh-reported-example",
+      "family": "Joshua Wheelock grill-me",
+      "url": "https://github.com/joshuawheelock/grill-me#see-it-in-action",
+      "read_scope": "README example and method sections, lines 212-254 and 335-354; installation directions inspected only as data",
+      "evidence_kind": "Reported usage example",
+      "relevance": "Atomic replace versus safe concurrent append illustrates a useful question; target implementation was not obtained or reproduced.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "superpowers-writing",
+      "family": "Superpowers",
+      "url": "https://github.com/obra/superpowers/blob/main/skills/writing-skills/SKILL.md",
+      "read_scope": "Complete raw method, lines 0-356, through overlapping excerpts; linked testing references not fully read",
+      "evidence_kind": "Repository artifact with reported wording experiments",
+      "relevance": "Match instruction form to baseline failure and compare no-guidance control; underlying wording-test raw results not reanalysed.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "gstack-startup",
+      "family": "gstack",
+      "url": "https://github.com/garrytan/gstack/blob/main/office-hours/sections/phase-2a-startup-diagnostic.md",
+      "read_scope": "Complete raw section, lines 0-129",
+      "evidence_kind": "Generated repository method; human authorship of each line unverified",
+      "relevance": "Actual workaround and unassisted-use evidence in a startup context; pressure style and payment criterion not made universal.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "gstack-builder",
+      "family": "gstack",
+      "url": "https://github.com/garrytan/gstack/blob/main/office-hours/sections/phase-2b-builder-brainstorm.md",
+      "read_scope": "Complete raw section, lines 0-34",
+      "evidence_kind": "Generated repository method; human authorship of each line unverified",
+      "relevance": "Creative exploration and concrete making under a different purpose than startup validation.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "gstack-entry",
+      "family": "gstack",
+      "url": "https://github.com/garrytan/gstack/blob/main/office-hours/SKILL.md",
+      "read_scope": "Selected raw sections, including preamble, context, method-section index, purpose routing and completion; not full invocation dependencies",
+      "evidence_kind": "Generated repository artifact",
+      "relevance": "Confirms source-specific tools, persistence, telemetry and approvals; no instruction executed.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "anthropic-authoring",
+      "family": "Anthropic documentation",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+      "read_scope": "Selected sections/excerpts: concision and degrees of freedom, descriptions/disclosure, workflow excerpts through line 546, evaluation/iteration and navigation observations through line 782; not the entire 1195-line page.",
+      "evidence_kind": "Provider authoring guidance",
+      "relevance": "Minimal guidance for observed gaps, no-skill baseline, fresh use and finding missed pointers; no result for this template inferred.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "superpowers-comparison-suite",
+      "family": "Superpowers Evals / Prime Radiant",
+      "url": "https://github.com/prime-radiant-inc/superpowers-evals/blob/main/suites/conversation_routine_use.yaml",
+      "read_scope": "Complete raw suite, lines 0-25",
+      "evidence_kind": "Executable evaluation configuration, not executed",
+      "relevance": "Stock/treatment pairs and shared evaluation settings are declared; no numerical result established.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    },
+    {
+      "id": "superpowers-eval-method",
+      "family": "Superpowers Evals / Prime Radiant",
+      "url": "https://github.com/prime-radiant-inc/superpowers-evals#conversation-author-to-report-workflow",
+      "read_scope": "README lines 0-246, especially 0-64 and 100-161; remaining sections and scenario criteria not fully read",
+      "evidence_kind": "Maintainer evaluation design",
+      "relevance": "Separates delivered response from grading, uses private criteria and checks, identifies live-eval privilege requirements. No harness launched.",
+      "version": "Rolling source as accessed; repository HEAD not established"
+    }
+  ],
+  "retrieval_limits": [
+    "Legacy inferred Matt root and skills/grill-me paths returned 404; followed the actual repository links to skills/productivity/grill-me and grilling.",
+    "A terminal-only public GitHub API attempt failed DNS for three repository HEAD requests. Web reading continued; API revision URL was also unavailable through web. Rolling sources are labelled rather than assigned an invented HEAD.",
+    "An inferred obra/superpowers-evals URL returned 404; followed Superpowers' link to prime-radiant-inc/superpowers-evals.",
+    "An inferred conversation-config-repair scenario.md retrieval returned cache miss; scenario contents and results are not claimed inspected.",
+    "The pinned grilling version and current main differ slightly; the pinned version is a separately inspected historical version, not proof of current main identity.",
+    "Web excerpts omitted portions of some long pages. Reading scopes above identify the substantive text obtained; no full-library claim."
+  ],
+  "evidence_not_obtained": [
+    "Owner's full historical conversation archive",
+    "Numerical results of the public evaluation suite",
+    "Underlying raw sessions for reported public incidents",
+    "An effectiveness comparison of this template with versus without candidate methods"
+  ],
+  "dispositions": {
+    "preserve": "Keep current recipes' original status as implementer designs and prior bounded use; public corroboration is later evidence, not original authorship.",
+    "recommend": "Transfer specific mechanisms and real cases, then compare later matching work against an appropriate baseline.",
+    "not_adopted": "Source-specific approval gates, quotas, mandatory tools, installations, terminology restrictions, universal business metrics or claimed universal timing/accuracy thresholds."
+  },
+  "stopping_basis": "Primary mechanisms, actual revision/incident examples, fit and conflicts, and evaluation gaps are sufficient to answer the research request. The next important uncertainty needs target-task observations and authorized history rather than more prompt catalogs.",
+  "verification": {
+    "scope": "Repository artifact integrity only; not an effectiveness test of the researched methods.",
+    "unittest": {
+      "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+      "exit_code": 0,
+      "output": ".........................................................................................................................................................................\n----------------------------------------------------------------------\nRan 169 tests in 40.989s\n\nOK\n"
+    },
+    "documentation": {
+      "command": "python3 scripts/check_docs.py",
+      "exit_code": 0,
+      "canonical_documents": 61,
+      "templates": 16,
+      "advisory": "Existing independent-adoption-review promise remains open with its original 2026-10-24 due date."
+    },
+    "whitespace": {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    "method_effectiveness_experiment": "not run"
+  },
+  "repository_effects": "Added the research report and source inventory, plus a provenance/research locator in the existing task CheatSheet. No recipe actions, authority or enforcement changed.",
+  "retrieval_attempts": {
+    "mattpocock/skills": {
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "url": "https://api.github.com/repos/mattpocock/skills/commits/main"
+    },
+    "obra/superpowers": {
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "url": "https://api.github.com/repos/obra/superpowers/commits/main"
+    },
+    "garrytan/gstack": {
+      "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "url": "https://api.github.com/repos/garrytan/gstack/commits/main"
+    }
+  },
+  "temporary_retrieval_and_check_files_removed": true
+}

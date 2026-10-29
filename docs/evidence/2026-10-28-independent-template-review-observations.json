@@ -1,0 +1,342 @@
+{
+  "date": "2026-10-28",
+  "baseline": "fa01192f094585ff0c1aaa6942ac04e63a11983a",
+  "independence": {
+    "agent_contexts": "three fork_turns=none contexts; no prior executor trace or other first verdict supplied",
+    "model": "same inherited root model/settings; no model variation or independently acquired source evidence claimed",
+    "assignments": "two identical whole-template review tasks with original owner requirements; one external-consumer task without the expected mission/problem checklist",
+    "first_results": "full first replies retained in native collaboration history; summaries and exact first-verdict excerpts below"
+  },
+  "freeze_check": {
+    "sources_checked": 120,
+    "changed_before_review_close": [],
+    "source_sha256": {
+      ".gitignore": "5bc8a34e8cc65a8f280a1b2f28749c7a98d7bdc5f2e0d275e851ae97c809dce2",
+      "AGENTS.md": "1ccb2f497893ab7a87f0afb114f1ea36e796ce9b324fe013f6adc46203a5f47d",
+      "ARCHITECTURE.md": "822eb5d125ffb3d4661f2736ef678229f4aeef69913536634b99d9073394c007",
+      "CONTRIBUTING.md": "61ba6cf5591114a6f29c5a985ca9c954665ce3851f0e485b7edcf7ba879c3125",
+      "LICENSE": "0da1aaa9452c75eafbd67e69643c94ac45132117c6a94b4440b273b9d3bb9319",
+      "README.md": "4d7cc703b38bb478d35ab25f72d54d7e50ab9f1244bfc719a3b78c69c58dc41f",
+      "README_CN.md": "2eb4feceb3aee6f6d03a3333e56ef3e1548599d01c46ab046972768821fd56da",
+      "architecture-rules.toml": "8f63abc0432017337a92d208c821e3a0f7cab5e79dd74b1454534a978ceaddf3",
+      "archive/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "docs-policy.toml": "b87bcd400c86e19ebf581a32f321d56b409662c3b0f337819b124f534ae8a86c",
+      "docs/README.md": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f",
+      "docs/contracts/README.md": "d465c82e510766437f3fc398ec8984362ed0924a4ba71536f69148a3bfd77796",
+      "docs/contracts/agent-execution-discipline.md": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0",
+      "docs/contracts/autonomous-operation-discipline.md": "8781d03bcfd29ea1cf3d71b68967bf183e64c2677cb0a5d7572076636f5fb067",
+      "docs/contracts/data-analysis-discipline.md": "f05fdeb0600937b67ac17d973adc4e6693f4933ee7e391d37ab9aacb3b3f80c4",
+      "docs/contracts/development-discipline.md": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8",
+      "docs/contracts/documentation-harness.md": "b2a75c5982cb519cd932b12ebbc1a581b50cffd0f9bbbb54acae6efcd6f28776",
+      "docs/contracts/engineering-judgment-discipline.md": "660487b08512878fe2dd65f080af56e18f3b3d13a2e939a8ebd86ee4291a34b5",
+      "docs/contracts/foundational-runtime-discipline.md": "9163e8c3794f43ba266d78411f2e36e8eb6f8ca9e8705d1f231cee4f020319ce",
+      "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+      "docs/contracts/project-adoption.md": "1ba7b934df652fa9f57794742453a607d0fbcd427fcbffe8413ff766cc707c56",
+      "docs/design/README.md": "40c74b245eeea4e2297be4355f5f59c49b5a31b66b0b3a445dc977a8cc260334",
+      "docs/evidence/2026-07-26-bounded-governance-onboarding-evaluation.md": "779d35afc935c152f2d3cfa016b862550a0e47c4e40dda342f6f8ffef2ced0cd",
+      "docs/evidence/2026-07-28-engineering-harness-design-review.md": "3d337931ebafcb84391369bdc71985fad60bb3f558dbf6f8c25b8f1be65f2854",
+      "docs/evidence/2026-07-28-engineering-harness-final-evaluation.md": "5c05f32a01a1c738ddb6336e3b47bf37d10d817fd7651c09a1973da2811f0ac7",
+      "docs/evidence/2026-09-06-template-review.md": "ebcc2e40743440e918936a228babbf3f758583600f784df4727831db1e5d9918",
+      "docs/evidence/2026-09-06-template-review/behavioral-cases.json": "cf29ef22b6b9310472f7bb326d14043eccb9d2eb999bea88ebe21af3e716ce3c",
+      "docs/evidence/2026-09-06-template-review/check-results.json": "12bd010f8c644da49dd94c6fbd238addb6c9d0e449ee1599a5382d11035c7331",
+      "docs/evidence/2026-09-06-template-review/input-provenance.json": "8e7f5963289dcfe5a5a9ae38aac294941298047c3ea2730d2806c25022c32cee",
+      "docs/evidence/2026-09-06-template-review/limitations.json": "ad20c71027a2444c0c513c2a31e360e511d885be9fcc00a150aa96609331d1c9",
+      "docs/evidence/2026-09-06-template-review/manifest.json": "2218448d011de15108293ef475f9542ed2a2cd7146d464e9fadcbacc55ff7f65",
+      "docs/evidence/2026-09-06-template-review/methods.json": "f0c7771fdba8e492ba1d697023079de1437de1ff2bfcc0609060cc66939abcda",
+      "docs/evidence/2026-09-06-template-review/repository-observations.json": "d456ec49c4f9b683106498acaadb7f9a6d9f2d0579a34a8308d24aaa769c0a81",
+      "docs/evidence/2026-09-06-template-review/reproduce.py": "06d44d7acadbc76500bcdf5b3117d7311885dc21a33967e1e35809f42b51782b",
+      "docs/evidence/2026-09-06-template-review/source-excerpts.json": "ed63deb9e312deb1f3f74bd3c67ea109d81e38d986b3af1e1c10f2ddd886e8eb",
+      "docs/evidence/2026-09-06-template-review/sources.json": "cfe6439ab32d96443204edba1f716efcb965dcc1cfdb85ac539bbce4b3f3238e",
+      "docs/evidence/2026-09-06-template-review/version-history.json": "42aaa67adc6854e3e52b20807bf4301f84c516407d71ecd729c32825fb739e16",
+      "docs/evidence/2026-09-14-first-party-adoption-feedback.md": "5b883c4b973810d7ac95ceb42d4ea3bcc34bdbe8ed06cea104217ae8ed07d29c",
+      "docs/evidence/2026-09-15-autonomous-operation-review.md": "6f123005138c4debea1f2a9ef624f9d652194c8d54a1bc0a44029241bfc3a3e2",
+      "docs/evidence/2026-09-26-design-and-onboarding-review.md": "d85ea22525d008f1e06303ac1bb225421726c39281c697b623e84e035fa4cd1c",
+      "docs/evidence/2026-09-27-autonomous-progress-review.md": "7f8157eccb2779a36488c1354d53728c425de45fe1166e39cb7f162f59e7c0f8",
+      "docs/evidence/2026-09-27-grill-review.md": "ddf53002f9bf85d77c6b904288c31f75a8b23f8197cd6a576f2fedba3ca11c2a",
+      "docs/evidence/2026-09-28-inquiry-verification.md": "cba118414b1d1fe0b66a9deb43124bf22b2308df6693983cad41898322c77ab2",
+      "docs/evidence/2026-09-28-research-and-information-acquisition.md": "fb056f5550b1e199d8e43a408a817caf26c2f8b6224c83b8144629e3866c406a",
+      "docs/evidence/2026-10-10-experience-and-adaptive-operation.md": "a7637d8dbede06c8208ccf0de3bcc32854caa4e93593aaef2ad8b8f2171f5280",
+      "docs/evidence/2026-10-19-recursive-improvement-cases.json": "3085d600d602d8b7b63977546b4b17df5ae30a8490cda1353a0a7f0d400f7578",
+      "docs/evidence/2026-10-19-recursive-improvement-trials.json": "feabeaaf6b73f905d5269763bbd7a15fce9163cd4a9aa5281ea82293f963cf27",
+      "docs/evidence/2026-10-19-recursive-improvement.md": "672a2ac9c0bf2e3cef18a37096a18e49dc3886f3cf8dadc8093f245e2f38222a",
+      "docs/evidence/2026-10-20-autonomous-learning-observations.json": "a6fa565b8e435235c92496a90588909c0ac416cab9a1a13f6ece6ae6b48e6170",
+      "docs/evidence/2026-10-20-autonomous-learning.md": "7b35333711554371b6dfa4920b36a2aeb7176c589778403f3168f50ed81ac3cf",
+      "docs/evidence/2026-10-28-claims-review.json": "7b5410f528e631b6e15a5dc4aecbff0d3dda45c67d40e2fa6f3e588c1d797b3d",
+      "docs/evidence/2026-10-28-presentation-review.json": "0c5b1f015c80cd5506f193d0a34c9dcfad968994df366fc465e55bf6f8b80b17",
+      "docs/evidence/2026-10-28-reader-review.json": "797bae7b526e42b1cbba3b7bb964efcc51428aa80405acc3d4c8e78444509641",
+      "docs/evidence/2026-10-28-rule-design-review.json": "118757a6b185fa0793ecd5fa397fd0ade46a69ce78cea216b69756ee30517ee0",
+      "docs/evidence/2026-10-28-rule-reading-verification.md": "ae9f916a3d0fb9fd50fc56c54a69537122edde3c5cb59e4eb32072b3363ba6a8",
+      "docs/evidence/2026-10-28-template-task-observations.json": "c01b06a523a8dc809d2484d6969dd16ef217f6cdb6273506aad970ec7ebdb601",
+      "docs/evidence/2026-10-28-template-unit-tests.txt": "ad6b9cdf546b24e4b826114fde59743e1df8e1b7fe5df3607f45645d60633574",
+      "docs/evidence/2026-10-28-unit-tests.txt": "50a50574183a7aca12772a34eaad4317a5255de68647d181b39107230737f519",
+      "docs/evidence/README.md": "7667b23a5e1e39f4577aca56248fb5615edde53faf38fb9fa5ebbead72f1932c",
+      "docs/guides/README.md": "eb2b2604938d9fbc339ea02117e63ef4a91c92f611e4d226838b792b72781f40",
+      "docs/guides/engineering-reading.md": "8e6df1283ff5c4d81538359695f7245aac716a3d7f829e54332425e5b37acf72",
+      "docs/guides/grill.md": "8f376d57dbc990c66943117e22536d9692107fb5f4b073d8a8173fc9d1428ea2",
+      "docs/guides/information-access.md": "d9262737723158a9b8cd875006405b1812f13f431baacba26af573d7c53d0022",
+      "docs/guides/onboarding.md": "d036d220b2a7fc3f5f5c6c597ff076dcda89b71dca9b4fd65bc6d634678a9ba1",
+      "docs/guides/project-operation.md": "afe1cbdd836a740cc5087bf8470c6e5b2c7fc060b95fe7df9ce410e7145ced31",
+      "docs/guides/research.md": "163a6501d8b9cfd7416279e8d8e61473e3e993ed990b4bbe3e3750436528b4bb",
+      "docs/issues/README.md": "8f633506461e4188f4a90868fbf9a05c71bf79a945fda6f2a7d5b8cd8bfed519",
+      "docs/plans/2026-07-26-agent-execution-governance.md": "fe7240fcb18c710b30fa72714f8826108a1bc1dc143c331a1b70ce905c977d76",
+      "docs/plans/2026-07-26-bounded-governance-and-onboarding.md": "c77ffcaeeef82f6582b5d3aceaf1ffdefabad9625451415423c7e8f884aef3fe",
+      "docs/plans/2026-07-26-documentation-harness-hardening.md": "9398618dce576fbbc7572cdd1f7a01bab8a719b1c1c4c08cf6aa29a3948823b2",
+      "docs/plans/2026-07-27-style-ownership-discipline.md": "7fe31e2248902e8cf51d4cf1184ccd653a09b255297d2a528e8d4f4d7e4b57af",
+      "docs/plans/2026-07-28-engineering-harness-enablement.md": "f3060448a02f23bd5114d42e3ef2c69180a8d1ee9883e83b7a56fe68c689bb55",
+      "docs/plans/2026-08-06-decision-frontier-and-frontend-design.md": "5a5346357abbe9e83202838a517c4c05889465053c8c10451f69f816c4e4cc12",
+      "docs/plans/2026-08-06-evidence-and-collaboration-discipline.md": "4d5494961d47404bf042ad3c84e7846c3d7efe430c59fb6c1986af4c3f38b0be",
+      "docs/plans/2026-08-24-foundational-runtime-discipline.md": "37f575e91d14095b993a0d115334426affddcb4ce1efc3a1b89d4799e3591c27",
+      "docs/plans/2026-08-27-collaboration-constraints-adoption.md": "575044e2dedd8e695ac000eedecc863ce9f2f837e749517e25bbccc7871b4620",
+      "docs/plans/2026-08-28-engineering-judgment-discipline.md": "35591ad63dca1171f60baacca322b818a834030ec95c76a3ce372109d7c095f2",
+      "docs/plans/2026-08-28-invariant-identifier-redesign.md": "8e299fb0b43a097c55642a580ad8c3ccf1f393ff9ba1428084d5319c933cb4be",
+      "docs/plans/2026-09-06-outcome-driven-template.md": "64756e8d52e3b3f85347ecea5090a7537da5e74ec21866a8b0d5a5c242621ba4",
+      "docs/plans/2026-09-06-proportionate-execution.md": "fe84ddbd908c53ff85b90a5a8cefb54ca5fd710744352fdf2b0fd6cdac6c0bd0",
+      "docs/plans/2026-09-10-reference-feedback-learning.md": "5309cfc826ea3ff54dc8dd4b4360bd20c1345b8de5fcbfc3044185625a343bf2",
+      "docs/plans/2026-09-17-public-documentation-reconciliation.md": "0bc72e571ea498ec8900a74246aebd47dbf402c4801197ba96e28e76857103d4",
+      "docs/plans/2026-09-25-personal-context-onboarding.md": "37634782272ed6d4932c1bb6fa97d80424b27b641a69f5edecdfb9dffbbd0418",
+      "docs/plans/2026-09-26-design-methods-and-calibration.md": "a91da3c515c5fede9f4213d882d80cc6f1f19598a2ca005bbd1b067d537c4beb",
+      "docs/plans/2026-09-27-autonomous-progress-and-review.md": "8338b93a682ed81258b45c41e13cea3849b0840127db9968219eb72d6823c8c5",
+      "docs/plans/2026-09-27-recurring-grill-questions.md": "a88a1031375c32c3c7c73570c517e189d7bedde1855bda3cbb9cc7ca4bafe205",
+      "docs/plans/2026-09-28-research-and-information-access.md": "88b3e0331a7f07616484f3e68dada7b62741593d13e9536ced7b339e64fe1612",
+      "docs/plans/2026-10-10-experience-and-adaptive-operation.md": "7265420f71e257066bbe978004da126ae6b7a42658cd2b44e28433d747c1a12d",
+      "docs/plans/2026-10-19-recursive-improvement.md": "63981142ed223ce3ec3ab76a40a52e1ca12bae14edeeac454f35347024b6bca2",
+      "docs/plans/2026-10-20-autonomous-learning.md": "d4c0d2289ba2262e3ef91aeaf76185036837a0521549fcca12772621b4ad8b5e",
+      "docs/plans/2026-10-28-rule-reading-and-outcome-design.md": "c8fadb8851d70ea390353a4dda5b681a5a76175cfe8dded09e07e12cf426020c",
+      "docs/plans/2026-10-28-rule-reading-implementation.md": "f5c6c993ceea2799c89413d37634e5c3be78897df6c7ba0815e36d9ed14da9fb",
+      "docs/plans/README.md": "5f7f5c4f6aa3dbff7135bd68e944c1c176648808b0854666ec5691863d49de0e",
+      "scripts/check_docs.py": "e0803aacbb9250ab34cafbe5b99a8672482cfe596a52d544ba59985186b8afc4",
+      "scripts/read_rules.py": "ab61201c0f692bd14f3bdd23fe0713a8aa128c9f9594c89b3861b58ea7174355",
+      "scripts/rule_reading.py": "4fe1bbc07a7dd789f672573c4659b693295e735ae50eb63b01f0665204441042",
+      "scripts/scan_letter_codes.py": "dd11d1e549d05b8e284b254c3e8e0c3afac2c811f2df79ae2d11ccf5222730ab",
+      "src/README.md": "8813720bf0323af888b74b515eab04676ca37de7b12f244b9807f858b0ba1efc",
+      "templates/README.md": "a6f4831f0509286245a66a8618506bcc6c721c4675d501b684d28246caac9cbe",
+      "templates/adoption-assessment.md": "23a67a6d83f5c37726af9597fc7934670096df0b9612cdafc153b4ccef48e3da",
+      "templates/agent-execution-plan.md": "162387df63dd7e4bdc3b85e766e7f89a4ab5ae616b76b965cdd5d0380c80b280",
+      "templates/backend-change.md": "1972f069efe32d510e5f9b5fd595858b6a46713027358443a9f4e85fa62781c4",
+      "templates/charter.md": "2674d9cc82e1fc795218df7a9b4d58a11aee586549e5a2135e2ce4d77a771838",
+      "templates/ci/docs-check.example.yml": "3ae2c2959a9ca76b57afeed081311d0456e4e27deba108796f7e52afdf576583",
+      "templates/contract.md": "369bf85c1c59ad57e50460b1461f83f2bb617d757418b315d049cd02be5a9add",
+      "templates/cross-stack-change.md": "5903fb8bd187a525b7b09beb548b3fe770874250c38549693c47afb4f1d78887",
+      "templates/evidence-preserving-data.md": "24c3f2ec978e45f49494f2a5b2b74dfd3d7cae023fb37c29fdde24778fab34ad",
+      "templates/frontend-surface.md": "0eb64b92137de471f2b8d2c2e3c6b9390d376eac2a4460e316bc06e7996564e2",
+      "templates/guide.md": "dba28a811fe3c344fbda14b8a548d5da7117a6ebc4e1477e53f00c0911ee5ede",
+      "templates/handoff.md": "0e630f647eda2809dcd4aad6c08a4e11b9fc78664435a4908a44a06d9549dbf3",
+      "templates/holistic-evaluation.md": "1d1c27ba3a1493a6666711e7b732e915b59fcb523df5b171bf61c5af5ded8cd4",
+      "templates/implementation-plan.md": "3cd987d4fc5dd744dd8cfcbb8d176cce1f1497f1db4d51989599b011ac3ae894",
+      "templates/independent-review.md": "33b7180eccd3fb4b242c7f30ecb4a67f5a080f26e55c72170a28989273020e82",
+      "templates/issue-tracker.md": "28464b576a4900d61fe8162926dc7f22b5f4dc17719295c533d0db6fd592caf2",
+      "templates/style-system.md": "b483c74708b0942f9665cc25f239763975a691e6e2f95ef9cf594b684b2e4f71",
+      "templates/verification-report.md": "2c1d7a54a67379d61c291e2fba69f2920cc9e3455fe1650bdae91eb9445d7aca",
+      "tests/README.md": "03dd3605ba41363350de51503917b841a068ee9f604d3dd89a6b790eac0f2ec3",
+      "tests/test_check_docs.py": "067b8f4374f233bc13ec5eb2b51cea79ca90b2b26c2cebdbb5d11136c45a2a32",
+      "tests/test_read_rules.py": "d3b35eccf854170725cecb2a1d33495679063f7801b8cef2afc15be6bbb6d07a",
+      "tmp/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    }
+  },
+  "first_verdicts": {
+    "/root/independent_review_one": "前述问题已有实质改善，但尚未整体解决。",
+    "/root/independent_review_two": "模板已有实质改善，已经能传达可执行的任务流程、目的与产物的区别，以及有依据的结束判断。但原问题尚未整体解决：完整阅读链仍会漏掉决定执行强度的定义和领域细则，部分领域规则也仍把具体方法提升为过宽的强制要求。",
+    "/root/external_transfer_consumer": "核心方法传递成功，完整的长期采用能力尚未得到验证。"
+  },
+  "root_reproduction": {
+    "normal_template_without_role": "docs/contracts/service.md: owner requires a valid contract role",
+    "explicit_role_units": [
+      "docs/README.md#authority-order",
+      "docs/README.md#language-style",
+      "docs/contracts/development-discipline.md#development-core",
+      "docs/contracts/governance-decision-boundary.md#governance-core",
+      "docs/contracts/agent-execution-discipline.md#risk",
+      "docs/contracts/agent-execution-discipline.md#route",
+      "docs/contracts/agent-execution-discipline.md#completion",
+      "docs/README.md#task-context",
+      "docs/contracts/service.md#document"
+    ],
+    "backend_unit_delivered": false,
+    "boundary": "Reader-routing probe of the actual template metadata; other template placeholders do not affect these checks. This is not a fully adopted product contract or a full checker pass."
+  },
+  "core_profile_boundary": {
+    "units": [
+      "docs/README.md#authority-order",
+      "docs/README.md#language-style",
+      "docs/contracts/development-discipline.md#development-core",
+      "docs/contracts/governance-decision-boundary.md#governance-core",
+      "docs/contracts/agent-execution-discipline.md#risk",
+      "docs/contracts/agent-execution-discipline.md#route",
+      "docs/contracts/agent-execution-discipline.md#completion",
+      "docs/README.md#task-context"
+    ],
+    "bytes": 88704,
+    "formal_definitions_delivered": {
+      "Routine": false,
+      "Material": false,
+      "High-risk": false
+    },
+    "actual_source": "docs/contracts/agent-execution-discipline.md:45-76",
+    "boundary": "Missing source delivery observed; no actual mistaken risk classification claimed"
+  },
+  "external_consumer": {
+    "first_impression": {
+      "source": "README.md and AGENTS.md, fa01192 plus current dirty tree",
+      "project": "Domain-neutral discipline/harness for sustained delegated agent engineering; no product code",
+      "first_takeaway": "A decision procedure: establish requested observable outcome, evidence/facts, decision authority, boundaries, completion evidence; investigate checkable unknowns; preserve one owner; finish authorized outcome and verify actual effects",
+      "initial_choice": "Take the interaction/epistemic and delivery method first, not checker or template files; it is useful in a small existing project without governance migration",
+      "uncertainty": "Can I operationalize broad discipline without importing the large document graph? Need follow the offered learning route and test a concrete task."
+    },
+    "selected_source_manifest": [
+      {
+        "source": "docs/README.md",
+        "source_sha256": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f",
+        "units": [
+          "authority-order",
+          "task-context",
+          "language-style"
+        ],
+        "excerpt_sha256": "0eff04b6dcfaf2951e000c00e80ff4a116bbfa2929f299761cbd774487c4c004",
+        "bytes": 15009,
+        "lines": 236
+      },
+      {
+        "source": "docs/contracts/development-discipline.md",
+        "source_sha256": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8",
+        "units": [
+          "development-core"
+        ],
+        "excerpt_sha256": "435ffc67c7480072caa4e84f0a0f258b841d8e3907e5362b6f6881b58b910b59",
+        "bytes": 42960,
+        "lines": 688
+      },
+      {
+        "source": "docs/contracts/governance-decision-boundary.md",
+        "source_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+        "units": [
+          "governance-core"
+        ],
+        "excerpt_sha256": "e3dcc3dfdbb72d6e736adffaf5639979a1d835f26b480172cb46649bc0d0a746",
+        "bytes": 26862,
+        "lines": 431
+      },
+      {
+        "source": "docs/contracts/agent-execution-discipline.md",
+        "source_sha256": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0",
+        "units": [
+          "risk",
+          "route",
+          "completion"
+        ],
+        "excerpt_sha256": "4ae41a6d325373a7a57b2ca2696bad925d3204ffd016abfdce49c4c1f0038e42",
+        "bytes": 6759,
+        "lines": 118
+      },
+      {
+        "source": "docs/guides/project-operation.md",
+        "source_sha256": "afe1cbdd836a740cc5087bf8470c6e5b2c7fc060b95fe7df9ce410e7145ced31",
+        "sections": [
+          "Execute one task from request to result",
+          "Worked task decisions"
+        ],
+        "excerpt_sha256": "a601c92756b7294b4bafb7bca038a812b3d5d4a3dd57f0f02e54609b545c720d",
+        "bytes": 5527,
+        "lines": 46
+      }
+    ],
+    "trial_results": {
+      "results": {
+        "success": {
+          "exit": 0,
+          "stdout": "[\"a.txt\", \"b.txt\"]\n",
+          "stderr": ""
+        },
+        "empty": {
+          "exit": 0,
+          "stdout": "[]\n",
+          "stderr": ""
+        },
+        "unicode": {
+          "exit": 0,
+          "stdout": "[\"\\u8d44\\u6599.txt\"]\n",
+          "stderr": ""
+        },
+        "missing": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "folder-list: cannot list 'absent': No such file or directory; check the directory and read permission, then retry\nUsage: python3 folder_list.py DIRECTORY\n"
+        },
+        "file": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "folder-list: cannot list 'fixture/a.txt': Not a directory; check the directory and read permission, then retry\nUsage: python3 folder_list.py DIRECTORY\n"
+        },
+        "no-argument": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "folder-list: expected exactly one directory; correct the argument and retry\nUsage: python3 folder_list.py DIRECTORY\n"
+        },
+        "too-many": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "folder-list: expected exactly one directory; correct the argument and retry\nUsage: python3 folder_list.py DIRECTORY\n"
+        },
+        "denied": {
+          "exit": 2,
+          "stdout": "",
+          "stderr": "folder-list: cannot list 'denied': Permission denied; check the directory and read permission, then retry\nUsage: python3 folder_list.py DIRECTORY\n"
+        },
+        "retry-after-correction": {
+          "exit": 0,
+          "stdout": "[\"a.txt\", \"b.txt\"]\n",
+          "stderr": ""
+        }
+      },
+      "checks": {
+        "success-byte-compatibility": true,
+        "empty-success": true,
+        "unicode-preserved": true,
+        "failure-channels-and-recovery-guidance": true,
+        "permission-case-actually-denied": true,
+        "corrected-path-retry": true,
+        "project-file-and-mode-snapshot-preserved": true
+      },
+      "evidence_scope": "Actual local subprocess status/stdout/stderr; project path content/mode snapshot. No fresh independent agent or deployment; machine-wide effects not traced."
+    },
+    "final_source_identity": [
+      {
+        "source": "docs/README.md",
+        "sha256": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f",
+        "unchanged_during_trial": true
+      },
+      {
+        "source": "docs/contracts/development-discipline.md",
+        "sha256": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8",
+        "unchanged_during_trial": true
+      },
+      {
+        "source": "docs/contracts/governance-decision-boundary.md",
+        "sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+        "unchanged_during_trial": true
+      },
+      {
+        "source": "docs/contracts/agent-execution-discipline.md",
+        "sha256": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0",
+        "unchanged_during_trial": true
+      },
+      {
+        "source": "docs/guides/project-operation.md",
+        "sha256": "afe1cbdd836a740cc5087bf8470c6e5b2c7fc060b95fe7df9ce410e7145ced31",
+        "unchanged_during_trial": true
+      }
+    ]
+  },
+  "clarification": {
+    "reviewer": "/root/independent_review_two",
+    "first_claim": "frontend template copied without rewriting its relative dependency fails",
+    "counterevidence": "docs/design/README.md:6-10 explicitly documents reconciliation to ../contracts/...",
+    "corrected_judgment": "已说明的迁移调整成本; 撤回作为未说明运行缺陷的判断",
+    "limits": "No new consequential discoverability defect established by this single-point recheck"
+  },
+  "review_checks": {
+    "review_one": "164 unit tests pass; documentation checker passes with existing adoption-review advisory",
+    "review_two": "164 tests pass in 36.391 seconds; documentation checker passes with existing adoption-review advisory",
+    "root": "reproduced metadata failure, absent backend unit, and omitted global profile definitions; inspected external trial records"
+  },
+  "scope": "Review and evidence/lifecycle correction only; no implementation or rule change in this turn"
+}

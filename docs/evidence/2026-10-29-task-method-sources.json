@@ -1,0 +1,207 @@
+{
+  "study_date": "2026-10-29",
+  "source": {
+    "id": "history-snapshot-A",
+    "sha256": "f21244a735b938674e35954d10b5b188398e4d83ecf7252a686f738bda13b52c",
+    "generated_as_printed": "2026-10-23 13:17",
+    "timezone": "not independently established for source timestamps",
+    "record_count": 580,
+    "first_record": "2026-09-14 14:22",
+    "last_record": "2026-10-23 11:24",
+    "coverage": "All 580 snapshot records read in chronological order. The single truncated record was recovered from its companion full-text artifact. This is not the complete live archive.",
+    "source_author_claim": "The source presents these as project-filtered, deduplicated human-entered messages. The underlying message databases and typing provenance were not independently reopened.",
+    "identity_method": "Split on timestamp headings; ordinal is one-based within this snapshot. Record SHA-256 covers the UTF-8 body stripped of leading/trailing whitespace.",
+    "private_locator": "Session-local source ledger retained by the task owner; no private paths, raw transcripts or session identifiers copied here."
+  },
+  "records": [
+    {
+      "id": "H01",
+      "source_id": "history-snapshot-A",
+      "ordinal": 2,
+      "timestamp": "2026-09-14 14:26",
+      "body_sha256": "8ef681ce528375fe72c071d477400a9a11efe3ece86a2b1f312732a61565e850",
+      "contribution": "growth question",
+      "transformation": "edited translation; replace subject, quantities and preserved qualities with task parameters"
+    },
+    {
+      "id": "H02",
+      "source_id": "history-snapshot-A",
+      "ordinal": 9,
+      "timestamp": "2026-09-14 22:04",
+      "body_sha256": "525494b041fc5f6da3ad3e7c786e007017a71939055d8db77ddc4fec6ba5eec7",
+      "contribution": "independent recipient can choose useful work",
+      "transformation": "edited translation; parameterize project and extension unit"
+    },
+    {
+      "id": "H03",
+      "source_id": "history-snapshot-A",
+      "ordinal": 57,
+      "timestamp": "2026-09-19 22:15",
+      "body_sha256": "712ce51dc3a2d449c7720b3abe399fbd4b4c2506412a271b52655a6a82df1736",
+      "contribution": "promise, expectation, discovery and journey",
+      "transformation": "translated excerpt; retain the four linked questions and omit the project-specific button inventory"
+    },
+    {
+      "id": "H04",
+      "source_id": "history-snapshot-A",
+      "ordinal": 385,
+      "timestamp": "2026-10-11 00:30",
+      "body_sha256": "8bc42d78f4c224aa7a9dc07dd5b20f479b3f20433b0145446fc28f0dfe760fd5",
+      "contribution": "contribution beyond cited sources",
+      "transformation": "edited translation of passage 3; compare the same reader need"
+    },
+    {
+      "id": "H05",
+      "source_id": "history-snapshot-A",
+      "ordinal": 265,
+      "timestamp": "2026-10-01 11:57",
+      "body_sha256": "fc30d302b2fde380767ad998cafed9ac4d8cd8f5e2b11dd948e358da702586d2",
+      "contribution": "external input changes the work",
+      "transformation": "adaptation of the passage about new input, structure and thinking; no imported standing autonomy"
+    },
+    {
+      "id": "H06",
+      "source_id": "history-snapshot-A",
+      "ordinal": 183,
+      "timestamp": "2026-09-29 11:46",
+      "body_sha256": "5985add678c363b88e8d8413e689a424801133befec09fdde72b2bfc347e04c5",
+      "contribution": "collection comparison",
+      "transformation": "edited translation of the opening comparison request; drafts become a task parameter"
+    },
+    {
+      "id": "H07",
+      "source_id": "history-snapshot-A",
+      "ordinal": 410,
+      "timestamp": "2026-10-13 22:10",
+      "body_sha256": "a9b21d665455fcf4bf592806acd44e0ac2152feff330ade8d7c64d72c745e953",
+      "contribution": "operational case through an abstract design",
+      "transformation": "synthesis with H08; the concrete-case invocation is implementer wording"
+    },
+    {
+      "id": "H08",
+      "source_id": "history-snapshot-A",
+      "ordinal": 411,
+      "timestamp": "2026-10-13 22:24",
+      "body_sha256": "87c6621ce83b6402ec84a788dd891e3ab0d0f4959620f9717f0f43a3aa70680f",
+      "contribution": "actors, decisions, coordination, failure and recovery",
+      "transformation": "synthesis with H07; select responsibilities relevant to a portable case"
+    },
+    {
+      "id": "H09",
+      "source_id": "history-snapshot-A",
+      "ordinal": 406,
+      "timestamp": "2026-10-13 21:19",
+      "body_sha256": "b3ec7b507eb8118ea5006ade1ce67697c927cc76afdf3ce53ce845717bd33d84",
+      "contribution": "standing and on-demand responsibilities",
+      "transformation": "synthesis with H10; retain role-versus-schedule distinction"
+    },
+    {
+      "id": "H10",
+      "source_id": "history-snapshot-A",
+      "ordinal": 407,
+      "timestamp": "2026-10-13 21:22",
+      "body_sha256": "612cf3496c04707dab61c64a097374f1054a71e77af3f35555a3feffe190e31f",
+      "contribution": "question the current role premise",
+      "transformation": "synthesis with H09; no authorization to replace a target design"
+    },
+    {
+      "id": "H11",
+      "source_id": "history-snapshot-A",
+      "ordinal": 177,
+      "timestamp": "2026-09-28 23:25",
+      "body_sha256": "b2fce22c23079fee9c6e0fed98a9cee67dac6c3026869104d9cfe459c8574a47",
+      "contribution": "repeated-use design",
+      "transformation": "adaptation; thousand-run probe retained, progression question extracted from the fixed-topic learning analogy"
+    },
+    {
+      "id": "H12",
+      "source_id": "history-snapshot-A",
+      "ordinal": 459,
+      "timestamp": "2026-10-16 13:59",
+      "body_sha256": "5f434d4550cc4fb5e671497e0ef52d80fa70c00175016919789dfd8cba2287b5",
+      "contribution": "sampled defect reveals a wider mechanism",
+      "transformation": "adaptation; soften the inference to investigation, not a defect-rate claim"
+    },
+    {
+      "id": "H13",
+      "source_id": "history-snapshot-A",
+      "ordinal": 349,
+      "timestamp": "2026-10-09 00:53",
+      "body_sha256": "45c75690e57e1d7d7a7364ac1e86fed1e2ab734c77af0b68aa2d8153c8c01d94",
+      "contribution": "learn a working method from outside examples",
+      "transformation": "synthesis with H14; task-method search instead of topic-only search"
+    },
+    {
+      "id": "H14",
+      "source_id": "history-snapshot-A",
+      "ordinal": 352,
+      "timestamp": "2026-10-09 01:02",
+      "body_sha256": "5d1bdc524c1a90e694aee0b1fd646ad54bef99802f6cb32a880ff74d4f4226b9",
+      "contribution": "judge external examples selectively",
+      "transformation": "synthesis with H13; preserve independent judgment instead of copying everything"
+    },
+    {
+      "id": "H15",
+      "source_id": "history-snapshot-A",
+      "ordinal": 401,
+      "timestamp": "2026-10-13 10:59",
+      "body_sha256": "418fbce1ee105a81182e8684cfebc331243f131e09f7fa2b4d298581d40a5e57",
+      "contribution": "reusable method versus task log",
+      "transformation": "synthesis with H16; omit local operations, accounts and schedules"
+    },
+    {
+      "id": "H16",
+      "source_id": "history-snapshot-A",
+      "ordinal": 455,
+      "timestamp": "2026-10-16 12:46",
+      "body_sha256": "e2236b377995776121fcee499c9eb5d88fc3d58ead280ec7be40425047a17e9a",
+      "contribution": "experience actually used in later operations",
+      "transformation": "synthesis with H15; focus on recurring friction and retrieval"
+    },
+    {
+      "id": "H17",
+      "source_id": "history-snapshot-A",
+      "ordinal": 579,
+      "timestamp": "2026-10-23 10:49",
+      "body_sha256": "d870320f572aa343783d750712c3e3b544bff552dba019dc5e7e8e7e422ec66b",
+      "contribution": "positive progress judgment",
+      "transformation": "edited translation; omit a conversation-specific compliment"
+    },
+    {
+      "id": "H18",
+      "source_id": "history-snapshot-A",
+      "ordinal": 508,
+      "timestamp": "2026-10-20 09:33",
+      "body_sha256": "da9ab100db0f5c386a12795ccd76287b72b2fabd1f7848a88125e2471824f2df",
+      "contribution": "detector symptom versus underlying problem",
+      "transformation": "supporting condition; do not equate disappearance of a token with repair"
+    },
+    {
+      "id": "H19",
+      "source_id": "history-snapshot-A",
+      "ordinal": 166,
+      "timestamp": "2026-09-28 11:18",
+      "body_sha256": "666afd7ac19fe0a8f73dee2eb51bee163cde6ddf755ebae83195e377ea0473d3",
+      "contribution": "cost of useful progress",
+      "transformation": "supporting condition; preserve attention and elapsed-result questions, omit the source project resource budget"
+    },
+    {
+      "id": "H20",
+      "source_id": "history-snapshot-A",
+      "ordinal": 471,
+      "timestamp": "2026-10-16 17:29",
+      "body_sha256": "359ca76b46a6de728517d7f9e4415f2123f93a360a475163819a8c1f274b7069",
+      "contribution": "variation retains sharp findings",
+      "transformation": "supporting condition for collection comparison; reduction of random bias is not averaging away distinctive findings"
+    },
+    {
+      "id": "H21",
+      "source_id": "history-snapshot-A",
+      "ordinal": 430,
+      "timestamp": "2026-10-14 17:40",
+      "body_sha256": "2a7a5dda6daebd56d59e31c3570f692e2d2df4dce0a0b6f5e08f975ca8e89ca2",
+      "contribution": "review scope can predetermine the answer",
+      "transformation": "supporting condition; bounded delegation carries task authority without scripting findings"
+    }
+  ]
+}

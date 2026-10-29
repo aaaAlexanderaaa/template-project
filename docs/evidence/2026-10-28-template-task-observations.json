@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-28",
+  "baseline": "fa01192f094585ff0c1aaa6942ac04e63a11983a",
+  "evidence_class": "real local entrypoint and complete source-delivery probes; no implemented service or external adoption trial",
+  "core": {
+    "units": 8,
+    "source_bytes": 88704,
+    "manifest": {
+      "version": 1,
+      "concerns": [],
+      "owner_bindings": [],
+      "units": [
+        {
+          "identity": "docs/README.md#authority-order",
+          "path": "docs/README.md",
+          "unit": "authority-order",
+          "heading": "Authority order",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 666,
+          "sha256": "98ea38cfb4ea59dc49f819b31c95d8a0411a781e553c4c31ea5a0fed4041399d",
+          "file_sha256": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f"
+        },
+        {
+          "identity": "docs/README.md#language-style",
+          "path": "docs/README.md",
+          "unit": "language-style",
+          "heading": "Language style",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 4964,
+          "sha256": "d21f1c8ae199de360e974b07acec6d3ddffb149dfcc553f364cf21564dc35c43",
+          "file_sha256": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f"
+        },
+        {
+          "identity": "docs/contracts/development-discipline.md#development-core",
+          "path": "docs/contracts/development-discipline.md",
+          "unit": "development-core",
+          "heading": "Purpose",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 42871,
+          "sha256": "2ec7720fe0d79477a82ca1ff136effb93117fb70f9f03201eaa2c7211b72f6bf",
+          "file_sha256": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8"
+        },
+        {
+          "identity": "docs/contracts/governance-decision-boundary.md#governance-core",
+          "path": "docs/contracts/governance-decision-boundary.md",
+          "unit": "governance-core",
+          "heading": "Purpose",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 26775,
+          "sha256": "17137d9c9af6498649b8bcda416760c0ff6deb4d51702774f4cbfb0f6588327c",
+          "file_sha256": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b"
+        },
+        {
+          "identity": "docs/contracts/agent-execution-discipline.md#risk",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "unit": "risk",
+          "heading": "Risk selects the execution depth",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 1347,
+          "sha256": "17b1c1662b2d17a3642b145471e1fe99f32cf578016676780f644523938b835d",
+          "file_sha256": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0"
+        },
+        {
+          "identity": "docs/contracts/agent-execution-discipline.md#route",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "unit": "route",
+          "heading": "The harness selects the smallest executable route",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 1759,
+          "sha256": "a348aab8429d850d58e766892c47ad4ee65ef98c8015ac5bad32f342384b018a",
+          "file_sha256": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0"
+        },
+        {
+          "identity": "docs/contracts/agent-execution-discipline.md#completion",
+          "path": "docs/contracts/agent-execution-discipline.md",
+          "unit": "completion",
+          "heading": "Completion is layered",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 1198,
+          "sha256": "4f543e799e5e724062174178b3c30872a43a3bdd2fdd7a847f10c064f2f0d36c",
+          "file_sha256": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0"
+        },
+        {
+          "identity": "docs/README.md#task-context",
+          "path": "docs/README.md",
+          "unit": "task-context",
+          "heading": "Task context",
+          "authority": "normative",
+          "status": "current",
+          "bytes": 9124,
+          "sha256": "d7ca97bbf3dfacd4b217a226f9010fcd9a91fc8d658cd388f45d168b6d60196b",
+          "file_sha256": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f"
+        }
+      ],
+      "sources": {
+        "AGENTS.md": "1ccb2f497893ab7a87f0afb114f1ea36e796ce9b324fe013f6adc46203a5f47d",
+        "docs/README.md": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f",
+        "docs/contracts/agent-execution-discipline.md": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0",
+        "docs/contracts/development-discipline.md": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8",
+        "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b"
+      }
+    }
+  },
+  "ordinary_lookup": {
+    "command": "rg --files templates",
+    "target_found": true,
+    "additional_task_plan_or_review": 0,
+    "condition": "valid retained global core; cold-start reading measured separately"
+  },
+  "non_graphical_experience": {
+    "command": "python3 scripts/read_rules.py prepare --concern experience --owner experience=docs/contracts/documentation-harness.md",
+    "exit": 0,
+    "stderr": "",
+    "units": [
+      "docs/README.md#authority-order",
+      "docs/README.md#language-style",
+      "docs/contracts/development-discipline.md#development-core",
+      "docs/contracts/governance-decision-boundary.md#governance-core",
+      "docs/contracts/agent-execution-discipline.md#risk",
+      "docs/contracts/agent-execution-discipline.md#route",
+      "docs/contracts/agent-execution-discipline.md#completion",
+      "docs/README.md#task-context",
+      "docs/contracts/documentation-harness.md#document"
+    ],
+    "final_marker": "READING COMPLETE units=9",
+    "frontend_unit_added": false,
+    "output_sha256": "ffdc629a94b40d73b5dc861cf59e2a22dae6bab50767a18739f537a73256025e"
+  },
+  "analytical_detail": {
+    "units": [
+      "docs/README.md#authority-order",
+      "docs/README.md#language-style",
+      "docs/contracts/development-discipline.md#development-core",
+      "docs/contracts/governance-decision-boundary.md#governance-core",
+      "docs/contracts/agent-execution-discipline.md#risk",
+      "docs/contracts/agent-execution-discipline.md#route",
+      "docs/contracts/agent-execution-discipline.md#completion",
+      "docs/README.md#task-context",
+      "docs/contracts/data-analysis-discipline.md#analysis"
+    ],
+    "analysis_bytes": 10587
+  },
+  "service_detail": {
+    "unit": "docs/contracts/development-discipline.md#backend",
+    "bytes": 2716,
+    "file_sha256": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8",
+    "complete_criteria_delivered": true,
+    "frontend_rules_added": false,
+    "cross_stack_unit": "docs/contracts/development-discipline.md#cross-stack",
+    "cross_stack_bytes": 773
+  },
+  "source_identities": {
+    "AGENTS.md": "1ccb2f497893ab7a87f0afb114f1ea36e796ce9b324fe013f6adc46203a5f47d",
+    "docs/README.md": "3aa058666bba4c0bd381242ba43e156280bf881e935ac30bfeb07ad7ea5b605f",
+    "docs/guides/project-operation.md": "afe1cbdd836a740cc5087bf8470c6e5b2c7fc060b95fe7df9ce410e7145ced31",
+    "docs/contracts/development-discipline.md": "107b2c286be216af66d648ef0cb7918f78aed50b52ae6101e3c566e452e61fd8",
+    "docs/contracts/governance-decision-boundary.md": "a34304fd5a42e448ec61cd3ad73c4d3673add1c15c289e9c3131e0137e31cd3b",
+    "docs/contracts/agent-execution-discipline.md": "b155642d712ff36797069c297f36dbb74d6bad27cfb14a177b2369a017247bd0",
+    "docs/contracts/documentation-harness.md": "b2a75c5982cb519cd932b12ebbc1a581b50cffd0f9bbbb54acae6efcd6f28776",
+    "scripts/rule_reading.py": "4fe1bbc07a7dd789f672573c4659b693295e735ae50eb63b01f0665204441042",
+    "templates/frontend-surface.md": "0eb64b92137de471f2b8d2c2e3c6b9390d376eac2a4460e316bc06e7996564e2"
+  }
+}
