@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-10-19
+last_reconciled: 2026-10-29
 ---
 
 # Documentation authority map
@@ -10,6 +10,7 @@ last_reconciled: 2026-10-19
 Document authority comes from metadata and document role, not modification
 time, filename, or length.
 
+<!-- required-reading: authority-order -->
 ## Authority order
 
 1. `ARCHITECTURE.md` owns structural boundaries, dependency direction, and
@@ -25,7 +26,18 @@ time, filename, or length.
 8. `templates/` has no authority until copied, completed, and landed in the
    appropriate authoritative directory.
 
+<!-- /required-reading: authority-order -->
+
+<!-- required-reading: task-context -->
 ## Task context
+
+- required-reading: [Authority order](#authority-order)
+- required-reading: [Language style](#language-style)
+- required-reading: [Development core](contracts/development-discipline.md#core-invariants)
+- required-reading: [Governance core](contracts/governance-decision-boundary.md#normative-invariants)
+- required-reading: [Execution risk](contracts/agent-execution-discipline.md#risk-selects-the-execution-depth)
+- required-reading: [Execution route](contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route)
+- required-reading: [Completion](contracts/agent-execution-discipline.md#completion-is-layered)
 
 Start with enough current context to determine five things: the requested
 outcome; facts and their evidence; who may decide; applicable boundaries and
@@ -36,8 +48,61 @@ or a form to fill for every task. Do not copy a second set of product facts
 into the agent entrypoint. A learning judgment names the rule, the result,
 and the contract section that holds the fact.
 
-Read detailed methods when a task activates them. A link does not require
-recursive reading. A request to learn the discipline is the exception: open
+Use the following reading classes. They select context; the authority order
+still decides who owns a decision.
+
+| Class | What is obtained | When |
+|---|---|---|
+| Global required core | This task context, authority and language; development's complete core, governance's operative core, execution risk/route/completion | Before selecting or closing work; reuse retained, unchanged units |
+| Activated mandatory detail | The complete applicable domain and project-owner units, including their dependencies and exceptions | Before decisions that depend on the concern; global core supplies no exemption |
+| Execution method | The full method selected by the task, such as material delivery, research, Grill, adoption or standing autonomy | When used; the method's review and evidence duties remain binding |
+| Provenance and history | Source anchors, prior decisions and dated evidence | A dispute, recovery or claim needs their contents |
+
+Strength is independent of reading class. A mandatory condition binds within
+its trigger and authority. A default selects a usual route while leaving
+alternatives inside the same boundaries. A method explains how to act;
+reference material supplies evidence. Resolve a conflict through the owning
+authority and its exception policy. The adoption value order prioritizes
+attention; it grants no exemption from an applicable requirement.
+
+For the practical sequence and worked task decisions, use
+[project operation](guides/project-operation.md#execute-one-task-from-request-to-result).
+It explains how these owners work together without becoming another authority.
+For a concrete obstacle, the [practical task CheatSheet](guides/task-cheatsheet.md)
+offers optional moves and prompts across common scenarios. Select a fitting
+method within this context; the recipes add no required reading dependency.
+
+Rule authority, applicability, reading scope, requirement strength and completion
+evidence answer different questions. Authority decides who can change a rule;
+a concern trigger decides when it applies; a declared unit decides what text
+must be obtained; mandatory/default/reference wording decides its force;
+observations decide whether the requested result was achieved. A broad global
+rule does not replace an activated domain's detailed requirements.
+
+Before making choices that depend on an activated concern, run
+`python3 scripts/read_rules.py prepare` with its concern and owner bindings.
+The command emits the complete selected units and explicit dependencies with
+source identities. Add `--include REFERENCE` for a selected current execution
+method and its dependencies. Obtain every new body and the final completion
+marker. If output
+is truncated, use digest-checked `read` recovery from the
+[harness protocol](contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction).
+On failure or where the command is unavailable, directly read the same complete
+units and retain their source identities. A manifest alone proves no reading;
+source delivery alone proves no application.
+
+A unit may be reused while its body, metadata, scope and retained context remain
+valid. In one live context, `--context ID --retained MANIFEST` revalidates the
+whole current selection and marks unchanged bodies as caller-asserted retained;
+it supplies new or changed bodies. Supply only a version-2 manifest whose full
+reused bodies are still available. The label cannot establish memory or understanding.
+On restart, handoff or unknown retention, recover purpose and locators, then
+obtain current units again without `--retained`. Ordinary file lookup uses the
+already obtained core and direct facts;
+it adds no domain plan or independent review. Current and explicitly selected
+target rules remain distinguishable. Methods are read when used. An ordinary
+link does not require recursive reading; only explicit `required-reading`
+directives create reading dependencies. A request to learn the discipline is the exception: open
 every current rule named by
 [the learning path](contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
 before judging which apply. Later tasks return to opening a rule when the work
@@ -45,6 +110,12 @@ reaches it. Expand context for a dependency, conflict, missing fact, or
 activated concern, and read the whole owner when section-level reading leaves
 its scope or interactions unclear. Short context never waives an applicable
 constraint, exception, or original requirement.
+
+Taking one useful practice selects [bounded extraction](contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
+instead of claiming a full learning survey. The
+[operation card](guides/project-operation.md#take-one-practice-into-a-task)
+keeps that choice explicit; governed work still obtains the required core and
+activated detail.
 
 For an ongoing project, purpose guides choices, goals name desired changes,
 methods organize work, and tasks execute bounded steps. Task completion may
@@ -104,6 +175,8 @@ current decision. Preserve history that supports a live claim or recovery;
 delete scratch material that no longer serves either. Do not create a fresh
 summary that requires reading every older summary to understand it.
 
+<!-- /required-reading: task-context -->
+
 ## Required metadata
 
 Canonical Markdown documents under `docs/` carry frontmatter:
@@ -117,6 +190,9 @@ Canonical Markdown documents under `docs/` carry frontmatter:
 - target contracts and surfaces may set `review_due` to override the configured
   aging deadline;
 - replacements use `supersedes` and `superseded_by`.
+- `reading_entrypoint` may publish a complete declared unit for file-only
+  reading; the [harness protocol](contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
+  owns its resolution and retained-context behavior.
 - a `status: current` canonical guide that intentionally summarizes current
   normative contracts or surface contracts may use `projection_of`; this
   declares a reconciliation dependency, not shared ownership.
@@ -181,7 +257,30 @@ document through `supersedes`. Both ends have the same `doc_type` and
 `authority`, so supersession changes a decision within one authority class
 rather than promoting a plan, guide, or evidence record into a normative owner.
 
+<!-- required-reading: language-style -->
 ## Language style
+
+Content serves its consumer. For a response, report, guide, prompt or other
+authored output, use the current task to establish the intended reader, their
+situation and prior knowledge, and what they want and need to understand,
+decide, do or experience. Before drafting and against the actual draft, ask:
+
+- Who will use this, and what do they already know?
+- Why should they spend attention here? What benefit does this add to what
+  they already have, and what would they miss by skipping it?
+- Which conclusion, distinction or next action should become clear?
+- Which details earn their place? What useful meaning would their removal lose?
+- Where must the reader decode internal language, reconstruct our work or
+  reconcile repetition? Can selection, order, an example or a precise link
+  remove that burden?
+
+Let the answers change the content, not become a preface or another form.
+Lead with what matters to that reader. Remove or relocate process narration
+that does not help them; keep required evidence available for its audit or
+reproduction consumer through a precise route. A short answer can remain short.
+Judge information density by useful meaning for the reader's effort, not by
+word count: a necessary example or qualification can improve it. Preserve the
+reasoning, distinctions and material uncertainty needed to use the result.
 
 Canonical documents are written in plain language. Name things with the
 repository's existing vocabulary or with a plain description of the thing
@@ -190,10 +289,6 @@ sound systematic: a coined term reads as authority, spreads into later
 documents and conversations, and must then be unlearned everywhere. When a
 concept genuinely needs a name, define it once in the owning document's
 vocabulary section and use that name consistently.
-
-Wording is not decoration. The phrasing of a descriptive document guides the
-language of the work that follows it, so plain writing keeps later writing
-plain.
 
 Use plain English throughout published rules, templates, working records, and
 history. Render stakeholder feedback in English with enough context to explain
@@ -207,6 +302,11 @@ Explain an internal term before relying
 on it. Replace a vague promise such as "state reconciled" with what changed or
 remains unresolved. Word lists and an "AI writing" detector cannot establish
 that a reader understands the result; inspect a concrete task or message.
+
+Give the reader a supported positive judgment: what the result enables, why
+the selected action is sound, and which observation makes this bounded work
+sufficient. Keep material uncertainty beside the claim it changes. Close when
+the requested result and applicable evidence support completion.
 
 State conclusions and own them: precise uncertainty is required, but
 dissolving a verdict into hedging, borrowed authority, or defensive citation
@@ -258,6 +358,8 @@ English link to the main overview for existing inbound links. Root entrypoints
 are intentionally not made canonical merely to obtain a checker field; their
 duplication risk is handled by keeping normative trigger semantics out of them
 and reviewing their links when an owning contract changes.
+
+<!-- /required-reading: language-style -->
 
 ## Conflict rule
 

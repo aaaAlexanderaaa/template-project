@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-28
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -250,13 +250,32 @@ rewrite authority during that inventory.
 
 - from: source[1], source[2], source[11], source[13]
 
+### Take one practice into an authorized task
+
+A request to inspect the template or take a useful practice can select a
+bounded extraction. Start with the target task, its current authority and the
+specific decision the practice should improve. Obtain that practice's complete
+operative owner and applicable dependencies, try it at the relevant boundary,
+and carry its conditions and evidence limits with the result. The
+[operation card](../guides/project-operation.md#take-one-practice-into-a-task)
+provides a small worked route.
+
+Finish with the recommendation, authorized trial or retained change the owner
+requested. Keep existing target instructions and rule owners. This route
+neither requires a full-library survey nor claims one, and it does not itself
+authorize copying the governance tree, changing product behavior or enabling
+enforcement. A later request to learn the discipline in full takes the survey
+below; work governed by this template still obtains its required core and
+activated detail.
+
 ### Learning and personal context have a bounded entry path
 
-A request to learn the discipline assumes the discipline now in force has not
-met the owner's expectation. Find that mismatch first: what the owner had to
-repeat, and what the loaded rules caused the agent to do. A filled policy, a
-declared stage, a passing or failing checker, or an earlier assessment that
-reported no gap does not show the expectation was met.
+For corrective learning, first find the mismatch the owner is asking to fix:
+what they had to repeat and what the loaded rules caused the agent to do. For
+first-time learning, establish the current expectation and repository baseline;
+absent correction history remains unknown rather than invented. In either
+case, a filled policy, declared stage, passing checker or earlier no-gap
+assessment does not establish that the expectation was met.
 
 The request also authorizes a survey of every current rule against the target
 repository, and it requires one of the endings below. Seeing a title, a table

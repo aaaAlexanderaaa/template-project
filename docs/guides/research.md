@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-20
+last_reconciled: 2026-10-28
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 ---
 
@@ -24,6 +24,12 @@ For a challenge to purpose, standards, or the resulting work, use existing
 [Grill](grill.md). The task owner integrates their findings and owns delivery.
 
 ## Preconditions
+
+Use [task context](../README.md#task-context) to obtain complete applicable rules
+before dependent analysis. The
+[task procedure](project-operation.md#execute-one-task-from-request-to-result)
+keeps an investigation or example connected to the original requested change.
+A direct fact lookup retains the ordinary route.
 
 Recover the original question and intended use, agreed scope and constraints,
 known evidence, consequential uncertainties, and available resource envelope

@@ -17,6 +17,8 @@ This order guides attention, not authority or mandatory copying.
 
 ## Establish the current task context
 
+- required-reading: [Task context](docs/README.md#task-context)
+
 Use the [task-context rule](docs/README.md#task-context) to locate:
 
 | Needed fact | Read or observe |
@@ -32,11 +34,13 @@ Investigate facts before asking the user. Choose the
 and include an active plan only when that route requires one. Read methods when
 activated and history when a dispute, provenance question, or recovery needs it;
 do not recursively load every link. These facts stay at their existing owners.
-A request to learn this discipline assumes the rules now in force have not met
-the owner's expectation. Open every current rule named by
+A request to learn this discipline opens every current rule named by
 [the learning path](docs/contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path),
-compare what the owner had to repeat with what those rules caused, and finish
-in one of its endings. A filled policy file is not that comparison. Later
+compares the owner's expectation with what those rules cause, and finishes
+in one of its endings. Use supplied correction history; first-time learning
+uses the current baseline and keeps unavailable history unknown. A request to
+take one practice uses [bounded extraction](docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task).
+A filled policy file is not that comparison. Later
 tasks still open a rule when the work reaches it.
 For a request to learn this template and load separately supplied personal
 context, start with [the collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration).
@@ -95,11 +99,17 @@ context and review boundaries; a finding need not include a repair plan.
 ## Read domain rules when activated
 
 [Development discipline](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
-owns concern triggers. Read its applicable owner before changing the boundary.
+owns concern triggers and required targets. Use `python3 scripts/read_rules.py list`
+to locate them, then `prepare` with every matching concern and applicable
+`--owner concern=path` binding before dependent choices. Follow the
+[complete-reading protocol](docs/contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
+for full output and recovery. The table below locates domain owners; it does
+not replace the trigger table or their detailed rules.
 
 | Task touches | Read |
 |---|---|
-| User-facing interface | Applicable `docs/design/` surface; development's [frontend rules](docs/contracts/development-discipline.md#frontend-development-contract) |
+| Graphical frontend | Applicable `docs/design/` surface; development's [frontend rules](docs/contracts/development-discipline.md#frontend-development-contract) |
+| Command-line or other non-graphical interaction | Its existing normative contract and development's [Experience route](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) |
 | Service, state, persistence, or API | Development's [backend rules](docs/contracts/development-discipline.md#backend-and-service-development-contract) |
 | Producer and consumer together | Development's [cross-stack rules](docs/contracts/development-discipline.md#cross-stack-coordination) |
 | Time/calendar or operator-visible demo data | Applicable sections of [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |

@@ -4,6 +4,13 @@ Files in this directory are inert examples. They become authoritative only
 after being copied into the appropriate `docs/` directory, all placeholders
 are replaced, and lifecycle metadata is set correctly.
 
+Reconcile document-relative links for the destination. In particular, a
+`../docs/contracts/...` reading dependency in a template becomes
+`../contracts/...` in `docs/design/`, or a same-directory contract link in
+`docs/contracts/`. Keep its complete reading dependencies. Product contracts
+may omit `contract_role` (the default is `product`); governance contracts
+declare `contract_role: governance`.
+
 | Need | Template | Destination |
 |---|---|---|
 | Cross-cutting behavior or invariant | `contract.md` | `docs/contracts/<topic>.md` |
@@ -44,3 +51,9 @@ suite. Other CI systems should run the same commands in their native format.
 The template inventory and required sections are declared in
 `docs-policy.toml`; editing a template without reconciling that policy fails the
 repository check.
+
+For concise task assignments and useful moves, start with the
+[practical task CheatSheet](../docs/guides/task-cheatsheet.md), including its
+specialized review collection. These prompts help execute the work; the files
+above hold durable decisions or evidence when needed. The recipes add no
+required template to the project profile.

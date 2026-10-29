@@ -51,6 +51,18 @@ method first. Copying this repository's files waits for that confirmation.
 The documentation checker depends only on the Python standard library.
 The minimum version is Python 3.11.
 
+For work in this checkout, [AGENTS.md](AGENTS.md) routes to the
+[current task context](docs/README.md#task-context).
+`python3 scripts/read_rules.py list` locates concern-specific reading targets;
+the [reader protocol](docs/contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
+defines complete preparation and recovery. The
+[task procedure](docs/guides/project-operation.md#execute-one-task-from-request-to-result)
+connects the original request, applicable rules, execution and completion.
+For selective transfer, use [the one-practice card](docs/guides/project-operation.md#take-one-practice-into-a-task).
+The [practical task CheatSheet](docs/guides/task-cheatsheet.md) offers concise
+moves for investigation, delivery, explanation, continuity and learning, with
+copyable prompts and examples. Review has its own linked collection.
+
 ## Start from a new or existing project
 
 You can ask an agent:

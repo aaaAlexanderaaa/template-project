@@ -5,13 +5,14 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-27
+last_reconciled: 2026-10-28
 review_due: 2026-10-24
 supersedes: []
 ---
 
 # Governance decision boundary
 
+<!-- required-reading: governance-core -->
 ## Purpose
 
 This contract defines the boundary between developer or product authority and
@@ -440,6 +441,8 @@ record, and return the decision to the declared owner. If the owner is unknown,
 pause only the affected decision and continue safe, already authorized work.
 If a blocker is disputed, reproduce its evidence and reconcile the governing
 contract before dependent implementation.
+
+<!-- /required-reading: governance-core -->
 
 ## Acceptance evidence
 

@@ -5,12 +5,13 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-20
+last_reconciled: 2026-10-28
 supersedes: []
 ---
 
 # Development and collaboration discipline
 
+<!-- required-reading: development-core -->
 ## Purpose
 
 This contract defines how work is understood, specified, implemented,
@@ -115,6 +116,15 @@ Keep this in the existing migration or verification record, not a new inventory.
 
 ### Outcomes before means
 
+At work selection, name the original requested change, the proposed next
+result, why it advances that change, and what would remain if work stopped
+there. Keep this in existing task context; routine work needs no new form.
+A reported defect can motivate a broader improvement without becoming that
+improvement's whole scope. A chosen example or demonstration proves only what
+it exercises. Treat it as a step unless the owner actually bounded the request
+there. Before expanding implementation or verification, compare the next action
+with the original outcome and select the work that closes the important gap.
+
 Define success in terms of observable outcomes before listing implementation
 or test mechanics. The default quality outcomes are:
 
@@ -125,6 +135,12 @@ or test mechanics. The default quality outcomes are:
 5. failure and recovery behavior are understandable;
 6. every activated quality attribute stays within its declared boundary;
 7. production-only assumptions have an observation and rollback decision.
+
+Preserve the parent purpose as it becomes goals, specifications, tasks,
+measures and procedures. Each translation names the user change it serves and
+the decision that authorizes a material narrowing. Judge the resulting whole
+against that change. A complete procedure or improved measure can support the
+judgment without becoming its substitute.
 
 Tests, probes, selectors, thresholds, and scripts explain how those outcomes
 are checked; they are not the outcome themselves. Preserve the original request
@@ -220,11 +236,18 @@ Verification runs in both directions:
   a similar failure elsewhere establishes a hypothesis, not the fix. When a
   failure class will need cross-environment diagnosis, the product ships its
   own diagnostic surface instead of relying on the reporter's description.
-- For a user- or operator-facing deliverable, proportionate to risk,
-  acceptance includes a fresh-context consumer: an independent agent or
-  reviewer who receives only what a real consumer would have and uses the
-  deliverable to its stated end. A context-free consumer's failure is a
-  defect in the deliverable, not in the consumer.
+- For material or high-risk user- or operator-facing delivery, acceptance
+  includes a fresh-context consumer: an independent agent or reviewer who
+  receives what a real consumer would have and uses the deliverable to its
+  stated end. Routine mechanically bounded work with credible focused
+  verification can close on that evidence, unless an activated owner or the
+  explicit brief requires an independent consumer. For example, a bounded
+  local list sort can use observed state, ordering and recovery checks; a
+  material new workflow or reusable explanation needs the consumer trial.
+  Investigate a failed trial at its artifact, supplied-input and environment
+  boundaries before locating the defect. Missing inputs and failed execution
+  remain incomplete evidence rather than a passing review or an automatic
+  attribution of fault to the consumer.
 
 Match the inspected object and scope to the claim: a source record, generated
 summary, rendered main text, and whole collection expose different properties.
@@ -404,23 +427,45 @@ establish one. An experiment under the contract-first invariant may proceed only
 already exist for its own activated actions; it cannot use a plan or scratch
 record to invent a temporary quality boundary.
 
+Select every matching trait, including overlaps: an interactive analytical
+explanation activates both Experience and Analytical claims. A maintainer's
+path lookup activates neither merely because the files describe those domains.
+The Required reading column names complete-reading dependencies. A token
+`owner:concern-slug` requires one or more task-applicable normative owner
+bindings; the slug follows the heading convention. Multiple bindings cover
+multiple surfaces. Check their identity and authority against architecture
+and the accepted task: a supplied path cannot grant authority.
+
 The concern routing table below is the normative owner. Agent instructions,
 guides, and templates may link to or project it but must not define competing
 trigger semantics.
 
-| Change trait | Activated concern | Minimum questions |
-|---|---|---|
-| Public interface, event, schema, or consumer-visible meaning | Compatibility | Version, consumers, cutover, deprecation, rollback, release-artifact identity (location, naming, structure) |
-| Durable state, migration, concurrency, or replay | State integrity | Atomicity, idempotency, ordering, recovery, manual intervention, schema evolution and extensibility |
-| Permission, identity, untrusted input, sensitive data, or cross-tenant access | Security and privacy | Trust boundary, least privilege, abuse/failure case, audit, retention |
-| Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation, named resource bounds and chosen exhaustion behavior, guards calibrated to the actual operation's cost and verified on the real environments they protect |
-| Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective and its error budget, dependency failure, observability, actionable-alert test, postmortem trigger, alert/rollback trigger |
-| External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Existing-solution search before building, owner, provenance, reproducibility, compatibility, cost categories, unavailable-dependency behavior |
-| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals, environment interruptions a session must survive, visibility and bypass of automation the user depends on |
-| Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | [Time policy](foundational-runtime-discipline.md#time-and-calendar): scope and role resolution, instant vs calendar vs duration, naive-input policy, representation, injectable clock, policy-conformance checks |
-| Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | [Demo policy](foundational-runtime-discipline.md#demonstration-data): temporal promise and labels, freshness when promised, refresh/retention strategy, repeat safety, environment gate, production isolation |
-| Analysis, metrics, ranking, or mining deliverable over a dataset; or a surface whose primary job is presenting analytical claims | Analytical claims | [Data analysis discipline](data-analysis-discipline.md): stage checklist and invariants — functions over values, constants have origins, marks resolve to records, sample size visible, control scope equals computation scope |
-| Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner |
+Experience applies to graphical and non-graphical interaction. Bind the
+existing normative owner of the actual interface: a graphical frontend uses
+its surface contract and the complete [frontend rules](#frontend-development-contract);
+a command-line help or recovery flow uses its contract. Surface contracts
+declare the frontend reading dependency, as shown in the surface template.
+Both routes verify the user's task, failure/recovery behavior and actual effects.
+
+Domain contracts declare complete reading dependencies for the work they own.
+The backend and cross-stack templates carry those dependencies; when using a
+generic or pre-existing owner, add the applicable domain dependency there before
+relying on preparation. The AGENTS domain map remains a cross-check of the
+selected closure, including work with multiple domains.
+
+| Change trait | Activated concern | Minimum questions | Required reading |
+|---|---|---|---|
+| Public interface, event, schema, or consumer-visible meaning | Compatibility | Version, consumers, cutover, deprecation, rollback, release-artifact identity (location, naming, structure) | owner:compatibility |
+| Durable state, migration, concurrency, or replay | State integrity | Atomicity, idempotency, ordering, recovery, manual intervention, schema evolution and extensibility | owner:state-integrity |
+| Permission, identity, untrusted input, sensitive data, or cross-tenant access | Security and privacy | Trust boundary, least privilege, abuse/failure case, audit, retention | owner:security-and-privacy |
+| Hot path, scale assumption, resource model, or material cost change | Performance, capacity, and cost | Load scenario, response/budget, saturation, backpressure or degradation, named resource bounds and chosen exhaustion behavior, guards calibrated to the actual operation's cost and verified on the real environments they protect | owner:performance-capacity-and-cost |
+| Availability dependency, timeout, retry, failover, degradation, recovery behavior, or operator workflow | Reliability and operations | Service objective and its error budget, dependency failure, observability, actionable-alert test, postmortem trigger, alert/rollback trigger | owner:reliability-and-operations |
+| External package, generated artifact, compiler, build or delivery path | Dependency and build integrity | Existing-solution search before building, owner, provenance, reproducibility, compatibility, cost categories, unavailable-dependency behavior | owner:dependency-and-build-integrity |
+| User-visible surface or interaction | Experience | Reachable states, accessibility, responsive/input behavior, locale and copy where relevant, complexity displaced onto the user, task success and time signals, environment interruptions a session must survive, visibility and bypass of automation the user depends on | owner:experience |
+| Persisted, scheduled, displayed, or exchanged date/time; calendar-day; duration; or clock | Time and calendar | [Time policy](foundational-runtime-discipline.md#time-and-calendar): scope and role resolution, instant vs calendar vs duration, naive-input policy, representation, injectable clock, policy-conformance checks | [Time policy](foundational-runtime-discipline.md#time-and-calendar) |
+| Demo, seed, synthetic, fixture, or sample data that operators or customers will see | Demonstration data | [Demo policy](foundational-runtime-discipline.md#demonstration-data): temporal promise and labels, freshness when promised, refresh/retention strategy, repeat safety, environment gate, production isolation | [Demo policy](foundational-runtime-discipline.md#demonstration-data) |
+| Analysis, metrics, ranking, or mining deliverable over a dataset; or a surface whose primary job is presenting analytical claims | Analytical claims | [Data analysis discipline](data-analysis-discipline.md): stage checklist and invariants — functions over values, constants have origins, marks resolve to records, sample size visible, control scope equals computation scope | [Analysis](data-analysis-discipline.md#purpose) |
+| Assumption verifiable only after release | Production learning | Signal, observation window, decision threshold, rollback/reconciliation owner | owner:production-learning |
 
 - from: source[1], source[5], source[7], source[10]
 
@@ -629,6 +674,12 @@ than returning as an unwritten rule.
 
 ## Change workflow
 
+First select the [execution route](agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route).
+The detailed sequence below applies to material delivery. Routine work uses
+existing context, its current owner and focused verification. The practical
+[task procedure](../guides/project-operation.md#execute-one-task-from-request-to-result)
+shows how to apply the route, including when an example is only a step.
+
 Material delivery satisfies the following obligations in dependency order.
 Contract reconciliation precedes dependent implementation; required design
 review precedes implementation and completion review precedes closure.
@@ -660,6 +711,9 @@ not prescribe user approval checkpoints or require a record for every item.
     durable evidence, resolve or supersede the plan, retire redundant working
     material, and update issue state.
 
+<!-- /required-reading: development-core -->
+
+<!-- required-reading: frontend -->
 ## Frontend development contract
 
 Frontend work translates product intent into observable states and geometry.
@@ -826,6 +880,9 @@ every visual value it introduces resolves to a declared owner or to a
 registered exception with an owner and a removal condition; the relevant
 mechanical guards pass; and the production-like surface has been verified.
 
+<!-- /required-reading: frontend -->
+
+<!-- required-reading: backend -->
 ## Backend and service development contract
 
 Backend work owns domain truth, state transitions, reliability, and public
@@ -879,6 +936,9 @@ versioned or reconciled, state survives the declared failure model, permissions
 remain least-privilege, behavior is observable, and class-level lifecycle tests
 pass.
 
+<!-- /required-reading: backend -->
+
+<!-- required-reading: cross-stack -->
 ## Cross-stack coordination
 
 For a change spanning frontend and backend:
@@ -894,6 +954,8 @@ For a change spanning frontend and backend:
 7. Carry every concern activated under the activate-concerns invariant
    through its authoritative owner rather than
    duplicating hidden thresholds or policy in both stacks.
+
+<!-- /required-reading: cross-stack -->
 
 ## Documentation lifecycle
 

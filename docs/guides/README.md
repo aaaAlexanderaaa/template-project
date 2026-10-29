@@ -24,3 +24,18 @@ be used by the current agent without a separate worker or full-library loading.
 `engineering-reading.md` records the external sources this template has
 mined for engineering-judgment discipline, with authorship classes, mining
 angles, and rejected candidates. It is reading guidance, not authority.
+
+Use [the task procedure](project-operation.md#execute-one-task-from-request-to-result)
+for the practical sequence from original request through judgment and delivery.
+Its examples cover a lookup, a template improvement, a service defect and an
+analytical explanation.
+
+[The practical task CheatSheet](task-cheatsheet.md) helps choose and carry out a
+small useful action across investigation, delivery, explanation, continuity,
+learning and simplification. Its prompts are adaptable examples below the task
+SOP. [Question starters from practice](task-starters.md) offer short translated
+or combined questions from historical work, with their source transformations.
+[Review tasks and question CheatSheet](review-cheatsheet.md) specializes
+that layer with dispatch prompts and question experiments. Use
+[the extraction card](project-operation.md#take-one-practice-into-a-task) to try
+one practice in an existing task without selecting a full learning survey.

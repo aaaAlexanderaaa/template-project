@@ -1,7 +1,17 @@
 # Frontend surface contracts
 
-Each user-visible surface gets one living contract. Use
+Each graphical frontend surface gets one living contract. Use
 `templates/frontend-surface.md`.
+
+Keep its explicit frontend reading dependency when adopting the template;
+reconcile the relative link for its destination under `docs/design/`:
+
+```markdown
+- required-reading: [Frontend rules](../contracts/development-discipline.md#frontend-development-contract)
+```
+
+Command-line and other non-graphical interactions use their existing normative
+contract under development's [Experience route](../contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony).
 
 The required pair is:
 

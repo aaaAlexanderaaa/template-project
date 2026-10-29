@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-20
+last_reconciled: 2026-10-28
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 ---
 
@@ -23,6 +23,11 @@ access work obtains them and states what the method actually observed. The
 task owner decides whether a gap warrants further spending or a narrower claim.
 
 ## Preconditions
+
+Use [task context](../README.md#task-context) when access work activates a domain
+boundary. Its complete-reading route obtains the applicable owner text; the
+recovery protocol handles truncated source delivery. A direct source lookup
+still needs only the relevant facts and already obtained core.
 
 Identify the source or information needed, the property to observe, its role in
 the parent question, permissions, resource limit, previous attempts and their

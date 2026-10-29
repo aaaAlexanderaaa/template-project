@@ -16,6 +16,10 @@ the next executable action so another context can continue without chat
 history. Routine work and disposable experiments do not use this delivery-plan
 template solely to prove their classification.
 
+Separate the requested project result from the next artifact or demonstration.
+State what remains if that artifact alone succeeds. Preserve the actual scope
+decision rather than describing the executor's selected scope as owner intent.
+
 ## Risk classification
 
 - Profile: `{{material / high-risk}}`
@@ -62,10 +66,18 @@ policy; this plan owns only steps and evidence. Do not copy the [development § 
 
 ## Complete end state
 
+Retain the parent purpose and the user change this end state serves. Name the
+observation that would make this bounded assignment sufficient, with any
+material narrowing traced to its decision source.
+
 Describe the coherent final behavior. Temporary sequencing is not permission
 to leave an undocumented coexistence state behind.
 
 ## Execution and verification
+
+Obtain complete applicable units through [task context](../docs/README.md#task-context).
+Retain their identities and recovery status in existing execution evidence;
+a manifest alone does not show that the text reached the executing context.
 
 List actual dependencies and the smallest coherent implementation. Follow
 [outcome-driven delivery](../docs/contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence):
@@ -134,7 +146,15 @@ Lower layers do not imply that higher layers are complete.
 
 ## Progress and closure
 
+- Verified position and evidence: {{current state and locator}}
 - Current executable step: {{step}}
 - Blockers and unaffected ready work: {{facts}}
 - Contract/plan/issue/evidence updates required at closure: {{paths}}
 - Final revision and verdict: {{pending or result}}
+
+Replace the current state rather than appending a startup diary. When useful
+feedback is part of this work, name its changed existing owner and next matching
+entrypoint; distinguish saved, incorporated and observed subsequent use. Link
+the evidence and its limits. At closure, retire temporary startup context and
+reconcile live links; keep history supporting a live claim or recovery. Omit
+unrelated feedback fields instead of creating another record.

@@ -23,6 +23,11 @@ is authoritative.
 Link the original request/source and its accepted interpretation. Read the
 relevant current sections; do not copy their history into this plan.
 
+Distinguish the owner's requested change from the chosen deliverable or example.
+State why this work advances that change and what would remain if only this
+deliverable succeeded. Attribute a material narrowing to its actual decision;
+an instruction to proceed does not erase earlier requirements.
+
 ## Authority and prerequisites
 
 - Structural authority: `ARCHITECTURE.md` § “{{section}}”
@@ -109,10 +114,14 @@ concerns are not activated.
 
 - {{not included and why}}
 
-## Progress log
+## Current execution state
 
-- **{{YYYY-MM-DD}} — {{pending/in progress/done/blocked}}:** {{result and
-  evidence; update facts rather than merely saying “worked on it”}}
+- Verified position and evidence: {{current state and locator}}
+- Next executable action and sufficient ending: {{action and result}}
+- Blocked conditions and unaffected ready work: {{facts or none}}
+
+Replace this state as work advances. Link dated evidence where needed; do not
+append a growing startup diary or another summary of previous summaries.
 
 ## Completion record
 
@@ -121,3 +130,8 @@ concerns are not activated.
 - Contract verification status: {{status}}
 - Issues resolved/superseded: {{links}}
 - Durable evidence: {{links}}
+- Reusable feedback, when relevant: {{changed existing owner and matching
+  entrypoint; saved / incorporated / subsequently used, with evidence or an
+  explicit unobserved limit}}
+- Working context retired: {{active links/state reconciled; history retained
+  only where it supports a live claim or recovery}}

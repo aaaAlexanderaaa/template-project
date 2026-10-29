@@ -10,6 +10,8 @@ supersedes: []
 
 # {{Backend/service change}} contract
 
+- required-reading: [Backend rules](../docs/contracts/development-discipline.md#backend-and-service-development-contract)
+
 ## Outcome and scope
 
 - User/system outcome: {{outcome}}

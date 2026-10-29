@@ -43,6 +43,11 @@ require_supported_python()
 
 import tomllib
 
+if __package__:
+    from .rule_reading import RuleRepository, heading_slug, parse_frontmatter_text
+else:
+    from rule_reading import RuleRepository, heading_slug, parse_frontmatter_text
+
 
 def _normalize_repository(url: str) -> str:
     value = url.strip().rstrip("/")
@@ -300,25 +305,6 @@ def iter_files(directory: Path) -> Iterator[Path]:
             yield base / name
 
 
-def parse_frontmatter_text(text: str) -> tuple[dict[str, str], str | None]:
-    if not text.startswith("---\n"):
-        return {}, "missing frontmatter"
-    end = text.find("\n---\n", 4)
-    if end < 0:
-        return {}, "unterminated frontmatter"
-
-    metadata: dict[str, str] = {}
-    for line in text[4:end].splitlines():
-        stripped = line.strip()
-        if not stripped or stripped.startswith("#"):
-            continue
-        if ":" not in stripped:
-            return metadata, f"invalid frontmatter line: {stripped}"
-        key, value = stripped.split(":", 1)
-        metadata[key.strip()] = value.strip().strip("\"'")
-    return metadata, None
-
-
 def parse_record_fields(payload: str) -> tuple[dict[str, str], list[str]]:
     fields: dict[str, str] = {}
     errors: list[str] = []
@@ -352,14 +338,6 @@ def heading_inventory(text: str) -> set[str]:
         if match := HEADING_RE.match(line):
             headings.add(normalized_heading(match.group(1)))
     return headings
-
-
-def heading_slug(value: str) -> str:
-    """Renderer-style anchor for a heading: lowercase, punctuation removed,
-    spaces replaced by hyphens."""
-
-    value = re.sub(r"[^\w\s-]", "", value.strip().lower())
-    return re.sub(r"\s", "-", value)
 
 
 def heading_slug_inventory(text: str) -> set[str]:
@@ -2006,6 +1984,13 @@ class DocumentationChecker:
             f"{TEMPLATE_REPOSITORY}",
         )
 
+    def validate_required_reading(self) -> None:
+        paths = [self.display_path(record.path) for record in self.records]
+        if (self.root / "AGENTS.md").exists():
+            paths.append("AGENTS.md")
+        for relative, message in RuleRepository(self.root).validate_declarations(paths):
+            self.add(self.root / relative, f"required reading: {message}")
+
     def run(self) -> bool:
         self.policy = self.load_toml(self.root / "docs-policy.toml", "docs policy")
         self.validate_policy_shape()
@@ -2023,6 +2008,7 @@ class DocumentationChecker:
         self.validate_templates()
         self.validate_abnormalities()
         self.validate_local_links()
+        self.validate_required_reading()
         self.validate_architecture()
         self.validate_style_ownership()
         self.validate_template_entrypoint()

@@ -1724,5 +1724,19 @@ This evidence cannot replace normative authority.
         self.assert_passes()
 
 
+    def test_required_reading_unit_must_close(self) -> None:
+        self.replace("docs/README.md", "<!-- /required-reading: task-context -->", "")
+        self.assert_fails_with("required reading", "unclosed unit", "task-context")
+
+    def test_required_reading_dependency_must_resolve(self) -> None:
+        self.replace("docs/README.md", "- required-reading: [Authority order](#authority-order)",
+                     "- required-reading: [Authority order](#missing-authority)")
+        self.assert_fails_with("required reading", "missing-authority")
+
+    def test_required_reading_table_slot_must_match_concern(self) -> None:
+        self.replace("docs/contracts/development-discipline.md", "owner:experience |", "owner:wrong |")
+        self.assert_fails_with("required reading", "invalid Required reading declaration")
+
+
 if __name__ == "__main__":
     unittest.main()

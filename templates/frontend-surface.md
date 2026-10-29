@@ -12,6 +12,8 @@ supersedes: []
 
 # {{Surface name}} — surface contract
 
+- required-reading: [Frontend rules](../docs/contracts/development-discipline.md#frontend-development-contract)
+
 ## Purpose and user outcome
 
 What concrete subject does the surface represent, who uses it, and which

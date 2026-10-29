@@ -2,30 +2,150 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-20
-projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md]
+last_reconciled: 2026-10-29
+projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md, docs/contracts/documentation-harness.md]
 ---
 
 # Project operation after onboarding
 
 ## Purpose
 
-Use the governance framework to improve project decisions and execute
-authorized work efficiently after onboarding, without delegating product
-direction or portfolio priority to the framework.
+Execute an authorized task from its original purpose through a supported
+result. For ongoing project work after onboarding, also use the direction and
+portfolio loop below. Product direction and priority retain their human owner.
 
 The [governance decision boundary](../contracts/governance-decision-boundary.md)
 is normative. This guide describes the operating loop.
 
 ## Preconditions
 
-- The adoption assessment declares managed scope and current stage.
-- A human-owned product/direction authority is known.
-- An authoritative priority source or explicit owner is known.
-- Current architecture and applicable contracts can be located.
-- Existing in-progress and blocked work is truthfully represented.
+- For a concrete task: its request, existing authority and relevant current
+  facts are available, or can be investigated. The task procedure does not
+  require a new adoption assessment, portfolio or plan for ordinary work.
+- For portfolio selection: a human direction owner and priority source are
+  known, and existing in-progress and blocked work is represented.
+- For formal adoption or changes to enforcement: follow the adoption owner's
+  assessment, confirmation and scope requirements. A task procedure does not
+  authorize that migration.
 
 ## Procedure
+
+<!-- required-reading: task -->
+### Execute one task from request to result
+
+Use this sequence for an authorized task inside an existing project. Portfolio
+selection and formal adoption use the sections below when they apply. Each
+row names an action and its useful result. Keep one current state at the
+existing task or required plan: intended ending, verified position, next action
+and unresolved conditions. Update it in place; observations stay at their
+evidence owner. Small tasks use their existing context without a new record.
+
+| Moment | Action | Result and decision |
+|---|---|---|
+| Start or resume | Read the owner's original request and later corrections. Distinguish their statements, accepted proposals and executor choices. | State the change the user wants and the end they named. A symptom identifies a problem; it does not automatically bound the solution. |
+| Select the next work | Compare the proposed step with that intended change. Ask what remains if this step alone succeeds. | Choose the work that advances the important gap. Keep an example as an example when completing it leaves the original request open. |
+| Establish facts and authority | Inspect the current implementation, current owners and relevant baseline. Research factual uncertainty. Route only actual direction, permission or risk decisions to their human owner. | A supported action inside the existing envelope proceeds; a real blocker pauses its affected path. |
+| Obtain applicable rules | Read the global required core from task context. Match every concern trait, then obtain complete domain and project-owner units. Follow the selected execution method in full. | Applicable requirements and exceptions are available before dependent choices. A richer summary changes no detailed obligation. |
+| Choose depth and act | Use the smallest execution route. Update the existing behavior owner before changed behavior; implement one coherent result. | Routine work keeps focused checks. Material work uses a recoverable plan. High-risk work adds the current independent-review duties. |
+| Inspect the whole result | Observe the functional result, activated boundaries and actual effects. Compare with the original request, then use the selected task or example for its narrower claim. | Passing a helper, fixture, demo or consumer exercise supports its measured boundary. It does not close unrelated missing work. |
+| Feed useful experience back | Diagnose a correction or successful method, then change its existing default, interface, example or method when reuse is justified. Put a locator where matching work starts. | The next matching operation can obtain the changed behavior without reading the task transcript. Record whether this was saved, incorporated or actually used; history alone establishes only saving. |
+| Judge and close or continue | Compare with the owner's named ending. Reconcile behavior and projections, close the appropriate task state, and retire temporary startup material. | Close when that result is supported. Otherwise continue authorized work. Keep evidence supporting live claims or recovery; no new summary chain or ongoing portfolio follows automatically. |
+
+The normative owners are [task context](../README.md#task-context),
+[outcomes](../contracts/development-discipline.md#outcomes-before-means),
+[decision attribution](../contracts/development-discipline.md#preserve-decisions-and-evidence),
+[engineering discretion](../contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default),
+[routing](../contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route)
+and [completion](../contracts/agent-execution-discipline.md#completion-is-layered).
+
+For a useful move within this sequence, choose from the
+[practical task CheatSheet](task-cheatsheet.md). It provides short assignments
+and examples for diagnosis, inquiry, delivery, explanation, continuity and
+learning. Use or adapt the fitting action; the table is a selection aid.
+
+### Worked task decisions
+
+| Original request and observed facts | Appropriate action and sufficient result |
+|---|---|
+| "Find the frontend surface template." The template already exists. | Locate `templates/frontend-surface.md` and return it. The valid retained core suffices; no material plan, domain redesign or independent review is created for a path lookup. |
+| "For now, fix only this rule link." Broader documentation work is known. | Repair and verify the named link, then close that bounded task. A project purpose supplies context without authorizing an ongoing cleanup portfolio. |
+| "Improve the template's rule hierarchy and practical procedures." A visualization task exposed skipped detailed rules. | Inspect global and conditional reading, responsibility boundaries, procedures and completion decisions across the template. Change their existing owners and entry paths. Use ordinary lookup, a governed behavior change and a scope-drift case to check the revised procedure. The visualization is evidence about a failure, not the replacement objective. |
+| "Fix this timeout." A service contract already defines retry and failure behavior. | Inspect that behavior and its actual boundary, reproduce the cause, correct the owner or implementation where needed, and observe recovery. A local passing helper alone leaves service behavior unverified. Only activated domains and the selected route are added. |
+| "Explain this dataset's ranking." The method and records are uncertain. | Establish the question and source coverage, activate Analytical claims, read its complete requirements, and produce a supported explanation with the domain's required evaluation. File or chart counts alone cannot establish the reader's understanding. |
+
+For a focused challenge before expensive work or a completion decision, use
+[Grill](grill.md) with the original request and actual project result. A sound
+decision may pass. When choosing between more polish on a demonstration and an
+unresolved template requirement, work on the template requirement.
+
+Before choices depend on a selected concern, use the
+[task-context route](../README.md#task-context) to obtain its complete reading
+units. `python3 scripts/read_rules.py list` shows the existing trigger table;
+`prepare` takes matching concerns and task-applicable owner bindings. Add
+`--include docs/contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence`
+when that method applies. The [reading protocol](../contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
+owns same-context retention, fresh restart and source recovery. A unit's
+complete body must be available; a receipt is no substitute.
+Keep the original intended result and the sufficient completion observation
+beside the selected work. An ordinary file lookup retains its direct route.
+
+#### Worked lifecycle: a correction reaches a later task
+
+Consider the optional-template failure: a minimal profile's checker passed
+after optional templates were removed, but its retained unit suite still read
+those absent files. The defect crossed policy, consumer fixtures and delivery
+verification; an added reminder would leave that interface broken.
+
+1. At the existing harness owner, define a portable selected profile. Make the
+   fixtures use that same inventory: skip absent optional templates and fail
+   absent required ones. Preserve unrelated generic checks.
+2. Verify the original failure and a sibling profile. Keep these results in
+   the existing verification record, close the repair task and replace its
+   active startup state with the surviving owners and evidence locators.
+3. A later request to run the selected profile starts at `docs-policy.toml`,
+   its normal checker and test commands. It receives the corrected fixture
+   behavior without loading the original repair narrative. That observed use
+   supports local reuse; it does not establish real-project adoption or
+   long-term attention savings.
+4. A request only to find a template still uses direct lookup. It needs no
+   profile migration, material plan or new feedback record. If a required
+   template disappears, retain the failure; the optional-template correction
+   must not suppress it.
+
+The same lifecycle applies to a judgment-dependent method, with conditions
+and an example at its existing entrypoint rather than automatic execution.
+If later use has not occurred, report the change as incorporated and reuse as
+unobserved. Do not open unrelated work to manufacture a closed learning loop.
+
+<!-- /required-reading: task -->
+
+### Take one practice into a task
+
+Use this card for [bounded extraction](../contracts/project-adoption.md#take-one-practice-into-an-authorized-task),
+such as taking a review question or recovery method into an existing project.
+Full learning and formal adoption keep their own broader routes.
+
+1. Name the current task, the useful change and its sufficient stopping point.
+2. Inspect the target's facts, existing rule owner and authorization. Choose
+   one practice that improves an actual decision in that task.
+3. Read its complete operative source and applicable dependencies. Carry the
+   conditions that make it useful, including the case where it should not run.
+4. Try it inside the authorized task and inspect the actual result and effects.
+   State an untested proposal as a proposal; use focused evidence for a small task.
+5. When retention is requested, put the useful result at the target's existing
+   owner or next matching entrypoint, with the reason to revalidate it.
+
+For example, a small CLI can keep its README as behavior owner and take the
+method of checking failure channels, corrected-input retry and an unreported
+sibling error. It can finish when that bounded behavior is observed. Copying
+the template's checker or document tree is a separate adoption choice.
+
+Use the [practical task CheatSheet](task-cheatsheet.md) to select or construct a
+useful move, including the specialized [review collection](review-cheatsheet.md).
+Rules specify the boundary; the task SOP orders the work; a CheatSheet helps
+choose an effective action inside it.
+Work governed by this template still obtains its global core and activated
+detail. The card is a method entrypoint, not a replacement for those sources.
 
 ### 1. Consume direction; do not manufacture it
 
@@ -240,6 +360,9 @@ framework does not silently reprioritize remaining work.
 Before reporting a layer closed, propose durable recording for any general
 rule the owner stated during the work ([development § durable-recording](../contracts/development-discipline.md#recurring-verbal-rules-are-proposed-for-durable-recording)); a rule left only in
 chat history decays with the context that carries it.
+Use the task procedure's [feedback and retirement steps](#execute-one-task-from-request-to-result)
+at the existing owners. A reusable change may be incorporated before its later
+use is observed; report that limit rather than starting an unrequested task.
 
 ## Verification
 

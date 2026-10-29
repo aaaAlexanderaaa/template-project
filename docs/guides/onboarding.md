@@ -35,10 +35,22 @@ The normative behavior is defined by the
 
 ### Start collaborating without a migration
 
+To inspect or take one useful practice for a current task, use the
+[bounded extraction route](../contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
+and [operation card](project-operation.md#take-one-practice-into-a-task).
+The full learning survey below is selected when that broader learning was
+requested. Neither route requires invented prior corrections.
+
+The [complete-reading route](../README.md#task-context) can deliver declared
+units and dependencies. The learning request below keeps its wider, explicitly
+required set: obtain every named rule, using direct whole-owner reading where
+needed. A task preparation manifest alone does not complete that comparison.
+
 For a request to learn the discipline and use supplied personal context,
 follow [the bounded entry path](../contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path).
-Assume the discipline now in force has not met the owner's expectation. Find
-what they had to repeat and what the loaded rules caused. A filled policy, a
+For corrective learning, find what the owner had to repeat and what the loaded
+rules caused. First-time learning compares the current expectation and baseline;
+keep missing historical evidence unknown. A filled policy, a
 declared stage, or an earlier assessment that reported no gap is not that
 finding. Open every rule that path names. A title or a link is not enough. Plans,
 evidence, and source chronology stay closed unless a judgment depends on them.

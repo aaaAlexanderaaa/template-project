@@ -26,6 +26,10 @@ finding names the important problem and evidence; it need not design the repair.
 
 ## Inputs
 
+Select a dispatch shape from the [review CheatSheet](../docs/guides/review-cheatsheet.md)
+when useful. Retain the actual question and supplied context, including known
+runtime inheritance, alongside first answers; role names alone are insufficient.
+
 - Original request/source: {{wording or exact source section}}
 - Accepted interpretation and decision basis: {{intended user job; proposal and
   acceptance scope where applicable; distinguish implementer assumptions}}

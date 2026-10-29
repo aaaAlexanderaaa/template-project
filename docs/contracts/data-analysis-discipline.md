@@ -5,11 +5,14 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-10
+last_reconciled: 2026-10-28
 supersedes: []
 ---
 
+<!-- required-reading: analysis -->
 # Data analysis discipline
+
+- required-reading: [Execution profiles](agent-execution-discipline.md#vocabulary-and-risk-profiles)
 
 ## Purpose
 
@@ -45,6 +48,32 @@ bar for whatever gets built.
 
 - storage, pipelines, and non-analytical product surfaces;
 - the adopting project's choice of dataset, tooling, and chart library.
+
+## Applicability and output form
+
+Select requirements from the promised reader decision and output form. Shared
+obligations are accountable claims, adequate source coverage, stated method and
+assumptions, legible evidence, and verification proportional to the consequence
+of error. The requested form remains part of the outcome.
+
+| Deliverable | Appropriate application |
+|---|---|
+| Bounded factual lookup | Check the relevant records and calculation; give the answer, basis and material uncertainty. Follow the ordinary task route. |
+| One-off explanation, report or static figure | Retain input identity, method and parameters sufficient to check the result. Link claims or marks to record identifiers, source tables or an appendix in the delivered form. |
+| Reusable metric or analytical tool | Supply the re-runnable function, declared parameters and current output. Expose the controls the product promises and verify repeated use. |
+| Interactive analytical surface | In addition, verify selectable marks, control/computation correspondence and continuity across views that the surface provides. |
+
+For example, a requested PNG from a fixed CSV can deliver source identity,
+denominators, the calculation and a record/table reference. Clickable marks and
+parameter widgets belong to an interactive product when that product is part
+of the request. Retain the same traceability standard through a suitable form.
+
+Material or high-risk analytical delivery includes independent evaluation of
+claim support and presentation, with first judgments preserved separately.
+A routine factual lookup uses focused source/calculation verification unless
+the brief or another activated owner requires independent review. Apply the
+[execution profiles](agent-execution-discipline.md#vocabulary-and-risk-profiles)
+and the actual decision impact; a small output can still have serious effects.
 
 ## The question checklist
 
@@ -122,12 +151,13 @@ bar for whatever gets built.
 
 ## Normative invariants
 
-### Conclusions ship as re-runnable functions, not values
+### Reusable analyses expose re-runnable functions
 
-An analytical deliverable is an algorithm with declared parameters plus its
-current output. A number that cannot be reproduced on tomorrow's data is a
-finding, not a deliverable. Parameters that shape interpretation are exposed
-and adjustable rather than frozen inside a chart.
+A reusable analytical deliverable supplies an algorithm with declared
+parameters and its current output. Parameters that shape interpretation are
+exposed through its promised interface. A one-off finding retains its input,
+calculation or reasoning method and assumptions so another reader can check
+that result; a new tool is required when the requested outcome includes reuse.
 
 ### Every constant has a stated origin or is an exposed parameter
 
@@ -178,15 +208,19 @@ exclusion stated. Do not shrink the data or the claims to make them agree.
 
 ### Superseded algorithms remain available as comparisons
 
-When a metric's algorithm changes, the previous algorithm stays selectable
-beside the new one. A silent swap destroys the reader's ability to ask
-whether the conclusion belongs to the data or to the method.
+When a metric's algorithm changes, retain its prior version and the evidence
+needed to compare the resulting claims. A comparative analytical tool keeps
+the previous algorithm selectable beside the new one. A static report can
+provide a versioned method and side-by-side results. Preserve the ability to
+distinguish a data change from a method change through the promised form.
 
 ### Every displayed mark resolves to its underlying records
 
-Every point, band, cell, or flow in an analytical surface clicks through to
-the records it aggregates. If the reader cannot reach the records, the
-surface is an illustration of the data, not a view of it.
+Every point, band, cell or flow in an interactive analytical surface opens
+the records it aggregates. Static figures and exports provide stable record
+or aggregate-table references through captions, source tables or an appendix.
+The reader can trace a displayed claim to the supporting records in either
+form, subject to the source's actual access and privacy boundary.
 
 ### Reading requires no mental conversion
 
@@ -233,14 +267,20 @@ unrelated pictures.
 
 ## Acceptance evidence
 
+- The input identity, coverage, method and assumptions needed to check the
+  delivered claim or repeat its promised operation.
 - The parameter list: every constant in the deliverable, with its origin or
   its exposed control.
-- A click-through pass over every mark type, ending at records.
+- Traceability for every mark type: a click-through pass for interactive
+  surfaces, or checked record/table references for static delivery.
 - The misreading rehearsal: the invited wrong conclusion, and the display's
   defense against it.
-- The comparison view for every algorithm that replaced another.
-- The independent-evaluation record: findings, classification, and the
-  converged remaining questions.
+- A comparison of outputs when an algorithm changed, through the delivered
+  form and its retained method versions.
+- When independent evaluation is required above: its first findings,
+  classification, fix/defer decisions and remaining material questions.
+
+<!-- /required-reading: analysis -->
 
 ## Source anchors
 

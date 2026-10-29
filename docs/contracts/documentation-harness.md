@@ -6,11 +6,13 @@ contract_role: governance
 implementation: implemented
 verification_status: enforced
 last_reconciled: 2026-10-29
+reading_entrypoint: harness
 supersedes: []
 ---
 
 # Documentation harness contract
 
+<!-- required-reading: harness -->
 ## Purpose
 
 The repository's reusable value depends on its rules being mechanically
@@ -150,7 +152,7 @@ overrides the profile.
 
 The retained unit-test command works after an adopter removes templates outside
 the selected profile. Tests of unavailable optional templates report explicit
-skips; required-template checks and general checker tests still run.
+skips; required-template checks and general checker/reader tests still run.
 Fixture profile changes do not assume the source checkout uses `full`.
 
 - from: source[1], source[3]
@@ -251,6 +253,136 @@ judgment remain explicit review gates and evidence requirements rather than
 being represented by a vacuous automated pass.
 
 - from: source[1], source[2]
+
+### Complete rule delivery is a read-only transaction
+
+`scripts/read_rules.py` supplies local source text before task choices depend on
+it. `list` displays the current concern table. `prepare` starts at explicit
+entrypoint dependencies, adds every selected concern's Required reading links
+and supplied owner bindings, resolves their explicit dependencies, and emits
+one manifest followed by complete bodies (or explicit same-context retention
+labels below) and a final `READING COMPLETE` marker. Each preparation resolves
+anew, including when a caller reuses the Python repository object. It snapshots
+bytes in memory and checks all source identities again
+before emission; a changed source aborts preparation and requires a fresh run.
+The manifest names repository path, stable unit identity, heading, authority,
+lifecycle, SHA-256 content and file digests, and byte count. Output is UTF-8.
+LF and CRLF metadata delimiters are both supported. Source digests, byte counts,
+emitted bodies and recovery parts retain the original bytes and line endings.
+When a selected whole document covers a selected unit from that same file,
+emit only the whole document. Still traverse every explicit dependency and
+check cycles before removing covered bodies; external prerequisites remain.
+
+Declared units use paired comments outside fenced examples:
+
+```markdown
+<!-- required-reading: frontend -->
+## Frontend development contract
+The complete operative section and its subsections go here.
+<!-- /required-reading: frontend -->
+```
+
+An identifier is a lowercase ASCII slug unique within the file; `document` is
+reserved for the whole-document fallback. Markers are non-nested and matched.
+A unit begins at a heading and ends after its complete operative content;
+closing a unit in the middle of a section's prose is invalid. Units can cover
+several peer sections, allowing provenance to remain outside an operative unit.
+A required heading resolves to its enclosing unit, or the complete document
+when no unit encloses it. Ordinary heading navigation and stable unit identity
+remain distinct: renaming a heading reconciles incoming navigation links.
+An owner may publish `reading_entrypoint: UNIT` in frontmatter. File-only
+references then select that declared complete operative unit; `#document`
+explicitly requests the whole file. Without that field, whole-file fallback
+is unchanged. A missing, malformed or undeclared entrypoint is an error.
+Owners review semantic completeness; marker, heading coverage and relationship
+checks establish syntax only.
+
+Only an explicit directive creates a dependency:
+
+```markdown
+- required-reading: [Concern routing](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
+```
+
+Directives resolve relative to their containing document. CLI references resolve
+relative to the repository root. Fenced examples do not declare units or edges.
+Ordinary Markdown links do not create edges. Missing anchors, malformed units,
+duplicate identifiers, dependency cycles, unsupported lifecycle, and paths
+escaping the repository, including through symlinks, fail with a repair location.
+Historical or superseded documents are references, not operative reading.
+`prepare --target REFERENCE` explicitly includes a target rule for governed
+future work and labels it as target; it never silently changes current authority.
+
+The [concern table](development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
+is the only trigger registry. Its Required reading cells contain Markdown links
+and/or `owner:concern-slug`. The command validates that a supplied concern exists,
+its bindings belong to a selected owner slot, and every selected slot is bound.
+A bound owner is a canonical normative contract or surface, current or explicitly
+selected target. A contract's omitted role defaults to `product`, consistently
+with the documentation checker; an explicit role is `product` or `governance`.
+Governance contracts identify that role explicitly. Surfaces declare an identity
+and compatible UI scope. Multiple bindings for one concern are allowed. The
+operator verifies their task/interface identity and source authority against
+architecture and accepted intent; type checks alone cannot establish that match.
+Experience can bind a command-line or other non-graphical contract. Graphical
+surface owners declare the complete frontend reading dependency; the reader
+follows that declaration without imposing frontend ownership on other interfaces.
+
+```sh
+python3 scripts/read_rules.py list
+python3 scripts/read_rules.py prepare --concern analytical-claims
+```
+
+`prepare --include REFERENCE` adds an explicitly selected current method or
+rule and its complete dependencies. It does not activate authority, choose
+priority or waive another applicable concern. Targets still need `--target`.
+
+For repeated preparation within one live reading context, `--context ID`
+labels its manifest. `--retained PATH` consumes a previous version-2 manifest
+with the same context label. Supplying it asserts that every reused full body
+is still available in that context: a manifest or summary alone supplies no
+such evidence. Restart, handoff, unknown retention or a different context uses
+fresh preparation without that input. The tool cannot inspect model memory;
+context labels detect accidental mix-ups rather than certify comprehension.
+
+Preparation always resolves the current selection, owners, lifecycle and full
+dependency graph before considering retention. It compares stable identity,
+exact body bytes/digest, authority, status and the complete metadata digest.
+New or changed units are emitted; matching units are explicitly marked retained.
+An edit outside a retained unit can leave its body valid; the current manifest
+still refreshes the whole-file digest used for recovery. Changed metadata is
+conservatively reacquired. Missing sources, invalid owners, cycles or malformed
+receipts fail before output; no old receipt can make invalid current rules pass.
+
+Every manifest states the complete selected units and distinguishes emitted
+from caller-asserted retained bodies. The final marker reports those counts
+when reuse occurs. It is not proof of new delivery for retained text. Full
+preparation and digest-checked recovery remain available. This interface reads
+caller-managed task data; it creates no persistent cache, task registry or
+authority store and writes no file.
+
+If output is truncated, recover the missing complete unit with
+`read --unit PATH#UNIT --digest EXPECTED_SHA256`; the expected digest covers the
+entire source file, so a changed boundary or metadata also invalidates recovery.
+For output-limited environments, add `--part N --part-size BYTES`. Parts preserve
+UTF-8 characters and exact original text, identify part number/total and source
+digest, and carry completion markers. Obtain every part before dependent work.
+The final aggregate marker or all recovered parts establishes delivered source,
+not understanding, correct application, or user success. Those require the
+task's artifact and outcome evidence. Memory, manifests and summaries are locators.
+
+The command reads contained local Markdown as data, never executes its contents,
+and uses no network or persistent cache. It cannot intercept every agent decision
+or force host injection. An optional host adapter needs its own verified boundary.
+Where the command is unavailable, directly obtain the same complete units and
+their identities. An ordinary file lookup retains the direct route owned by
+[task context](../README.md#task-context).
+
+The documentation checker validates declarations and all explicit dependency
+closures, including required table targets and owner-slot syntax. It does not
+guess concern selection from prose, certify a supplied owner's semantic fit,
+or claim that a reader applied the emitted rules.
+
+- from: source[11] (2026-10-28 complete rules and useful delivery), source[12] (2026-10-29 connected operating interfaces)
 
 ### A copied template entrypoint is unfinished onboarding
 
@@ -399,16 +531,6 @@ acceptance-evidence section are a current status surface, not history.
 
 ## Acceptance evidence
 
-The [September 7 change record](../plans/2026-09-06-proportionate-execution.md#progress-and-closure)
-records passing source-order, unresolved-reference, self-citation, and
-definition-validation fixtures. Surface translation checks remain unchanged.
-
-The [2026-09-06 completed change](../plans/2026-09-06-outcome-driven-template.md#progress-and-closure)
-records the failing-before/passing-after scaffold guard, including coded
-heading and list variants and preserved legacy history. The full 114-test
-suite and normal/strict checks passed. This establishes the declared syntax
-boundary, not semantic quality or agent behavior.
-
 | Outcome | Enforcement | Evidence |
 |---|---|---|
 | Bidirectional UI and contract citations | Fixture tests + repository check | PASS — resolving, orphan, subsection, and layer-boundary cases |
@@ -430,6 +552,21 @@ boundary, not semantic quality or agent behavior.
 Counts are deliberately absent from this table: the checker's own summary line
 and the fixture suite are the current inventory, and a number copied into prose
 goes stale the next time a template is added.
+
+<!-- /required-reading: harness -->
+
+## Verification history
+
+The [September 7 change record](../plans/2026-09-06-proportionate-execution.md#progress-and-closure)
+records passing source-order, unresolved-reference, self-citation, and
+definition-validation fixtures. Surface translation checks remain unchanged.
+
+The [2026-09-06 completed change](../plans/2026-09-06-outcome-driven-template.md#progress-and-closure)
+records the failing-before/passing-after scaffold guard, including coded
+heading and list variants and preserved legacy history. The full 114-test
+suite and normal/strict checks passed. This establishes the declared syntax
+boundary, not semantic quality or agent behavior.
+
 
 Verification run on 2026-07-26:
 
@@ -546,7 +683,33 @@ onboarding when any listed identity claim remains in the agent entrypoint and
 the git remote is not this template's repository. Removing one sentence while
 leaving another claim is still unfinished.
 
+### source[11] — 2026-10-28
+
+The owner requested practical rules that preserve purpose and make detailed
+requirements reliably available, then authorized implementation of the
+[reviewed design](../plans/2026-10-28-rule-reading-and-outcome-design.md).
+This is an English account of the current conversation. The implemented
+protocol belongs here; the plan records its design rationale and review.
+
+### source[12] — 2026-10-29
+
+The owner described rising foreground attention and ineffective accumulation
+as a systems-engineering problem and accepted continuing with the connected
+task lifecycle. Publishing operative entrypoints and stateless same-context
+preparation are executor-selected interfaces within that accepted design.
+They preserve source integrity, current authority and fresh restart; they do
+not establish comprehension, sustained savings or real-project adoption.
+
 ## Reconciliation log
+
+- **2026-10-29 — revalidated operating interfaces:** published operative
+  entrypoints, explicit method inclusion and caller-asserted same-context
+  retention. Preparation resolves current rules anew and remains read-only;
+  full source, recovery and fresh acquisition remain available.
+  - from: source[12] (2026-10-29 systems-engineering continuation)
+
+- **2026-10-28:** Define contained source resolution, complete units, explicit
+  dependencies, owner bindings, digest-checked recovery and honest evidence scope.
 
 - **2026-10-02 — any remaining identity claim fails the checker:** one claim
   that the checkout is this discipline template, with a git remote that is

@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-20
+last_reconciled: 2026-10-29
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -47,6 +47,11 @@ If even the subject is unclear, ask for it before inventing one to criticize.
 
 ## Invocation
 
+For common dispatch shapes and small question experiments, choose from the
+[review CheatSheet](review-cheatsheet.md). It includes same-task independent
+reviews, an external consumer and artifact-only reading. Select it for the
+current uncertainty; it adds no mandatory review tier.
+
 A short invocation is enough when the task already contains the inputs:
 
 > Use `docs/guides/grill.md` as Grill. Review the actual work against our agreed
@@ -89,6 +94,8 @@ Use the answer to decide the next question. When the owner is unavailable,
 return the unresolved decisions without guessing their answers.
 
 For a default or rule, inspect repeated effects and normal cases it might burden.
+For authored content, use the language owner's reader and attention questions
+against the actual consumer-facing result, not only its complete source record.
 For each consequential finding, identify the artifact or observation, relevant
 goal or standard, why it matters, and what remains uncertain or needs rechecking.
 An optimization or repair plan is optional. Return supported judgments, remaining
@@ -116,6 +123,12 @@ Use [claim-specific inspection](../contracts/development-discipline.md#verify-pr
 to choose the actual object and reading scope. A full source record and its
 reader-facing projection can support different findings; identify which you
 examined. Compare useful gains and losses when the work replaces an earlier form.
+
+For content, apply the [language owner](../README.md#language-style) through
+the [reader-attention questions](task-starters.md#why-should-this-reader-spend-attention-here).
+Inspect what the intended reader can obtain from the actual opening and
+important passages. Ground an attention-cost finding in unnecessary retrieval,
+repetition or reconstruction, while preserving detail the reader needs.
 
 For an independent review, use a fresh context that did not produce the work.
 Give it the relevant intent and standards, with an open inspection assignment;
@@ -204,6 +217,14 @@ induced actions are reversible. Changing authorization or an autonomous charter
 continues to follow the relevant owner's stricter rules.
 
 ### Return a decision and revisit important answers
+
+Give a positive verdict where supported: what works, which problem is solved,
+why the chosen action serves the original purpose, and what observation makes
+this round sufficient. For a template improvement, inspect its actual entrypoint, rule owners and
+usable procedures across representative tasks. A successful demonstration
+supports its own use; the review also judges the original project requirement
+that motivated it. Use [task context](../README.md#task-context) for complete applicable rules
+before judging their use. Stop the round at its supported conclusion.
 
 Close a round when there is a supported next action, a bounded investigation,
 an owner decision to await, or a justified stop. Do not keep producing questions

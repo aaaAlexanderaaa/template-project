@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-09-17
+last_reconciled: 2026-10-29
 review_due: 2026-11-22
 supersedes: []
 ---
@@ -113,7 +113,10 @@ coverage.
 
 - from: source[1], source[2], source[3], source[5]
 
+<!-- required-reading: time -->
 ## Time and calendar
+
+- required-reading: [Shared failure and recovery](#failure-recovery-and-intervention)
 
 Applies only when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Time and calendar. Declare how storage,
 calendar calculation, input interpretation, and display obtain their meaning.
@@ -221,6 +224,8 @@ inconsistent. Report the scope and recovery action; do not silently pick a zone.
 Enforcement: accept intentionally different role settings; reject undeclared
 fallbacks and absent dynamic scope without emitting a success or partial write.
 
+<!-- /required-reading: time -->
+
 ## Demonstration data
 
 Applies only when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates Demonstration data. Unit-test rows that
@@ -310,6 +315,7 @@ business rules.
 
 Enforcement: build or import scan for a second authority path.
 
+<!-- required-reading: runtime-recovery -->
 ## Failure, recovery, and intervention
 
 | Failure class | Detection | Response |
@@ -325,6 +331,8 @@ Changing a public timestamp representation is a compatibility cutover of
 text, not a data migration of instants, unless the instants-stay-instants invariant was already
 violated. If stored values were naive or were rewritten by a zone change,
 stop and obtain a human data-risk decision.
+
+<!-- /required-reading: runtime-recovery -->
 
 ## What not to copy
 

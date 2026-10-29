@@ -10,6 +10,9 @@ supersedes: []
 
 # {{Cross-stack feature}} contract
 
+- required-reading: [Backend rules](../docs/contracts/development-discipline.md#backend-and-service-development-contract)
+- required-reading: [Cross-stack rules](../docs/contracts/development-discipline.md#cross-stack-coordination)
+
 ## User outcome
 
 {{What becomes possible or correct for the user?}}

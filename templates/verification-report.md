@@ -12,6 +12,8 @@ subject: {{initiative-or-contract}}
 
 - Contract and section: `{{path}}`
 - Original request/source and accepted interpretation: {{wording or links}}
+- Claimed completion level: {{original task / bounded step / example only}}
+- Requested outcome still unresolved by this evidence: {{remaining gap or none}}
 - Revision/build: `{{commit/build id}}`
 - Observable outcomes: {{outcomes}}
 - Verifier: {{person/context}}
@@ -66,14 +68,20 @@ and inconclusive variants. State when shared sources remain dependent or joint
 changes prevent attributing a difference to one factor. A planned comparison,
 role switch or model consensus is not an observed verification result.
 
-For claims of learning or acceleration, observe the next matching task through
-its normal entrypoint: did it find, validate, and use the method? Include a
+For claims of learning or acceleration, distinguish the saved observation,
+the incorporated change at its existing owner, and observed subsequent use.
+Name the actual next task, its normal entrypoint, changed action and result:
+did it find, validate, and use the method without the old transcript? Include a
 changed-condition case where reuse should stop. Compare available end-to-end
 effort, waiting and rework on stated comparable work; distinguish a walkthrough
 from actual fresh-context or repeated runtime use. Identify artifact, dependency,
 method, and freshness conditions when reusing earlier verification. Quality
 detectors use [measurement calibration](../docs/contracts/data-analysis-discipline.md#measures-support-fallible-judgment-and-remain-open-to-correction),
 including useful cases they must preserve. Omit this analysis for unrelated claims.
+Do not infer later use from a filled plan or passing parser. If it has not
+occurred, report it as unobserved and keep the completion claim within that
+limit. Link reconciled task state and retired temporary entrypoints when
+closure is part of the claimed outcome; create no separate lesson ledger.
 
 ## Failure and negative-path checks
 
@@ -90,6 +98,13 @@ unmatched input, or rejected findings; follow the owning failure policy.
 
 An empty anomaly list means none were observed in this run; it does not prove
 that unknown anomalies cannot exist.
+
+For rule-reading changes, distinguish delivered source, its effect on the
+artifact, the reader's supported answers, and observed delivery behavior. Keep
+the original questions and first answers. Give the reviewer the original request
+and material scope decisions; keep the executor's desired verdict separate.
+For an ordinary-task control, record actual extra reads,
+planning, reviews and available elapsed effort; identify unmatched baselines.
 
 ## Limitations
 

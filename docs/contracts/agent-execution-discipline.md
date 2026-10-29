@@ -42,6 +42,7 @@ Out of scope:
 - replacing human authority for unresolved product or safety decisions;
 - redefining a project's product or architecture contracts.
 
+<!-- required-reading: profiles -->
 ## Vocabulary and risk profiles
 
 - **Routine change:** authorized, bounded work within an existing owner, with
@@ -75,9 +76,14 @@ Out of scope:
 
 - from: source[1], source[2], source[7]
 
+<!-- /required-reading: profiles -->
+
 ## Normative invariants
 
+<!-- required-reading: risk -->
 ### Risk selects the execution depth
+
+- required-reading: [Risk profile definitions](#vocabulary-and-risk-profiles)
 
 Routine work may use the base development discipline. Material work uses the
 outcome-driven method below. High-risk work additionally requires independent
@@ -101,7 +107,15 @@ explicit evidence and review requirements in the owning contract remain binding.
 
 - from: source[1], source[7]
 
+<!-- /required-reading: risk -->
+
+<!-- required-reading: material-delivery -->
 ### Material delivery follows the outcome and its evidence
+
+- required-reading: [Risk and definitions](#risk-selects-the-execution-depth)
+- required-reading: [Completion](#completion-is-layered)
+- required-reading: [Evidence classes](#evidence-classes-remain-explicit)
+- required-reading: [Delivery records](#required-records)
 
 Establish the original request, accepted contract, current facts, and smallest
 credible verification for each claim before dependent implementation. The
@@ -133,13 +147,28 @@ own later instruction to stop, or to name a different end, replaces it.
 When git cannot be initialized, stop adding template files and tell the
 owner. That stop does not cancel other work that adds no template file.
 
+Keep one current execution state at the existing plan or task owner: verified
+position, next executable action, unresolved conditions and sufficient ending.
+Replace that state as work advances; link durable observations rather than
+accumulating startup summaries or requiring a chain of prior handoffs.
+
+At closure, reconcile behavior and affected projections, handle reusable
+feedback through [development's experience owner](development-discipline.md#experience-changes-the-next-matching-action),
+and retire temporary work context. A saved observation, an incorporated change
+at the matching entrypoint and observed subsequent use are different results.
+Report the supported one. Do not create another task merely to claim reuse;
+when the requested result includes reusable improvement, its verification must
+exercise that next entrypoint. Completion still follows the owner's named end.
+
 For an unresolved material technical fact, use the existing [controlled
 experiment](development-discipline.md#contract-before-material-delivery-evidence-before-certainty)
 path with its containment, expiry, cleanup, and concern-routing requirements.
 It does not require a fictional product contract or failing test for behavior
 not yet selected.
 
-- from: source[1], source[4], source[6], source[10], source[11] (2026-10-02 the owner's own later stop replaces the end)
+- from: source[1], source[4], source[6], source[10], source[11] (2026-10-02 the owner's own later stop replaces the end), source[14] (2026-10-29 connected task lifecycle)
+
+<!-- /required-reading: material-delivery -->
 
 ### High-risk design uses independent lenses
 
@@ -222,6 +251,7 @@ product work. The output classes and allowed blocker conditions are defined by
 
 - from: source[1] (2026-07-26 execution-profile origin), source[3] (2026-07-26 no agent-defined priority), source[6] (2026-09-06 outcome-driven feedback)
 
+<!-- required-reading: completion -->
 ### Completion is layered
 
 - A task is complete when its requested outcome is observed under the accepted
@@ -235,10 +265,21 @@ product work. The output classes and allowed blocker conditions are defined by
 - A release gate is complete only when every gate claim has its own reproducible
   evidence.
 
+Compare the stopping point with the outcome the owner named, not just the
+artifact the executor selected. A passing example can establish its own result
+while leaving the requested template, service or workflow improvement open.
+Supply completion reviewers with that original request and material scope
+decisions alongside the artifact. A narrower reviewer assignment cannot settle
+broader completion. If the scope was misattributed, correct its existing owner
+and resume the original work.
+
 Lower-level completion does not imply higher-level completion.
 
 - from: source[1], source[2]
 
+<!-- /required-reading: completion -->
+
+<!-- required-reading: evidence -->
 ### Evidence classes remain explicit
 
 Verification records name which class they provide, such as:
@@ -268,6 +309,8 @@ Real-environment verification carries its own cost and risk, so bound it and
 set its stop conditions before running it.
 
 - from: source[1], source[2], source[8], source[12]
+
+<!-- /required-reading: evidence -->
 
 ### Billed, rate-limited, and account-bound resources are spent deliberately
 
@@ -344,6 +387,7 @@ ceilings, coordination and authorization still bound acceleration.
 
 - from: source[12], source[13]
 
+<!-- required-reading: route -->
 ### The harness selects the smallest executable route
 
 Before creating records, the agent determines which route applies:
@@ -369,6 +413,8 @@ risk authority remains a human decision; an ordinary reversible engineering
 choice inside the declared envelope proceeds without serial approval.
 
 - from: source[4]
+
+<!-- /required-reading: route -->
 
 ### Parallel work is coordinated in writing
 
@@ -449,6 +495,7 @@ descriptions — not the worker.
 
 - from: source[5], source[6], source[8], source[9] (2026-09-25 context selected for recipient judgment), source[12]
 
+<!-- required-reading: records -->
 ## Required records
 
 Material delivery work records only what its activated route requires:
@@ -468,6 +515,8 @@ Material delivery work records only what its activated route requires:
 A controlled experiment uses a scratch record unless its result supports a
 durable contract or decision. Routine work creates none of the records above
 solely to prove that it is routine.
+
+<!-- /required-reading: records -->
 
 ## Forbidden behaviors
 
@@ -659,7 +708,22 @@ smallest discriminating scenario, and treat 1,000 as an optional pressure case.
 The accepted proposal retains proactive analysis of cumulative effects before
 observed harm and reuses valid conclusions until their conditions change.
 
+### source[14] — 2026-10-29
+
+English account of this conversation: after requesting repairs, the owner
+identified growing foreground attention and ineffective accumulation as a
+systems-engineering problem, then accepted continuing with a connected
+request, execution, feedback and lifecycle design. One current task state and
+verification through the later matching entrypoint are implementation choices
+within that accepted scope; they are not owner-authored universal preferences.
+
 ## Reconciliation log
+
+- **2026-10-29 — connected task lifecycle:** expose the complete material
+  delivery method with its evidence and record prerequisites. Keep current
+  execution state direct, reconcile feedback at its owner and distinguish
+  incorporation from observed later use without inventing more work.
+  - from: source[14] (2026-10-29 systems-engineering continuation)
 
 - **2026-10-11 — variation and conditional scale analysis:** distinguished
   context, source, question and model dependence; routed active comparisons to
