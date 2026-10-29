@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-10-02
+last_reconciled: 2026-10-29
 supersedes: []
 ---
 
@@ -148,6 +148,11 @@ carry ceremony it will never fill in. `[templates.doc_types]` owns the expected
 rather than silently skipping the assertion. An explicit `required_files` list
 overrides the profile.
 
+The retained unit-test command works after an adopter removes templates outside
+the selected profile. Tests of unavailable optional templates report explicit
+skips; required-template checks and general checker tests still run.
+Fixture profile changes do not assume the source checkout uses `full`.
+
 - from: source[1], source[3]
 
 ### Architecture fitness is declared without pretending to be universal
@@ -207,12 +212,13 @@ itself stage-sensitive: like the adoption gates it advises in `observed` and
 `baselined` and blocks from `scoped_enforcement` onward, so declaring an early
 stage is enough to run the check in CI before the layout is configured.
 
-Files directly in the repository root are exempt from that report. Build and
-tooling configuration — `setup.py`, `conftest.py`, `vite.config.ts`, and their
-equivalents — belongs to no source root in any layout, and demanding that an
-adopter claim it would fail the first run for something the gates should never
-have governed. Directory scans prune dependency and tool caches during the
-walk, so cost stays proportional to the project rather than to what it vendors.
+Root application files receive the same source-scope check as nested files.
+Declare product directories or individual files in `source_roots`; a declared
+file activates adoption gates. Declare build and tooling paths through
+`harness_paths`, including the shipped root-tooling examples. Location alone
+does not establish that a file is tooling. Directory scans prune dependency and
+tool caches during the walk, so cost stays proportional to the project rather
+than to what it vendors.
 
 - from: source[3]
 
@@ -410,7 +416,7 @@ boundary, not semantic quality or agent behavior.
 | Templates validated as deliverables | Required-file/section/syntax fixtures | PASS — every template the selected profile requires |
 | Profiles scale the inventory | Profile-selection and trimmed-reference fixtures | PASS — lower tier still enforced, dropped tier not required, typos still fail |
 | Adoption gates read the declared scope | Source-root, managed-path, and stage fixtures | PASS — outside-root detection, scope narrowing, and advisory stages |
-| Configuration never fails an adopter for what it cannot own | Root-file, glob-harness, and vendored-tree fixtures | PASS — root tooling, `tools/**`, `node_modules/`, and `.venv/` all exempt |
+| Source identity follows declarations rather than root location | Root-application, declared-file, glob-harness, and vendored-tree fixtures | Explicit tooling exemptions remain; root application files must be claimed |
 | Retired and misspelled policy keys are refused | `[adoption]` and `[severity]` key fixtures | PASS — retired key names its replacement, typo is rejected |
 | Non-vacuous architecture adoption | Manifest and forbidden-pattern fixtures | PASS — adoption, no-match, escape, and literal cases |
 | Optional abnormalities remain accountable | Registry/evidence fixtures | PASS — fresh, expired, resolving, and unregistered cases |

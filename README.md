@@ -112,7 +112,7 @@ migration before CI is connected. Four knobs live in `docs-policy.toml`:
 | Knob | Role | Typical values |
 |---|---|---|
 | `[adoption].stage` | Whether adoption work fails the build | `observed`/`baselined` report and return 0; `scoped_enforcement`/`adopted` block |
-| `[adoption].source_roots` | What counts as product code | `["src"]`, `["app", "lib"]`, `["packages"]`, `["cmd", "internal"]` |
+| `[adoption].source_roots` | What counts as product code | `["src"]`, `["app", "lib"]`, `["packages"]`, `["cmd", "internal"]`, `["main.py"]` |
 | `[adoption].managed_paths` | Governed boundaries under `scoped_enforcement` | `["packages/billing/**"]` |
 | `[templates].profile` | Which templates are required (tiers accumulate) | `minimal` / `standard` / `full` |
 
@@ -127,10 +127,10 @@ That produces these working modes:
 - **Layouts other than `src/`:** if code sits outside every configured source
   root, the checker names it instead of giving a meaningless green result on an
   empty set. The same stage rule applies: early stages only report, so CI can
-  start before the layout is fully declared. Files in the repository root
-  (`setup.py`, `conftest.py`, `vite.config.ts`, and the like) never count as
-  product code. Tooling directories go in `harness_paths`, which accepts globs
-  such as `tools/**`.
+  start before the layout is fully declared. Root application files must also
+  be claimed; an individual file such as `main.py` can be a source root.
+  Tooling paths go in `harness_paths`, including root build files and globs
+  such as `tools/**`. The shipped policy declares common tooling examples.
 - **CI:** structural problems are errors. Findings that appear only because a
   date moved (an aged target, an overdue promise, expired pending evidence)
   default to advisory. Put `--strict` on a scheduled job so a calendar change

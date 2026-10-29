@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-19
+last_reconciled: 2026-10-29
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -227,7 +227,7 @@ Set these before running the check for the first time:
 [adoption]
 stage = "observed"              # or baselined / scoped_enforcement / adopted
 source_roots = ["app", "lib"]   # the project's real layout
-harness_paths = ["scripts"]     # tooling that is not product code
+harness_paths = ["scripts", "setup.py", "*.config.*"] # declared tooling
 managed_paths = []              # in scoped_enforcement: the governed boundaries
 
 [templates]
@@ -242,14 +242,15 @@ Consequences worth knowing before you choose:
   layout wrong at an early stage produces a report, not a red build.
   `scoped_enforcement` and `adopted` block.
 - **Source roots** decide what "product code" means. If code exists outside all
-  of them, the check names the paths rather than passing on nothing. Files
-  directly in the repository root are never counted, so `setup.py`,
-  `conftest.py`, and `vite.config.ts` need no entry. For a tooling directory,
-  add it to `harness_paths`, which accepts glob patterns such as `tools/**`.
+  of them, the check names the paths rather than passing on nothing. This
+  includes root application files: `source_roots = ["main.py"]` declares one
+  and activates the adoption gates. Declare actual build/tooling paths in
+  `harness_paths`, including root files and glob patterns such as `tools/**`.
 - **Profile** decides the template inventory, and tiers are cumulative. A small
   project selects `minimal` and may delete the templates it will never fill in;
   documentation that still references a deleted template becomes an advisory,
-  not a build failure.
+  not a default build failure. The retained test command explicitly skips
+  optional-template cases while continuing the general infrastructure tests.
 - **Severity.** Review signals that should not fail an unrelated change by
   default are advisory. Run `--strict` on a schedule rather than promoting them
   on every push. A rule you set to `off` stays off even under `--strict`.

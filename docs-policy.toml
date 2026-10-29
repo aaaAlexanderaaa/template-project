@@ -16,16 +16,20 @@ stage = "adopted"
 
 # Product mode begins when any configured source root contains a file other
 # than one of the placeholder names below. Set these to the project's real
-# layout, e.g. ["app", "lib"], ["packages"], ["cmd", "internal"].
+# layout, e.g. ["app", "lib"], ["packages"], ["cmd", "internal"], or
+# individual product files such as ["main.py"]. Root location is not exempt.
 source_roots = ["src"]
 placeholder_names = ["README.md", ".gitkeep"]
 
-# Directories that hold tooling rather than product code. They are exempt from
+# Paths that hold tooling rather than product code. They are exempt from
 # the "source outside every source root" check. Adopters whose product code
 # lives in scripts/ or tests/ should move those entries to source_roots.
-# Glob patterns work here too, e.g. "tools/**" or "*.config.ts". Files sitting
-# directly in the repository root are always exempt and need no entry.
-harness_paths = ["scripts", "tests"]
+# Root tooling is declared here too; other root source files must be claimed.
+# Reconcile these examples to the project's actual build and tooling owners.
+harness_paths = [
+  "scripts", "tests",
+  "setup.py", "conftest.py", "noxfile.py", "*.config.*",
+]
 
 # Only consulted in stage `scoped_enforcement`: globs or directory prefixes
 # naming the boundaries currently governed. Empty means every source root.

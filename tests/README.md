@@ -6,6 +6,11 @@ contract violation at a time, and verifies that `scripts/check_docs.py` fails
 with an actionable message. It also keeps valid variants and the untouched
 template repository green.
 
+The same suite runs after trimming templates to `minimal` or `standard`.
+Template-specific tests report skips outside the selected profile or when an
+optional source is absent; missing required templates still fail. General
+checker cases continue to run without restoring deleted templates.
+
 Run it with Python 3.11 or newer:
 
 ```bash

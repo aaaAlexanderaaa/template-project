@@ -1488,9 +1488,10 @@ class DocumentationChecker:
             directory = self.root / source_root
             if not directory.exists():
                 continue
+            candidates = [directory] if directory.is_file() else iter_files(directory)
             product.extend(
                 path
-                for path in iter_files(directory)
+                for path in candidates
                 if path.name not in placeholders
             )
         managed = [
@@ -1504,7 +1505,7 @@ class DocumentationChecker:
                 for path in product
                 if path_matches(path.relative_to(self.root).as_posix(), managed)
             ]
-        return sorted(product)
+        return sorted(set(product))
 
     def validate_source_root_configuration(self) -> None:
         """Catch code that lives outside every configured root.
@@ -1513,11 +1514,8 @@ class DocumentationChecker:
         reports a clean check while every adoption gate silently evaluates
         against an empty file set.
 
-        Files directly in the repository root are exempt. `setup.py`,
-        `conftest.py`, `noxfile.py`, `vite.config.ts`, and their equivalents are
-        build and tooling configuration in every layout this template targets;
-        treating them as unclaimed product code would fail an adopter's very
-        first run for something no source root is supposed to own.
+        Root files follow the same declarations as nested files. Tooling
+        exemptions come from harness_paths; location alone grants none.
         """
 
         adoption = self.policy.get("adoption", {})
@@ -1538,8 +1536,6 @@ class DocumentationChecker:
             if path.suffix.lower() not in suffixes:
                 continue
             relative = path.relative_to(self.root)
-            if len(relative.parts) == 1:
-                continue
             posix = relative.as_posix()
             if path_matches(posix, excluded):
                 continue

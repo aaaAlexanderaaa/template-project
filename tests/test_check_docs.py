@@ -10,20 +10,21 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from datetime import date
 from pathlib import Path
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
 # The copied repository and this clock form one reviewed fixture baseline.
 # Advance together when repository reconciliation dates move forward.
-FIXED_TODAY = "2026-10-21"
+FIXED_TODAY = "2026-10-28"
 
 
 def load_checker_module():
-    specification = importlib.util.spec_from_file_location("check_docs", CHECKER)
+    specification = importlib.util.spec_from_file_location("scripts.check_docs", CHECKER)
     module = importlib.util.module_from_spec(specification)
     # Dataclass resolution looks the defining module up in sys.modules.
-    sys.modules["check_docs"] = module
+    sys.modules["scripts.check_docs"] = module
     specification.loader.exec_module(module)
     return module
 
@@ -45,6 +46,28 @@ class DocumentationCheckerTests(unittest.TestCase):
                 "tmp",
             ),
         )
+        # Each scenario controls the promises it exercises. Keep inherited
+        # commitments neutral in the copied baseline; checks against the real
+        # repository retain its actual dates and overdue findings.
+        for document in (self.root / "docs").rglob("*.md"):
+            content = document.read_text(encoding="utf-8")
+            fixture_content = re.sub(
+                r"(?m)^(- promise\[[^\]\n]+\]: due=)\d{4}-\d{2}-\d{2}(; status=open;)",
+                lambda match: f"{match[1]}{FIXED_TODAY}{match[2]}",
+                content,
+            )
+            if fixture_content != content:
+                document.write_text(fixture_content, encoding="utf-8")
+        # A lower profile can legitimately retain links to deleted optional
+        # templates. Isolate those inherited advisories from strict tests of
+        # other rules; the trimmed-link scenario explicitly re-enables them.
+        policy = self.read("docs-policy.toml")
+        setting = 'trimmed_template_link = "off"'
+        if re.search(r"(?m)^trimmed_template_link\s*=", policy):
+            policy = re.sub(r"(?m)^trimmed_template_link\s*=.*$", setting, policy)
+        else:
+            policy = policy.replace("[severity]\n", f"[severity]\n{setting}\n", 1)
+        self.write("docs-policy.toml", policy)
 
     def path(self, relative: str) -> Path:
         return self.root / relative
@@ -117,6 +140,23 @@ class DocumentationCheckerTests(unittest.TestCase):
 
     def set_policy(self, old: str, new: str) -> None:
         self.replace("docs-policy.toml", old, new)
+
+    def template_inventory(self):
+        checker = load_checker_module().DocumentationChecker(self.root, date.fromisoformat(FIXED_TODAY))
+        checker.policy = checker.load_toml(self.path("docs-policy.toml"), "docs policy")
+        return checker
+
+    def require_template(self, name: str) -> None:
+        if name not in self.template_inventory().required_template_files():
+            self.skipTest(f"{name} is outside the selected template profile")
+        self.assertTrue(self.path(f"templates/{name}").is_file(), f"required template missing: {name}")
+
+    def set_template_profile(self, profile: str) -> None:
+        content = self.read("docs-policy.toml")
+        updated, count = re.subn(r'^profile = "[^"]+"$', f'profile = "{profile}"',
+                                content, count=1, flags=re.M)
+        self.assertEqual(count, 1, "fixture has no template profile")
+        self.write("docs-policy.toml", updated)
 
     def surface_contract(self, abnormality: str | None = None) -> str:
         abnormality_section = ""
@@ -508,22 +548,24 @@ rationale = "{rationale}"
 
     def test_contract_scaffolds_reject_coded_invariant_variants(self) -> None:
         for relative in ("templates/contract.md", "templates/backend-change.md"):
-            original = self.read(relative)
-            start = original.index("## Normative invariants\n")
-            end = original.index("\n## ", start + 1)
-            for coded_rule in (
-                "- **INV-1 — Retry identity.** Use one identity.",
-                "### D8 — Retry identity",
-                "### INV-2: Retry identity",
-            ):
-                with self.subTest(template=relative, rule=coded_rule):
-                    self.write(relative, original[:start] + (
-                        "## Normative invariants\n\n"
-                        "### Retry uses the same identity\n\n"
-                        "- from: source[{{N}}]\n\n" + coded_rule + "\n"
-                    ) + original[end:])
-                    self.assert_fails_with("contract template invariant uses a retired code")
-            self.write(relative, original)
+            with self.subTest(template=relative):
+                self.require_template(Path(relative).name)
+                original = self.read(relative)
+                start = original.index("## Normative invariants\n")
+                end = original.index("\n## ", start + 1)
+                for coded_rule in (
+                    "- **INV-1 — Retry identity.** Use one identity.",
+                    "### D8 — Retry identity",
+                    "### INV-2: Retry identity",
+                ):
+                    with self.subTest(rule=coded_rule):
+                        self.write(relative, original[:start] + (
+                            "## Normative invariants\n\n"
+                            "### Retry uses the same identity\n\n"
+                            "- from: source[{{N}}]\n\n" + coded_rule + "\n"
+                        ) + original[end:])
+                        self.assert_fails_with("contract template invariant uses a retired code")
+                self.write(relative, original)
 
     def test_plain_invariant_template_keeps_historical_codes_outside_guard(self) -> None:
         self.write("templates/contract.md", self.read("templates/contract.md") + (
@@ -537,6 +579,7 @@ rationale = "{rationale}"
         self.assert_passes()
 
     def test_missing_agent_execution_template_fails(self) -> None:
+        self.require_template("agent-execution-plan.md")
         self.path("templates/agent-execution-plan.md").unlink()
         self.assert_fails_with(
             "templates/agent-execution-plan.md",
@@ -544,6 +587,7 @@ rationale = "{rationale}"
         )
 
     def test_agent_execution_template_marks_review_topology_high_risk_only(self) -> None:
+        self.require_template("agent-execution-plan.md")
         content = self.read("templates/agent-execution-plan.md").replace(
             "High-risk only: delete this section for material work.",
             "Review notes.",
@@ -555,6 +599,7 @@ rationale = "{rationale}"
         )
 
     def test_agent_execution_template_rejects_routine_plan_profile(self) -> None:
+        self.require_template("agent-execution-plan.md")
         self.write(
             "templates/agent-execution-plan.md",
             self.read("templates/agent-execution-plan.md")
@@ -565,6 +610,7 @@ rationale = "{rationale}"
         )
 
     def test_material_agent_plan_does_not_require_review_topology(self) -> None:
+        self.require_template("agent-execution-plan.md")
         content = self.read("templates/agent-execution-plan.md")
         start = content.index("## Review topology")
         end = content.index("## Verification and evidence matrix", start)
@@ -574,6 +620,7 @@ rationale = "{rationale}"
         self.assert_passes()
 
     def test_agent_execution_template_requires_decision_envelope(self) -> None:
+        self.require_template("agent-execution-plan.md")
         content = self.read("templates/agent-execution-plan.md")
         content = content.replace(
             "## Engineering decision envelope", "## Decision notes", 1
@@ -584,6 +631,7 @@ rationale = "{rationale}"
         )
 
     def test_agent_execution_template_requires_activated_concern_owners(self) -> None:
+        self.require_template("agent-execution-plan.md")
         content = self.read("templates/agent-execution-plan.md")
         content = content.replace(
             "## Activated concerns and owners", "## General risks", 1
@@ -594,6 +642,7 @@ rationale = "{rationale}"
         )
 
     def test_backend_permission_test_is_security_concern_conditional(self) -> None:
+        self.require_template("backend-change.md")
         content = self.read("templates/backend-change.md").replace(
             "{{permission denial when security/privacy is activated}}",
             "{{permission denial}}",
@@ -605,6 +654,7 @@ rationale = "{rationale}"
         )
 
     def test_missing_adoption_assessment_template_fails(self) -> None:
+        self.require_template("adoption-assessment.md")
         self.path("templates/adoption-assessment.md").unlink()
         self.assert_fails_with(
             "templates/adoption-assessment.md",
@@ -612,6 +662,7 @@ rationale = "{rationale}"
         )
 
     def test_adoption_assessment_requires_stage_decision(self) -> None:
+        self.require_template("adoption-assessment.md")
         self.replace(
             "templates/adoption-assessment.md",
             "## Stage decision",
@@ -676,6 +727,7 @@ rationale = "{rationale}"
         self.assertNotIn("Traceback", output)
 
     def test_surface_template_subsection_requires_citation(self) -> None:
+        self.require_template("frontend-surface.md")
         content = self.read("templates/frontend-surface.md")
         marker = "### Responsive and browser support"
         start = content.index(marker)
@@ -781,16 +833,36 @@ rationale = "{rationale}"
     def test_harness_paths_accept_glob_patterns(self) -> None:
         self.write("tools/generate/emit.py", "VALUE = 1\n")
         self.set_policy(
-            'harness_paths = ["scripts", "tests"]',
-            'harness_paths = ["scripts", "tests", "tools/**"]',
+            'harness_paths = [',
+            'harness_paths = ["tools/**", ',
         )
         self.assert_passes()
 
-    def test_repository_root_tooling_files_are_never_unclaimed_source(self) -> None:
-        """setup.py and friends belong to no source root in any layout."""
+    def test_declared_repository_root_tooling_files_are_exempt(self) -> None:
+        """The shipped tooling declarations protect normal build files."""
 
         for name in ("setup.py", "conftest.py", "noxfile.py", "vite.config.ts"):
             self.write(name, "VALUE = 1\n")
+        self.assert_passes()
+
+    def test_root_application_files_must_be_claimed(self) -> None:
+        for name in ("main.py", "server.ts", "worker.rb"):
+            with self.subTest(name=name):
+                self.write(name, "APPLICATION = 1\n")
+                self.assert_fails_with("source files exist outside every configured source root", name)
+
+    def test_declared_root_application_file_activates_adoption(self) -> None:
+        self.write("main.py", "APPLICATION = 1\n")
+        self.set_policy('source_roots = ["src"]', 'source_roots = ["main.py"]')
+        output = self.assert_fails_with(
+            "product source exists but architecture template_state is not configured")
+        self.assertNotIn("source files exist outside every configured source root", output)
+
+    def test_root_source_gap_respects_early_adoption_and_explicit_tooling(self) -> None:
+        self.set_stage("observed")
+        self.write("release.py", "TOOLING = 1\n")
+        self.assert_advises("source files exist outside every configured source root", "release.py")
+        self.set_policy('harness_paths = [', 'harness_paths = ["release.py", ')
         self.assert_passes()
 
     def test_vendored_dependencies_are_not_scanned_for_stray_source(self) -> None:
@@ -863,30 +935,20 @@ rationale = "{rationale}"
         self.assert_fails_with("[adoption].stage must be one of")
 
     def test_minimal_profile_drops_higher_tier_templates(self) -> None:
-        self.set_policy('profile = "full"', 'profile = "minimal"')
-        for name in (
-            "independent-review.md",
-            "holistic-evaluation.md",
-            "agent-execution-plan.md",
-            "evidence-preserving-data.md",
-            "adoption-assessment.md",
-            "frontend-surface.md",
-            "backend-change.md",
-            "cross-stack-change.md",
-            "verification-report.md",
-            "handoff.md",
-        ):
-            self.path(f"templates/{name}").unlink()
+        self.set_template_profile("minimal")
+        inventory = self.template_inventory()
+        for name in inventory.known_template_files() - set(inventory.required_template_files()):
+            self.path(f"templates/{name}").unlink(missing_ok=True)
         output = self.assert_passes()
         self.assertIn("4 template(s) (profile: minimal)", output)
 
     def test_lower_profile_still_requires_its_own_tier(self) -> None:
-        self.set_policy('profile = "full"', 'profile = "minimal"')
+        self.set_template_profile("minimal")
         self.path("templates/contract.md").unlink()
         self.assert_fails_with("templates/contract.md", "required template is missing")
 
     def test_unknown_template_profile_is_rejected(self) -> None:
-        self.set_policy('profile = "full"', 'profile = "enormous"')
+        self.set_template_profile("enormous")
         self.assert_fails_with("[templates].profile must be one of")
 
     def test_required_template_without_declared_doc_type_fails(self) -> None:
@@ -896,14 +958,15 @@ rationale = "{rationale}"
         )
 
     def test_reference_to_a_trimmed_template_is_advisory(self) -> None:
-        self.set_policy('profile = "full"', 'profile = "minimal"')
-        self.path("templates/adoption-assessment.md").unlink()
+        self.set_template_profile("minimal")
+        self.set_policy('trimmed_template_link = "off"', 'trimmed_template_link = "advisory"')
+        self.path("templates/adoption-assessment.md").unlink(missing_ok=True)
         self.assert_advises(
             "broken local Markdown link: ../../templates/adoption-assessment.md"
         )
 
     def test_reference_to_an_unknown_template_still_fails(self) -> None:
-        self.set_policy('profile = "full"', 'profile = "minimal"')
+        self.set_template_profile("minimal")
         self.write(
             "docs/guides/onboarding.md",
             self.read("docs/guides/onboarding.md")
@@ -1595,12 +1658,14 @@ This evidence cannot replace normative authority.
         self.assert_fails_with("style manifest status must be template, configured")
 
     def test_missing_style_system_template_fails(self) -> None:
+        self.require_template("style-system.md")
         self.path("templates/style-system.md").unlink()
         self.assert_fails_with(
             "templates/style-system.md", "required template is missing"
         )
 
     def test_style_system_template_requires_layer_ownership_section(self) -> None:
+        self.require_template("style-system.md")
         self.replace(
             "templates/style-system.md",
             "## Layer order and ownership",
