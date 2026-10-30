@@ -37,6 +37,11 @@ units through [task context](../docs/README.md#task-context). Carry reading
 identities and missing evidence as locators; do not substitute a digest list
 or this handoff for the source text.
 Do not carry `--retained` assertions into a new context; reacquire current rules.
+Carry the applicable [essential reasoning](../docs/contracts/development-discipline.md#keep-essential-reasoning-active)
+in a form the recipient can use, with sources it can actually obtain. Under
+[repeated transfer](../docs/contracts/project-adoption.md#invariants-survive-repeated-transfer),
+preserve meaning, exceptions and unresolved disposition across further handoffs;
+do not infer resolution from an assignment, summary or recorded remedy.
 Locate the outcome, facts, decision authority, boundaries, and completion
 evidence through these sources. An ordinary handoff requires no new plan or
 prior handoff chain.
@@ -48,6 +53,9 @@ the parent outcome, expected result, allowed writes/external effects,
 baseline/revision, verification, and stop/cancel condition. Return changed
 artifacts, checks actually run, unresolved assumptions, and remaining work to
 the named integrating owner: {{owner}}. Follow the [delegation owner](../docs/contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner).
+For discovery, separate binding requirements from the parent's hypotheses and
+leave the search path open; use the [discovery example](../docs/guides/review-cheatsheet.md#delegate-discovery-without-prescribing-the-answer).
+A targeted check states its narrower claim.
 
 ## Verified current facts
 

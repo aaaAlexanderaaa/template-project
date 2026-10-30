@@ -100,6 +100,13 @@ an execution history.
 
 ## Verification and completion
 
+For a claim that reasoning survives local adoption and later execution, retain
+the intermediate instructions and observed downstream decision under
+[repeated transfer](../docs/contracts/project-adoption.md#invariants-survive-repeated-transfer).
+Distinguish what was written, received, applied and effective. Include missing
+sources, interventions and untested continuations in the limitation column;
+recognizing a gap does not establish its resolution.
+
 | Adoption claim | Evidence/probe | Result | Limitation |
 |---|---|---|---|
 | {{claim}} | `{{command-or-path}}` | {{pass/fail/partial}} | {{what it does not prove}} |

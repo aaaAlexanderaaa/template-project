@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/autonomous-operation-discipline.md, docs/contracts/documentation-harness.md]
 ---
 
@@ -353,6 +353,9 @@ For consequential uncertainties or a credible shared review blind spot, use
 inside the same envelope. Select an observation and a useful variation; record
 evidence origins, actual models/questions, first results and limits at the
 existing task owner. Model availability does not expand the charter or budget.
+For AI judgments, [choose wording and context together](review-cheatsheet.md#choose-wording-and-context-together)
+so an author's self-check does not silently replace the outside observation
+the task needs. Keep the question's conditions with its evidence.
 
 ### 5. Report governance output precisely
 

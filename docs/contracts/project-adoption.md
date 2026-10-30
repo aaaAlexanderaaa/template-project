@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -177,6 +177,17 @@ disciplines and projects with their own rules. Applying this order to broad
 learning and keeping explicitly bounded extraction distinct are implementation
 choices; source reading does not authorize adopting or enforcing a rule.
 
+### source[17] — 2026-10-30
+
+The owner identifies repeated loss between intent, template rules, a learner's
+understanding, local project rules and eventual execution. They ask that
+essential reasoning stay available to AI users and help them recognize further
+missing principles, without assuming recognized problems will be solved.
+Subagent discovery is an example, not the scope of that request. The
+[development core](development-discipline.md#keep-essential-reasoning-active)
+owns the reasoning; preserving it through each claimed transfer and observing
+downstream use are this contract's implementation responsibilities.
+
 ## Vocabulary
 
 - **Greenfield:** an empty directory, before product implementation or project
@@ -283,6 +294,10 @@ reason, follow the relevant explanation or evidence; missing understanding
 remains unresolved rather than becoming evidence that the rule is unnecessary.
 No separate explanation form is required: retain consequential reasoning in the
 existing learning judgment or adoption assessment.
+Keep [essential reasoning](development-discipline.md#keep-essential-reasoning-active)
+available in the target's normal context and follow [repeated transfer](#invariants-survive-repeated-transfer).
+A recognizably similar local sentence alone does not establish that the next
+executor can notice the problem or make the intended decision.
 
 Keep acquisition, understanding, applicability and adoption distinct. Reading
 does not impose source authority on the target or authorize copying, replacing
@@ -567,6 +582,42 @@ existing owners rather than copying their full rules.
 
 - from: source[4], source[5], source[7]
 
+### Invariants survive repeated transfer
+
+Do not assume one successful explanation completes transmission. Owner intent
+can pass through template text, interpretation, local instructions, summaries,
+delegation and later execution. At each consequential transformation being
+claimed, preserve the rule's reason, scope, exceptions, authority and observable
+decision consequence. Retain source identity and unresolved conditions at the
+existing owner; local judgments and strategies may adapt to the target's facts.
+Word-for-word copying and freely rewritten summaries can both lose the point.
+
+Keep a concise account of [essential reasoning](development-discipline.md#keep-essential-reasoning-active)
+in what the next AI actually loads. Detailed owners remain findable on demand;
+a dead link, unread source or missing local equivalent is a gap, not transfer.
+The next project must retain this obligation when it becomes a source for
+another learner. Preserve uncertainty and the ability to challenge the rules;
+repetition and inherited authority do not establish empirical truth.
+
+Validate a claim across the actual path it names. If a learner produces local
+instructions for another executor, inspect those instructions and let a fresh
+executor use them on a bounded task without the upstream author's explanation.
+Observe a decision or action, not only a restatement. Use an unfamiliar or
+changed condition where the claimed generalization needs it, including a
+legitimate exception when overgeneralization matters. Record the intermediate
+artifact and actual context; identify any rescue or unavailable dependency.
+Success at one boundary cannot stand in for unobserved later boundaries.
+
+When meaning or behavior changes, locate the first missing or altered
+condition and correct its owner, example, retrieval route or operating setup.
+Recheck the affected continuation. Knowing, recording, receiving, applying and
+obtaining the intended effect remain different evidence claims. Unresolved
+gaps stay at the existing task or issue owner with actual follow-up status;
+writing a new rule does not close them. This uses the existing learning and
+verification routes, without a new registry or fixed number of transfer tests.
+
+- from: source[17]
+
 ### External material is triaged by authorship before adoption
 
 External engineering material — another project's archive, a methodology
@@ -652,6 +703,9 @@ The durable assessment contains:
   projects. Consumer evidence must show actual reading and source-supported
   reasoning; a list of sources or a passing structural check cannot prove it.
 - Project-operation guidance preserves human priority authority after adoption.
+- Transfer evidence distinguishes the source, locally produced instructions
+  and downstream behavior, with untested continuations and unresolved gaps
+  explicit. Core reasoning remains usable beyond the original teaching example.
 - The documentation harness validates the assessment template and fixture tests
   cover missing-file and missing-section variants.
 
@@ -712,6 +766,12 @@ Maintainer-reported adoption on 2026-09-14:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-10-30 — reasoning survives repeated transfer:** require preservation
+  and downstream observation across the path claimed, with concise core context,
+  conditional detail and honest unresolved status. A copied principle or a
+  successful first learner does not establish later execution.
+  - from: source[17]
 
 - **2026-10-29 — read and understand before applicability judgment:** remove
   uninformed selection from external learning entrypoints. Broad learning

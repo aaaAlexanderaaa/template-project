@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/governance-decision-boundary.md, docs/contracts/agent-execution-discipline.md]
 ---
 
@@ -14,6 +14,12 @@ These optional recipes help turn judgment into action. The
 [task SOP](project-operation.md#execute-one-task-from-request-to-result) supplies
 the execution order; current owners supply authority, complete applicable
 rules and required evidence. A straightforward task can proceed directly.
+
+Keep [essential reasoning](../contracts/development-discipline.md#keep-essential-reasoning-active)
+available when the obstacle is unfamiliar or this table seems complete. The
+questions and categories can themselves miss the problem. Let actual work
+challenge the selected frame; a saved lesson or a passing recipe is not proof
+that its intended effect occurred.
 
 ## Choose a useful move
 
@@ -28,8 +34,10 @@ rules and required evidence. A straightforward task can proceed directly.
 | Implementation keeps stopping at partial pieces | [Deliver one complete behavior](#deliver-one-complete-behavior) | The authorized user result works across its boundary |
 | The explanation sounds correct but teaches little | [Teach through a worked case](#teach-through-a-worked-case) | The reader can make the next relevant distinction or action |
 | You need a starting question about direction, growth or value | [Choose a question from practice](task-starters.md) | A concrete observation, comparison or changed premise to pursue |
+| An AI's answer changes with the question or its context | [Choose wording and context together](review-cheatsheet.md#choose-wording-and-context-together) | A deliberately selected method, with its actual conditions and evidence limits |
 | A new session is repeating old investigation | [Resume at the next verifiable action](#resume-at-the-next-verifiable-action) | Valid progress continues with stale assumptions exposed |
 | Useful experience stays buried in transcripts | [Make experience change the next task](#make-experience-change-the-next-task) | A later task finds and uses a conditional method |
+| A principle survives in documents but its effect in another context is unknown | [Try the next learner and executor](onboarding.md#keep-reasoning-usable-in-the-next-project) | Observed decisions and the first missing or distorted condition, with remaining gaps explicit |
 | Simplification may remove useful responsibilities | [Subtract while preserving useful behavior](#subtract-while-preserving-useful-behavior) | A simpler whole with important duties retained |
 | Checks pass, but it is unclear whether the task is done | [Judge against the original outcome](#judge-against-the-original-outcome) | A supported completion decision or continued authorized work |
 | Review misses problems or transfer depends on hidden context | [Choose a review experiment](review-cheatsheet.md) | An appropriate independent judgment or consumer observation |

@@ -10,6 +10,12 @@ and checks preserve intent and expose mistakes; completing them alone is not
 completion of the task. Compare delivery with the original request as well as
 its accepted interpretation.
 
+Keep [essential reasoning](docs/contracts/development-discipline.md#keep-essential-reasoning-active)
+active: our framing can miss problems, instructions and working conditions can
+shape AI behavior, and a recorded lesson is not an applied or effective remedy.
+Preserve that reasoning through [each transfer](docs/contracts/project-adoption.md#invariants-survive-repeated-transfer),
+including its uncertainty and unresolved gaps; load detailed methods when needed.
+
 When transferring practices, preserve the [adoption value order](docs/contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers):
 interaction and epistemic discipline; truth, ownership, and boundaries; coherent
 verified delivery; activated domain disciplines; then documentation and tooling.

@@ -36,6 +36,9 @@ learning and simplification. Its prompts are adaptable examples below the task
 SOP. [Question starters from practice](task-starters.md) offer short translated
 or combined questions from historical work, with their source transformations.
 [Review tasks and question CheatSheet](review-cheatsheet.md) specializes
-that layer with dispatch prompts and question experiments. Use
+that layer with dispatch prompts and question experiments. Its
+[wording and context examples](review-cheatsheet.md#choose-wording-and-context-together)
+help users and question-asking AIs choose a method and interpret its evidence.
+Use
 [the extraction card](project-operation.md#take-one-practice-into-a-task) to try
 one practice in an existing task without selecting a full learning survey.

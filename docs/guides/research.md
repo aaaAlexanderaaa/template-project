@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 projection_of: [docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md]
 ---
 
@@ -148,6 +148,11 @@ actual questions, model/context, changed factors and first results before
 sharing explanations. Check the underlying records to reconcile differences.
 A joint change of model and question can expose fragility without isolating
 which caused it. A direct source lookup can still remain direct.
+
+When an AI supplies the interpretation, [select wording and context together](review-cheatsheet.md#choose-wording-and-context-together).
+An unfamiliar reader's diagnosis, a contextual author's response to criticism
+and its self-assessment provide different observations. Preserve the selected
+question and conditions, and verify findings against the underlying material.
 
 Temporary synthesis is useful for identifying missing evidence. Keep it
 revisable, and let a draft send the inquiry back to acquisition. Before final

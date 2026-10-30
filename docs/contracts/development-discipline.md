@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-28
+last_reconciled: 2026-10-30
 supersedes: []
 ---
 
@@ -24,6 +24,45 @@ preserving a clear, low-friction path for reversible engineering work and
 controlled learning.
 
 ## Core invariants
+
+### Keep essential reasoning active
+
+AI users need some reasoning available before they know which specialist rule
+to open. Keep the following starting points in normal task context and let
+them change actual decisions. They are not an exhaustive theory of failure,
+a checklist to recite on every task, or claims that these problems are solved.
+
+| Keep in view | Consequence for the current decision |
+|---|---|
+| The current framing, knowledge and method can omit important problems. | Treat an example, taxonomy or passing check as bounded coverage. Follow relevant evidence beyond its named categories; an owner's example need not define the scope. Use [outcomes before means](#outcomes-before-means) and [inquiry](#unknown-references-are-researched-not-reconstructed). |
+| Questions and supplied context shape what an AI notices and concludes. | Treat prompt engineering, the design and testing of instructions and context, as part of the working system. Preserve useful freedom and necessary constraints; inspect actual answers and actions under the [questioning rule](#analysis-exposes-the-decisive-causal-mechanism). |
+| Capability and correct explanation do not establish reliable behavior. | Investigate available context, tools, resources, incentives and feedback as well as missing knowledge. Use [judgment diagnosis](#improve-judgment-before-amplifying-effort); do not infer motives or fixed incapacity from a failure. |
+| An acknowledged problem is not an implemented or effective correction. | Keep consequential gaps at their existing task or issue owner with evidence, actual disposition and next authorized action. Unknown ownership or follow-up stays unknown. Apply [experience reuse](#experience-changes-the-next-matching-action) and [verification](#verify-promised-and-observed-behavior-in-both-directions); do not assume someone will resolve it. |
+| Meaning can be lost at every interpretation, summary, adoption or handoff. | Preserve the reason, scope, exceptions and evidence needed for the next decision, and inspect downstream use under [transfer preservation](project-adoption.md#invariants-survive-repeated-transfer). A correct source or earlier recipient does not prove a later one received or applied it. |
+| Local success and visible activity can miss the owner's outcome. | Inspect the combined effect and actual user result under [coherent delivery](#coherent-end-state), rather than optimizing counts, favorable verdicts or formal completion. |
+
+These starting points must also allow discovery of a missing principle.
+At consequential framing and acceptance decisions, make room within the
+existing inquiry or review for observations not selected solely by the current
+taxonomy or expected failure list. Inspect an excluded assumption, actual user
+work or an independently chosen path when useful. A concern need not match a
+known category to be investigated. The discipline itself, including what it
+rewards or suppresses, remains a possible source of error.
+When evidence exposes a new recurring decision failure, investigate its
+mechanism and correct the existing owner. Retain a concise recognition cue in
+core context when it is needed across tasks to notice the problem at all;
+keep domain facts, detailed methods and historical examples on demand. Revise
+or retire a cue when its conditions or evidence change. Repetition is a means
+of retrieval, not proof of truth, and familiar wording must remain challengeable.
+
+Resident means available and usable at the decision, not merely stored in a
+file. Reacquire applicable reasoning after context loss and verify the receiving
+inputs when handing work on. Claims of effective use need observed decisions,
+including an unfamiliar case or changed condition when the claim depends on
+generalization. Preserve unresolved gaps without inventing an unbounded task,
+new approval gate or automatic promise of future work.
+
+- from: source[20]
 
 ### Contract before material delivery, evidence before certainty
 
@@ -188,6 +227,15 @@ grounds, what could change the judgment, and what observations actually changed.
 Another observer may add little if the decision keeps dismissing the finding.
 The observation method, scope and standard remain open to correction too.
 
+Knowing the rule and following it under the current conditions are different
+questions. Inspect the actual assignment, available information, time or context
+pressure, tool affordances and the behavior rewarded by feedback or acceptance.
+A strategy that earns quick approval, high finding counts or a passing proxy
+can undermine the owner's outcome. These are hypotheses to test against
+observations, not an explanation to assume or a diagnosis of the agent's mind.
+Correct the responsible condition when supported; another reminder alone
+does not establish that a known rule will now be followed.
+
 Use existing [causal analysis and bounded comparisons](#analysis-exposes-the-decisive-causal-mechanism)
 and [experience reuse](#experience-changes-the-next-matching-action) to change
 the next choice or artifact, rather than count checks or declarations of
@@ -195,7 +243,7 @@ humility. Locally verified decisions support decisive action while remaining
 revisable. This conditional diagnosis creates no recurring reflection form or
 additional reviewer tier; ordinary settled work keeps its direct route.
 
-- from: source[17]
+- from: source[17], source[20]
 
 ### Verify promised and observed behavior in both directions
 
@@ -623,6 +671,36 @@ When several factors change together, the result cannot isolate one factor's
 effect. Reconcile agreement and disagreement against observations, scope and
 accepted standards; a vote or repeated confident answer does not settle truth.
 
+When an AI answer supports a consequential judgment, select the question's
+wording together with the recipient's relationship to the work and actual
+context. An unfamiliar reader investigating a complaint, an author responding
+to criticism, and an author assessing its own work can expose different
+problems. Supplied explanations may fill gaps in the artifact; framing may
+redirect the search or induce agreement. Preserve useful differences when
+reusing questions instead of silently replacing them with a generic self-check.
+This is an instance of [essential reasoning](#keep-essential-reasoning-active),
+not the full scope of it. For delegated exploration, [bounded delegation](agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
+keeps the parent's hypotheses from silently becoming the search boundary.
+
+Keep the actual prompt, artifact, supplied and inherited context, prior-answer
+exposure, and known model/runtime conditions with the existing evidence for
+that judgment. Unknown isolation stays unknown. Retain the first judgment
+before introducing the author's explanation. Distinguish an actual complaint
+from a deliberately critical probe, and investigate findings against the
+artifact and intended use: more criticism alone does not establish a better
+diagnosis. Author self-assessment cannot substitute for an observation requiring
+an independent consumer. A changed question or context can invalidate reuse
+of an earlier assessment even when the artifact is unchanged.
+
+Reusable questions carry their useful wording, context conditions, purpose and
+limits through the [questioning method](../guides/review-cheatsheet.md#choose-wording-and-context-together).
+The dispatcher needs enough context to choose and audit the method; a recipient
+testing the consumer's understanding receives the consumer's legitimate inputs.
+Existing authority and independent-review requirements still govern dispatch.
+Evaluate method changes by confirmed discoveries, missed problems, false
+findings and subsequent user results where observed. These duties use the
+existing comparison and evidence routes; they add no fixed review count.
+
 Read-only comparisons and permitted bounded trials proceed under existing
 authority. Implementation experiments use the [controlled experiment boundary](#contract-before-material-delivery-evidence-before-certainty).
 Declare the question, useful observation, effort bound and stopping basis in
@@ -640,7 +718,7 @@ observation through the governance vocabulary. Do not use this obligation to
 speculate without evidence, replace the requested task, manufacture priority,
 or expand implementation scope without authorization.
 
-- from: source[3] (2026-08-06 inquiry and causal analysis), source[11] (2026-09-10 attribution and scope feedback), source[16]
+- from: source[3] (2026-08-06 inquiry and causal analysis), source[11] (2026-09-10 attribution and scope feedback), source[16], source[19]
 
 ### Recurring verbal rules are proposed for durable recording
 
@@ -1201,7 +1279,53 @@ separates the historical reading, local probes, interpretation and untested
 model or runtime effects. The chosen examples and procedures are implementer
 choices inside that scope, not the maintainer's verbatim specification.
 
+### source[19] — 2026-10-30
+
+The maintainer corrects a proposed project checklist design: AI judgments can
+change materially with question wording, context and relationship to the work.
+They contrast an unfamiliar reviewer receiving a reading complaint, the
+contextual author receiving that complaint, and the contextual author asked
+to assess readability. They report decreasing diagnostic effectiveness in
+that order and ask that the assistant, project, users and question-asking AIs
+understand the distinction. This is owner-reported experience, not a controlled
+comparison performed by this repository or a universal ordering of methods.
+
+The implementation keeps the three question forms and their conditions at the
+existing review method, connects normal task entrypoints, and makes assessment
+conditions visible in existing evidence records. The
+[delivery record](../evidence/2026-10-30-question-wording-and-context.md)
+distinguishes those choices from the owner's feedback, research and observed
+instruction use. The broader knowledge-catalog proposal remains unadopted.
+
+### source[20] — 2026-10-30
+
+The owner asks that AI-facing discipline account for prompt engineering,
+fallible judgment under resource, incentive and environmental conditions,
+and loss of meaning across repeated learning, local adoption and execution.
+They use open subagent discovery as an example, then correct the implementer's
+narrowing: the request concerns higher-level reasoning that must stay active,
+including recognition that further important principles may be missing and
+that noticing a problem does not ensure its resolution.
+
+The concise core, routes to existing owners and cross-context exercises are
+implementation choices for that request, not an owner-specified exhaustive
+list. The [delivery record](../evidence/2026-10-30-resident-reasoning-and-transfer.md)
+separates owner intent, design discussion and observed use.
+
 ## Reconciliation log
+
+- **2026-10-30 — essential reasoning remains active:** expose incomplete
+  framing, instruction effects, conditional behavior, unresolved gaps, repeated
+  transfer and outcome checks in the existing core. Connect them to their
+  operating owners and keep room for further missing principles.
+  - from: source[20]
+
+- **2026-10-30 — questions retain their operating conditions:** clarified the
+  existing analysis rule so wording, recipient relationship and actual context
+  remain part of AI assessment evidence and reusable methods. The normal review
+  guide preserves distinct complaint and self-assessment questions; task
+  entrypoints and evidence prompts expose their use and limits.
+  - from: source[19]
 
 - **2026-10-20 — negative experience enables a better attempt:** refined the
   existing experience rule to connect a diagnosed failure to useful capability,

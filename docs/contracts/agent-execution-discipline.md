@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-11
+last_reconciled: 2026-10-30
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -454,6 +454,29 @@ may carry this in the native invocation; ongoing or concurrent writes use the
 existing plan or handoff. Do not create a second task registry for compliance.
 Unknown context inheritance is not evidence that a worker received a rule.
 
+Carry applicable [essential reasoning](development-discipline.md#keep-essential-reasoning-active)
+with enough meaning for the receiving decision. Neither an upstream agent's
+understanding nor a link the worker cannot open establishes receipt. Preserve
+current unresolved gaps and their actual disposition across continuations;
+assigning a worker or writing a handoff is not evidence of resolution.
+
+For discovery, give the real user outcome, necessary facts, authority, resource
+and effect boundaries, and evidence expectations while leaving the investigative
+path open. Do not silently replace broad discovery with the parent's favored
+files, reading sequence, categories, suspected cause or expected verdict.
+Necessary source locators are access routes, not an exhaustive search plan.
+Separate hypotheses from binding requirements; when they are unnecessary for
+the first independent observation, retain them for later comparison. Known
+hazards and constraints still belong in the assignment. Evidence-supported
+positive results and no finding are legitimate outcomes; finding counts are
+not the goal. [Discovery examples](../guides/review-cheatsheet.md#delegate-discovery-without-prescribing-the-answer)
+show the distinction.
+
+A bounded reproduction, compliance check or specialist verification can require
+a specified path or lens. Name that scope and do not claim it exhausts a broader
+discovery request. This is one application of instruction design, not its whole
+purpose and not a requirement to launch a subagent.
+
 For continued or judgment-bearing work, also carry the selection reason,
 decisive assumptions, freedom to revise the approach, and evidence that would
 require returning to the parent decision. Include the locator for relevant
@@ -493,7 +516,7 @@ over an approval-requiring step when it serves the same purpose. When
 delegated work fails, first suspect the assignment's context, contracts, and
 descriptions — not the worker.
 
-- from: source[5], source[6], source[8], source[9] (2026-09-25 context selected for recipient judgment), source[12]
+- from: source[5], source[6], source[8], source[9] (2026-09-25 context selected for recipient judgment), source[12], source[15]
 
 <!-- required-reading: records -->
 ## Required records
@@ -717,7 +740,21 @@ request, execution, feedback and lifecycle design. One current task state and
 verification through the later matching entrypoint are implementation choices
 within that accepted scope; they are not owner-authored universal preferences.
 
+### source[15] — 2026-10-30
+
+The owner asks that subagent discovery avoid unnecessary prior framing, then
+clarifies that this is an example of broader reasoning that must stay active
+for AI users. Capability does not guarantee good decisions under every context,
+incentive or resource condition, and multiple transfers can lose the principle.
+The general rule is owned by [development](development-discipline.md#keep-essential-reasoning-active);
+this contract applies it to actual assignments and continuations.
+
 ## Reconciliation log
+
+- **2026-10-30 — reasoning and discovery survive delegation:** carry applicable
+  reasoning and unresolved gaps, preserve the search freedom a discovery task
+  needs, and keep targeted verification within its stated claim.
+  - from: source[15]
 
 - **2026-10-29 — connected task lifecycle:** expose the complete material
   delivery method with its evidence and record prerequisites. Keep current

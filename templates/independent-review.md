@@ -27,14 +27,19 @@ finding names the important problem and evidence; it need not design the repair.
 ## Inputs
 
 Select a dispatch shape from the [review CheatSheet](../docs/guides/review-cheatsheet.md)
-when useful. Retain the actual question and supplied context, including known
-runtime inheritance, alongside first answers; role names alone are insufficient.
+when useful. Its [wording and context method](../docs/guides/review-cheatsheet.md#choose-wording-and-context-together)
+distinguishes outside-reader diagnosis, contextual critique and author
+self-assessment. Retain the conditions that produced the answer.
 
 - Original request/source: {{wording or exact source section}}
 - Accepted interpretation and decision basis: {{intended user job; proposal and
   acceptance scope where applicable; distinguish implementer assumptions}}
 - Contract/design: `{{path}}`
 - Baseline evidence and fixtures: `{{paths}}`
+- Actual question and review conditions: {{exact prompt or transcript link;
+  reviewer relationship to the work; supplied and inherited context, known
+  model/runtime settings and unknowns; prior answers or author explanations
+  received; actual complaint or deliberate framing; first-response reference}}
 - Actual object and reading scope: {{artifact/revision, source or consumer
   surface, sections/cases examined; why these can establish the review claim}}
 - Constraints supplied to every perspective: {{constraints}}
@@ -89,6 +94,12 @@ made about it and its basis under
 [judgment diagnosis](../docs/contracts/development-discipline.md#improve-judgment-before-amplifying-effort).
 An already observed problem can require a different selection or release rule,
 rather than another identical review.
+
+Check wording-sensitive findings against the artifact and intended use.
+Distinguish a newly confirmed problem from induced criticism, and retain useful
+unique findings. Different question or context conditions limit comparison
+and reuse of a verdict; a favorable author self-check cannot establish an
+outside consumer's understanding.
 
 | Finding | Perspectives agreeing | Severity | Required action | Owner |
 |---|---|---|---|---|

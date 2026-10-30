@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -162,6 +162,38 @@ recording system or an extra approval phase.
 The assessment, stage, and enforcement steps below apply when formal adoption
 or enforcement is requested. They are not prerequisites for learning. The
 project statement, and the git commit before a write, are part of learning.
+
+### Keep reasoning usable in the next project
+
+Use [essential reasoning](../contracts/development-discipline.md#keep-essential-reasoning-active)
+and [repeated transfer](../contracts/project-adoption.md#invariants-survive-repeated-transfer)
+when turning a learned practice into local instructions. Keep a concise account
+of what the next executor needs to notice before selecting a method. Preserve
+its reason, scope, exceptions and unresolved status, with detailed owners
+available through the normal entrypoint. A slogan such as "think critically"
+does not tell the executor what should change.
+
+For example, a source may teach that a passing checklist has limited coverage.
+Translating that to "always complete the checklist" loses the reason. The local
+instructions should still let an executor investigate an unexpected user failure
+outside the listed categories. Likewise, "retain lessons" must not become a
+claim that a recorded remedy was applied or effective. Open subagent discovery
+is another application; it does not define this practice's scope.
+
+Exercise the route being claimed: source guidance to the learner's local
+instructions, then those instructions to a fresh executor's decision or action.
+Give the executor the local material it would actually receive, without the
+source author's explanation or a list of expected answers. Keep the intermediate
+artifact unchanged and inspect the result against the original purpose. Where
+relevant, vary the task or working condition so recognition is tested beyond
+the teaching example. A required source that cannot be opened is a missing
+dependency, not permission to improvise it.
+
+If the next executor misses the point, locate the first loss or misleading
+condition and fix that owner. Preserve the failed attempt and any intervention.
+Use the existing task evidence, including its unresolved disposition and
+permitted next step. Further generations, real operation and sustained effect
+remain unverified until observed; no fixed number of copies proves them.
 
 ### 1. Orient by transfer value
 

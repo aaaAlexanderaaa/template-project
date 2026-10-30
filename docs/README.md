@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 ---
 
 # Documentation authority map
@@ -47,6 +47,14 @@ an active plan only when required. This is a reading rule, not a new document
 or a form to fill for every task. Do not copy a second set of product facts
 into the agent entrypoint. A learning judgment names the rule, the result,
 and the contract section that holds the fact.
+
+The required core includes [essential reasoning for AI work](contracts/development-discipline.md#keep-essential-reasoning-active):
+awareness of incomplete framing, instruction effects, conditional behavior,
+unresolved gaps and loss across transfers. It must be available before the
+agent recognizes a specialist trigger. Preserve its meaning through context
+reduction and continuation; a pointer to unread text does not establish receipt.
+Detailed cases and methods remain on demand. A passing checklist cannot close
+an uncertainty it was not able to observe.
 
 Use the following reading classes. They select context; the authority order
 still decides who owns a decision.

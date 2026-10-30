@@ -32,6 +32,12 @@ gap between available inputs and what the real consumer receives. Use the
 [claim-specific inspection rule](../docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions);
 reviewer independence cannot supply a missing observation at the claimed boundary.
 
+For an AI judgment, identify the [actual question and review conditions](../docs/guides/review-cheatsheet.md#choose-wording-and-context-together):
+{{prompt/record, recipient relationship, supplied and inherited context,
+known model/runtime conditions and unknowns, first answer and confirmation}}.
+Distinguish author self-assessment, contextual critique and outside-consumer
+evidence when deciding what the result can establish.
+
 | Evidence | Class | Claim supported | Reproduction path | What it does not prove |
 |---|---|---|---|---|
 | {{record}} | {{unit/integration/artifact/real-runtime/manual}} | {{claim}} | `{{command-or-path}}` | {{limitation}} |

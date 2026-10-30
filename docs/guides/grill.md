@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -136,6 +136,14 @@ retain its first judgment before supplying the executor's defense. Subsequent
 factual clarification can change the conclusion without erasing that judgment.
 An interactive Grill in the execution context remains useful but cannot claim
 the independence required by the [review owner](../contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label).
+
+For AI questioning, use [wording and context together](review-cheatsheet.md#choose-wording-and-context-together)
+to select among an outside reading complaint, contextual critique and author
+self-assessment. The examples retain different investigative effects; a common
+role name or a favorable self-check does not make their evidence equivalent.
+When delegating discovery, [leave its investigative path open](review-cheatsheet.md#delegate-discovery-without-prescribing-the-answer)
+within the actual goal, authority and evidence boundaries. The named lenses
+support inspection; they do not establish that unnamed problems are absent.
 
 Use the [core question set](../contracts/governance-decision-boundary.md#recurring-questions-challenge-consequential-decisions)
 to support and revisit the inspection. It covers purpose, evidence, mechanism,

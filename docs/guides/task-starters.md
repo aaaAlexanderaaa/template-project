@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-29
+last_reconciled: 2026-10-30
 projection_of: [docs/contracts/development-discipline.md]
 ---
 
@@ -14,6 +14,11 @@ explicitly identified direct feedback.
 Some retain a single question's shape; others combine related questions.
 The source labels distinguish edited translations, adaptations and syntheses.
 The short use notes are the template author's additions.
+
+For questions addressed to an AI, [choose wording and context together](review-cheatsheet.md#choose-wording-and-context-together).
+The linked examples preserve an unfamiliar reader's complaint, a complaint
+to the contextual author and author self-assessment as different methods.
+Use their recipient and context conditions alongside the question itself.
 
 Pick a question that fits the current obstacle, replace its brackets and use
 it as an entrypoint. Follow the answer into evidence and authorized action.
