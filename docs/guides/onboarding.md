@@ -132,10 +132,10 @@ Learning ends in one of these ways. A session may both write and ask:
    are in this group.
 
 Finishing in conversation alone, while a change in the first group is still
-unwritten, is not learning. Before that ending, state what the project is.
-When the ending will write a file into a directory that already holds files
-and is not a git repository, initialize git and commit those files first. If
-git cannot be initialized, stop adding files and tell the owner. No adoption
+unwritten, is not learning. Before that ending, state what the project is
+and, when the ending writes a file, complete the
+[existing-directory git step](../contracts/project-adoption.md#an-existing-directory-is-described-before-template-files-are-added)
+first. If git cannot be initialized, stop adding files and tell the owner. No adoption
 report or migration is required for learning. Continue a product task the
 owner already requested after the ending. Learning does not start a
 product-code change. If the request was only to learn, stop at that ending.
@@ -234,8 +234,9 @@ refused.
 
 When those files are present and the directory is not a git repository, say
 so in the same account. Initialize git and commit the current files as the
-first revision before adding any template file, and before a learning ending
-writes a file there. If git cannot be initialized, stop adding template files
+first revision before adding any template file, before an adoption writes
+anything else in the directory, and before a learning ending writes a file
+there. If git cannot be initialized, stop adding template files
 and tell the owner.
 
 Onboarding is unfinished while `AGENTS.md` still treats this checkout as the
@@ -328,10 +329,10 @@ Consequences worth knowing before you choose:
 - **Severity.** Review signals that should not fail an unrelated change by
   default are advisory. Run `--strict` on a schedule rather than promoting them
   on every push. A rule you set to `off` stays off even under `--strict`.
-
   `rule_phrasing` is off by default; set it `advisory` to list disclaimer
   phrases in the startup rules. Most of them mark limits a rule keeps, so a
   finding asks for a judgment rather than a rewrite.
+
 Unknown keys in `[adoption]` and `[severity]` are rejected rather than ignored,
 so a typo or a setting from an older revision of the template surfaces as a
 failure with the replacement named.

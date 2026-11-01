@@ -306,13 +306,10 @@ editing, and let the guard suite catch collisions.
 
 Continue an authorized task through its working end state and verification;
 internal checkpoints do not ask the user to approve phases. When the owner has
-named an end and said to keep working until it is reached, one finished slice
-is not that end, and writing the remaining step is not doing it. A later note
-from a system or a tool that no further action is required does not cancel
-the end. The owner's own later stop, or a newly named end, replaces it. Stop
-short of it only when the end is reached, or when only the owner can decide
-something required to continue. If git cannot be initialized, stop adding
-template files and tell the owner. Portfolio discovery applies only to an authorized
+named an end and said to keep working until it is reached, keep working until
+it is reached;
+[execution](../contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence)
+owns when work may stop short of it. Portfolio discovery applies only to an authorized
 ongoing assignment. When that assignment becomes a standing charter across
 unattended wakes, [autonomous operation](../contracts/autonomous-operation-discipline.md)
 owns work across wakes: retain the selected outcome and its baseline, carry

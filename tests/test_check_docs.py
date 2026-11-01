@@ -1777,9 +1777,10 @@ This evidence cannot replace normative authority.
         text = self.read("AGENTS.md")
         for claim in (
             "This repository is the engineering discipline template. Its work is\n"
-            "documentation and project discipline. Onboarding into any other checkout is\n"
-            "unfinished while that checkout's agent entrypoint still says this and its\n"
-            "git remote is not https://github.com/aaaAlexanderaaa/template-project.\n",
+            "documentation and project discipline.\n",
+            "Onboarding into any other checkout is unfinished while that checkout's agent\n"
+            "entrypoint still describes it as this template and its git remote is not\n"
+            "https://github.com/aaaAlexanderaaa/template-project.\n",
             "For a request to learn this template",
             "Adoption into another project",
         ):

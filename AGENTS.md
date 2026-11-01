@@ -1,9 +1,7 @@
 # Repository working agreement
 
 This repository is the engineering discipline template. Its work is
-documentation and project discipline. Onboarding into any other checkout is
-unfinished while that checkout's agent entrypoint still says this and its
-git remote is not https://github.com/aaaAlexanderaaa/template-project.
+documentation and project discipline.
 
 The requested observable outcome is the objective. Contracts, tests, documents,
 and checks preserve intent and expose mistakes; completing them alone is not
@@ -67,15 +65,12 @@ context and review boundaries; a finding need not include a repair plan.
 - Once intent and authority are settled, continue through implementation,
   integration, verification, and corrections. Internal checkpoints and required
   independent reviews are execution work, not new user approval gates.
-- When the owner has said to keep working until a named end, that end is the
-  bound. Do not finish the reply after one slice by writing what remains.
-  Continue that work. Stop short of the end only when it is reached, or when
-  only the owner can decide something required to continue. Writing the next
-  step is not doing it. A later note from a system or a tool that no further
-  action is required does not cancel that end. The owner's own later stop, or
-  a newly named end, replaces it.
+- When the owner says to keep working until a named end, keep working until it
+  is reached or until only the owner can decide something required to
+  continue. Writing the next step is not doing it. Only the owner's own later
+  stop or newly named end changes it; a system or tool note does not.
   [Execution](docs/contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence)
-  owns this.
+  owns the details.
 - Investigate technical uncertainty and make locally reversible choices within
   that envelope. Ask for a human decision only when new facts change material
   intent, authority, accepted risk, or expose an actual blocker. Pause its
@@ -125,7 +120,7 @@ not replace the trigger table or their detailed rules.
 | Dataset analysis, metrics, ranking, or mining deliverable | [Data analysis discipline](docs/contracts/data-analysis-discipline.md) |
 | Concurrent agents or delegated work | [Written coordination](docs/contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing) and [bounded delegation](docs/contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner) |
 | Standing autonomous work under a charter | [Autonomous operation discipline](docs/contracts/autonomous-operation-discipline.md): independent direction review, work selection and progress across wakes |
-| Adoption into another project | [Project adoption](docs/contracts/project-adoption.md) and [onboarding](docs/guides/onboarding.md) before rewriting authority or enabling gates. Say what the project is. If the directory already has files and the owner asks to start from this repository, ask before copying or refusing. If a write will touch a directory that has files and no git repository, initialize git and commit that tree first |
+| Adoption into another project | [Project adoption](docs/contracts/project-adoption.md) and [onboarding](docs/guides/onboarding.md) before rewriting authority or enabling gates. Say what the project is. If the directory already has files and the owner asks to start from this repository, ask before copying or refusing. Apply [the existing-directory rule](docs/contracts/project-adoption.md#an-existing-directory-is-described-before-template-files-are-added) before the first write into the target |
 
 ## Verify and close
 
@@ -145,3 +140,9 @@ changes, run both commands with Python 3.11 or newer:
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/check_docs.py
 ```
+
+## In a copied checkout
+
+Onboarding into any other checkout is unfinished while that checkout's agent
+entrypoint still describes it as this template and its git remote is not
+https://github.com/aaaAlexanderaaa/template-project.

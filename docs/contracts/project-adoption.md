@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-30
+last_reconciled: 2026-11-01
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -187,6 +187,27 @@ Subagent discovery is an example, not the scope of that request. The
 [development core](development-discipline.md#keep-essential-reasoning-active)
 owns the reasoning; preserving it through each claimed transfer and observing
 downstream use are this contract's implementation responsibilities.
+
+### source[18] — 2026-11-01
+
+English account of the current conversation. The owner agreed to stop rules
+written for single incidents spreading into general places. The implementer
+kept the existing-directory and git rule in
+[its section](#an-existing-directory-is-described-before-template-files-are-added),
+pointed the learning ending to it, and moved the agent entrypoint's
+copy-detection sentence to its end so that the entrypoint opens with what the
+repository is. Every identity claim the checker reads remains in the
+entrypoint. Independent review found that the pointer alone weakened the
+learning ending's stricter stop, which covers every file the ending would
+add; the implementer restored that stop at the ending. A later review found
+that both root entrypoints required the commit before an adoption writes
+anything, while this section required it only before template files and a
+learning ending's file. Following source[15], where the contract holds a rule
+the entrypoint keeps the pointer, the implementer joined both triggers in this
+section before relying on the pointer. Asked about the case where git cannot
+be initialized, the owner kept the existing stop: adding template files stops
+and the owner is told, while an adoption's writes that add no template file
+continue.
 
 ## Vocabulary
 
@@ -422,10 +443,9 @@ Learning ends in one of these ways, and a session may both write and ask:
 Finishing in conversation alone, while a change in the first group is still
 unwritten, is not learning.
 
-Before that ending, state what the project is: the material already in the
-directory, the use the owner has given it, and what is absent. When the ending
-will write a file into a directory that already holds files and is not a git
-repository, say so, initialize git, and commit those files first. If git
+Before that ending, state what the project is under
+[the existing-directory rule](#an-existing-directory-is-described-before-template-files-are-added);
+an ending that writes a file also completes that rule's git step first. If git
 cannot be initialized, stop adding files and tell the owner. An ending that
 writes nothing does not require that commit.
 
@@ -467,7 +487,8 @@ and do not treat the request as already refused.
 
 When the directory already holds files and is not a git repository, say so.
 Initialize git and commit that tree as the first revision before any template
-file is added, and before a learning ending writes a file there. The owner's
+file is added, before an adoption writes anything else there, and before a
+learning ending writes a file there. The owner's
 material and the added files then stay separable. If git cannot be
 initialized, stop adding template files and tell the owner. That stop does
 not cancel other work that adds no template file. Leaving the missing
@@ -766,6 +787,15 @@ Maintainer-reported adoption on 2026-09-14:
 - Staged enforcement is not permission to leave scope or debt unowned.
 
 ## Reconciliation log
+
+- **2026-11-01 — one owner for the existing-directory rule:** the learning
+  ending and the agent entrypoint point to the existing-directory section
+  instead of restating its git step, and the learning ending keeps its own
+  stop when git cannot be initialized; the section's git step also applies
+  before an adoption writes anything into such a directory, as both root
+  entrypoints already stated; the entrypoint opens with what the repository
+  is and keeps its identity claims at its end.
+  - from: source[18] (2026-11-01 incident-rule placement)
 
 - **2026-10-30 — reasoning survives repeated transfer:** require preservation
   and downstream observation across the path claimed, with concise core context,

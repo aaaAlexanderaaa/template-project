@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-30
+last_reconciled: 2026-11-01
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -144,8 +144,6 @@ doing it. A later note from a system or a tool that no further action is
 required does not cancel that end. A checker result, and an earlier record
 that the work was not yet authorized, do not cancel it either. The owner's
 own later instruction to stop, or to name a different end, replaces it.
-When git cannot be initialized, stop adding template files and tell the
-owner. That stop does not cancel other work that adds no template file.
 
 Keep one current execution state at the existing plan or task owner: verified
 position, next executable action, unresolved conditions and sufficient ending.
