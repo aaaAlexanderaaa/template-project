@@ -44,9 +44,9 @@ require_supported_python()
 import tomllib
 
 if __package__:
-    from .rule_reading import RuleRepository, heading_slug, parse_frontmatter_text
+    from .rule_reading import RuleRepository, heading_slug, parse_frontmatter_text, visible_lines
 else:
-    from rule_reading import RuleRepository, heading_slug, parse_frontmatter_text
+    from rule_reading import RuleRepository, heading_slug, parse_frontmatter_text, visible_lines
 
 
 def _normalize_repository(url: str) -> str:
@@ -103,6 +103,41 @@ TEMPLATE_IDENTITY_MARKERS = (
     "Adoption into another project",
 )
 
+# Phrases that usually begin a sentence saying what a rule, record or result
+# is not. Only the startup rules every agent reads are scanned for them.
+DISCLAIMER_PHRASES = (
+    "does not establish",
+    "do not establish",
+    "cannot establish",
+    "alone does not",
+    "alone do not",
+    "alone is not",
+    "alone are not",
+    "is not evidence",
+    "are not evidence",
+    "is not proof",
+    "proves no",
+    "does not by itself",
+    "not merely",
+    "is not a substitute",
+    "cannot substitute",
+    "does not mean",
+    "does not imply",
+    "creates no",
+    "adds no",
+    "requires no",
+    "need not",
+)
+DISCLAIMER_PATTERN = re.compile(
+    r"\b(?:"
+    + "|".join(r"\s+".join(map(re.escape, phrase.split())) for phrase in DISCLAIMER_PHRASES)
+    + r")\b",
+    re.IGNORECASE,
+)
+# Quoted text and inline code are mentions of a phrase, not uses of it.
+MENTION_PATTERN = re.compile(r'`[^`]*`|"[^"]*"|“[^”]*”')
+PARAGRAPH_START = re.compile(r"^(?:[-*+] |\d+[.)] |\||#)")
+
 # Declaration manifests share one lifecycle vocabulary so an adopter learns it
 # once: shipped-but-unfilled, in force, or deliberately not applicable.
 VALID_MANIFEST_STATUSES = {"template", "configured", "not_applicable"}
@@ -153,6 +188,9 @@ CONFIGURABLE_RULES = {
     # default so adopters can switch the check on before reconciling legacy
     # links; a project that completed the identifier cutover pins it to error.
     "fragment_resolution": ADVISORY,
+    # A startup rule uses a listed disclaimer phrase. Most listed phrases also
+    # mark limits a rule should keep, so the lexical signal is opt-in.
+    "rule_phrasing": OFF,
 }
 
 # Rules that describe unfinished adoption rather than a contradiction. Before
@@ -1991,6 +2029,71 @@ class DocumentationChecker:
         for relative, message in RuleRepository(self.root).validate_declarations(paths):
             self.add(self.root / relative, f"required reading: {message}")
 
+    def validate_rule_phrasing(self) -> None:
+        """Report listed disclaimer phrases in the rules every agent reads first.
+
+        The scope is the required-reading closure of AGENTS.md plus the
+        entrypoint itself. An unresolvable closure is reported by
+        validate_required_reading, so it narrows this scan to the entrypoint.
+        """
+
+        if self.severity_for("rule_phrasing") == OFF:
+            return
+        texts: list[tuple[str, bytes]] = []
+        try:
+            texts.extend((unit.path, unit.data) for unit in RuleRepository(self.root).prepare().units)
+        except (ValueError, OSError):
+            pass
+        entry = self.root / "AGENTS.md"
+        if entry.is_file() and all(path != "AGENTS.md" for path, _ in texts):
+            texts.append(("AGENTS.md", entry.read_bytes()))
+        for relative, data in texts:
+            path = self.root / relative
+            try:
+                whole = path.read_bytes()
+                first_line = whole[: max(whole.find(data), 0)].count(b"\n") + 1
+                self.scan_rule_phrasing(path, data.decode("utf-8"), first_line)
+            except (ValueError, OSError):
+                continue
+
+    def scan_rule_phrasing(self, path: Path, text: str, first_line: int) -> None:
+        lines = text.splitlines()
+        visible = visible_lines(lines)
+        paragraph: list[tuple[int, str]] = []
+
+        def flush() -> None:
+            joined = ""
+            starts: list[tuple[int, int]] = []
+            for number, line in paragraph:
+                starts.append((len(joined), number))
+                joined += line.strip() + " "
+            paragraph.clear()
+            masked = MENTION_PATTERN.sub(lambda match: " " * len(match[0]), joined)
+            for match in DISCLAIMER_PATTERN.finditer(masked):
+                number = max(line for offset, line in starts if offset <= match.start())
+                phrase = " ".join(match[0].lower().split())
+                self.add(
+                    path,
+                    f'line {number}: "{phrase}" says what something is not; keep it '
+                    "if it limits what something shows or permits, and reword it "
+                    "only if one case it excluded and one it allowed are decided "
+                    "the same way (docs/README.md#language-style)",
+                    rule="rule_phrasing",
+                )
+
+        for index, (line, shown) in enumerate(zip(lines, visible)):
+            stripped = line.strip()
+            skipped = (
+                not shown
+                or not stripped
+                or stripped.startswith(("<!--", "- from:", "- required-reading:"))
+            )
+            if skipped or PARAGRAPH_START.match(stripped):
+                flush()
+            if not skipped:
+                paragraph.append((first_line + index, stripped))
+        flush()
+
     def run(self) -> bool:
         self.policy = self.load_toml(self.root / "docs-policy.toml", "docs policy")
         self.validate_policy_shape()
@@ -2009,6 +2112,7 @@ class DocumentationChecker:
         self.validate_abnormalities()
         self.validate_local_links()
         self.validate_required_reading()
+        self.validate_rule_phrasing()
         self.validate_architecture()
         self.validate_style_ownership()
         self.validate_template_entrypoint()

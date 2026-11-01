@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: enforced
-last_reconciled: 2026-10-29
+last_reconciled: 2026-11-01
 reading_entrypoint: harness
 supersedes: []
 ---
@@ -37,6 +37,7 @@ correct.
 - optional structured frontend abnormality records;
 - an optional style-ownership declaration: layer partition and value-tier
   direction;
+- an opt-in lexical signal for disclaimer phrasing in startup rules;
 - local references and lifecycle relationship paths;
 - fixture-based tests for the checker.
 
@@ -490,6 +491,30 @@ acceptance-evidence section are a current status surface, not history.
 
 - from: source[6]
 
+### Startup rules are scanned for disclaimer phrasing
+
+Every agent reads the required-reading closure of `AGENTS.md` and the
+entrypoint itself, and later writers copy the form of what they read. The
+checker scans that text for a short list of phrases that usually begin a
+sentence saying what a rule, record or result is not, such as "does not
+establish", "alone does not", "need not" and "creates no". Quoted text, inline
+code, fenced examples, `from:` citations and reading markers are mentions and
+are skipped; a phrase broken across lines still matches. When a project sets
+`rule_phrasing` to `advisory` or `error`, each hit names the line and points
+to the [language rule](../README.md#language-style). The rule is off by
+default.
+
+The signal is lexical: it finds the stock forms, a reworded disclaimer passes
+it, and whether a reader can act on a rule is judged in a concrete task. Most
+listed phrases also mark a limit on what evidence shows or a permission, which
+the language rule keeps, so rewriting toward fewer hits can drop or strengthen
+the rule itself. Each finding therefore asks a writer to keep such a sentence,
+and to reword it only when one case it excluded and one it allowed are decided
+the same way afterwards. The signal bans no vocabulary and stays within the
+startup rules.
+
+- from: source[13] (2026-11-01 positive rule wording)
+
 ## Required behaviors
 
 - `python3 scripts/check_docs.py` validates the current repository.
@@ -511,6 +536,9 @@ acceptance-evidence section are a current status surface, not history.
   project completes its cutover and retunes the rule.
 - Template validation permits placeholders only under `templates/` and the
   intentionally unconfigured architecture skeleton.
+- When `rule_phrasing` is enabled, startup rules that use a listed disclaimer
+  phrase outside quotes, code and citations produce a finding naming the line;
+  the rule is off by default.
 
 ## Forbidden behaviors
 
@@ -546,6 +574,7 @@ acceptance-evidence section are a current status surface, not history.
 | Projection coupling stays reviewable without volume quotas | Relationship, lifecycle, and clock-controlled fixtures | PASS — narrow guide/source types, later-date advisory, configurable/off behavior, lifecycle compatibility, and reciprocal canonical supersession |
 | Severity is honest about what blocks | Advisory/error/off and `--strict` fixtures | PASS — time-based findings never fail a default run, and `off` survives `--strict` |
 | Heading fragments stay resolvable | Fragment fixtures + repository check | PASS — resolving, broken, strict-promoted, and off-under-strict cases |
+| Startup rules state actions | Phrasing fixtures + repository check | PASS — listed, wrapped, quoted, entrypoint, out-of-scope, and off-under-strict cases |
 | Checker behavior remains stable | Standard-library unittest suite | PASS — full suite green |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
 
@@ -700,7 +729,31 @@ preparation are executor-selected interfaces within that accepted design.
 They preserve source integrity, current authority and fresh restart; they do
 not establish comprehension, sustained savings or real-project adoption.
 
+### source[13] — 2026-11-01
+
+English account of the current conversation. An external review found that
+the rules mostly say what not to do. The owner agreed, attributed the pattern
+to the previous maintaining model's over-caution and habit of disclaimers,
+said earlier corrective requirements had not worked well enough, and asked for
+it to be handled. The implementer rewrote the startup rules in action form and
+chose this advisory as a detection surface, because another written
+requirement would repeat the remedy that had not worked. Independent review of
+the rewrite found that phrase-driven rewriting had dropped or changed limits,
+and later reviewers noted that most listed phrases mark such limits or
+permissions, so each hit nudges a writer toward that failure. The implementer
+made the signal opt-in, left it off in this repository, and changed its
+message to keep such sentences. Asked whether to keep it off, enable, narrow
+or remove it, the owner chose to keep it off.
+
 ## Reconciliation log
+
+- **2026-11-01 — startup rules scanned for disclaimer phrasing:** the
+  required-reading closure of `AGENTS.md` and the entrypoint itself can be
+  scanned by an opt-in `rule_phrasing` rule, off by default, for a short list
+  of disclaimer phrases; quoted text, code and citations are mentions and are
+  skipped. Each finding asks the writer to keep a sentence that limits or
+  permits, and to reword it only when its cases are decided the same way.
+  - from: source[13] (2026-11-01 positive rule wording)
 
 - **2026-10-29 — revalidated operating interfaces:** published operative
   entrypoints, explicit method inclusion and caller-asserted same-context

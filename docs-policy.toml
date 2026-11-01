@@ -54,6 +54,10 @@ projection_staleness = "advisory"
 # cutover completed on 2026-08-28, so a broken fragment is a structural error
 # here; adopters mid-cutover may keep this advisory.
 fragment_resolution = "error"
+# A startup rule (the required-reading closure of AGENTS.md, or the entrypoint
+# itself) uses a listed disclaimer phrase. Most listed phrases also mark limits
+# that a rule keeps, so this signal is opt-in; set "advisory" to see it.
+rule_phrasing = "off"
 # `adoption_gate` and `source_root_configuration` are deliberately unset:
 # leaving them out lets [adoption].stage decide (advisory while
 # `observed`/`baselined`, blocking from `scoped_enforcement` on). Set either

@@ -2,7 +2,7 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-10-30
+last_reconciled: 2026-11-01
 projection_of: [docs/contracts/project-adoption.md, docs/contracts/governance-decision-boundary.md, docs/contracts/documentation-harness.md, docs/contracts/foundational-runtime-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
@@ -329,6 +329,9 @@ Consequences worth knowing before you choose:
   default are advisory. Run `--strict` on a schedule rather than promoting them
   on every push. A rule you set to `off` stays off even under `--strict`.
 
+  `rule_phrasing` is off by default; set it `advisory` to list disclaimer
+  phrases in the startup rules. Most of them mark limits a rule keeps, so a
+  finding asks for a judgment rather than a rewrite.
 Unknown keys in `[adoption]` and `[severity]` are rejected rather than ignored,
 so a typo or a setting from an older revision of the template surfaces as a
 failure with the replacement named.

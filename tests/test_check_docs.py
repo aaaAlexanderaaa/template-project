@@ -17,7 +17,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 CHECKER = REPOSITORY_ROOT / "scripts" / "check_docs.py"
 # The copied repository and this clock form one reviewed fixture baseline.
 # Advance together when repository reconciliation dates move forward.
-FIXED_TODAY = "2026-10-30"
+FIXED_TODAY = "2026-11-01"
 
 
 def load_checker_module():
@@ -1279,6 +1279,72 @@ last_reconciled: 2026-07-26
         )
         output = self.assert_passes()
         self.assertNotIn("projection review is stale", output)
+
+    def assert_no_phrasing_finding(self) -> None:
+        result = self.run_checker(strict=True)
+        output = result.stdout + result.stderr
+        self.assertEqual(result.returncode, 0, output)
+        self.assertNotIn("says what something is not", output)
+
+    def enable_rule_phrasing(self) -> None:
+        self.set_policy('rule_phrasing = "off"', 'rule_phrasing = "advisory"')
+
+    def phrasing_finding_count(self) -> int:
+        result = self.run_checker()
+        output = result.stdout + result.stderr
+        return output.count("says what something is not")
+
+    def add_task_context_paragraph(self, paragraph: str) -> None:
+        self.replace(
+            "docs/README.md",
+            "#completion-is-layered)\n\n",
+            f"#completion-is-layered)\n\n{paragraph}\n\n",
+        )
+
+    def test_rule_phrasing_is_off_by_default(self) -> None:
+        policy = self.read("docs-policy.toml")
+        self.write(
+            "docs-policy.toml",
+            re.sub(r"(?m)^rule_phrasing\s*=.*\n", "", policy),
+        )
+        self.add_task_context_paragraph("A manifest alone does not prove reading.")
+        self.assert_no_phrasing_finding()
+
+    def test_startup_rule_disclaimer_phrase_is_advisory(self) -> None:
+        self.enable_rule_phrasing()
+        self.add_task_context_paragraph("A manifest alone does not prove reading.")
+        self.assert_advises('"alone does not" says what something is not')
+
+    def test_wrapped_entrypoint_phrase_reports_its_first_line(self) -> None:
+        self.enable_rule_phrasing()
+        content = self.read("AGENTS.md").rstrip("\n") + "\n"
+        self.write("AGENTS.md", content + "\nDelivery of a rule alone\ndoes not apply it.\n")
+        line = len(content.splitlines()) + 2
+        self.assert_advises(f'line {line}: "alone does not"')
+
+    def test_quoted_and_code_phrases_are_mentions(self) -> None:
+        self.enable_rule_phrasing()
+        before = self.phrasing_finding_count()
+        self.add_task_context_paragraph(
+            'Rewrite "a manifest alone does not prove reading" and `need not` as actions.'
+        )
+        self.assertEqual(self.phrasing_finding_count(), before)
+
+    def test_rules_outside_startup_reading_are_not_scanned(self) -> None:
+        self.enable_rule_phrasing()
+        before = self.phrasing_finding_count()
+        self.replace(
+            "docs/README.md",
+            "## Conflict rule\n\n",
+            "## Conflict rule\n\nA manifest alone does not prove reading.\n\n",
+        )
+        self.assertEqual(self.phrasing_finding_count(), before)
+
+    def test_rule_phrasing_can_be_switched_off(self) -> None:
+        self.enable_rule_phrasing()
+        self.set_policy('rule_phrasing = "advisory"', 'rule_phrasing = "off"')
+        self.add_task_context_paragraph("A manifest alone does not prove reading.")
+        self.assert_no_phrasing_finding()
 
     def test_heading_fragment_resolves(self) -> None:
         self.write(
