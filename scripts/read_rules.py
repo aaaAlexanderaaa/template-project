@@ -8,6 +8,8 @@ import json
 import sys
 from pathlib import Path
 
+sys.dont_write_bytecode = True
+
 if __package__:
     from .rule_reading import RuleError, RuleRepository, utf8_parts
 else:
@@ -19,6 +21,15 @@ def main(argv=None):
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     sub = parser.add_subparsers(dest="operation", required=True)
     sub.add_parser("list", help="show current traits, concern slugs and reading targets")
+    overview = sub.add_parser("overview", help="discover declared rules, working records and review commitments")
+    overview.add_argument("--source", action="append", default=[], metavar="PATH",
+                          help="replace default AGENTS.md/docs scope; repeat for more local files/directories")
+    overview.add_argument("--format", choices=("text", "json"), default="text")
+    overview.add_argument("--outline", action="store_true", help="include the complete operative heading inventory")
+    overview.add_argument("--today", metavar="YYYY-MM-DD", help="explicit calendar reference; otherwise dates stay unassessed")
+    overview.add_argument("--offset", type=int, default=0)
+    overview.add_argument("--limit", type=int)
+    overview.add_argument("--snapshot", help="require the snapshot from a preceding page")
     prepare = sub.add_parser("prepare", help="emit selected complete units in one transaction")
     prepare.add_argument("--concern", action="append", default=[])
     prepare.add_argument("--owner", action="append", default=[], metavar="CONCERN=PATH")
@@ -38,8 +49,22 @@ def main(argv=None):
         sys.stdout.reconfigure(encoding="utf-8", newline="")
         if sys.version_info < (3, 11):
             raise RuleError("read_rules requires Python 3.11 or newer")
-        repo = RuleRepository(args.root)
-        if args.operation == "list":
+        repo = None if args.operation == "overview" else RuleRepository(args.root)
+        if args.operation == "overview":
+            if __package__:
+                from .document_overview import DocumentOverview, calendar_date, render_text
+            else:
+                from document_overview import DocumentOverview, calendar_date, render_text
+            try:
+                today = calendar_date(args.today) if args.today is not None else None
+            except ValueError as exc:
+                raise RuleError(f"--today: {exc}") from exc
+            view = DocumentOverview(args.root).build(args.source, today=today, offset=args.offset,
+                                                     limit=args.limit, snapshot=args.snapshot, include_outline=args.outline)
+            output = json.dumps(view, ensure_ascii=False, indent=2) + "\n" if args.format == "json" else render_text(view)
+            sys.stdout.write(output)
+            return 0 if view["coverage"]["scan_complete"] else 2
+        elif args.operation == "list":
             output = json.dumps(repo.routes(), ensure_ascii=False, indent=2) + "\n"
             repo.recheck(tuple(repo.sources.values()))
             sys.stdout.write(output)

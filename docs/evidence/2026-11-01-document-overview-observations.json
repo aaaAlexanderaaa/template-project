@@ -1,0 +1,637 @@
+{
+  "date": "2026-11-01",
+  "environment": {
+    "python": "3.14.2",
+    "system": "Darwin",
+    "architecture": "arm64",
+    "baseline_revision": "5a9303cb408af80de9bd4202c55a5c7445ee6138 plus uncommitted task changes"
+  },
+  "evidence_class": "Producer-executed real CLI processes over controlled source-shaped fixtures; no longitudinal agent task.",
+  "invocation": [
+    "python3",
+    "scripts/read_rules.py",
+    "--root",
+    "<recreated fixture root>",
+    "<args below>"
+  ],
+  "fixture_sources": {
+    "AGENTS.md": "# Editorial project\n\n- required-reading: [Context](docs/README.md#context)\n",
+    "docs/README.md": "---\ndoc_type: authority-map\nauthority: normative\nstatus: current\nlast_reconciled: 2026-11-01\n---\n\n# Context\nCurrent contracts govern behavior; plans govern sequence; findings retain their dispositions.\n",
+    "docs/contracts/development-discipline.md": "---\ndoc_type: contract\nauthority: normative\nstatus: current\nlast_reconciled: 2026-11-01\n---\n\n# Development\n\n| Change trait | Activated concern | Minimum questions | Required reading |\n|---|---|---|---|\n| User-facing prose | Experience | Reader result | owner:experience |\n",
+    "docs/contracts/editorial.md": "---\ndoc_type: contract\nauthority: normative\nstatus: current\nlast_reconciled: 2026-11-01\n---\n\n# Editorial standard\n## Voice\nPreserve the author's voice and remove formulaic filler.\n## Factual claims\nCheck each checkable factual claim.\n## Follow-up\n- promise[reuse]: due=2026-11-01; status=open; owner=editor; description=Observe whether the previous workflow correction is used in the next article\n",
+    "docs/contracts/previous.md": "---\ndoc_type: contract\nauthority: normative\nstatus: historical\nlast_reconciled: 2026-11-01\n---\n\n# Previous editorial standard\n## Voice\nStart every article with a fixed summary formula.\n",
+    "docs/contracts/proposal.md": "---\ndoc_type: contract\nauthority: normative\nstatus: target\nlast_reconciled: 2026-11-01\n---\n\n# Presentation proposal\n## Visuals\nRequire an illustration for every article.\n",
+    "docs/issues/observations.md": "---\ndoc_type: issue-tracker\nauthority: normative\nstatus: active\nlast_reconciled: 2026-11-01\n---\n\n# Editorial observations\n## E-1 — Correct the old typo\n- **Status:** `resolved`\n## E-2 — Style-checker limitation\n- **Status:** `accepted`\n## E-3 — Citation uncertainty\n- **Status:** `unverified`\n",
+    "docs/notes/local.md": "# An earlier concern\nIts current disposition and applicable scope were not recorded.\n",
+    "docs/plans/follow-up.md": "---\ndoc_type: plan\nauthority: planning\nstatus: active\nlast_reconciled: 2026-11-01\n---\n\n# Follow-up on recurring corrections\n## Next action\nUse the next article to observe whether the earlier correction changed the writing.\n"
+  },
+  "command_observations": [
+    {
+      "args": [
+        "overview"
+      ],
+      "exit_code": 0,
+      "stdout": "DOCUMENT OVERVIEW\nSource metadata and navigation; read sources before judging applicability.\nScope: AGENTS.md, docs\nSnapshot: 258587a3a0b030d6e5ab3ffd07017829e8bf4a665c7edc8b2befbeb3201ce695\nScan: complete; 9 Markdown files; 1 inactive; 1 unclassified; 0 unknown finding states\nCategories: active_plans=1, current_rules=3, findings=1, navigation=1, target_rules=1, unclassified=1\nDetail: documents; use --outline --source PATH to expand document headings\nCalendar reference: unassessed (pass --today YYYY-MM-DD)\nDocuments: offset 0; shown 8 of 8\nInactive paths and states: use --format json and inspect coverage.excluded\n\n[navigation] Editorial project\n  AGENTS.md — undeclared; undeclared authority\n  sha256: 2282789637b4e985fd6d804ca323a0b3fac19e64f2bcb318aa5cdb3716199ac1\n  1 headings available with --outline\n\n[current_rules] Context\n  docs/README.md — current; normative authority\n  sha256: eaa5696b857b4fa5acfee4b716d9b3fcce1b888b4d54d1c27badd49d8fc7c00a\n  1 headings available with --outline\n\n[current_rules] Development\n  docs/contracts/development-discipline.md — current; normative authority\n  sha256: f0aed8c9b8756d0afdd0ccf2004df5840a462d39828b73bfa583d68ae6ab31dc\n  1 headings available with --outline\n\n[current_rules] Editorial standard\n  docs/contracts/editorial.md — current; normative authority\n  sha256: 9f79d0844ce2a8123cd44cab75e6c055a23a554a4c862c8c354d5ef9a6ab144b\n  4 headings available with --outline\n  L14: promise[reuse] open; due=2026-11-01; unassessed; Observe whether the previous workflow correction is used in the next article\n\n[target_rules] Presentation proposal\n  docs/contracts/proposal.md — target; normative authority\n  sha256: e715f2768f3d6da718c88ad2a92967c3c5977147d695bc39859d2276c634913a\n  2 headings available with --outline\n\n[findings] Editorial observations\n  docs/issues/observations.md — active; normative authority\n  sha256: 727ee38c54795156d16f06456e8be5e4461402315d7cf2805277c8eef1db0c4b\n  4 headings available with --outline\n  L11: [accepted; accepted] E-2 — Style-checker limitation\n  L13: [unverified; unresolved] E-3 — Citation uncertainty\n  1 resolved/disproved finding(s) outside attention\n\n[unclassified] An earlier concern\n  docs/notes/local.md — undeclared; undeclared authority\n  sha256: bd230ff35224798095fcd71440b35551897742a3961ae2d9150918cfc901f835\n  1 headings available with --outline\n  Needs judgment: missing frontmatter; unrecognized or missing doc_type: (absent); unrecognized or missing authority: (absent); unrecognized or missing status: (absent)\n\n[active_plans] Follow-up on recurring corrections\n  docs/plans/follow-up.md — active; planning authority\n  sha256: b7e171c2a3227d1bd790c5d94543e2ff04cab4bb195fa0ca21ce9c5106a0ceca\n  2 headings available with --outline\nOVERVIEW COMPLETE\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--source",
+        "docs/contracts/editorial.md",
+        "--outline"
+      ],
+      "exit_code": 0,
+      "stdout": "DOCUMENT OVERVIEW\nSource metadata and navigation; read sources before judging applicability.\nScope: docs/contracts/editorial.md\nSnapshot: 163d6c686dae8128020afac39eaacc9a43044453db88e2255e6a724d8bce886f\nScan: complete; 1 Markdown files; 0 inactive; 0 unclassified; 0 unknown finding states\nCategories: current_rules=1\nDetail: headings; use --outline --source PATH to expand document headings\nCalendar reference: unassessed (pass --today YYYY-MM-DD)\nDocuments: offset 0; shown 1 of 1\n\n[current_rules] Editorial standard\n  docs/contracts/editorial.md — current; normative authority\n  sha256: 9f79d0844ce2a8123cd44cab75e6c055a23a554a4c862c8c354d5ef9a6ab144b\n  L8: heading H1: Editorial standard\n  L9: heading H2: Voice\n  L11: heading H2: Factual claims\n  L13: heading H2: Follow-up\n  L14: promise[reuse] open; due=2026-11-01; unassessed; Observe whether the previous workflow correction is used in the next article\nOVERVIEW COMPLETE\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--source",
+        "docs/issues",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"e983eaccc217eaae54bbaa236113c949d99b32888ed96bb18b1a138872e9924a\",\n  \"sources\": [\n    \"docs/issues\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": null,\n  \"coverage\": {\n    \"scan_complete\": true,\n    \"files_discovered\": 1,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {\n      \"findings\": 1\n    },\n    \"unclassified\": [],\n    \"uncertain_findings\": [],\n    \"excluded\": [],\n    \"diagnostics\": []\n  },\n  \"page\": {\n    \"offset\": 0,\n    \"limit\": null,\n    \"total\": 1,\n    \"shown\": 1,\n    \"next_offset\": null\n  },\n  \"documents\": [\n    {\n      \"path\": \"docs/issues/observations.md\",\n      \"sha256\": \"727ee38c54795156d16f06456e8be5e4461402315d7cf2805277c8eef1db0c4b\",\n      \"title\": \"Editorial observations\",\n      \"category\": \"findings\",\n      \"metadata\": {\n        \"doc_type\": \"issue-tracker\",\n        \"authority\": \"normative\",\n        \"status\": \"active\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [\n        {\n          \"title\": \"E-2 — Style-checker limitation\",\n          \"line\": 11,\n          \"status\": \"accepted\",\n          \"disposition\": \"accepted\"\n        },\n        {\n          \"title\": \"E-3 — Citation uncertainty\",\n          \"line\": 13,\n          \"status\": \"unverified\",\n          \"disposition\": \"unresolved\"\n        }\n      ],\n      \"commitments\": [],\n      \"closed_findings\": 1,\n      \"heading_count\": 4\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "list"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"experience\": {\n    \"name\": \"Experience\",\n    \"trait\": \"User-facing prose\",\n    \"questions\": \"Reader result\",\n    \"references\": [],\n    \"owner\": true\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "prepare",
+        "--concern",
+        "experience"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "read_rules: missing owner for experience; bind --owner experience=PATH\n"
+    },
+    {
+      "args": [
+        "prepare",
+        "--concern",
+        "experience",
+        "--owner",
+        "experience=docs/contracts/editorial.md"
+      ],
+      "exit_code": 0,
+      "stdout": "READING MANIFEST\n{\"concerns\": [\"experience\"], \"context\": null, \"includes\": [], \"owner_bindings\": [\"experience=docs/contracts/editorial.md\"], \"sources\": {\"AGENTS.md\": \"2282789637b4e985fd6d804ca323a0b3fac19e64f2bcb318aa5cdb3716199ac1\", \"docs/README.md\": \"eaa5696b857b4fa5acfee4b716d9b3fcce1b888b4d54d1c27badd49d8fc7c00a\", \"docs/contracts/development-discipline.md\": \"f0aed8c9b8756d0afdd0ccf2004df5840a462d39828b73bfa583d68ae6ab31dc\", \"docs/contracts/editorial.md\": \"9f79d0844ce2a8123cd44cab75e6c055a23a554a4c862c8c354d5ef9a6ab144b\"}, \"units\": [{\"authority\": \"normative\", \"bytes\": 202, \"delivery\": \"emitted\", \"file_sha256\": \"eaa5696b857b4fa5acfee4b716d9b3fcce1b888b4d54d1c27badd49d8fc7c00a\", \"heading\": \"Context\", \"identity\": \"docs/README.md#document\", \"metadata_sha256\": \"30b5d18b0ec004d7321557a4321451181d8ae72d188d79cf6728f1991a2249cc\", \"path\": \"docs/README.md\", \"sha256\": \"eaa5696b857b4fa5acfee4b716d9b3fcce1b888b4d54d1c27badd49d8fc7c00a\", \"status\": \"current\", \"unit\": \"document\"}, {\"authority\": \"normative\", \"bytes\": 397, \"delivery\": \"emitted\", \"file_sha256\": \"9f79d0844ce2a8123cd44cab75e6c055a23a554a4c862c8c354d5ef9a6ab144b\", \"heading\": \"Editorial standard\", \"identity\": \"docs/contracts/editorial.md#document\", \"metadata_sha256\": \"599fca811a7376dd89cbab22ef67811e38caedc2ba405744cda3a28232867bbe\", \"path\": \"docs/contracts/editorial.md\", \"sha256\": \"9f79d0844ce2a8123cd44cab75e6c055a23a554a4c862c8c354d5ef9a6ab144b\", \"status\": \"current\", \"unit\": \"document\"}], \"version\": 2}\nBEGIN UNIT docs/README.md#document\n---\ndoc_type: authority-map\nauthority: normative\nstatus: current\nlast_reconciled: 2026-11-01\n---\n\n# Context\nCurrent contracts govern behavior; plans govern sequence; findings retain their dispositions.\n\nEND UNIT docs/README.md#document\nBEGIN UNIT docs/contracts/editorial.md#document\n---\ndoc_type: contract\nauthority: normative\nstatus: current\nlast_reconciled: 2026-11-01\n---\n\n# Editorial standard\n## Voice\nPreserve the author's voice and remove formulaic filler.\n## Factual claims\nCheck each checkable factual claim.\n## Follow-up\n- promise[reuse]: due=2026-11-01; status=open; owner=editor; description=Observe whether the previous workflow correction is used in the next article\n\nEND UNIT docs/contracts/editorial.md#document\nREADING COMPLETE units=2\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--today",
+        "2026-11-01",
+        "--limit",
+        "1"
+      ],
+      "exit_code": 0,
+      "stdout": "DOCUMENT OVERVIEW\nSource metadata and navigation; read sources before judging applicability.\nScope: AGENTS.md, docs\nSnapshot: 550fa1248b439fc5f1facb649b442a6cfb7033179ca005ed452a52b680259117\nScan: complete; 9 Markdown files; 1 inactive; 1 unclassified; 0 unknown finding states\nCategories: active_plans=1, current_rules=3, findings=1, navigation=1, target_rules=1, unclassified=1\nDetail: documents; use --outline --source PATH to expand document headings\nCalendar reference: 2026-11-01\nDocuments: offset 0; shown 1 of 8\nInactive paths and states: use --format json and inspect coverage.excluded\n\n[navigation] Editorial project\n  AGENTS.md — undeclared; undeclared authority\n  sha256: 2282789637b4e985fd6d804ca323a0b3fac19e64f2bcb318aa5cdb3716199ac1\n  1 headings available with --outline\nMore documents: --offset 1 --snapshot 550fa1248b439fc5f1facb649b442a6cfb7033179ca005ed452a52b680259117 --today 2026-11-01; reuse source selection\nOVERVIEW COMPLETE\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--source",
+        "docs/issues",
+        "--outline"
+      ],
+      "exit_code": 0,
+      "stdout": "DOCUMENT OVERVIEW\nSource metadata and navigation; read sources before judging applicability.\nScope: docs/issues\nSnapshot: e983eaccc217eaae54bbaa236113c949d99b32888ed96bb18b1a138872e9924a\nScan: complete; 1 Markdown files; 0 inactive; 0 unclassified; 0 unknown finding states\nCategories: findings=1\nDetail: headings; use --outline --source PATH to expand document headings\nCalendar reference: unassessed (pass --today YYYY-MM-DD)\nDocuments: offset 0; shown 1 of 1\n\n[findings] Editorial observations\n  docs/issues/observations.md — active; normative authority\n  sha256: 727ee38c54795156d16f06456e8be5e4461402315d7cf2805277c8eef1db0c4b\n  L8: heading H1: Editorial observations\n  L9: heading H2: E-1 — Correct the old typo\n  L11: heading H2: E-2 — Style-checker limitation\n  L11: [accepted; accepted] E-2 — Style-checker limitation\n  L13: heading H2: E-3 — Citation uncertainty\n  L13: [unverified; unresolved] E-3 — Citation uncertainty\n  1 resolved/disproved finding(s) outside attention\nOVERVIEW COMPLETE\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--format",
+        "json",
+        "--today",
+        "2026-11-01",
+        "--limit",
+        "2"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"550fa1248b439fc5f1facb649b442a6cfb7033179ca005ed452a52b680259117\",\n  \"sources\": [\n    \"AGENTS.md\",\n    \"docs\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": \"2026-11-01\",\n  \"coverage\": {\n    \"scan_complete\": true,\n    \"files_discovered\": 9,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {\n      \"active_plans\": 1,\n      \"current_rules\": 3,\n      \"findings\": 1,\n      \"navigation\": 1,\n      \"target_rules\": 1,\n      \"unclassified\": 1\n    },\n    \"unclassified\": [\n      \"docs/notes/local.md\"\n    ],\n    \"uncertain_findings\": [],\n    \"excluded\": [\n      {\n        \"path\": \"docs/contracts/previous.md\",\n        \"sha256\": \"c78e371788a24791089aa3f71162a6e734c08528f252b1d8c53401d9b5a0794e\",\n        \"status\": \"historical\"\n      }\n    ],\n    \"diagnostics\": []\n  },\n  \"page\": {\n    \"offset\": 0,\n    \"limit\": 2,\n    \"total\": 8,\n    \"shown\": 2,\n    \"next_offset\": 2\n  },\n  \"documents\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"sha256\": \"2282789637b4e985fd6d804ca323a0b3fac19e64f2bcb318aa5cdb3716199ac1\",\n      \"title\": \"Editorial project\",\n      \"category\": \"navigation\",\n      \"metadata\": {},\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    },\n    {\n      \"path\": \"docs/README.md\",\n      \"sha256\": \"eaa5696b857b4fa5acfee4b716d9b3fcce1b888b4d54d1c27badd49d8fc7c00a\",\n      \"title\": \"Context\",\n      \"category\": \"current_rules\",\n      \"metadata\": {\n        \"doc_type\": \"authority-map\",\n        \"authority\": \"normative\",\n        \"status\": \"current\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--format",
+        "json",
+        "--today",
+        "2026-11-01",
+        "--limit",
+        "2",
+        "--offset",
+        "2",
+        "--snapshot",
+        "550fa1248b439fc5f1facb649b442a6cfb7033179ca005ed452a52b680259117"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"550fa1248b439fc5f1facb649b442a6cfb7033179ca005ed452a52b680259117\",\n  \"sources\": [\n    \"AGENTS.md\",\n    \"docs\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": \"2026-11-01\",\n  \"coverage\": {\n    \"scan_complete\": true,\n    \"files_discovered\": 9,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {\n      \"active_plans\": 1,\n      \"current_rules\": 3,\n      \"findings\": 1,\n      \"navigation\": 1,\n      \"target_rules\": 1,\n      \"unclassified\": 1\n    },\n    \"unclassified\": [\n      \"docs/notes/local.md\"\n    ],\n    \"uncertain_findings\": [],\n    \"excluded\": [\n      {\n        \"path\": \"docs/contracts/previous.md\",\n        \"sha256\": \"c78e371788a24791089aa3f71162a6e734c08528f252b1d8c53401d9b5a0794e\",\n        \"status\": \"historical\"\n      }\n    ],\n    \"diagnostics\": []\n  },\n  \"page\": {\n    \"offset\": 2,\n    \"limit\": 2,\n    \"total\": 8,\n    \"shown\": 2,\n    \"next_offset\": 4\n  },\n  \"documents\": [\n    {\n      \"path\": \"docs/contracts/development-discipline.md\",\n      \"sha256\": \"f0aed8c9b8756d0afdd0ccf2004df5840a462d39828b73bfa583d68ae6ab31dc\",\n      \"title\": \"Development\",\n      \"category\": \"current_rules\",\n      \"metadata\": {\n        \"doc_type\": \"contract\",\n        \"authority\": \"normative\",\n        \"status\": \"current\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    },\n    {\n      \"path\": \"docs/contracts/editorial.md\",\n      \"sha256\": \"9f79d0844ce2a8123cd44cab75e6c055a23a554a4c862c8c354d5ef9a6ab144b\",\n      \"title\": \"Editorial standard\",\n      \"category\": \"current_rules\",\n      \"metadata\": {\n        \"doc_type\": \"contract\",\n        \"authority\": \"normative\",\n        \"status\": \"current\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [\n        {\n          \"due\": \"2026-11-01\",\n          \"status\": \"open\",\n          \"owner\": \"editor\",\n          \"description\": \"Observe whether the previous workflow correction is used in the next article\",\n          \"kind\": \"promise\",\n          \"id\": \"reuse\",\n          \"line\": 14,\n          \"timing\": \"due\"\n        }\n      ],\n      \"closed_findings\": 0,\n      \"heading_count\": 4\n    }\n  ]\n}\n",
+      "stderr": ""
+    }
+  ],
+  "implementation_sha256": {
+    "scripts/read_rules.py": "8c9d7ea0d8ee5f6062d06f37fc88bbcc9e5d72f0e98f6548bd6ed288014fb296",
+    "scripts/document_overview.py": "645eb79700b66a470faf30dbad9dce8e91df788b7c48daa1d97235cef033d5b9",
+    "scripts/rule_reading.py": "8f10597ab341827f3c26ed6f437bea4a74e20b289d5c8c78eddc4ad5d8bd259f",
+    "tests/test_document_overview.py": "4c1f5058e5ed6adfdc2d43ca9e915fd9bd6d1bc0d1d44fd19fea67a1c8ed5743"
+  },
+  "repository_observations_before_closure": [
+    {
+      "args": [
+        "overview"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.1288,
+      "stdout_bytes": 8160,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.1466,
+      "stdout_bytes": 31516,
+      "stderr": ""
+    },
+    {
+      "args": [
+        "overview",
+        "--source",
+        "docs/contracts",
+        "--outline"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.1227,
+      "stdout_bytes": 12455,
+      "stderr": ""
+    }
+  ],
+  "checks": {
+    "baseline_unit_suite": {
+      "tests": 196,
+      "elapsed_seconds": 59.536,
+      "exit_code": 0
+    },
+    "focused_unit_suite": {
+      "tests": 23,
+      "elapsed_seconds": 3.576,
+      "exit_code": 0
+    },
+    "final_unit_suite": {
+      "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+      "tests": 219,
+      "elapsed_seconds": 62.14,
+      "exit_code": 0
+    },
+    "documentation_checker": {
+      "command": "python3 scripts/check_docs.py",
+      "exit_code": 0,
+      "canonical_documents_before_evidence": 73,
+      "templates": 16,
+      "profile": "full",
+      "adoption_stage": "adopted",
+      "existing_advisory": "independent-adoption-review overdue since 2026-10-24",
+      "canonical_documents_after_evidence": 74,
+      "final_exit_code": 0
+    },
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  },
+  "native_root_access_probe": {
+    "args": [
+      "--root",
+      "<temporary directory beneath inaccessible parent>",
+      "overview",
+      "--format",
+      "json"
+    ],
+    "evidence_class": "Real CLI process with native directory permissions denied and restored in finally",
+    "exit_code": 2,
+    "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"bdce38ea8c1ca5c56cb70ed71e257db7371abdcf2452b39eb3d112d51b9ab144\",\n  \"sources\": [\n    \"AGENTS.md\",\n    \"docs\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": null,\n  \"coverage\": {\n    \"scan_complete\": false,\n    \"files_discovered\": 0,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {},\n    \"unclassified\": [],\n    \"uncertain_findings\": [],\n    \"excluded\": [],\n    \"diagnostics\": [\n      {\n        \"path\": \".\",\n        \"message\": \"cannot access overview root: [Errno 13] Permission denied: '/private/var/folders/_b/rh7ngl8x6vd4px845r03vgf80000gn/T/tmpvkwwo4he/gate/project'\"\n      }\n    ]\n  },\n  \"page\": {\n    \"offset\": 0,\n    \"limit\": null,\n    \"total\": 0,\n    \"shown\": 0,\n    \"next_offset\": null\n  },\n  \"documents\": []\n}\n",
+    "stderr": "",
+    "effective_uid_is_root": false,
+    "temporary_directory_removed": true
+  },
+  "failure_recovery_process_probes": {
+    "tracker_needing_reconciliation": {
+      "args": [
+        "overview",
+        "--source",
+        "docs/issues",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"812ec7c6348ce389a8ca7f9925dfeb12c166cb1c513bb5f776e8b024d8ed79f7\",\n  \"sources\": [\n    \"docs/issues\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": null,\n  \"coverage\": {\n    \"scan_complete\": true,\n    \"files_discovered\": 1,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {\n      \"needs_reconciliation\": 1\n    },\n    \"unclassified\": [],\n    \"uncertain_findings\": [],\n    \"excluded\": [],\n    \"diagnostics\": []\n  },\n  \"page\": {\n    \"offset\": 0,\n    \"limit\": null,\n    \"total\": 1,\n    \"shown\": 1,\n    \"next_offset\": null\n  },\n  \"documents\": [\n    {\n      \"path\": \"docs/issues/observations.md\",\n      \"sha256\": \"3eba0c4d75533e1f4d3e06df96fe7d7e43a10db63a388a2b90351da2fcc5fdc5\",\n      \"title\": \"Editorial observations\",\n      \"category\": \"needs_reconciliation\",\n      \"metadata\": {\n        \"doc_type\": \"issue-tracker\",\n        \"authority\": \"normative\",\n        \"status\": \"needs_reconciliation\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [\n        {\n          \"title\": \"E-2 — Style-checker limitation\",\n          \"line\": 11,\n          \"status\": \"accepted\",\n          \"disposition\": \"accepted\"\n        },\n        {\n          \"title\": \"E-3 — Citation uncertainty\",\n          \"line\": 13,\n          \"status\": \"unverified\",\n          \"disposition\": \"unresolved\"\n        }\n      ],\n      \"commitments\": [],\n      \"closed_findings\": 1,\n      \"heading_count\": 4\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    "changed_snapshot": {
+      "first_page": {
+        "args": [
+          "overview",
+          "--format",
+          "json",
+          "--limit",
+          "1"
+        ],
+        "exit_code": 0,
+        "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"258587a3a0b030d6e5ab3ffd07017829e8bf4a665c7edc8b2befbeb3201ce695\",\n  \"sources\": [\n    \"AGENTS.md\",\n    \"docs\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": null,\n  \"coverage\": {\n    \"scan_complete\": true,\n    \"files_discovered\": 9,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {\n      \"active_plans\": 1,\n      \"current_rules\": 3,\n      \"findings\": 1,\n      \"navigation\": 1,\n      \"target_rules\": 1,\n      \"unclassified\": 1\n    },\n    \"unclassified\": [\n      \"docs/notes/local.md\"\n    ],\n    \"uncertain_findings\": [],\n    \"excluded\": [\n      {\n        \"path\": \"docs/contracts/previous.md\",\n        \"sha256\": \"c78e371788a24791089aa3f71162a6e734c08528f252b1d8c53401d9b5a0794e\",\n        \"status\": \"historical\"\n      }\n    ],\n    \"diagnostics\": []\n  },\n  \"page\": {\n    \"offset\": 0,\n    \"limit\": 1,\n    \"total\": 8,\n    \"shown\": 1,\n    \"next_offset\": 1\n  },\n  \"documents\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"sha256\": \"2282789637b4e985fd6d804ca323a0b3fac19e64f2bcb318aa5cdb3716199ac1\",\n      \"title\": \"Editorial project\",\n      \"category\": \"navigation\",\n      \"metadata\": {},\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    }\n  ]\n}\n",
+        "stderr": ""
+      },
+      "continuation": {
+        "args": [
+          "overview",
+          "--format",
+          "json",
+          "--offset",
+          "1",
+          "--snapshot",
+          "258587a3a0b030d6e5ab3ffd07017829e8bf4a665c7edc8b2befbeb3201ce695"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "read_rules: overview snapshot changed; restart at offset 0 without --snapshot\n"
+      }
+    },
+    "native_unreadable_source": {
+      "args": [
+        "overview",
+        "--format",
+        "json"
+      ],
+      "exit_code": 2,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"snapshot\": \"54179e81d2c6e1b5c9be6c9a4e4b35d144c6dadf56728a30dc20f58055c7c468\",\n  \"sources\": [\n    \"AGENTS.md\",\n    \"docs\"\n  ],\n  \"detail\": \"documents\",\n  \"calendar_reference\": null,\n  \"coverage\": {\n    \"scan_complete\": false,\n    \"files_discovered\": 9,\n    \"directory_exclusions\": [\n      \".git\",\n      \".hg\",\n      \".idea\",\n      \".mypy_cache\",\n      \".pytest_cache\",\n      \".ruff_cache\",\n      \".svn\",\n      \".tox\",\n      \".venv\",\n      \".vscode\",\n      \"__pycache__\",\n      \"node_modules\",\n      \"vendor\",\n      \"venv\"\n    ],\n    \"categories\": {\n      \"active_plans\": 1,\n      \"current_rules\": 2,\n      \"findings\": 1,\n      \"navigation\": 1,\n      \"target_rules\": 1,\n      \"unclassified\": 2\n    },\n    \"unclassified\": [\n      \"docs/contracts/editorial.md\",\n      \"docs/notes/local.md\"\n    ],\n    \"uncertain_findings\": [],\n    \"excluded\": [\n      {\n        \"path\": \"docs/contracts/previous.md\",\n        \"sha256\": \"c78e371788a24791089aa3f71162a6e734c08528f252b1d8c53401d9b5a0794e\",\n        \"status\": \"historical\"\n      }\n    ],\n    \"diagnostics\": [\n      {\n        \"path\": \"docs/contracts/editorial.md\",\n        \"message\": \"[Errno 13] Permission denied: '/private/tmp/document-overview-consumer-20261101/docs/contracts/editorial.md'\"\n      }\n    ]\n  },\n  \"page\": {\n    \"offset\": 0,\n    \"limit\": null,\n    \"total\": 8,\n    \"shown\": 8,\n    \"next_offset\": null\n  },\n  \"documents\": [\n    {\n      \"path\": \"AGENTS.md\",\n      \"sha256\": \"2282789637b4e985fd6d804ca323a0b3fac19e64f2bcb318aa5cdb3716199ac1\",\n      \"title\": \"Editorial project\",\n      \"category\": \"navigation\",\n      \"metadata\": {},\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    },\n    {\n      \"path\": \"docs/README.md\",\n      \"sha256\": \"eaa5696b857b4fa5acfee4b716d9b3fcce1b888b4d54d1c27badd49d8fc7c00a\",\n      \"title\": \"Context\",\n      \"category\": \"current_rules\",\n      \"metadata\": {\n        \"doc_type\": \"authority-map\",\n        \"authority\": \"normative\",\n        \"status\": \"current\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    },\n    {\n      \"path\": \"docs/contracts/development-discipline.md\",\n      \"sha256\": \"f0aed8c9b8756d0afdd0ccf2004df5840a462d39828b73bfa583d68ae6ab31dc\",\n      \"title\": \"Development\",\n      \"category\": \"current_rules\",\n      \"metadata\": {\n        \"doc_type\": \"contract\",\n        \"authority\": \"normative\",\n        \"status\": \"current\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    },\n    {\n      \"path\": \"docs/contracts/editorial.md\",\n      \"sha256\": null,\n      \"title\": \"editorial.md\",\n      \"category\": \"unclassified\",\n      \"metadata\": {},\n      \"gaps\": [\n        \"[Errno 13] Permission denied: '/private/tmp/document-overview-consumer-20261101/docs/contracts/editorial.md'\"\n      ],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 0\n    },\n    {\n      \"path\": \"docs/contracts/proposal.md\",\n      \"sha256\": \"e715f2768f3d6da718c88ad2a92967c3c5977147d695bc39859d2276c634913a\",\n      \"title\": \"Presentation proposal\",\n      \"category\": \"target_rules\",\n      \"metadata\": {\n        \"doc_type\": \"contract\",\n        \"authority\": \"normative\",\n        \"status\": \"target\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 2\n    },\n    {\n      \"path\": \"docs/issues/observations.md\",\n      \"sha256\": \"727ee38c54795156d16f06456e8be5e4461402315d7cf2805277c8eef1db0c4b\",\n      \"title\": \"Editorial observations\",\n      \"category\": \"findings\",\n      \"metadata\": {\n        \"doc_type\": \"issue-tracker\",\n        \"authority\": \"normative\",\n        \"status\": \"active\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [\n        {\n          \"title\": \"E-2 — Style-checker limitation\",\n          \"line\": 11,\n          \"status\": \"accepted\",\n          \"disposition\": \"accepted\"\n        },\n        {\n          \"title\": \"E-3 — Citation uncertainty\",\n          \"line\": 13,\n          \"status\": \"unverified\",\n          \"disposition\": \"unresolved\"\n        }\n      ],\n      \"commitments\": [],\n      \"closed_findings\": 1,\n      \"heading_count\": 4\n    },\n    {\n      \"path\": \"docs/notes/local.md\",\n      \"sha256\": \"bd230ff35224798095fcd71440b35551897742a3961ae2d9150918cfc901f835\",\n      \"title\": \"An earlier concern\",\n      \"category\": \"unclassified\",\n      \"metadata\": {},\n      \"gaps\": [\n        \"missing frontmatter\",\n        \"unrecognized or missing doc_type: (absent)\",\n        \"unrecognized or missing authority: (absent)\",\n        \"unrecognized or missing status: (absent)\"\n      ],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 1\n    },\n    {\n      \"path\": \"docs/plans/follow-up.md\",\n      \"sha256\": \"b7e171c2a3227d1bd790c5d94543e2ff04cab4bb195fa0ca21ce9c5106a0ceca\",\n      \"title\": \"Follow-up on recurring corrections\",\n      \"category\": \"active_plans\",\n      \"metadata\": {\n        \"doc_type\": \"plan\",\n        \"authority\": \"planning\",\n        \"status\": \"active\",\n        \"last_reconciled\": \"2026-11-01\"\n      },\n      \"gaps\": [],\n      \"headings\": [],\n      \"findings\": [],\n      \"commitments\": [],\n      \"closed_findings\": 0,\n      \"heading_count\": 2\n    }\n  ]\n}\n",
+      "stderr": ""
+    }
+  },
+  "repository_observation_after_closure": {
+    "args": [
+      "overview",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.1716,
+    "stdout_bytes": 31245,
+    "stderr": "",
+    "snapshot": "bd7408a4408a3398c6ba18fb2ffec3e3113e91343dbe0803670b286c8ebd179d",
+    "coverage": {
+      "scan_complete": true,
+      "files_discovered": 81,
+      "directory_exclusions": [
+        ".git",
+        ".hg",
+        ".idea",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".ruff_cache",
+        ".svn",
+        ".tox",
+        ".venv",
+        ".vscode",
+        "__pycache__",
+        "node_modules",
+        "vendor",
+        "venv"
+      ],
+      "categories": {
+        "active_plans": 2,
+        "current_rules": 9,
+        "guidance": 9,
+        "navigation": 7,
+        "target_rules": 1
+      },
+      "unclassified": [],
+      "uncertain_findings": [],
+      "excluded": [
+        {
+          "path": "docs/evidence/2026-07-26-bounded-governance-onboarding-evaluation.md",
+          "sha256": "779d35afc935c152f2d3cfa016b862550a0e47c4e40dda342f6f8ffef2ced0cd",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-07-28-engineering-harness-design-review.md",
+          "sha256": "3d337931ebafcb84391369bdc71985fad60bb3f558dbf6f8c25b8f1be65f2854",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-07-28-engineering-harness-final-evaluation.md",
+          "sha256": "5c05f32a01a1c738ddb6336e3b47bf37d10d817fd7651c09a1973da2811f0ac7",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-06-template-review.md",
+          "sha256": "ebcc2e40743440e918936a228babbf3f758583600f784df4727831db1e5d9918",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-14-first-party-adoption-feedback.md",
+          "sha256": "5b883c4b973810d7ac95ceb42d4ea3bcc34bdbe8ed06cea104217ae8ed07d29c",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-15-autonomous-operation-review.md",
+          "sha256": "6f123005138c4debea1f2a9ef624f9d652194c8d54a1bc0a44029241bfc3a3e2",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-26-design-and-onboarding-review.md",
+          "sha256": "d85ea22525d008f1e06303ac1bb225421726c39281c697b623e84e035fa4cd1c",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-27-autonomous-progress-review.md",
+          "sha256": "7f8157eccb2779a36488c1354d53728c425de45fe1166e39cb7f162f59e7c0f8",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-27-grill-review.md",
+          "sha256": "ddf53002f9bf85d77c6b904288c31f75a8b23f8197cd6a576f2fedba3ca11c2a",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-28-inquiry-verification.md",
+          "sha256": "cba118414b1d1fe0b66a9deb43124bf22b2308df6693983cad41898322c77ab2",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-09-28-research-and-information-acquisition.md",
+          "sha256": "fb056f5550b1e199d8e43a408a817caf26c2f8b6224c83b8144629e3866c406a",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-10-experience-and-adaptive-operation.md",
+          "sha256": "a7637d8dbede06c8208ccf0de3bcc32854caa4e93593aaef2ad8b8f2171f5280",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-19-recursive-improvement.md",
+          "sha256": "672a2ac9c0bf2e3cef18a37096a18e49dc3886f3cf8dadc8093f245e2f38222a",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-20-autonomous-learning.md",
+          "sha256": "7b35333711554371b6dfa4920b36a2aeb7176c589778403f3168f50ed81ac3cf",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-28-independent-template-reviews.md",
+          "sha256": "51095bcd0043b474646080a1146ac6f93064871d86bad61beb5dd7185dca92fe",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-28-public-task-method-research.md",
+          "sha256": "93e27947bcf96a336cd29fe7d80e2815e04c8911ca0ba018d0cae1265fd66a5d",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-28-review-method-transfer.md",
+          "sha256": "f2fa34b91e3abba24d24756a148f0b866672609ace36b3b474eefb223f1a527b",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-28-rule-reading-verification.md",
+          "sha256": "101b816b044759a76bf6cf37e62ee9be1203cadc62aeb767229f924910b3724d",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-29-task-method-transfer.md",
+          "sha256": "49406e24839a16f360a8be4ceaeb1c79b0874ed981d0343f55e8eae3ebdc0191",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-29-template-wide-review.md",
+          "sha256": "2127de6fa67593058828e87f80f89ae723206adf98310d0a7eeacb92601a03fd",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-30-question-wording-and-context.md",
+          "sha256": "5f44bf7f692eb63b8b66b04eb7b04ea0f4bd651c5c8b355d7c778cbf83933bbd",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-10-30-resident-reasoning-and-transfer.md",
+          "sha256": "ecfb6557072102b9165793587c7d56cdda6f42733b640fa599207687499ab038",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-11-01-document-overview.md",
+          "sha256": "3bb4b5690b82d179756da2a879af425d2c049fae6ee0db7123cdfae737e66fe9",
+          "status": "historical"
+        },
+        {
+          "path": "docs/evidence/2026-11-01-positive-rule-wording.md",
+          "sha256": "2a4037c5a53cd96a29203293fe41d9cf9c160a743d49d82a0649c07720bd55ed",
+          "status": "historical"
+        },
+        {
+          "path": "docs/plans/2026-07-26-agent-execution-governance.md",
+          "sha256": "fe7240fcb18c710b30fa72714f8826108a1bc1dc143c331a1b70ce905c977d76",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-07-26-bounded-governance-and-onboarding.md",
+          "sha256": "c77ffcaeeef82f6582b5d3aceaf1ffdefabad9625451415423c7e8f884aef3fe",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-07-26-documentation-harness-hardening.md",
+          "sha256": "9398618dce576fbbc7572cdd1f7a01bab8a719b1c1c4c08cf6aa29a3948823b2",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-07-27-style-ownership-discipline.md",
+          "sha256": "7fe31e2248902e8cf51d4cf1184ccd653a09b255297d2a528e8d4f4d7e4b57af",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-07-28-engineering-harness-enablement.md",
+          "sha256": "f3060448a02f23bd5114d42e3ef2c69180a8d1ee9883e83b7a56fe68c689bb55",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-08-06-decision-frontier-and-frontend-design.md",
+          "sha256": "5a5346357abbe9e83202838a517c4c05889465053c8c10451f69f816c4e4cc12",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-08-06-evidence-and-collaboration-discipline.md",
+          "sha256": "4d5494961d47404bf042ad3c84e7846c3d7efe430c59fb6c1986af4c3f38b0be",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-08-24-foundational-runtime-discipline.md",
+          "sha256": "37f575e91d14095b993a0d115334426affddcb4ce1efc3a1b89d4799e3591c27",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-08-27-collaboration-constraints-adoption.md",
+          "sha256": "575044e2dedd8e695ac000eedecc863ce9f2f837e749517e25bbccc7871b4620",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-08-28-engineering-judgment-discipline.md",
+          "sha256": "35591ad63dca1171f60baacca322b818a834030ec95c76a3ce372109d7c095f2",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-08-28-invariant-identifier-redesign.md",
+          "sha256": "8e299fb0b43a097c55642a580ad8c3ccf1f393ff9ba1428084d5319c933cb4be",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-06-outcome-driven-template.md",
+          "sha256": "64756e8d52e3b3f85347ecea5090a7537da5e74ec21866a8b0d5a5c242621ba4",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-06-proportionate-execution.md",
+          "sha256": "fe84ddbd908c53ff85b90a5a8cefb54ca5fd710744352fdf2b0fd6cdac6c0bd0",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-10-reference-feedback-learning.md",
+          "sha256": "5309cfc826ea3ff54dc8dd4b4360bd20c1345b8de5fcbfc3044185625a343bf2",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-17-public-documentation-reconciliation.md",
+          "sha256": "0bc72e571ea498ec8900a74246aebd47dbf402c4801197ba96e28e76857103d4",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-25-personal-context-onboarding.md",
+          "sha256": "37634782272ed6d4932c1bb6fa97d80424b27b641a69f5edecdfb9dffbbd0418",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-26-design-methods-and-calibration.md",
+          "sha256": "a91da3c515c5fede9f4213d882d80cc6f1f19598a2ca005bbd1b067d537c4beb",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-27-autonomous-progress-and-review.md",
+          "sha256": "8338b93a682ed81258b45c41e13cea3849b0840127db9968219eb72d6823c8c5",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-09-28-research-and-information-access.md",
+          "sha256": "88b3e0331a7f07616484f3e68dada7b62741593d13e9536ced7b339e64fe1612",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-10-experience-and-adaptive-operation.md",
+          "sha256": "7265420f71e257066bbe978004da126ae6b7a42658cd2b44e28433d747c1a12d",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-19-recursive-improvement.md",
+          "sha256": "63981142ed223ce3ec3ab76a40a52e1ca12bae14edeeac454f35347024b6bca2",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-20-autonomous-learning.md",
+          "sha256": "d4c0d2289ba2262e3ef91aeaf76185036837a0521549fcca12772621b4ad8b5e",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-28-rule-reading-and-outcome-design.md",
+          "sha256": "c8fadb8851d70ea390353a4dda5b681a5a76175cfe8dded09e07e12cf426020c",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-28-rule-reading-implementation.md",
+          "sha256": "41b14350ea12d1eec7e96f60913d9c5eaf8d17b8b6755d7b9408ec0210e3134b",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-29-external-rule-learning.md",
+          "sha256": "651f6528a011c0ccc25784305e45938ed928de1d5e32683552cb0e279abfcfd5",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-29-source-grounded-task-methods.md",
+          "sha256": "f84e7beaef8c3abb7b6914ed201533c872368cd7c0cbff0f5c7e1f21272c2d5b",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-30-question-wording-and-context.md",
+          "sha256": "d3ab8e5775e3e2cd14b2256b000076470b37b84eb4f89d2899791b9aadb0ec97",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-10-30-resident-reasoning-and-transfer.md",
+          "sha256": "3dccb7d3b4f28cf672bf90b7ccde998f5143ee4062468e8f3fd082b2f5a44ae4",
+          "status": "completed"
+        },
+        {
+          "path": "docs/plans/2026-11-01-document-overview.md",
+          "sha256": "ecf3f40312d6da9cffea53a4f596cea9912fe1a269c124dbb0f3385436813085",
+          "status": "completed"
+        }
+      ],
+      "diagnostics": []
+    },
+    "page": {
+      "offset": 0,
+      "limit": null,
+      "total": 28,
+      "shown": 28,
+      "next_offset": null
+    },
+    "included_paths": [
+      "AGENTS.md",
+      "docs/README.md",
+      "docs/contracts/README.md",
+      "docs/contracts/agent-execution-discipline.md",
+      "docs/contracts/autonomous-operation-discipline.md",
+      "docs/contracts/data-analysis-discipline.md",
+      "docs/contracts/development-discipline.md",
+      "docs/contracts/documentation-harness.md",
+      "docs/contracts/engineering-judgment-discipline.md",
+      "docs/contracts/foundational-runtime-discipline.md",
+      "docs/contracts/governance-decision-boundary.md",
+      "docs/contracts/project-adoption.md",
+      "docs/design/README.md",
+      "docs/evidence/README.md",
+      "docs/guides/README.md",
+      "docs/guides/engineering-reading.md",
+      "docs/guides/grill.md",
+      "docs/guides/information-access.md",
+      "docs/guides/onboarding.md",
+      "docs/guides/project-operation.md",
+      "docs/guides/research.md",
+      "docs/guides/review-cheatsheet.md",
+      "docs/guides/task-cheatsheet.md",
+      "docs/guides/task-starters.md",
+      "docs/issues/README.md",
+      "docs/plans/2026-09-27-recurring-grill-questions.md",
+      "docs/plans/2026-11-01-behavioral-evaluation.md",
+      "docs/plans/README.md"
+    ]
+  },
+  "cleanup": {
+    "consumer_fixture_removed": true,
+    "fixture_sources_and_process_results_retained": true,
+    "native_permission_probe_removed": true
+  }
+}

@@ -68,6 +68,30 @@ The [practical task CheatSheet](docs/guides/task-cheatsheet.md) offers concise
 moves for investigation, delivery, explanation, continuity and learning, with
 copyable prompts and examples. Review has its own linked collection.
 
+## Inspect project documents on demand
+
+The optional overview locates declared rules, active work, open commitments
+and information needing judgment before you choose concerns:
+
+```sh
+python3 scripts/read_rules.py overview
+python3 scripts/read_rules.py overview --source docs/contracts --outline
+python3 scripts/read_rules.py overview --format json --limit 5
+```
+
+The default view is compact. `--outline` expands source headings; repeat
+`--source PATH` to select other local Markdown files or directories. Each
+result keeps its source identity. JSON also reports excluded records,
+unclassified material, scan diagnostics and the next page. Continue with the
+same source selection, `--today` value (if supplied), and `--snapshot` identity; restart at offset 0 if sources
+changed. Exit 2 marks incomplete coverage. Dates stay unassessed until you
+supply your calendar reference with `--today YYYY-MM-DD`.
+
+Open working records directly and use the existing `prepare` command for
+complete current rules. [The overview contract](docs/contracts/documentation-harness.md#document-overviews-expose-sources-before-concern-selection)
+defines scope, output and recovery. The using project chooses manual calls,
+hooks or other host integration under its existing authority.
+
 ## Start from a new or existing project
 
 You can ask an agent:

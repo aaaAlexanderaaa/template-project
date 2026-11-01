@@ -39,6 +39,7 @@ correct.
   direction;
 - an opt-in lexical signal for disclaimer phrasing in startup rules;
 - local references and lifecycle relationship paths;
+- read-only discovery of current rules, working records, and explicit review commitments;
 - fixture-based tests for the checker.
 
 ### Out of scope
@@ -385,6 +386,92 @@ or claim that a reader applied the emitted rules.
 
 - from: source[11] (2026-10-28 complete rules and useful delivery), source[12] (2026-10-29 connected operating interfaces)
 
+### Document overviews expose sources before concern selection
+
+`python3 scripts/read_rules.py overview` builds a local document view before
+the caller has chosen concerns. The default sources are `AGENTS.md` and
+`docs/`. Repeat `--source PATH` to replace that selection with contained repository-relative
+Markdown files or directories. Directories are searched recursively; tool and
+dependency directories use the checker's existing exclusions. Directory
+symlinks encountered during a walk are reported for explicit selection rather
+than followed. Every discovered Markdown file receives a disposition.
+
+The view preserves source roles: current normative documents, target rules,
+active plans and findings, current guidance or evidence, and records needing
+reconciliation. Historical, completed and superseded documents stay outside
+the live view with their paths and declared states in the exclusion inventory.
+Unrecognized or missing metadata stays visible as unclassified material.
+Metadata-free `AGENTS.md` and `README.md` files are navigation locators, with
+authority and lifecycle explicitly undeclared; the filename grants neither.
+Declared authority remains source metadata; the project's authority map and
+the owner's current instructions decide its force and applicability.
+
+The default view is a compact document map with heading counts and commitments.
+`--outline` expands its complete heading inventory outside frontmatter, fenced examples
+and the canonical Source anchors and Reconciliation log sections. Heading
+references use the file and source line when an anchor is ambiguous. They are
+navigation material, not complete requirements. This explicit outline also
+contains closed-item headings; those headings do not enter the active finding
+list. Issue sections use the issue template's
+explicit Status field: unresolved states remain visible, accepted and wontfix
+retain their dispositions, and resolved or disproved findings leave the
+attention list. Missing, contradictory or unknown states stay visible for
+judgment, including in issue trackers needing reconciliation. The view preserves open structured promises and explicit
+`review_due` dates in live documents. Closed promises and records in provenance
+sections or fenced examples do not become new work. An unstructured plan is
+shown at its declared lifecycle; the tool does not interpret prose or checkboxes
+as an independently maintained task state.
+
+Each included document carries its repository-relative path, original metadata,
+title, SHA-256 file identity, and source lines for extracted material. An
+overview creates no rule, obligation, priority or completion claim. Sorting is
+by source path and line rather than inferred importance. Reading and applicability
+judgment follow the existing task-context route; full current rules still use
+`prepare`, and working records are opened at their source. Their active states
+are never admitted into `prepare` as current rules.
+
+Text is the default operator surface; `--format json` emits schema version 1
+with source scope, chosen detail, scan coverage and category counts, unclassified
+material and unknown finding states, exclusion inventory, source identities,
+document records and pagination. `--limit N --offset N`
+windows whole documents after classification. The result names total, shown
+and next offset; omitted pages remain explicit. The default text names the JSON
+route for inspecting inactive paths and states. A snapshot identity covers the
+source selection, calendar reference, file identities and diagnostics. `--snapshot ID` rejects a
+changed snapshot before output so a consumer can continue a window without
+silently switching collections; continuation reuses the same `--today` value
+or leaves it unspecified on every page. Fields may be added compatibly; removing or
+changing a published field's meaning requires a schema-version change. The text
+layout is for readers rather than a machine parsing contract.
+
+Dates retain the source's calendar-date text. Optional `--today YYYY-MM-DD`
+supplies the caller's calendar reference for past/due/future labels. Without
+it, timing is unassessed; the process timezone or clock chooses no business
+date. A past review date leaves current authority intact. Policy-derived aging
+and full document validation remain with `check_docs.py`.
+
+The command reads local files as data, uses the Python standard library, and
+writes neither source files nor persistent tool state. It snapshots selected
+bytes and rechecks file identities and discovered membership before output;
+a detected change aborts with a rerun instruction. This is a rechecked read,
+not a filesystem lease. Malformed or unreadable sources and inaccessible scope
+produce explicit diagnostics and exit 2, with any partial view marked as such.
+An unreadable file has no known digest; a changed read failure or recovery
+before emission aborts for a rerun. A nonexistent or non-directory `--root`
+is an invalid argument and fails before emitting a view.
+Unclassified but readable documents can be enumerated successfully; their
+classification gap remains in coverage. Invalid arguments or a stale snapshot
+fail before a view is emitted. Empty scope is distinguishable from an
+incomplete scan.
+
+Manual use, hook registration, invocation frequency and context injection belong
+to the using project's existing authority and host. The template ships the
+tool and its operating instructions; invoking it installs no integration,
+starts no background process, schedules no work, and changes no gate. Behavioral
+benefit requires subsequent task evidence beyond successful document discovery.
+
+- from: source[14] (2026-11-01 on-demand document view and caller-owned integration)
+
 ### A copied template entrypoint is unfinished onboarding
 
 When `AGENTS.md` still contains any identity claim listed in
@@ -575,6 +662,7 @@ startup rules.
 | Severity is honest about what blocks | Advisory/error/off and `--strict` fixtures | PASS — time-based findings never fail a default run, and `off` survives `--strict` |
 | Heading fragments stay resolvable | Fragment fixtures + repository check | PASS — resolving, broken, strict-promoted, and off-under-strict cases |
 | Startup rules state actions | Phrasing fixtures + repository check | PASS — listed, wrapped, quoted, entrypoint, out-of-scope, and off-under-strict cases |
+| Optional discovery preserves source roles and recovery | Overview guards, actual CLI processes and fresh-context artifact review | PASS — [document overview verification](../evidence/2026-11-01-document-overview.md); broader agent behavior remains unclaimed |
 | Checker behavior remains stable | Standard-library unittest suite | PASS — full suite green |
 | Repository remains domain-neutral | Scoped forbidden-term, path, and framework audit | PASS — no matches |
 
@@ -745,7 +833,25 @@ made the signal opt-in, left it off in this repository, and changed its
 message to keep such sentences. Asked whether to keep it off, enable, narrow
 or remove it, the owner chose to keep it off.
 
+### source[14] — 2026-11-01
+
+English account of the current conversation. The owner identified repeated
+loss of long-term concerns, distinguished lasting standards from one-time
+work, and asked how to restore useful attention without letting a workflow
+replace the objective. Research compared local task and memory tools with the
+template's existing ownership and operating boundaries. The owner proposed a
+script that reorganizes existing documents, with hook integration left to the
+executing agent and adopting project. They accepted an on-demand, traceable
+overview with text and structured output, unknown classification kept visible,
+and existing full-rule delivery retained, then instructed implementation.
+
 ## Reconciliation log
+
+- **2026-11-01 — optional document overview:** add source-based discovery before
+  concern selection, with declared lifecycle and authority, explicit working
+  dispositions, review commitments, coverage and source identity. Host invocation
+  and integration remain with the using project.
+  - from: source[14] (2026-11-01 on-demand document view and caller-owned integration)
 
 - **2026-11-01 — startup rules scanned for disclaimer phrasing:** the
   required-reading closure of `AGENTS.md` and the entrypoint itself can be

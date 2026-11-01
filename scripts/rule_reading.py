@@ -29,7 +29,10 @@ def parse_frontmatter_text(text: str) -> tuple[dict[str, str], str | None]:
         if ":" not in stripped:
             return metadata, f"invalid frontmatter line: {stripped}"
         key, value = stripped.split(":", 1)
-        metadata[key.strip()] = value.strip().strip("\"'")
+        key = key.strip()
+        if not key or key in metadata:
+            return metadata, f"empty or duplicate frontmatter field: {key}"
+        metadata[key] = value.strip().strip("\"'")
     return metadata, None
 
 
