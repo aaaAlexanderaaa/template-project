@@ -2,7 +2,7 @@
 doc_type: authority-map
 status: current
 authority: normative
-last_reconciled: 2026-10-30
+last_reconciled: 2026-11-01
 ---
 
 # Documentation authority map
@@ -45,15 +45,15 @@ exceptions; and evidence sufficient for completion. Obtain these from the
 request, relevant architecture and contract sections, observed baseline, and
 an active plan only when required. This is a reading rule, not a new document
 or a form to fill for every task. Do not copy a second set of product facts
-into the agent entrypoint. A learning judgment names the rule, the result,
-and the contract section that holds the fact.
+into the agent entrypoint. A learning judgment names the rule, the result and the contract section that
+holds the fact.
 
 The required core includes [essential reasoning for AI work](contracts/development-discipline.md#keep-essential-reasoning-active):
-awareness of incomplete framing, instruction effects, conditional behavior,
-unresolved gaps and loss across transfers. It must be available before the
-agent recognizes a specialist trigger. Preserve its meaning through context
-reduction and continuation; a pointer to unread text does not establish receipt.
-Detailed cases and methods remain on demand. A passing checklist cannot close
+incomplete framing, instruction effects, conditional behavior, unresolved gaps
+and loss across transfers. Read it before recognizing any specialist trigger
+and keep its meaning through context reduction and continuation; when that
+meaning is lost, read the text again, because a pointer shows only where it
+is. Detailed cases and methods stay on demand. A passing checklist cannot close
 an uncertainty it was not able to observe.
 
 Use the following reading classes. They select context; the authority order
@@ -66,26 +66,27 @@ still decides who owns a decision.
 | Execution method | The full method selected by the task, such as material delivery, research, Grill, adoption or standing autonomy | When used; the method's review and evidence duties remain binding |
 | Provenance and history | Source anchors, prior decisions and dated evidence | A dispute, recovery or claim needs their contents |
 
-Strength is independent of reading class. A mandatory condition binds within
-its trigger and authority. A default selects a usual route while leaving
-alternatives inside the same boundaries. A method explains how to act;
-reference material supplies evidence. Resolve a conflict through the owning
-authority and its exception policy. The adoption value order prioritizes
-attention; it grants no exemption from an applicable requirement.
+A mandatory condition binds within its trigger and authority. A rule creates an
+approval step, form, record, reviewer or test only when its text requires one,
+in whatever words. A default selects a usual route while leaving alternatives
+inside the same boundaries. A method explains how to act; reference material supplies evidence. Strength is
+independent of reading class. Resolve a conflict through the owning authority
+and its exception policy. The adoption value order prioritizes attention; every
+applicable requirement still applies.
 
 For the practical sequence and worked task decisions, use
 [project operation](guides/project-operation.md#execute-one-task-from-request-to-result).
-It explains how these owners work together without becoming another authority.
+It explains how these owners work together; the owners keep their authority.
 For a concrete obstacle, the [practical task CheatSheet](guides/task-cheatsheet.md)
 offers optional moves and prompts across common scenarios. Select a fitting
-method within this context; the recipes add no required reading dependency.
+method within this context.
 
 Rule authority, applicability, reading scope, requirement strength and completion
 evidence answer different questions. Authority decides who can change a rule;
 a concern trigger decides when it applies; a declared unit decides what text
 must be obtained; mandatory/default/reference wording decides its force;
-observations decide whether the requested result was achieved. A broad global
-rule does not replace an activated domain's detailed requirements.
+observations decide whether the requested result was achieved. An activated
+domain's detailed requirements apply in addition to the broad global rules.
 
 Before making choices that depend on an activated concern, run
 `python3 scripts/read_rules.py prepare` with its concern and owner bindings.
@@ -101,26 +102,26 @@ source delivery alone proves no application.
 
 A unit may be reused while its body, metadata, scope and retained context remain
 valid. In one live context, `--context ID --retained MANIFEST` revalidates the
-whole current selection and marks unchanged bodies as caller-asserted retained;
-it supplies new or changed bodies. Supply only a version-2 manifest whose full
-reused bodies are still available. The label cannot establish memory or understanding.
-On restart, handoff or unknown retention, recover purpose and locators, then
-obtain current units again without `--retained`. Ordinary file lookup uses the
-already obtained core and direct facts;
-it adds no domain plan or independent review. Current and explicitly selected
-target rules remain distinguishable. Methods are read when used. An ordinary
-link does not require recursive reading; only explicit `required-reading`
-directives create reading dependencies. A request to learn the discipline is the exception: obtain
+whole current selection, marks unchanged bodies as caller-asserted retained,
+and supplies new or changed bodies. Supply only a version-2 manifest whose
+full reused bodies are still available. The label cannot establish memory or
+understanding. On restart, handoff or unknown retention, recover purpose
+and locators, then obtain current units again without `--retained`. Ordinary
+file lookup uses the already obtained core and direct facts, without a domain
+plan or independent review. Keep current and explicitly selected target rules
+distinguishable. Read methods when used. Only explicit `required-reading`
+directives create reading dependencies; follow an ordinary link when the work
+needs it, without recursive reading. A request to learn the discipline is the exception: obtain
 every current rule named by
 [the learning path](contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
 and understand its reason before judging which apply. The adoption owner's
 [reading order](contracts/project-adoption.md#understand-rules-before-judging-applicability)
 keeps source acquisition separate from applicability and adoption, including
-for projects with an existing discipline. Later tasks return to opening a rule
-when the work reaches it. Expand context for a dependency, conflict, missing
-fact or activated concern, and read the whole owner when section-level reading leaves
-its scope or interactions unclear. Short context never waives an applicable
-constraint, exception, or original requirement.
+for projects with an existing discipline. Later tasks open a rule when the
+work reaches it. Expand context for a dependency, conflict, missing fact or
+activated concern, and read the whole owner when section-level reading leaves
+its scope or interactions unclear. Every applicable constraint, exception and
+original requirement applies however short the context.
 
 Examining one practice within a narrow request or an authorized concrete task uses
 [bounded extraction](contracts/project-adoption.md#take-one-practice-into-an-authorized-task)
@@ -131,7 +132,7 @@ activated detail.
 
 For an ongoing project, purpose guides choices, goals name desired changes,
 methods organize work, and tasks execute bounded steps. Task completion may
-leave its goal open; a finished goal need not exhaust the project's purpose.
+leave its goal open; a finished goal may leave the project's purpose open.
 The owner's named end still bounds the current assignment.
 
 Choose context by the decision being made. Routine execution uses the current
@@ -139,10 +140,11 @@ task and its parent outcome; selecting work needs goals and alternatives;
 changing an approach needs its assumptions and evidence; questioning direction
 needs the original purpose and accepted trade-offs. Purpose and boundaries
 remain binding at every level without reopening them at every step. Retain a
-settled choice while its authority and decisive assumptions remain valid;
-new evidence reopens the affected choice, not the whole project by default.
-Later feedback refines the ongoing outcome unless the owner replaces it.
-Check the combined requirements before closure, not only the latest correction.
+settled choice while its authority and decisive assumptions remain valid; new
+evidence reopens the affected choice, not the whole project by default. Later
+feedback refines the ongoing outcome unless the owner replaces it. Before
+closure, check the combined requirements, including those set before the latest
+correction.
 
 Development's [active comparison rule](contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
 owns when consequential inquiry needs deliberate differences in evidence,
@@ -163,8 +165,9 @@ entrypoint for collaboration background, decision preferences, and deeper
 reading conditions. Apply [the adoption boundary](contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
 before transferring any material. The [alignment route](contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
 decides which unknowns require conversation; the [delegation owner](contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
-decides what a recipient needs. A private profile does not join every worker's
-startup context or replace the target project's current authority.
+decides what a recipient needs. A private profile goes only to a worker whose
+task needs it and whose audience the owner has authorized, and it never
+replaces the target project's current authority.
 
 Source anchors and reconciliation history explain provenance; read them when
 intent is disputed, a prior decision needs investigation, or recovery needs
@@ -174,18 +177,18 @@ Place operative rules before source chronology when reorganizing an owner;
 preserve source anchors and live references. Source-placement validation is
 owned by [the harness](contracts/documentation-harness.md#contract-source-anchors-are-conditionally-bidirectional).
 Plans and handoffs link to precise current sections and state the next action,
-verified baseline, material unresolved assumptions, and completion evidence.
+verified baseline, material unresolved assumptions and completion evidence.
 They do not require a prior handoff chain or a plan when the route needs none.
-A plan, handoff, or task description is written for a reader who has none of
-the current context — goal, expected end state, current state, and gap — and
-a fresh reader's misreading is a defect in the document, not in the reader.
-Memory or a generated summary is a locator, not a replacement for current authority.
+Write a plan, handoff or task description for a reader who has none of the
+current context — goal, expected end state, current state and gap; when a fresh
+reader misreads it, fix the document. Memory or a generated summary is a
+locator, not a replacement for current authority.
 
 At closure, merge still-live decisions into their owner, mark the plan
 completed, and replace startup links to old working records with links to the
 current decision. Preserve history that supports a live claim or recovery;
-delete scratch material that no longer serves either. Do not create a fresh
-summary that requires reading every older summary to understand it.
+delete scratch material that serves neither. Do not create a fresh summary
+that requires reading every older summary to understand it.
 
 <!-- /required-reading: task-context -->
 
@@ -286,13 +289,14 @@ decide, do or experience. Before drafting and against the actual draft, ask:
   reconcile repetition? Can selection, order, an example or a precise link
   remove that burden?
 
-Let the answers change the content, not become a preface or another form.
-Lead with what matters to that reader. Remove or relocate process narration
-that does not help them; keep required evidence available for its audit or
-reproduction consumer through a precise route. A short answer can remain short.
-Judge information density by useful meaning for the reader's effort, not by
-word count: a necessary example or qualification can improve it. Preserve the
-reasoning, distinctions and material uncertainty needed to use the result.
+Let the answers shape the content itself rather than a preface or another
+form. Lead with what matters to that reader. Remove or relocate process
+narration that does not help them; keep required evidence available for its
+audit or reproduction consumer through a precise route. A short answer can remain
+short. Judge information density by useful meaning for the reader's effort
+rather than by word count: a necessary example or qualification can improve
+it. Preserve the reasoning, distinctions and material uncertainty needed to
+use the result.
 
 Canonical documents are written in plain language. Name things with the
 repository's existing vocabulary or with a plain description of the thing
@@ -312,8 +316,9 @@ Name the next step when the owner must act before work can continue. When
 the owner has already said to continue, the next step is the work itself.
 Explain an internal term before relying
 on it. Replace a vague promise such as "state reconciled" with what changed or
-remains unresolved. Word lists and an "AI writing" detector cannot establish
-that a reader understands the result; inspect a concrete task or message.
+remains unresolved. Word lists, a phrase scan and an "AI writing" detector can
+point a reviewer at a pattern and show only that pattern; to judge whether a
+reader understands the result, inspect a concrete task or message.
 
 Give the reader a supported positive judgment: what the result enables, why
 the selected action is sound, and which observation makes this bounded work
@@ -326,6 +331,43 @@ is a clarity defect, not caution. Examples and defaults are teaching
 material — write the usage you want copied, because readers copy them.
 Reason in the order the problem needs; write in the order the reader needs —
 compression that costs the reader more than it saves is not brevity.
+
+Write each normative rule so a reader can act on it: who does what, under
+which condition if the rule has one, and why where the reason guides its
+application. Keep a prohibition where a route alone would leave an excluded
+case open, and name the legitimate route beside it where one exists.
+
+The [reading rules](#task-context) say that a rule creates an approval step,
+form, record, reviewer or test only when its text requires one, in whatever
+words. A sentence that only repeats this for any of those five, such as "This
+review creates no approval step," may go when, without it, no rule requires
+that artifact for the same case; the five form a closed list. Treat every other disclaimer,
+and every sentence that limits what evidence, a check or a record shows, such
+as "A recorded lesson alone does not establish improvement," as a limit: keep
+the sentence, or replace it only with wording that passes the check below.
+
+Rewording keeps a rule's reach and meaning: an unconditional premise stays
+unconditional, a necessary condition stays necessary, a duty stays a duty and a
+permission a permission, modal strength such as must, should and may stays, a
+limit stays a limit, qualifiers such as only, alone, silently, materially and
+actually keep their effect, an example list stays open, a merged sentence
+keeps each original subject and scope, and the new sentence presupposes
+nothing the old one did not. Rewording also keeps text inside its
+required-reading unit, because moving it changes who reads it and when;
+moving a rule to its owner and leaving a pointer is a placement change, and
+the owner's text then holds everything the moved text required. When
+rewording an existing rule, check each changed sentence against its old form:
+for each limit, condition and permission in the old sentence, name the case
+nearest its boundary that it excluded and the nearest one it allowed, and
+confirm that the new text decides both the same way; check a deleted or merged
+sentence against the text that remains. Where no
+equivalent wording passes, keep the old sentence.
+
+Later writers, human or AI, also copy the form of surrounding text, including
+the form of earlier corrections. When a correction targets defensive or
+negative wording, write the corrected rule in the form the correction asks for
+and keep every limit of the old wording; when no wording in that form keeps
+every limit, keep the old sentence.
 
 When citing a normative invariant from another document, link to its owning
 contract and heading slug rather than quoting a letter code; within a

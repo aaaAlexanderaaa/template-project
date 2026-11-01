@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-30
+last_reconciled: 2026-11-01
 supersedes: []
 ---
 
@@ -14,9 +14,9 @@ supersedes: []
 <!-- required-reading: development-core -->
 ## Purpose
 
-This contract defines how work is understood, specified, implemented,
-verified, and handed off. It is domain-neutral: it governs collaboration and
-change quality, not any particular product, framework, runtime, or deployment.
+This contract defines how work is understood, specified, implemented, verified,
+and handed off. It is domain-neutral: it governs collaboration and change
+quality, not any particular product, framework, runtime, or deployment.
 
 The objective is to move project intent out of chat history and individual
 memory into durable, reviewable contracts and reproducible evidence while
@@ -66,51 +66,52 @@ new approval gate or automatic promise of future work.
 
 ### Contract before material delivery, evidence before certainty
 
-Do not deliver a material feature or behavior change until its contract exists
-on disk. The contract must name the behavior, relevant states and triggers,
+Land the contract on disk before delivering a material feature or behavior
+change. The contract must name the behavior, relevant states and triggers,
 ownership boundary, failure behavior, non-goals, and acceptance evidence.
 
-When a material fact cannot be learned through read-only investigation, a
-bounded experiment may precede the delivery contract. The experiment is
-evidence, not product implementation. Before it runs, route the experiment's
-own actions through the activate-concerns invariant. Every activated concern uses an existing normative
-owner and safety boundary; an experiment record cannot create either one.
+When read-only investigation cannot answer a material fact, a bounded
+experiment may run before the delivery contract to produce evidence. Before it
+runs, route its own actions through
+[concern activation](#activate-concerns-instead-of-expanding-ceremony); each
+activated concern uses an existing normative owner and safety boundary, and an
+experiment record creates neither.
 
-The experiment records its question, disposable path, expiry, abort trigger,
-containment and cleanup actions, cleanup evidence, and the escalation path for
-boundary escape or failed cleanup. It cannot become a public interface or
-production dependency. Privileged or irreversible actions still require
+Record the experiment's question, disposable path, expiry, abort trigger,
+containment and cleanup actions, cleanup evidence, and escalation path for
+boundary escape or failed cleanup. Keep it out of public interfaces and
+production dependencies. Privileged or irreversible actions still require
 separate prior authorization and remain subject to the owning contract; the
-experiment creates no such authority. Useful findings may move into durable
-evidence and inform a later contract, but scratch implementation is discarded
-at expiry or conclusion even when its findings are adopted.
+experiment creates no such authority. Useful findings may move into
+durable evidence and inform a later contract; discard the scratch
+implementation at expiry or conclusion, even when its findings are adopted.
 
-Use [execution risk and routing](agent-execution-discipline.md#risk-selects-the-execution-depth)
-to determine the delivery depth. Routine work may include explicitly
-authorized, low-impact local behavior. Before implementing new behavior, update
-its existing normative owner with the trigger, observable result, relevant
-failure behavior and boundaries, and acceptance evidence. Unchanged behavior
-can rely on the existing contract. Neither case requires a standalone contract
-or plan. Preserve the original request or source and the evidence actually
-obtained in the existing task context; an unrequested behavior change gains no
-authorization from being routine.
+[Execution risk and routing](agent-execution-discipline.md#risk-selects-the-execution-depth)
+sets the delivery depth. Routine work may add explicitly authorized,
+low-impact local behavior: before implementing it, update its existing
+normative owner with the trigger, observable result, relevant failure behavior
+and boundaries, and acceptance evidence. Unchanged behavior can rely on the
+existing contract. Neither case requires a standalone contract or plan. Keep
+the original request or source and the evidence actually obtained in the
+existing task context; an unrequested behavior change gains no authorization
+from being routine.
 
 If no applicable owner exists, establish the contract through material delivery.
 If current discussion conflicts with a landed contract, pause dependent
 implementation, record and reconcile the conflict, then continue. An explicit
-instruction covering the new behavior authorizes that reconciliation; do not
-request the same decision again.
+instruction covering the new behavior authorizes that reconciliation; proceed
+without asking again.
 
-Comments, tickets, commit messages, and conversation summaries are supporting
-context; they are not substitutes for the normative contract.
+Comments, tickets, commit messages and conversation summaries support the
+contract; the contract remains the normative record.
 
 - from: source[1], source[9]
 
 ### One owner for every invariant
 
 Every state transition, data rule, API shape, layout rule, shared visual value,
-cross-cutting quality attribute, and operational decision has one authoritative
-owner. Consumers may use the owner's public contract but must not silently
+cross-cutting quality attribute and operational decision has one authoritative
+owner. Consumers may use the owner's public contract and never silently
 reproduce or override its private rules.
 
 Cross-layer behavior must identify:
@@ -123,10 +124,10 @@ Cross-layer behavior must identify:
 Performance, capacity, resource cost, security, privacy, reliability, build and
 dependency integrity, and production-observation policy are governed when the
 change can affect them. They use the same ownership model as functional state:
-one owner, a scenario and measurable response or explicit qualitative
-boundary, a guard or observation surface, and an escalation and exception
-policy. The owner may declare a boundary non-waivable; the existence of an
-escalation path does not imply that an exception is available.
+one owner, a scenario and measurable response or explicit qualitative boundary,
+a guard or observation surface, and an escalation and exception policy. An owner
+may declare a boundary non-waivable; an escalation path offers an exception only
+where the owner allows one.
 
 - from: source[1]
 
@@ -135,21 +136,23 @@ escalation path does not imply that an exception is available.
 Design migrations around one complete end state. Real dependency order may
 produce multiple execution checkpoints and explicit transitional states, but
 those states have an owner, entry and exit conditions, compatibility behavior,
-observation, and removal or promotion criteria. They must not become an
-intentionally half-migrated architecture, indefinite compatibility layer, or
-placeholder that is merely promised to be corrected later.
+observation, and removal or promotion criteria. No such state may become an intentionally
+half-migrated architecture, an indefinite compatibility layer or a placeholder
+merely promised to be corrected later.
 
-If a coherent end state cannot yet be described or verified, do not start the
-delivery migration. Use the bounded experiment path in the contract-first invariant to learn the missing
-facts without presenting the experiment as the destination.
+Start a delivery migration only once its coherent end state can be described
+and verified. Until then, learn the missing facts through the
+[bounded experiment path](#contract-before-material-delivery-evidence-before-certainty)
+and keep the experiment distinct from the destination.
 
-When replacing, simplifying, compressing, or standardizing an artifact or
-operating method, compare useful capabilities and distinctions before and
-after, including duties to explore, evaluate, and improve. Trace live duties
-to their successors and exercise their relevant triggers; fewer jobs, fields
-or words do not establish preservation. Compare gains, losses and accepted
-trade-offs in the resulting whole, within the existing decision envelope.
-Keep this in the existing migration or verification record, not a new inventory.
+When replacing, simplifying, compressing or standardizing an artifact or
+operating method, compare its useful capabilities and distinctions before and
+after, including duties to explore, evaluate and improve. Trace live duties to
+their successors and exercise their relevant triggers; fewer jobs, fields or
+words leave preservation unshown. Compare gains, losses and accepted
+trade-offs in the resulting whole, within the existing decision envelope. Keep
+this in the existing migration or verification record rather than a new
+inventory.
 
 - from: source[17]
 
@@ -157,12 +160,12 @@ Keep this in the existing migration or verification record, not a new inventory.
 
 At work selection, name the original requested change, the proposed next
 result, why it advances that change, and what would remain if work stopped
-there. Keep this in existing task context; routine work needs no new form.
-A reported defect can motivate a broader improvement without becoming that
-improvement's whole scope. A chosen example or demonstration proves only what
-it exercises. Treat it as a step unless the owner actually bounded the request
-there. Before expanding implementation or verification, compare the next action
-with the original outcome and select the work that closes the important gap.
+there; keep this in the existing task context. A reported defect can motivate a
+broader improvement without becoming that improvement's whole scope. A chosen
+example or demonstration shows only what it exercises; treat it as a step unless
+the owner actually bounded the request there. Before expanding implementation or
+verification, compare the next action with the original outcome and choose the
+work that closes the important gap.
 
 Define success in terms of observable outcomes before listing implementation
 or test mechanics. The default quality outcomes are:
@@ -175,16 +178,16 @@ or test mechanics. The default quality outcomes are:
 6. every activated quality attribute stays within its declared boundary;
 7. production-only assumptions have an observation and rollback decision.
 
-Preserve the parent purpose as it becomes goals, specifications, tasks,
-measures and procedures. Each translation names the user change it serves and
-the decision that authorizes a material narrowing. Judge the resulting whole
-against that change. A complete procedure or improved measure can support the
-judgment without becoming its substitute.
+Carry the parent purpose into goals, specifications, tasks, measures and
+procedures. Each translation names the user change it serves and the decision
+that authorizes any material narrowing. Judge the resulting whole against that
+user change; a complete procedure or improved measure can support the judgment
+without replacing it.
 
-Tests, probes, selectors, thresholds, and scripts explain how those outcomes
-are checked; they are not the outcome themselves. Preserve the original request
-or its source alongside the accepted interpretation. Before closing delivery,
-compare the observed result with both. A correct implementation of a mistaken
+Tests, probes, selectors, thresholds and scripts check those outcomes; they
+are not the outcomes themselves. Keep the original request or its source next
+to the accepted interpretation, and before closing delivery compare the
+observed result with both. A correct implementation of a mistaken
 interpretation still needs reconciliation; passing its tests does not close
 the requested outcome.
 
@@ -197,73 +200,78 @@ goal. Preserve an explicitly authorized narrow scope; do not expand a bounded
 task into an entire domain merely because its parent goal is broader.
 
 Select representative cases from the requested problem before choosing a
-reusable form or scaling existing content. Exercise that form on real or
+reusable form or scaling existing content. Exercise the form on real or
 source-shaped cases, including a plausible case outside the initial example
-when broader coverage is claimed. This is verification work under the existing
-route, not an automatic user-approval checkpoint. Counts describe coverage;
-they cannot replace evidence that the user can accomplish the intended task.
+when broader coverage is claimed; this is verification within the existing
+route. Counts describe coverage; they cannot replace evidence that the user
+can accomplish the intended task.
 
 A design method names the problem it helps solve and the conditions that make
-it useful. Choose or adapt it against the brief and observed result; completing
-the method does not establish quality. An alternative must still satisfy the
-applicable behavior, accessibility, integrity, and authority boundaries. A
-project's accepted design decisions remain in force until reconciled at their
-owner; a method's flexibility does not waive those commitments.
+it useful. Choose or adapt it against the brief and observed result;
+completing the method shows only that the method was followed. Every
+alternative must still satisfy the applicable behavior, accessibility,
+integrity and authority boundaries, and a project's accepted design decisions
+stay in force, whatever a method's flexibility, until reconciled at their
+owner.
 
 - from: source[11] (2026-09-10 attribution and scope feedback), source[12] (2026-09-25 conditional design methods)
 
 ### Improve judgment before amplifying effort
 
-When corrections recur, checks pass while intended value disappoints, or new
-material leaves the same narrow choices intact, investigate how the next
-decision is made before prescribing more runs, rules, or review. Distinguish
+When corrections recur, checks pass while the intended value disappoints, or
+new material leaves the same narrow choices intact, investigate how the next
+decision is made before prescribing more runs, rules or review. Distinguish
 an unsound question, candidate set or standard from missing evidence, failed
-execution, and a throughput bottleneck in sound work. More activity can amplify
+execution and a throughput bottleneck in sound work. More activity can amplify
 a mistaken judgment; sound ready work can still accelerate.
 
-At the affected decision, distinguish a problem never observed from one
-observed but discounted under the release or selection rule. Inspect the
-grounds, what could change the judgment, and what observations actually changed.
-Another observer may add little if the decision keeps dismissing the finding.
-The observation method, scope and standard remain open to correction too.
+At the affected decision, find out whether the problem was never observed or
+was observed and then discounted by the release or selection rule. Inspect the
+grounds, what could change the judgment, and which observations actually
+changed it. Another observer may add little if the decision keeps dismissing
+the finding. The observation method, scope and standard are open to correction
+too.
 
-Knowing the rule and following it under the current conditions are different
-questions. Inspect the actual assignment, available information, time or context
-pressure, tool affordances and the behavior rewarded by feedback or acceptance.
-A strategy that earns quick approval, high finding counts or a passing proxy
-can undermine the owner's outcome. These are hypotheses to test against
-observations, not an explanation to assume or a diagnosis of the agent's mind.
-Correct the responsible condition when supported; another reminder alone
-does not establish that a known rule will now be followed.
+Knowing a rule and following it under the current conditions are different
+questions. Inspect the actual assignment, available information, time or
+context pressure, tool affordances and the behavior rewarded by feedback or
+acceptance. A strategy that earns quick approval, high finding counts or a
+passing proxy can undermine the owner's outcome. These are hypotheses to test
+against observations, not an explanation to assume or a diagnosis of the
+agent's mind. Correct the responsible condition when the evidence supports it.
+A further reminder shows only that the rule was restated, not that it will now
+be followed.
 
-Use existing [causal analysis and bounded comparisons](#analysis-exposes-the-decisive-causal-mechanism)
+Use [causal analysis and bounded comparisons](#analysis-exposes-the-decisive-causal-mechanism)
 and [experience reuse](#experience-changes-the-next-matching-action) to change
-the next choice or artifact, rather than count checks or declarations of
+the next choice or artifact, rather than to count checks or declarations of
 humility. Locally verified decisions support decisive action while remaining
-revisable. This conditional diagnosis creates no recurring reflection form or
-additional reviewer tier; ordinary settled work keeps its direct route.
+revisable. Use this diagnosis when its triggers occur; ordinary settled work
+keeps its direct route.
 
 - from: source[17], source[20]
 
 ### Verify promised and observed behavior in both directions
 
 The owning contract's acceptance matrix lists functional outcomes and activated
-nonfunctional requirements by user or operator scenario. Each names a trigger,
-starting state, observable response, and applicable boundary. Link an existing
-quality owner instead of duplicating its threshold. Do not derive this list
-solely from the tests or the implementation. The future reconciliation
-`promise[...]` register is not a product feature inventory.
+nonfunctional requirements by user or operator scenario, each with a trigger,
+starting state, observable response and applicable boundary. Link an existing
+quality owner instead of duplicating its threshold. Derive the matrix from the
+requirement and its scenarios rather than solely from the tests or the
+implementation. The future reconciliation `promise[...]` register is not a
+product feature inventory.
 
 For effects such as requests, writes, events, notifications, or repeated user
 actions, define the affected identity and scope, allowed count or bound per
 logical operation, and relevant timing/order. Where repetition matters, also
 define which triggers create an operation, any cadence or bound across an
 observation window, and the freshness or maximum silence the outcome permits.
-Include concurrency, retries, cache reuse, and suppression when they can
-change those effects. State what is unknown; do not invent a safe request rate
-or claim exactly-once behavior from
-an idempotency key alone. User cost includes unnecessary requests, account
-exposure, latency, attention, and recovery effort when applicable.
+Include concurrency, retries, cache reuse and suppression when they can
+change those effects. State what is unknown; do not invent a safe request
+rate, and claim exactly-once behavior only with evidence beyond an idempotency
+key. User
+cost includes unnecessary requests, account exposure, latency, attention and
+recovery effort when applicable.
 
 Verification runs in both directions:
 
@@ -271,19 +279,19 @@ Verification runs in both directions:
   meets its functional and quality boundaries.
 - Inspect actual externally visible effects at the affected boundary, including
   effects absent from the expected-result list. Map each to an authorized
-  requirement or report it for reconciliation. Evidence drawn only from a
-  helper's return value cannot establish effects at another boundary.
-- Distinguish missing, undeclared, excessive, and wrongly suppressed effects.
-  Also inspect wrong identity/scope, premature or stale effects, partial
-  completion, and misleading success when applicable. These are prompts for
-  analysis, not an exhaustive taxonomy or a mandatory test count.
+  requirement or report it for reconciliation. A helper's return value shows
+  only the helper's own result, not effects at another boundary.
+- Distinguish missing, undeclared, excessive and wrongly suppressed effects.
+  Also inspect wrong identity or scope, premature or stale effects, partial
+  completion and misleading success when applicable. Use these as prompts for
+  analysis, not as an exhaustive taxonomy or a required test count.
 - Exercise failure and recovery from the user's position: what is known, what
   remains unresolved, what was changed, and what action is available next.
-- Never attribute a failure to the user's environment without evidence. A fix
-  is verified in the environment where the failure was reported; reproducing
-  a similar failure elsewhere establishes a hypothesis, not the fix. When a
-  failure class will need cross-environment diagnosis, the product ships its
-  own diagnostic surface instead of relying on the reporter's description.
+- Attribute a failure to the user's environment only with evidence. Verify a
+  fix in the environment where the failure was reported; reproducing a similar
+  failure elsewhere establishes a hypothesis, not the fix. When a failure class will
+  need cross-environment diagnosis, ship a diagnostic surface in the product
+  rather than relying on the reporter's description.
 - For material or high-risk user- or operator-facing delivery, acceptance
   includes a fresh-context consumer: an independent agent or reviewer who
   receives what a real consumer would have and uses the deliverable to its
@@ -293,46 +301,47 @@ Verification runs in both directions:
   local list sort can use observed state, ordering and recovery checks; a
   material new workflow or reusable explanation needs the consumer trial.
   Investigate a failed trial at its artifact, supplied-input and environment
-  boundaries before locating the defect. Missing inputs and failed execution
-  remain incomplete evidence rather than a passing review or an automatic
-  attribution of fault to the consumer.
+  boundaries before locating the defect. Report missing inputs and failed
+  execution as incomplete evidence, which is neither a pass nor evidence of
+  the consumer's fault.
 
 Match the inspected object and scope to the claim: a source record, generated
-summary, rendered main text, and whole collection expose different properties.
-Record which was actually available and inspected. A schema review may need
-the full record; a reader trial needs the actual reader surface. One cannot
-silently stand in for the other. When a proposed fix changes hidden or unused
-material, compare its effect at the claimed boundary before crediting it with
-improving that outcome.
+summary, rendered main text and whole collection expose different properties.
+Record which was actually available and inspected. A schema review may need the
+full record; a reader trial needs the actual reader surface. One cannot silently
+stand in for the other. When a proposed fix changes hidden or unused material,
+compare its effect at the claimed boundary before crediting it with improving
+that outcome.
 
-When results depend on a catalog, classifier, parser, or filter, inspect what
-was unmatched, rejected, or omitted before interpreting an empty result as
-success. Lack of a known match is not evidence that no problem exists. Preserve
-the owning contract's policy for unknown and partial results; do not silently
-invent an answer or suppress the unresolved case to keep the result clean.
+When results depend on a catalog, classifier, parser or filter, inspect what
+was unmatched, rejected or omitted before reading an empty result as success.
+Lack of a known match is not evidence that no problem exists. Preserve the
+owning contract's policy for unknown and partial results; do not silently invent
+an answer or suppress the unresolved case to keep the result clean.
 
-Use the smallest credible evidence for each claim. A failing regression test,
-an instrumented process, a packaged artifact, a browser observation, or a
+Use the smallest credible evidence for each claim; a failing regression test,
+an instrumented process, a packaged artifact, a browser observation or a
 bounded manual review may be appropriate. Record the relevant conditions and
-limits. Missing observations remain unknown or not run, never a pass. Required
-evidence for a completion claim cannot be replaced by a cheaper unrelated check.
+limits. Report a missing observation as unknown or not run, never as a pass. A
+completion claim needs its required evidence; a cheaper unrelated check
+supports only its own claim.
 
 - from: source[8] (2026-09-06 outcome and effect verification), source[10] (2026-09-14 reported adoption feedback), source[11] (2026-09-10 attribution and scope feedback), source[17]
 
 ### Environment over memory
 
-A recurring rule needs an enforcement surface outside human memory. Depending
-on the rule, use types, schema validation, static checks, unit tests,
-architecture tests, integration tests, runtime assertions, or reproducible
+Give a recurring rule an enforcement surface outside human memory. Depending on
+the rule, use types, schema validation, static checks, unit tests,
+architecture tests, integration tests, runtime assertions or reproducible
 probes.
 
 Prose explains intent and trade-offs. Mechanical guards stop the same class of
 mistake from recurring.
 
-Agent memory and summaries may help locate evidence; they do not create
-authority. Recheck their source, scope, and current applicability before using
-them for a material decision. Reconcile conflict with current authority rather
-than treating confident recall as a new instruction.
+Agent memory and summaries may help locate evidence; authority stays with its
+current owner. Recheck their source, scope and current applicability before
+using them for a material decision, and reconcile any conflict with current
+authority rather than treating confident recall as a new instruction.
 
 - from: source[8]
 
@@ -361,10 +370,11 @@ a local fix without a named category is incomplete.
 When the harness contributed to a repeated error, correct the smallest owner
 that caused it: a default, interface, example, context route, check, or rule.
 Verify a plausible sibling case and remove any reminder made redundant by the
-fix. Keep the useful mechanism and its limits, not the whole incident in the
-startup context. If no proportionate guard exists, keep a short example or
-review cue at the relevant owner and say what it cannot prevent. More recorded
-lessons alone are not evidence of improvement.
+fix. Whatever reaches the startup context carries the useful mechanism and its
+limits, not the whole incident. If no proportionate guard exists, keep a short
+example or review cue at the relevant owner and say what it cannot prevent.
+More recorded lessons show only that more was recorded; improvement needs
+later behavior to show it.
 
 - from: source[7], source[8], source[10]
 
@@ -375,31 +385,32 @@ successful methods and examples as well as failed attempts. Keep the problem,
 observed result, causal explanation or unresolved hypothesis, applicable
 conditions, and conditions that would invalidate the lesson. A successful
 example explains what made it useful; copying its surface can lose that value.
-A failure under one condition is not a permanent prohibition.
+Scope a lesson from failure to the conditions under which it failed.
 
-Owner feedback can supply a new question, distinction, example or method, as
-well as reveal a defect. Learn from a negative example by identifying the
-understanding or capability the next attempt should gain: a better question,
-different material, a clearer explanation, a reliable operation or a useful
-worked example. Choose the response from the diagnosed mechanism. A stable
-boundary may need a guard; a weak premise may need investigation or a different
-artifact. Pair a needed restriction with a usable route for legitimate work.
-Preserve the scope of a rejection and test the proposed response on a matching
-case; its opposite is not automatically a universal preference. More avoidance
-rules alone do not establish that the desired capability now exists.
+Owner feedback can supply a new question, distinction, example or method as
+well as reveal a defect. Learn from a negative example by naming what the next
+attempt should gain: a better question, different material, a clearer
+explanation, a reliable operation or a useful worked example. Choose the
+response from the diagnosed mechanism: a stable boundary may need a guard; a
+weak premise may need investigation or a different artifact. Pair a needed
+restriction with a usable route for legitimate work. Preserve the
+scope of a rejection and test the proposed response on a matching case; its
+opposite is not automatically a universal preference. More avoidance rules
+show only what to avoid, not that the desired capability now exists.
 
-Update the smallest existing owner: a default, tool, interface, method, example,
-or focused review cue. Put a permitted locator where matching work begins and
-retire superseded advice. Keep current execution state separate from reusable
-knowledge and historical evidence. A completion transcript alone is not an
-effective retrieval path. The [access method](../guides/information-access.md#retain-experience-at-the-next-decision-point)
-is one application, not a separate general memory authority.
+Update the smallest existing owner: a default, tool, interface, method, example
+or focused review cue. Put a permitted locator where matching work begins, so
+the next matching task finds it, and retire superseded advice. Keep current
+execution state separate from reusable knowledge and historical evidence; a
+completion transcript needs such a locator to work as a retrieval path. The
+[access method](../guides/information-access.md#retain-experience-at-the-next-decision-point)
+is one application of this rule, not a separate general memory authority.
 
 When a repeated operation has stable semantics, move its proven steps into a
 script or narrow interface with failure reporting and revalidation conditions.
 Keep judgment-dependent methods conditional and supported by examples; do not
-turn an unexplained correlation into an automatic veto. Automation preserves
-the original outcome and exception behavior, not just the easiest count.
+turn an unexplained correlation into an automatic veto. Automation preserves the
+original outcome and exception behavior, not just the easiest count.
 
 To claim adoption, observe a subsequent matching task finding and using the
 change through its normal entrypoint. Check a plausible sibling case and, when
@@ -414,9 +425,9 @@ retrieval/default before adding another reminder to the agent entrypoint.
 
 ### Preserve decisions and evidence
 
-Requirements, translations, implementation plans, issues, and evidence have
-different authority. Do not overwrite one with another. Superseded material
-keeps an explicit replacement link so later contributors can reconstruct why a
+Requirements, translations, implementation plans, issues and evidence have
+different authority; never overwrite one with another. Superseded material keeps an
+explicit replacement link so later contributors can reconstruct why a
 decision changed.
 
 When recording or relying on a material decision, distinguish what the owner
@@ -427,11 +438,17 @@ to establish what was accepted. Missing source material stays an evidence
 limit. A quotation, heading, commit author, or repeated summary alone does not
 establish attribution or agreement.
 
+Write attribution as plain statements of who decided what, such as "The owner
+asked for X. The implementer chose Y.", and name what remains unresolved,
+including decisions the owner has not made. State each attribution once per
+record, without repeated disclaimers about what the owner did not say.
+
 An accepted proposal authorizes its agreed scope even though its wording and
 design originated with the implementer. Do not rewrite it as an owner-authored
-requirement or an immutable preference. Silence is not acceptance; an
-implementer's permissible choice remains an implementer choice. Existing
-authorization and the [engineering decision envelope](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)
+requirement or an immutable preference. Acceptance comes from the owner's reply;
+silence leaves a proposal unaccepted, and an implementer's permissible choice
+stays an implementer choice. Existing authorization and the
+[engineering decision envelope](governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default)
 still permit work without re-asking settled questions or requiring a verbatim
 approval for every local choice.
 
@@ -451,9 +468,9 @@ rebuilt from the authoritative source. Addition precedes reduction, and
 reduction happens in the display layer, never the storage layer.
 
 Research and measurement that support a decision keep their intermediate
-evidence chain and state their basis — scope, weights, sources, and time
-reference — before their conclusions. An unreproducible conclusion is not
-established.
+evidence chain and state their basis — scope, weights, sources and time
+reference — before their conclusions. Treat a conclusion as established only
+when it can be reproduced from that chain.
 
 Deletion is reserved for an explicitly authorized cleanup that first
 classifies what it removes.
@@ -462,18 +479,19 @@ classifies what it removes.
 
 ### Activate concerns instead of expanding ceremony
 
-Governance depth follows the change's observable traits, not the size of its
-template or the caution of its implementer. A concern that is not triggered
-creates no document, section-filling exercise, review lens, or test obligation.
-For every activated concern, an applicable current or target contract is the
-sole owner of its boundary, failure policy, and escalation or exception policy.
-A plan records only the selected concern, owner link, execution steps, and
-proportionate evidence.
+Set governance depth from the change's observable traits rather than the size
+of a template or the caution of the implementer. Each concern applies only
+when its trigger matches. For every activated concern, an applicable current or target contract
+is the sole owner of its boundary, failure policy and escalation or exception
+policy, and a plan records only the selected concern, owner link, execution
+steps and proportionate evidence.
 
-If no normative owner exists, material delivery waits for a contract to
-establish one. An experiment under the contract-first invariant may proceed only through safety boundaries that
-already exist for its own activated actions; it cannot use a plan or scratch
-record to invent a temporary quality boundary.
+If no normative owner exists, establish one through a contract before
+material delivery. An experiment under the
+[contract-first rule](#contract-before-material-delivery-evidence-before-certainty)
+proceeds only through safety boundaries that already exist for its own
+activated actions; a plan or scratch record cannot create a temporary quality
+boundary.
 
 Select every matching trait, including overlaps: an interactive analytical
 explanation activates both Experience and Analytical claims. A maintainer's
@@ -482,11 +500,11 @@ The Required reading column names complete-reading dependencies. A token
 `owner:concern-slug` requires one or more task-applicable normative owner
 bindings; the slug follows the heading convention. Multiple bindings cover
 multiple surfaces. Check their identity and authority against architecture
-and the accepted task: a supplied path cannot grant authority.
+and the accepted task; authority comes from those, not from a supplied path.
 
-The concern routing table below is the normative owner. Agent instructions,
-guides, and templates may link to or project it but must not define competing
-trigger semantics.
+The concern routing table below is the normative owner of concern routing.
+Agent instructions, guides and templates may link to or project it and never
+define competing trigger semantics.
 
 Experience applies to graphical and non-graphical interaction. Bind the
 existing normative owner of the actual interface: a graphical frontend uses
@@ -523,50 +541,50 @@ Document count and length are consequences of bounded contexts, risk, and the
 number of durable decisions; they are not quality targets. Long-term governance
 includes update, merge, historical synthesis, supersession, retirement, and
 disposal, without universal file-count, line-count, directory-depth, or blanket
-retention-age limits as quality or deletion proxies. This does not remove the
-target-review, promise, or pending-evidence deadlines owned by the
-documentation harness.
+retention-age limits as quality or deletion proxies. The documentation harness
+keeps its target-review, promise and pending-evidence deadlines.
 
-One normative rule is defined in one authoritative document. Other documents
-route, project, explain, or provide evidence without adding conditions. The
-documentation authority map owns the creation, active-read-set, projection, and
-subtraction mechanics; this invariant does not redefine them.
+Define each normative rule in one authoritative document; other documents
+route, project, explain or provide evidence without adding conditions. The
+[documentation authority map](../README.md#document-stock-and-coupling) owns
+creation, active-read-set, projection and subtraction mechanics.
 
 - from: source[2]
 
 ### Unknown references are researched, not reconstructed
 
-When a request, contract, source, or discussion relies on an unfamiliar term,
-named reference, publication, external system, or other checkable fact, do not
-complete it from resemblance or memory. Inspect available local evidence
-first; when that is insufficient, use available network or retrieval tools to
-consult authoritative external sources. Prefer the original publication,
-official documentation, standard, or owning institution over a secondary
-summary, and preserve enough source identity for another contributor to check
-the claim.
+When a request, contract, source or discussion relies on an unfamiliar term,
+named reference, publication, external system or other checkable fact, look it
+up instead of completing it from resemblance or memory. Inspect available
+local evidence first; when that is insufficient, use available network or
+retrieval tools to consult authoritative external sources. Prefer the original
+publication, official documentation, standard or owning institution over a
+secondary summary, and keep enough source identity for another contributor to
+check the claim.
 
 Separate what the source states from inference and recommendation. Material
-that exists to sell, to rank, or to fill a content farm is not a source of
+that exists to sell, to rank or to fill a content farm is not a source of
 truth about its subject; screen it out before it becomes evidence. If neither
 local nor external evidence can establish the fact, name the unknown and its
-effect instead of inventing a plausible answer. Research is still bounded by
-the request's permissions, privacy boundary, and activated security or cost
-concerns.
+effect instead of inventing a plausible answer. Research stays within the request's
+permissions, privacy boundary and activated security or cost concerns.
 
-For exploratory, comparative, disputed, or consequential multi-claim inquiry,
+For exploratory, comparative, disputed or consequential multi-claim inquiry,
 select observations that could distinguish plausible explanations, uncover
-important omissions, or independently reduce uncertainty. Expand beyond the
-initial query through relevant entities, references, data, viewpoints, and
-history. Choose breadth for the question; a fixed source, platform, query, or
-perspective count cannot establish coverage. A direct factual lookup can remain
-direct. The [research method](../guides/research.md) explains this route.
+important omissions or independently reduce uncertainty. Expand beyond the
+initial query through relevant entities, references, data, viewpoints and
+history. Choose breadth for the question; a fixed count of sources, platforms,
+queries or perspectives shows only how much was searched, not coverage. A
+direct factual lookup can remain direct. The
+[research method](../guides/research.md) explains this route.
 
-Keep observations, provisional interpretations, and final claims distinguishable.
-For decisive evidence, preserve its origin, relevant date and context, actual
-reading or measurement scope, and important limitations through the existing
-evidence chain. Assess independence for the claim: different documents may
-repeat one observation, while one source may contain several measurements.
-Citation count and topical variety alone do not establish independent support.
+Keep observations, provisional interpretations and final claims
+distinguishable. For decisive evidence, preserve its origin, relevant date and
+context, actual reading or measurement scope, and important limitations
+through the existing evidence chain. Assess independence per claim: different
+documents may repeat one observation, while one source may contain several
+measurements. Citation count and topical variety show only how often and how
+widely a claim appears, not independent support.
 
 Provisional synthesis may guide investigation and new evidence may change the
 question. Before delivering the main synthesis, check the decisive claims,
@@ -579,46 +597,48 @@ returns, inaccessible evidence, or exhausted budget. Repetition within one
 search path or budget exhaustion does not establish comprehensive coverage.
 Narrow unsupported claims or expose the gap; fluency is not a substitute.
 
-Assess progress by useful evidence and resolved or newly identified important
-questions, not generated prose or self-awarded information-gain scores. Match
-delivery to the reader's purpose; an annotated reference, evidence comparison,
-or precise unknown may serve better than rewriting existing material. Use the
-existing task record proportionately; this rule requires no separate ledger
-for every question and grants no new delegation or resource authority.
+Assess progress by useful evidence and by important questions resolved or
+newly identified, not by generated prose or self-awarded information-gain
+scores. Match delivery to the reader's purpose; an annotated reference,
+evidence comparison or precise unknown may serve better than rewriting
+existing material. Use the existing task record proportionately; this rule
+requires no separate ledger for every question and grants no new delegation or
+resource authority.
 
 - from: source[3], source[10], source[14]
 
 ### Tool failure triggers capability-preserving fallback
 
-Failure or absence of one tool is not by itself failure of the task. Identify
-the capability and evidence the step requires, then try an available fallback
-that preserves the intended semantics, safety boundary, and strength of
-evidence. Examples include another repository search mechanism, a primary
-source reached through a different retrieval path, a language-native check in
-place of a convenience wrapper, or a controlled manual inspection when its
-limitations are explicit.
+When a tool fails or is absent, identify the capability and evidence the step
+requires, then try an available fallback that preserves the intended
+semantics, safety boundary and strength of evidence. Examples include another
+repository search mechanism, a primary source reached through a different
+retrieval path, a language-native check in place of a convenience wrapper, or
+a controlled manual inspection with explicit limitations.
 
-Do not silently substitute a path that changes product behavior, mutates a
-different system, weakens an adopted guard, or supports a weaker completion
-claim. If no permitted fallback can preserve a required capability, report the
-attempts, exact missing capability, affected claim, and recovery options; only
-then may the condition enter the blocker routing owned by [governance § narrow-blockers](governance-decision-boundary.md#blockers-are-narrow-and-evidence-backed).
+Never silently substitute a path that changes product behavior, mutates a
+different system, weakens an adopted guard or supports a weaker completion
+claim. If no permitted fallback preserves a required capability, report the
+attempts, the exact missing capability, the affected claim and recovery
+options; only then may the condition enter the blocker routing owned by
+[governance § narrow-blockers](governance-decision-boundary.md#blockers-are-narrow-and-evidence-backed).
 
-Successful output also has limits: establish that the method can observe the
-property being claimed. Incomplete extraction, inaccessible content, and
-evidence of absence are different states. A substitute that provides weaker
-evidence can support an explicitly narrower result; it cannot silently satisfy
-the original stronger claim. The [information-access method](../guides/information-access.md)
+Successful output also has limits: check that the method can observe the
+property being claimed, and keep incomplete extraction, inaccessible content
+and evidence of absence distinct. A substitute that provides weaker evidence
+can support an explicitly narrower result and never silently satisfies the
+original stronger claim. The [information-access method](../guides/information-access.md)
 explains source retrieval and observation limits, including outside research.
 
 Before repeating costly or recurring access exploration, retrieve applicable
 method knowledge from its existing permitted owner. Preserve reusable success
 or failure evidence with the source and capability, relevant conditions,
 procedure or attempts, observed result and date, limitations, and revalidation
-conditions. Keep it findable at the next matching decision, not only in an old
-conversation. Use an existing guide, task handoff, or tool-local store; do not
-create another registry or record every transient failure. Private account and
-machine details remain within their permitted audience.
+conditions. Keep it findable at the next matching decision, beyond an old
+conversation, through an existing guide, task handoff or tool-local store
+rather than another registry; record reusable outcomes rather than every
+transient failure. Private account and machine details stay
+within their permitted audience.
 
 Revalidate against current conditions: a past failure is not a permanent
 blacklist, and a working access method does not establish fresh source data.
@@ -640,14 +660,14 @@ evidence that could distinguish it from alternatives. More headings, layers,
 or abstract categories are not evidence of deeper understanding.
 
 Apply the mechanism to the actual input: explain which condition holds here,
-why the proposed action addresses it, and how to check the resulting whole.
-A general rule, library example, or filled explanation field cannot substitute
-for that work. When proposing a local correction, inspect it in its surrounding
-context and preserve the intended meaning and unaffected behavior. If the
-meaning is ambiguous, label the interpretation and use the existing
+why the proposed action addresses it, and how to check the resulting whole; a
+general rule, library example or filled explanation field leaves that work
+still to do. When proposing a local correction, inspect it in its
+surrounding context and preserve the intended meaning and unaffected behavior.
+If the meaning is ambiguous, label the interpretation and use the existing
 [uncertainty route](governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated).
-Complete the analysis and verification available within the authorized task;
-do not ask the user to perform that work as a substitute for delivery.
+Complete the analysis and verification available within the authorized task
+yourself instead of handing that work to the user.
 
 For consequential or disputed conclusions, recurring corrections, or a
 credible shared blind spot in otherwise agreeing reviews, actively design and
@@ -660,26 +680,27 @@ When model dependence is the suspected mechanism, include a different available
 model within the authorized resource and privacy envelope. Select variation
 for the uncertainty; ordinary settled work keeps its direct verification path.
 
-Keep the original goal and binding constraints common to the comparisons.
+Hold the original goal and binding constraints fixed across the comparisons.
 Record the relevant artifact and evidence identity, what changed and what was
-held fixed, the actual question and standpoint, model/context identity, and
-first results before sharing another evaluator's conclusion. Splitting one
-source or dataset does not create independent acquisition; state shared origin
-and dependencies. A model change is a variation, not a guarantee against shared
-error. A fresh context and independent evidence establish different things.
-When several factors change together, the result cannot isolate one factor's
-effect. Reconcile agreement and disagreement against observations, scope and
-accepted standards; a vote or repeated confident answer does not settle truth.
+held fixed, the actual question and standpoint, model and context identity,
+and first results before sharing another evaluator's conclusion. State shared
+origins and dependencies: parts split from one source or dataset share its
+acquisition, and a different model can still share an error. A fresh context
+and independent evidence establish different things. When several factors change
+together, the result cannot isolate one factor's effect. Reconcile agreement
+and disagreement against observations, scope and accepted standards; a vote or
+repeated confident answer does not settle truth.
 
-When an AI answer supports a consequential judgment, select the question's
-wording together with the recipient's relationship to the work and actual
+When an AI answer supports a consequential judgment, choose the question's
+wording together with the recipient's relationship to the work and its actual
 context. An unfamiliar reader investigating a complaint, an author responding
 to criticism, and an author assessing its own work can expose different
-problems. Supplied explanations may fill gaps in the artifact; framing may
-redirect the search or induce agreement. Preserve useful differences when
-reusing questions instead of silently replacing them with a generic self-check.
-This is an instance of [essential reasoning](#keep-essential-reasoning-active),
-not the full scope of it. For delegated exploration, [bounded delegation](agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
+problems. Supplied explanations can fill gaps in the artifact, and framing can
+redirect the search or induce agreement. When reusing questions, keep their
+useful differences instead of silently collapsing them into a generic
+self-check. This is one application of
+[essential reasoning](#keep-essential-reasoning-active), not its full scope.
+For delegated exploration, [bounded delegation](agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
 keeps the parent's hypotheses from silently becoming the search boundary.
 
 Keep the actual prompt, artifact, supplied and inherited context, prior-answer
@@ -695,44 +716,46 @@ of an earlier assessment even when the artifact is unchanged.
 Reusable questions carry their useful wording, context conditions, purpose and
 limits through the [questioning method](../guides/review-cheatsheet.md#choose-wording-and-context-together).
 The dispatcher needs enough context to choose and audit the method; a recipient
-testing the consumer's understanding receives the consumer's legitimate inputs.
-Existing authority and independent-review requirements still govern dispatch.
-Evaluate method changes by confirmed discoveries, missed problems, false
-findings and subsequent user results where observed. These duties use the
-existing comparison and evidence routes; they add no fixed review count.
+testing the consumer's understanding receives the consumer's legitimate
+inputs. Existing authority and independent-review requirements still govern
+dispatch. Evaluate method changes by confirmed discoveries, missed problems,
+false findings and subsequent user results where observed. These duties use
+the existing comparison and evidence routes; they add no fixed review count.
 
 Read-only comparisons and permitted bounded trials proceed under existing
-authority. Implementation experiments use the [controlled experiment boundary](#contract-before-material-delivery-evidence-before-certainty).
+authority; implementation experiments use the
+[controlled experiment boundary](#contract-before-material-delivery-evidence-before-certainty).
 Declare the question, useful observation, effort bound and stopping basis in
 the existing task record. Stop when the uncertainty is sufficiently resolved,
-the comparison has bounded diminishing returns, or an access/resource limit is
-reached; preserve failed, inconclusive and contrary results. If a model or source
-is unavailable, try a capability-preserving variation and expose the remaining
-dependence. Required independent review still follows its owning contract.
-Critical attitude and planned experiments alone do not provide observed evidence.
+returns diminish within the bound, or an access or resource limit is reached,
+and keep failed, inconclusive and contrary results. If a model or source is
+unavailable, try a capability-preserving variation and state the remaining
+dependence. Required independent review still follows its owning contract. A
+critical attitude and planned experiments show intent; only observations
+provide observed evidence.
 
 Answer the user's explicit question, and also surface an unasked premise,
-constraint, outcome, or risk when evidence shows it is materially more
+constraint, outcome or risk when evidence shows it is materially more
 consequential to the user's goal. State the causal connection and classify the
 observation through the governance vocabulary. Do not use this obligation to
-speculate without evidence, replace the requested task, manufacture priority,
+speculate without evidence, replace the requested task, manufacture priority
 or expand implementation scope without authorization.
 
 - from: source[3] (2026-08-06 inquiry and causal analysis), source[11] (2026-09-10 attribution and scope feedback), source[16], source[19]
 
 ### Recurring verbal rules are proposed for durable recording
 
-A rule the owner states in conversation binds from the moment it is stated,
-but conversation is not durable storage. When a general rule is stated — and
-especially when the same rule is stated again, or is phrased as something to
-remember — propose recording it in the document that owns the topic: a
-contract invariant, a guide procedure, a template field, or an agent
-entrypoint. The proposal states the rule in plain wording, its reason, how it
-applies, and its source and date. It also states the rule's scope and the
+A rule the owner states in conversation binds from the moment it is stated;
+recording makes it durable. When a general rule is stated, especially when it
+is repeated or phrased as something to remember, propose recording it in the
+document that owns the topic: a contract invariant, a guide procedure, a
+template field or an agent entrypoint. The proposal states the rule in plain
+wording, its reason, how it applies, its source and date, its scope, and the
 conditions that suspend it: a rule stated for one situation, or under
 exceptional pressure, is recorded with that situation rather than promoted
 into a standing rule, and an explicit current instruction suspends a default
-for its scope without repealing it. The owner confirms before it lands.
+for its scope and leaves the default in place. The owner confirms before it
+lands.
 
 A recording proposal also names where the rule ranks among its neighbors and
 how the rule set reads once it lands. Record the principle, not the
@@ -740,13 +763,13 @@ incident: the next reader never made your mistake and should not have to
 learn it; cite a past failure only when it strengthens the rule's
 description.
 
-An explicit instruction to adopt or implement the rule supplies that
-confirmation for its stated scope. Do not request the same confirmation again.
+An explicit instruction to adopt or implement the rule is that confirmation
+for its stated scope; proceed without asking again.
 
-A rule that lives only in chat history or agent memory decays with the context
-that carries it. Recording is proposed, not assumed: the decision to adopt
-remains with the human owner, and a rejected proposal stays as history rather
-than returning as an unwritten rule.
+A rule kept only in chat history or agent memory decays with that context.
+Recording is proposed, not assumed: the decision to adopt remains with the
+human owner, and a rejected proposal stays as history rather than returning as
+an unwritten rule.
 
 - from: source[6], source[10]
 
@@ -761,8 +784,9 @@ shows how to apply the route, including when an example is only a step.
 Material delivery satisfies the following obligations in dependency order.
 Contract reconciliation precedes dependent implementation; required design
 review precedes implementation and completion review precedes closure.
-Investigation, implementation, and verification may iterate. This list does
-not prescribe user approval checkpoints or require a record for every item.
+Investigation, implementation and verification may iterate. Each item is work
+to do within the existing authorization; it needs a record only where its
+owner requires one.
 
 1. **Classify and route.** Establish the decision envelope, evidence state, risk
    profile, and concerns activated by the activate-concerns invariant.
@@ -773,8 +797,8 @@ not prescribe user approval checkpoints or require a record for every item.
    only when read-only evidence cannot answer a material technical fact.
 3. **Resolve authority.** Identify the current normative document and the code
    or service that owns the behavior.
-4. **Reconcile intent.** Record ambiguity, contradiction, or changed
-   requirements. Do not silently choose between conflicting sources.
+4. **Reconcile intent.** Record ambiguity, contradiction or changed
+   requirements; never choose silently between conflicting sources.
 5. **Land or update the contract.** Define states, triggers, boundaries,
    failure behavior, non-goals, and acceptance outcomes.
 6. **Write the execution plan.** Describe one coherent end state, dependency
@@ -1312,7 +1336,37 @@ implementation choices for that request, not an owner-specified exhaustive
 list. The [delivery record](../evidence/2026-10-30-resident-reasoning-and-transfer.md)
 separates owner intent, design discussion and observed use.
 
+### source[21] — 2026-11-01
+
+English account of the current conversation. Asked to review this discipline
+by its own rules, an external model found that the rules mostly said what not
+to do and that rules written for single incidents had spread into general,
+high-priority places. The owner agreed with both findings. They attributed the
+first to the previous maintaining model's over-caution and habit of
+disclaimers, said their own corrective requirements had not worked well
+enough, and asked for it to be handled; they agreed to fix the second.
+
+The implementer rewrote the core as conditions, actions and purposes, keeping
+its duties, limits, headings and concern triggers. Independent review found
+meaning changes in that first pass, mostly limits on what evidence shows that
+had been dropped or turned into duties, and further rounds found more of the
+same kind; the implementer repaired them toward the baseline meaning, finally
+by restoring flagged paragraphs and sentences verbatim. The single statement
+that a rule creates an approval step, form, record, reviewer or test only when
+its text requires one, plain statements for attribution, and the rule that
+rewording keeps every limit and is checked sentence by sentence are
+implementer proposals; the owner accepted them. The
+[delivery record](../evidence/2026-11-01-positive-rule-wording.md) holds the
+mechanism, measurements, review and limits.
+
 ## Reconciliation log
+
+- **2026-11-01 — core rules state actions:** reworded the development core
+  toward conditions, actions and purposes where an equivalent wording kept
+  every limit, and restored verbatim the text that independent reviews found
+  changed in meaning. Attribution is written as plain statements of who
+  decided what. Duties, limits, headings and concern triggers are kept.
+  - from: source[21] (2026-11-01 external review dispositions)
 
 - **2026-10-30 — essential reasoning remains active:** expose incomplete
   framing, instruction effects, conditional behavior, unresolved gaps, repeated

@@ -4,20 +4,21 @@ This repository is the engineering discipline template. Its work is
 documentation and project discipline.
 
 The requested observable outcome is the objective. Contracts, tests, documents,
-and checks preserve intent and expose mistakes; completing them alone is not
-completion of the task. Compare delivery with the original request as well as
-its accepted interpretation.
+and checks preserve intent and expose mistakes; the task is complete only when
+the requested outcome is observed. Compare delivery with the original request
+as well as its accepted interpretation.
 
 Keep [essential reasoning](docs/contracts/development-discipline.md#keep-essential-reasoning-active)
 active: our framing can miss problems, instructions and working conditions can
 shape AI behavior, and a recorded lesson is not an applied or effective remedy.
-Preserve that reasoning through [each transfer](docs/contracts/project-adoption.md#invariants-survive-repeated-transfer),
-including its uncertainty and unresolved gaps; load detailed methods when needed.
+Carry that reasoning through [each transfer](docs/contracts/project-adoption.md#invariants-survive-repeated-transfer),
+with its uncertainty and unresolved gaps; load detailed methods when needed.
 
 When transferring practices, preserve the [adoption value order](docs/contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers):
 interaction and epistemic discipline; truth, ownership, and boundaries; coherent
 verified delivery; activated domain disciplines; then documentation and tooling.
-This order guides attention, not authority or mandatory copying.
+Use this order to direct attention; authority and copying decisions stay with
+their owners.
 
 ## Establish the current task context
 
@@ -47,24 +48,25 @@ one of its endings. Use supplied correction history; first-time learning
 uses the current baseline and keeps unavailable history unknown. A narrow
 practice request or method investigation within an authorized concrete task uses
 [bounded extraction](docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task).
-A filled policy file is not that comparison. Later
-tasks still open a rule when the work reaches it.
+The comparison looks at what the rules cause; a filled policy file can inform
+it and cannot stand in for it. Later tasks open a rule when the work reaches it.
 For a request to learn this template and load separately supplied personal
 context, start with [the collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration).
 Read `docs-policy.toml` before reporting where enforcement runs. Its declared
-scope and profile say which paths the checker covers. They do not decide
-whether the owner's expectation was met.
+scope and profile say which paths the checker covers; whether the owner's
+expectation was met is judged from the outcome.
 
 For a requested Grill review, use the [Grill role](docs/guides/grill.md) to
 find problems important to the current owner's goal and supported standards,
 including in the direction or task itself. Its invocation uses existing
-context and review boundaries; a finding need not include a repair plan.
+context and review boundaries; a finding may stand without a repair plan.
 
 ## Execute the authorized outcome
 
 - Once intent and authority are settled, continue through implementation,
   integration, verification, and corrections. Internal checkpoints and required
-  independent reviews are execution work, not new user approval gates.
+  independent reviews are part of execution; proceed through them without a new
+  approval request.
 - When the owner says to keep working until a named end, keep working until it
   is reached or until only the owner can decide something required to
   continue. Writing the next step is not doing it. Only the owner's own later
@@ -83,11 +85,11 @@ context and review boundaries; a finding need not include a repair plan.
 - Preserve unrelated changes and explicit public boundaries. Keep one owner for
   each rule, investigate existing implementations before adding another, and
   complete one coherent end state. A diagnosis request authorizes investigation
-  and explanation, not an unrequested implementation.
+  and explanation; implementation needs its own request.
 - Reconcile changed behavior at its existing owner before dependent code;
   follow the [delivery-contract rule](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
-  Plans, summaries, memory, and worker reports do not override current authority.
-  An explicit instruction to adopt a rule supplies confirmation for that scope.
+  Current authority outranks plans, summaries, memory, and worker reports.
+  An explicit instruction to adopt a rule is confirmation for that scope.
 - Name a defect's mechanism and add a proportionate sibling guard where useful.
   Correct the responsible default, interface, example, or context route; retire
   redundant reminders instead of appending every incident to this entrypoint.
@@ -107,8 +109,8 @@ owns concern triggers and required targets. Use `python3 scripts/read_rules.py l
 to locate them, then `prepare` with every matching concern and applicable
 `--owner concern=path` binding before dependent choices. Follow the
 [complete-reading protocol](docs/contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
-for full output and recovery. The table below locates domain owners; it does
-not replace the trigger table or their detailed rules.
+for full output and recovery. The table below locates domain owners; the
+trigger table and their detailed rules decide what applies.
 
 | Task touches | Read |
 |---|---|

@@ -5,7 +5,7 @@ authority: normative
 contract_role: governance
 implementation: implemented
 verification_status: partial
-last_reconciled: 2026-10-28
+last_reconciled: 2026-11-01
 review_due: 2026-10-24
 supersedes: []
 ---
@@ -43,8 +43,7 @@ Out of scope:
 - **Governance framework:** contracts, guides, checks, and agents that expose
   facts, risks, conflicts, and evidence quality.
 - **Execution blocker:** a bounded condition that prevents one implementation
-  path from proceeding truthfully or safely; it is not a rejection of product
-  intent.
+  path from proceeding truthfully or safely; product intent stays intact.
 - **Governance exception:** a dated, scoped human decision accepting a named
   deviation and its residual risk.
 - **Engineering decision envelope:** reversible implementation choices an agent
@@ -76,8 +75,9 @@ Every material governance observation is expressed as one of these states:
 | `human_decision_required` | No authorized choice exists | Options materially change intent, priority, or risk | Obtain and record the owner's choice |
 | `execution_blocker` | One path cannot proceed truthfully or safely | A blocker class below is proven | Resolve, change path, or record an allowed exception |
 
-The state must be explicit. A recommendation cannot be worded or enforced as a
-blocker merely because the framework strongly prefers it.
+Make the state of each such observation explicit. A recommendation stays
+a recommendation however strongly the framework prefers it; only a proven
+blocker class below is a blocker.
 
 - from: source[1], source[2], source[3]
 
@@ -91,8 +91,8 @@ long-term maintenance cost, but those findings remain inputs to the authorized
 owner's decision.
 
 When no priority authority exists, an agent presents candidate work and its
-evidence as recommendations and requests a decision. It does not convert its
-own ranking into project authority.
+evidence as recommendations and requests a decision; its own ranking stays a
+recommendation.
 
 - from: source[1], source[2]
 
@@ -124,15 +124,16 @@ it loses under the current purpose and constraints. Explain where the candidates
 came from and which plausible direction remains unexamined. Compare expected
 user value, reduction of a binding constraint or important uncertainty, reuse
 where relevant, whole-life cost, and cost of delay. Use evidence and reasons
-rather than a total score that hides decisive differences. Exploration stops
-when further search is unlikely to change the immediate choice or an authorized
-reversible step can answer the uncertainty more cheaply; retain that limit.
-Do not invent a weak second option or a claim of exhaustive coverage. A direct
-local fix needs no portfolio comparison.
+rather than a total score that hides decisive differences. Stop exploring when
+further search is unlikely to change the immediate choice or an authorized
+reversible step can answer the uncertainty more cheaply, and state that limit.
+Present only real alternatives, and claim exhaustive coverage only when it is
+true. A direct local fix needs no portfolio comparison.
 
 State this reasoning with the recommendation; in unattended work retain it for
-the next review or owner sync and revisit it when facts change. This comparison
-does not create a new approval gate or override the issuer's priorities.
+the next review or owner sync and revisit it when facts change. The comparison
+informs the issuer's existing decision; authorized work proceeds under its
+current approval, and priority stays with the issuer.
 
 A rejected recommendation remains evidence or history; it does not silently
 return as a mandatory rule. Agreement is held
@@ -140,8 +141,8 @@ to the same standard: a recommendation or plan is endorsed because its
 evidence was checked, not because agreeing is smoother — instant agreement
 without independent judgment is a failure mode, not alignment.
 
-A problem report is incomplete when it stops at "something is wrong". A risk
-or recommendation that asks for attention also states: who bears the impact
+A problem report goes beyond "something is wrong". A risk or recommendation
+that asks for attention also states: who bears the impact
 (the user, the operator, the product, or the engineering organization); the
 impact's rough magnitude — a range, or an explicit unknown with its cost of
 finding out, is acceptable; the conditions under which the problem does not
@@ -154,9 +155,9 @@ decision carries the same fields plus its reversibility or switching cost.
 
 An authorized owner may accept a governance exception when the governing rule
 permits human waiver. The record names the rule, scope, reason, date, owner,
-residual risk, expiry or review trigger, and recovery path. An exception cannot
-manufacture missing product authority or silently waive legal or safety
-authority owned elsewhere.
+residual risk, expiry or review trigger, and recovery path. An exception works
+within the accepting owner's authority; product authority it lacks, and legal
+or safety authority owned elsewhere, stay where they are.
 
 - from: source[1], source[3]
 
@@ -188,8 +189,9 @@ An explicit request for new behavior can authorize updating its normative
 owner and delivering that behavior under [development's delivery-contract rule](development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
 That authorization is separate from discretion over implementation mechanics.
 [Execution risk](agent-execution-discipline.md#risk-selects-the-execution-depth)
-selects records and reviews after authority is established; a routine label
-never grants permission to invent product behavior or relax a boundary.
+selects records and reviews after authority is established; permission to
+create product behavior or relax a boundary comes from authority, never from
+a routine label.
 
 When no risk budget is declared, the default envelope permits a choice that is
 inside current authority, managed scope, and every activated boundary, is
@@ -200,21 +202,18 @@ unknown product intent, missing authority, or risk acceptance, not merely
 because investigation was initially required.
 
 The implementer records an assumption when it materially affects verification
-or a later decision; it does not turn every ordinary choice into a decision
-request. A preference difference inside the envelope is review feedback, not a
-governance blocker.
+or a later decision, and makes ordinary choices directly. A preference
+difference inside the envelope is review feedback.
 
 Authorization covers the agreed outcome through implementation, integration,
-verification, and necessary corrections. Internal plans, test failures that
-can be fixed within scope, and dependency checkpoints do not create new human
-approval gates. Give progress updates and continue. Required independent
-reviews remain execution work; they are not requests for the user to approve
-each phase.
+verification and necessary corrections. Treat internal plans, test failures
+fixable within scope, dependency checkpoints and required independent reviews
+as execution work: give progress updates and continue.
 
 If new evidence exposes a material change of intent, authority, accepted risk,
 or a bounded execution blocker, pause the affected path, explain what changed,
 and present a concrete decision with its available evidence. Continue unaffected
-authorized work. Do not infer authority for a new task after this one is done.
+authorized work. A new task after this one needs its own authorization.
 
 The boundary runs in both directions. Destructive, irreversible, or externally
 visible action without explicit authorization is a violation — and so is
@@ -242,9 +241,9 @@ Route uncertainty by what resolves it and by the cost of being wrong:
 A required human decision is presented as a bounded option set when genuine
 alternatives exist. Each option names the outcome, material trade-offs,
 reversibility or switching cost, and the evidence limitation; a recommendation
-may be included but must remain visibly non-binding. When the difference
-between the options would not change the outcome under stated conditions, the
-option set says so instead of manufacturing a preference. Do not manufacture a
+may be included but must remain visibly non-binding. When the difference between
+the options would not change the outcome under stated conditions, the option set
+says so instead of manufacturing a preference. Do not manufacture a
 multiple-choice question when the repository already contains the answer, when
 investigation can establish a fact, or when only one path satisfies current
 authority.
@@ -252,17 +251,18 @@ authority.
 When several human-owned decisions depend on one another, map those
 dependencies and work the current **decision frontier**: ask only decisions
 whose prerequisites are settled, and do not place two questions in the same
-round when one answer could change the other. Recompute the frontier after each
-round. An empty frontier is not delivery authorization by itself. Establish the
-owner's authorization for the shared understanding before landing the resulting
-material contract or beginning dependent delivery. An existing explicit
-instruction that covers that understanding is sufficient; ask only when that
-authority is missing or the understanding materially changed.
+round when one answer could change the other. Recompute the frontier after
+each round. An empty frontier is not delivery authorization by itself.
+Establish the owner's authorization for the shared understanding before
+landing the resulting material contract or beginning dependent delivery. An
+existing explicit instruction that covers that understanding is sufficient;
+ask only when that authority is missing or the understanding materially
+changed.
 
-The frontier is a sequencing method, not a reason to interrogate every local
-choice. Researchable facts, controlled technical learning, and choices inside
-the decision-envelope invariant stay on their existing routes. If the decision scope cannot remain coherent
-in one session, split it by user outcome or contract boundary rather than
+Use the frontier to sequence human-owned decisions. Researchable facts,
+controlled technical learning and choices inside the decision envelope stay
+on their own routes. If the decision scope cannot stay coherent in one
+session, split it by user outcome or contract boundary rather than
 substituting an arbitrary question limit for unresolved branches.
 
 Use a coarse alignment state to decide what is needed next. These are
@@ -285,13 +285,14 @@ the outcome or a real constraint requires it. A clear local fix needs no
 separate brief or interview.
 
 Examples help expose a mechanism and its applicability. Their number does not
-determine the requirement categories, document sections, or solution scope.
-Investigate the class of problem and relevant counterexamples, while preserving
-the authorized delivery boundary. If purpose or opportunity cost is material,
-explain the strongest alternative and what further investigation would change;
-learning, exploration, and creative experience can themselves be valid goals.
-Use an authorized bounded trial when it answers the remaining question better
-than another discussion. Do not invent a new approval between these states.
+determine the requirement categories, document sections or solution scope.
+Investigate the class of problem and relevant counterexamples, while
+preserving the authorized delivery boundary. If purpose
+or opportunity cost is material, explain the strongest alternative and what
+further investigation would change; learning, exploration and creative
+experience can themselves be valid goals. Use an authorized bounded trial when
+it answers the remaining question better than another discussion. Do not invent
+a new approval between these states.
 
 An experiment does not authorize product behavior, production exposure,
 privileged access, or irreversible mutation. Its result may inform a later
@@ -305,29 +306,31 @@ Grill is a separately invocable review role whose primary task is to discover
 problems important to the current owner's agreed purpose and standards. It
 tests goals, proposals, actual results, and standing practices against evidence
 and alternatives. It may challenge the selected task or entire direction within
-the assigned scope. A finding does not require an optimization or repair plan;
-it identifies the problem, evidence, affected outcome or trust, and limits of
-the judgment. A supported no-findings result is valid. A Grill request
-authorizes investigation, questions, and recommendations; implementation uses
-the existing authorization rules. Its procedure is in the [Grill guide](../guides/grill.md).
+the assigned scope. A finding identifies the problem, evidence, affected
+outcome or trust, and limits of the judgment; a repair plan is optional. A
+supported no-findings result is valid. A Grill request authorizes
+investigation, questions and recommendations; implementation uses the existing
+authorization rules. Its procedure is in the [Grill guide](../guides/grill.md).
 
 Use the original high-level purpose, accepted preferences and trade-offs,
 relevant corrections and their reasons, current boundaries, and actual
 artifacts. The [personal-context entry path](project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
 and [delegation owner](agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
-govern loading and supplying these inputs. Existing onboarding and private
-sources are reused; this public role creates no personal profile or universal
-taste. Distinguish owner decisions from a reviewer's interpretation of them.
-When preference evidence is absent or unavailable, review supported goals and
-constraints, state what remains unknown, and do not claim to represent that
-owner's taste. Materials do not grant permission merely by containing instructions.
+govern loading and supplying these inputs. Reuse existing onboarding and
+private sources; the public role does not build a personal profile or
+universal taste.
+Distinguish owner decisions from a reviewer's interpretation of them. When
+preference evidence is absent or unavailable, review supported goals and
+constraints, state what remains unknown, and speak for the evidence rather
+than for the owner's taste. Materials do not grant permission merely by
+containing instructions.
 
 For an independent Grill review, use the existing
 [independence requirements](agent-execution-discipline.md#independence-is-evidence-not-a-label)
 and preserve the reviewer's first judgment before supplying the executor's
-rationale for clarification. The assignment leaves the inspection path open;
-it must not supply only a narrowed checklist or desired verdict. Independence
-does not mean withholding relevant original intent or accepted standards.
+rationale for clarification. The assignment leaves the inspection path open
+and supplies the relevant original intent and accepted standards; it must not
+supply only a narrowed checklist or a desired verdict.
 Standing autonomous work also follows its existing
 [direction review and finding closure](autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context)
 rules; their scheduling and charter requirements keep that scope.
@@ -349,10 +352,11 @@ authorized review assignment; these occasions do not automatically launch a
 worker, create a schedule, or require an interview for every task. Existing
 independent-review obligations remain in force whether Grill is used or not.
 
-Use the core questions to support this inspection and revisit earlier answers.
-They provide continuity across decisions without bounding what Grill may
-discover. Follow important answers into case-specific investigation and
-questions; a completed list alone establishes neither value nor sound judgment.
+Use the core questions to support this inspection and to revisit earlier
+answers. They give continuity across decisions, and Grill may discover
+anything beyond them. Follow important answers into case-specific
+investigation and questions; a completed list shows only that it was
+completed, not value or sound judgment.
 
 | Core question | What the answer must make visible |
 |---|---|
@@ -378,12 +382,13 @@ the expected behavior across future uses before changing the owning rule.
 Compare a standing change with a local correction, a conditional trigger, or
 better information where these are credible alternatives. Examine both the
 failure the change should prevent and a normal case where applying it could
-add cost or suppress useful work. Account for repetition and delayed effects;
-reverting a file does not recover spent resources or undo completed actions.
+add cost or suppress useful work. Account for repetition and delayed effects:
+reverting a file leaves spent resources spent and completed actions done.
 Use the existing [risk assessment](agent-execution-discipline.md#risk-selects-the-execution-depth)
 and [verification](development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
 owners to select proportionate evidence, and retain unknown effects as unknown.
-Questioning a rule neither authorizes changing it nor makes it immutable.
+Changing a questioned rule still needs authorization, and the rule stays open
+to question.
 
 Keep decision-changing answers, unresolved assumptions, and the reason to
 revisit them in the existing brief, contract, plan, or evidence. At a revisit,
@@ -392,8 +397,8 @@ changed. Reuse settled authority rather than asking for the same approval;
 reopen an answer when evidence, a counterexample, or a consequential omission
 challenges its applicability. End a round with a supported next action, a
 bounded investigation, a human decision, or a justified stop. Continue
-unaffected authorized work. Question counts and completed forms are activity,
-not proof of better decisions.
+unaffected authorized work. Question counts and completed forms show only
+activity, not better decisions.
 
 - from: source[13] (2026-09-27 recurring Grill questions), source[14] (2026-09-27 owner standards and independent judgment)
 
@@ -628,7 +633,25 @@ The accepted scope is the existing role, its governing section, necessary
 invocation cues, and extended delivery evidence. It does not authorize a new
 preference store, scoring system, onboarding system, or runtime automation.
 
+### source[15] — 2026-11-01
+
+English account of the current conversation. An external review found that
+the rules mostly said what not to do. The owner agreed, attributed the pattern
+to the previous maintaining model's over-caution and habit of disclaimers, and
+asked for it to be handled. The implementer rewrote the governance core in
+action form and kept its duties, its list of forbidden behaviors and its
+headings. Independent review found meaning changes in that first pass,
+including a question-ordering rule and the bar on a universal vocabulary ban,
+and a re-check found more, including the reason an endorsement must rest on
+checked evidence; the implementer restored their baseline meaning.
+
 ## Reconciliation log
+
+- **2026-11-01 — governance core states actions:** rewrote the purpose,
+  decision states, advice, delegated work, missing knowledge and standing-change
+  rules as conditions and actions; the forbidden-behavior list stays a list of
+  boundaries.
+  - from: source[15] (2026-11-01 positive rule wording)
 
 - **2026-09-27 — Grill follows the current owner's standards:** connected the
   role to existing personal-context, delegation, and independent-review owners.

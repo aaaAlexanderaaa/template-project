@@ -77,7 +77,8 @@ to leave an undocumented coexistence state behind.
 
 Obtain complete applicable units through [task context](../docs/README.md#task-context).
 Retain their identities and recovery status in existing execution evidence;
-a manifest alone does not show that the text reached the executing context.
+a manifest shows only which units were selected, not that their text reached
+the executing context.
 
 List actual dependencies and the smallest coherent implementation. Follow
 [outcome-driven delivery](../docs/contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence):
@@ -104,8 +105,9 @@ cross-comparison. Use the existing verification record for outcomes and limits.
 
 Once the listed human decisions are settled and delivery is authorized,
 continue through implementation, integration, verification, and corrections to
-closure. Internal checkpoints do not request user approval. A new material
-decision or actual blocker pauses its affected path under the governance owner.
+closure, proceeding through internal checkpoints without a new approval
+request. A new material decision or actual blocker pauses its affected path
+under the governance owner.
 
 ## Work-selection fallback
 
@@ -140,7 +142,7 @@ Human governance exception, if any: {{scope, authority, date, residual risk}}
 - Objective outcome and holistic review: {{state and evidence}}
 - Release-gate claims, if applicable: {{state and evidence}}
 
-Lower layers do not imply that higher layers are complete.
+A lower layer shows only that layer; a higher layer needs its own evidence.
 
 ## Progress and closure
 

@@ -47,22 +47,22 @@ Out of scope:
 
 - **Routine change:** authorized, bounded work within an existing owner, with
   low-impact effects that are inexpensive to recover and credible focused
-  verification. It may add local behavior under the delivery-contract rule;
-  none of the material or high-risk conditions below may apply.
+  verification. It may add local behavior under the delivery-contract rule.
+  A routine change meets none of the material or high-risk conditions below.
 - **Material change:** changes a published API, event, schema, or integration
   contract (including compatible additions), durable-state semantics, or a
   migration; requires a new normative owner, coordinated changes to separately
-  owned commitments, or substantial dependency or recovery planning. Updating
-  an existing surface contract for local behavior is not itself a published
+  owned commitments, or substantial dependency or recovery planning. Updating an
+  existing surface contract for local behavior is not itself a published
   integration change. File count and incidental consumer edits do not select
-  this profile. After investigation, delivery that does not meet the routine
-  conditions uses this profile unless high-risk conditions apply.
+  this profile. After investigation, delivery outside the routine conditions
+  uses this profile unless high-risk conditions apply.
 - **High-risk change:** changes authorization or isolation enforcement, or has
   a credible failure path to serious confidentiality, integrity, availability,
   financial, safety, or critical user/operator harm. Broad exposure,
   difficult-to-recover effects, or a consequential compatibility failure can
   establish this profile. Architecture and product-meaning changes prompt this
-  assessment; their names alone do not establish high risk.
+  assessment, and the assessment decides.
 - **Independent review:** a review context that did not produce the proposal or
   implementation and receives the governing contract plus evidence rather than
   the implementer's unfiltered reasoning trace.
@@ -70,7 +70,7 @@ Out of scope:
   a required review step for a named scope and records the residual risk.
 - **Controlled experiment:** disposable, non-production implementation used to
   answer a named technical question that read-only investigation cannot answer;
-  it creates evidence but no product contract or public behavior.
+  it creates evidence only.
 - **Activated concern:** a quality, compatibility, state, experience, or
   operational boundary triggered by the change traits in [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony).
 
@@ -747,7 +747,27 @@ incentive or resource condition, and multiple transfers can lose the principle.
 The general rule is owned by [development](development-discipline.md#keep-essential-reasoning-active);
 this contract applies it to actual assignments and continuations.
 
+### source[16] — 2026-11-01
+
+English account of the current conversation. An external review found that
+rules written for single incidents had spread into general, high-priority
+places, naming the git-initialization stop and the named-end rule, and that
+the rules mostly said what not to do. The owner agreed to fix the spread and
+asked for the wording to be handled. The owner kept their personal
+collaboration preferences, including the named-end rule, unchanged until
+outside feedback arrives. The implementer moved the git stop back to its
+adoption owner, kept the named-end rule here as written with a cue and link
+elsewhere, and rewrote the profile, risk and completion units in action form.
+
 ## Reconciliation log
+
+- **2026-11-01 — incident rules return to their owners; core units state
+  actions:** the git-initialization stop lives with
+  [project adoption](project-adoption.md#an-existing-directory-is-described-before-template-files-are-added);
+  the named-end rule stays here unchanged, and the entrypoint, operation guide
+  and plan template keep a cue and a link. Profiles, risk and completion are
+  written as conditions and actions.
+  - from: source[16] (2026-11-01 external review dispositions)
 
 - **2026-10-30 — reasoning and discovery survive delegation:** carry applicable
   reasoning and unresolved gaps, preserve the search freedom a discovery task
