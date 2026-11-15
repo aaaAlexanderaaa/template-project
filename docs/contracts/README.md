@@ -1,49 +1,23 @@
-# Contracts
+# Normative Engineering Contracts
 
-This directory contains long-lived, normative behavior and invariant
-contracts. A current contract answers what must remain true independently of a
-particular implementation plan.
+Active engineering discipline is organized into five focused contracts:
 
-Use `templates/contract.md`, `templates/backend-change.md`, or
-`templates/cross-stack-change.md` as a starting point.
-
-`agent-execution-discipline.md` is a selectable execution profile for material
-or high-risk work performed by coding agents. This template uses it for its own
-material agent work; adopted projects confirm their depth during onboarding.
-It complements rather than overrides `development-discipline.md`: contracts
-still own behavior, while the agent profile governs risk classification,
-fixture/test phases, independent review, fresh-context evaluation, and layered
-completion.
-
-`governance-decision-boundary.md` keeps product direction, priority, trade-offs,
-and risk acceptance with declared human owners while defining the framework's
-advisory outputs and narrow execution blockers.
-
-`autonomous-operation-discipline.md` governs standing authorized work that
-continues toward a high-level objective across unattended wakes: the two-layer
-charter, the epoch protocol, the planner/executor/reviewer identities, taste
-calibration, idle reflection, and deferral control. It extends rather than
-replaces `agent-execution-discipline.md`, which still owns per-change risk
-depth.
-
-`project-adoption.md` defines AI-guided greenfield and brownfield onboarding,
-current-state preservation, managed scope, and staged enforcement.
-
-`foundational-runtime-discipline.md` owns the recognition rule for facts
-that leak across the system if left unnamed, and the Time and calendar and
-Demonstration data invariants when [development § activate-concerns](development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates those rows.
-It is not a catalog of historical pits. Adopters name project values in
-`ARCHITECTURE.md` runtime prompts only when the concern applies.
-
-`engineering-judgment-discipline.md` (`status: target`) owns the judgment
-method mined from the engineering reading set: complexity symptoms and
-refactor triggers, the in-envelope comparison procedure, build-vs-reuse
-accounting, standpoint declaration, and the self-bounding rule format. It
-becomes current only after a real project exercises it.
-
-Contracts that declare `## Source anchors` use dated `source[N]` headings and
-adjacent `- from: source[N]` citations. Once the section exists, definitions and
-references are bidirectional and mechanically enforced.
-
-Do not put step-by-step execution history here. Do not mark a future design as
-current merely because implementation has started.
+1. [collaboration-and-governance.md](collaboration-and-governance.md) — Human vs
+   engineering decision authority, three-perspective pre-code check, three-level
+   verbatim lineage, research fallbacks, and checks against metric drift.
+2. [architecture-and-modularity.md](architecture-and-modularity.md) — Software
+   architecture practices: top-down decomposition, single-owner state, explicit
+   time and fixture isolation, module entrypoints, file role headers, line
+   budgets, and layered CSS ownership.
+3. [delivery-and-verification.md](delivery-and-verification.md) — Stage-matched
+   rigor (`prototype`, `usable`, `stable`), real-path verification, review mode
+   profiles (`interactive` vs `unattended` with safety dormancy), and
+   change-based `/grill` triggers.
+4. [frontend-and-visual-discipline.md](frontend-and-visual-discipline.md) —
+   Five industry design standards (`ADR-005` / `SRC-013`), six core trade-off
+   rules, four page archetypes, layered CSS isolation (`tokens` -> `components`
+   -> page views), honest separation of facts/AI state/human sign-off, and six
+   pre-delivery UI checks.
+5. [adoption-and-synchronization.md](adoption-and-synchronization.md) — External
+   agent learning (`read before judgment`), safe onboarding for empty or
+   large repositories, and incremental `discipline_version` upgrades.

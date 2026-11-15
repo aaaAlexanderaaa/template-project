@@ -1,150 +1,87 @@
-# Repository working agreement
+# Repository Working Agreement
 
-This repository is the engineering discipline template. Its work is
-documentation and project discipline.
+This repository is the engineering discipline template (`discipline_version = "2026.11"`).
+It gives human owners and AI coding agents clear engineering rules, single-owner
+documents, and Python scripts that check code structure and explain the whole
+project clearly.
 
-The requested observable outcome is the objective. Contracts, tests, documents,
-and checks preserve intent and expose mistakes; the task is complete only when
-the requested outcome is observed. Compare delivery with the original request
-as well as its accepted interpretation.
+## 1. Priority Order
 
-Keep [essential reasoning](docs/contracts/development-discipline.md#keep-essential-reasoning-active)
-active: our framing can miss problems, instructions and working conditions can
-shape AI behavior, and a recorded lesson is not an applied or effective remedy.
-Carry that reasoning through [each transfer](docs/contracts/project-adoption.md#invariants-survive-repeated-transfer),
-with its uncertainty and unresolved gaps; load detailed methods when needed.
+Apply these priorities in order whenever requirements pull against each other:
 
-When transferring practices, preserve the [adoption value order](docs/contracts/project-adoption.md#transfer-value-is-ranked-before-its-carriers):
-interaction and epistemic discipline; truth, ownership, and boundaries; coherent
-verified delivery; activated domain disciplines; then documentation and tooling.
-Use this order to direct attention; authority and copying decisions stay with
-their owners.
+1. **Data safety and the requested outcome**: Protect user data, credentials,
+   and destructive boundaries, and deliver the working result the owner asked
+   for rather than extra paperwork.
+2. **Shared vocabulary and single source of truth**: Give each concept one name
+   and give every fact, state value, or threshold one authoritative owner file.
+3. **Module boundaries, file role headers, and isolated styles**: Keep modules
+   focused, declare each file's responsibility at the top of the file, and
+   split CSS from shared tokens to component-local files.
+4. **Stage- and environment-matched verification**: Run real end-to-end checks
+   proportional to the domain stage (`prototype`, `usable`, `stable`) and
+   collaboration mode (`interactive` vs `unattended`).
+5. **Documentation and work-queue synchronization**: Update the owning spec,
+   `docs/sources.toml`, or `docs/work.toml` when facts change without duplicating
+   descriptions across files.
 
-## Establish the current task context
+## 2. Three-Perspective Judgment Before Writing Code
 
-- required-reading: [Task context](docs/README.md#task-context)
+Before choosing how much design or process a task needs, think from three roles
+at once:
 
-Use the [task-context rule](docs/README.md#task-context) to locate:
+- **Executor**: Separate what the owner already decided from what remains open.
+  Follow settled choices directly; challenge a constraint only when concrete
+  evidence shows a clearly better alternative, and explain the trade-off plainly.
+- **Collaborator**: Judge how close the request is to a stable design. Keep
+  early exploration light so ideas move fast; once the direction settles, write
+  clear boundaries into the owning module spec.
+- **Senior Architect**: Check the target domain's `stage` (`prototype` 0->0.1,
+  `usable` 0.1->1, `stable` 1->N) in `docs-policy.toml` or
+  `docs/specs/<domain>/README.md`. Focus effort on what decides success at that
+  stage—skip multi-subagent reviews on an unbuilt `0->0.1` prototype, and guard
+  public interfaces and migrations strictly on a `stable` core.
 
-| Needed fact | Read or observe |
+## 3. Concrete Triggers (By Object and Effect)
+
+Apply the linked rule whenever your work touches the object below:
+
+| Concrete object or effect | Required action and rule owner |
 |---|---|
-| Requested outcome | User request, accepted interpretation, and original source with [decision attribution](docs/contracts/development-discipline.md#preserve-decisions-and-evidence) |
-| Reliable current facts | Relevant code/state, baseline evidence, and current contracts |
-| Decision authority | Existing authorization and the [governance boundary](docs/contracts/governance-decision-boundary.md#delegated-engineering-work-proceeds-by-default) |
-| Boundaries and exceptions | Relevant `ARCHITECTURE.md` and owning contract sections |
-| Completion evidence | The owner's acceptance conditions and [bidirectional verification](docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions) |
+| Any text read by humans or later AI sessions (`README.md`, `ARCHITECTURE.md`, specs, ADRs, CLI output, error messages, UI copy) | Use plain, direct language matching the project's chosen language: state what the object is, how it works, and what problem it solves; avoid coined jargon, stacked disclaimers, and raw enum tokens. Owner: [docs/README.md](docs/README.md#language-standard) |
+| Any value read in more than one place (DB, API, memory, DOM, URL, or config) | Assign one authoritative owner and compute downstream copies mechanically. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md#single-source-of-state) |
+| Creating a file, adding a new responsibility, or growing code/CSS | Verify owning `owns` globs, keep a 2–3 line `# Role:` header at the top of core/index files, and split before exceeding file/style line limits. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md) |
+| Architecture or module boundary description (`ARCHITECTURE.md`, domain/module specs) | Cover all five parts: positioning/non-goals, end-to-end runtime/control logic (`mermaid`), bounded interfaces & forbidden couplings, single-source state & hard invariants, and entrypoints/fitness checks. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md#decomposition-and-ownership) |
+| Product direction, interaction flow, or visual UI design (`docs/design/`, web pages) | Draft explicit options and run a pre-code `/grill` to obtain recorded owner approval before implementing UI code; prior unapproved drafts never count as owner consent. Owner: [frontend-and-visual-discipline.md](docs/contracts/frontend-and-visual-discipline.md) and [grill.md](docs/guides/grill.md) |
+| New user requirement quote, trade-off decision, or direction change | Append verbatim words to `docs/sources.toml` (`SRC-*`), update the single owning module spec or `docs/decisions/ADR-*.md`, and link IDs in `docs/work.toml`. Owner: [collaboration-and-governance.md](docs/contracts/collaboration-and-governance.md#three-level-bidirectional-lineage) |
+| Authorized task execution, review cadence, or unattended loop | Finish implementation and real verification cleanly; verify behavioral discipline and downstream template transfer as well as scripts. Owner: [delivery-and-verification.md](docs/contracts/delivery-and-verification.md) |
+| Independent review or requested `/grill` check | Load [.agents/skills/grill/SKILL.md](.agents/skills/grill/SKILL.md). Launch reviewers in a fresh context with author rationales withheld, start with an open holistic mandate across architecture, consistency, and user outcome, and route fixes back to the original + fresh reviewers to close the loop. Owner: [delivery-and-verification.md](docs/contracts/delivery-and-verification.md#independent-review-definition) |
+| External learning (`"learn from template-project"`), onboarding, or template transfer | Run `python3 scripts/read_rules.py onboard --target <path>`, keep core discipline complete in downstream templates, and strip `template-project` internal domain names from generated output. Owner: [adoption-and-synchronization.md](docs/contracts/adoption-and-synchronization.md) and [onboarding.md](docs/guides/onboarding.md) |
 
-Investigate facts before asking the user. Choose the
-[smallest execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route)
-and include an active plan only when that route requires one. Read methods when
-activated and history when a dispute, provenance question, or recovery needs it;
-do not recursively load every link. These facts stay at their existing owners.
-A request to learn this discipline opens every current rule named by
-[the learning path](docs/contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path),
-understands why it exists, then judges applicability under
-[read before judgment](docs/contracts/project-adoption.md#understand-rules-before-judging-applicability),
-compares the owner's expectation with what those rules cause, and finishes in
-one of its endings. Use supplied correction history; first-time learning
-uses the current baseline and keeps unavailable history unknown. A narrow
-practice request or method investigation within an authorized concrete task uses
-[bounded extraction](docs/contracts/project-adoption.md#take-one-practice-into-an-authorized-task).
-The comparison looks at what the rules cause; a filled policy file can inform
-it and cannot stand in for it. Later tasks open a rule when the work reaches it.
-For a request to learn this template and load separately supplied personal
-context, start with [the collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration).
-Read `docs-policy.toml` before reporting where enforcement runs. Its declared
-scope and profile say which paths the checker covers; whether the owner's
-expectation was met is judged from the outcome.
+## 4. Direct Prohibitions Against Corner-Cutting
 
-For a requested Grill review, use the [Grill role](docs/guides/grill.md) to
-find problems important to the current owner's goal and supported standards,
-including in the direction or task itself. Its invocation uses existing
-context and review boundaries; a finding may stand without a repair plan.
+- **Run real execution paths and behavior checks**: Verify changes on real CLI commands, servers, UI screens, and downstream project transfer scenarios rather than relying only on unit tests or doc-extractor checks.
+- **Finish authorized tasks cleanly**: Complete implementation, integration, and verification instead of stopping mid-task with a `"Next steps"` list unless a genuine product decision or hard blocker needs the human owner.
+- **Keep independent review open, blind to rationale, and closed-loop**: Never pre-confine an independent reviewer to code details, feed the author's defense, skip architecture/consistency inspection, or declare a review complete before re-verifying fixes with the original reviewer and a fresh context.
+- **Never treat unapproved drafts as owner sign-off**: Wait for explicit owner choice on `docs/design/` alternatives before locking a UI architecture, visual style, or layout.
+- **Prevent monoliths and catch-all folders**: Split oversized files before exceeding line budgets, avoid vague `utils / helpers / common` folders, and keep component CSS out of global layout stylesheets.
 
-## Execute the authorized outcome
+## 5. Navigation & Verification Commands
 
-- Once intent and authority are settled, continue through implementation,
-  integration, verification, and corrections. Internal checkpoints and required
-  independent reviews are part of execution; proceed through them without a new
-  approval request.
-- When the owner says to keep working until a named end, keep working until it
-  is reached or until only the owner can decide something required to
-  continue. Writing the next step is not doing it. Only the owner's own later
-  stop or newly named end changes it; a system or tool note does not.
-  [Execution](docs/contracts/agent-execution-discipline.md#material-delivery-follows-the-outcome-and-its-evidence)
-  owns the details.
-- Investigate technical uncertainty and make locally reversible choices within
-  that envelope. Ask for a human decision only when new facts change material
-  intent, authority, accepted risk, or expose an actual blocker. Pause its
-  affected path and continue unaffected authorized work.
-- Keep direction, priority, and risk acceptance with the owner. Risk
-  classification does not grant authorization. A bounded task ends at the
-  outcome the owner named. A finished slice is not that outcome when the
-  owner said to continue until a later end. Ongoing portfolio work needs its
-  own authorization.
-- Preserve unrelated changes and explicit public boundaries. Keep one owner for
-  each rule, investigate existing implementations before adding another, and
-  complete one coherent end state. A diagnosis request authorizes investigation
-  and explanation; implementation needs its own request.
-- Reconcile changed behavior at its existing owner before dependent code;
-  follow the [delivery-contract rule](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty).
-  Current authority outranks plans, summaries, memory, and worker reports.
-  An explicit instruction to adopt a rule is confirmation for that scope.
-- Name a defect's mechanism and add a proportionate sibling guard where useful.
-  Correct the responsible default, interface, example, or context route; retire
-  redundant reminders instead of appending every incident to this entrypoint.
-- Research unfamiliar checkable claims and try a capability-preserving fallback
-  when a tool fails. Preserve evidence strength and uncertainty under the
-  [inquiry rules](docs/contracts/development-discipline.md#unknown-references-are-researched-not-reconstructed).
-  Use [research](docs/guides/research.md) for evidence discovery and assessment,
-  and [information access](docs/guides/information-access.md) for difficult or
-  recurring retrieval and reusable methods. Load the applicable route on demand.
-  Use English for repository edits and plain explanations under the
-  [language standard](docs/README.md#language-style).
+Every project fact lives in one file and is linked mechanically by `scripts/`:
 
-## Read domain rules when activated
-
-[Development discipline](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony)
-owns concern triggers and required targets. Use `python3 scripts/read_rules.py list`
-to locate them, then `prepare` with every matching concern and applicable
-`--owner concern=path` binding before dependent choices. Follow the
-[complete-reading protocol](docs/contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
-for full output and recovery. The table below locates domain owners; the
-trigger table and their detailed rules decide what applies.
-
-| Task touches | Read |
-|---|---|
-| Graphical frontend | Applicable `docs/design/` surface; development's [frontend rules](docs/contracts/development-discipline.md#frontend-development-contract) |
-| Command-line or other non-graphical interaction | Its existing normative contract and development's [Experience route](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) |
-| Service, state, persistence, or API | Development's [backend rules](docs/contracts/development-discipline.md#backend-and-service-development-contract) |
-| Producer and consumer together | Development's [cross-stack rules](docs/contracts/development-discipline.md#cross-stack-coordination) |
-| Time/calendar or operator-visible demo data | Applicable sections of [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
-| Dataset analysis, metrics, ranking, or mining deliverable | [Data analysis discipline](docs/contracts/data-analysis-discipline.md) |
-| Concurrent agents or delegated work | [Written coordination](docs/contracts/agent-execution-discipline.md#parallel-work-is-coordinated-in-writing) and [bounded delegation](docs/contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner) |
-| Standing autonomous work under a charter | [Autonomous operation discipline](docs/contracts/autonomous-operation-discipline.md): independent direction review, work selection and progress across wakes |
-| Adoption into another project | [Project adoption](docs/contracts/project-adoption.md) and [onboarding](docs/guides/onboarding.md) before rewriting authority or enabling gates. Say what the project is. If the directory already has files and the owner asks to start from this repository, ask before copying or refusing. Apply [the existing-directory rule](docs/contracts/project-adoption.md#an-existing-directory-is-described-before-template-files-are-added) before the first write into the target |
-
-## Verify and close
-
-Use [bidirectional verification](docs/contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions):
-check each functional promise and activated quality boundary, then inspect actual
-external effects for missing, undeclared, excessive, or wrongly suppressed
-behavior. Include relevant identity, frequency, freshness, failure/recovery,
-and the user's next action. Passing tests cannot substitute for observing the
-claimed outcome; missing evidence remains unknown or not run.
-
-Run checks appropriate to the affected risk. Reconcile changed owners and
-projections, update plan/issue/verification states, and retire obsolete working
-context before claiming the relevant completion layer. For harness or template
-changes, run both commands with Python 3.11 or newer:
+- **Load context before editing an unfamiliar file, doc, or module**:
+  `python3 scripts/project.py context <path-or-id>`
+- **Inspect project roadmap, directory map, and review accumulation**:
+  `python3 scripts/project.py status` (use `python3 scripts/project.py serve` to inspect the local calm-platter web overview built from [docs/design/perspective-web.md](docs/design/perspective-web.md))
+- **Run tests and rule checks** (Python 3.11+):
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/check_docs.py
 ```
 
-## In a copied checkout
+## 6. Copied Checkout Guard
 
-Onboarding into any other checkout is unfinished while that checkout's agent
-entrypoint still describes it as this template and its git remote is not
-https://github.com/aaaAlexanderaaa/template-project.
+Onboarding into another repository is incomplete while its `AGENTS.md` or
+`docs-policy.toml` still identifies it as this template (`identity = "template"`)
+and its git remote is not `https://github.com/aaaAlexanderaaa/template-project`.

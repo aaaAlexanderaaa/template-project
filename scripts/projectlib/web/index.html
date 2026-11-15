@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Role: Single HTML shell for the calm-platter 4-view Project Overview workbench (zero inline styles or external CDN). -->
+<!-- Anchors: spec=ui.perspective-web, ADR-005, SRC-007, SRC-010, SRC-013 -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Overview</title>
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
+  <link rel="stylesheet" href="/styles/tables-and-inline.css" />
+  <link rel="stylesheet" href="/styles/prose-and-svg.css" />
+</head>
+<body data-archetype="orientation">
+  <header class="topbar" id="topbar">
+    <div class="topbar-grid">
+      <div class="topbar-left">
+        <strong class="brand-name" id="brand-title"></strong>
+        <span class="topbar-meta" id="brand-meta"></span>
+      </div>
+
+      <div class="topbar-center">
+        <nav class="view-tabs" id="view-tabs" role="tablist" aria-label="Primary views">
+          <button type="button" role="tab" class="view-tab" data-view="overview" data-label="导览" id="tab-overview"></button>
+          <button type="button" role="tab" class="view-tab" data-view="boundaries" data-label="架构与边界" id="tab-boundaries"></button>
+          <button type="button" role="tab" class="view-tab" data-view="roadmap" data-label="推进与溯源" id="tab-roadmap"></button>
+          <button type="button" role="tab" class="view-tab" data-view="docs" data-label="全库文档" id="tab-docs"></button>
+        </nav>
+        <div class="view-select-wrap">
+          <select id="view-select" class="input-ctl compact-select" aria-label="Switch view">
+            <option value="overview"></option>
+            <option value="boundaries"></option>
+            <option value="roadmap"></option>
+            <option value="docs"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button type="button" id="btn-doc-drawer" class="top-btn topbar-primary-btn" data-action="toggle-doc-drawer"></button>
+        <button type="button" id="btn-run-tests" class="top-btn topbar-btn-collapsible" data-action="run-tests"></button>
+        <button type="button" id="btn-mark-reviewed" class="top-btn topbar-btn-collapsible" data-action="mark-reviewed"></button>
+        <button type="button" id="btn-lang" class="top-btn top-btn-lang topbar-btn-collapsible" data-action="toggle-lang">EN</button>
+        <div class="more-wrap">
+          <button type="button" id="btn-more" class="top-btn" aria-haspopup="menu" aria-expanded="false" data-action="toggle-more">···</button>
+          <div id="more-menu" class="vibrancy-popover more-menu" role="menu" hidden></div>
+        </div>
+      </div>
+    </div>
+    <div class="topbar-progress" id="topbar-progress" aria-hidden="true"></div>
+  </header>
+
+  <main class="workspace-host" id="workspace-host">
+    <section id="view-overview" class="view-panel"></section>
+    <section id="view-boundaries" class="view-panel" hidden></section>
+    <section id="view-roadmap" class="view-panel" hidden></section>
+    <section id="view-docs" class="view-panel" hidden></section>
+  </main>
+
+  <aside id="doc-drawer" class="vibrancy-drawer" aria-label="Document index drawer" hidden></aside>
+  <div id="action-toast" class="action-toast" role="status" aria-live="polite" hidden></div>
+  <button type="button" id="jump-back-btn" class="jump-back-pill" hidden></button>
+
+  <footer class="statusbar" id="statusbar" hidden>
+    <div class="statusbar-inner">
+      <span id="status-counts" class="num"></span>
+      <span id="status-telemetry" class="muted"></span>
+    </div>
+  </footer>
+
+  <!-- Hidden structural anchors kept for standalone reader helper compatibility -->
+  <div id="drawer-root" class="compat-hidden hidden" aria-hidden="true">
+    <div id="drawer-backdrop"></div>
+    <span id="drawer-kicker"></span>
+    <span id="drawer-title"></span>
+    <button type="button" id="drawer-close"></button>
+    <div id="drawer-body"></div>
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

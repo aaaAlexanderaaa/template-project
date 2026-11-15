@@ -1,276 +1,50 @@
-# Engineering Discipline Template
+# Engineering Discipline Template (`template-project`)
 
-This is a domain-neutral engineering template. It is independent of any
-particular product, framework, or runtime, and it contains no product
-implementation. Its most important product is not the directories, templates,
-or checker, but the judgment and delivery discipline those carriers exist to
-hold.
+> **中文说明**：请查看 [README_CN.md](README_CN.md)。
 
-This repository supports people and AI agents doing sustained work through
-tools. Strong reasoning in one setting does not ensure reliable choices in
-another: instructions, available context, resources, incentives and feedback
-affect behavior. The discipline keeps [essential reasoning](docs/contracts/development-discipline.md#keep-essential-reasoning-active)
-available to help users notice missing problems and question the discipline
-itself. Its [transfer rule](docs/contracts/project-adoption.md#invariants-survive-repeated-transfer)
-follows that reasoning through learning, local rules and later execution.
-Recording or recognizing a problem does not establish that it will be resolved.
-Everything here serves the requested observable outcome; contracts, tests,
-documents and checks preserve intent and expose mistakes, and completing them
-alone is never completion of the task.
+`template-project` is an **Engineering Discipline Template** (`discipline_version = "2026.11"`) for software repositories built with AI coding agents. Its core product is a transferable set of engineering agreements, architectural contracts, starter templates, and independent review protocols that keep growing codebases readable, modular, honest, and aligned with the project owner's real intent.
 
-Two further observations shape the discipline: the owner's attention is the
-most expensive resource and compute is the cheapest, so cost is pushed toward
-the machine side by default — while staying cost-aware, because quotas and
-circuit breakers protect accounts and attention rather than ration compute;
-and an unverified claim remains unverified, however plausible it sounds.
-The discipline has been exercised and corrected in the maintainer's own
-projects since 2026-07, and feeding that experience back is a standing
-practice; independent adoption remains the open frontier.
+The Python scripts in `scripts/` and the optional browser overview are **supporting tools** that validate single-source links, enforce file line budgets, and bootstrap new or existing projects.
 
-## Transfer value order
+## What This Template Gives Any Repository
 
-When an agent learns from this repository, use the order below to allocate
-reading attention. Follow [read before applicability judgment](docs/contracts/project-adoption.md#understand-rules-before-judging-applicability)
-before deciding what to take away. The ranking considers breadth of use,
-downstream leverage, error cost, portability and dependence on target context:
+1. **Clear Entry & Priority Rules ([AGENTS.md](AGENTS.md))**: Defines rule priority, three-perspective pre-code judgment, concrete triggers by object type, and direct prohibitions against corner-cutting.
+2. **Modular Contracts & Plain Language ([docs/contracts/](docs/contracts/README.md))**: Enforces single-source state ownership, five-part system architecture (positioning, runtime logic, bounded couplings, constraints/state, module entrypoints), stage-matched verification, and direct plain prose ([docs/README.md](docs/README.md#language-standard)).
+3. **Traceable Governance & Design Gate ([docs/sources.toml](docs/sources.toml), [docs/work.toml](docs/work.toml))**: Connects verbatim owner requirements (`SRC-*`), architectural decisions (`ADR-*`), design drafts (`docs/design/`), module specs (`docs/specs/`), and concrete work items (`T-*`). Product direction and UI layouts require explicit owner approval before implementation.
+4. **Open-Ended, Closed-Loop Independent Review ([docs/guides/grill.md](docs/guides/grill.md), [templates/independent-review.md](templates/independent-review.md))**: Requires fresh reviewer contexts with author rationales removed, open holistic inspection across architecture and consistency, and mandatory re-verification with original reviewers after fixes.
+5. **Lossless Starter Templates & Skills ([templates/](templates/README.md), [.agents/skills/](.agents/skills/onboard-discipline/SKILL.md))**: Preserves full discipline rules while keeping `template-project` internal domain names out of downstream projects.
 
-| Base priority | Understand first | Why first | Current owner |
-|---|---|---|---|
-| **P0** | Human–agent interaction and epistemic discipline | It decides whether facts are established, whether the right question is asked, and whether user authority and task scope are preserved; it affects every later judgment | [development discipline](docs/contracts/development-discipline.md) § research-unknowns – causal-mechanism; [governance boundary](docs/contracts/governance-decision-boundary.md) (all invariants) |
-| **P1** | Current truth, authority, ownership, dependency boundaries, and historical debt | It decides whether existing truth is overwritten, whether rules are copied, and whether local debt spreads across the project | [architecture](ARCHITECTURE.md); [development discipline](docs/contracts/development-discipline.md) § one-owner – coherent-end-state; [project adoption](docs/contracts/project-adoption.md) § current-vs-target – visible-debt |
-| **P2** | Coherent end states, risk-scaled execution, outcome-specific evidence, class-level guards, failure recovery, and the test for facts that leak across the system if left unnamed | It decides how a correct understanding becomes a verifiable complete delivery, and whether an unnamed default will have to be cut over later | [agent execution](docs/contracts/agent-execution-discipline.md) § risk-selects-depth – smallest-route; [development discipline](docs/contracts/development-discipline.md) § outcomes-first – decisions-not-volume; recognition rule in [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
-| **P3** | Frontend, backend, cross-stack, style, data, operations, security, performance, time/calendar, demonstration data, and other conditional disciplines | They are high-value when the target project activates the matching boundary, and should be promoted by real risk | the matching domain contracts in [development discipline](docs/contracts/development-discipline.md) and the activated concern owner; time and demo invariants: [foundational runtime](docs/contracts/foundational-runtime-discipline.md) |
-| **P4** | Documentation topology, templates, adoption stage, policy manifests, the checker, and CI examples | They carry or enforce the discipline above; copyability is not the same as value priority | [documentation map](docs/README.md); [documentation harness](docs/contracts/documentation-harness.md) |
+## Quick Start
 
-This is an **attention and extraction order**, not the document authority
-order, and not a requirement to copy everything. Target-project evidence can
-promote a P3 domain into P1/P2; for example, a complex UI immediately moves
-user states, interaction, accessibility, and style ownership forward. Learning
-and adoption use the same ranking. Learning writes its applicability judgment
-into the target, or states that nothing needs to change and gives the
-repository fact for each rule that does not apply, or stops to confirm the
-method of the remaining changes. Adoption writes governance scope and
-enforcement when that is requested and the method is confirmed. Take the
-method first. Copying this repository's files waits for that confirmation.
+### Start a new project from this template
 
-The documentation checker depends only on the Python standard library.
-The minimum version is Python 3.11.
-
-For work in this checkout, [AGENTS.md](AGENTS.md) routes to the
-[current task context](docs/README.md#task-context).
-`python3 scripts/read_rules.py list` locates concern-specific reading targets;
-the [reader protocol](docs/contracts/documentation-harness.md#complete-rule-delivery-is-a-read-only-transaction)
-defines complete preparation and recovery. The
-[task procedure](docs/guides/project-operation.md#execute-one-task-from-request-to-result)
-connects the original request, applicable rules, execution and completion.
-For selective transfer, use [the one-practice card](docs/guides/project-operation.md#take-one-practice-into-a-task).
-The [practical task CheatSheet](docs/guides/task-cheatsheet.md) offers concise
-moves for investigation, delivery, explanation, continuity and learning, with
-copyable prompts and examples. Review has its own linked collection.
-
-## Inspect project documents on demand
-
-The optional overview locates declared rules, active work, open commitments
-and information needing judgment before you choose concerns:
-
-```sh
-python3 scripts/read_rules.py overview
-python3 scripts/read_rules.py overview --source docs/contracts --outline
-python3 scripts/read_rules.py overview --format json --limit 5
+```bash
+python3 scripts/project.py init --target /path/to/new-repo --name "My Product" --lang en
+# Or initialize with Chinese starter docs:
+python3 scripts/project.py init --target /path/to/new-repo --name "我的项目" --lang zh
 ```
 
-The default view is compact. `--outline` expands source headings; repeat
-`--source PATH` to select other local Markdown files or directories. Each
-result keeps its source identity. JSON also reports excluded records,
-unclassified material, scan diagnostics and the next page. Continue with the
-same source selection, `--today` value (if supplied), and `--snapshot` identity; restart at offset 0 if sources
-changed. Exit 2 marks incomplete coverage. Dates stay unassessed until you
-supply your calendar reference with `--today YYYY-MM-DD`.
+### Adopt or upgrade engineering discipline in an existing repository
 
-Open working records directly and use the existing `prepare` command for
-complete current rules. [The overview contract](docs/contracts/documentation-harness.md#document-overviews-expose-sources-before-concern-selection)
-defines scope, output and recovery. The using project chooses manual calls,
-hooks or other host integration under its existing authority.
-
-## Start from a new or existing project
-
-You can ask an agent:
-
-> Learn the discipline from template-project. Obtain every current rule named
-> by its learning path, read it and understand why it exists before deciding
-> whether it applies here. Compare the rule's mechanism and limits with this
-> project's facts and existing discipline. Keep source reading separate from
-> adopting or enforcing it. Finish by writing the settled changes, by stating
-> that nothing needs to change and why each unused rule does not apply, or by listing the changes
-> whose method needs confirmation. Then read the onboarding entrypoint of the
-> user memory I supply for collaboration background and decision preferences.
-> Keep personal material private, and continue the authorized task.
-
-The [collaboration entry path](docs/guides/onboarding.md#start-collaborating-without-a-migration)
-works without copying this repository or requiring a personal memory. Supply
-the actual source locations to the agent; this template has no dependency on a
-particular user's profile, account, local path, or memory format. A request to
-learn practices writes the applicability judgment or asks before copying this
-template, enabling enforcement, replacing existing instructions, or changing
-product code.
-
-New projects, older adopters and projects with their own discipline use that
-same reading order. Existing local coverage informs the comparison after
-reading. For one-practice examination or a method inquiry within an authorized
-concrete task, use the
-[extraction card](docs/guides/project-operation.md#take-one-practice-into-a-task);
-it reads that practice's complete source and reason without claiming a full
-learning survey.
-
-## How to adopt the governance files and checks
-
-1. Read `docs/README.md` for the document authority order.
-2. Use this repository as the starting tree when the target directory is
-   empty. Say what the project is first. When the directory already has files
-   and the owner also asks to start from this repository, ask before copying
-   or refusing. If it has files and no git repository, say so, initialize git,
-   and commit those files before adding anything. If git cannot be
-   initialized, stop adding template files and tell the owner. For a running
-   project, first do the read-only inventory in `docs/guides/onboarding.md`;
-   do not overwrite existing authority.
-3. Record current facts, governance scope, priority authority, and adoption
-   stage in `templates/adoption-assessment.md`, and have the project owner
-   confirm them.
-4. Declare those decisions in `docs-policy.toml` (see “Scaling to project
-   size” below): `[adoption].stage`, `source_roots`, `managed_paths`, and
-   `[templates].profile`. The checker reads these fields; it does not assume
-   one project shape.
-5. Complete a current-state `ARCHITECTURE.md` and the relevant contracts
-   before the first governed product change. Date/time and operator-visible
-   demo data are [development § activate-concerns](docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) concerns: read them when they apply; do not fill a pit
-   catalog when they do not.
-6. Material delivery must land a contract first. When a technical fact cannot
-   be learned read-only, use [development § contract-first](docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty)'s disposable controlled-experiment path; the
-   experiment must not become product behavior.
-7. Choose the [smallest execution route](docs/contracts/agent-execution-discipline.md#the-harness-selects-the-smallest-executable-route).
-   Authorized low-impact local behavior may update its existing owner without
-   a standalone plan. Only the high-risk route requires independent design
-   review and a fresh-context evaluation. Classification does not grant authority.
-8. Configure `architecture-rules.toml`, or record why it does not apply.
-9. Run the unit tests and `python3 scripts/check_docs.py` with Python 3.11+.
-10. Adapt `templates/ci/docs-check.example.yml` to the project's own CI.
-
-## Scaling to project size
-
-The template does not assume project size, and it does not require a finished
-migration before CI is connected. Four knobs live in `docs-policy.toml`:
-
-| Knob | Role | Typical values |
-|---|---|---|
-| `[adoption].stage` | Whether adoption work fails the build | `observed`/`baselined` report and return 0; `scoped_enforcement`/`adopted` block |
-| `[adoption].source_roots` | What counts as product code | `["src"]`, `["app", "lib"]`, `["packages"]`, `["cmd", "internal"]`, `["main.py"]` |
-| `[adoption].managed_paths` | Governed boundaries under `scoped_enforcement` | `["packages/billing/**"]` |
-| `[templates].profile` | Which templates are required (tiers accumulate) | `minimal` / `standard` / `full` |
-
-That produces these working modes:
-
-- **Small project:** `profile = "minimal"` keeps only the contract, plan,
-  issue, and guide templates; the rest can be deleted. Leftover references to
-  removed templates become advisory and do not turn the build red.
-- **Running project:** the checker can enter CI on day one. `stage =
-  "observed"` prints unfinished adoption work and returns 0, then tightens as
-  the stage advances.
-- **Layouts other than `src/`:** if code sits outside every configured source
-  root, the checker names it instead of giving a meaningless green result on an
-  empty set. The same stage rule applies: early stages only report, so CI can
-  start before the layout is fully declared. Root application files must also
-  be claimed; an individual file such as `main.py` can be a source root.
-  Tooling paths go in `harness_paths`, including root build files and globs
-  such as `tools/**`. The shipped policy declares common tooling examples.
-- **CI:** structural problems are errors. Findings that appear only because a
-  date moved (an aged target, an overdue promise, expired pending evidence)
-  default to advisory. Put `--strict` on a scheduled job so a calendar change
-  does not fail an unrelated pull request. A rule set to `off` stays off even
-  under `--strict` — turning it off is the project's own decision.
-
-## Layout
-
-```text
-.
-├── README.md                 # English homepage
-├── AGENTS.md                 # working agreement for automated developers
-├── CONTRIBUTING.md           # shared workflow for humans and agents
-├── ARCHITECTURE.md           # structural authority template for the adopting project to fill
-├── architecture-rules.toml   # machine-checkable baseline architecture boundaries
-├── docs-policy.toml          # document aging, templates, and adoption policy
-├── docs/
-│   ├── README.md             # document authority and lifecycle map
-│   ├── contracts/            # current, durable norms
-│   ├── design/               # raw ↔ translated contracts for UI surfaces
-│   ├── plans/                # execution plans for one change
-│   ├── issues/               # lifecycle of defects and audit findings
-│   ├── guides/               # operating and maintenance procedures
-│   └── evidence/             # durable, reviewable evidence
-├── templates/                # copyable templates; they have no project-behavior authority
-├── scripts/                  # portable mechanical enforcement of the discipline
-├── src/                      # product-code placeholder; currently empty
-├── tests/                    # checker fixture tests; add product tests after adoption
-├── tmp/                      # local scratch evidence; gitignored
-└── archive/                  # local replacement backups; gitignored
+```bash
+python3 scripts/read_rules.py onboard --target /path/to/existing-repo
 ```
 
-## Migration principles
+### Verify this repository cleanly
 
-Migrate the method, not the original project's tools or numbers:
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/check_docs.py --strict
+python3 scripts/project.py status
+```
 
-- A contract precedes material delivery; unknown technical facts are
-  investigated or run as bounded, disposable experiments.
-- Current authority is identifiable.
-- Conflicts must be reconciled.
-- Plans aim at one coherent end state.
-- Defects are fixed by category; add a class-level guard when a sibling
-  mechanism is repeatable and the cost is proportionate.
-- Frontend work enumerates reachable states and combines perceptual and
-  structural evidence.
-- Frontend visuals and copy are translated from a raw brief: design candidates
-  and probes are evidence only; accepted direction enters the surface/style
-  owner; missing product intent still returns to a human decision.
-- Style has one owner: layer order, shared visual-value tiers, and the
-  published override surface are explicit. Consumers compose published
-  contracts; unauthorized escalation is recorded as owned debt with a removal
-  condition.
-- Backend work names state ownership, failure, and recovery.
-- Time policy declares scope and the roles of storage, calendar calculation,
-  input, and display. Visible demonstration data meets its declared temporal
-  promise; mutations remain environment-gated. Read the
-  [runtime owner](docs/contracts/foundational-runtime-discipline.md) when activated.
-- Agent risk decides execution depth; high-risk design and acceptance use a
-  genuinely independent context.
-- Each activated quality concern has one normative contract as owner; plans
-  record links, steps, and evidence, not a second copy of the policy.
-- Developers own direction and priority; the framework supplies facts, risks,
-  recommendations, and bounded execution gates.
-- Unfamiliar references and checkable facts are not filled in by guessing;
-  prefer primary or official sources, and when a tool is unavailable first
-  seek a fallback that preserves semantics and evidence strength.
-- Investigate technical facts first; the executor makes reversible engineering
-  choices; product intent, material trade-offs, and risk acceptance return to
-  the user as a bounded choice. Interdependent decisions advance on a
-  prerequisite-safe frontier and establish authorization before delivery;
-  an existing explicit instruction covering that understanding is sufficient.
-  Analysis is judged by whether it makes the causal mechanism, applicable
-  boundary, and material implied questions clear.
-- Onboarding preserves current facts first, then tightens
-  observed → baselined → scoped_enforcement → adopted.
-- Task, task-group, objective, and release-gate completion close separately;
-  lower-layer completion does not impersonate a higher layer.
-- Raw inputs and derived representations stay layered; deletion, migration,
-  and GC keep verifiable evidence.
-- Prefer rules in the environment over rules in memory.
-- Plans, contracts, issues, and evidence do not impersonate one another.
-- Documentation governance manages both increment and stock: update, merge,
-  distill, retire, and delete scratch evidence. File counts, line counts, and
-  a uniform retention age are not substitutes for quality judgment.
+## Key Entrypoints
 
-Viewport count, test framework, directory depth, publishing platform, style
-scheme (CSS organization, token names, and theme implementation), and file-line
-thresholds must be decided again by the actual project.
-
-## License
-
-This repository is published under the [MIT License](LICENSE).
+| File | Role |
+|---|---|
+| [AGENTS.md](AGENTS.md) | Top-level working agreement loaded by every human and AI session |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Positioning, core operational logic, constraints, state ownership, subsystems, and downstream transfer |
+| [docs-policy.toml](docs-policy.toml) | Repository line budgets (`max_source_lines = 500`, `max_style_lines = 300`), domain stages, and review cadence |
+| [docs/README.md](docs/README.md) | Document layout, plain-language rules, and context-reading workflow |
+| [docs/design/perspective-web.md](docs/design/perspective-web.md) | Approved calm-platter 4-view web workbench specification (`SRC-013`, `ADR-005`, `T-204` awaiting owner check) |
+| [templates/README.md](templates/README.md) | Starter templates transferred to downstream repositories |

@@ -1,44 +1,10 @@
-# Guides
+# Operational Guides
 
-Guides explain how users and maintainers perform operations. They are guidance,
-not structural or behavioral authority.
+Step-by-step playbooks applying the contracts under [../contracts/](../contracts/):
 
-Use a guide for setup, deployment, incident response, data maintenance, or
-operator workflows. Link to contracts rather than restating their rules.
-
-Start template adoption with `onboarding.md`. After the project has a confirmed
-profile, managed scope, priority authority, and adoption stage, use
-`project-operation.md` for the continuous human-directed execution loop.
-
-Use [the Grill role](grill.md) to find problems important to the current owner's
-goal and supported standards. It provides a separate invocation, connects to
-existing personal-context and review rules, and uses recurring questions to
-support judgment without requiring a repair plan.
-
-Use [research](research.md) to choose useful observations, assess evidence and
-alternatives, and return conclusions within their support. Use
-[information access](information-access.md) to obtain material, check observation
-limits, and reuse verified methods. Both have bounded role invocations; they can
-be used by the current agent without a separate worker or full-library loading.
-
-`engineering-reading.md` records the external sources this template has
-mined for engineering-judgment discipline, with authorship classes, mining
-angles, and rejected candidates. It is reading guidance, not authority.
-
-Use [the task procedure](project-operation.md#execute-one-task-from-request-to-result)
-for the practical sequence from original request through judgment and delivery.
-Its examples cover a lookup, a template improvement, a service defect and an
-analytical explanation.
-
-[The practical task CheatSheet](task-cheatsheet.md) helps choose and carry out a
-small useful action across investigation, delivery, explanation, continuity,
-learning and simplification. Its prompts are adaptable examples below the task
-SOP. [Question starters from practice](task-starters.md) offer short translated
-or combined questions from historical work, with their source transformations.
-[Review tasks and question CheatSheet](review-cheatsheet.md) specializes
-that layer with dispatch prompts and question experiments. Its
-[wording and context examples](review-cheatsheet.md#choose-wording-and-context-together)
-help users and question-asking AIs choose a method and interpret its evidence.
-Use
-[the extraction card](project-operation.md#take-one-practice-into-a-task) to try
-one practice in an existing task without selecting a full learning survey.
+- [onboarding.md](onboarding.md) — Starting a new project or adopting/upgrading
+  `template-project` safely.
+- [grill.md](grill.md) — Running an on-demand `/grill` challenge or two-angle
+  independent review against user goals, newcomer clarity, and architecture.
+- [research-and-access.md](research-and-access.md) — Multi-angle primary-source
+  research and capability-preserving tool fallbacks.

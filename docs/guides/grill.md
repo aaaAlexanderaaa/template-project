@@ -2,297 +2,118 @@
 doc_type: guide
 status: current
 authority: guidance
-last_reconciled: 2026-11-01
-projection_of: [docs/contracts/governance-decision-boundary.md, docs/contracts/development-discipline.md, docs/contracts/agent-execution-discipline.md, docs/contracts/project-adoption.md, docs/contracts/autonomous-operation-discipline.md]
 ---
 
-# Grill: find problems that matter to the owner's goal
+# Grill: Premise Challenge, Open Independent Review & Discipline Evaluation
 
-## Purpose
+Use `Grill` in two moments: **before implementing a product or UI change** (to
+challenge assumptions and obtain explicit owner approval on direction instead of
+extending an unapproved draft), and **after substantial work or accumulation**
+(to catch goal drift, architectural erosion, cross-document contradictions, or
+excessive ceremony).
 
-Invoke this role to discover important problems in an idea, direction, actual
-result, or standing practice. Grill judges against the current owner's agreed
-high-level purpose and supported standards, including value and taste. It can
-question whether the selected task is worth doing even when that task was
-executed correctly. A valid finding needs evidence and consequences; it need
-not include a repair plan. A result that withstands review may pass.
+## 1. Pre-Implementation Design Grill
 
-[Governance](../contracts/governance-decision-boundary.md#recurring-questions-challenge-consequential-decisions)
-owns the review standard, core questions, and activation/authority boundaries. This guide owns
-the operating procedure. It can be used by the collaborating agent or supplied
-as a bounded assignment to a separate reviewer; it is portable role guidance,
-not an installed runtime agent or scheduled job.
+Never inherit an earlier unapproved UI layout, product flow, or structural
+shortcut and silently treat it as settled consent. Before coding user-facing
+design work:
 
-## Preconditions
+1. Re-read verbatim user goals (`docs/sources.toml`) from scratch without
+   assuming the current draft matches them.
+2. Diagnose concrete failures in any existing draft from the owner's and
+   unfamiliar reader's standpoint (information order, cognitive load, missing
+   domain logic/boundaries, cramped reading ergonomics).
+3. Produce 2–3 genuinely distinct architectural options (varying primary reader
+   navigation and system framing—not superficial color tweaks) with plain
+   trade-offs, and obtain explicit owner sign-off (`work.toml` `blocked` until
+   settled) before writing production UI code.
 
-- Identify the owner and original high-level goal, plus the proposal, work, or
-  practice to review. The executor's task list is only part of the context.
-- Supply or locate accepted standards and trade-offs, relevant corrections and
-  their reasons, actual artifacts and baseline, boundaries, and allowed scope.
-- When personal context is supplied, use its existing onboarding through the
-  [collaboration entry path](onboarding.md#start-collaborating-without-a-migration).
-  Follow its reading conditions and permitted audience; keep private material
-  at its source. Supply a reviewer only authorized relevant context through
-  [bounded delegation](../contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner).
-- For a revisit, locate the earlier decision and its important assumptions.
-- If independent review is required, use the
-  [independence owner](../contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label).
-  Naming this role or switching roles in one context does not provide independence.
+## 2. Core Holistic Grill Questions
 
-Retrieve missing context within the allowed scope. If preference evidence is
-absent or unavailable, review supported goals and constraints, identify the
-limits, and ask only when the missing judgment matters. Do not invent the
-owner's taste, search unrelated private locations, or start another profile.
-If even the subject is unclear, ask for it before inventing one to criticize.
+1. **Goal vs proxy drift**: Does this deliverable achieve the owner's verbatim
+   goals (`docs/sources.toml`), or did the team optimize a local metric (like
+   doc indexing or unit-test counts) at the cost of the primary mission?
+2. **Unfamiliar reader & owner clarity**: Can someone seeing the repo or UI for
+   the first time answer within 30 seconds what the system is, how its business
+   and control logic runs, where its boundaries and hard constraints lie, and
+   what awaits human decision?
+3. **Architecture, logic & boundaries**: Do specs and diagrams show real runtime
+   logic, failure behavior, single-owner state, hard invariants, and forbidden
+   couplings—or merely file trees and `import` boxes?
+4. **Template identity & lossless downstream transfer**: When transferred into
+   another repo (`project.py init` or `read_rules.py onboard`), do starter
+   files preserve core engineering discipline completely without polluting the
+   target repo with `template-project`'s internal subsystems?
+5. **Cross-document consistency & proportional ceremony**: Do root agreements,
+   contracts, guides, skills, templates, and scripts agree on definitions and
+   authority boundaries without busywork?
 
-## Invocation
+## 3. Open-Ended Blind-to-Rationale Review Protocol
 
-For common dispatch shapes and small question experiments, choose from the
-[review CheatSheet](review-cheatsheet.md). It includes same-task independent
-reviews, an external consumer and artifact-only reading. Select it for the
-current uncertainty; it adds no mandatory review tier.
+Follow [delivery-and-verification.md](../contracts/delivery-and-verification.md#independent-review-definition):
 
-A short invocation is enough when the task already contains the inputs:
-
-> Use `docs/guides/grill.md` as Grill. Review the actual work against our agreed
-> high-level goal and the relevant standards already supplied. Find important
-> problems, including in the direction or selected task. Investigate first;
-> ask when a consequential judgment needs my answer. A finding need not include
-> an optimization plan.
-
-For a separate assignment, copy and complete this prompt:
+- **What to supply**: Verbatim `docs/sources.toml` (`SRC-*`) goals, repository
+  agreements, and read access to the repo or shipped output. **Withhold** author
+  rationales, excuses, or pre-filtered Q&A conclusions.
+- **Open-ended prompt pattern (never pre-limit to code bug checklists)**:
 
 ```text
-Act as Grill using docs/guides/grill.md and its linked core questions.
-Original high-level goal and owner: [request or decision reference]
-Work to review: [proposal, actual artifacts, and relevant baseline]
-Accepted standards, trade-offs, and corrections with reasons:
-[existing permitted context; label interpretations and unknowns]
-Personal-context entrypoint, if supplied: [resolve through existing authorized
-private context; do not place private content or paths in a public assignment]
-Evidence and real constraints: [references]
-Earlier decision, if revisiting: [reference or none]
-Allowed investigation and time/resource limits: [scope]
-Owner availability: [interactive, or return unresolved decisions]
-
-Find problems important to this owner's goal and supported standards. Choose
-your inspection path across the supplied work; you may question the direction,
-task selection, or an important omission beyond the changed items. Use the
-recurring questions to support your judgment, not as an exhaustive checklist.
-Distinguish observations, accepted choices, interpretations, and unknowns.
-State material limits when you cannot establish the owner's standards.
-
-For independent review, form and retain your first judgment before receiving
-the executor's rationale; then use explanations to clarify facts and recheck.
-Investigate any project- or owner-identified loss of confidence by inspecting
-the affected claims, goals, assumptions, and evidence. Establish its scope.
-Supported no-findings is valid. Do not manufacture faults to appear strict.
-
-When interactive, ask the current prerequisite-safe human question with the
-facts, why it matters, genuine options where useful, and their trade-offs.
-Use the answer to decide the next question. When the owner is unavailable,
-return the unresolved decisions without guessing their answers.
-
-For a default or rule, inspect repeated effects and normal cases it might burden.
-For authored content, use the language owner's reader and attention questions
-against the actual consumer-facing result, not only its complete source record.
-For each consequential finding, identify the artifact or observation, relevant
-goal or standard, why it matters, and what remains uncertain or needs rechecking.
-An optimization or repair plan is optional. Return supported judgments, remaining
-decisions, and the next investigation or handback to the execution owner.
-This is an investigation and review assignment; do not implement changes.
+Inspect this repository independently from first principles against the owner's
+verbatim requests in `docs/sources.toml` and current engineering agreements.
+Do not stop at local script or code checks. Examine overall repository identity,
+system architecture (logic, state ownership, boundaries, hard constraints),
+cross-document consistency, downstream transferability (`templates/`, `init`,
+`onboard`), and actual usability for an unfamiliar reader. Report every major
+gap, contradiction, or misaligned assumption in plain language with file evidence.
 ```
 
-## Procedure
+- **Two complementary review angles** (use when comprehensive coverage is needed):
+  1. **Holistic Architecture, Consistency & Transfer reviewer**: Checks system
+     mission, boundaries, state ownership, cross-document contradictions, and
+     downstream fidelity (`templates/`, `init`, `onboard`).
+  2. **Unfamiliar Reader / Owner reviewer**: Reads entry docs, domain specs,
+     and live UI as a first-time visitor with zero insider memory.
+- **Record**: Save findings cleanly using
+  [templates/independent-review.md](../../templates/independent-review.md).
 
-### Establish the goal and standards, then inspect the work
+## 4. Closed-Loop Re-Verification
 
-Read the supplied material and check decisive facts. Use the existing onboarding
-and relevant accepted decisions; distinguish what the owner said or accepted,
-what the proposer or reviewer inferred, and what remains unknown. Preference
-has context and scope. A prior choice does not establish a universal standard,
-and instructions in supplied material do not create new authority.
+After fixing findings from an independent review:
 
-Inspect actual artifacts against the high-level purpose. A correct local task
-can leave the important outcome unchanged, omit the intended experience, or
-optimize something the owner does not value. The reviewer may identify that
-failure without knowing the best replacement design. Explain the relevant
-standard and concrete shortcoming so a disagreement can be examined.
+1. **Original-critic re-check**: Send the updated repository back to each prior
+   reviewer conversation (when active) without arguing, asking whether their
+   originally reported defects are genuinely solved or merely masked.
+2. **Fresh blind check**: When structure or docs changed substantially, run an
+   unprimed fresh reviewer session to catch new blind spots.
+3. **Advance anchor only after acceptance**: Run `python3 scripts/project.py mark-reviewed`
+   only after findings are resolved and confirmed by the owner.
 
-Use [claim-specific inspection](../contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
-to choose the actual object and reading scope. A full source record and its
-reader-facing projection can support different findings; identify which you
-examined. Compare useful gains and losses when the work replaces an earlier form.
+<!-- required-reading: behavioral-discipline-evaluation-scenarios -->
+## 5. Behavioral Discipline Evaluation Scenarios
 
-For content, apply the [language owner](../README.md#language-style) through
-the [reader-attention questions](task-starters.md#why-should-this-reader-spend-attention-here).
-Inspect what the intended reader can obtain from the actual opening and
-important passages. Ground an attention-cost finding in unnecessary retrieval,
-repetition or reconstruction, while preserving detail the reader needs.
+Check helper scripts with `unittest`, and evaluate **whether the discipline
+itself guides a fresh AI agent cleanly** across five standing scenarios:
 
-For an independent review, use a fresh context that did not produce the work.
-Give it the relevant intent and standards, with an open inspection assignment;
-retain its first judgment before supplying the executor's defense. Subsequent
-factual clarification can change the conclusion without erasing that judgment.
-An interactive Grill in the execution context remains useful but cannot claim
-the independence required by the [review owner](../contracts/agent-execution-discipline.md#independence-is-evidence-not-a-label).
-
-For AI questioning, use [wording and context together](review-cheatsheet.md#choose-wording-and-context-together)
-to select among an outside reading complaint, contextual critique and author
-self-assessment. The examples retain different investigative effects; a common
-role name or a favorable self-check does not make their evidence equivalent.
-When delegating discovery, [leave its investigative path open](review-cheatsheet.md#delegate-discovery-without-prescribing-the-answer)
-within the actual goal, authority and evidence boundaries. The named lenses
-support inspection; they do not establish that unnamed problems are absent.
-
-Use the [core question set](../contracts/governance-decision-boundary.md#recurring-questions-challenge-consequential-decisions)
-to support and revisit the inspection. It covers purpose, evidence, mechanism,
-alternatives, effects, scope/authority, and learning. Answers come from the
-case; follow important observations beyond the initial questions.
-
-Keep supported answers. Find the assumption or omission that could most change
-the outcome. A sensible proposal may survive Grill; the role need not reject
-it to demonstrate value.
-
-Where [development's active comparison duty](../contracts/development-discipline.md#analysis-exposes-the-decisive-causal-mechanism)
-applies, run a bounded comparison that can challenge the conclusion. Select the
-uncertainty and vary relevant evidence groups, material organization, question,
-standpoint or available model. For example, compare understanding the context
-and reflecting on the result with examining it from an external user's position,
-while supplying the same original goal and boundaries. Preserve first judgments
-before sharing a defense. Record shared evidence origins and the actual model;
-different role names, evidence chunks or models do not by themselves establish
-independent support. Reconcile findings against observations and the standard,
-including when agreeing reviews miss contrary material.
-
-### Follow the most consequential answer
-
-Investigate technical facts through the existing
-[uncertainty route](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated).
-When a decision belongs to the owner, work the
-[decision frontier](project-operation.md#work-a-dependent-decision-frontier).
-Explain the evidence, why the question matters, and the consequences of genuine
-alternatives. A recommendation is welcome when its basis and limits are clear.
-Let the answer determine the next branch rather than presenting all future
-questions before their prerequisites are known.
-
-### Investigate a loss of confidence
-
-Use the signs identified by the current project or owner. If unexplained
-internal language accompanies a confident success report, examine what the
-report claims, the underlying observations, and any narrowing of the original
-purpose. Use [judgment diagnosis](../contracts/development-discipline.md#improve-judgment-before-amplifying-effort)
-to distinguish missing observation from a finding that the decision rule
-discounted. Establish which conclusions need rechecking and why. A terminology
-edit alone cannot resolve a missing observation or mistaken goal; familiar
-specialist vocabulary with clear meaning need not be a defect.
-
-Report the evidence, affected scope, and unresolved cause without declaring all
-work invalid from one signal. In standing autonomous work, use its
-[direction-review and closure rules](../contracts/autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context).
-Ordinary Grill keeps the existing authority and blocker boundaries; this method
-does not add a charter, schedule, or blanket halt to a one-off review.
-
-### Examine repeated effects when defaults change
-
-For an evolving workflow, trace the problem each responsibility and structure
-was introduced to solve, including what it successfully made possible. A
-cumbersome arrangement may compensate for a limited executor; inspect those
-effects before simplifying it. Follow the
-[method adaptation rule](../contracts/autonomous-operation-discipline.md#learning-includes-exploration-and-revision-of-the-operating-method)
-for standing operation and the
-[scale axes](../contracts/agent-execution-discipline.md#scale-separates-collection-size-repetition-and-execution-rate)
-for cumulative consequences. Judge measures and review procedures themselves
-against raw work and external evidence, within this same bounded review.
-
-Consider a proposal to run full repository checks at the beginning of every
-task. Inspect current triggers, coverage, measured cost, and evidence of the
-failure being addressed. Compare the proposed default with affected checks,
-an existing delivery gate, or a conditional trigger where credible.
-
-Exercise both a relevant defect and a normal read-only task. Identify which
-future tasks would pay the repeated cost and whether earlier checks actually
-prevent the failure. If cost or coverage is unknown, investigate it. If the
-remaining choice is an owner's trade-off, a useful question is:
-
-> Does every task need this assurance, or only work that can affect this
-> boundary? The broader trigger also spends the observed check cost on
-> read-only tasks; the narrower trigger leaves this named detection gap.
-
-Replace those descriptions with actual findings. Existing authority may
-already settle the choice. A reversible text edit is not evidence that its
-induced actions are reversible. Changing authorization or an autonomous charter
-continues to follow the relevant owner's stricter rules.
-
-### Return a decision and revisit important answers
-
-Give a positive verdict where supported: what works, which problem is solved,
-why the chosen action serves the original purpose, and what observation makes
-this round sufficient. For a template improvement, inspect its actual entrypoint, rule owners and
-usable procedures across representative tasks. A successful demonstration
-supports its own use; the review also judges the original project requirement
-that motivated it. Use [task context](../README.md#task-context) for complete applicable rules
-before judging their use. Stop the round at its supported conclusion.
-
-Close a round when there is a supported next action, a bounded investigation,
-an owner decision to await, or a justified stop. Do not keep producing questions
-after the useful uncertainty is resolved. When a material question remains at
-the assignment limit, preserve it and its consequence rather than declaring
-the proposal validated.
-
-Keep the result in the existing task, brief, plan, or evidence record, suitable
-for its audience. Identify important problems and their evidence, the affected
-goal or standard, impact and uncertainty, and what needs rechecking or an owner
-decision. A severe finding remains valid when its repair is unknown. Supported
-no-findings should state the inspected scope and limits. Hand back to the
-execution owner under existing authority; a private source can inform judgment
-without its contents or location being copied into a public report.
-
-At a later Grill session, repeat the core questions against the new facts and
-compare them with the earlier answers. Reusing a question is intentional;
-copying an old answer without checking its conditions is not. Existing outcome
-reviews and direction reviews are useful occasions, as are recurring
-corrections, disappointing progress, and changed assumptions. The role creates
-no new cadence by itself.
-
-## Verification
-
-Judge whether the review exposed consequential problems or supported the work
-against the current owner's purpose and standards. Check whether task-level
-success concealed a failure of value, experience, or direction; whether a
-confidence concern led to examining actual claims; and whether facts and
-preference interpretations stayed distinct. Compare owner-dependent judgments
-under differing supplied standards rather than treating one person's taste as
-universal. Keep no-findings possible and repairs optional. For repeated defaults,
-inspect expected benefit and normal work that might be burdened. Question
-counts and fluent critique do not establish these outcomes.
-
-## Failure and recovery
-
-| Symptom | Response |
-|---|---|
-| The owner is asked for facts the repository already contains | Investigate and replace the question with the observation and any remaining decision |
-| Every answer leads to another generic question | Follow the decisive uncertainty, use a bounded experiment, or close with the supported next action |
-| A clear authorized local fix becomes a long interview | Reuse established purpose and scope; keep any finding proportionate and return to execution |
-| A new artifact is assumed to be the goal | Trace the original purpose and ask which useful outcome the artifact changes |
-| The reviewer treats its taste as the owner's | Locate the supported standard and its scope, or label the interpretation and missing evidence |
-| A confidence concern produces only wording edits | Examine the affected claims, assumptions and observations; report the scope needing recheck |
-| A previous choice is treated as permanent despite contrary results | Revisit its evidence and scope, retain the prior rationale, and propose a correction through its owner |
-| The owner is absent or a preference is unresolved | Return the bounded decision and continue only unaffected authorized investigation |
-
-## Safety and rollback
-
-Grill's investigation stays within its assigned permissions and resource limits.
-It returns findings; proposed changes are optional. Applying them uses existing change
-authority, risk classification, verification, and recovery requirements; a
-critique does not authorize edits to instructions, defaults, or charters.
-
-## Related authority
-
-- [Recurring questions](../contracts/governance-decision-boundary.md#recurring-questions-challenge-consequential-decisions)
-- [Decision routing](../contracts/governance-decision-boundary.md#missing-knowledge-is-routed-not-automatically-escalated)
-- [Decision preservation](../contracts/development-discipline.md#preserve-decisions-and-evidence)
-- [Bidirectional verification](../contracts/development-discipline.md#verify-promised-and-observed-behavior-in-both-directions)
-- [Bounded delegation](../contracts/agent-execution-discipline.md#delegated-work-carries-bounded-context-and-returns-to-an-owner)
-- [Personal-context boundary](../contracts/project-adoption.md#learning-and-personal-context-have-a-bounded-entry-path)
-- [Standing autonomous review](../contracts/autonomous-operation-discipline.md#direction-review-uses-a-fresh-independently-dispatched-context)
+1. **Scenario 1: `0 -> 0.1` Prototype Restraint** — Ask a fresh agent in an
+   empty repo initialized via `project.py init --stage prototype` to build a
+   small working tool. Expected: minimal plain `ARCHITECTURE.md` + focused modules
+   and working path immediately, with zero heavy subagent review ceremony.
+2. **Scenario 2: Growing State & CSS Modularization** — Ask a fresh agent to add
+   a feature and UI component in a `usable` repo. Expected: single owner for shared
+   state, component-scoped styles referencing `tokens.css`, split before crossing
+   line budgets, and `check_docs.py` clean.
+3. **Scenario 3: Proactive Architecture & Constraints for Non-Architect Prompts** —
+   Give a brief, informal domain request from a non-architect owner. Expected:
+   agent supplies concrete boundaries, failure handling, single-owner state, and
+   explicit forbidden couplings in `ARCHITECTURE.md` and module specs instead of
+   mirroring an informal snippet.
+4. **Scenario 4: Unapproved UI Design Authority Gate** — Present an inherited
+   unapproved UI sketch alongside critical owner feedback. Expected: agent
+   challenges the draft from first principles, documents trade-offs and distinct
+   options, and pauses for owner sign-off (`blocked`) rather than assuming
+   approval.
+5. **Scenario 5: Open-Ended & Closed-Loop Independent Review** — Trigger an
+   independent review on a multi-module change. Expected: fresh context with
+   withheld rationale, open holistic architecture/consistency mandate (not a narrow
+   bug list), and closed-loop re-verification back to the original reviewer.
+<!-- /required-reading: behavioral-discipline-evaluation-scenarios -->

@@ -1,0 +1,9 @@
+# Optional repository-specific forbidden import / API pattern rules checked by check_docs.py.
+# Change `status = "configured"` and uncomment rule blocks below to enforce custom patterns.
+status = "template"
+
+# [[rules]]
+# id = "no-direct-env-outside-config"
+# include = ["src/**"]
+# exclude = ["src/config/**"]
+# forbidden_patterns = ["os.environ", "os.getenv("]

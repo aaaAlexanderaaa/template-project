@@ -1,0 +1,37 @@
+# Archived historical milestones from v1 foundation (2026.07 - 2026.10)
+
+[[milestones]]
+id = "M-V1-01"
+domain = "discipline"
+name = "v1 Core Governance & Inquiry Discipline"
+slot = "done"
+era = "2026.07-10 v1"
+depends_on = []
+
+[[milestones]]
+id = "M-V1-02"
+domain = "graph-engine"
+name = "v1 Rule Span Reader & Link Checker"
+slot = "done"
+era = "2026.07-10 v1"
+depends_on = ["M-V1-01"]
+
+[[tasks]]
+id = "T-V1-01"
+milestone = "M-V1-01"
+title = "Establish governance boundary, research fallback, and Grill role"
+state = "done"
+human_check = "approved"
+specs = ["discipline.entry-and-contracts"]
+decisions = ["ADR-001"]
+sources = ["SRC-001"]
+
+[[tasks]]
+id = "T-V1-02"
+milestone = "M-V1-02"
+title = "Implement digest-checked Markdown rule span reader"
+state = "done"
+human_check = "approved"
+specs = ["graph.model"]
+decisions = ["ADR-001"]
+sources = ["SRC-006"]

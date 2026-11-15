@@ -1,32 +1,29 @@
-version = 1
-status = "template"
-rationale = "{{replace-with-configured-policy-or-not-applicable-rationale}}"
+version = 2
+status = "configured"
+rationale = "Module dependencies are owned primarily by `depends_on` in `docs/specs/**/*.md`; literal cross-cutting pattern guards live here."
 
-# Adopted projects choose exactly one state:
-#
-# status = "configured"
-#
-# [[rules]]
-# id = "generic-layer-does-not-know-domain"
-# description = "Keep domain-specific dependencies out of the generic layer."
-# include = ["src/foundation/**/*"]
-# exclude = ["src/generic/generated/**"]
-# forbidden_patterns = ["domain_specific_package", "DomainSpecificType"]
-#
-# The same rule shape expresses a style-ownership boundary. Scope `include` to
-# the consumers and `exclude` to the layer that owns the value, then name the
-# literal forms this project has decided consumers must not restate. Those
-# literals are yours: the template ships none, because the value classes worth
-# governing and the syntax that expresses them differ per stack.
-#
-# [[rules]]
-# id = "consumers-do-not-restate-owned-values"
-# description = "Consumers bind to published names instead of forking a value."
-# include = ["src/features/**/*"]
-# exclude = ["src/features/**/generated/**"]
-# forbidden_patterns = ["owned_value_literal_form", "escalation_marker"]
-#
-# Or, only when path/reference fitness rules genuinely do not apply:
-#
-# status = "not_applicable"
-# rationale = "Explain the alternative architecture enforcement in substance."
+[[rules]]
+id = "projectlib-core-does-not-import-http-server"
+description = "Data loading, AST scanning, and validation stay pure and never depend on the HTTP web server layer."
+include = [
+  "scripts/projectlib/__init__.py",
+  "scripts/projectlib/model.py",
+  "scripts/projectlib/frontmatter.py",
+  "scripts/projectlib/doc_inventory.py",
+  "scripts/projectlib/loader.py",
+  "scripts/projectlib/import_scanner.py",
+  "scripts/projectlib/git_telemetry.py",
+  "scripts/projectlib/prose_checks.py",
+  "scripts/projectlib/validator.py",
+  "scripts/projectlib/context_pack.py",
+  "scripts/projectlib/briefing_pack.py",
+]
+exclude = []
+forbidden_patterns = ["http.server", "projectlib.server"]
+
+[[rules]]
+id = "reference-domain-stays-pure"
+description = "Domain models in the reference exemplar do not import UI or feature orchestration layers."
+include = ["examples/reference-app/domain/**"]
+exclude = []
+forbidden_patterns = ["features.", "from features", "app."]

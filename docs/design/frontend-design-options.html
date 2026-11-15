@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本地项目透视网站 — 表现形式设计与三种空间方案对比 (T-204)</title>
+<style>
+  :root {
+    --bg: #faf9f6;
+    --surface: #ffffff;
+    --surface-sub: #f3f0e8;
+    --ink: #1e242b;
+    --muted: #5b6470;
+    --line: #e2ddd2;
+    --line-strong: #c8c1b4;
+    --accent: #1d5f4a;
+    --accent-soft: #e6f2ed;
+    --warn: #8c4a12;
+    --warn-soft: #fdf2e4;
+    --bad: #992f2f;
+    --bad-soft: #fbecec;
+    --human: #1e4d7b;
+    --human-soft: #eaf2fa;
+    --ai: #4b5563;
+    --ai-soft: #f3f4f6;
+    --fact: #1d5f4a;
+    --fact-soft: #e6f2ed;
+    --radius: 10px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 24px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-warn { background: var(--warn-soft); color: var(--warn); border: 1px solid #eccca8; }
+  .badge-bad { background: var(--bad-soft); color: var(--bad); border: 1px solid #ecc2c2; }
+  .badge-human { background: var(--human-soft); color: var(--human); border: 1px solid #c3d9ee; }
+  .badge-ai { background: var(--ai-soft); color: var(--ai); border: 1px solid #d5d9df; }
+  .badge-fact { background: var(--fact-soft); color: var(--fact); border: 1px solid #bfe0d4; }
+  h1 { margin: 6px 0 4px; font-size: 22px; line-height: 1.3; }
+  h2 { margin: 0 0 8px; font-size: 18px; }
+  h3 { margin: 0 0 8px; font-size: 15px; }
+  h4 { margin: 0 0 6px; font-size: 13px; }
+  p { margin: 0 0 8px; }
+  .lead { color: var(--muted); max-width: 780px; font-size: 13.5px; }
+  .muted { color: var(--muted); }
+  .mono { font-family: var(--font-mono); font-size: 12px; }
+  code { font-family: var(--font-mono); background: #efece3; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+
+  .dataset-switch {
+    background: var(--surface-sub);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 310px;
+  }
+  .dataset-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .btn-pill {
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .btn-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-small {
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .btn-small:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .tabs {
+    max-width: 1280px;
+    margin: 14px auto 0;
+    padding: 0 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  main { max-width: 1280px; margin: 14px auto 56px; padding: 0 24px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+
+  table.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.spec-table th, table.spec-table td {
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.spec-table th {
+    background: var(--surface-sub);
+    font-weight: 600;
+  }
+  table.spec-table tr.row-warn td { background: #fff9f2; }
+  table.spec-table tr.clickable:hover td { background: #f2f7f5; cursor: pointer; }
+
+  .wireframe {
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    background: #fcfbf8;
+    padding: 12px;
+    margin-top: 10px;
+    position: relative;
+  }
+  .wf-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .subtabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .subtab {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    border-radius: 7px;
+    padding: 6px 11px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .subtab.active { background: var(--accent-soft); color: var(--accent); border-color: #9ecbb9; }
+
+  .metric-strip {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    font-size: 12.5px;
+  }
+  .metric-item { display: flex; align-items: center; gap: 6px; padding-right: 10px; border-right: 1px solid var(--line); }
+  .metric-item:last-child { border-right: none; }
+
+  .action-card {
+    border: 1px solid #e6c69c;
+    background: #fffaf3;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .action-card details {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin: 8px 0;
+  }
+  .action-card summary { cursor: pointer; font-weight: 600; font-size: 12.5px; color: var(--human); }
+
+  .workbench-wrap { display: flex; gap: 14px; align-items: flex-start; }
+  .workbench-main { flex: 1; min-width: 0; }
+  .context-sheet {
+    width: 350px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px;
+    display: none;
+  }
+  .context-sheet.open { display: block; }
+  .ctx-block {
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+  .ctx-block:first-of-type { border-top: none; padding-top: 0; margin-top: 4px; }
+
+  .doc-grid {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr) 210px;
+    gap: 12px;
+    align-items: start;
+  }
+  .doc-tree, .doc-prose, .doc-toc {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .doc-prose { max-width: 75ch; }
+  .tree-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    padding: 5px 7px;
+    border-radius: 5px;
+    font-size: 12.5px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .tree-item:hover { background: var(--surface-sub); }
+  .tree-item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+
+  .swimlane-row {
+    display: grid;
+    grid-template-columns: 165px repeat(3, minmax(150px, 1fr));
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .ms-chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 7px 9px;
+    font-size: 12px;
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  .ms-chip.blocked { border-color: #d99b9b; background: var(--bad-soft); }
+
+  .opt-b-shell {
+    display: grid;
+    grid-template-columns: 195px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+  }
+  .opt-b-nav {
+    position: sticky;
+    top: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .opt-c-shell {
+    display: grid;
+    grid-template-columns: 225px minmax(0, 1fr) 310px;
+    gap: 12px;
+    align-items: start;
+  }
+  .pane-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    min-width: 0;
+  }
+
+  .fullscreen-reader {
+    position: fixed;
+    inset: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    z-index: 40;
+    padding: 18px 22px;
+    overflow: auto;
+    display: none;
+  }
+  .fullscreen-reader.open { display: block; }
+
+  .tradeoff { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; margin-top: 12px; }
+  .box-good { background: var(--accent-soft); border: 1px solid #bfe0d4; border-radius: 8px; padding: 10px 12px; }
+  .box-warn { background: var(--warn-soft); border: 1px solid #eccca8; border-radius: 8px; padding: 10px 12px; }
+
+  .svg-frame {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  @media (max-width: 980px) {
+    .doc-grid, .opt-b-shell, .opt-c-shell, .workbench-wrap { grid-template-columns: 1fr; flex-direction: column; }
+    .context-sheet { width: 100%; }
+    .swimlane-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap header-row">
+    <div>
+      <span class="badge badge-fact">历史方案对比归档 · 已按 SRC-013 前端规范批准落地</span>
+      <h1>本地项目透视网站 — 表现形式设计与三种结构方案对比</h1>
+      <p class="lead">本页记录早期阶段针对“通过怎样的形式、给谁、展示什么”的三套候选结构对比。负责人已在 <code>SRC-013</code> 确认完整《前端设计与交互规范》，正式落地版已按该规范在 <code>scripts/projectlib/web/</code> 重建。</p>
+    </div>
+    <div class="dataset-switch">
+      <div class="muted" style="font-size: 12px; font-weight: 600;">切换演示实例（实测不同项目体量下的渲染效果）</div>
+      <div class="dataset-btns">
+        <button class="btn-pill active" data-ds="small">当前仓库（4 子系统 · 75 篇文档）</button>
+        <button class="btn-pill" data-ds="large">12 万行模拟项目（9 子系统 · 116 篇文档）</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab active" data-tab="manifest">1. 表现形式总览：给谁看 × 展示什么 × 怎么画</button>
+  <button class="tab" data-tab="opt-a">Option A（推荐）：四视角切换工作台 + 按需封装栏</button>
+  <button class="tab" data-tab="opt-b">Option B：单页渐进导读长卷 + 全屏文档阅读层</button>
+  <button class="tab" data-tab="opt-c">Option C：左树右画布 + 常驻溯源三栏浏览器</button>
+</div>
+
+<main>
+  <!-- Tab 1: Reader x Content x Form Manifest -->
+  <section id="panel-manifest" class="panel active">
+    <div class="card">
+      <h2>一、给谁看：三类读者情境与各自的核心目标</h2>
+      <div class="grid-3">
+        <div class="card" style="margin: 0; background: #fcfbf8;">
+          <span class="badge badge-fact">情境 1</span>
+          <h3 style="margin-top: 6px;">陌生访客 / 新协作者</h3>
+          <p class="muted">对目录缩写和几十上百份文档零背景。</p>
+          <p><strong>要解决</strong>：5 分钟搞清项目干什么、运行时业务怎么走与失败怎么回退、目录怎么分工、先读哪几篇文档。</p>
+        </div>
+        <div class="card" style="margin: 0; background: #fcfbf8;">
+          <span class="badge badge-human">情境 2</span>
+          <h3 style="margin-top: 6px;">隔周回来的项目负责人</h3>
+          <p class="muted">不直接读代码，甚至忘掉当初提过的原话。</p>
+          <p><strong>要解决</strong>：一眼看到有没有等我拍板的阻塞项或待验收任务；点开任何告警都能看到前因后果和是否需要我动手。</p>
+        </div>
+        <div class="card" style="margin: 0; background: #fcfbf8;">
+          <span class="badge badge-warn">情境 3</span>
+          <h3 style="margin-top: 6px;">复杂工程边界与偏离审查</h3>
+          <p class="muted">面对十万行代码、十几个子系统与上百份文档。</p>
+          <p><strong>要解决</strong>：迅速筛出越界调用、超标大文件、代码超前于文档滞后，并顺着原话查验每一项决策落实情况。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>二、全站统一的三类数据可信度标记</h2>
+      <p class="muted">任何数字、结论或待办都会明确标出数据来自谁，让人类拍板、AI 维护的规格和脚本客观扫描清楚分开。</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <span class="badge badge-human">[人类原话与审批] 来自 sources.toml 逐字原话、设计选型与人工验收签名</span>
+        <span class="badge badge-ai">[AI 维护规格与计划] 来自 ARCHITECTURE.md、模块契约、ADR 决策与 work.toml</span>
+        <span class="badge badge-fact">[脚本实测物理事实] 来自 Git 提交差、AST 静态引用、单文件行数与测试退出码</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>三、展示什么 × 通过怎样的表现形式（7 类内容完整对照）</h2>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">展示什么</th>
+            <th style="width: 16%;">重点给谁看</th>
+            <th style="width: 36%;">通过怎样的具体表现形式</th>
+            <th style="width: 30%;">百篇文档 / 十万行项目怎么防拥挤</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. 全局定位与系统运行逻辑</strong></td>
+            <td>陌生访客、负责人</td>
+            <td>顶部体量实测条 + 75ch 宽幅定位导读 + <strong>全宽可缩放 Mermaid 运行与失败回退流程图画布</strong></td>
+            <td>流程图独占主画布宽度，绝塞入侧边抽屉；多张流程分节标签切换。</td>
+          </tr>
+          <tr>
+            <td><strong>2. 待拍板与待验收事项</strong></td>
+            <td>负责人</td>
+            <td><strong>条件置顶三段式决策行动卡</strong>（折叠的 `SRC-*` 原话全文 + 所属模块承诺与设计对比链接 + 单选/验收写回按钮）</td>
+            <td>只放阻塞或待验收项；全部清零后收起为一行安静正常态提示条。</td>
+          </tr>
+          <tr>
+            <td><strong>3. 仓库目录与全库文档</strong></td>
+            <td>陌生访客、深入读者</td>
+            <td>新访客 3 篇起点卡 + 目录分工说明表 + <strong>左树中 75ch 正文中栏全宽图表右大纲</strong>整页阅读画布</td>
+            <td>按类别与业务域二级分组并带关键字过滤；文内相对链接直接跳转，不用弹窗硬挤。</td>
+          </tr>
+          <tr>
+            <td><strong>4. 子系统边界与健康告警</strong></td>
+            <td>负责人、审查视角</td>
+            <td><strong>两级下钻</strong>：首层全子系统健康矩阵表 + 跨子系统关系图；二层展示模块唯一状态契约与声明 vs AST 红色违规调用</td>
+            <td>总览图只画子系统层级与告警；支持“只看存在异常的子系统”一键过滤噪音。</td>
+          </tr>
+          <tr>
+            <td><strong>5. 多子系统路线图与 Diff</strong></td>
+            <td>负责人、审查视角</td>
+            <td><strong>按业务子系统分泳道的路线图矩阵</strong>（当前推进 / 下一阶段 / 远期规划 + 任务完成分数）+ 按域汇总 Git Diff</td>
+            <td>已归档里程碑默认折叠收起；不把百项复杂路线压缩成几个抽象圆点。</td>
+          </tr>
+          <tr>
+            <td><strong>6. 原话与决策双向溯源</strong></td>
+            <td>负责人、审查视角</td>
+            <td><strong>三栏联动因果追踪表</strong>（左选 `SRC-*` 原话或 `ADR-*` 决策 → 中列决策替代顺序 → 右列受约束模块与任务现状）</td>
+            <td>左栏支持按业务域筛选，只展开当前选中需求的辐射路径。</td>
+          </tr>
+          <tr>
+            <td><strong>7. 局部细节交互实样</strong></td>
+            <td>所有读者</td>
+            <td>点击孤立文件名或任务时弹出<strong>四段式上下文封装栏</strong>（归属承诺 → 触发原话 → 实测数据 → 是否需我决策）</td>
+            <td>平铺页面不堆砌代码行数明细，点到哪项只组装该项的四段上下文。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>四、可点击交互演示：待拍板卡与“四段式上下文封装”实际效果</h2>
+      <p class="muted">下面模拟了两个高频动作。请点击左侧两条具体条目，观察右侧如何在不要求读者看源码的前提下，把孤立信息补充成可做判断的完整上下文。</p>
+      <div class="grid-2">
+        <div id="demo-triggers"></div>
+        <div id="demo-context-preview" class="pane-box" style="border-color: var(--accent); background: #fdfefd;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Option A -->
+  <section id="panel-opt-a" class="panel">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <h2>Option A（推荐）：四视角切换工作台 + 宽幅画布 + 按需上下文封装栏</h2>
+          <p class="muted">首页按读者当前目的分为 4 个宽幅工作视角；右侧上下文封装栏平时隐藏，点中任何文件、告警或待办才滑出，确保长文阅读与架构图宽度不被长期挤压。</p>
+        </div>
+        <button class="btn-small" id="opt-a-toggle-ctx">开关右侧上下文封装栏演示</button>
+      </div>
+      <div class="wireframe">
+        <div class="wf-bar">
+          <div class="subtabs" id="opt-a-views">
+            <button class="subtab active" data-view="guide">① 项目导览（首次上手与待办）</button>
+            <button class="subtab" data-view="progress">② 进展与需求溯源</button>
+            <button class="subtab" data-view="arch">③ 架构边界与健康度</button>
+            <button class="subtab" data-view="docs">④ 目录与全库文档阅读</button>
+          </div>
+          <span class="mono muted" id="opt-a-status-badge"></span>
+        </div>
+        <div class="workbench-wrap">
+          <div class="workbench-main" id="opt-a-canvas"></div>
+          <aside class="context-sheet" id="opt-a-sheet"></aside>
+        </div>
+      </div>
+      <div class="tradeoff">
+        <div class="box-good"><strong>适合偏好：</strong>重视全宽读图与长文阅读质感，同时需要一秒直达待拍板事项、百篇文档或异常子系统。</div>
+        <div class="box-warn"><strong>实际代价：</strong>查看项目概况和深度查阅全库文档之间需要点击顶部切换一次视角。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Option B -->
+  <section id="panel-opt-b" class="panel">
+    <div class="card">
+      <h2>Option B：单页渐进导读长卷 + 独立整页文档阅读层</h2>
+      <p class="muted">打开就是一张由浅入深的连续报告：左侧目录固定随滚定位，顺着看遍全局定位、运行时流程图、待办、子系统边界、泳道路线图与需求溯源；点开任何文档卡则开启全屏整页阅读层，关掉即退回原地。</p>
+      <div class="wireframe">
+        <div class="opt-b-shell">
+          <nav class="opt-b-nav">
+            <h4>阅读章节大纲</h4>
+            <button class="tree-item active" data-jump="b-sec-1">1. 全局概览与待拍板</button>
+            <button class="tree-item" data-jump="b-sec-2">2. 系统运行逻辑流程图</button>
+            <button class="tree-item" data-jump="b-sec-3">3. 子系统边界与异常筛选</button>
+            <button class="tree-item" data-jump="b-sec-4">4. 泳道路线图与原话溯源</button>
+            <button class="tree-item" data-jump="b-sec-5">5. 目录分工与文档书架</button>
+            <div style="margin-top:10px; border-top:1px solid var(--line); padding-top:8px;">
+              <button class="btn-small" id="opt-b-open-ctx" style="width:100%;">预览告警上下文栏</button>
+            </div>
+          </nav>
+          <div id="opt-b-body" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </div>
+      </div>
+      <div class="tradeoff">
+        <div class="box-good"><strong>适合偏好：</strong>希望陌生人一打开网页不用找标签、从头到尾像读一本清晰说明书那样连续了解全项目。</div>
+        <div class="box-warn"><strong>实际代价：</strong>当复杂项目突破 10 个子系统时页面纵深会变长，需要常点左侧大纲跳转；看详尽文件上下文时要拉出独立浮层。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Option C -->
+  <section id="panel-opt-c" class="panel">
+    <div class="card">
+      <h2>Option C：左树右画布 + 常驻上下文溯源三栏浏览器</h2>
+      <p class="muted">桌面端展开三栏工作台：左侧收拢所有概览、待办、子系统、百份文档和原始需求；中间主画布随点击切换为图表或正文；右侧常驻“三类信号与四段式封装面板”，免去反复开关抽屉。</p>
+      <div class="wireframe">
+        <div class="opt-c-shell">
+          <aside class="pane-box">
+            <h4>全库统一导航树</h4>
+            <div id="opt-c-tree"></div>
+          </aside>
+          <div class="pane-box" id="opt-c-center"></div>
+          <aside class="pane-box" id="opt-c-right" style="border-color: var(--accent); background:#fdfefd;"></aside>
+        </div>
+      </div>
+      <div class="tradeoff">
+        <div class="box-good"><strong>适合偏好：</strong>在十几个业务域与百份文档间高频穿梭核对，点一下节点就能在右手边同步看清依据与实测现状。</div>
+        <div class="box-warn"><strong>实际代价：</strong>左右两栏占用约 540px 空间，中等宽度屏幕下查看宽泳道路线图或复杂流程 SVG 时不如方案 A/B 舒展。</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="fullscreen-reader" class="fullscreen-reader">
+  <div class="wf-bar">
+    <strong id="fs-doc-title">整页文档阅读层</strong>
+    <button class="btn-primary" id="fs-close-btn">返回刚才导读页面位置</button>
+  </div>
+  <div id="fs-doc-body"></div>
+</div>
+
+<script>
+const DATASETS = {
+  small: {
+    name: "template-project",
+    stageLabel: "稳定维护期",
+    loc: "8,066 行源码",
+    docs: "75 篇文档",
+    testSummary: "单元测试 28/28 通过 · 严格文档检查 0 报警",
+    oneLiner: "面向多项目复用的工程纪律模板与纯机械项目透视工具，约束多智能体协作过程中的单点真源、分层边界、语言清晰度与闭环独立评审。",
+    blocked: {
+      id: "T-204",
+      title: "重新设计并实现本地项目透视网站",
+      srcId: "SRC-012",
+      srcDate: "2026-11-15",
+      srcQuote: "这几句话描述得太轻巧了，我觉得这里需要再想想，至少给我一个“你预计通过怎样的表现形式给谁展示什么”。",
+      domain: "透视展示层",
+      modulePromise: "让陌生访客无需读源码就能看懂项目定位、系统运行逻辑、全库文档与边界约束，所有状态均保留原文依据。",
+      options: [
+        "Option A（推荐）：四视角切换工作台 + 宽幅画布 + 按需上下文封装栏",
+        "Option B：单页渐进导读长卷 + 独立整页文档阅读层",
+        "Option C：左树右画布 + 常驻上下文溯源三栏浏览器"
+      ]
+    },
+    domains: [
+      { id: "discipline", name: "工程纪律与模板", stage: "稳定维护期", loc: 120, docs: 32, oversized: 0, viols: 0, lag: 0, promise: "维护入口约定、五份核心契约、三份指南及可复制到新老仓库的中文/英文骨架。" },
+      { id: "graph-engine", name: "文档索引与检查引擎", stage: "稳定维护期", loc: 3420, docs: 14, oversized: 0, viols: 0, lag: 0, promise: "机械扫描文件归属、静态跨层引用、文档字数行限、原文溯源链路与提交滞后。" },
+      { id: "perspective-ui", name: "CLI 与本地网页透视层", stage: "可用建设期", loc: 4180, docs: 16, oversized: 0, viols: 0, lag: 1, promise: "输出零幻觉的终端状态与本地网页数据接口；前端界面等待 T-204 负责人拍板后解冻。" },
+      { id: "reference-app", name: "模块化参考样例", stage: "稳定维护期", loc: 346, docs: 6, oversized: 0, viols: 0, lag: 0, promise: "演示领域纯计算与样式变量隔离的可运行最小对照程序。" }
+    ],
+    alertDemo: {
+      id: "T-204",
+      headline: "待拍板阻塞：T-204（本地透视网页布局选型）",
+      ownerTitle: "透视展示层 · ui.perspective-web",
+      promise: "为人类负责人提供低心智负担的项目全貌、待拍板卡与上下文封装面板。",
+      owns: "scripts/projectlib/web/**",
+      src: "SRC-011 / SRC-012 (2026-11-15)：必须以第一性原则先论证给谁展示什么，得到负责人同意后再写前端代码。",
+      adr: "ADR-004：历史未获批前端草稿一律保持冻结，未经明确选择不得沿用。",
+      facts: "当前 scripts/projectlib/web/ 保持未修改；文档 check_docs --strict 全部通过（0 警告）。",
+      action: "需要负责人介入：请比较本页 Option A / B / C 后明确选定一种顶层方案。"
+    },
+    docsList: [
+      { path: "ARCHITECTURE.md", cat: "系统架构", dom: "全局", summary: "五要素全局架构：定位、工作流、模块边界与禁止耦合、唯一状态源与校验入口。", h2: ["1. 系统定位与不做什么", "2. 端到端运行与失败回退", "3. 边界矩阵与禁止耦合", "4. 唯一状态归属"] },
+      { path: "docs/contracts/frontend-and-visual-discipline.md", cat: "核心契约", dom: "工程纪律与模板", summary: "前端界面阅读顺序、未批准设计门禁、克制视觉与三类信号隔离要求。", h2: ["1. 读者认知顺序与门禁", "2. 克制用色与几何校验", "3. 三类来源隔离"] },
+      { path: "docs/design/perspective-web.md", cat: "设计稿", dom: "CLI 与本地网页透视层", summary: "T-204 待拍板前端第一性规格：三类读者、七大表现形式与三种布局权衡。", h2: ["1. 门禁状态", "2. 给谁看", "3. 展示什么与怎么画", "4. 候选布局对比"] },
+      { path: "docs/decisions/ADR-004-discipline-first-architecture-and-open-closed-loop-review.md", cat: "决策记录", dom: "全局", summary: "确立开放盲审闭环、模板主旨校准与冻结未批准前端。", h2: ["背景", "决策要点", "影响边界与回退"] }
+    ]
+  },
+  large: {
+    name: "跨境多币种结算平台",
+    stageLabel: "复杂多域演进期",
+    loc: "128,400 行源码",
+    docs: "116 篇文档",
+    testSummary: "单元测试 412/412 通过 · 发现 2 处跨层引用违规、3 个超限大文件",
+    oneLiner: "覆盖汇率报价、风控拦截、清结算账本、银行通道、商户对账与商户控制台的跨境交易结算核心系统（9 个独立子系统，共 116 篇文档）。",
+    blocked: {
+      id: "T-842",
+      title: "退款冲正链路是采用同步两阶段锁还是异步补偿台账",
+      srcId: "SRC-041",
+      srcDate: "2026-11-12",
+      srcQuote: "我不在乎后台异步跑几轮，但商户后台绝对不能同一笔订单显示两条重复退款金额，通道超时的单子必须人工可查。",
+      domain: "清结算账本",
+      modulePromise: "所有资金变动必须经过唯一幂等账本记账，并发重放不重复出账。",
+      options: [
+        "方案 1（推荐）：立即写入冻结流水 + 异步定时核对回写，账本保持单向状态机",
+        "方案 2：接入外部通道同步锁等待 15 秒返回，超出转人工人工兜底"
+      ]
+    },
+    domains: [
+      { id: "fx-quote", name: "汇率实时报价", stage: "稳定维护期", loc: 14200, docs: 12, oversized: 0, viols: 0, lag: 0, promise: "提供 30 秒锁汇报价凭证，不直接触碰账户余额。" },
+      { id: "risk-guard", name: "交易风控拦截", stage: "稳定维护期", loc: 19800, docs: 15, oversized: 0, viols: 0, lag: 0, promise: "毫秒级规则与黑名单拦截，返回统一拒绝理由编码。" },
+      { id: "settlement", name: "清结算核心账本", stage: "稳定维护期", loc: 24600, docs: 18, oversized: 2, viols: 1, lag: 4, promise: "全系统唯一记账入口；任何页面和定时任务禁止绕过账本直接修改账户余额表。" },
+      { id: "bank-rail", name: "银行与清算通道", stage: "可用建设期", loc: 21400, docs: 14, oversized: 1, viols: 1, lag: 2, promise: "封装各家外资行报文与重试队列，对外屏蔽银行格式差异。" },
+      { id: "recon", name: "日终对账与调账", stage: "稳定维护期", loc: 16500, docs: 13, oversized: 0, viols: 0, lag: 0, promise: "每日抓取银行对账文件，核对差异并生成可追溯调账工单。" },
+      { id: "merchant-api", name: "开放接入网关", stage: "稳定维护期", loc: 11200, docs: 14, oversized: 0, viols: 0, lag: 0, promise: "验签、限流与外部订单号幂等映射。" },
+      { id: "console-web", name: "运营与商户控制台", stage: "可用建设期", loc: 12900, docs: 16, oversized: 0, viols: 0, lag: 0, promise: "面向客服与财务的交易查账、异常工单处理界面。" },
+      { id: "notify", name: "异步回执与通知", stage: "可用建设期", loc: 4800, docs: 7, oversized: 0, viols: 0, lag: 0, promise: "按指数退避投递商户异步结果通知。" },
+      { id: "audit-log", name: "合规审计归档", stage: "稳定维护期", loc: 3000, docs: 7, oversized: 0, viols: 0, lag: 0, promise: "只追加不删除的监管报送快照归档。" }
+    ],
+    alertDemo: {
+      id: "settlement_engine.py",
+      headline: "异常告警：settlement_engine.py 已达 642 行（超过 500 行单文件上限），且出现 1 处跨层越界引用",
+      ownerTitle: "清结算核心账本 · settlement.ledger",
+      promise: "全系统唯一资金记账入口，负责幂等检查与双分录入账。",
+      owns: "src/settlement/**",
+      src: "SRC-041 (2026-11-12)：绝对不能同一笔订单显示两条重复退款金额，通道超时必须可查。",
+      adr: "ADR-014：明确规定银行通道域禁止直接写账本明细表，必须经结算接口入账。",
+      facts: "文件行数 642/500 行；bank-rail/retry_worker.py:118 直接导入了 settlement_engine；代码提交领先所属规格 4 次未同步文档。",
+      action: "建议由研发团队按职责拆分为记账校验与分录写入两文件，并消除 bank-rail 越界引用；当前无需负责人修改业务需求。"
+    },
+    docsList: [
+      { path: "ARCHITECTURE.md", cat: "系统架构", dom: "全局", summary: "说明跨境结算九大子系统如何串起锁汇、风控、出账、对账与异常人工兜底。", h2: ["1. 系统范围与边界", "2. 核心资金流转与超时回退", "3. 唯一账本与禁止耦合"] },
+      { path: "docs/specs/settlement/README.md", cat: "业务规格", dom: "清结算核心账本", summary: "定义双分录记账承诺、幂等键格式以及禁止其他业务域直写余额表的边界。", h2: ["模块职责", "状态机与失败回滚", "禁止越界清单"] },
+      { path: "docs/decisions/ADR-014-ledger-only-balance-writes.md", cat: "决策记录", dom: "清结算核心账本", summary: "废除早期通道层直改余额的权宜写法，统一收口到结算账本网关。", h2: ["问题背景", "替代原决策", "迁移清单"] },
+      { path: "docs/specs/bank-rail/README.md", cat: "业务规格", dom: "银行与清算通道", summary: "记录 6 家银行通道的超时阈值、签名机制与异步补偿投递策略。", h2: ["通道清单", "退避重试策略", "对账文件落盘格式"] }
+    ]
+  }
+};
+
+let currentDsKey = "small";
+let optAView = "guide";
+let optASheetOpen = false;
+let optAOnlyWarn = false;
+let optASelectedDoc = 0;
+let optBOnlyWarn = false;
+let optCNode = "overview";
+let currentDemoKey = "alert";
+
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function renderContextBlock(ctx) {
+  return `
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px;">
+      <strong>四段式上下文封装栏</strong>
+      <span class="badge badge-fact">机械拼装 · 免读源码</span>
+    </div>
+    <p style="font-weight:600; color:var(--bad);">${esc(ctx.headline)}</p>
+    <div class="ctx-block">
+      <div class="badge badge-ai">① 这是什么、归谁管</div>
+      <p style="margin-top:4px;"><strong>${esc(ctx.ownerTitle)}</strong><br>${esc(ctx.promise)}<br><span class="mono muted">负责目录：${esc(ctx.owns)}</span></p>
+    </div>
+    <div class="ctx-block">
+      <div class="badge badge-human">② 当初为什么这样定（原话 + 决策）</div>
+      <p style="margin-top:4px;">${esc(ctx.src)}<br><span class="muted">${esc(ctx.adr)}</span></p>
+    </div>
+    <div class="ctx-block">
+      <div class="badge badge-fact">③ 脚本实测物理现状</div>
+      <p style="margin-top:4px;">${esc(ctx.facts)}</p>
+    </div>
+    <div class="ctx-block">
+      <div class="badge badge-warn">④ 需要我做什么</div>
+      <p style="margin-top:4px; font-weight:600;">${esc(ctx.action)}</p>
+    </div>`;
+}
+
+function renderFlowSvg(dsKey) {
+  if (dsKey === "small") {
+    return `<svg viewBox="0 0 860 190" style="width:100%; height:auto; display:block;">
+      <defs><marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 1 L 10 5 L 0 9 z" fill="#4b5563"/></marker></defs>
+      <rect x="12" y="24" width="165" height="62" rx="8" fill="#eaf2fa" stroke="#1e4d7b"/>
+      <text x="94" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#1e242b">1. 负责人提需求</text>
+      <text x="94" y="68" text-anchor="middle" font-size="11" fill="#5b6470">原话写入 sources.toml</text>
+      <line x1="177" y1="55" x2="218" y2="55" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <rect x="220" y="24" width="175" height="62" rx="8" fill="#ffffff" stroke="#1d5f4a"/>
+      <text x="307" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#1e242b">2. 按阶段生成/同步规范</text>
+      <text x="307" y="68" text-anchor="middle" font-size="11" fill="#5b6470">ARCHITECTURE + 规格 + 任务</text>
+      <line x1="395" y1="55" x2="436" y2="55" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <rect x="438" y="24" width="180" height="62" rx="8" fill="#ffffff" stroke="#c8c1b4"/>
+      <text x="528" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#1e242b">3. 脚本机械扫描校验</text>
+      <text x="528" y="68" text-anchor="middle" font-size="11" fill="#5b6470">边界 / 行限 / 平实语言检查</text>
+      <line x1="618" y1="55" x2="659" y2="55" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr1)"/>
+      <rect x="661" y="24" width="185" height="62" rx="8" fill="#e6f2ed" stroke="#1d5f4a"/>
+      <text x="753" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#1d5f4a">4. 开放盲审 + 网页透视</text>
+      <text x="753" y="68" text-anchor="middle" font-size="11" fill="#1d5f4a">闭环验收通过后交付</text>
+      <rect x="220" y="118" width="400" height="52" rx="8" fill="#fdf2e4" stroke="#eccca8"/>
+      <text x="420" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#8c4a12">异常与阻塞回退：遇到越界调用 / UI 未批设计 / 独立评审打回 → 立即暂停并在首页亮卡请求决策</text>
+      <text x="420" y="158" text-anchor="middle" font-size="11" fill="#8c4a12">回退后经原评审 + 新视角闭环复验才放行</text>
+    </svg>`;
+  }
+  return `<svg viewBox="0 0 860 190" style="width:100%; height:auto; display:block;">
+    <defs><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 1 L 10 5 L 0 9 z" fill="#4b5563"/></marker></defs>
+    <rect x="12" y="24" width="145" height="60" rx="8" fill="#ffffff" stroke="#c8c1b4"/>
+    <text x="84" y="48" text-anchor="middle" font-size="12" font-weight="700">1. 开放网关</text>
+    <text x="84" y="66" text-anchor="middle" font-size="11" fill="#5b6470">验签 · 幂等检查</text>
+    <line x1="157" y1="54" x2="188" y2="54" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr2)"/>
+    <rect x="190" y="24" width="150" height="60" rx="8" fill="#ffffff" stroke="#c8c1b4"/>
+    <text x="265" y="48" text-anchor="middle" font-size="12" font-weight="700">2. 锁汇与风控</text>
+    <text x="265" y="66" text-anchor="middle" font-size="11" fill="#5b6470">30秒锁汇 · 规则拦截</text>
+    <line x1="340" y1="54" x2="371" y2="54" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr2)"/>
+    <rect x="373" y="24" width="175" height="60" rx="8" fill="#fbecec" stroke="#992f2f"/>
+    <text x="460" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="#992f2f">3. 清结算账本 (唯一写)</text>
+    <text x="460" y="66" text-anchor="middle" font-size="11" fill="#992f2f">发现 1 处跨层直调违例</text>
+    <line x1="548" y1="54" x2="579" y2="54" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr2)"/>
+    <rect x="581" y="24" width="135" height="60" rx="8" fill="#ffffff" stroke="#c8c1b4"/>
+    <text x="648" y="48" text-anchor="middle" font-size="12" font-weight="700">4. 银行通道</text>
+    <text x="648" y="66" text-anchor="middle" font-size="11" fill="#5b6470">外行报文 · 重试</text>
+    <line x1="716" y1="54" x2="742" y2="54" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr2)"/>
+    <rect x="744" y="24" width="104" height="60" rx="8" fill="#e6f2ed" stroke="#1d5f4a"/>
+    <text x="796" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="#1d5f4a">5. 日终对账</text>
+    <text x="796" y="66" text-anchor="middle" font-size="11" fill="#1d5f4a">异步通知 · 审计</text>
+    <rect x="190" y="114" width="526" height="52" rx="8" fill="#fdf2e4" stroke="#eccca8"/>
+    <text x="453" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#8c4a12">超时与异常处理流：通道超时转挂起流水，绝不重复扣款 → T-842 等待负责人确认冲正锁机制</text>
+    <text x="453" y="154" text-anchor="middle" font-size="11" fill="#8c4a12">AST 静态扫描标红：bank-rail/retry_worker.py:118 越界直连账本内部模块（点“架构边界”看详情）</text>
+  </svg>`;
+}
+
+function renderBlockerCard(ds) {
+  const b = ds.blocked;
+  return `<div class="action-card">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+      <div>
+        <span class="badge badge-warn">待负责人拍板 · ${esc(b.id)}</span>
+        <strong style="margin-left:6px;">${esc(b.title)}</strong>
+      </div>
+      <span class="badge badge-human">触发源：${esc(b.srcId)} (${esc(b.srcDate)})</span>
+    </div>
+    <p style="margin-top:6px;"><strong>所属子系统：</strong>${esc(b.domain)} — ${esc(b.modulePromise)}</p>
+    <details open>
+      <summary>展开查看您当初提出这项要求时的原话（防止遗忘语境）</summary>
+      <p style="margin-top:6px;">“${esc(b.srcQuote)}”</p>
+    </details>
+    <div style="display:flex; flex-direction:column; gap:5px; margin-top:6px;">
+      ${b.options.map((op, i) => `<label style="font-size:12.5px;"><input type="radio" name="blk-${esc(ds.name)}" ${i === 0 ? "checked" : ""}> ${esc(op)}</label>`).join("")}
+    </div>
+    <div style="margin-top:8px; display:flex; gap:8px; align-items:center;">
+      <button class="btn-primary" onclick="alert('本地服务运行模式下，此按钮将把您的决定直接写入 docs/work.toml 并解冻该任务。')">保存拍板决定到工作台账</button>
+      <button class="btn-small" data-trigger-ctx="alert">查看完整四段上下文</button>
+    </div>
+  </div>`;
+}
+
+function renderDomainsTable(ds, onlyWarn, onRowClickAttr) {
+  const list = onlyWarn ? ds.domains.filter((d) => d.viols > 0 || d.oversized > 0 || d.lag > 0) : ds.domains;
+  if (!list.length) {
+    return `<div class="box-good">当前筛选下全部 ${ds.domains.length} 个子系统均状态平静，无越界引用或超限大文件。</div>`;
+  }
+  return `<table class="spec-table">
+    <thead>
+      <tr>
+        <th>业务子系统</th>
+        <th>成熟阶段</th>
+        <th>代码 / 文档</th>
+        <th>越界引用 · 超限文件 · 文档滞后</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${list.map((d) => {
+        const hasIssue = d.viols > 0 || d.oversized > 0 || d.lag > 0;
+        const issueText = hasIssue
+          ? `<span class="badge badge-bad">越界 ${d.viols} · 超限 ${d.oversized} · 文档滞后 ${d.lag} 次提交</span>`
+          : `<span class="badge badge-fact">边界合规 · 无超限文件</span>`;
+        return `<tr class="clickable ${hasIssue ? "row-warn" : ""}" ${onRowClickAttr}="1">
+          <td><strong>${esc(d.name)}</strong><br><span class="muted" style="font-size:12px;">${esc(d.promise)}</span></td>
+          <td>${esc(d.stage)}</td>
+          <td class="mono">${d.loc.toLocaleString()} 行<br>${d.docs} 篇</td>
+          <td>${issueText}</td>
+        </tr>`;
+      }).join("")}
+    </tbody>
+  </table>`;
+}
+
+function renderDocReaderWidget(ds, selectedIdx, openFullscreen) {
+  const doc = ds.docsList[selectedIdx] || ds.docsList[0];
+  return `<div class="doc-grid">
+    <div class="doc-tree">
+      <h4>文档分类树 (${ds.docs})</h4>
+      <input type="text" placeholder="输入关键词或业务域筛选文档..." style="width:100%; padding:5px 8px; border:1px solid var(--line); border-radius:6px; margin-bottom:8px; font-size:12px;">
+      ${ds.docsList.map((item, idx) => `
+        <button class="tree-item ${idx === selectedIdx ? "active" : ""}" data-select-doc="${idx}">
+          <span class="mono" style="font-size:11px; color:var(--muted);">[${esc(item.cat)}]</span><br>${esc(item.path)}
+        </button>`).join("")}
+    </div>
+    <article class="doc-prose">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:8px;">
+        <span class="badge badge-ai">${esc(doc.cat)} · ${esc(doc.dom)}</span>
+        ${openFullscreen ? `<button class="btn-small" data-open-fs="${selectedIdx}">打开全屏整页阅读层</button>` : `<span class="mono muted">75ch 舒适阅读栏宽</span>`}
+      </div>
+      <h3 style="font-size:17px;">${esc(doc.path)}</h3>
+      <p>${esc(doc.summary)}</p>
+      <div style="background:var(--surface-sub); border-radius:6px; padding:10px 12px; margin:10px 0;">
+        <strong>正文阅读预览（支持文内流程图全宽排版与相对链接直跳）：</strong>
+        <p style="margin-top:6px;">这里直接渲染完整 Markdown 正文，不再把文档塞进窄侧栏弹窗。所有面向人的架构边界、接口承诺与测试指令一目了然。</p>
+      </div>
+      ${renderFlowSvg(currentDsKey)}
+    </article>
+    <aside class="doc-toc">
+      <h4>页内章节大纲</h4>
+      ${doc.h2.map((h) => `<div style="padding:3px 0; font-size:12.5px; color:var(--accent);">• ${esc(h)}</div>`).join("")}
+      <div class="ctx-block">
+        <div class="badge badge-human">本文关联原话</div>
+        <p style="font-size:12px; margin-top:4px;">${esc(ds.blocked.srcId)} · 点击下方按钮在右侧拉出完整四段上下文。</p>
+        <button class="btn-small" data-trigger-ctx="alert" style="width:100%;">拉出关联上下文</button>
+      </div>
+    </aside>
+  </div>`;
+}
+
+function renderSwimlanes(ds) {
+  return `<div>
+    <div class="swimlane-row" style="font-weight:700; background:var(--surface-sub); padding:8px; border-radius:6px;">
+      <div>业务子系统泳道</div>
+      <div>当前推进（正在交付）</div>
+      <div>下一阶段（已排期）</div>
+      <div>远期规划</div>
+    </div>
+    ${ds.domains.slice(0, 5).map((d, i) => `
+      <div class="swimlane-row">
+        <div><strong>${esc(d.name)}</strong><br><span class="mono muted">${d.loc.toLocaleString()} 行</span></div>
+        <div><div class="ms-chip ${d.viols > 0 ? "blocked" : ""}" data-trigger-ctx="alert"><strong>里程碑 ${i + 1}：核心收敛</strong><br><span class="muted">已完成 ${d.viols > 0 ? "2 / 共 5" : "4 / 共 5"} 项任务</span></div></div>
+        <div><div class="ms-chip" data-trigger-ctx="alert"><strong>跨子系统边界联动</strong><br><span class="muted">依赖前置里程碑完成后启动</span></div></div>
+        <div><div class="ms-chip" data-trigger-ctx="alert"><strong>扩展包与多栈适配</strong><br><span class="muted">远期规划（已建档待启动）</span></div></div>
+      </div>`).join("")}
+    ${ds.domains.length > 5 ? `<p class="muted" style="margin-top:8px;">（仅展示前 5 条泳道；真实 12 万行版本按所有 9 个业务域完整展开，且支持“只看当前阻塞或异常泳道”。）</p>` : ""}
+  </div>`;
+}
+
+function renderAll() {
+  const ds = DATASETS[currentDsKey];
+  // Tab 1 Demo triggers + context
+  document.getElementById("demo-triggers").innerHTML = `
+    <div class="pane-box">
+      <h4>试着点击下面任意一条孤立信号：</h4>
+      <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+        <button class="btn-small" style="text-align:left; padding:10px;" data-demo="alert">
+          <span class="badge badge-bad">实测异常</span> <strong style="margin-left:6px;">${esc(ds.alertDemo.id)}</strong><br>
+          <span class="muted">${esc(ds.alertDemo.headline)}</span>
+        </button>
+        <button class="btn-small" style="text-align:left; padding:10px;" data-demo="blocker">
+          <span class="badge badge-warn">阻塞待办</span> <strong style="margin-left:6px;">${esc(ds.blocked.id)}：${esc(ds.blocked.title)}</strong><br>
+          <span class="muted">点击看怎样把几十天前的原话与当前方案绑在同一张封装卡里</span>
+        </button>
+      </div>
+    </div>`;
+  const demoTarget = currentDemoKey === "blocker" ? {
+    headline: "阻塞待拍板：" + ds.blocked.id + " — " + ds.blocked.title,
+    ownerTitle: ds.blocked.domain,
+    promise: ds.blocked.modulePromise,
+    owns: ds.blocked.domain === "透视展示层" ? "scripts/projectlib/web/**" : "src/settlement/**",
+    src: ds.blocked.srcId + " (" + ds.blocked.srcDate + ")：" + ds.blocked.srcQuote,
+    adr: "决策依据已自动附着在下方候选项旁，无需重新在旧会话翻聊天记录。",
+    facts: "当前任务保持等待拍板状态；未选中方案前相关代码修改受门禁限制。",
+    action: "需要负责人介入：请直接在行动卡中选择一项或输入新要求。"
+  } : ds.alertDemo;
+  document.getElementById("demo-context-preview").innerHTML = renderContextBlock(demoTarget);
+
+  // Option A render
+  document.getElementById("opt-a-status-badge").textContent = `${ds.name} · ${ds.stageLabel} · ${ds.loc} · ${ds.docs}`;
+  const canvasA = document.getElementById("opt-a-canvas");
+  if (optAView === "guide") {
+    canvasA.innerHTML = `
+      <div class="metric-strip">
+        <div class="metric-item"><span class="badge badge-fact">实测</span> <strong>${ds.domains.length}</strong> 个子系统</div>
+        <div class="metric-item"><strong>${esc(ds.loc)}</strong> · <strong>${esc(ds.docs)}</strong></div>
+        <div class="metric-item">${esc(ds.testSummary)}</div>
+      </div>
+      ${renderBlockerCard(ds)}
+      <div class="card" style="margin-bottom:12px;">
+        <h3>项目定位与端到端运行逻辑</h3>
+        <p>${esc(ds.oneLiner)}</p>
+        <div class="svg-frame">${renderFlowSvg(currentDsKey)}</div>
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <h3>新访客必读 3 篇起点 & 目录分工速览</h3>
+        <p class="muted">先看 <code>ARCHITECTURE.md</code>（全局结构） → 再看 <code>docs/sources.toml</code>（为什么这样做） → 最后点左侧具体业务域规则。</p>
+      </div>`;
+  } else if (optAView === "progress") {
+    canvasA.innerHTML = `
+      <div class="card" style="margin-bottom:12px;">
+        <h3>多子系统泳道路线图矩阵</h3>
+        ${renderSwimlanes(ds)}
+      </div>
+      <div class="card" style="margin-bottom:0;">
+        <h3>原始需求原话 → 架构决策 → 落地模块三栏因果追踪</h3>
+        <div class="grid-3">
+          <div class="pane-box"><span class="badge badge-human">1. 负责人原话</span><p style="margin-top:6px;"><strong>${esc(ds.blocked.srcId)}</strong>：${esc(ds.blocked.srcQuote)}</p></div>
+          <div class="pane-box"><span class="badge badge-ai">2. 架构决策转向</span><p style="margin-top:6px;">按时间与替代顺序展示 ADR 决策为何调整原先做法、覆盖哪几个模块。</p></div>
+          <div class="pane-box"><span class="badge badge-fact">3. 落盘模块与实测</span><p style="margin-top:6px;">点任一项直接查看具体受约束的源码目录与近期提交。</p></div>
+        </div>
+      </div>`;
+  } else if (optAView === "arch") {
+    canvasA.innerHTML = `
+      <div class="card" style="margin-bottom:0;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+          <h3>子系统健康矩阵与越界检查（点击任意子系统行弹出封装上下文）</h3>
+          <label style="font-size:12.5px; cursor:pointer;"><input type="checkbox" id="opt-a-warn-chk" ${optAOnlyWarn ? "checked" : ""}> 只看存在越界违规 / 超限 / 文档滞后的子系统</label>
+        </div>
+        ${renderDomainsTable(ds, optAOnlyWarn, "data-trigger-ctx")}
+      </div>`;
+  } else {
+    canvasA.innerHTML = renderDocReaderWidget(ds, optASelectedDoc, false);
+  }
+  const sheetA = document.getElementById("opt-a-sheet");
+  sheetA.classList.toggle("open", optASheetOpen);
+  sheetA.innerHTML = renderContextBlock(ds.alertDemo) + `<div style="margin-top:10px;"><button class="btn-small" id="opt-a-close-sheet">收起封装栏</button></div>`;
+
+  // Option B render
+  document.getElementById("opt-b-body").innerHTML = `
+    <div id="b-sec-1" class="card" style="margin:0;">
+      <h3>1. 全局概览与待拍板（${esc(ds.name)} · ${esc(ds.loc)} · ${esc(ds.docs)}）</h3>
+      <p>${esc(ds.oneLiner)}</p>
+      ${renderBlockerCard(ds)}
+    </div>
+    <div id="b-sec-2" class="card" style="margin:0;">
+      <h3>2. 系统运行逻辑与异常回退流程图</h3>
+      <div class="svg-frame">${renderFlowSvg(currentDsKey)}</div>
+    </div>
+    <div id="b-sec-3" class="card" style="margin:0;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+        <h3 style="margin:0;">3. 子系统边界与异常筛选</h3>
+        <label style="font-size:12px;"><input type="checkbox" id="opt-b-warn-chk" ${optBOnlyWarn ? "checked" : ""}> 只看异常子系统</label>
+      </div>
+      ${renderDomainsTable(ds, optBOnlyWarn, "data-open-fs")}
+    </div>
+    <div id="b-sec-4" class="card" style="margin:0;">
+      <h3>4. 多子系统泳道路线图与需求溯源</h3>
+      ${renderSwimlanes(ds)}
+    </div>
+    <div id="b-sec-5" class="card" style="margin:0;">
+      <h3>5. 全库文档书架（点击下方任意文档打开整页阅读浮层）</h3>
+      ${renderDocReaderWidget(ds, optASelectedDoc, true)}
+    </div>`;
+
+  // Option C render
+  const treeItems = [
+    { key: "overview", label: "全局概览与运行图" },
+    { key: "blocker", label: `待拍板收件箱 (${ds.blocked.id})` },
+    { key: "domains", label: `子系统边界表 (${ds.domains.length})` },
+    { key: "roadmap", label: "多泳道路线图与原话溯源" },
+    ...ds.docsList.map((d, i) => ({ key: "doc-" + i, label: "文档：" + d.path }))
+  ];
+  document.getElementById("opt-c-tree").innerHTML = treeItems.map((it) =>
+    `<button class="tree-item ${optCNode === it.key ? "active" : ""}" data-c-node="${esc(it.key)}">${esc(it.label)}</button>`
+  ).join("");
+
+  const cCenter = document.getElementById("opt-c-center");
+  if (optCNode === "overview") {
+    cCenter.innerHTML = `<h3>全局概览与运行逻辑</h3><p>${esc(ds.oneLiner)}</p><div class="svg-frame">${renderFlowSvg(currentDsKey)}</div>`;
+  } else if (optCNode === "blocker") {
+    cCenter.innerHTML = renderBlockerCard(ds);
+  } else if (optCNode === "domains") {
+    cCenter.innerHTML = `<h3>子系统健康与边界检查</h3>${renderDomainsTable(ds, false, "data-trigger-ctx")}`;
+  } else if (optCNode === "roadmap") {
+    cCenter.innerHTML = `<h3>多子系统泳道路线图</h3>${renderSwimlanes(ds)}`;
+  } else if (optCNode.startsWith("doc-")) {
+    const idx = Number(optCNode.slice(4)) || 0;
+    const d = ds.docsList[idx] || ds.docsList[0];
+    cCenter.innerHTML = `<span class="badge badge-ai">${esc(d.cat)}</span><h3 style="margin-top:6px;">${esc(d.path)}</h3><p>${esc(d.summary)}</p><div class="svg-frame">${renderFlowSvg(currentDsKey)}</div>`;
+  }
+  document.getElementById("opt-c-right").innerHTML = renderContextBlock(ds.alertDemo);
+}
+
+document.addEventListener("click", (e) => {
+  const dsBtn = e.target.closest("[data-ds]");
+  if (dsBtn) {
+    currentDsKey = dsBtn.dataset.ds;
+    document.querySelectorAll("[data-ds]").forEach((b) => b.classList.toggle("active", b === dsBtn));
+    renderAll();
+    return;
+  }
+  const tabBtn = e.target.closest(".tab[data-tab]");
+  if (tabBtn) {
+    document.querySelectorAll(".tab[data-tab]").forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+    tabBtn.classList.add("active");
+    document.getElementById("panel-" + tabBtn.dataset.tab).classList.add("active");
+    return;
+  }
+  const demoBtn = e.target.closest("[data-demo]");
+  if (demoBtn) {
+    currentDemoKey = demoBtn.dataset.demo;
+    renderAll();
+    return;
+  }
+  const subBtn = e.target.closest("#opt-a-views .subtab");
+  if (subBtn) {
+    optAView = subBtn.dataset.view;
+    document.querySelectorAll("#opt-a-views .subtab").forEach((b) => b.classList.toggle("active", b === subBtn));
+    renderAll();
+    return;
+  }
+  if (e.target.id === "opt-a-toggle-ctx" || e.target.closest("[data-trigger-ctx]")) {
+    optASheetOpen = e.target.id === "opt-a-toggle-ctx" ? !optASheetOpen : true;
+    renderAll();
+    return;
+  }
+  if (e.target.id === "opt-a-close-sheet") {
+    optASheetOpen = false;
+    renderAll();
+    return;
+  }
+  const docPick = e.target.closest("[data-select-doc]");
+  if (docPick) {
+    optASelectedDoc = Number(docPick.dataset.selectDoc) || 0;
+    renderAll();
+    return;
+  }
+  const jumpBtn = e.target.closest("[data-jump]");
+  if (jumpBtn) {
+    document.querySelectorAll("[data-jump]").forEach((b) => b.classList.toggle("active", b === jumpBtn));
+    document.getElementById(jumpBtn.dataset.jump)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+  const fsBtn = e.target.closest("[data-open-fs]") || (e.target.id === "opt-b-open-ctx" ? e.target : null);
+  if (fsBtn) {
+    const ds = DATASETS[currentDsKey];
+    const fs = document.getElementById("fullscreen-reader");
+    document.getElementById("fs-doc-title").textContent = fsBtn.id === "opt-b-open-ctx"
+      ? "上下文封装详情浮层（阅读完随时返回导读页）"
+      : `整页文档阅读层 · ${ds.docsList[optASelectedDoc]?.path || ""}`;
+    document.getElementById("fs-doc-body").innerHTML = fsBtn.id === "opt-b-open-ctx"
+      ? renderContextBlock(ds.alertDemo)
+      : renderDocReaderWidget(ds, optASelectedDoc, false);
+    fs.classList.add("open");
+    return;
+  }
+  if (e.target.id === "fs-close-btn") {
+    document.getElementById("fullscreen-reader").classList.remove("open");
+    return;
+  }
+  const cNodeBtn = e.target.closest("[data-c-node]");
+  if (cNodeBtn) {
+    optCNode = cNodeBtn.dataset.cNode;
+    renderAll();
+  }
+});
+
+document.addEventListener("change", (e) => {
+  if (e.target.id === "opt-a-warn-chk") { optAOnlyWarn = e.target.checked; renderAll(); }
+  if (e.target.id === "opt-b-warn-chk") { optBOnlyWarn = e.target.checked; renderAll(); }
+});
+
+renderAll();
+</script>
+</body>
+</html>

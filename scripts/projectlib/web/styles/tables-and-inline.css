@@ -1,0 +1,268 @@
+/* Role: Vertical-line-free Priority+ tables, nested list guides, sticky parent path, and 12px-gapped inline expand cards.
+ * Out of scope: Page viewport locking (layout.css), palette hex definitions (tokens.css), or doc prose.
+ * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-013 */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-platter);
+  color: var(--ink-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+body[data-archetype="orientation"] .data-table thead th { top: var(--topbar-height); }
+#roadmap-scroll .tree-table thead th { top: 30px; }
+
+.data-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+  color: var(--ink-primary);
+}
+
+.data-row {
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.data-row:hover {
+  background: var(--bg-subtle-hover);
+}
+
+.data-row[data-expanded="true"] {
+  background: var(--highlight-wash);
+}
+
+.row-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--ink-secondary);
+}
+
+.mono-trunc {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Header hint synced cleanly with hidden Priority+ column counts */
+.col-hidden-note {
+  margin-left: 8px;
+  font-weight: 400;
+  color: var(--ink-tertiary);
+}
+
+.col-hint-mid,
+.col-hint-narrow {
+  display: none;
+}
+
+@container workspace (max-width: 1024px) {
+  .col-pri-3 {
+    display: none;
+  }
+  .col-hint-mid {
+    display: inline;
+  }
+}
+
+@container workspace (max-width: 680px) {
+  .col-pri-2,
+  .col-pri-3 {
+    display: none;
+  }
+  .col-hint-mid {
+    display: none;
+  }
+  .col-hint-narrow {
+    display: inline;
+  }
+}
+
+/* Nested multi-level roadmap rows with 1px hairline vertical indent lines */
+.sticky-parent-bar {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  height: 30px;
+  padding: 5px 14px;
+  background: var(--bg-vibrancy);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline);
+  font-size: 12px;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tree-table thead th {
+  top: 30px;
+}
+
+.data-table tbody td.tree-cell-d1 {
+  padding-left: 24px;
+  box-shadow: inset 12px 0 0 transparent, inset 13px 0 0 var(--hairline);
+}
+
+.data-table tbody td.tree-cell-d2 {
+  padding-left: 38px;
+  box-shadow: inset 12px 0 0 transparent, inset 13px 0 0 var(--hairline), inset 26px 0 0 transparent, inset 27px 0 0 var(--hairline);
+}
+
+.data-table tbody td.tree-cell-d3 {
+  padding-left: 52px;
+  box-shadow: inset 12px 0 0 transparent, inset 13px 0 0 var(--hairline), inset 26px 0 0 transparent, inset 27px 0 0 var(--hairline), inset 40px 0 0 transparent, inset 41px 0 0 var(--hairline);
+}
+
+.tree-group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Inline downward white card with strict 12px top/bottom separation */
+.data-table tbody tr.inline-expand-row > td {
+  max-width: 0;
+  width: 100%;
+  padding: 0 14px;
+  background: var(--bg-canvas);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.inline-expand-card {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 12px 0;
+  padding: 16px 20px;
+  background: var(--bg-platter);
+  border: 1px solid var(--platter-border);
+  border-radius: var(--radius-platter);
+  box-shadow: var(--platter-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ctx-section {
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ctx-section:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.ctx-heading {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-tertiary);
+}
+
+.quote-box {
+  padding: 10px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  background: var(--bg-canvas);
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.copy-row > span,
+.inline-expand-card .mono {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.radio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+
+.starter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.starter-link {
+  padding: 10px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  background: var(--bg-platter);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 140ms ease;
+}
+
+.starter-link:hover {
+  background: var(--bg-subtle-hover);
+}
+
+.data-table tbody td.tree-cell-d4 {
+  padding-left: 68px;
+  box-shadow: inset 12px 0 0 transparent, inset 13px 0 0 var(--hairline), inset 26px 0 0 transparent, inset 27px 0 0 var(--hairline), inset 40px 0 0 transparent, inset 41px 0 0 var(--hairline), inset 54px 0 0 transparent, inset 55px 0 0 var(--hairline);
+}
+
+.doc-toc-indent-2 { padding-left: 20px; }
+.doc-toc-indent-3 { padding-left: 32px; }
+.drawer-cat-group { margin-top: 6px; }
+.drawer-cat-group > summary { cursor: pointer; padding: 4px 6px; font-size: 12px; font-weight: 600; color: var(--ink-secondary); }
+.arch-list { margin: 10px 0 0; padding-left: 18px; color: var(--ink-secondary); font-size: 13px; line-height: 1.6; }

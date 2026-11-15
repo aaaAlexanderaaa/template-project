@@ -1,0 +1,91 @@
+# Active multi-domain roadmap and task queue for template-project (2026.11)
+
+[[milestones]]
+id = "M-DIS-02"
+domain = "discipline"
+name = "Plain-Language Contracts, Guides & Starter Templates"
+slot = "now"
+depends_on = []
+
+[[milestones]]
+id = "M-DIS-03"
+domain = "discipline"
+name = "External Multi-Repo Adoption Playbooks"
+slot = "next"
+depends_on = ["M-DIS-02"]
+
+[[milestones]]
+id = "M-ENG-02"
+domain = "graph-engine"
+name = "Single-Source Graph Linker, Document Inventory & Boundary Checker"
+slot = "now"
+depends_on = ["M-DIS-02"]
+
+[[milestones]]
+id = "M-ENG-03"
+domain = "graph-engine"
+name = "Polyglot Go/Rust Import Adapter Pack"
+slot = "later"
+depends_on = ["M-ENG-02"]
+
+[[milestones]]
+id = "M-UI-01"
+domain = "perspective-ui"
+name = "Plain-Language Web Overview, Doc Reader & Architecture Maps"
+slot = "now"
+depends_on = ["M-ENG-02"]
+
+[[milestones]]
+id = "M-UI-02"
+domain = "perspective-ui"
+name = "Snapshot Diff Export for Release Notes"
+slot = "next"
+depends_on = ["M-UI-01"]
+
+[[milestones]]
+id = "M-REF-01"
+domain = "reference-app"
+name = "Runnable Modular Reference App & CSS Token Example"
+slot = "now"
+depends_on = ["M-DIS-02"]
+
+[[tasks]]
+id = "T-201"
+milestone = "M-DIS-02"
+title = "Publish plain-language working agreement, 5 contracts, 3 guides, and starter templates"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["discipline.entry-and-contracts", "discipline.guides-and-skills", "discipline.templates"]
+decisions = ["ADR-002", "ADR-003", "ADR-004", "ADR-005"]
+sources = ["SRC-001", "SRC-002", "SRC-003", "SRC-004", "SRC-010", "SRC-011", "SRC-012", "SRC-013"]
+
+[[tasks]]
+id = "T-202"
+milestone = "M-REF-01"
+title = "Maintain runnable reference-app exemplar with layer boundaries and CSS tokens"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["exemplar.domain", "exemplar.shared", "exemplar.checkout", "exemplar.app"]
+decisions = ["ADR-003", "ADR-005"]
+sources = ["SRC-001", "SRC-002", "SRC-013"]
+
+[[tasks]]
+id = "T-203"
+milestone = "M-ENG-02"
+title = "Implement single-source graph loader, doc/directory inventory, scanner, and plain-language check"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["graph.model", "graph.indexer", "graph.validator"]
+decisions = ["ADR-002", "ADR-003", "ADR-004"]
+sources = ["SRC-004", "SRC-006", "SRC-009", "SRC-010", "SRC-011"]
+
+[[tasks]]
+id = "T-204"
+milestone = "M-UI-01"
+title = "Rebuild perspective web UI and codify calm-platter Frontend Design Specification"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["perspective.context-pack", "perspective.server", "ui.perspective-web"]
+decisions = ["ADR-002", "ADR-004", "ADR-005"]
+sources = ["SRC-012", "SRC-013", "SRC-005", "SRC-006", "SRC-007", "SRC-008", "SRC-009", "SRC-010", "SRC-011"]
+selected_option = "SRC-013 Frontend Design Specification (4-view NSToolbar + single white platter + Tufte sidenotes + 100dvh management tables)"

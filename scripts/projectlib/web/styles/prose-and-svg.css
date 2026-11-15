@@ -1,0 +1,293 @@
+/* Role: Long-form document prose, right-margin Tufte sidenotes with 1px hover connector, and calm SVG graph styling.
+ * Out of scope: Page layout shells (layout.css) and management tables (tables-and-inline.css).
+ * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-007, SRC-013 */
+
+.reading-sticky-path {
+  position: sticky;
+  top: var(--topbar-height);
+  z-index: 20;
+  margin-bottom: 14px;
+  padding: 7px 14px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--hairline);
+  background: var(--bg-vibrancy);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  font-size: 12px;
+  color: var(--ink-secondary);
+  overflow-wrap: anywhere;
+}
+
+.reading-platter {
+  padding: 26px 32px;
+}
+
+.md-prose {
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--ink-primary);
+}
+
+.md-prose h1 {
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.32;
+  scroll-margin-top: 76px;
+}
+
+.md-prose h2 {
+  margin: 22px 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--hairline);
+  scroll-margin-top: 76px;
+}
+
+.md-prose h3,
+.md-prose h4 {
+  margin: 16px 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  scroll-margin-top: 76px;
+}
+
+.md-prose p {
+  margin: 8px 0;
+}
+
+.md-prose ul,
+.md-prose ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.md-prose code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--bg-canvas);
+  border: 1px solid var(--hairline);
+}
+
+.md-prose pre,
+.log-pre {
+  margin: 10px 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-control);
+  background: var(--bg-canvas);
+  border: 1px solid var(--hairline);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.log-pre {
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.md-prose pre code {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.md-prose blockquote {
+  margin: 10px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  background: var(--bg-canvas);
+  color: var(--ink-secondary);
+}
+
+.md-prose .callout-block {
+  margin: 10px 0;
+  padding: 8px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  background: var(--bg-canvas);
+  color: var(--ink-primary);
+}
+
+.md-prose .callout-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-bottom: 4px;
+}
+
+.md-table-wrap {
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+.md-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 13px;
+}
+
+.md-table th,
+.md-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--hairline);
+  text-align: left;
+  vertical-align: top;
+}
+
+.md-table th {
+  color: var(--ink-secondary);
+  font-weight: 500;
+}
+
+.md-highlight {
+  background: var(--highlight-wash);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+/* Tufte sidenotes on --bg-canvas + 1px hover connector */
+.sidenote-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 8px;
+}
+
+.sidenote-item {
+  position: relative;
+  padding: 4px 0 4px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+  transition: color 140ms ease;
+}
+
+.sidenote-item:hover,
+.sidenote-item.is-linked {
+  color: var(--ink-primary);
+}
+
+.sidenote-item:hover::before,
+.sidenote-item.is-linked::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 13px;
+  width: 34px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.sidenote-inline-wrap {
+  display: none;
+  margin: 12px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  background: var(--bg-canvas);
+}
+
+@container workspace (max-width: 1024px) {
+  .sidenote-rail {
+    display: none;
+  }
+  .sidenote-inline-wrap {
+    display: block;
+  }
+}
+
+.doc-tree-btn {
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--ink-primary);
+  font-family: inherit;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.doc-tree-btn:hover {
+  background: var(--bg-subtle-hover);
+}
+
+.doc-tree-btn.is-active {
+  background: var(--bg-platter);
+  border-color: var(--hairline);
+  font-weight: 500;
+}
+
+/* Diagrams & dependency SVG styling bound to tokens.css */
+.diagram-box {
+  max-width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-platter);
+  border: 1px solid var(--hairline);
+  background: var(--bg-canvas);
+  overflow-x: auto;
+}
+
+.svg-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.svg-canvas.svg-wide {
+  min-width: 760px;
+}
+
+.diagram-src-toggle {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ink-secondary);
+}
+
+.diagram-src-toggle summary {
+  cursor: pointer;
+}
+
+.svg-node { cursor: pointer; }
+.svg-node:hover rect,
+.svg-node:hover circle,
+.svg-node:hover polygon { stroke: var(--ink-primary); stroke-width: 1.6px; }
+.svg-box-clean { fill: var(--bg-platter); stroke: var(--line-strong); stroke-width: 1.2; }
+.svg-box-paper { fill: var(--bg-canvas); stroke: var(--line-strong); stroke-width: 1.2; }
+.svg-box-subtle { fill: var(--svg-node-tint); stroke: var(--line-strong); stroke-width: 1.2; }
+.svg-box-focus { fill: var(--bg-platter); stroke: var(--accent-primary); stroke-width: 1.5; }
+.svg-box-sage { fill: var(--ok-wash); stroke: var(--status-ok); stroke-width: 1.3; }
+.svg-box-warn { fill: var(--warn-wash); stroke: var(--status-warn); stroke-width: 1.5; }
+.svg-box-external { fill: var(--bg-canvas); stroke: var(--line-strong); stroke-dasharray: 4 3; stroke-width: 1.2; }
+.svg-edge-declared { fill: none; stroke: var(--ink-tertiary); stroke-width: 1.3; }
+.svg-edge-focus { fill: none; stroke: var(--accent-primary); stroke-width: 1.5; }
+.svg-edge-sage { fill: none; stroke: var(--status-ok); stroke-width: 1.5; }
+.svg-edge-dashed { fill: none; stroke: var(--ink-tertiary); stroke-width: 1.3; stroke-dasharray: 5 3; }
+.svg-edge-violation { fill: none; stroke: var(--status-err); stroke-width: 1.7; stroke-dasharray: 5 3; }
+.svg-text-ink { fill: var(--ink-primary); }
+.svg-text-sec { fill: var(--ink-secondary); }
+.svg-text-muted { fill: var(--ink-tertiary); }
+.svg-text-focus { fill: var(--accent-primary); }
+.svg-text-sage { fill: var(--status-ok); }
+.svg-text-signal { fill: var(--status-err); }
+.svg-axis-line { stroke: var(--hairline); stroke-width: 2; }
+.svg-dot-focus { fill: var(--accent-primary); }
+.svg-dot-sage { fill: var(--status-ok); }
+.svg-dot-signal { fill: var(--status-err); }
+.rule-anchor { display: block; height: 0; scroll-margin-top: 76px; }

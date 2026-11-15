@@ -1,0 +1,21 @@
+# Dynamic roadmap slots and task queue.
+# Reference spec, ADR, and SRC-* IDs; never re-copy module or quote prose here.
+
+[[milestones]]
+id = "M-01"
+domain = "example"
+name = "Initial Usable Slice"
+slot = "now" # done | now | next | later
+depends_on = []
+
+[[tasks]]
+id = "T-01"
+milestone = "M-01"
+title = "Deliver core module vertical slice"
+state = "active" # todo | active | blocked | ready_for_check | done
+human_check = "pending" # pending | approved | not_required
+specs = ["example.module"]
+decisions = []
+sources = ["SRC-001"]
+blocker_question = ""
+blocker_options = []

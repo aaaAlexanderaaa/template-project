@@ -1,8 +1,6 @@
-# Ephemeral work and local replacement backups
+# Ephemeral work and local runtime caches
 /tmp/*
 !/tmp/.gitkeep
-/archive/*
-!/archive/.gitkeep
 
 # Local configuration and secrets
 .env

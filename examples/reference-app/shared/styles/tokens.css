@@ -1,0 +1,32 @@
+/* Role: Authoritative design tokens (calm-platter palette, spacing, typography, radii).
+ * Out of scope: Page layout grids or feature-specific component classes.
+ * Anchors: spec=exemplar.shared, SRC-001, SRC-002, SRC-013 */
+
+:root {
+  --bg-canvas: #f5f5f7;
+  --bg-platter: #ffffff;
+  --bg-subtle-hover: rgba(0, 0, 0, 0.035);
+  --bg-vibrancy: rgba(255, 255, 255, 0.78);
+  --ink-primary: #1d1d1f;
+  --ink-secondary: #51555e;
+  --ink-tertiary: #868b96;
+  --hairline: rgba(0, 0, 0, 0.065);
+  --platter-border: rgba(0, 0, 0, 0.05);
+  --platter-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 6px 20px rgba(0, 0, 0, 0.035);
+  --accent-primary: #2f5d8a;
+  --status-ok: #3b7a57;
+  --status-warn: #b87333;
+  --status-err: #b84040;
+  --radius-platter: 10px;
+  --radius-control: 6px;
+  --space-sm: 8px;
+  --space-md: 16px;
+
+  /* Semantic aliases consumed cleanly by exemplar components */
+  --surface-paper: var(--bg-canvas);
+  --surface-card: var(--bg-platter);
+  --border-subtle: var(--platter-border);
+  --accent-action: var(--accent-primary);
+  --signal-alert: var(--status-warn);
+  --radius-card: var(--radius-platter);
+}

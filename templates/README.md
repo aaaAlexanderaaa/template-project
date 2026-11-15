@@ -1,59 +1,21 @@
-# Templates
+# Starter Templates (Minimal Single-Source Files)
 
-Files in this directory are inert examples. They become authoritative only
-after being copied into the appropriate `docs/` directory, all placeholders
-are replaced, and lifecycle metadata is set correctly.
+This directory contains minimal starter skeletons transferred into new or
+adopting repositories via `python3 scripts/project.py init --target <dir>`.
+They preserve core engineering rules, five-part architecture sections, owner
+UI approval gates, and open closed-loop independent review protocols:
 
-Reconcile document-relative links for the destination. In particular, a
-`../docs/contracts/...` reading dependency in a template becomes
-`../contracts/...` in `docs/design/`, or a same-directory contract link in
-`docs/contracts/`. Keep its complete reading dependencies. Product contracts
-may omit `contract_role` (the default is `product`); governance contracts
-declare `contract_role: governance`.
-
-| Need | Template | Destination |
-|---|---|---|
-| Cross-cutting behavior or invariant | `contract.md` | `docs/contracts/<topic>.md` |
-| Frontend surface | `frontend-surface.md` | `docs/design/<surface>.md` |
-| Style layers, shared visual values, override surface | `style-system.md` | `docs/contracts/<topic>-style-system.md` |
-| Backend/service/state change | `backend-change.md` | `docs/contracts/<topic>.md` |
-| Frontend + backend change | `cross-stack-change.md` | `docs/contracts/<topic>.md` |
-| Implementation or migration | `implementation-plan.md` | `docs/plans/YYYY-MM-DD-<topic>.md` |
-| Audit or defect batch | `issue-tracker.md` | `docs/issues/YYYY-MM-DD-<initiative>.md` |
-| Durable verification | `verification-report.md` | `docs/evidence/YYYY-MM-DD-<topic>.md` |
-| Cross-session continuation | `handoff.md` | `docs/evidence/YYYY-MM-DD-<topic>-handoff.md` |
-| Operator or maintainer procedure | `guide.md` | `docs/guides/<topic>.md` |
-| Risk-based agent execution | `agent-execution-plan.md` | `docs/plans/YYYY-MM-DD-<topic>.md` |
-| Independent multi-perspective review | `independent-review.md` | `docs/evidence/YYYY-MM-DD-<topic>-review.md` |
-| Fresh-context completion evaluation | `holistic-evaluation.md` | `docs/evidence/YYYY-MM-DD-<topic>-evaluation.md` |
-| Evidence-preserving data boundary | `evidence-preserving-data.md` | `docs/contracts/<topic>-data.md` |
-| Greenfield/brownfield adoption baseline | `adoption-assessment.md` | `docs/evidence/YYYY-MM-DD-adoption-assessment.md` |
-
-Clock, calendar, and demonstration-data rules are not a separate copyable
-template. They are owned by `docs/contracts/foundational-runtime-discipline.md`
-and named in `ARCHITECTURE.md` runtime prompts when [development § activate-concerns](../docs/contracts/development-discipline.md#activate-concerns-instead-of-expanding-ceremony) activates them.
-Backend and frontend templates provide conditional prompts for scoped time
-policy and demo temporal promises; cross-stack work links the same owners
-through its activated-concern table. Do not copy a pit catalog into an adopting
-architecture.
-
-Routine work uses existing authority, updates its behavior owner when required
-by [development](../docs/contracts/development-discipline.md#contract-before-material-delivery-evidence-before-certainty),
-and uses no plan template. A controlled
-experiment uses a disposable scratch record unless its findings support a
-durable decision. `agent-execution-plan.md` is for material delivery; retain
-its review topology only for high-risk work.
-
-`ci/docs-check.example.yml` is an optional GitHub Actions adapter for the
-repository's dependency-free Python 3.11+ documentation check and fixture
-suite. Other CI systems should run the same commands in their native format.
-
-The template inventory and required sections are declared in
-`docs-policy.toml`; editing a template without reconciling that policy fails the
-repository check.
-
-For concise task assignments and useful moves, start with the
-[practical task CheatSheet](../docs/guides/task-cheatsheet.md), including its
-specialized review collection. These prompts help execute the work; the files
-above hold durable decisions or evidence when needed. The recipes add no
-required template to the project profile.
+- [AGENTS.md](AGENTS.md) / [AGENTS.zh.md](AGENTS.zh.md) — Bilingual working agreement for downstream projects (plain language, proactive architecture design, approval boundaries, open closed-loop review).
+- [docs-readme.md](docs-readme.md) / [docs-readme.zh.md](docs-readme.zh.md) — Starter `docs/README.md` with authoritative map and language standard.
+- [ARCHITECTURE.md](ARCHITECTURE.md) / [ARCHITECTURE.zh.md](ARCHITECTURE.zh.md) — Bilingual five-part system overview (positioning, runtime `mermaid` flow, forbidden couplings, state/constraints, verification).
+- [adr.md](adr.md) / [adr.zh.md](adr.zh.md) — Cross-module architectural decision (`docs/decisions/ADR-NNN-slug.md`).
+- [domain-readme.md](domain-readme.md) / [domain-readme.zh.md](domain-readme.zh.md) — Per-domain overview with boundaries, runtime flow, and forbidden couplings (`docs/specs/<domain>/README.md`).
+- [module-spec.md](module-spec.md) / [module-spec.zh.md](module-spec.zh.md) — Module spec claiming source globs, interfaces, invariants, and dependencies (`docs/specs/<domain>/<module>.md`).
+- [surface-spec.md](surface-spec.md) / [surface-spec.zh.md](surface-spec.zh.md) — Frontend UI surface spec with explicit Owner Design Approval gate (`docs/design/<surface>.md`).
+- [independent-review.md](independent-review.md) / [independent-review.zh.md](independent-review.zh.md) — Open-ended, rationale-blind independent review and closed-loop re-verification record.
+- [sources.toml](sources.toml) — Append-only ledger for verbatim user quotes (`docs/sources.toml`).
+- [work.toml](work.toml) — Roadmap slots (`done/now/next/later`) and task states (`docs/work.toml`).
+- [architecture-rules.toml](architecture-rules.toml) — Optional custom forbidden-pattern boundary rules (`architecture-rules.toml`).
+- [adoption-assessment.md](adoption-assessment.md) / [adoption-assessment.zh.md](adoption-assessment.zh.md) — Read-only inventory before enabling enforcement in an existing codebase.
+- [charter.md](charter.md) / [charter.zh.md](charter.zh.md) — Standing bounds for unattended autonomous runs.
+- [ci/docs-check.example.yml](ci/docs-check.example.yml) — CI workflow running tests and `check_docs.py`.

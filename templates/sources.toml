@@ -1,0 +1,11 @@
+# Append-only ledger of verbatim user requirements.
+# Keep exact original wording inside '''...''' without translating or paraphrasing.
+
+[[sources]]
+id = "SRC-001"
+date = "2026-11-14"
+status = "active" # active | deferred | retired
+context = "Initial project goal"
+quote = '''
+Replace with the owner's exact verbatim request.
+'''

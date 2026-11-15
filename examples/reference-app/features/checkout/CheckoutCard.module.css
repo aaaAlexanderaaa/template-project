@@ -1,0 +1,26 @@
+/* Role: Component-scoped styles for the CheckoutCard UI unit.
+ * Out of scope: Global resets or shared palette definitions (consume tokens.css).
+ * Anchors: spec=exemplar.checkout, SRC-001, SRC-013 */
+
+.card {
+  background: var(--bg-platter);
+  border: 1px solid var(--platter-border);
+  border-radius: var(--radius-platter);
+  box-shadow: var(--platter-shadow);
+  padding: var(--space-md);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-primary);
+}
+
+.submitButton {
+  background: var(--accent-primary);
+  color: var(--bg-platter);
+  border-radius: var(--radius-control);
+  padding: var(--space-sm) var(--space-md);
+  transition: opacity 140ms ease;
+}
