@@ -4,8 +4,8 @@ kind: decision
 status: superseded
 title: "Legacy v1 16-template prose headings and 90-day calendar aging"
 sources:
-  - SRC-001
-  - SRC-004
+  - SRC-010
+  - SRC-013
 affects:
   - discipline.templates
   - graph.validator

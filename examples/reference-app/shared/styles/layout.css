@@ -1,6 +1,6 @@
 /* Role: Page-level structural shell and document defaults.
  * Out of scope: Feature/component selectors (keep colocated with each feature).
- * Anchors: spec=exemplar.shared, SRC-001, SRC-013 */
+ * Anchors: spec=exemplar.shared, SRC-010, SRC-022 */
 
 html {
   scrollbar-gutter: stable;

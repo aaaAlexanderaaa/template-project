@@ -1,6 +1,6 @@
 // Role: Four-part inline Context Pack card builders, doc prose + Tufte sidenotes extractor, and test-compatible reader shims.
 // Out of scope: Page layout routing (app.js), topbar views (views.js), and SVG graph layout (charts.js/diagrams.js).
-// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-007, SRC-010, SRC-013
+// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-016, SRC-019, SRC-022
 
 import { escHtml, truncMiddle, fmtNum, t, trStage, trTaskState, trHumanCheck, trCategory, trDecisionStatus } from "./i18n.js";
 import { slugifyHeading, renderMarkdownToHtml, stripCommentsOutsideCode } from "./markdown.js";

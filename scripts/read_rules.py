@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Role: CLI for rule-span preparation (`list`, `prepare`, `read`, `overview`) and external repo `onboard` inventory.
 # Out of scope: Mutating target repositories without explicit confirmation or running web servers.
-# Anchors: spec=graph.validator, ADR-002, SRC-001, SRC-003
+# Anchors: spec=graph.validator, ADR-002, SRC-010, SRC-012
 
 from __future__ import annotations
 

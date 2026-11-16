@@ -2,7 +2,7 @@
 
 > **English version**: [README.md](README.md)
 
-`template-project` 是一套面向人机协作编码的**工程纪律模板**（`discipline_version = "2026.11"`）。仓库的核心产品是可直接迁移到任意新旧软件项目中的工程规则、架构边界规范、设计审批门禁、独立评审流程与起步模板，用来防止代码失控、文档与实现脱节、或 AI 自说自话偏离项目目标。
+`template-project` 是一套面向人机协作编程的**工程纪律模板**（`discipline_version = "2026.11"`）。仓库的核心产品是可直接迁移到任意新旧软件项目中的工程规则、架构边界规范、设计审批门禁、独立评审流程与起步模板，用来按项目阶段加速并增强 AI 协作，主动补齐成熟工程实践，让持续成长的代码库保持清晰、模块化、可追溯，并始终对齐负责人的真实意图。
 
 `scripts/` 下的 Python 检查脚本与本地概览服务是**通用辅助工具**，用来确定性校验文档链路、静态边界与文件行数，并把这套纪律稳定落盘到下游项目。
 
@@ -44,5 +44,5 @@ python3 scripts/project.py status
 | [ARCHITECTURE.md](ARCHITECTURE.md) | 仓库定位、核心运行/评审闭环逻辑、硬约束与状态归属、四大子系统及迁移路径 |
 | [docs-policy.toml](docs-policy.toml) | 行数上限（源码 500 行、样式 300 行）、阶段配置与评审间隔策略 |
 | [docs/README.md](docs/README.md) | 文档目录总索引、平实语言标准与改前加载指南 |
-| [docs/design/perspective-web.md](docs/design/perspective-web.md) | 按 `SRC-013` 与 `ADR-005` 批准落地的四视角本地项目透视网站规格（`T-204` 待验收） |
+| [docs/design/perspective-web.md](docs/design/perspective-web.md) | 按 `SRC-022` 与 `ADR-005` 批准落地的四视角本地项目透视网站规格（`T-204` 待验收） |
 | [templates/README.md](templates/README.md) | 迁移到下游项目时使用的起步模板清单 |

@@ -1,6 +1,6 @@
 # Role: Thin application entrypoint wiring feature public facades together.
 # Out of scope: Business calculations (owned by domain) or feature internals.
-# Anchors: spec=exemplar.app, SRC-002
+# Anchors: spec=exemplar.app, SRC-011
 
 from __future__ import annotations
 

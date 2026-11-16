@@ -1,6 +1,6 @@
 # Role: Digest-checked Markdown rule span resolution for `read_rules.py`.
 # Out of scope: Git telemetry, AST code import scanning, or web server rendering.
-# Anchors: spec=graph.model, ADR-002, SRC-006
+# Anchors: spec=graph.model, ADR-002, SRC-015
 
 from __future__ import annotations
 

@@ -57,7 +57,7 @@ state = "ready_for_check"
 human_check = "pending"
 specs = ["discipline.entry-and-contracts", "discipline.guides-and-skills", "discipline.templates"]
 decisions = ["ADR-002", "ADR-003", "ADR-004", "ADR-005"]
-sources = ["SRC-001", "SRC-002", "SRC-003", "SRC-004", "SRC-010", "SRC-011", "SRC-012", "SRC-013"]
+sources = ["SRC-010", "SRC-011", "SRC-012", "SRC-013", "SRC-019", "SRC-020", "SRC-021", "SRC-022", "SRC-023"]
 
 [[tasks]]
 id = "T-202"
@@ -67,7 +67,7 @@ state = "ready_for_check"
 human_check = "pending"
 specs = ["exemplar.domain", "exemplar.shared", "exemplar.checkout", "exemplar.app"]
 decisions = ["ADR-003", "ADR-005"]
-sources = ["SRC-001", "SRC-002", "SRC-013"]
+sources = ["SRC-010", "SRC-011", "SRC-022"]
 
 [[tasks]]
 id = "T-203"
@@ -77,7 +77,7 @@ state = "ready_for_check"
 human_check = "pending"
 specs = ["graph.model", "graph.indexer", "graph.validator"]
 decisions = ["ADR-002", "ADR-003", "ADR-004"]
-sources = ["SRC-004", "SRC-006", "SRC-009", "SRC-010", "SRC-011"]
+sources = ["SRC-013", "SRC-015", "SRC-018", "SRC-019", "SRC-020"]
 
 [[tasks]]
 id = "T-204"
@@ -87,5 +87,5 @@ state = "ready_for_check"
 human_check = "pending"
 specs = ["perspective.context-pack", "perspective.server", "ui.perspective-web"]
 decisions = ["ADR-002", "ADR-004", "ADR-005"]
-sources = ["SRC-012", "SRC-013", "SRC-005", "SRC-006", "SRC-007", "SRC-008", "SRC-009", "SRC-010", "SRC-011"]
-selected_option = "SRC-013 Frontend Design Specification (4-view NSToolbar + single white platter + Tufte sidenotes + 100dvh management tables)"
+sources = ["SRC-021", "SRC-022", "SRC-014", "SRC-015", "SRC-016", "SRC-017", "SRC-018", "SRC-019", "SRC-020"]
+selected_option = "SRC-022 Frontend Design Specification (4-view NSToolbar + single white platter + Tufte sidenotes + 100dvh management tables)"

@@ -3,30 +3,30 @@ id: ui.perspective-web
 domain: perspective-ui
 kind: surface-spec
 stage: usable
-summary: "Calm-platter 4-view Project Overview web workbench built under SRC-013 and ADR-005 for unfamiliar visitors, project owners, and independent reviewers."
+summary: "Calm-platter 4-view Project Overview web workbench built under SRC-022 and ADR-005 for unfamiliar visitors, project owners, and independent reviewers."
 promise: "Any reader navigates whole-repo purpose, runtime flow, module boundaries, full documentation with Tufte sidenotes, verbatim lineage, and row-expanded context cleanly across 540px to 3440px viewports without raw noise."
 owns:
   - "scripts/projectlib/web/**"
 depends_on:
   - perspective.context-pack
 sources:
-  - SRC-005
-  - SRC-006
-  - SRC-007
-  - SRC-008
-  - SRC-009
-  - SRC-010
-  - SRC-011
-  - SRC-012
-  - SRC-013
+  - SRC-014
+  - SRC-015
+  - SRC-016
+  - SRC-017
+  - SRC-018
+  - SRC-019
+  - SRC-020
+  - SRC-021
+  - SRC-022
 ---
 
 # Project Overview Web Workbench (`T-204`)
 
 ## 1. Owner Design Approval Gate & Page Archetypes
 
-- **Design Status**: `approved` under owner specification `SRC-013` and architecture decision `ADR-005` (`T-204` set to `ready_for_check`, `human_check = "pending"` for final visual sign-off). `project.py init` distributes the rebuilt files under [scripts/projectlib/web/](../../scripts/projectlib/web/).
-- **Approved Option & Historical Reference**: Earlier options drafted in [frontend-design-options.html](frontend-design-options.html) compared **Option A:** a 4-view workbench with a fixed top bar, **Option B:** a single linear long-form narrative scroll, and **Option C:** a persistent three-column IDE browser. In `SRC-013`, the owner locked in the five-standard specification matching **Option A:**'s fixed `32px` top navigation bar (`NSToolbar`), a single white central platter over a `#F5F5F7` canvas, and task-specific page scrolling (`100dvh` locked frames for dense management tables; natural page scroll plus Tufte sidenotes for long-form reading).
+- **Design Status**: `approved` under owner specification `SRC-022` and architecture decision `ADR-005` (`T-204` set to `ready_for_check`, `human_check = "pending"` for final visual sign-off). `project.py init` distributes the rebuilt files under [scripts/projectlib/web/](../../scripts/projectlib/web/).
+- **Approved Option & Historical Reference**: Earlier options drafted in [frontend-design-options.html](frontend-design-options.html) compared **Option A:** a 4-view workbench with a fixed top bar, **Option B:** a single linear long-form narrative scroll, and **Option C:** a persistent three-column IDE browser. In `SRC-022`, the owner locked in the five-standard specification matching **Option A:**'s fixed `32px` top navigation bar (`NSToolbar`), a single white central platter over a `#F5F5F7` canvas, and task-specific page scrolling (`100dvh` locked frames for dense management tables; natural page scroll plus Tufte sidenotes for long-form reading).
 - **Target Readers**:
   1. Unfamiliar visitors seeking what the repository builds, what it excludes, how data and control flow end-to-end, and how folders map to modules.
   2. Project owners checking domain health, resolving blocking questions inline, approving completed work, and tracing verbatim requirements (`SRC-*` -> `ADR-*` -> modules -> tasks).

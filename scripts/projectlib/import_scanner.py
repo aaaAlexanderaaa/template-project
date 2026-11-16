@@ -1,6 +1,6 @@
 # Role: Static Python AST, JS/TS (multiline + aliases), CSS, HTML/Vue/Svelte, Go, and Rust import scanner.
 # Out of scope: Executing user code, Git subprocess calls, or HTTP rendering.
-# Anchors: spec=graph.indexer, ADR-002, SRC-001, SRC-009
+# Anchors: spec=graph.indexer, ADR-002, SRC-010, SRC-018
 
 from __future__ import annotations
 

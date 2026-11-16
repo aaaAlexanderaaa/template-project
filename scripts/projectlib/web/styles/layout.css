@@ -1,6 +1,6 @@
 /* Role: Fixed 32px NSToolbar shell, archetype scroll modes, max-width caps, 28px statusbar, and @container breakpoints.
  * Out of scope: Palette color hex values (tokens.css) and table/prose component styling.
- * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-013 */
+ * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-022 */
 
 * {
   box-sizing: border-box;

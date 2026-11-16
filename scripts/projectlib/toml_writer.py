@@ -1,6 +1,6 @@
 # Role: Safe TOML serializers and write-back mutators for sources.toml, work.toml, and archives.
 # Out of scope: HTTP serving, AST import scanning, or HTML template assembly.
-# Anchors: spec=perspective.server, ADR-002, SRC-005, SRC-006, SRC-010
+# Anchors: spec=perspective.server, ADR-002, SRC-014, SRC-015, SRC-019
 
 from __future__ import annotations
 

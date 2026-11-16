@@ -1,6 +1,6 @@
 # Role: Deterministic integer-cent to display-currency formatting.
 # Out of scope: Pricing rules, discounts, or tax calculation (owned by domain).
-# Anchors: spec=exemplar.shared, SRC-002
+# Anchors: spec=exemplar.shared, SRC-011
 
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 # Role: End-to-end unit and boundary tests for the modular reference exemplar under examples/reference-app/.
 # Out of scope: Repository governance validation (covered by test_ssot_and_check_docs.py).
-# Anchors: spec=exemplar.domain, spec=exemplar.shared, spec=exemplar.checkout, SRC-001, SRC-002
+# Anchors: spec=exemplar.domain, spec=exemplar.shared, spec=exemplar.checkout, SRC-010, SRC-011
 
 from __future__ import annotations
 

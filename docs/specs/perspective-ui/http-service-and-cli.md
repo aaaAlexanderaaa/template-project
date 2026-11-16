@@ -16,14 +16,14 @@ depends_on:
   - graph.validator
   - perspective.context-pack
 sources:
-  - SRC-005
-  - SRC-006
-  - SRC-007
-  - SRC-008
-  - SRC-010
-  - SRC-011
-  - SRC-012
-  - SRC-013
+  - SRC-014
+  - SRC-015
+  - SRC-016
+  - SRC-017
+  - SRC-019
+  - SRC-020
+  - SRC-021
+  - SRC-022
 ---
 
 # Local Perspective HTTP Server & `project.py` CLI

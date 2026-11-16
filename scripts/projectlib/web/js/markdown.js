@@ -1,6 +1,6 @@
 // Role: Zero-dependency Markdown, GFM table, alert callout, required-reading anchor, and heading-slug renderer.
 // Out of scope: Network fetches, UI translations (i18n.js), Mermaid SVG math (diagrams.js), and DOM events (app.js).
-// Anchors: spec=ui.perspective-web, docs/README.md#language-standard, SRC-007, SRC-013
+// Anchors: spec=ui.perspective-web, docs/README.md#language-standard, SRC-016, SRC-022
 
 import { escHtml } from "./i18n.js";
 

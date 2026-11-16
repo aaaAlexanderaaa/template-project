@@ -4,10 +4,10 @@ kind: decision
 status: current
 title: "Adopt five-standard calm-platter Frontend Design Specification and rebuild Perspective Web UI"
 sources:
-  - SRC-010
-  - SRC-011
-  - SRC-012
-  - SRC-013
+  - SRC-019
+  - SRC-020
+  - SRC-021
+  - SRC-022
 affects:
   - discipline.entry-and-contracts
   - discipline.guides-and-skills
@@ -23,7 +23,7 @@ supersedes: []
 # ADR-005: Adopt Five-Standard Calm-Platter Frontend Design Specification & Rebuild Perspective Web UI
 
 - **Context & problem**:
-  Task `T-204` held the local Perspective Web UI frozen pending explicit owner choice ([ADR-004](ADR-004-discipline-first-architecture-and-open-closed-loop-review.md)). In `SRC-013`, the owner supplied a complete **Frontend Design Specification** aligned across five industry standards and instructed both incorporating it into the template's normative frontend rules and rebuilding `scripts/projectlib/web/` to match it.
+  Task `T-204` held the local Perspective Web UI frozen pending explicit owner choice ([ADR-004](ADR-004-discipline-first-architecture-and-open-closed-loop-review.md)). In `SRC-022`, the owner supplied a complete **Frontend Design Specification** aligned across five industry standards and instructed both incorporating it into the template's normative frontend rules and rebuilding `scripts/projectlib/web/` to match it.
 - **Chosen approach**:
   1. Expand [frontend-and-visual-discipline.md](../contracts/frontend-and-visual-discipline.md), [surface-spec.md](../../templates/surface-spec.md), and [surface-spec.zh.md](../../templates/surface-spec.zh.md) to codify:
      - **Five reference standards**: Apple HIG canvas-vs-single-platter hierarchy (`#F5F5F7` / `#FFFFFF` + vibrancy popovers), Calm Technology + Tufte Data-Ink Ratio, Jef Raskin / `NSToolbar` spatial consistency (fixed `32px` bar, fixed control order, disabled-in-place), Intrinsic Web Design `@container` + Priority+ progressive collapse (`<680px` / `680-1024px` / `1024-1440px` / `>1440px`), and Tufte Sidenotes for long-form reading.

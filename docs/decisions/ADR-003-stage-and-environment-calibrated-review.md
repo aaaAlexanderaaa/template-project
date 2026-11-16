@@ -4,9 +4,11 @@ kind: decision
 status: current
 title: "Stage-calibrated rigor and commit/module-accumulated review cadence"
 sources:
-  - SRC-001
   - SRC-003
   - SRC-004
+  - SRC-010
+  - SRC-012
+  - SRC-013
 affects:
   - discipline.entry-and-contracts
   - discipline.guides-and-skills

@@ -11,8 +11,8 @@ depends_on:
   - exemplar.domain
   - exemplar.shared
 sources:
-  - SRC-001
-  - SRC-002
+  - SRC-010
+  - SRC-011
 ---
 
 # Reference App — Application Entrypoint

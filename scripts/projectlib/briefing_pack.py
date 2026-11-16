@@ -1,6 +1,6 @@
 # Role: Serializes the full stitched ProjectGraph into the JSON payload for CLI status and the local Web UI.
 # Out of scope: HTTP socket serving, TOML mutation, or direct subprocess calls.
-# Anchors: spec=perspective.context-pack, ADR-002, SRC-005, SRC-007, SRC-008, SRC-010
+# Anchors: spec=perspective.context-pack, ADR-002, SRC-014, SRC-016, SRC-017, SRC-019
 
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 # Role: Tests single-source graph stitching, boundary/link/budget/adoption checks, and git-diff source quote nudges.
 # Out of scope: HTTP server endpoint tests (covered by test_project_cli_and_server.py).
-# Anchors: spec=graph.model, spec=graph.indexer, spec=graph.validator, ADR-002, SRC-001, SRC-008, SRC-009
+# Anchors: spec=graph.model, spec=graph.indexer, spec=graph.validator, ADR-002, SRC-010, SRC-017, SRC-018
 
 from __future__ import annotations
 
@@ -129,10 +129,10 @@ class SsotAndCheckDocsTests(unittest.TestCase):
         self.assertEqual(len(graph.domains), 4)
         self.assertEqual(len(graph.modules), 13)
         self.assertGreaterEqual(len(graph.sources), 10)
-        self.assertIn("SRC-010", graph.sources)
+        self.assertIn("SRC-019", graph.sources)
         self.assertGreaterEqual(len(graph.repo_docs), 35)
         self.assertGreaterEqual(len(graph.directory_map), 6)
-        self.assertIn("单一事实只在一个地方维护", graph.sources["SRC-009"].quote)
+        self.assertIn("单一事实只在一个地方维护", graph.sources["SRC-018"].quote)
         docs_by_path = {d.path: d for d in graph.repo_docs}
         self.assertTrue(docs_by_path["docs/work.toml"].summary.startswith("Active multi-domain roadmap"))
         self.assertNotIn("id =", docs_by_path["docs/work.toml"].summary)

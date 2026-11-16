@@ -8,8 +8,8 @@ owns:
   - "examples/reference-app/domain/**"
 depends_on: []
 sources:
-  - SRC-001
-  - SRC-002
+  - SRC-010
+  - SRC-011
 ---
 
 # Reference App — Pure Domain Layer

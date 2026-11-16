@@ -1,6 +1,6 @@
 /* Role: Calm surfaces (canvas strip vs single white platter), buttons, popovers, drawer, dots, and empty states.
  * Out of scope: Page scroll framing (layout.css), data table geometry, or Markdown typography.
- * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-013 */
+ * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-022 */
 
 .canvas-bar {
   display: flex;

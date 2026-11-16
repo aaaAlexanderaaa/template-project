@@ -11,9 +11,9 @@ owns:
   - "scripts/rule_reading.py"
 depends_on: []
 sources:
-  - SRC-006
-  - SRC-009
-  - SRC-011
+  - SRC-015
+  - SRC-018
+  - SRC-020
 ---
 
 # Graph Model, Frontmatter Parser & Rule Reader

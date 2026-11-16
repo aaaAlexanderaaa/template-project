@@ -1,6 +1,6 @@
 // Role: Native SVG visualizers for timeline, provenance lineage, domain dependency map, and module internals.
 // Out of scope: Mermaid text parsing (diagrams.js), DOM drawer rendering (drawer.js), and API calls.
-// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-007, SRC-010
+// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-016, SRC-019
 
 import { escHtml, wrapTextLines, t, trStage, trTaskState, trDecisionStatus } from "./i18n.js";
 

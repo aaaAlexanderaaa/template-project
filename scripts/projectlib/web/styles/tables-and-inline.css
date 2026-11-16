@@ -1,6 +1,6 @@
 /* Role: Vertical-line-free Priority+ tables, nested list guides, sticky parent path, and 12px-gapped inline expand cards.
  * Out of scope: Page viewport locking (layout.css), palette hex definitions (tokens.css), or doc prose.
- * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-013 */
+ * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-022 */
 
 .data-table {
   width: 100%;

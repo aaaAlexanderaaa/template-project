@@ -19,14 +19,14 @@ flowchart LR
   Graph["Stitched ProjectGraph"] --> Pack["context_pack.py + briefing_pack.py"]
   Pack --> CLI["project.py status / context / trace / init"]
   Pack --> HTTP["server.py (/api/graph, /api/context, /api/diff, write-back POSTs)"]
-  HTTP --> Web["web/ Calm-Platter 4-View Interface (Approved via SRC-013)"]
+  HTTP --> Web["web/ Calm-Platter 4-View Interface (Approved via SRC-022)"]
 ```
 
 ## 2. Boundaries, State Ownership & Forbidden Couplings
 
 | Constraint or Forbidden Coupling | Rule Summary | Enforced By |
 |---|---|---|
-| **Frontend specification compliance** | `ui.perspective-web` implements the owner-approved `SRC-013` specification; any future major layout change requires an explicit option comparison and owner approval before editing. | `docs/design/perspective-web.md`, `docs/contracts/frontend-and-visual-discipline.md` |
+| **Frontend specification compliance** | `ui.perspective-web` implements the owner-approved `SRC-022` specification; any future major layout change requires an explicit option comparison and owner approval before editing. | `docs/design/perspective-web.md`, `docs/contracts/frontend-and-visual-discipline.md` |
 | **Pure context/trace lineage** | `context_pack` traces sources and ADRs strictly via explicit task `decisions`/`sources` links; never invent cross-task matches through superseded ADRs. | `tests/test_discipline_transfer_and_consistency.py` |
 | **No TOML data corruption** | Write-back mutations validate CSRF Origin/Token, validate JSON before touching `sources.toml` or `work.toml`, preserve custom keys, and block silent archive overwrites. | `test_project_cli_and_server.py` |
 

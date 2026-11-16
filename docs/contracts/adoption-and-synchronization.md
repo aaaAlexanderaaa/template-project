@@ -55,7 +55,7 @@ When asked in another repository to learn or adopt practices from
      `docs/work.toml`), directory overview labels, and CLI output use plain
      Chinese, while shared normative contracts under `docs/contracts/` and
      playbooks under `docs/guides/` remain canonical English single-source
-     references unless locally adapted (`SRC-012`).
+     references unless locally adapted (`SRC-021`).
 <!-- /required-reading: existing-directory-safety -->
 
 <!-- required-reading: incremental-version-sync -->

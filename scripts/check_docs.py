@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Role: CLI entrypoint for single-source graph validation, boundary checks, and git-diff contextual reminders.
 # Out of scope: HTTP serving or mutating repository files.
-# Anchors: spec=graph.validator, ADR-002, ADR-003, SRC-004, SRC-009
+# Anchors: spec=graph.validator, ADR-002, ADR-003, SRC-013, SRC-018
 
 from __future__ import annotations
 

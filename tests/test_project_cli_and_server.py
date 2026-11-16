@@ -1,6 +1,6 @@
 # Role: End-to-end tests for project.py CLI subcommands, init/sync workflows, HTTP perspective routes, and TOML write-backs.
 # Out of scope: Static validator boundary permutations (covered by test_ssot_and_check_docs.py) and web UI checks (test_web_workbench.py).
-# Anchors: spec=perspective.context-pack, spec=perspective.server, SRC-005, SRC-006
+# Anchors: spec=perspective.context-pack, spec=perspective.server, SRC-014, SRC-015
 
 from __future__ import annotations
 
@@ -400,7 +400,7 @@ class ProjectCliAndServerTests(unittest.TestCase):
             self.assertFalse((repo2 / "docs" / "specs" / "discipline").exists())
             self.assertFalse((repo2 / "examples" / "reference-app").exists())
             self.assertFalse((repo2 / "README_CN.md").exists())
-            self.assertNotIn("SRC-013", (repo2 / "docs" / "sources.toml").read_text(encoding="utf-8"))
+            self.assertNotIn("SRC-022", (repo2 / "docs" / "sources.toml").read_text(encoding="utf-8"))
             self.assertIn(f'review_anchor_sha = "{head2}"', pol2)
             strict2 = subprocess.run([sys.executable, "-B", str(repo2 / "scripts" / "check_docs.py"), "--strict"], cwd=repo2, capture_output=True, text=True)
             self.assertEqual(strict2.returncode, 0, strict2.stdout + strict2.stderr)

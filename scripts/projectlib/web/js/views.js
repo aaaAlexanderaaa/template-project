@@ -1,6 +1,6 @@
 // Role: Pure view renderers for Overview, Boundaries & Architecture, Roadmap & Lineage, and Long-Form Documents.
 // Out of scope: Network IO, browser event listeners (app.js), and direct SVG layout algorithms (charts.js/diagrams.js).
-// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-005, SRC-007, SRC-008, SRC-013
+// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-014, SRC-016, SRC-017, SRC-022
 
 import { escHtml, truncMiddle, fmtNum, fmtStatusCount, t, trStage, trTaskState, trHumanCheck, trCategory, trDecisionStatus, trDiffDomain, trSeverity, trFileStatus, trRuleId } from "./i18n.js";
 import { renderMermaidSvg } from "./diagrams.js";

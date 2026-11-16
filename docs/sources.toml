@@ -1,8 +1,92 @@
-# Verbatim User Requirements for template-project
-# Every quote preserves the owner's exact original words without translation or paraphrase.
+# Verbatim User Requirements for template-project (chronological order, earliest first)
+# Record only owner quotes that substantively affect project direction, boundaries, or design; keep exact unedited wording inside '''...'''.
 
 [[sources]]
 id = "SRC-001"
+date = "2026-07-26"
+status = "active"
+context = "Founding governance boundary (git af16d72): framework assists and identifies risks while owner keeps priority and idea authority"
+quote = '''
+它作为一个治理框架，它不应该去帮助开发者定义优先级，它只能作为辅助，而不做决策。
+可以帮助开发者识别那些他没有识别到的风险和，应该注意到的对长期项目发展带来的异常。但他不应该在开发者有自己的想法的时候，阻碍他说你这个想法不对。
+'''
+
+[[sources]]
+id = "SRC-002"
+date = "2026-07-26"
+status = "active"
+context = "Origin of onboarding guidance (git af16d72): help new and running projects adopt the template smoothly"
+quote = '''
+采用这个模板项目去作为一个初始项目或者去应用到一个已经正在运行的项目当中，如何正确而快速的 onboarding。
+有可能是他们在执行 onboarding 的时候会有盲点，就是错误的理解这一个框架，所以你需要给出一些 onboarding 的指引，比如说出一个 Onboarding.md？
+'''
+
+[[sources]]
+id = "SRC-003"
+date = "2026-07-26"
+status = "active"
+context = "Scale and CI smoothness request (git 3874272): adapt workflow across project sizes and CI without consuming agent attention"
+quote = '''
+pls help me optimize this template project to make it suite to different scale of projects because sometimes the project is not such big or sometimes my project need CI... we need to make the workflow work smoothly instead of make agent pay a lot attention to fit it.
+'''
+
+[[sources]]
+id = "SRC-004"
+date = "2026-07-28"
+status = "active"
+context = "Core enabling intent (git 72b881c): enable agents through clear scope and user context instead of causing hesitation"
+quote = '''
+赋能而不是阻碍，让 agent 可以清楚自己什么该做和不该做，而不是因为未能理解用户的需求和场景时刻担心犯错。
+'''
+
+[[sources]]
+id = "SRC-005"
+date = "2026-08-06"
+status = "active"
+context = "Research, fallback, and causal clarity rule (git 5023b0a): look up unknowns, use fallbacks, highlight unasked critical issues, explain causes"
+quote = '''
+如果遇到不知道的引用名词、文献，或者什么其他别的东西，就调用联网工具去查，不要自己猜。工具不可用时，不要直接放弃，去找 fallback。用户提出问题时，找出他没问但可能更关键的问题并指出来。拆解问题以讲清楚因果机制为标准，不以层级够多为标准，不为了显得深刻而堆砌空洞抽象。
+'''
+
+[[sources]]
+id = "SRC-006"
+date = "2026-08-06"
+status = "active"
+context = "Bounded decision choices (git 5023b0a): give the owner multiple-choice options when uncertain instead of guessing"
+quote = '''
+如果在项目开发、决策或者设计当中有不确定的东西，就给用户做选择题，而不是自己瞎折腾，做出来不满意以后又花很多成本去改。
+'''
+
+[[sources]]
+id = "SRC-007"
+date = "2026-08-06"
+status = "active"
+context = "Transfer-value priority (git b7680da): rank template knowledge so visiting agents carry interaction habits first"
+quote = '''
+我认为不应该是一直做增量加文件，采用和学习只是在措辞上强度不一样，而你作为一个有着大量知识和架构的项目 template，你应该给的是，如果一个新的 agent 进来，再出去，它自己决定带走什么的时候，你给自己的项目的所有东西的价值排序。比如说，我自己就认为交互习惯那部分要有很大的优先级。
+'''
+
+[[sources]]
+id = "SRC-008"
+date = "2026-09-06"
+status = "active"
+context = "Outcome-driven bidirectional verification (git ca8b29c): check missing, undeclared, excessive, and suppressed effects"
+quote = '''
+仍然不够目标驱动
+“声明应该发生，但实现不存在”；“实现产生了未声明的效果”；“效果发生次数过多”；“效果被错误压制，发生次数过少”。
+'''
+
+[[sources]]
+id = "SRC-009"
+date = "2026-09-06"
+status = "active"
+context = "Continuous delivery after alignment (git ca8b29c): execute settled tasks through to the end without artificial stage pauses"
+quote = '''
+如果所有的待确认项都确定好了，那就直接瀑布式开发到本次任务结束，不要分什么阶段123来让用户review或确认
+'''
+
+[[sources]]
+id = "SRC-010"
 date = "2026-11-14"
 status = "active"
 context = "Attention overload, stage-blind review subagents on 0->0.1 projects, missing architectural & CSS modularity best practices, and anti-formalism"
@@ -13,7 +97,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-002"
+id = "SRC-011"
 date = "2026-11-14"
 status = "active"
 context = "Owner background & requirement for AI to proactively supply mature software engineering best practices in plain language"
@@ -23,7 +107,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-003"
+id = "SRC-012"
 date = "2026-11-14"
 status = "active"
 context = "Concrete object triggers vs AI overconfidence, and simultaneous three-perspective pre-code judgment"
@@ -33,7 +117,7 @@ A2: 这里有一个很特别的地方是，它要求系统同时从三种角度�
 '''
 
 [[sources]]
-id = "SRC-004"
+id = "SRC-013"
 date = "2026-11-14"
 status = "active"
 context = "Environment-dependent review and commit-accumulated Grill reminder; preventing Goodhart drift, three-level verbatim lineage, and replacing calendar-day metrics"
@@ -46,7 +130,7 @@ A5: 因为一个元级别的事情是，模型容易把使命和愿景弱化成�
 '''
 
 [[sources]]
-id = "SRC-005"
+id = "SRC-014"
 date = "2026-11-14"
 status = "active"
 context = "Zero-performative-ledger Project Perspective built mechanically from the working documents AI already maintains"
@@ -56,7 +140,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-006"
+id = "SRC-015"
 date = "2026-11-14"
 status = "active"
 context = "100% deterministic mechanical script at runtime, low format burden on AI, and explicit distinction between quantitative telemetry and variables"
@@ -66,7 +150,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-007"
+id = "SRC-016"
 date = "2026-11-14"
 status = "active"
 context = "Boss + CTO reader persona, low cognitive load, and progressive context encapsulation around details"
@@ -77,7 +161,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-008"
+id = "SRC-017"
 date = "2026-11-14"
 status = "active"
 context = "Scaling roadmap, history, and architecture views to complex 100k+-line multi-subsystem projects"
@@ -86,7 +170,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-009"
+id = "SRC-018"
 date = "2026-11-14"
 status = "active"
 context = "Single Source of Truth: modular design documents own module facts once, and scripts stitch separate single-source files together"
@@ -95,7 +179,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-010"
+id = "SRC-019"
 date = "2026-11-15"
 status = "active"
 context = "Independent review demand on plain language across docs and downstream agents, clear website explanation of project structure and documents for unfamiliar readers, and alignment with settled review decisions"
@@ -114,7 +198,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-011"
+id = "SRC-020"
 date = "2026-11-15"
 status = "active"
 context = "Independent review definition & closed loop, discipline-first template identity & transfer fidelity, real architecture/boundaries/constraints/logic vs doc scripts, and first-principles Grill of unapproved web frontend"
@@ -127,7 +211,7 @@ quote = '''
 '''
 
 [[sources]]
-id = "SRC-012"
+id = "SRC-021"
 date = "2026-11-15"
 status = "active"
 context = "Owner feedback requiring concrete reader-content-form Web UI presentation design (T-204) and confirming --lang zh canonical contract/guide language policy"
@@ -137,7 +221,7 @@ A2: (Recommended) 保持入口约定、架构与规格模板、工作台账、�
 '''
 
 [[sources]]
-id = "SRC-013"
+id = "SRC-022"
 date = "2026-11-15"
 status = "active"
 context = "Owner-aligned Frontend Design Specification (5 industry standards, 6 trade-off rules, 4 page archetypes, CSS tokens/breakpoints/anti-jitter/banned patterns, 6-item pre-delivery self-check) and authorization to rebuild the frontend and codify the spec"
@@ -330,4 +414,13 @@ quote = '''
 
 6. **排查禁用样式**：检查代码里是否彻底清除了 Emoji 装饰、`border-left` 彩色粗边提示框、多层嵌套卡片、蓝紫渐变和卡片悬停上跳动画。
 ~~~
+'''
+
+[[sources]]
+id = "SRC-023"
+date = "2026-11-16"
+status = "active"
+context = "Chronological verbatim source order and substantive-direction inclusion threshold for template-project and adopting repos"
+quote = '''
+重新修订顺序吧，时间顺序排序，早期的排在前面，我要确保是原话，我不希望你写成了“核心内容”或者什么别的做了处理的东西。另外，我补充，对于整个template-project和采用这一套规范的项目，不是所有原话都sources，而是对项目发展方向产生了实质性影响的才要进去。
 '''

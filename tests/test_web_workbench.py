@@ -1,6 +1,6 @@
 # Role: Tests calm-platter web workbench views, SVG renderers, standalone IIFE boot, and scale constraints.
 # Out of scope: HTTP socket routes and CLI command integration (covered by test_project_cli_and_server.py).
-# Anchors: spec=ui.perspective-web, SRC-005, SRC-007, SRC-010, SRC-013
+# Anchors: spec=ui.perspective-web, SRC-014, SRC-016, SRC-019, SRC-022
 
 from __future__ import annotations
 
@@ -226,7 +226,7 @@ console.log("SVG_OK:" + outputs.length);
         from projectlib.context_pack import build_context_pack
         t204_pack = build_context_pack(graph, "T-204")
         t204_src_ids = [s["id"] for s in t204_pack["verbatim_sources"]]
-        self.assertEqual(t204_src_ids[:2], ["SRC-012", "SRC-013"])
+        self.assertEqual(t204_src_ids[:2], ["SRC-021", "SRC-022"])
         self.assertEqual(payload["project"]["web_default_lang"], "zh")
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
@@ -287,8 +287,8 @@ if (!rmEntry || rmEntry.title.includes("`") || rmEntry.summary.includes("请查�
 const t204Ms = data.domains.flatMap((d) => d.now_milestones || []).find((m) => (m.tasks || []).some((t) => t.id === "T-204"));
 const t204Obj = t204Ms?.tasks.find((t) => t.id === "T-204");
 const t204Pack = taskPackFromGraph(data, data.domains.find((d) => d.id === "perspective-ui"), t204Ms, t204Obj);
-if (t204Pack.verbatim_sources[0]?.id !== "SRC-012" || t204Pack.verbatim_sources[1]?.id !== "SRC-013") {{
-  throw new Error("Expected taskPackFromGraph T-204 SRC-012/SRC-013 first");
+if (t204Pack.verbatim_sources[0]?.id !== "SRC-021" || t204Pack.verbatim_sources[1]?.id !== "SRC-022") {{
+  throw new Error("Expected taskPackFromGraph T-204 SRC-021/SRC-022 first");
 }}
 
 for (const rid of allRuleIds) {{
@@ -324,7 +324,7 @@ for (const lang of ["zh", "en"]) {{
     if (!out.statusLeft.includes("/")) throw new Error("Missing statusLeft ratio in boundaries:" + bm);
   }}
   for (const rm of ["tasks", "trace", "diff"]) {{
-    const ek = rm === "tasks" ? "rm-tk::T-204" : (rm === "trace" ? "rm-tr::SRC-013" : "");
+    const ek = rm === "tasks" ? "rm-tk::T-204" : (rm === "trace" ? "rm-tr::SRC-022" : "");
     const out = renderRoadmapView(data, {{ ...baseState, lang, roadmapSubMode: rm, expandedKey: ek }});
     checkOut("roadmap:" + rm + ":" + lang, out, lang);
     if (!out.statusLeft.includes("/")) throw new Error("Missing statusLeft ratio in roadmap:" + rm);
@@ -345,7 +345,7 @@ for (const lang of ["zh", "en"]) {{
   if (!adrDocEntry) throw new Error("Missing ADR-005 doc entry");
   const adrDoc = renderDocsView(data, {{ ...baseState, lang, selectedDocPath: adrDocEntry.path }});
   checkOut("docs-adr:" + lang, adrDoc, lang);
-  if (!adrDoc.sidenotes || !adrDoc.sidenotes.some((n) => n.id.includes("SRC-013"))) throw new Error("Missing SRC-013 sidenote on ADR-005");
+  if (!adrDoc.sidenotes || !adrDoc.sidenotes.some((n) => n.id.includes("SRC-022"))) throw new Error("Missing SRC-022 sidenote on ADR-005");
   const htmlDoc = renderDocsView(data, {{ ...baseState, lang, selectedDocPath: "docs/design/frontend-design-options.html" }});
   checkOut("docs-html:" + lang, htmlDoc, lang);
   if (htmlDoc.html.includes("<!doctype") || htmlDoc.html.includes("<style>")) throw new Error("HTML doc leaked raw markup tags");

@@ -1,6 +1,6 @@
 /* Role: Authoritative design tokens (calm-platter palette, spacing, typography, radii).
  * Out of scope: Page layout grids or feature-specific component classes.
- * Anchors: spec=exemplar.shared, SRC-001, SRC-002, SRC-013 */
+ * Anchors: spec=exemplar.shared, SRC-010, SRC-011, SRC-022 */
 
 :root {
   --bg-canvas: #f5f5f7;

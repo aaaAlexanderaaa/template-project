@@ -1,6 +1,6 @@
 # Role: Tests digest-verified rule reading (`read_rules.py`) and external repository onboarding (`onboard`).
 # Out of scope: HTTP server and static AST import scanning.
-# Anchors: spec=graph.validator, ADR-002, SRC-001, SRC-004
+# Anchors: spec=graph.validator, ADR-002, SRC-010, SRC-013
 
 from __future__ import annotations
 

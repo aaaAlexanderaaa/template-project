@@ -1,6 +1,6 @@
 # Role: Plain-language, project-language, placeholder, and stable-spec structure checks separated from validator core.
 # Out of scope: Ownership globs, AST import scanning, or file-size budget enforcement (kept in validator.py).
-# Anchors: spec=graph.validator, ADR-002, ADR-003, SRC-001, SRC-004, SRC-009, SRC-010
+# Anchors: spec=graph.validator, ADR-002, ADR-003, SRC-010, SRC-013, SRC-018, SRC-019
 
 from __future__ import annotations
 

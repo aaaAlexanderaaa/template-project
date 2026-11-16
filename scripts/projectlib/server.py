@@ -1,6 +1,6 @@
 # Role: Zero-dependency local HTTP service, CSRF gate, review/test triggers, and standalone HTML exporter.
 # Out of scope: AST import resolution (owned by import_scanner.py) and raw TOML string escaping.
-# Anchors: spec=perspective.server, ADR-002, SRC-005, SRC-006, SRC-007, SRC-010
+# Anchors: spec=perspective.server, ADR-002, SRC-014, SRC-015, SRC-016, SRC-019
 
 from __future__ import annotations
 

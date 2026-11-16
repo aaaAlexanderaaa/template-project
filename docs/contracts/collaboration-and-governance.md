@@ -52,10 +52,13 @@ implementation:
 
 Preserve intent across sessions and design pivots without duplicating prose:
 
-- **1. Verbatim User Quotes (`docs/sources.toml`)**: Store the owner's exact
-  words in their original language (`quote = '''...'''`) with `id = "SRC-NNN"`,
+- **1. Verbatim User Quotes (`docs/sources.toml`)**: Record only owner quotes
+  that **substantively shape or redirect project direction, boundaries, or
+  design choices** (not routine chat or minor wording tweaks). Order entries
+  chronologically (earliest first) and store the owner's exact unedited words
+  in their original language (`quote = '''...'''`) with `id = "SRC-NNN"`,
   `date`, `status = "active" | "deferred" | "retired"`, and brief `context`.
-  Never translate or paraphrase `quote` into abstract summaries.
+  Never translate, condense, or paraphrase `quote` into processed summaries.
 - **2. Architectural & Module Specs (`docs/specs/**/*.md` & `docs/decisions/ADR-*.md`)**:
   Record how requirements and technical constraints translate into boundaries
   and trade-offs. Link upstream `sources: [SRC-...]` and, when overturning an

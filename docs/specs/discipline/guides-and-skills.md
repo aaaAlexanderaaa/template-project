@@ -10,11 +10,14 @@ owns:
 depends_on:
   - discipline.entry-and-contracts
 sources:
-  - SRC-001
-  - SRC-003
-  - SRC-004
   - SRC-010
-  - SRC-011
+  - SRC-012
+  - SRC-013
+  - SRC-019
+  - SRC-020
+  - SRC-002
+  - SRC-005
+  - SRC-007
 ---
 
 # Operational Guides & Agent Skills

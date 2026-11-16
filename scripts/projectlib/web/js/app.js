@@ -1,6 +1,6 @@
 // Role: Central client-side state manager, 4-view router, Stale-While-Revalidate fetch, drawer, and CSRF actions.
 // Out of scope: Raw SVG geometry math (diagrams.js/charts.js) and HTML view string assembly (views.js).
-// Anchors: spec=ui.perspective-web, ADR-002, ADR-005, SRC-005, SRC-010, SRC-013
+// Anchors: spec=ui.perspective-web, ADR-002, ADR-005, SRC-014, SRC-019, SRC-022
 
 import { escHtml, truncMiddle, t, trStage, trCategory } from "./i18n.js";
 import { scrollDocToFragment, alignDocSidenotes } from "./markdown.js";

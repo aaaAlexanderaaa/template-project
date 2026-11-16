@@ -1,6 +1,6 @@
 # Role: Read-only Git history, commit lag, review-accumulation, and ref-diff telemetry.
 # Out of scope: Modifying Git state, parsing Markdown specs, or serving HTTP endpoints.
-# Anchors: spec=graph.indexer, ADR-002, ADR-003, SRC-004, SRC-006
+# Anchors: spec=graph.indexer, ADR-002, ADR-003, SRC-013, SRC-015
 
 from __future__ import annotations
 

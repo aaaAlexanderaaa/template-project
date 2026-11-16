@@ -1,6 +1,6 @@
 # Role: Tests behavioral engineering-discipline rules, downstream init transfer fidelity, and cross-document consistency.
 # Out of scope: Testing browser pixel rendering or low-level TOML parser edge cases (covered in sibling test suites).
-# Anchors: ADR-004, SRC-011
+# Anchors: ADR-004, SRC-020
 
 from __future__ import annotations
 
@@ -225,8 +225,8 @@ class DisciplineTransferAndConsistencyTests(unittest.TestCase):
         t204 = graph.tasks["T-204"]
         self.assertEqual(t204.state, "ready_for_check")
         self.assertEqual(t204.human_check, "pending")
-        self.assertIn("SRC-013", t204.selected_option)
-        self.assertIn("SRC-013", graph.sources)
+        self.assertIn("SRC-022", t204.selected_option)
+        self.assertIn("SRC-022", graph.sources)
         self.assertIn("ADR-005", graph.decisions)
 
         repo = RuleRepository(ROOT)
@@ -254,7 +254,7 @@ class DisciplineTransferAndConsistencyTests(unittest.TestCase):
         design_txt = (ROOT / "docs" / "design" / "perspective-web.md").read_text(encoding="utf-8")
         self.assertIn("Never treat unapproved drafts as owner sign-off", agents_txt)
         self.assertIn("approved", design_txt)
-        self.assertIn("SRC-013", design_txt)
+        self.assertIn("SRC-022", design_txt)
         self.assertIn("Option A:", design_txt)
         self.assertIn("Option B:", design_txt)
         self.assertIn("Option C:", design_txt)
@@ -437,7 +437,7 @@ class DisciplineTransferAndConsistencyTests(unittest.TestCase):
         )
         self.assertEqual(ctx_t204.returncode, 0, ctx_t204.stderr)
         self.assertIn("ui.perspective-web", ctx_t204.stdout)
-        self.assertIn("Selected Option: SRC-013", ctx_t204.stdout)
+        self.assertIn("Selected Option: SRC-022", ctx_t204.stdout)
         self.assertIn("docs/design/frontend-design-options.html", ctx_t204.stdout)
 
         ctx_html = subprocess.run(

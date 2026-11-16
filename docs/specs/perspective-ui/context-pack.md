@@ -12,12 +12,12 @@ depends_on:
   - graph.indexer
   - graph.validator
 sources:
-  - SRC-004
-  - SRC-005
-  - SRC-007
-  - SRC-008
-  - SRC-010
-  - SRC-011
+  - SRC-013
+  - SRC-014
+  - SRC-016
+  - SRC-017
+  - SRC-019
+  - SRC-020
 ---
 
 # Context Pack & Web Payload Builder

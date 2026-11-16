@@ -1,6 +1,6 @@
 // Role: Pure HTML renderers for Roadmap Provenance Lineage & Git Diff + Test Verification sub-tabs.
 // Out of scope: Overview/Boundaries/Docs views (views.js), network calls (app.js), and raw SVG math (charts.js).
-// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-007, SRC-008, SRC-013
+// Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-016, SRC-017, SRC-022
 
 import { escHtml, truncMiddle, fmtNum, fmtStatusCount, t, trDecisionStatus, trDiffDomain, trFileStatus } from "./i18n.js";
 import { renderProvenanceSvg } from "./charts.js";

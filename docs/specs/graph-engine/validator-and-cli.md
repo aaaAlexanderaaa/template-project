@@ -13,12 +13,14 @@ depends_on:
   - graph.model
   - graph.indexer
 sources:
-  - SRC-001
-  - SRC-003
-  - SRC-004
-  - SRC-009
   - SRC-010
-  - SRC-011
+  - SRC-012
+  - SRC-013
+  - SRC-018
+  - SRC-019
+  - SRC-020
+  - SRC-003
+  - SRC-008
 ---
 
 # Graph Validator, `check_docs.py` & `read_rules.py`

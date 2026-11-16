@@ -12,12 +12,12 @@ owns:
 depends_on:
   - graph.model
 sources:
-  - SRC-004
-  - SRC-006
-  - SRC-008
-  - SRC-009
-  - SRC-010
-  - SRC-011
+  - SRC-013
+  - SRC-015
+  - SRC-017
+  - SRC-018
+  - SRC-019
+  - SRC-020
 ---
 
 # Graph Loader, Document Indexer, Import Scanner & Git Telemetry

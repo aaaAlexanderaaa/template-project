@@ -1,6 +1,6 @@
 // Role: Plain Chinese/English UI copy, enum translators, middle truncation, and SVG label wrapping.
 // Out of scope: Markdown-to-HTML parsing (markdown.js), SVG layout math (charts.js/diagrams.js), and DOM events (app.js).
-// Anchors: spec=ui.perspective-web, docs/README.md#language-standard, SRC-007, SRC-010, SRC-013
+// Anchors: spec=ui.perspective-web, docs/README.md#language-standard, SRC-016, SRC-019, SRC-022
 
 export const I18N = {
   zh: {

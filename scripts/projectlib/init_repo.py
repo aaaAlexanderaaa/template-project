@@ -1,6 +1,6 @@
 # Role: Clean repository bootstrap (`project.py init`), cloned-checkout sanitization, and `discipline_version` sync (`--sync`).
 # Out of scope: HTTP serving (server.py), TOML write-back mutations (toml_writer.py), or codebase validation.
-# Anchors: spec=perspective.server, ADR-002, SRC-005, SRC-011
+# Anchors: spec=perspective.server, ADR-002, SRC-014, SRC-020
 
 from __future__ import annotations
 

@@ -25,7 +25,7 @@
 | 跨内存/数据库/API/DOM/URL/配置的共享状态 | 指定唯一权威真源，其余视图由真源计算得到（见 `docs/contracts/architecture-and-modularity.md#single-source-of-state`）。 |
 | 产品方向、交互流程或 UI 界面方案（`docs/design/`） | 先给出清晰对比方案并做 `/grill` 质询，拿到负责人明确拍板后再写前端实现；历史草稿或旧代码一律视为未批准（见 `docs/contracts/frontend-and-visual-discipline.md`）。 |
 | 新增文件、源码或样式膨胀 | 核对 `owns` 归属与 `# Role:` 头注释，守住单文件 500 行源码 / 300 行样式上限，禁止设立 `utils/`、`helpers/`、`common/` 杂物目录。 |
-| 新的需求原话、权衡决策或变更 | 将负责人原话追加到 `docs/sources.toml`（`SRC-*`），同步维护 ADR 与模块规格并在 `docs/work.toml` 关联编号。 |
+| 影响项目方向的新要求、权衡决策或变更 | 只把对项目发展方向产生实质性影响的负责人原话按时间正序、未经删改翻译地写入 `docs/sources.toml`（`SRC-*`），同步维护 ADR 与模块规格并在 `docs/work.toml` 关联编号。 |
 | 任务执行、审查节奏或无人值守模式 | 完整闭环交付授权任务，遵守 `docs-policy.toml` 的 `[collaboration]` 与 `templates/charter.md` 边界；需要 `/grill` 时加载 `.agents/skills/grill/SKILL.md`（见 `docs/contracts/delivery-and-verification.md`）。 |
 | 独立评审与整体验收 | 在全新隔离上下文中执行，屏蔽作者自我辩解，先做不设限的整体架构/一致性/可用性检查；整改后必须送回原评审方与新视角复验闭环，并用真实运行路径验收（见 `docs/contracts/delivery-and-verification.md#independent-review-definition`）。 |
 | 纪律接入或版本同步升级 | 运行 `python3 scripts/read_rules.py onboard --target <路径>` 并遵守 `docs/contracts/adoption-and-synchronization.md`，保留本仓库自有规格与决策。 |

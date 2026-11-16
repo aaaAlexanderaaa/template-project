@@ -24,7 +24,7 @@ state = "done"
 human_check = "approved"
 specs = ["discipline.entry-and-contracts"]
 decisions = ["ADR-001"]
-sources = ["SRC-001"]
+sources = ["SRC-001", "SRC-002", "SRC-004", "SRC-005", "SRC-006", "SRC-007", "SRC-008", "SRC-009", "SRC-010"]
 
 [[tasks]]
 id = "T-V1-02"
@@ -34,4 +34,4 @@ state = "done"
 human_check = "approved"
 specs = ["graph.model"]
 decisions = ["ADR-001"]
-sources = ["SRC-006"]
+sources = ["SRC-003", "SRC-015"]

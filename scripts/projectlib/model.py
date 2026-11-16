@@ -1,6 +1,6 @@
 # Role: Immutable data structures for the stitched Single-Source-of-Truth project graph.
 # Out of scope: File IO, Git subprocess calls, AST parsing, or HTTP transport.
-# Anchors: spec=graph.model, ADR-002, SRC-006, SRC-009
+# Anchors: spec=graph.model, ADR-002, SRC-015, SRC-018
 
 from __future__ import annotations
 

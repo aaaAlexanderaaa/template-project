@@ -1,6 +1,6 @@
 # Role: Authoritative single-owner calculation of order totals and idempotency keys.
 # Out of scope: Currency string formatting (owned by shared.money) and IO/UI state.
-# Anchors: spec=exemplar.domain, SRC-002
+# Anchors: spec=exemplar.domain, SRC-011
 
 from __future__ import annotations
 

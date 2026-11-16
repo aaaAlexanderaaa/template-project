@@ -14,7 +14,7 @@ Active engineering discipline is organized into five focused contracts:
    profiles (`interactive` vs `unattended` with safety dormancy), and
    change-based `/grill` triggers.
 4. [frontend-and-visual-discipline.md](frontend-and-visual-discipline.md) —
-   Five industry design standards (`ADR-005` / `SRC-013`), six core trade-off
+   Five industry design standards (`ADR-005` / `SRC-022`), six core trade-off
    rules, four page archetypes, layered CSS isolation (`tokens` -> `components`
    -> page views), honest separation of facts/AI state/human sign-off, and six
    pre-delivery UI checks.

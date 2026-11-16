@@ -1,6 +1,6 @@
 /* Role: Long-form document prose, right-margin Tufte sidenotes with 1px hover connector, and calm SVG graph styling.
  * Out of scope: Page layout shells (layout.css) and management tables (tables-and-inline.css).
- * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-007, SRC-013 */
+ * Anchors: spec=ui.perspective-web, docs/contracts/frontend-and-visual-discipline.md, SRC-016, SRC-022 */
 
 .reading-sticky-path {
   position: sticky;

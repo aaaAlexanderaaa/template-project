@@ -4,12 +4,12 @@ kind: decision
 status: current
 title: "Single-Source-of-Truth modular specs stitched mechanically with verbatim sources and work queues"
 sources:
-  - SRC-004
-  - SRC-005
-  - SRC-006
-  - SRC-008
-  - SRC-009
-  - SRC-010
+  - SRC-013
+  - SRC-014
+  - SRC-015
+  - SRC-017
+  - SRC-018
+  - SRC-019
 affects:
   - discipline.entry-and-contracts
   - discipline.templates

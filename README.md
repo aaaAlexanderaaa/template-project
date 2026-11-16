@@ -46,5 +46,5 @@ python3 scripts/project.py status
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Positioning, core operational logic, constraints, state ownership, subsystems, and downstream transfer |
 | [docs-policy.toml](docs-policy.toml) | Repository line budgets (`max_source_lines = 500`, `max_style_lines = 300`), domain stages, and review cadence |
 | [docs/README.md](docs/README.md) | Document layout, plain-language rules, and context-reading workflow |
-| [docs/design/perspective-web.md](docs/design/perspective-web.md) | Approved calm-platter 4-view web workbench specification (`SRC-013`, `ADR-005`, `T-204` awaiting owner check) |
+| [docs/design/perspective-web.md](docs/design/perspective-web.md) | Approved calm-platter 4-view web workbench specification (`SRC-022`, `ADR-005`, `T-204` awaiting owner check) |
 | [templates/README.md](templates/README.md) | Starter templates transferred to downstream repositories |

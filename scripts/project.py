@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Role: Primary CLI (`status`, `context`, `trace`, `check`, `serve`, `export-html`, `archive-milestone`, `mark-reviewed`, `init`).
 # Out of scope: Low-level AST/Git scanning internals (owned by scripts/projectlib/).
-# Anchors: spec=perspective.server, ADR-002, SRC-005, SRC-006, SRC-007, SRC-008, SRC-009, SRC-010
+# Anchors: spec=perspective.server, ADR-002, SRC-014, SRC-015, SRC-016, SRC-017, SRC-018, SRC-019
 
 from __future__ import annotations
 

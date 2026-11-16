@@ -8,9 +8,9 @@ owns:
   - "examples/reference-app/shared/**"
 depends_on: []
 sources:
-  - SRC-001
-  - SRC-002
-  - SRC-013
+  - SRC-010
+  - SRC-011
+  - SRC-022
 ---
 
 # Reference App — Shared Formatters & Design Tokens

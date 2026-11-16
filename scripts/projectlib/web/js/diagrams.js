@@ -1,6 +1,6 @@
 // Role: Offline native SVG renderer for Mermaid flowcharts (LR/TD/TB) and sequence diagrams without CDN scripts.
 // Out of scope: Domain/module graph layout (charts.js), network calls, and Markdown block parsing (i18n.js).
-// Anchors: spec=ui.perspective-web, ADR-002, SRC-007, SRC-010
+// Anchors: spec=ui.perspective-web, ADR-002, SRC-016, SRC-019
 
 import { escHtml, wrapTextLines, t } from "./i18n.js";
 

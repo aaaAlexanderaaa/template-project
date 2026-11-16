@@ -1,6 +1,6 @@
 # Role: Validates single-source graph links, code ownership, import boundaries, plain language, budgets, and git-diff context nudges.
 # Out of scope: Modifying repository files or running HTTP servers.
-# Anchors: spec=graph.validator, ADR-002, ADR-003, SRC-001, SRC-004, SRC-009, SRC-010
+# Anchors: spec=graph.validator, ADR-002, ADR-003, SRC-010, SRC-013, SRC-018, SRC-019
 
 from __future__ import annotations
 

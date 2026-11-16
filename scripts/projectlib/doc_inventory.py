@@ -1,6 +1,6 @@
 # Role: Indexes all active repository documents and explains directory layout for CLI and web newcomers.
 # Out of scope: Mutating files, running Git commands, or static import boundary validation.
-# Anchors: spec=graph.indexer, ADR-002, SRC-007, SRC-010
+# Anchors: spec=graph.indexer, ADR-002, SRC-016, SRC-019
 
 from __future__ import annotations
 

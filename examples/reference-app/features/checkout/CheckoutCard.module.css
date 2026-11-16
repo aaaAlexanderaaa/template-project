@@ -1,6 +1,6 @@
 /* Role: Component-scoped styles for the CheckoutCard UI unit.
  * Out of scope: Global resets or shared palette definitions (consume tokens.css).
- * Anchors: spec=exemplar.checkout, SRC-001, SRC-013 */
+ * Anchors: spec=exemplar.checkout, SRC-010, SRC-022 */
 
 .card {
   background: var(--bg-platter);

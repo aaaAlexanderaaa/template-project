@@ -4,11 +4,11 @@ kind: decision
 status: current
 title: "Discipline-first template architecture, five-part boundary/invariant specs, open closed-loop independent review, and explicit UI design approval gate"
 sources:
-  - SRC-001
-  - SRC-002
-  - SRC-004
   - SRC-010
   - SRC-011
+  - SRC-013
+  - SRC-019
+  - SRC-020
 affects:
   - discipline.entry-and-contracts
   - discipline.guides-and-skills
@@ -33,7 +33,7 @@ supersedes: []
   1. Define Independent Review normatively in [delivery-and-verification.md](../contracts/delivery-and-verification.md) with four mandatory rules: fresh context with withheld author rationale, open-ended holistic mandate first, architecture/consistency/outcome scope, and closed-loop re-verification back to original and fresh reviewers. Pair script unit checks with automated downstream-transfer tests and five behavioral evaluation scenarios.
   2. Re-center [README.md](../../README.md), [README_CN.md](../../README_CN.md), [AGENTS.md](../../AGENTS.md), and [ARCHITECTURE.md](../../ARCHITECTURE.md) around the engineering discipline system, demoting `scripts/` to subordinate mechanical tooling, upgrading downstream `templates/`, and making `doc_inventory.py` repository-agnostic.
   3. Establish five core architecture elements in [architecture-and-modularity.md](../contracts/architecture-and-modularity.md) and downstream templates: purpose/non-goals, runtime business/control logic and failure paths, bounded responsibilities and explicitly forbidden couplings, single source of state and hard invariants, and fitness verification.
-  4. Leave `scripts/projectlib/web/` frozen, mark task `T-204` `blocked` in [work.toml](../work.toml), and record a first-principles frontend critique plus three distinct layout options in [perspective-web.md](../design/perspective-web.md) for explicit owner choice (subsequently resolved by owner specification `SRC-013` in [ADR-005](ADR-005-calm-platter-frontend-specification-and-perspective-web.md)).
+  4. Leave `scripts/projectlib/web/` frozen, mark task `T-204` `blocked` in [work.toml](../work.toml), and record a first-principles frontend critique plus three distinct layout options in [perspective-web.md](../design/perspective-web.md) for explicit owner choice (subsequently resolved by owner specification `SRC-022` in [ADR-005](ADR-005-calm-platter-frontend-specification-and-perspective-web.md)).
 - **Trade-offs & rejected alternatives**:
   - Patching the unapproved 4-section UI layout again was rejected because incremental layout tweaks treat an unapproved draft as settled design authority and hide five structural comprehension failures.
   - Restoring heavy 12-section forms in templates was rejected; keeping thin YAML metadata paired with five concrete, non-ceremonial architecture headings gives clarity without paperwork overhead.

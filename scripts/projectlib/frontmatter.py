@@ -1,6 +1,6 @@
 # Role: Zero-dependency parser for thin Markdown YAML frontmatter, links, headings, and Mermaid blocks.
 # Out of scope: Repository traversal, Git calls, or cross-file validation.
-# Anchors: spec=graph.model, ADR-002, SRC-006, SRC-009
+# Anchors: spec=graph.model, ADR-002, SRC-015, SRC-018
 
 from __future__ import annotations
 

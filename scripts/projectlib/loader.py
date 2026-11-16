@@ -1,6 +1,6 @@
 # Role: Loads all Single-Source-of-Truth Markdown specs, TOML ledgers, doc inventory, and Git/AST telemetry into ProjectGraph.
 # Out of scope: Modifying repository files or serving HTTP traffic.
-# Anchors: spec=graph.indexer, ADR-002, SRC-006, SRC-008, SRC-009, SRC-010
+# Anchors: spec=graph.indexer, ADR-002, SRC-015, SRC-017, SRC-018, SRC-019
 
 from __future__ import annotations
 

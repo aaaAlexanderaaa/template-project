@@ -1,6 +1,6 @@
 # Role: Boundary validation and idempotent checkout submission orchestration.
 # Out of scope: Order math (delegated to domain.order_ledger) and HTTP server routing.
-# Anchors: spec=exemplar.checkout, SRC-002
+# Anchors: spec=exemplar.checkout, SRC-011
 
 from __future__ import annotations
 

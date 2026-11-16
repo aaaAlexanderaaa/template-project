@@ -1,6 +1,6 @@
 # Role: Builds progressive context packs for files, docs, modules, directories, and exact bidirectional traces.
 # Out of scope: HTTP socket handling, TOML mutation, or direct subprocess calls.
-# Anchors: spec=perspective.context-pack, ADR-002, SRC-004, SRC-005, SRC-007, SRC-010
+# Anchors: spec=perspective.context-pack, ADR-002, SRC-013, SRC-014, SRC-016, SRC-019
 
 from __future__ import annotations
 

@@ -21,7 +21,7 @@ and `project.py status`) plus the local calm-platter web workbench
 | Module responsibility, user promise, owned paths, & allowed dependencies | `docs/specs/<domain>/<module>.md` (thin frontmatter: `id`, `summary`, `promise`, `owns`, `depends_on`, `sources` + prose & `mermaid`) | Module `id` (e.g. `graph.indexer`) |
 | UI surface layout, reader background, & interaction states | `docs/design/<surface>.md` (`kind: surface-spec`) | Surface `id` |
 | Cross-module trade-offs & architectural changes | `docs/decisions/ADR-*.md` (frontmatter: `id`, `status`, `sources`, `affects`, `supersedes`) | Decision `id` (e.g. `ADR-002`) |
-| Verbatim user quotes & original context | `docs/sources.toml` (`[[sources]]` with `id = "SRC-*"` and literal `'''...'''` text) | `SRC-*` ID |
+| Substantive direction-shaping owner quotes & original context | `docs/sources.toml` (`[[sources]]` chronologically ordered, `id = "SRC-*"` with exact unedited `'''...'''` text) | `SRC-*` ID |
 | Roadmap slots (`done/now/next/later`), active task states, & human blockers | `docs/work.toml` (or per-domain `docs/specs/<domain>/work.toml` + `docs/archive/work-*.toml`) | Task / Milestone `id` referencing spec, ADR, and `SRC-*` IDs |
 | Runtime collaboration mode, source roots, & file-size budgets | `docs-policy.toml` | Loaded automatically by `scripts/` |
 

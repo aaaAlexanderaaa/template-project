@@ -9,13 +9,16 @@ owns:
 depends_on:
   - discipline.entry-and-contracts
 sources:
-  - SRC-001
-  - SRC-006
-  - SRC-009
   - SRC-010
-  - SRC-011
-  - SRC-012
-  - SRC-013
+  - SRC-015
+  - SRC-018
+  - SRC-019
+  - SRC-020
+  - SRC-021
+  - SRC-022
+  - SRC-002
+  - SRC-007
+  - SRC-023
 ---
 
 # Starter Templates for Adopting Projects
@@ -37,6 +40,6 @@ flowchart LR
 ## 3. State Ownership, Hard Invariants & Forbidden Couplings
 
 - **Core rule parity**: `templates/AGENTS*.md`, `templates/docs-readme*.md`, and `templates/ARCHITECTURE*.md` MUST retain Priority Order, UI approval gate, five-part architecture requirements, open closed-loop review, and 5-step pre-edit context lookup from root agreements.
-- **Chinese downstream language boundary (`SRC-012`)**: When initialized with `--lang zh`, entry agreements, architecture/spec/decision/review templates, `work.toml`, directory labels, and CLI outputs are generated and validated in plain Chinese, while `docs/contracts/` and `docs/guides/` remain canonical English originals unless explicitly localized later.
+- **Chinese downstream language boundary (`SRC-021`)**: When initialized with `--lang zh`, entry agreements, architecture/spec/decision/review templates, `work.toml`, directory labels, and CLI outputs are generated and validated in plain Chinese, while `docs/contracts/` and `docs/guides/` remain canonical English originals unless explicitly localized later.
 - **Forbidden couplings**: Starter templates outside `templates/` MUST NOT contain unresolved `{{...}}` placeholders; copied downstream files MUST keep `[project].identity = "product"` and clean `tests/` / `src/` directories so default commands work on Day 0.
 - **Verification**: Validated by `test_discipline_transfer_and_consistency.py` across both `--lang en` and `--lang zh`.

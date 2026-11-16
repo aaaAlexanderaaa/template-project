@@ -1,6 +1,6 @@
 # Role: Plain-language terminal formatters for `project.py status`, `context`, and `trace`.
 # Out of scope: Graph loading, HTTP serving, or TOML file mutations.
-# Anchors: spec=perspective.server, ADR-002, SRC-005, SRC-007, SRC-008, SRC-010
+# Anchors: spec=perspective.server, ADR-002, SRC-014, SRC-016, SRC-017, SRC-019
 
 from __future__ import annotations
 
