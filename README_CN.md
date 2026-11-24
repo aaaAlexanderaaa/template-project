@@ -47,3 +47,4 @@ python3 scripts/project.py status
 | [docs/README.md](docs/README.md) | 文档目录总索引、平实语言标准与改前加载指南 |
 | [docs/design/perspective-web.md](docs/design/perspective-web.md) | 按 `SRC-022` 与 `ADR-005` 批准落地的四视角本地项目透视网站规格（`T-204` 待验收） |
 | [templates/README.md](templates/README.md) | 迁移到下游项目时使用的起步模板清单 |
+| [.agents/skills/clean-chatgpt-flavor/SKILL.md](.agents/skills/clean-chatgpt-flavor/SKILL.md) | 可选独立自包含附加技能（**Clean ChatGPT Flavor**，独立分发仓库：[clean-chatgpt-flavor](https://github.com/aaaAlexanderaaa/clean-chatgpt-flavor)）：专门对抗 ChatGPT 式过度防御生成；默认直接清理文档与文案里的免责叠甲和自证材料，对代码层的无意义 SHA-256 校验、防审计字段、LLM payload 污染与冗余校验流水线先统计汇报、确认后再治理；可直接调用或整目录复制到任意仓库 / `~/.codex/skills/` |

@@ -15,6 +15,8 @@ sources:
   - SRC-013
   - SRC-019
   - SRC-020
+  - SRC-026
+  - SRC-027
   - SRC-002
   - SRC-005
   - SRC-007
@@ -24,7 +26,7 @@ sources:
 
 ## 1. Purpose, Narrow Interface & Non-Goals
 
-- **Public interface**: Procedural playbooks (`docs/guides/{onboarding,grill,research-and-access}.md`) and portable skills (`.agents/skills/{grill,onboard-discipline}/SKILL.md`) invoked on onboarding, `/grill`, or independent review.
+- **Public interface**: Procedural playbooks (`docs/guides/{onboarding,grill,research-and-access}.md`), core portable skills (`.agents/skills/{grill,onboard-discipline}/SKILL.md`) transferred on `init` / `onboard`, and the optional standalone self-contained add-on skill (`.agents/skills/clean-chatgpt-flavor/SKILL.md`) that defaults to cleaning anxious prose/docs while inventorying ChatGPT-style defensive code, SHA-256 theater, and CYA schema fields before governing code.
 - **Out of scope**: Setting standalone policy rules outside `AGENTS.md` / `docs/contracts/` or modifying product code without target-repo confirmation during external onboarding.
 
 ## 2. Operational Procedure & Escalation Flow

@@ -99,3 +99,13 @@ human_check = "pending"
 specs = ["discipline.entry-and-contracts", "discipline.guides-and-skills", "discipline.templates", "ui.perspective-web", "exemplar.shared"]
 decisions = ["ADR-006"]
 sources = ["SRC-022", "SRC-024", "SRC-025"]
+
+[[tasks]]
+id = "T-206"
+milestone = "M-DIS-02"
+title = "Package optional Clean ChatGPT Flavor add-on skill under .agents/skills/clean-chatgpt-flavor/"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["discipline.guides-and-skills"]
+decisions = []
+sources = ["SRC-026", "SRC-027"]

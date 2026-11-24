@@ -43,8 +43,8 @@ KNOWN_DIRS: tuple[tuple[str, str, str, str, str], ...] = (
         ".agents/skills",
         "可调用 Agent 技能",
         "Agent Skills",
-        "按需触发的技能说明书，告诉 AI 何时以及如何执行项目接入评估、设计质询或独立评审。",
-        "On-demand skill instructions defining when and how an AI agent runs onboarding inventory, design grill, or independent review.",
+        "按需触发的技能说明书，包含项目接入评估、设计质询与独立评审，以及可选附加技能（如 Clean ChatGPT Flavor）。",
+        "On-demand skill instructions covering onboarding inventory, design grill, independent review, and optional add-on skills such as Clean ChatGPT Flavor.",
     ),
     (
         "templates",

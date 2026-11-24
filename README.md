@@ -49,3 +49,4 @@ python3 scripts/project.py status
 | [docs/README.md](docs/README.md) | Document layout, plain-language rules, and context-reading workflow |
 | [docs/design/perspective-web.md](docs/design/perspective-web.md) | Approved calm-platter 4-view web workbench specification (`SRC-022`, `ADR-005`, `T-204` awaiting owner check) |
 | [templates/README.md](templates/README.md) | Starter templates transferred to downstream repositories |
+| [.agents/skills/clean-chatgpt-flavor/SKILL.md](.agents/skills/clean-chatgpt-flavor/SKILL.md) | Optional standalone self-contained add-on skill (`Clean ChatGPT Flavor`, also distributed at [clean-chatgpt-flavor](https://github.com/aaaAlexanderaaa/clean-chatgpt-flavor)) for countering overly defensive ChatGPT generation: cleans anxious prose and stacked disclaimers by default, and inventories unasked SHA-256 audit theater, CYA schema/LLM payload fields, and redundant verification pipelines before editing code |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean ChatGPT Flavor"
+  short_description: "Clean overly defensive ChatGPT prose and disclaimers by default, and inventory unasked SHA-256 checks and CYA schema fields before editing code"
+  default_prompt: "Use $clean-chatgpt-flavor to clean anxious prose, stacked disclaimers, and self-justifying paperwork directly, and inventory overly defensive code, unasked SHA-256 verification theater, and CYA schema or LLM payload fields for review before modifying code."
