@@ -8,7 +8,7 @@ authority: guidance
 
 Use this playbook when starting a new project from `template-project`, adopting
 the discipline into an existing repository, or upgrading an older checkout to
-`discipline_version = "2026.11"`.
+`discipline_version = "2026.11.1"`.
 
 ## 1. Copyable Prompt for External Projects
 

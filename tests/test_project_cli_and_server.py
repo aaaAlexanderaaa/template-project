@@ -421,7 +421,7 @@ class ProjectCliAndServerTests(unittest.TestCase):
             self.assertEqual(res_sync.returncode, 0, res_sync.stdout + res_sync.stderr)
             self.assertIn("Synced", res_sync.stdout)
             synced_pol = (repo2 / "docs-policy.toml").read_text(encoding="utf-8")
-            self.assertIn('discipline_version = "2026.11"', synced_pol)
+            self.assertIn('discipline_version = "2026.11.1"', synced_pol)
             self.assertIn('review_anchor_sha = "abc1234"', synced_pol)
             self.assertIn('"scripts/projectlib"', synced_pol)
             self.assertIn("# custom_marker", synced_pol)

@@ -1,6 +1,6 @@
 # Repository Working Agreement
 
-This repository is the engineering discipline template (`discipline_version = "2026.11"`).
+This repository is the engineering discipline template (`discipline_version = "2026.11.1"`).
 It gives human owners and AI coding agents clear engineering rules, single-owner
 documents, and Python scripts that check code structure and explain the whole
 project clearly.

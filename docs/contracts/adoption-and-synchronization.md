@@ -70,4 +70,11 @@ Each release of `template-project` declares `discipline_version` in
   **preserving all target-owned files** (`ARCHITECTURE.md`, `docs/specs/**`,
   `docs/design/**`, `docs/decisions/**`, `docs/sources.toml`, `docs/work.toml`,
   and local `architecture-rules.toml` rules).
+- After syncing to `2026.11.1`, re-check three areas against the new rules:
+  organize reader-facing docs, screens, and knowledge content with
+  `docs/contracts/information-organization.md`; confirm the frontend meets the
+  mandatory best-practice baseline (measured contrast, keyboard, focus, states)
+  and record any owner preferences that should replace the default calm-platter
+  style in `docs/design/`; and run coverage or currency reviews with
+  expectation-first lists and dated sources retrieved at review time.
 <!-- /required-reading: incremental-version-sync -->

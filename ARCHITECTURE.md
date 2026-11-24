@@ -9,7 +9,7 @@ stage: stable
 
 ## 1. Purpose, Promises & Non-Goals
 
-`template-project` is an **Engineering Discipline Template** (`discipline_version = "2026.11"`). Its job is to help human owners and AI coding agents build, evolve, and review software repositories with shared terminology, clear boundaries, plain language, and verifiable accountability.
+`template-project` is an **Engineering Discipline Template** (`discipline_version = "2026.11.1"`). Its job is to help human owners and AI coding agents build, evolve, and review software repositories with shared terminology, clear boundaries, plain language, and verifiable accountability.
 
 - **Core Promises**:
   1. **Transferable Engineering Discipline**: Package practical rules (`AGENTS.md`, `docs/contracts/`, `docs/guides/`, `.agents/skills/`) and starter scaffolding (`templates/`) so new (`project.py init`) and existing (`read_rules.py onboard`) repositories adopt the discipline cleanly without carrying `template-project` internal domains.

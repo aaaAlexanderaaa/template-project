@@ -277,7 +277,7 @@ def run_init_command(
         det_roots = ["src"]
 
     tpl_policy = tomllib.loads((template_root / "docs-policy.toml").read_text(encoding="utf-8"))
-    tpl_version = str(tpl_policy.get("discipline_version", "2026.11"))
+    tpl_version = str(tpl_policy.get("discipline_version", "2026.11.1"))
     head_sha = _run_git(target, "rev-parse", "--short", "HEAD") if not sync else ""
 
     if policy_file.is_file():

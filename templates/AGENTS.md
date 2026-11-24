@@ -1,6 +1,6 @@
 # Repository Working Agreement
 
-This repository follows the engineering discipline template (`discipline_version = "2026.11"`).
+This repository follows the engineering discipline template (`discipline_version = "2026.11.1"`).
 Keep plain language, single-source truth, explicit module boundaries, real
 verification, and owner decision authority intact as the codebase grows.
 

@@ -2,7 +2,7 @@
 
 > **中文说明**：请查看 [README_CN.md](README_CN.md)。
 
-`template-project` is an **Engineering Discipline Template** (`discipline_version = "2026.11"`) for software repositories built with AI coding agents. Its core product is a transferable set of engineering agreements, architectural contracts, starter templates, and independent review protocols that keep growing codebases readable, modular, honest, and aligned with the project owner's real intent.
+`template-project` is an **Engineering Discipline Template** (`discipline_version = "2026.11.1"`) for software repositories built with AI coding agents. Its core product is a transferable set of engineering agreements, architectural contracts, starter templates, and independent review protocols that keep growing codebases readable, modular, honest, and aligned with the project owner's real intent.
 
 The Python scripts in `scripts/` and the optional browser overview are **supporting tools** that validate single-source links, enforce file line budgets, and bootstrap new or existing projects.
 
