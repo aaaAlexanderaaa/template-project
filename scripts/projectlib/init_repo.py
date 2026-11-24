@@ -27,6 +27,9 @@ DOWNSTREAM_TOOL_HARNESS = (
     "scripts/rule_reading.py",
 )
 TEMPLATE_INTERNAL_DOMAINS = ("discipline", "graph-engine", "perspective-ui", "reference-app")
+# Decision IDs that belong to template-project itself; extend when the template adds an ADR
+# (tests/test_discipline_transfer_and_consistency.py checks this list against docs/decisions/).
+TEMPLATE_INTERNAL_ADRS = ("ADR-001", "ADR-002", "ADR-003", "ADR-004", "ADR-005", "ADR-006")
 TEMPLATE_INTERNAL_TESTS = (
     "test_discipline_transfer_and_consistency.py",
     "test_project_cli_and_server.py",
@@ -167,8 +170,9 @@ def _sanitize_copied_checkout(target: Path) -> None:
             specs_dir.rmdir()
     dec_dir = target / "docs" / "decisions"
     if dec_dir.is_dir():
-        for adr in dec_dir.glob("ADR-00[1-5]-*.md"):
-            adr.unlink(missing_ok=True)
+        for adr in dec_dir.glob("ADR-*.md"):
+            if adr.name.startswith(tuple(f"{adr_id}-" for adr_id in TEMPLATE_INTERNAL_ADRS)):
+                adr.unlink(missing_ok=True)
         if not any(dec_dir.iterdir()):
             dec_dir.rmdir()
     for folder in ("docs/archive", "docs/evaluations", "archive/legacy-v1"):

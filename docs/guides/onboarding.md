@@ -16,7 +16,7 @@ the discipline into an existing repository, or upgrading an older checkout to
 Learn the engineering discipline from /path/to/template-project:
 1. Run `python3 /path/to/template-project/scripts/read_rules.py onboard --target .`
    to inventory this repository's current layout, LOC, instructions, and git state.
-2. Read `AGENTS.md`, `docs/README.md`, and the five contracts in `docs/contracts/`
+2. Read `AGENTS.md`, `docs/README.md`, and the six contracts in `docs/contracts/`
    before judging what applies here.
 3. Compare each practice against this repository's concrete facts and current
    maturity stage (`prototype`, `usable`, or `stable`), and check any supplied

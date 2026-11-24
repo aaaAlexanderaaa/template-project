@@ -89,3 +89,13 @@ specs = ["perspective.context-pack", "perspective.server", "ui.perspective-web"]
 decisions = ["ADR-002", "ADR-004", "ADR-005"]
 sources = ["SRC-021", "SRC-022", "SRC-014", "SRC-015", "SRC-016", "SRC-017", "SRC-018", "SRC-019", "SRC-020"]
 selected_option = "SRC-022 Frontend Design Specification (4-view NSToolbar + single white platter + Tufte sidenotes + 100dvh management tables)"
+
+[[tasks]]
+id = "T-205"
+milestone = "M-DIS-02"
+title = "Add information-organization contract, layer frontend rules into principles/best practices/preferences/references, and extend independent review for coverage and currency"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["discipline.entry-and-contracts", "discipline.guides-and-skills", "discipline.templates", "ui.perspective-web", "exemplar.shared"]
+decisions = ["ADR-006"]
+sources = ["SRC-022", "SRC-024", "SRC-025"]

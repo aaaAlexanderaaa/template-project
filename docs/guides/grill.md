@@ -73,6 +73,16 @@ gap, contradiction, or misaligned assumption in plain language with file evidenc
      downstream fidelity (`templates/`, `init`, `onboard`).
   2. **Unfamiliar Reader / Owner reviewer**: Reads entry docs, domain specs,
      and live UI as a first-time visitor with zero insider memory.
+  3. **Coverage & Freshness reviewer** (for knowledge content or current-state
+     overviews): First lists, without opening the deliverable, what must be
+     covered as of today's date for the stated reader and boundary; then
+     compares and marks missing, outdated, and superfluous items. Currency
+     is settled by dated sources retrieved during the review that cover the
+     window from the deliverable's latest dated item to today; recollection
+     from any model or person only seeds searches.
+- **Ask for findings, not verdicts**: Reviewers return findings with severity;
+  "complete", "saturated", or "approved" status changes only after the owner
+  confirms.
 - **Record**: Save findings cleanly using
   [templates/independent-review.md](../../templates/independent-review.md).
 

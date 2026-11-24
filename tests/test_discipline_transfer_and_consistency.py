@@ -236,12 +236,30 @@ class DisciplineTransferAndConsistencyTests(unittest.TestCase):
         self.assertIn("docs/guides/grill.md#behavioral-discipline-evaluation-scenarios", verification_targets)
         frontend_targets = set(repo.CONCERN_MAP["frontend"])
         for span in (
-            "docs/contracts/frontend-and-visual-discipline.md#reader-context-encapsulation",
-            "docs/contracts/frontend-and-visual-discipline.md#visual-restraint-and-geometry",
-            "docs/contracts/frontend-and-visual-discipline.md#honest-telemetry",
+            "docs/contracts/frontend-and-visual-discipline.md#frontend-layers",
+            "docs/contracts/frontend-and-visual-discipline.md#frontend-principles",
+            "docs/contracts/frontend-and-visual-discipline.md#frontend-best-practices",
+            "docs/contracts/frontend-and-visual-discipline.md#owner-preferences",
+            "docs/contracts/frontend-and-visual-discipline.md#reference-practices",
             "docs/contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check",
         ):
             self.assertIn(span, frontend_targets)
+            self.assertIn(span, repo.units)
+        from projectlib.init_repo import TEMPLATE_INTERNAL_ADRS
+
+        shipped_adrs = {fp.name.split("-")[0] + "-" + fp.name.split("-")[1] for fp in (ROOT / "docs" / "decisions").glob("ADR-*.md")}
+        self.assertEqual(shipped_adrs, set(TEMPLATE_INTERNAL_ADRS), "Copied-checkout sanitizer must list every template ADR")
+        information_targets = set(repo.CONCERN_MAP["information"])
+        for slug in (
+            "reader-task-first",
+            "organizing-schemes",
+            "layering-and-disclosure",
+            "form-follows-content",
+            "document-types",
+            "coverage-scope-freshness",
+        ):
+            span = f"docs/contracts/information-organization.md#{slug}"
+            self.assertIn(span, information_targets)
             self.assertIn(span, repo.units)
         for uid in verification_targets:
             self.assertIn(uid, repo.units)

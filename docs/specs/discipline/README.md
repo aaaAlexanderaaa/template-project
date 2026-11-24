@@ -16,7 +16,7 @@ non_goals: "Does not implement repository-specific Python AST scanners or local 
 
 ```mermaid
 flowchart LR
-  Entry["AGENTS.md + docs/README.md"] --> Contracts["Five Contracts (docs/contracts/)"]
+  Entry["AGENTS.md + docs/README.md"] --> Contracts["Six Contracts (docs/contracts/)"]
   Entry --> Guides["Guides, Skills & Behavioral Scenarios (docs/guides/, .agents/skills/)"]
   Contracts --> Templates["Transferable Starter Templates (templates/)"]
   Guides --> Review["Open Blind-to-Rationale & Closed-Loop Review"]

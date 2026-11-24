@@ -23,11 +23,12 @@
 | 任何人类或 AI 可读文本（文档、产品命令行与报错、界面文案） | 直接讲清对象是什么、怎么运行、解决什么问题；不造黑话、不混用冲突编号、不堆砌免责套话（见 `docs/README.md#language-standard`）。 |
 | 系统与模块架构说明 | 必须写清五部分：定位与非目标、端到端运行/控制逻辑（`mermaid`）、清晰接口与禁止耦合、唯一状态真源与硬约束、模块入口与自动校验（见 `docs/contracts/architecture-and-modularity.md#decomposition-and-ownership`）。 |
 | 跨内存/数据库/API/DOM/URL/配置的共享状态 | 指定唯一权威真源，其余视图由真源计算得到（见 `docs/contracts/architecture-and-modularity.md#single-source-of-state`）。 |
-| 产品方向、交互流程或 UI 界面方案（`docs/design/`） | 先给出清晰对比方案并做 `/grill` 质询，拿到负责人明确拍板后再写前端实现；历史草稿或旧代码一律视为未批准（见 `docs/contracts/frontend-and-visual-discipline.md`）。 |
+| 产品方向、交互流程或 UI 界面方案（`docs/design/`） | 按四层顺序设计：先守原则，再达到可测量的最佳实践底线（WCAG 2.2 AA 对比度、键盘操作、焦点可见、各种状态），再套用本项目负责人的偏好（负责人另行记录前沿用随模板下发的 calm-platter 默认风格），最后参考成熟产品；偏好不得压过上两层。先给出清晰对比方案并做 `/grill` 质询，拿到负责人明确拍板后再写前端实现；历史草稿或旧代码一律视为未批准（见 `docs/contracts/frontend-and-visual-discipline.md`）。 |
+| 为读者组织信息（文档结构、导航、界面内容、知识或参考内容） | 先定读者和任务，结论先行；每一层只用一种组织方式；细节分层展开并带着上下文；按读者的问题选表格、步骤、图、正文或时间线；知识内容按真实影响面定范围，现状类事实标注日期，宣称覆盖完整要有对照证据（见 `docs/contracts/information-organization.md`）。 |
 | 新增文件、源码或样式膨胀 | 核对 `owns` 归属与 `# Role:` 头注释，守住单文件 500 行源码 / 300 行样式上限，禁止设立 `utils/`、`helpers/`、`common/` 杂物目录。 |
 | 影响项目方向的新要求、权衡决策或变更 | 只把对项目发展方向产生实质性影响的负责人原话按时间正序、未经删改翻译地写入 `docs/sources.toml`（`SRC-*`），同步维护 ADR 与模块规格并在 `docs/work.toml` 关联编号。 |
 | 任务执行、审查节奏或无人值守模式 | 完整闭环交付授权任务，遵守 `docs-policy.toml` 的 `[collaboration]` 与 `templates/charter.md` 边界；需要 `/grill` 时加载 `.agents/skills/grill/SKILL.md`（见 `docs/contracts/delivery-and-verification.md`）。 |
-| 独立评审与整体验收 | 在全新隔离上下文中执行，屏蔽作者自我辩解，先做不设限的整体架构/一致性/可用性检查；整改后必须送回原评审方与新视角复验闭环，并用真实运行路径验收（见 `docs/contracts/delivery-and-verification.md#independent-review-definition`）。 |
+| 独立评审与整体验收 | 在全新隔离上下文中执行，屏蔽作者自我辩解，先做不设限的整体架构/一致性/可用性检查；整改后必须送回原评审方与新视角复验闭环，并用真实运行路径验收。涉及覆盖面与时效时，评审方先不看交付物列出预期清单再对照，时效以评审时实际检索到的带日期来源为准，任何模型或个人的记忆都不算证据；评审方只报告发现，阶段性状态由负责人确认（见 `docs/contracts/delivery-and-verification.md#independent-review-definition`）。 |
 | 纪律接入或版本同步升级 | 运行 `python3 scripts/read_rules.py onboard --target <路径>` 并遵守 `docs/contracts/adoption-and-synchronization.md`，保留本仓库自有规格与决策。 |
 
 ## 4. 防偷懒与防失真红线

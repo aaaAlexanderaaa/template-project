@@ -12,7 +12,7 @@
   /* 2. Text ink hierarchy (never pure black #000000) */
   --ink-primary: #1D1D1F;
   --ink-secondary: #51555E;
-  --ink-tertiary: #868B96;
+  --ink-tertiary: #6B7079;
 
   /* 3. Hairlines & natural shadows */
   --hairline: rgba(0, 0, 0, 0.065);

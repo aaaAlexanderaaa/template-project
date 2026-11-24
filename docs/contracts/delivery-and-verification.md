@@ -69,19 +69,24 @@ actually runs:
 ## 4. Independent Review Definition & Closed-Loop Protocol
 
 Passing tests or running a directed code-bug checklist in a subagent is QA
-checking, not Independent Review. A valid Independent Review requires four
-conditions together:
+checking, not Independent Review. A valid Independent Review requires the first
+four conditions together, plus conditions 5–7 whenever they apply:
 
 1. **Fresh context with withheld author rationale**: Run in a fresh conversation
    or subagent that did not write the code or proposal. Supply only verbatim user
    goals (`docs/sources.toml` `SRC-*`), standing repository agreements, and the
    deliverable itself—withhold the author's self-justifications and defense until
-   after the reviewer records its first judgment.
+   after the reviewer records its first judgment. Verify that isolation actually
+   holds (for example, that no build-session instructions were injected into the
+   reviewer) instead of assuming it from "a new subagent was started".
 2. **Open-ended holistic mandate first**: Never pre-limit an independent
    reviewer to a narrow bug-hunting list (such as asking only whether JS
-   functions escape strings). Start with an open question asking what fails
-   overall across goal alignment, system design, cross-document consistency, and
-   real usability; targeted checks may follow only after open discovery.
+   functions escape strings) or to a yes/no gate ("does subnet X pass the four
+   checks?"). A gate question makes the reviewer audit the author's checklist
+   instead of asking what the checklist missed. Start with an open question
+   asking what fails overall across goal alignment, system design,
+   cross-document consistency, and real usability; targeted checks may follow
+   only after open discovery.
 3. **Architecture, consistency & outcome scope**: Examine whole-system
    boundaries, single-source ownership, operational logic, hard constraints, plain
    language, and whether downstream adopters or unfamiliar readers actually get
@@ -92,6 +97,37 @@ conditions together:
      updated deliverable to confirm the reported root flaws actually vanished.
    - Launch a **fresh unprimed reviewer** when structural changes are large
      enough that a fresh first impression is required.
+5. **Expectation first for coverage and freshness**: Reading only the
+   deliverable finds what is wrong but not what is missing. When a review judges
+   coverage or currency (knowledge content, landscape overviews, dependency or
+   standards surveys), the reviewer first builds, without seeing the
+   deliverable, a list of what must be covered for the stated reader and
+   boundary; only then compares the deliverable against that list and marks
+   missing, outdated, and superfluous items. For currency, the list comes from
+   dated sources retrieved during the review (condition 6); items recalled from
+   memory serve only as search starting points.
+6. **Currency is settled by retrieved, dated evidence, not by anyone's
+   memory**: Every model and every person has a knowledge horizon. Switching to
+   another model or asking a person only picks a different horizon, not a
+   correct one. Claims about the current state of a field are checked against
+   primary sources fetched at review time, each recorded with its publication
+   date and retrieval date. The check must explicitly cover the window between
+   the deliverable's latest dated item and today, using date-anchored discovery
+   ("releases since <date>", maintained release trackers, the latest edition of
+   annual reports) rather than searches for names already known. Record the
+   queries, retrieval date, and covered window. Another model or the owner adds
+   value by suggesting different search directions or judging relevance; their
+   recollection is not evidence. When retrieval is unavailable, mark the claim
+   "currency unverified as of <date>" instead of passing it.
+7. **Reviewers report findings; the owner confirms status**: Reviewers return
+   findings with severity, not "pass" or "conditional pass" verdicts. Milestone
+   claims such as "complete", "saturated", or "approved" change only after the
+   findings are resolved and the owner confirms; the author never upgrades a
+   conditional result to a pass on their own.
+8. **Vary the angle**: A neutral comprehension question, a deliberately
+   critical question, and a comparison across the whole collection surface
+   different problems. Use at least two angles for milestone reviews; a useful
+   finding from one angle keeps its value without a vote.
 <!-- /required-reading: independent-review-definition -->
 
 <!-- required-reading: discipline-and-transfer-verification -->

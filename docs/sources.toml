@@ -424,3 +424,23 @@ context = "Chronological verbatim source order and substantive-direction inclusi
 quote = '''
 重新修订顺序吧，时间顺序排序，早期的排在前面，我要确保是原话，我不希望你写成了“核心内容”或者什么别的做了处理的东西。另外，我补充，对于整个template-project和采用这一套规范的项目，不是所有原话都sources，而是对项目发展方向产生了实质性影响的才要进去。
 '''
+
+[[sources]]
+id = "SRC-024"
+date = "2026-11-24"
+status = "active"
+context = "Information organization practices missing from the template; frontend aesthetics must layer principles and best practices before owner preferences and reference practices"
+quote = '''
+其实我正好想要你优化一些template project的东西，那里面对如何组织信息没有好的实践，并且，里面的前端审美应当是原则再加上最佳实践、再加上偏好和参考实践，但似乎每个agent都只关注了后者，而忽略了前者的原则与最佳实践
+'''
+
+[[sources]]
+id = "SRC-025"
+date = "2026-11-24"
+status = "active"
+context = "Owner choices on information-organization scope, owner preference transfer to adopting projects, and resolving the tertiary ink contrast conflict"
+quote = '''
+A1: (Recommended) 一份新契约同时覆盖三类：项目文档、界面信息架构、面向读者的知识内容（含范围、时效、饱和）
+A2: (Recommended) 作为“默认偏好”随模板下发，单独成节并标明可由下游项目的主人替换；原则与最佳实践对所有项目强制
+A3: (Recommended) 按“最佳实践优先于偏好”改为 #6B7079（4.57:1，观感仍是浅灰），同步 web 工作台、示例应用和测试
+'''

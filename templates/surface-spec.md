@@ -3,7 +3,7 @@ id: ui.example-surface
 domain: example
 kind: surface-spec
 summary: "{{Who reads/uses this screen and what job it helps them complete}}"
-promise: "{{Context encapsulation, calm single-platter layout, and interaction guarantee}}"
+promise: "{{What the reader can always find, do, and trust on this screen}}"
 owns:
   - "src/ui/example/**"
 depends_on:
@@ -18,16 +18,29 @@ sources:
 
 - **Design Status**: `pending_owner_choice` (change to `approved` only after explicit owner selection; block any UI task in `docs/work.toml` while pending; historical sketches never count as consent).
 - **Approved Option & Reference**: {{Selected layout option and link to `SRC-*` confirmation}}
-- **Page Archetype**: {{Pick one: `Data Operations & Management` (`100dvh` outer lock + inner scroll + `28px` status bar) | `Long-Form Reading` (`min-height: 100dvh` scroll + right Tufte sidenotes) | `Lightweight Utility` | `Showcase & Orientation`}}
+- **Page Archetype**: {{Pick one: `Data Operations & Management` | `Long-Form Reading` | `Lightweight Utility` | `Showcase & Orientation` (see `docs/contracts/frontend-and-visual-discipline.md`, Section 4.3)}}
 
-## 2. Target Reader & Calm Hierarchy
+## 2. Reader, Task & Information Organization (Principles)
 
-- **Target reader / user persona**: {{Reader background and exact first-screen questions answered}}
-- **Canvas vs Platter Split**: {{What quiet filters/hints sit directly on `--bg-canvas` (`#F5F5F7`) vs what sits inside the single `--bg-platter` (`#FFFFFF`), keeping zero same-screen duplicate stats and no card-in-card walls}}
-- **Priority+ Responsive Breakpoints (`@container`)**: {{Exact behavior across `<680px` (1/3 split + `···` overflow + 2–3 cols), `680–1024px`, `1024–1440px`, and `>1440px` (`max-width <= 1200px` / `<= 1080px`), hiding low-priority table columns rather than adding horizontal scrollbars}}
-- **Anti-Jitter & Long Fields**: {{`scrollbar-gutter: stable`, fixed-width tabs, `tabular-nums`, middle truncation + click-to-expand details for UUID/SHA/paths, and disabled-in-place controls}}
+- **Target reader and first questions**: {{Reader background, what they already know, and the exact questions the first screen answers}}
+- **Primary task and single focus**: {{The one main thing this screen helps the reader do, and what is deliberately secondary}}
+- **Organizing scheme and layers**: {{How content is grouped at each level (task, topic, time, ...), what sits in the summary / working / detail layers, and how a detail keeps its context and a way back (`docs/contracts/information-organization.md`)}}
+- **States**: {{Loading, empty, partial, error, stale, and success behavior, with counts tied to the underlying data}}
 
-## 3. Data Provenance, Layered CSS & Self-Check
+## 3. Best-Practice Baseline (Mandatory)
 
-- **Authoritative data & styles**: {{Truthful distinction of physical facts / AI specs / human approvals; `:root` tokens isolated in `tokens.css`; component CSS `<= 300` lines; zero thick `border-left` banners, emojis, or hover-jump animations}}
-- **Verification**: Verified against the 6-item pre-delivery self-check (`docs/contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check`) across `540px`, `800px`, `1280px`, and `2560px+`.
+- **Accessibility**: {{Measured contrast of the text/background token pairs in use (`>= 4.5:1`, large text `>= 3:1`, meaningful marks `>= 3:1`); keyboard order and visible focus; targets `>= 24px`; labels and text alternatives; reduced-motion behavior}}
+- **Stability and performance**: {{How layout shift is prevented (reserved space, `scrollbar-gutter: stable`, `tabular-nums`) and how refresh keeps stale data visible}}
+- **Data presentation**: {{Encodings chosen by perceptual accuracy, labeled units, numerator/denominator/scope for rates, and distinction of physical facts / AI records / human approvals}}
+
+## 4. Owner Preferences Applied
+
+- **Preference source**: {{Default calm-platter style from `docs/contracts/frontend-and-visual-discipline.md` Section 4, or this project's own recorded preferences (link)}}
+- **Canvas vs platter split** (default style): {{What quiet filters/hints sit on `--bg-canvas` vs what sits inside the single `--bg-platter`, with no duplicate stats and no card-in-card walls}}
+- **Window widths** (default style): {{Behavior across `<680px`, `680–1024px`, `1024–1440px`, and `>1440px`, hiding low-priority table columns rather than adding horizontal scrollbars}}
+- **Long fields** (default style): {{Middle truncation + click-to-expand details for UUID/SHA/paths, and disabled-in-place controls}}
+
+## 5. Styles & Verification
+
+- **Style ownership**: {{`:root` tokens isolated in `tokens.css`; component CSS `<= 300` lines}}
+- **Verification**: Verified against the pre-delivery self-check (`docs/contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check`): principle checks, measured best-practice checks, and preference checks across `540px`, `800px`, `1280px`, and `2560px+`.

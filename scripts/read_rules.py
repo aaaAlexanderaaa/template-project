@@ -157,6 +157,7 @@ def inspect_external_target(template_root: Path, target: Path) -> dict[str, Any]
         "docs/contracts/collaboration-and-governance.md",
         "docs/contracts/architecture-and-modularity.md",
         "docs/contracts/delivery-and-verification.md",
+        "docs/contracts/information-organization.md",
         "docs/contracts/adoption-and-synchronization.md",
     ]
     if has_ui_files:

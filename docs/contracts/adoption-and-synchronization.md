@@ -17,7 +17,7 @@ When asked in another repository to learn or adopt practices from
    to inspect existing instructions, Git cleanliness, directory layout, LOC,
    oversized files, and any prior `discipline_version`.
 2. **Read core contracts + fact-triggered rules before judging fit**: Open
-   `AGENTS.md`, `docs/README.md`, and the five contracts under `docs/contracts/`
+   `AGENTS.md`, `docs/README.md`, and the six contracts under `docs/contracts/`
    (especially any domain triggered by concrete files in the target repo, such
    as styles/UI or multi-subsystem boundaries) before deciding what applies.
 3. **Evaluate by concrete repository facts**: Classify each practice as:

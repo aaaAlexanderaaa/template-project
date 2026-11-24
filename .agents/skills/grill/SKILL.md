@@ -21,7 +21,13 @@ description: Challenge project direction, architecture, boundaries, UX, or Goodh
    author rationales**, use an **open-ended holistic mandate** (never a narrow
    code checklist), cover holistic architecture/consistency/transfer plus
    unfamiliar-reader clarity, and **close the loop** by re-verifying fixes with
-   both original reviewers and a fresh pass when structure changed.
+   both original reviewers and a fresh pass when structure changed. For
+   coverage or currency questions, have the reviewer **list expectations before
+   reading the deliverable**, and settle currency with **dated sources retrieved
+   during the review** that cover the window from the deliverable's latest dated
+   item to today; no model's or person's memory counts as evidence.
+   Reviewers report findings, never pass verdicts; milestone status changes only
+   after owner confirmation.
 5. Report evidence-backed findings plainly using
    [templates/independent-review.md](../../../templates/independent-review.md)
    when recording durable reviews, and run `python3 scripts/project.py mark-reviewed`

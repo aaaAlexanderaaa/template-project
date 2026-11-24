@@ -190,6 +190,32 @@ console.log("SVG_OK:" + outputs.length);
             self.assertEqual(proc.returncode, 0, proc.stderr)
             self.assertIn("SVG_OK:", proc.stdout)
 
+    def test_text_ink_tokens_meet_wcag_aa_contrast(self) -> None:
+        """Best-practice layer outranks preferences: text inks need >= 4.5:1 on canvas and platter."""
+
+        def luminance(hex_color: str) -> float:
+            h = hex_color.lstrip("#")
+            channels = [int(h[i : i + 2], 16) / 255 for i in (0, 2, 4)]
+            lin = [c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4 for c in channels]
+            return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+
+        def contrast(a: str, b: str) -> float:
+            hi, lo = sorted((luminance(a), luminance(b)), reverse=True)
+            return (hi + 0.05) / (lo + 0.05)
+
+        for token_file in (
+            ROOT / "scripts" / "projectlib" / "web" / "styles" / "tokens.css",
+            ROOT / "examples" / "reference-app" / "shared" / "styles" / "tokens.css",
+        ):
+            css = token_file.read_text(encoding="utf-8")
+            tokens = {m.group(1): m.group(2) for m in re.finditer(r"--([\w-]+):\s*(#[0-9A-Fa-f]{6})\s*;", css)}
+            for bg in ("bg-canvas", "bg-platter"):
+                for ink in ("ink-primary", "ink-secondary", "ink-tertiary"):
+                    ratio = contrast(tokens[ink], tokens[bg])
+                    self.assertGreaterEqual(
+                        ratio, 4.5, f"{token_file.name}: --{ink} on --{bg} is {ratio:.2f}:1, below WCAG AA 4.5:1"
+                    )
+
     def test_web_views_scale_bundle_and_calm_platter_constraints(self) -> None:
         web_dir = ROOT / "scripts" / "projectlib" / "web"
         css_files = sorted((web_dir / "styles").glob("*.css"))

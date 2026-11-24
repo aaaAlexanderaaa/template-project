@@ -11,8 +11,9 @@
 1. **清晰的顶层协作规则（[AGENTS.md](AGENTS.md)）**：明确优先级顺序、写代码前的三视角判断、按对象触发的强制动作，以及防止偷工减料的红线。
 2. **五要素架构说明与模块化契约（[docs/contracts/](docs/contracts/README.md)）**：要求系统与模块说明写清定位与边界、端到端运行/控制逻辑（`mermaid`）、清晰接口与禁止耦合、唯一状态真源与硬约束、模块入口与自动校验，并使用平实直接的表达（[docs/README.md](docs/README.md#language-standard)）。
 3. **可追溯的需求—决策—任务链路（[docs/sources.toml](docs/sources.toml)、[docs/work.toml](docs/work.toml)）**：将项目负责人原话（`SRC-*`）、架构决策（`ADR-*`）、设计稿（`docs/design/`）、模块规格（`docs/specs/`）与任务单（`T-*`）双向关联；产品方向与界面方案未经负责人明确批准不得开工实现。
-4. **开放且闭环的独立评审机制（[docs/guides/grill.md](docs/guides/grill.md)、[templates/independent-review.md](templates/independent-review.md)）**：独立评审必须在全新隔离上下文中开展，屏蔽作者辩解，先做不设限的全局架构/一致性/可用性检查，并在整改后送回原评审方复验闭环。
-5. **不失真的下游迁移模板（[templates/](templates/README.md)、[.agents/skills/](.agents/skills/onboard-discipline/SKILL.md)）**：在新建（`init`）与接入（`onboard`）时保留完整核心纪律，同时彻底剥离本模板内部示例域名。
+4. **以读者为中心的信息组织与分层前端规范（[information-organization.md](docs/contracts/information-organization.md)、[frontend-and-visual-discipline.md](docs/contracts/frontend-and-visual-discipline.md)）**：文档、界面与知识内容按读者的任务来组织；界面先守原则和可测量的最佳实践底线（如 WCAG 2.2 AA），再套用负责人偏好和参考产品。
+5. **开放且闭环的独立评审机制（[docs/guides/grill.md](docs/guides/grill.md)、[templates/independent-review.md](templates/independent-review.md)）**：独立评审必须在全新隔离上下文中开展，屏蔽作者辩解，先做不设限的全局架构/一致性/可用性检查，涉及覆盖面与时效时先列预期清单再对照、时效以评审时检索到的带日期来源为准，整改后送回原评审方复验闭环。
+6. **不失真的下游迁移模板（[templates/](templates/README.md)、[.agents/skills/](.agents/skills/onboard-discipline/SKILL.md)）**：在新建（`init`）与接入（`onboard`）时保留完整核心纪律，同时彻底剥离本模板内部示例域名。
 
 ## 快速开始
 
