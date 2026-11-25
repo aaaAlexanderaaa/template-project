@@ -63,21 +63,38 @@ def _matches_managed(path: str, managed_paths: list[str]) -> bool:
     return False
 
 
+# Checks deferred while the governing `stage` is `prototype` (0->0.1).
+ENFORCE_KEYS = (
+    "source_ownership",
+    "import_boundaries",
+    "file_size_budget",
+    "missing_role_header",
+    "catchall_directories",
+    "unknown_task_specs",
+)
+# A number or wording that stands in for a judgment only reminds, even under --strict (ADR-008).
+REMINDER_KEYS = ("file_size_budget", "catchall_directories", "disclaimer_phrases")
+
+
+def _deferred_by_stage(graph: ProjectGraph, key: str, path: str) -> bool:
+    if key not in ENFORCE_KEYS:
+        return False
+    mod_id = match_path_to_module(path, graph.modules)
+    stage = graph.modules[mod_id].stage if mod_id else graph.default_stage
+    return stage == "prototype"
+
+
 def _effective_severity(graph: ProjectGraph, key: str, path: str, default: str = "error") -> str:
     sev = str(graph.policy.get("severity", {}).get(key, default))
+    if sev != "error":
+        return sev
+    if key in REMINDER_KEYS or _deferred_by_stage(graph, key, path):
+        return "advisory"
     adoption_cfg = graph.policy.get("adoption", {})
     adoption_stage = str(adoption_cfg.get("stage", "adopted"))
-    enforce_keys = (
-        "source_ownership",
-        "import_boundaries",
-        "file_size_budget",
-        "missing_role_header",
-        "catchall_directories",
-        "unknown_task_specs",
-    )
-    if adoption_stage == "observed" and sev == "error" and key in enforce_keys:
+    if adoption_stage == "observed" and key in ENFORCE_KEYS:
         return "advisory"
-    if adoption_stage == "scoped_enforcement" and sev == "error" and key in enforce_keys:
+    if adoption_stage == "scoped_enforcement" and key in ENFORCE_KEYS:
         managed = [str(p) for p in adoption_cfg.get("managed_paths", [])]
         if managed and not _matches_managed(path, managed):
             return "advisory"
@@ -106,7 +123,8 @@ def validate_project_graph(
         sev = _effective_severity(graph, sev_key, path, default_sev)
         if sev == "off":
             return
-        if strict and sev == "advisory" and not strict_exempt:
+        reminder = sev_key in REMINDER_KEYS or _deferred_by_stage(graph, sev_key, path)
+        if strict and sev == "advisory" and not (strict_exempt or reminder):
             sev = "error"
         findings.append(ValidationFinding(rule_id, sev, path, msg, line))
 

@@ -12,7 +12,7 @@ from pathlib import Path
 TEMPLATE_INTERNAL_DOMAINS = ("discipline", "graph-engine", "perspective-ui", "reference-app")
 # Decision IDs that belong to template-project itself; extend when the template adds an ADR
 # (tests/test_discipline_transfer_and_consistency.py checks this list against docs/decisions/).
-TEMPLATE_INTERNAL_ADRS = ("ADR-001", "ADR-002", "ADR-003", "ADR-004", "ADR-005", "ADR-006", "ADR-007")
+TEMPLATE_INTERNAL_ADRS = ("ADR-001", "ADR-002", "ADR-003", "ADR-004", "ADR-005", "ADR-006", "ADR-007", "ADR-008")
 TEMPLATE_INTERNAL_TESTS = (
     "test_discipline_transfer_and_consistency.py",
     "test_project_cli_and_server.py",

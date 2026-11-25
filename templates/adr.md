@@ -15,3 +15,4 @@ supersedes: []
 - **Context & problem**: What real constraint or user quote triggered this choice?
 - **Chosen approach**: What did we decide and how does it work?
 - **Trade-offs & rejected alternatives**: What option was set aside and why?
+- **Expectation**: What should happen because of this choice, and what would show it is wrong? Record later violations and their resolution below this line.

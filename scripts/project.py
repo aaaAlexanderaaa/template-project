@@ -12,9 +12,6 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 
-if sys.version_info < (3, 11):
-    raise SystemExit("project.py requires Python 3.11 or newer.")
-
 if __package__:
     from .projectlib.briefing_pack import serialize_perspective_payload
     from .projectlib.cli_format import print_context_pack, print_status, print_trace_summary

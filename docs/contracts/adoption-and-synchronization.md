@@ -95,6 +95,18 @@ already-adopted repository:
 
 Newest first. Each entry lists only what an upgrading project should check.
 
+- **2026.11.3**
+  - When a decision is recorded, also write its expectation: what should
+    happen, and what would show it is wrong. When later work contradicts it,
+    record the violation and its resolution under that decision (see "Judgments,
+    Expectations & Three Resolutions" in `collaboration-and-governance.md`).
+  - Line budgets, banned folder names, and hedge phrases now only remind; they
+    no longer fail the build, even with `--strict`. Hedge phrases are checked
+    only in `AGENTS.md`, `docs/README.md`, contracts, guides, and templates.
+  - A `prototype` project or module no longer fails on ownership, imports,
+    role headers, or budgets; these become reminders until the stage changes.
+  - The scripts run on older Python when `tomli` is installed; Python 3.11+
+    needs nothing extra.
 - **2026.11.2**
   - Keep each fact in one file: point to `docs-policy.toml` instead of
     repeating `discipline_version` or line budgets, point to `docs/work.toml`

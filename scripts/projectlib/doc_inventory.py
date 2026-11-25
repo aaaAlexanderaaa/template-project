@@ -85,8 +85,8 @@ KNOWN_DIRS: tuple[tuple[str, str, str, str, str], ...] = (
         "scripts",
         "检查与辅助命令行脚本",
         "Checker & Helper Scripts",
-        "纯 Python 3.11+ 标准库编写的规则检查器（check_docs.py）、项目命令行（project.py）、规则读取器与本地预览服务。",
-        "Zero-dependency Python 3.11+ helper scripts powering check_docs.py, read_rules.py, project.py CLI, and local overview server.",
+        "只用 Python 标准库编写的规则检查器（check_docs.py）、项目命令行（project.py）、规则读取器与本地预览服务。",
+        "Standard-library Python helper scripts powering check_docs.py, read_rules.py, project.py CLI, and local overview server.",
     ),
     (
         "examples/reference-app",

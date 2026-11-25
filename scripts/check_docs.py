@@ -12,9 +12,6 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 
-if sys.version_info < (3, 11):
-    raise SystemExit("check_docs requires Python 3.11 or newer.")
-
 if __package__:
     from .projectlib.loader import load_project_graph
     from .projectlib.validator import validate_project_graph

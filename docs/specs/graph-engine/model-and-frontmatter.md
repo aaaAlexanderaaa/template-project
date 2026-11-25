@@ -3,7 +3,7 @@ id: graph.model
 domain: graph-engine
 kind: module-spec
 summary: "Pure dataclasses, thin YAML frontmatter parser, Mermaid extractor, and SHA-256 digest-checked rule reader."
-promise: "Markdown frontmatter, headings, links, Mermaid blocks, and rule spans parse deterministically using only the Python 3.11+ standard library."
+promise: "Markdown frontmatter, headings, links, Mermaid blocks, and rule spans parse deterministically using only the Python standard library."
 owns:
   - "scripts/projectlib/__init__.py"
   - "scripts/projectlib/model.py"

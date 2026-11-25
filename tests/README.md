@@ -1,6 +1,6 @@
 # Test Suite
 
-Run all unit and integration tests with Python 3.11+:
+Run all unit and integration tests (Python 3.11+, or older Python with `tomli` installed):
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'

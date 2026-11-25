@@ -74,7 +74,7 @@ Every project fact lives in one file and is linked mechanically by `scripts/`:
   `python3 scripts/project.py context <path-or-id>`
 - **Inspect project roadmap, directory map, and review accumulation**:
   `python3 scripts/project.py status` (`python3 scripts/project.py serve` shows the same information as a local web overview, specified in [docs/design/perspective-web.md](docs/design/perspective-web.md))
-- **Run tests and rule checks** (Python 3.11+):
+- **Run tests and rule checks** (Python 3.11+, or older Python with `tomli` installed):
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'

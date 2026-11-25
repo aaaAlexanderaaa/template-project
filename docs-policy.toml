@@ -1,5 +1,5 @@
 version = 2
-discipline_version = "2026.11.2"
+discipline_version = "2026.11.3"
 
 [project]
 # "template" in template-project itself; change to "product" when adopting.
@@ -43,7 +43,8 @@ harness_paths = [
 ]
 
 [budgets]
-# Mechanical anti-monolith thresholds (counted on tracked source & style files).
+# Line counts and folder names at which check_docs.py reminds you to consider
+# splitting or renaming; they never fail the build (ADR-008).
 max_source_lines = 500
 max_style_lines = 300
 forbid_catchall_dirs = ["utils", "helpers", "common", "misc"]
@@ -55,10 +56,11 @@ test = "python3 -m unittest discover -s tests -p 'test_*.py'"
 broken_links_and_ids = "error"
 source_ownership = "error"
 import_boundaries = "error"
-file_size_budget = "error"
+file_size_budget = "advisory"
 missing_role_header = "error"
 unknown_task_specs = "error"
-catchall_directories = "error"
+catchall_directories = "advisory"
 orphan_active_sources = "advisory"
 git_doc_lag = "advisory"
 startup_disclaimers = "error"
+disclaimer_phrases = "advisory"

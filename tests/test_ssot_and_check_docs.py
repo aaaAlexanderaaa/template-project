@@ -300,6 +300,16 @@ flowchart TD
             self.assertTrue(any(f.rule_id == "unclaimed_source" for f in advisories))
             self.assertTrue(any(f.rule_id == "file_size_budget" for f in advisories))
 
+    def test_prototype_stage_defers_structure_checks_even_under_strict(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _build_minimal_repo(root, default_stage="prototype")
+            _write(root, "src/sketch.py", "\n".join(f"V_{i} = {i}" for i in range(60)))
+            graph = load_project_graph(root)
+            findings, _ = validate_project_graph(graph, strict=True)
+            self.assertEqual([f for f in findings if f.severity == "error"], [])
+            self.assertTrue(any(f.rule_id == "unclaimed_source" for f in findings))
+
     def test_git_diff_surfaces_verbatim_l1_quotes_and_template_remote_guard(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -428,7 +438,8 @@ flowchart TD
             graph = load_project_graph(root)
             findings, _ = validate_project_graph(graph, strict=True)
             rules_by_path = {(f.rule_id, f.path) for f in findings}
-            self.assertIn(("startup_disclaimer", "docs/design/preview.html"), rules_by_path)
+            # A single negation in a design preview is ordinary prose, not a rule-document hedge (ADR-008).
+            self.assertNotIn(("startup_disclaimer", "docs/design/preview.html"), rules_by_path)
             self.assertIn(("project_language_mismatch", "docs/work.toml"), rules_by_path)
             self.assertIn(("project_language_mismatch", "docs/specs/core/work.toml"), rules_by_path)
             self.assertIn(("project_language_mismatch", "docs/specs/core/README.md"), rules_by_path)

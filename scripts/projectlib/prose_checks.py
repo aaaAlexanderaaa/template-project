@@ -162,6 +162,8 @@ def check_plain_language(
         rel = fp.relative_to(root).as_posix()
         is_template = rel.startswith("templates/")
         is_code = fp.suffix.lower() in ui_exts
+        # Hedge phrases matter in rule documents agents follow; elsewhere a negation is ordinary prose (ADR-008).
+        is_rule_doc = not is_code and (rel in {"AGENTS.md", "docs/README.md"} or rel.startswith(("docs/contracts/", "docs/guides/", "templates/")))
         raw_text = fp.read_text(encoding="utf-8")
         if (
             identity != "template"
@@ -189,9 +191,16 @@ def check_plain_language(
             if in_fence:
                 continue
             scrubbed = raw_line.lower() if is_code else scrub_examples(raw_line)
-            for phrase in DISCLAIMER_CHAINS:
-                if phrase in scrubbed:
-                    emit("startup_disclaimer", "startup_disclaimers", rel, f"Uses defensive disclaimer phrase `{phrase}`; state scope directly.", ln)
+            if is_rule_doc:
+                for phrase in DISCLAIMER_CHAINS:
+                    if phrase in scrubbed:
+                        emit(
+                            "startup_disclaimer",
+                            "disclaimer_phrases",
+                            rel,
+                            f"`{phrase}` may start a chain of defensive hedges; if it does, state the scope directly.",
+                            ln,
+                        )
             for term in BANNED_JARGON:
                 if term in scrubbed:
                     emit("plain_language_jargon", "startup_disclaimers", rel, f"Uses coined buzzword `{term}`; replace with plain ordinary wording.", ln)

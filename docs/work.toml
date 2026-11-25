@@ -120,3 +120,13 @@ specs = ["discipline.entry-and-contracts", "discipline.guides-and-skills", "disc
 decisions = ["ADR-007"]
 sources = ["SRC-028", "SRC-029", "SRC-030"]
 selected_option = "SRC-028: fix the root cause (remove duplicated facts and derive lineage mechanically) instead of relaxing checks"
+
+[[tasks]]
+id = "T-208"
+milestone = "M-DIS-02"
+title = "Build the expectation and three-resolution loop into the discipline, starting with the prototype-stage, disclaimer-phrase, and read_rules fixes as its first cases"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["discipline.entry-and-contracts", "discipline.templates", "graph.validator"]
+decisions = ["ADR-008"]
+sources = ["SRC-031", "SRC-032", "SRC-033", "SRC-034", "SRC-035"]

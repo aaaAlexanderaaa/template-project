@@ -1,7 +1,7 @@
 # Contributing
 
-All scripts and tests run on the Python 3.11+ standard library without third-party
-packages.
+All scripts and tests use only the Python standard library. They need a TOML
+reader: Python 3.11+ includes one; on older Python, install `tomli`.
 
 ## Workflow
 

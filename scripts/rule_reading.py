@@ -112,9 +112,12 @@ class RuleRepository:
             "docs/contracts/collaboration-and-governance.md#governance-boundary",
             "docs/contracts/collaboration-and-governance.md#three-perspectives",
             "docs/contracts/collaboration-and-governance.md#inquiry-and-fallback",
-            "docs/contracts/collaboration-and-governance.md#self-supervision",
+            "docs/contracts/collaboration-and-governance.md#expectations-and-resolutions",
         ),
-        "lineage": ("docs/contracts/collaboration-and-governance.md#three-level-bidirectional-lineage",),
+        "lineage": (
+            "docs/contracts/collaboration-and-governance.md#three-level-bidirectional-lineage",
+            "docs/contracts/collaboration-and-governance.md#expectations-and-resolutions",
+        ),
         "architecture": (
             "docs/contracts/architecture-and-modularity.md#decomposition-and-ownership",
             "docs/contracts/architecture-and-modularity.md#anti-monolith",

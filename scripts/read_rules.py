@@ -10,14 +10,10 @@ import json
 import os
 import subprocess
 import sys
-import tomllib
 from pathlib import Path
 from typing import Any
 
 sys.dont_write_bytecode = True
-
-if sys.version_info < (3, 11):
-    raise SystemExit("read_rules requires Python 3.11 or newer.")
 
 if __package__:
     from .projectlib.loader import load_project_graph
@@ -26,6 +22,8 @@ else:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from projectlib.loader import load_project_graph
     from rule_reading import RuleError, RuleRepository, utf8_parts
+
+import tomllib  # provided by projectlib on older Python
 
 SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "dist", "build", "tmp", "archive"}
 CODE_EXTS = {".py", ".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx", ".go", ".rs", ".java", ".rb", ".c", ".cpp", ".cs", ".swift", ".kt"}

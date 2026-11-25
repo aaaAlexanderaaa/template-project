@@ -54,13 +54,14 @@ Whenever a piece of state or configuration is read in more than one place:
 <!-- required-reading: anti-monolith -->
 ## Preventing Monolith Files & Catch-All Buckets
 
-- **Split by cohesive responsibility before crossing file budgets**: Keep source
-  files under `[budgets].max_source_lines` (default `500` lines; split plan
-  required before growing oversized legacy files) and stylesheets under
-  `[budgets].max_style_lines` (default `300` lines).
-- **No dumping-ground directories**: Avoid `utils/`, `helpers/`, `common/`, or
-  `misc/`. Name shared packages after the specific domain capability or mechanism
-  they own (for example, `money/`, `markdown_frontmatter/`, `git_telemetry/`).
+- **Split by cohesive responsibility when a file gets hard to follow**: The
+  line counts in `[budgets]` of `docs-policy.toml` are the point where
+  `check_docs.py` reminds you to look; they never fail the build. Whether to
+  split is your judgment: split by responsibility, never by squeezing lines.
+- **No dumping-ground directories**: A folder named `utils/`, `helpers/`,
+  `common/`, or `misc/` gets a reminder. Name shared packages after the
+  capability they own (for example, `money/`, `markdown_frontmatter/`,
+  `git_telemetry/`).
 - Follow a clear layered module layout (illustrated in `template-project`'s `examples/reference-app/`: `domain/` → `shared/` → `features/<feature>/index.*` → `app/`).
 <!-- /required-reading: anti-monolith -->
 

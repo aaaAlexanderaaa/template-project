@@ -98,24 +98,34 @@ Both directions stay mechanically queryable via `python3 scripts/project.py trac
   comparable evidence quality or report the exact remaining boundary plainly.
 <!-- /required-reading: inquiry-and-fallback -->
 
-<!-- required-reading: self-supervision -->
-## Self-Supervision Against Goodhart Drift
+<!-- required-reading: expectations-and-resolutions -->
+## Judgments, Expectations & Three Resolutions
 
-A vision narrowed into a target and then reduced to a proxy metric invites
-Goodhart's Law—agents optimize the metric while degrading the real goal (for
-example, compressing clear rules into cryptic slogans to pass a hard line-count
-cap, or touching timestamps to satisfy a 90-day calendar rule).
+A model remembers nothing between sessions; it knows what the project documents
+tell it. So the discipline corrects itself through its documents:
 
-Whenever a rule is skipped, gamed, or creates friction during real work,
-diagnose which of four causes occurred before editing governance:
-
-1. **Delivery gap**: The rule mattered, but nothing surfaced it when editing the
-   affected files → wire it into `check_docs.py` diff nudges or file headers.
-2. **Vague trigger**: The rule used broad labels (`"content"`, `"architecture"`)
-   → rewrite the trigger around concrete objects and observable effects.
-3. **Habitual corner-cutting**: Models repeatedly take a shortcut → enforce via
-   a deterministic script check or copyable code exemplar in `examples/`.
-4. **Faulty or Goodhart metric**: The rule itself slows healthy work or rewards
-   performative compliance → revise or delete the rule against verbatim user quotes (`SRC-*`)
-   instead of stacking extra reminders on top.
-<!-- /required-reading: self-supervision -->
+- **A judgment states its expectation**: what should happen because of it, and
+  what would show it is wrong. Judgments are ADRs, module `promise`s, checks
+  that can fail the build, and the project's health constraints.
+- **An expectation violation is recorded under the judgment it contradicts**,
+  when it is seen, and ends in one of three resolutions:
+  - **Revise the expectation**: the expectation was wrong; change or retire the
+    judgment. This is how rules are removed.
+  - **Correct the phenomenon**: the expectation is right; fix the code or
+    documents.
+  - **Accept with a stronger description**: the old expectation described part
+    of the picture; write one description that covers both and can still be
+    contradicted. An exception attached to the old text does not count.
+    Accepting a minor violation is recorded the same way, so later sessions do
+    not argue it again.
+- **The project's goal and the owner quotes decide which resolution applies**;
+  who decides follows the authority boundary above.
+- **Health constraints live in `ARCHITECTURE.md`, next to the goal they
+  serve**. The project chooses a few and adjusts them sparingly against the
+  goal.
+- **Numbers remind; only facts fail the build.** A check fails the build only
+  when a script can decide right or wrong. A number that stands in for a
+  judgment (a line count meaning "too big") only reminds.
+- **In a holistic review**, judgments with open violations come first, and
+  removing something is the first option considered.
+<!-- /required-reading: expectations-and-resolutions -->

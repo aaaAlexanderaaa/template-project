@@ -358,7 +358,7 @@ class ProjectCliAndServerTests(unittest.TestCase):
             (repo1 / "scripts" / "deploy.py").write_text("# Role: Deploy helper.\ndef deploy(): return 0\n", encoding="utf-8")
             (repo1 / "manage.py").write_text("# Role: Management runner.\ndef run(): return 0\n", encoding="utf-8")
             res1 = subprocess.run(
-                [sys.executable, str(SCRIPTS_DIR / "project.py"), "init", "--target", str(repo1), "--name", "后端服务", "--lang", "zh"],
+                [sys.executable, str(SCRIPTS_DIR / "project.py"), "init", "--target", str(repo1), "--name", "后端服务", "--lang", "zh", "--stage", "usable"],
                 capture_output=True, text=True, check=False,
             )
             self.assertEqual(res1.returncode, 0, res1.stdout + res1.stderr)

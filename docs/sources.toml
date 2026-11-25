@@ -517,3 +517,51 @@ A2: (Recommended) 自动删掉所有和 ADR 重复的手抄条目，并让 check
 A3: (Recommended) 可以：负责人亲自选中或贴来作为回答的文字算作负责人的回答，可以进 quote，但 context 里要写明哪部分是 agent 写的；网页里点选的预设选项仍记在任务上。把这条写进规则
 continue，我认为相对边际的部分可以接受，不是一定要修要完全没问题。抓大放小
 '''
+
+[[sources]]
+id = "SRC-031"
+date = "2026-11-25"
+status = "active"
+context = "Owner reply after a review of the 2026.11.2 changes and two retrospective reports: which readers the discipline is written for, what the real risk is, and the move from principles toward skills that package procedures"
+quote = '''
+你的担忧和判断是有道理的。这的确也是我在忧虑的地方。就是这里一定会面临一个 trade off 。我当然想既要又要，但是。更关键的是在于，让纪律平稳工作的同时，不会让它腐烂掉或者崩溃掉。而至于所谓的 理解上的负担。其实这取决于模型的智能。现在这一套纪律不再面向低等智能的 Agent ，至少是中等智能，至少是遵循纪律会去理解我在说什么并且有一定思考的智能。所以有一些可能面向低等智能的部分被砍掉了。与此同时，你会发现这个项目在尝试封装一些 skill 也就是把某些 sop 去变成可操作的项目，而不是继续由原则单纯指导。在这样一个思考下，你会改变你的判断吗？
+'''
+
+[[sources]]
+id = "SRC-032"
+date = "2026-11-25"
+status = "active"
+context = "Owner direction on building self-correction into the discipline: when and how to subtract, revisiting earlier judgments, project-chosen health constraints instead of fixed numeric limits, and project documents as the only memory a model can rely on"
+quote = '''
+我同意你的这个思考，的确，如何做减法？在什么场景下做减法？以及在什么时候抛出一个判断，并且在后面验证这个判断。或者能够再回过头来去审判或者审视当时做 的那个判断，然后再来纠正当时的方向。这部分是一个很重要的东西。避免一套工程不断的膨胀，做加法往前走，自我强化。它一定要成为一个循环。在某一些节点，模型或者工程，或者使用这一套工程和纪律的智能是可以回过头去审视自己，去评估自己项目的健康程度的。这种健康程度不是由单一的或者几个数值去作为硬限制，而是由他自己根据项目的状况去 定一个约束，然后根据目标或者使命或者愿景去灵活的、适当的、少量的调整这些约束。也就是说，我们在尝试把自我纠正的能力内化到项目的纪律当中，而不指望 模型时刻记得。因为这里有一个非常本质的问题是，模型是没有记忆的。它的记忆来自于传递给它的上下文，它的上下文来自于项目当中的文档或者 harness。 但 harness 是会自动变化的，它会随着 Agent 能力的更新而变化。只有项目的文档是静态的、可见的，不黑盒的，我们可控的
+'''
+
+[[sources]]
+id = "SRC-033"
+date = "2026-11-25"
+status = "active"
+context = "Owner's own formulation of the self-correction loop (judgment, expectation, observation, expectation violation, three resolutions), given after the agent proposed a judgment-observation-review-correction loop; the owner then approved drafting ADR-008 with \"同意，开始\""
+quote = '''
+我理解，我同意你这个思考。你这个思考是正确的方向。但我认为有更 直白和本质的描述，每一个判断对应一个预期。于是 你要检验预期，也就是所谓的观察。你要评估和发现预期违背。那么预期违背呢，就会触发三种选择。第一种是修正预期。也就是，所谓的预期违背是被认可的，是当时的预期错了。第二种是修正现象，也就是现在正在发生的预期违背是错误的，预期是正确的。第三种是接受，或者叫做有一个 更强的描述，他可以把当时的预期和现在的预期违背放在同一个框架里，并且是正确的。只是当时所描述的预期是局部的现象的 局限性的描述。当然你的这一个判断、观察、复盘、纠正的框架也很好。我只是表达一下我的思考。取决于如何以 AI/ Agent / Model 更能理解的方式、更能遵守的方式、更 不产生歧义的方式，更灵活的方式去进行管理，让这个系统稳定，在处理未知的环境的时候仍然保持稳定
+'''
+
+[[sources]]
+id = "SRC-034"
+date = "2026-11-25"
+status = "active"
+context = "Owner feedback on the ADR-008 draft: question the need for fine-grained fixed limits (starting from the Python version requirement), documents exist for the AI that executes the discipline, answers to the draft's open questions, and concern that the session keeps adding improvement points and could turn the discipline into a complex self-reinforcing system"
+quote = '''
+我有几个反馈。第一个反馈是你提到这个 Python 3.9和 Python 3.12。我不理解，因为我们这个项目没有需要细力度到小版本的东西，那你为什么要纠结这个版本呢？难道3.9或者3.12就是更好或更坏吗？他们对我们这个项目而言，不就是跑一个检查器吗？有 什么额外的要求呢？就这就对我产生了预期违背。是：我做到这个粒度的限制有意义和价值吗？从这个点出发，我们又可以回去看一看别的问题。就是那些定的很死的限制，他们有必要到那个粒度吗？我说了要灵活，就是我们要抓住本质，我们要抓大放小。
+违背记录可以放在对应的判断下面。健康约束，我没有理解为什么要给脚本读。你指的脚本是什么？脚本不具备判断力，他读这个有什么用呢？你写 一个内容，它一定是给读者看的，那你一定要有读者。如果没有读者，那它就没有存在的意义。如果它只写给人看，那你这个项目纪律又不是人来执行。整个项目都是给 AI 看的。给 AI 看应该放在哪里呢？
+英文命名，定稿吧。然后改动一起做，Skill 和契约另外起一个 ADR 吧。
+我我需要你解释一下 ADR 是个什么东西。我的担心是你把项目又变成了一套非常复杂的自我强化的约束体系，并且丧失了它的灵活性。因为在这个会话里，你好像一直在抛出新的可改进点，但它们有必要改进吗？
+'''
+
+[[sources]]
+id = "SRC-035"
+date = "2026-11-25"
+status = "active"
+context = "Owner answer to ADR-008's remaining question: line budgets and banned folder names stop failing the build and only remind"
+quote = '''
+把禁用改成提醒吧。
+'''
