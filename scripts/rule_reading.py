@@ -108,9 +108,17 @@ class RuleRepository:
     """Resolves `<!-- required-reading: slug -->` spans across contracts and docs."""
 
     CONCERN_MAP = {
-        "governance": ("docs/contracts/collaboration-and-governance.md#governance-boundary",),
+        "governance": (
+            "docs/contracts/collaboration-and-governance.md#governance-boundary",
+            "docs/contracts/collaboration-and-governance.md#three-perspectives",
+            "docs/contracts/collaboration-and-governance.md#inquiry-and-fallback",
+            "docs/contracts/collaboration-and-governance.md#self-supervision",
+        ),
         "lineage": ("docs/contracts/collaboration-and-governance.md#three-level-bidirectional-lineage",),
-        "architecture": ("docs/contracts/architecture-and-modularity.md#decomposition-and-ownership",),
+        "architecture": (
+            "docs/contracts/architecture-and-modularity.md#decomposition-and-ownership",
+            "docs/contracts/architecture-and-modularity.md#anti-monolith",
+        ),
         "state": ("docs/contracts/architecture-and-modularity.md#single-source-of-state",),
         "css": ("docs/contracts/architecture-and-modularity.md#css-modularity",),
         "verification": (
@@ -138,8 +146,13 @@ class RuleRepository:
             "docs/contracts/information-organization.md#form-follows-content",
             "docs/contracts/information-organization.md#document-types",
             "docs/contracts/information-organization.md#coverage-scope-freshness",
+            "docs/contracts/information-organization.md#information-self-check",
         ),
-        "onboarding": ("docs/contracts/adoption-and-synchronization.md#read-before-judgment",),
+        "onboarding": (
+            "docs/contracts/adoption-and-synchronization.md#read-before-judgment",
+            "docs/contracts/adoption-and-synchronization.md#existing-directory-safety",
+            "docs/contracts/adoption-and-synchronization.md#incremental-version-sync",
+        ),
         "language": ("docs/README.md#language-standard",),
         "general": (),
     }

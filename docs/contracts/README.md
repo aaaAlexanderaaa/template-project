@@ -1,6 +1,6 @@
 # Normative Engineering Contracts
 
-Active engineering discipline is organized into six focused contracts:
+Active engineering discipline is organized into focused contracts:
 
 1. [collaboration-and-governance.md](collaboration-and-governance.md) — Human vs
    engineering decision authority, three-perspective pre-code check, three-level
@@ -11,13 +11,14 @@ Active engineering discipline is organized into six focused contracts:
    budgets, and layered CSS ownership.
 3. [delivery-and-verification.md](delivery-and-verification.md) — Stage-matched
    rigor (`prototype`, `usable`, `stable`), real-path verification, review mode
-   profiles (`interactive` vs `unattended` with safety dormancy), and
+   profiles (`interactive`, or `unattended` runs that stop and wait for the owner
+   after repeated failures), and
    change-based `/grill` triggers.
 4. [frontend-and-visual-discipline.md](frontend-and-visual-discipline.md) —
-   Four ordered layers (`ADR-006`): principles, a mandatory measurable
+   Four ordered layers: principles, a mandatory measurable
    best-practice baseline (WCAG 2.2 AA, typography, Core Web Vitals, states,
    chart perception, honest provenance), replaceable owner preferences (the
-   default calm-platter style from `SRC-022`), and reference practices, plus the
+   default calm-platter style), and reference practices, plus the
    approval gate and pre-delivery UI checks.
 5. [information-organization.md](information-organization.md) — How to
    organize information for readers across documents, interface information

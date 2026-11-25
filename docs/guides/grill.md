@@ -67,7 +67,7 @@ cross-document consistency, downstream transferability (`templates/`, `init`,
 gap, contradiction, or misaligned assumption in plain language with file evidence.
 ```
 
-- **Two complementary review angles** (use when comprehensive coverage is needed):
+- **Complementary review angles** (use at least two for milestone reviews):
   1. **Holistic Architecture, Consistency & Transfer reviewer**: Checks system
      mission, boundaries, state ownership, cross-document contradictions, and
      downstream fidelity (`templates/`, `init`, `onboard`).
@@ -93,7 +93,7 @@ After fixing findings from an independent review:
 1. **Original-critic re-check**: Send the updated repository back to each prior
    reviewer conversation (when active) without arguing, asking whether their
    originally reported defects are genuinely solved or merely masked.
-2. **Fresh blind check**: When structure or docs changed substantially, run an
+2. **Fresh reviewer check**: When structure or docs changed substantially, run an
    unprimed fresh reviewer session to catch new blind spots.
 3. **Advance anchor only after acceptance**: Run `python3 scripts/project.py mark-reviewed`
    only after findings are resolved and confirmed by the owner.

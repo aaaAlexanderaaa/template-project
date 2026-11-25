@@ -3,18 +3,13 @@ id: discipline.guides-and-skills
 domain: discipline
 kind: module-spec
 summary: "Operational playbooks for onboarding, pre-code design grill, open closed-loop independent review, behavioral discipline scenarios, and portable agent skills."
-promise: "Guides and skills ensure agents run pre-implementation design challenges with explicit owner choices, open holistic blind-to-rationale reviews, and closed-loop re-verification back to original reviewers."
+promise: "Guides and skills ensure agents run pre-implementation design challenges with explicit owner choices, open holistic reviews with the author's explanations withheld, and closed-loop re-verification back to original reviewers."
 owns:
   - "docs/guides/**"
   - ".agents/skills/**"
 depends_on:
   - discipline.entry-and-contracts
 sources:
-  - SRC-010
-  - SRC-012
-  - SRC-013
-  - SRC-019
-  - SRC-020
   - SRC-026
   - SRC-027
   - SRC-002

@@ -72,6 +72,7 @@ export function buildContextPackHtml(pack, data, lang, canMutate) {
   const part2 = `<div class="ctx-section">
     <div class="ctx-heading">${escHtml(t(lang, "ctxPart2"))} · ${escHtml(t(lang, "provHuman"))}</div>
     ${quoteCards || `<div class="small-note">${escHtml(t(lang, "noneText"))}</div>`}
+    ${(pack.decision_sources || []).map((r) => `<div class="row-sub"><span class="mono">${escHtml(r.id)}</span> · ${escHtml(t(lang, "viaDecision"))} ${escHtml(r.decision)}: ${escHtml(r.summary || "")}</div>`).join("")}
     ${adrChips ? `<div class="link-row">${adrChips}</div>` : ""}
   </div>`;
 

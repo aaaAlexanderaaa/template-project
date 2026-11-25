@@ -169,6 +169,7 @@ moving field.
    and let the owner confirm before the claim is published.
 <!-- /required-reading: coverage-scope-freshness -->
 
+<!-- required-reading: information-self-check -->
 ## 7. Self-Check Before Delivering Organized Information
 
 1. Can a first-time reader say within 30 seconds what this is, what state it is
@@ -181,3 +182,4 @@ moving field.
 6. For knowledge content: are scope exclusions justified, current-state facts
    dated, and coverage claims backed by a coverage table and an independent
    check?
+<!-- /required-reading: information-self-check -->

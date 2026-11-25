@@ -245,7 +245,7 @@ class DisciplineTransferAndConsistencyTests(unittest.TestCase):
         ):
             self.assertIn(span, frontend_targets)
             self.assertIn(span, repo.units)
-        from projectlib.init_repo import TEMPLATE_INTERNAL_ADRS
+        from projectlib.checkout_sanitizer import TEMPLATE_INTERNAL_ADRS
 
         shipped_adrs = {fp.name.split("-")[0] + "-" + fp.name.split("-")[1] for fp in (ROOT / "docs" / "decisions").glob("ADR-*.md")}
         self.assertEqual(shipped_adrs, set(TEMPLATE_INTERNAL_ADRS), "Copied-checkout sanitizer must list every template ADR")
@@ -257,10 +257,50 @@ class DisciplineTransferAndConsistencyTests(unittest.TestCase):
             "form-follows-content",
             "document-types",
             "coverage-scope-freshness",
+            "information-self-check",
         ):
             span = f"docs/contracts/information-organization.md#{slug}"
             self.assertIn(span, information_targets)
             self.assertIn(span, repo.units)
+        # Every required-reading span declared in docs/contracts/*.md must be registered in CONCERN_MAP
+        from rule_reading import MARKER
+        mapped_spans = {u for vs in repo.CONCERN_MAP.values() for u in vs}
+        for cpath in sorted((ROOT / "docs" / "contracts").glob("*.md")):
+            rel_c = cpath.relative_to(ROOT).as_posix()
+            for line in cpath.read_text(encoding="utf-8").splitlines():
+                mm = MARKER.match(line)
+                if mm and not mm.group(1):
+                    self.assertIn(f"{rel_c}#{mm.group(2)}", mapped_spans, f"Unmapped contract span: {rel_c}#{mm.group(2)}")
+        # Mechanical single-owner derivation: ADR-006 sources flow to affected modules and back without hand-copying
+        from projectlib.context_pack import build_context_pack
+        info_ctx = build_context_pack(graph, "docs/contracts/information-organization.md")
+        info_src_ids = {s["id"] for s in info_ctx["verbatim_sources"]} | {s["id"] for s in info_ctx["decision_sources"]}
+        self.assertTrue({"SRC-024", "SRC-025"}.issubset(info_src_ids), info_src_ids)
+        src24_trace = build_lineage_trace(graph, "SRC-024")
+        src24_mods = {m["id"] for m in src24_trace["modules"]}
+        self.assertIn("discipline.entry-and-contracts", src24_mods)
+        self.assertIn("ui.perspective-web", src24_mods)
+        # Forward (module -> SRC) and reverse (SRC -> module) lineage must agree for every pair
+        from projectlib.model import derive_module_source_ids
+        reverse = {(m["id"], sid) for sid in graph.sources for m in build_lineage_trace(graph, sid)["modules"]}
+        self.assertEqual({(m.id, sid) for m in graph.modules.values() for sid in derive_module_source_ids(graph, m)}, reverse)
+        # Computed from raw spec/ADR data (not through module_source_refs): no spec re-lists a quote an ADR already brings
+        for m in graph.modules.values():
+            via_adr = {sid for d in graph.decisions.values() if d.status != "superseded" and (m.id in d.affects or m.domain in d.affects) for sid in d.sources}
+            self.assertEqual(set(m.sources) & via_adr, set(), f"{m.id} hand-copies quotes already reached through an ADR")
+        # discipline_version lives authoritatively in docs-policy.toml; check_docs flags any Markdown copy of it
+        from projectlib.validator import find_hardcoded_versions
+        self.assertEqual(find_hardcoded_versions(ROOT), [])
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_root = Path(tmp_dir)
+            (tmp_root / "AGENTS.md").write_text('# Agreement\n\nTemplate (`discipline_version = "2026.11.1"`).\n', encoding="utf-8")
+            self.assertEqual(find_hardcoded_versions(tmp_root), [("AGENTS.md", 3, "2026.11.1")])
+        # Module context: own sources in full, ADR-reached sources as one-line references naming the ADR
+        app_ctx = build_context_pack(graph, "exemplar.app")
+        self.assertEqual([s["id"] for s in app_ctx["verbatim_sources"]], list(graph.modules["exemplar.app"].sources))
+        via_ids = {s["id"]: s["decision"] for s in app_ctx["decision_sources"]}
+        self.assertEqual(via_ids.get("SRC-013"), "ADR-003")
+        self.assertTrue(all(s["summary"] and "quote" not in s for s in app_ctx["decision_sources"]))
         for uid in verification_targets:
             self.assertIn(uid, repo.units)
 

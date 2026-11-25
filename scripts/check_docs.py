@@ -70,6 +70,13 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"  Promise: {item['promise']}")
             for q in item["sources"]:
                 print(f"  [{q['id']}] “{q['excerpt']}”")
+            if item.get("more_direct_sources"):
+                print(f"  More module quotes: {', '.join(item['more_direct_sources'])}")
+            if item.get("decision_sources"):
+                by_dec: dict[str, list[str]] = {}
+                for ref in item["decision_sources"]:
+                    by_dec.setdefault(ref["decision"], []).append(ref["id"])
+                print("  Quotes via decisions: " + "; ".join(f"{did}: {', '.join(ids)}" for did, ids in by_dec.items()))
 
     if nudges.get("touched_docs"):
         print(

@@ -9,6 +9,7 @@ owns:
   - "scripts/projectlib/toml_writer.py"
   - "scripts/projectlib/cli_format.py"
   - "scripts/projectlib/init_repo.py"
+  - "scripts/projectlib/checkout_sanitizer.py"
   - "scripts/project.py"
 depends_on:
   - graph.model
@@ -16,14 +17,7 @@ depends_on:
   - graph.validator
   - perspective.context-pack
 sources:
-  - SRC-014
-  - SRC-015
   - SRC-016
-  - SRC-017
-  - SRC-019
-  - SRC-020
-  - SRC-021
-  - SRC-022
 ---
 
 # Local Perspective HTTP Server & `project.py` CLI
@@ -45,8 +39,8 @@ flowchart LR
 
 ## 3. State Ownership, Hard Invariants & Forbidden Couplings
 
-- **Complete `init` Guarantee**: On clean/empty targets `project.py init` creates `README.md`, `docs/specs/example/module.md`, `src/example/`, and `tests/test_smoke.py`; on existing codebases (where any non-tooling directory or root source file already contains code, excluding copied `scripts/` governance tools) it omits `example` starter stubs, auto-sets `[adoption] stage = "observed"` and detected `source_roots`, and leaves Day-0 `work.toml` `specs = []`. When run against a cloned or copied template checkout whose remote is not `template-project`, it removes internal template domains, ADRs, designs, archives, and example code while writing clean target-language starters. `init --sync` upgrades contracts, guides, skills, templates, and scripts while preserving `review_anchor_sha` and inserting or updating `discipline_version`. It copies `scripts/projectlib/` including the approved `web/` UI assets (with `server.py` keeping a safe fallback HTML view if `web/` is omitted).
-- **Safe TOML & Review State**: `toml_writer.py` preserves unknown keys and leading comments, refuses silent archive overwrite collisions without explicit merge/guard, validates task existence before mutating `sources.toml`, and records preset `blocker_options` selections on the task rather than copying AI option text into `docs/sources.toml`. `mark_review_anchor` updates `docs-policy.toml` (`review_anchor_sha`) when the Git working tree is clean and records uncommitted working-tree digests in `tmp/project-state.json`.
+- **Complete `init` Guarantee**: On clean/empty targets `project.py init` creates `README.md`, `docs/specs/example/module.md`, `src/example/`, and `tests/test_smoke.py`; on existing codebases (where any non-tooling directory or root source file already contains code, excluding copied `scripts/` governance tools) it omits `example` starter stubs, auto-sets `[adoption] stage = "observed"` and detected `source_roots`, and leaves Day-0 `work.toml` `specs = []`. When run against a cloned or copied template checkout whose remote is not `template-project`, it removes internal template domains, ADRs, designs, archives, and example code while writing clean target-language starters. `init --sync` implements the upgrade path whose exact scope (what is refreshed, what is preserved, what is printed) is defined once in [adoption-and-synchronization.md](../../contracts/adoption-and-synchronization.md#3-incremental-discipline_version-upgrades). It copies `scripts/projectlib/` including the approved `web/` UI assets (with `server.py` keeping a safe fallback HTML view if `web/` is omitted).
+- **Safe TOML & Review State**: `toml_writer.py` preserves unknown keys and leading comments, refuses silent archive overwrite collisions without explicit merge/guard, validates task existence before mutating `sources.toml`, and records preset `blocker_options` picked in the web overview on the task (`selected_option`) rather than copying that option text into `docs/sources.toml`; text the owner selects or pastes as an answer in conversation may be recorded as a quote under the rule in `collaboration-and-governance.md`. `mark_review_anchor` updates `docs-policy.toml` (`review_anchor_sha`) when the Git working tree is clean and records uncommitted working-tree digests in `tmp/project-state.json`.
 - **Forbidden couplings**: `shell=True` subprocess execution is banned; foreign `Origin` or missing `X-Project-Token` POST calls always return HTTP 403.
 
 ## 4. Entrypoints & Fitness Checks

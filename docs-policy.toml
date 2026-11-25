@@ -1,5 +1,5 @@
 version = 2
-discipline_version = "2026.11.1"
+discipline_version = "2026.11.2"
 
 [project]
 # "template" in template-project itself; change to "product" when adopting.

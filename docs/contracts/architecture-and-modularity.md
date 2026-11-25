@@ -31,7 +31,7 @@ concrete parts:
 5. **Module Entrypoints, Role Headers & Fitness Checks (`docs/specs/<domain>/<module>.md`)**:
    Which `owns` globs, `promise`, and `depends_on` edges define each module,
    what public entrypoint exposes it, the 2–3 line `# Role:` header at the top
-   of core files stating owned duty, excluded duty, and governing spec/`SRC-*`/
+   of every source and style file claimed by a spec's `owns` (what `check_docs.py` enforces) stating owned duty, excluded duty, and governing spec/`SRC-*`/
    `ADR-*` anchor, and which automated checks enforce those boundaries.
 <!-- /required-reading: decomposition-and-ownership -->
 

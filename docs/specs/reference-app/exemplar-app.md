@@ -11,7 +11,6 @@ depends_on:
   - exemplar.domain
   - exemplar.shared
 sources:
-  - SRC-010
   - SRC-011
 ---
 

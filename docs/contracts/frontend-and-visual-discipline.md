@@ -23,8 +23,7 @@ them in this order; a lower layer never overrides a higher one:
   practice or principle, follow the higher layer and tell the owner plainly
   what changed and why. Example: the original tertiary ink `#868B96` measured
   3.14:1 against the canvas, below the WCAG AA 4.5:1 text minimum, so the
-  default became `#6B7079` (4.57:1) while keeping the same light-gray role
-  (`SRC-024`, `SRC-025`).
+  default became `#6B7079` (4.57:1) while keeping the same light-gray role.
 - **Deciding a new view**: (1) name the reader and the task
   ([information-organization.md](information-organization.md#reader-task-first)),
   (2) apply the principles, (3) check the best-practice baseline, (4) apply the
@@ -158,8 +157,7 @@ them in this order; a lower layer never overrides a higher one:
 <!-- required-reading: owner-preferences -->
 ## 4. Owner Preferences: Default Calm-Platter Style
 
-This section records the template owner's aesthetic preferences (`SRC-022`,
-adopted in `ADR-005`). It ships as the **default style** for adopting projects.
+This section records the template owner's aesthetic preferences. It ships as the **default style** for adopting projects.
 An adopting project's owner may replace any part of it by recording their own
 preferences in `docs/design/` (or an ADR linked to their `SRC-*` quote).
 Replacing preferences never removes Sections 2 and 3. Each preference below
@@ -236,8 +234,9 @@ ink, not pure white with pure black):
   --bg-vibrancy: rgba(255, 255, 255, 0.78);
   --ink-primary: #1D1D1F;   /* 15.5:1 on canvas */
   --ink-secondary: #51555E; /* 6.9:1 on canvas */
-  --ink-tertiary: #6B7079;  /* 4.6:1 on canvas; was #868B96 (3.1:1) before SRC-025 */
+  --ink-tertiary: #6B7079;  /* 4.57:1 on canvas; raised from #868B96 (3.14:1) to meet 4.5:1 */
   --hairline: rgba(0, 0, 0, 0.065);
+  --control-border: #868B96; /* 3.1:1 on canvas: input & control border >= 3:1 */
   --platter-border: rgba(0, 0, 0, 0.05);
   --platter-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 6px 20px rgba(0, 0, 0, 0.035);
   --popover-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 16px 36px rgba(0, 0, 0, 0.08);

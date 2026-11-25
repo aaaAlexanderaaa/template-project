@@ -9,13 +9,6 @@ owns:
 depends_on:
   - discipline.entry-and-contracts
 sources:
-  - SRC-010
-  - SRC-015
-  - SRC-018
-  - SRC-019
-  - SRC-020
-  - SRC-021
-  - SRC-022
   - SRC-002
   - SRC-007
   - SRC-023

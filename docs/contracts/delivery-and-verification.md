@@ -70,7 +70,7 @@ actually runs:
 
 Passing tests or running a directed code-bug checklist in a subagent is QA
 checking, not Independent Review. A valid Independent Review requires the first
-four conditions together, plus conditions 5–7 whenever they apply:
+four conditions together, plus the remaining conditions whenever they apply:
 
 1. **Fresh context with withheld author rationale**: Run in a fresh conversation
    or subagent that did not write the code or proposal. Supply only verbatim user

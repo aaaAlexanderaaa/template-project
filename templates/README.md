@@ -12,7 +12,7 @@ UI approval gates, and open closed-loop independent review protocols:
 - [domain-readme.md](domain-readme.md) / [domain-readme.zh.md](domain-readme.zh.md) — Per-domain overview with boundaries, runtime flow, and forbidden couplings (`docs/specs/<domain>/README.md`).
 - [module-spec.md](module-spec.md) / [module-spec.zh.md](module-spec.zh.md) — Module spec claiming source globs, interfaces, invariants, and dependencies (`docs/specs/<domain>/<module>.md`).
 - [surface-spec.md](surface-spec.md) / [surface-spec.zh.md](surface-spec.zh.md) — Frontend UI surface spec with explicit Owner Design Approval gate (`docs/design/<surface>.md`).
-- [independent-review.md](independent-review.md) / [independent-review.zh.md](independent-review.zh.md) — Open-ended, rationale-blind independent review and closed-loop re-verification record.
+- [independent-review.md](independent-review.md) / [independent-review.zh.md](independent-review.zh.md) — Open-ended independent review (author's explanations withheld) and closed-loop re-verification record.
 - [sources.toml](sources.toml) — Append-only ledger for verbatim user quotes (`docs/sources.toml`).
 - [work.toml](work.toml) — Roadmap slots (`done/now/next/later`) and task states (`docs/work.toml`).
 - [architecture-rules.toml](architecture-rules.toml) — Optional custom forbidden-pattern boundary rules (`architecture-rules.toml`).

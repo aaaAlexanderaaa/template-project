@@ -11,13 +11,7 @@ owns:
   - "scripts/projectlib/import_scanner.py"
 depends_on:
   - graph.model
-sources:
-  - SRC-013
-  - SRC-015
-  - SRC-017
-  - SRC-018
-  - SRC-019
-  - SRC-020
+sources: []
 ---
 
 # Graph Loader, Document Indexer, Import Scanner & Git Telemetry

@@ -59,12 +59,21 @@ Preserve intent across sessions and design pivots without duplicating prose:
   in their original language (`quote = '''...'''`) with `id = "SRC-NNN"`,
   `date`, `status = "active" | "deferred" | "retired"`, and brief `context`.
   Never translate, condense, or paraphrase `quote` into processed summaries.
+  Text the owner selects or pastes as an answer (for example an option the
+  agent proposed) counts as the owner's answer and may be recorded in `quote`;
+  `context` must then say which part the agent wrote. Preset options picked in
+  the web overview stay on the task as `selected_option`.
 - **2. Architectural & Module Specs (`docs/specs/**/*.md` & `docs/decisions/ADR-*.md`)**:
   Record how requirements and technical constraints translate into boundaries
   and trade-offs. Link upstream `sources: [SRC-...]` and, when overturning an
   earlier choice, link `supersedes: [ADR-...]` so future sessions can see *why*
-  the old approach was abandoned. Purely technical decisions state their
-  technical rationale directly without inventing forced links to user quotes.
+  the old approach was abandoned. A module spec's `sources` list only quotes
+  about that module. A quote behind a cross-module decision is recorded once in
+  the ADR's `sources` with `affects`; `project.py context` shows it on each
+  affected module as a one-line reference and `project.py trace` shows the full
+  text. `check_docs.py` reports a spec that re-lists a quote an ADR already
+  brings. Purely technical decisions state
+  their technical rationale directly without inventing forced links to user quotes.
 - **3. Implementation & Work Queue (`owns` globs & `docs/work.toml`)**: Module
   specs claim concrete source paths via `owns`, and `work.toml` links tasks and
   milestones to module/ADR/source IDs.

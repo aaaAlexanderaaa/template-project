@@ -1,7 +1,7 @@
 // Role: Document-level keyboard and hover listeners: Esc closes the more menu or doc drawer and returns focus,
 // Enter/Space toggles focusable expandable rows, and hovering prose highlights the matching sidenotes.
 // Out of scope: uiState ownership, click routing, and rendering (app.js); HTML string assembly (views.js).
-// Anchors: spec=ui.perspective-web, ADR-007, SRC-026
+// Anchors: spec=ui.perspective-web, ADR-007, SRC-028
 
 const NATIVE_CONTROLS = "button,a,input,select,textarea,summary";
 const PROSE_ANCHORS = ".md-prose [data-sec], .md-prose [data-sec-owner]";

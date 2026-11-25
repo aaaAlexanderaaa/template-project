@@ -233,7 +233,7 @@ flowchart TD
             _write(
                 root,
                 "docs/decisions/ADR-002-new.md",
-                "---\nid: ADR-002\nstatus: current\nsupersedes: [ADR-001]\nsources: [SRC-001]\naffects: [core.ledger]\n---\n# New Approach\n",
+                "---\nid: ADR-002\nstatus: current\nsupersedes: [ADR-001]\nsources: []\naffects: [core.ledger]\n---\n# New Approach\n",
             )
 
             graph = load_project_graph(root)

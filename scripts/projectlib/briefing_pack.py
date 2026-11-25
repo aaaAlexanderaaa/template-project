@@ -9,7 +9,7 @@ from typing import Any
 
 from .context_pack import build_context_pack, build_lineage_trace, collect_task_design_docs, select_primary_task_spec
 from .git_telemetry import compare_git_refs, match_path_to_module
-from .model import ProjectGraph
+from .model import ProjectGraph, derive_module_source_ids
 from .validator import validate_project_graph
 
 
@@ -234,7 +234,7 @@ def serialize_perspective_payload(graph: ProjectGraph, *, csrf_token: str = "") 
                     "promise": m.promise,
                     "doc_path": m.doc_path,
                     "depends_on": list(m.depends_on),
-                    "sources": list(m.sources),
+                    "sources": derive_module_source_ids(graph, m),
                     "loc": tel.total_loc if tel else 0,
                     "max_loc": max_src_cap,
                     "file_count": tel.file_count if tel else 0,
@@ -271,7 +271,7 @@ def serialize_perspective_payload(graph: ProjectGraph, *, csrf_token: str = "") 
         dom_ms_ids = {m.id for m in dom_ms}
         dom_tasks = [tk for tk in graph.tasks.values() if tk.milestone in dom_ms_ids]
         dom_sources = sorted(
-            {sid for m in dom_mods for sid in m.sources}
+            {sid for m in dom_mods for sid in derive_module_source_ids(graph, m)}
             | {sid for tk in dom_tasks for sid in tk.sources}
         )
         dom_decisions = sorted(

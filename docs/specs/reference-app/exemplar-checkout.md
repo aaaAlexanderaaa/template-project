@@ -10,9 +10,7 @@ depends_on:
   - exemplar.domain
   - exemplar.shared
 sources:
-  - SRC-010
   - SRC-011
-  - SRC-022
 ---
 
 # Reference App — Checkout Feature Slice

@@ -10,22 +10,14 @@ owns:
 depends_on:
   - perspective.context-pack
 sources:
-  - SRC-014
-  - SRC-015
   - SRC-016
-  - SRC-017
-  - SRC-018
-  - SRC-019
-  - SRC-020
-  - SRC-021
-  - SRC-022
 ---
 
 # Project Overview Web Workbench (`T-204`)
 
 ## 1. Owner Design Approval Gate & Page Archetypes
 
-- **Design Status**: `approved` under owner specification `SRC-022` and architecture decision `ADR-005` (`T-204` set to `ready_for_check`, `human_check = "pending"` for final visual sign-off). `project.py init` distributes the rebuilt files under [scripts/projectlib/web/](../../scripts/projectlib/web/).
+- **Design Status**: `approved` under owner specification `SRC-022` and architecture decision `ADR-005`. The implementation task (`T-204`) and its sign-off state live in `docs/work.toml`. `project.py init` distributes the rebuilt files under [scripts/projectlib/web/](../../scripts/projectlib/web/).
 - **Approved Option & Historical Reference**: Earlier options drafted in [frontend-design-options.html](frontend-design-options.html) compared **Option A:** a 4-view workbench with a fixed top bar, **Option B:** a single linear long-form narrative scroll, and **Option C:** a persistent three-column IDE browser. In `SRC-022`, the owner locked in the five-standard specification matching **Option A:**'s fixed `32px` top navigation bar (`NSToolbar`), a single white central platter over a `#F5F5F7` canvas, and task-specific page scrolling (`100dvh` locked frames for dense management tables; natural page scroll plus Tufte sidenotes for long-form reading).
 - **Target Readers**:
   1. Unfamiliar visitors seeking what the repository builds, what it excludes, how data and control flow end-to-end, and how folders map to modules.
@@ -58,15 +50,17 @@ sources:
 | Controls & surfaces | `scripts/projectlib/web/styles/components.css` | Canvas filters, single platter, dots, buttons, toast, vibrancy popover & drawer (`<= 300` lines) |
 | Tables & tree | `scripts/projectlib/web/styles/tables-and-inline.css` | Borderless `tabular-nums` tables, Priority+ column hiding, `1px` tree guides, 12px inline cards (`<= 300` lines) |
 | Reading & SVG | `scripts/projectlib/web/styles/prose-and-svg.css` | Markdown prose, heading scroll margins, callouts, `240px` Tufte sidenotes, SVG strokes (`<= 300` lines) |
+| Accessibility | `scripts/projectlib/web/styles/accessibility.css` | Visible `:focus-visible` outline and `prefers-reduced-motion` handling shared by every view (`<= 300` lines) |
 | Copy & enum translators | `scripts/projectlib/web/js/i18n.js` | Plain ZH/EN dictionary, enum/rule translators, middle truncation, and SVG wrapping (`<= 500` lines) |
-| Markdown & anchors | `scripts/projectlib/web/js/markdown.js` | Markdown/table/callout parser, `required-reading` anchors, heading scroll, and Tufte alignment (`<= 500` lines) |
+| Markdown & anchors | `scripts/projectlib/web/js/markdown.js` | Markdown/table/callout parser, `required-reading` anchors, heading scroll, relative doc-link resolution, and Tufte alignment (`<= 500` lines) |
 | Diagram renderer | `scripts/projectlib/web/js/diagrams.js` | Local `Mermaid` flowchart and sequence SVG renderer (`<= 500` lines) |
 | Topology charts | `scripts/projectlib/web/js/charts.js` | Timeline, capped provenance flow, domain bypass map, and module dependency SVGs (`<= 500` lines) |
 | Context & sidenotes | `scripts/projectlib/web/js/drawer.js` | Subsystem digest, 4-part inline context cards, Markdown reader, and multi-kind Tufte sidenotes (`<= 500` lines) |
 | Roadmap panels | `scripts/projectlib/web/js/roadmap_panels.js` | Provenance trace rows, latest test run card, and Git diff comparison table (`<= 500` lines) |
 | View assembly | `scripts/projectlib/web/js/views.js` | Pure HTML string assembly and exact status counts for all 4 views (`<= 500` lines) |
+| Keyboard & hover | `scripts/projectlib/web/js/interactions.js` | Esc closes the more menu or doc drawer and returns focus, Enter/Space toggles focusable rows, prose hover highlights sidenotes (`<= 500` lines) |
 | State & routing | `scripts/projectlib/web/js/app.js` | Single `uiState` owner, non-destructive search updates, smooth refresh, jump history, CSRF writes (`<= 500` lines) |
 
 ## 5. Pre-Delivery Verification Scope
 
-Before closing `T-204`, verify all six requirements of [pre-delivery-ui-self-check](../contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check) across `540px`, `800px`, `1280px`, and `2560px+` viewports plus synthetic `500`-task / `4`-level / `200`-doc scale data in headless Chromium, `unittest`, and `check_docs.py --strict`.
+Before closing `T-204`, verify every item of [pre-delivery-ui-self-check](../contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check) (principles, measured WCAG 2.2 AA contrast/keyboard/focus/motion baseline, and calm-platter preferences) across `540px`, `800px`, `1280px`, and `2560px+` viewports plus synthetic `500`-task / `4`-level / `200`-doc scale data in headless Chromium, `unittest`, and `check_docs.py --strict`.

@@ -8,7 +8,7 @@ authority: guidance
 
 Use this playbook when starting a new project from `template-project`, adopting
 the discipline into an existing repository, or upgrading an older checkout to
-`discipline_version = "2026.11.1"`.
+the current `discipline_version` declared in `docs-policy.toml`.
 
 ## 1. Copyable Prompt for External Projects
 
@@ -16,7 +16,7 @@ the discipline into an existing repository, or upgrading an older checkout to
 Learn the engineering discipline from /path/to/template-project:
 1. Run `python3 /path/to/template-project/scripts/read_rules.py onboard --target .`
    to inventory this repository's current layout, LOC, instructions, and git state.
-2. Read `AGENTS.md`, `docs/README.md`, and the six contracts in `docs/contracts/`
+2. Read `AGENTS.md`, `docs/README.md`, and the contracts in `docs/contracts/`
    before judging what applies here.
 3. Compare each practice against this repository's concrete facts and current
    maturity stage (`prototype`, `usable`, or `stable`), and check any supplied
@@ -51,7 +51,7 @@ Learn the engineering discipline from /path/to/template-project:
    (edit `docs-policy.toml` only if you need to add extra custom roots); it
    also sanitizes cloned template checkouts by removing template-only domains,
    ADRs, and example stubs while copying clean `templates/` starters,
-   `scripts/projectlib/`, and the approved calm-platter `web/` assets. If
+   `scripts/projectlib/`, and the web overview assets (`web/`). If
    copying manually instead, copy the starter entry files from
    `<template>/templates/` (`AGENTS.md`, `ARCHITECTURE.md`, `docs-readme.md` ->
    `docs/README.md`, `architecture-rules.toml`, `sources.toml`, `work.toml`) plus
@@ -70,8 +70,12 @@ Learn the engineering discipline from /path/to/template-project:
 
 1. Run `python3 <template>/scripts/read_rules.py onboard --target <repo>` to see
    the `discipline_version` delta.
-2. Update `scripts/` and root governance contracts while leaving project-owned
-   `ARCHITECTURE.md`, `docs/specs/**`, `docs/design/**`, `docs/decisions/**`,
-   `docs/sources.toml`, and `docs/work.toml` intact.
-3. Move any deprecated 12-section prose templates to `archive/` rather than
-   deleting historical records.
+2. Run `python3 <template>/scripts/project.py init --target <repo> --sync`.
+   What it replaces, changes, preserves, and prints is defined once in
+   [adoption-and-synchronization.md](../contracts/adoption-and-synchronization.md#3-incremental-discipline_version-upgrades).
+3. Merge new trigger rows from the template `AGENTS` file whose path the
+   command prints, fix any hardcoded `discipline_version` lines it lists, and
+   apply the release notes for every newer version.
+4. If the repository still has the old long-form document templates (the
+   single-file layout with twelve fixed sections that this discipline replaced
+   with thin module specs), move them to `archive/` instead of deleting them.

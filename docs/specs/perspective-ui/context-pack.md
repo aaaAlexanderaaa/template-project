@@ -12,12 +12,7 @@ depends_on:
   - graph.indexer
   - graph.validator
 sources:
-  - SRC-013
-  - SRC-014
   - SRC-016
-  - SRC-017
-  - SRC-019
-  - SRC-020
 ---
 
 # Context Pack & Web Payload Builder
@@ -41,5 +36,6 @@ flowchart LR
 ## 3. State Ownership, Hard Invariants & Forbidden Couplings
 
 - **Direct Lineage Precision**: `build_lineage_trace` attributes tasks to a source directly when `src_id in t.sources`, and attributes tasks to a decision ONLY when `dec.id in t.decisions` (for active decisions matching `affects` when no explicit task override conflicts, and NEVER sweeping current tasks onto `superseded` ADRs).
+- **One Quote-Lineage Rule**: `module_source_refs` (`scripts/projectlib/model.py`, ADR-007) decides a module's quotes: the spec's own `sources` (quotes about this module, shown in full) and quotes reached through non-superseded ADRs whose `affects` name the module or its domain (shown as one line: ID, ADR, and context, under `decision_sources`). Context packs, `build_lineage_trace` (which marks such modules with `via_decision`), web payloads, and `check_docs.py` reminders all call it. Task `sources` stay on the task.
 - **Complete Inbox Links**: Blocked and ready tasks retain full `specs`, `sources`, and `design_docs` arrays in addition to primary display metadata.
 - **Forbidden couplings**: Imports `graph.*` read-only; never runs `git`, edits TOML, or imports `server.py`.

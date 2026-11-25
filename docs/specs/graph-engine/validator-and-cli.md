@@ -13,13 +13,6 @@ depends_on:
   - graph.model
   - graph.indexer
 sources:
-  - SRC-010
-  - SRC-012
-  - SRC-013
-  - SRC-018
-  - SRC-019
-  - SRC-020
-  - SRC-003
   - SRC-008
 ---
 

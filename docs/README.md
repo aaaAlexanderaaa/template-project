@@ -9,7 +9,7 @@ authority: normative
 Every fact in this repository has one authoritative home. Helper scripts under
 `scripts/` read these files, check cross-references against actual Git history
 and source code imports, and present the result to AI sessions (`project.py context`
-and `project.py status`) plus the local calm-platter web workbench
+and `project.py status`) plus the local web overview
 (`project.py serve`, specified in `docs/design/perspective-web.md`).
 
 ## 1. Where Each Fact Lives (Zero Duplication)

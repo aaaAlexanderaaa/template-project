@@ -16,16 +16,16 @@ non_goals: "Does not implement repository-specific Python AST scanners or local 
 
 ```mermaid
 flowchart LR
-  Entry["AGENTS.md + docs/README.md"] --> Contracts["Six Contracts (docs/contracts/)"]
+  Entry["AGENTS.md + docs/README.md"] --> Contracts["Contracts (docs/contracts/)"]
   Entry --> Guides["Guides, Skills & Behavioral Scenarios (docs/guides/, .agents/skills/)"]
   Contracts --> Templates["Transferable Starter Templates (templates/)"]
-  Guides --> Review["Open Blind-to-Rationale & Closed-Loop Review"]
+  Guides --> Review["Open & Closed-Loop Review (Author Explanations Withheld)"]
 ```
 
 ## Boundaries & Key Invariants
 
 - **Authoritative home**: `AGENTS.md` and `docs/contracts/` own normative rules; `templates/` preserves those core rules in starter form for downstream `init` and `onboard` repositories.
-- **Forbidden coupling**: Unapproved drafts in `docs/design/` or legacy `scripts/projectlib/web/` never qualify as owner approval; downstream starter files must never leak `template-project` internal domain IDs.
+- **Forbidden coupling**: Unapproved drafts in `docs/design/` or older UI code never qualify as owner approval; downstream starter files must never leak `template-project` internal domain IDs.
 - **Governing decision**: [ADR-004](../../decisions/ADR-004-discipline-first-architecture-and-open-closed-loop-review.md).
 
 ## Entrypoints & Fitness Checks

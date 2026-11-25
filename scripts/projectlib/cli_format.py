@@ -168,7 +168,10 @@ def print_trace_summary(tr: dict[str, Any], lang: str = "en") -> None:
         print(f"{'来源原话' if is_zh else 'Sources'}:   ", ", ".join(ids))
     mods = tr.get("modules") or []
     if isinstance(mods, list) and mods:
-        print(f"{'涉及模块' if is_zh else 'Modules'}:   ", ", ".join(m["id"] for m in mods if isinstance(m, dict)))
+        via_word = "经" if is_zh else "via"
+        print(f"{'涉及模块' if is_zh else 'Modules'}:   ", ", ".join(
+            m["id"] + (f" ({via_word} {m['via_decision']})" if m.get("via_decision") else "") for m in mods if isinstance(m, dict)
+        ))
     done_list = tr.get("verified_done_tasks") or []
     open_list = tr.get("open_or_pending_tasks") or []
     if is_zh:
@@ -230,6 +233,10 @@ def print_context_pack(pack: dict[str, Any], target: str, task_obj: Any = None, 
             for q in pack["verbatim_sources"]:
                 excerpt = " ".join(q["quote"].splitlines())
                 print(f"  [{q['id']} · {q['date']}] “{excerpt}”")
+        if pack.get("decision_sources"):
+            print("\n经架构决策关联的原话（摘要，全文用 trace 查看）:" if is_zh else "\nQuotes via decisions (summary; run trace for full text):")
+            for q in pack["decision_sources"]:
+                print(f"  [{q['id']} · {'经' if is_zh else 'via'} {q['decision']}] {q['summary']}")
         if pack.get("decisions"):
             print("\n架构与约束决策:" if is_zh else "\nGoverning Decisions:")
             for dec in pack["decisions"]:

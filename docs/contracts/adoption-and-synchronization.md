@@ -17,7 +17,7 @@ When asked in another repository to learn or adopt practices from
    to inspect existing instructions, Git cleanliness, directory layout, LOC,
    oversized files, and any prior `discipline_version`.
 2. **Read core contracts + fact-triggered rules before judging fit**: Open
-   `AGENTS.md`, `docs/README.md`, and the six contracts under `docs/contracts/`
+   `AGENTS.md`, `docs/README.md`, and the contracts under `docs/contracts/`
    (especially any domain triggered by concrete files in the target repo, such
    as styles/UI or multi-subsystem boundaries) before deciding what applies.
 3. **Evaluate by concrete repository facts**: Classify each practice as:
@@ -44,8 +44,8 @@ When asked in another repository to learn or adopt practices from
   2. Start at `[adoption] stage = "observed"` so `check_docs.py` reports
      unclaimed directories, catch-all buckets, `# Role:` headers, import boundaries,
      and oversized files as non-blocking advisories without breaking existing CI.
-  3. Run `read_rules.py onboard --target <repo>` for Day-0 physical telemetry
-     (LOC, oversized files, catch-all directory scan, Git state) and `project.py status`
+  3. Run `read_rules.py onboard --target <repo>` to measure the repository as it
+     is today (lines of code, oversized files, catch-all directories, Git state) and `project.py status`
      for project summary; complete a one-time AI-assisted spec baseline
      (confirmed by the owner) to populate `ARCHITECTURE.md` and
      `docs/specs/<domain>/*.md`, recording `SRC-*` verbatim quotes going forward.
@@ -55,26 +55,74 @@ When asked in another repository to learn or adopt practices from
      `docs/work.toml`), directory overview labels, and CLI output use plain
      Chinese, while shared normative contracts under `docs/contracts/` and
      playbooks under `docs/guides/` remain canonical English single-source
-     references unless locally adapted (`SRC-021`).
+     references unless locally adapted.
 <!-- /required-reading: existing-directory-safety -->
 
 <!-- required-reading: incremental-version-sync -->
 ## 3. Incremental `discipline_version` Upgrades
 
 Each release of `template-project` declares `discipline_version` in
-`docs-policy.toml`. When upgrading an already-adopted repository:
+`docs-policy.toml`; no other file repeats the number. To upgrade an
+already-adopted repository:
 
-- Compare the target's `discipline_version` with this template's version via
-  `read_rules.py onboard --target <target-repo>`.
-- Update mechanical tooling (`scripts/`) and general engineering contracts while
-  **preserving all target-owned files** (`ARCHITECTURE.md`, `docs/specs/**`,
-  `docs/design/**`, `docs/decisions/**`, `docs/sources.toml`, `docs/work.toml`,
-  and local `architecture-rules.toml` rules).
-- After syncing to `2026.11.1`, re-check three areas against the new rules:
-  organize reader-facing docs, screens, and knowledge content with
-  `docs/contracts/information-organization.md`; confirm the frontend meets the
-  mandatory best-practice baseline (measured contrast, keyboard, focus, states)
-  and record any owner preferences that should replace the default calm-platter
-  style in `docs/design/`; and run coverage or currency reviews with
-  expectation-first lists and dated sources retrieved at review time.
+1. Run `python3 <template>/scripts/read_rules.py onboard --target <repo>` to
+   compare the target's `discipline_version` with the template's.
+2. Run `python3 <template>/scripts/project.py init --target <repo> --sync`.
+   This is the only definition of what the command does:
+   - **Replaced with the template's copy**: `scripts/check_docs.py`,
+     `scripts/project.py`, `scripts/read_rules.py`, `scripts/rule_reading.py`,
+     all of `scripts/projectlib/`, `docs/contracts/*.md`, `docs/guides/*.md`,
+     `.agents/skills/grill/` and `.agents/skills/onboard-discipline/`, and the
+     starter files under `templates/`.
+   - **Changed in `docs-policy.toml`**: only `discipline_version` (set to the
+     template's), `identity = "template"` switched to `"product"`, and missing
+     tool directories added to `harness_paths`. Stage, budgets, collaboration
+     mode, and every other setting stay as they are.
+   - **Never touched**: `AGENTS.md`, `README.md`, `ARCHITECTURE.md`,
+     `docs/specs/**`, `docs/design/**`, `docs/decisions/**`,
+     `docs/sources.toml`, `docs/work.toml`, and `architecture-rules.toml`.
+   - **Printed**: the full path of the template's `AGENTS.md` (or
+     `AGENTS.zh.md`) to compare with the project's own, and every Markdown line
+     that still hardcodes `discipline_version` (outside `docs/decisions/` and archives).
+3. Merge new or rewritten trigger rows from the printed template file into the
+   project's `AGENTS.md`, and replace any hardcoded version with a pointer to
+   `docs-policy.toml` (`check_docs.py` reports remaining copies as errors).
+4. Read the release notes in Section 4 for every version newer than the one
+   you upgraded from, and apply the ones that fit the project.
 <!-- /required-reading: incremental-version-sync -->
+
+## 4. Release Notes for Upgrading Projects
+
+Newest first. Each entry lists only what an upgrading project should check.
+
+- **2026.11.2**
+  - Keep each fact in one file: point to `docs-policy.toml` instead of
+    repeating `discipline_version` or line budgets, point to `docs/work.toml`
+    instead of repeating task states, and drop hard-coded counts such as "six
+    contracts".
+  - `check_docs.py` now fails on two new errors until they are fixed:
+    `hardcoded_version` (a Markdown line that copies `discipline_version`) and
+    `duplicate_module_source` (a module spec that re-lists a quote an ADR
+    already brings through `affects`). Expect the first run after `--sync` to
+    fail; remove the copies it lists.
+  - Rewrite each trigger row in `AGENTS.md` as one or two sentences: when it
+    applies, which contract section to read first (`read_rules.py prepare
+    --concern <topic>`), and the one rule that must never be missed. Keep
+    numbers and step lists in the contracts only.
+  - Put a quote in a module spec's `sources` only when it is about that
+    module. Record a quote behind a cross-module decision once in the ADR's
+    `sources` with `affects`; `project.py context` shows it on each affected
+    module as a one-line reference.
+  - If the project has a web UI: give inputs and other controls a border color
+    with at least 3:1 contrast, show a visible `:focus-visible` outline, make
+    expandable rows usable with Enter/Space, let Esc close menus and drawers and
+    return focus to the button that opened them, and honor
+    `prefers-reduced-motion`.
+- **2026.11.1**
+  - Organize reader-facing docs, screens, and knowledge content with
+    `docs/contracts/information-organization.md`.
+  - Confirm the frontend meets the mandatory best-practice baseline (measured
+    contrast, keyboard, focus, states), and record any owner preferences that
+    should replace the default calm-platter style in `docs/design/`.
+  - Run coverage or currency reviews with expectation-first lists and dated
+    sources retrieved at review time.

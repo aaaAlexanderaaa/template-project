@@ -8,7 +8,6 @@ owns:
   - "examples/reference-app/domain/**"
 depends_on: []
 sources:
-  - SRC-010
   - SRC-011
 ---
 

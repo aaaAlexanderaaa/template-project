@@ -1,5 +1,6 @@
 # Verbatim User Requirements for template-project (chronological order, earliest first)
 # Record only owner quotes that substantively affect project direction, boundaries, or design; keep exact unedited wording inside '''...'''.
+# Text the owner selected or pasted as an answer may be recorded; `context` then says which part the agent wrote.
 
 [[sources]]
 id = "SRC-001"
@@ -438,7 +439,7 @@ quote = '''
 id = "SRC-025"
 date = "2026-11-24"
 status = "active"
-context = "Owner choices on information-organization scope, owner preference transfer to adopting projects, and resolving the tertiary ink contrast conflict"
+context = "Owner choices on information-organization scope, owner preference transfer to adopting projects, and resolving the tertiary ink contrast conflict. Lines A1-A3 are option texts written by the agent and selected by the owner"
 quote = '''
 A1: (Recommended) 一份新契约同时覆盖三类：项目文档、界面信息架构、面向读者的知识内容（含范围、时效、饱和）
 A2: (Recommended) 作为“默认偏好”随模板下发，单独成节并标明可由下游项目的主人替换；原则与最佳实践对所有项目强制
@@ -473,4 +474,46 @@ quote = '''
 因为这个 skill 会分发出去，一个莫名其妙的 source 024 可能会引发使用者的意外，因为他不知道这是什么。
 
 我希望这个 skill 是自包含的，不会引用skill外的其他东西。
+'''
+
+[[sources]]
+id = "SRC-028"
+date = "2026-11-24"
+status = "active"
+context = "Owner question on recurring cross-document consistency friction (whether the discipline is a burden or checks should be relaxed), and the owner reply \"1.治本\". Everything after the line \"1.治本\" was written by the agent: it is the proposal the owner chose, pasted back by the owner on 2026-11-24 so the choice keeps its meaning"
+quote = '''
+项目的这种一致性问题是不是会持续存在？我认为纪律不应该成为负担，你认为这些一致性问题应该如何处理？是否应该放宽项目的校验或者在某种程度上意味着项目本身的纪律就不够好？再想想？ 你会认为项目纪律是负担吗
+1.治本
+相比只是把前面 review 出来的 7 个点逐一打补丁，我更推荐借这次机会顺手把“导致持续漂移的结构原因”一起拆掉：
+
+做减法和自动推导（治本）：
+改 context_pack.py 自动沿 ADR.affects 聚合 SRC-*（取消多份 spec 手抄同一 SRC）；
+去掉文档和 doc_inventory.py 中硬编码的契约数量/检查项数量/重复版本号；
+收薄 AGENTS.md 与 templates/AGENTS*.md 的触发器表，只留清晰触发条件和契约锚点，减少多处复述；
+补齐 read_rules 对自检节的收录和 --sync 对 AGENTS.md 合并的明确提示。
+补齐本次真实遗留（治标）：
+修掉 delivery-and-verification.md、grill.md、ADR-006、independent-review*.md 的具体错误；
+把 scripts/projectlib/web/ 的 WCAG 底线（:focus-visible、prefers-reduced-motion、输入框边框、展开行键盘操作和对比度）补齐或明确记入待办。
+'''
+
+[[sources]]
+id = "SRC-029"
+date = "2026-11-24"
+status = "active"
+context = "Owner choices after the independent review of the consistency fixes: how module context shows quotes reached through ADRs, and fixing both the review findings caused by this change and the older ones in the same pass. Line A1 is an option text written by the agent and selected by the owner; line A2 is the owner's own answer"
+quote = '''
+A1: (Recommended) 完整显示模块自己声明的原话；ADR 带来的原话只列编号和一行摘要，并注明来自哪个 ADR。trace 和 check_docs 的提醒也用同一条规则
+A2: 第一组和第三组一起修完
+'''
+
+[[sources]]
+id = "SRC-030"
+date = "2026-11-25"
+status = "active"
+context = "Owner choices after the second review round: short trigger rows that point to contract sections, removing hand-copied module quotes with a check, allowing owner-selected option text in quotes; then the owner's guidance to fix what matters and accept marginal issues. Lines A1-A3 are option texts written by the agent and selected by the owner; the last line is the owner's own words"
+quote = '''
+A1: (Recommended) 每行一两句：写清何时触发、动手前必须先读哪个契约小节（附 read_rules.py prepare 命令），以及最关键的一条硬规矩（如“原则和 WCAG 2.2 AA 底线优先于偏好”）；具体数值只写在契约里
+A2: (Recommended) 自动删掉所有和 ADR 重复的手抄条目，并让 check_docs 报出以后新增的重复。代价：一些核心原话（如 SRC-022 之于网页概览）也会变成一行摘要，全文要用 trace 查看
+A3: (Recommended) 可以：负责人亲自选中或贴来作为回答的文字算作负责人的回答，可以进 quote，但 context 里要写明哪部分是 agent 写的；网页里点选的预设选项仍记在任务上。把这条写进规则
+continue，我认为相对边际的部分可以接受，不是一定要修要完全没问题。抓大放小
 '''

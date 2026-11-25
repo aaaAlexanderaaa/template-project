@@ -40,7 +40,7 @@ supersedes: []
 - **Chosen approach**:
   1. New contract [information-organization.md](../contracts/information-organization.md)
      covering documents, interface information architecture, and knowledge
-     content (owner choice `SRC-025` A1): reader task first, answer first,
+     content (owner choice in `SRC-025`: one contract for all three kinds of content): reader task first, answer first,
      organizing schemes per level, layering with context, form chosen from the
      question, document types by reader need (Diátaxis), and coverage, scope,
      and freshness rules for knowledge content.
@@ -50,9 +50,9 @@ supersedes: []
      chart perception, honest provenance), owner preferences, and reference
      practices. The calm-platter specification stays intact as the default
      preference layer, shipped to adopting projects and replaceable by their
-     owners (`SRC-025` A2). Conflicts resolve toward the higher layer; the
-     tertiary ink became `#6B7079` (4.57:1) in the contract, the web workbench,
-     and the reference app (`SRC-025` A3).
+     owners (owner choice in `SRC-025`: ship as a replaceable default). Conflicts resolve toward the higher layer; the
+     tertiary ink became `#6B7079` (4.57:1) in the contract, the web overview,
+     and the reference app (owner choice in `SRC-025`: the best practice wins over the preference).
   3. [delivery-and-verification.md](../contracts/delivery-and-verification.md#independent-review-definition)
      adds: verified isolation, no yes/no gate as the opening question,
      expectation-first review for coverage and currency, currency settled by

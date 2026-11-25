@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from .git_telemetry import match_path_to_module
-from .model import ProjectGraph, WorkTask
+from .model import ProjectGraph, WorkTask, module_source_refs, source_one_liner
 
 _DESIGN_HTML_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)#\s]+\.html)(?:#[^)]*)?\)|`?(docs/design/[A-Za-z0-9_./-]+\.html)`?")
 
@@ -135,17 +135,20 @@ def build_context_pack(graph: ProjectGraph, target: str) -> dict[str, Any]:
         spec = graph.modules[mod_id]
         dom = graph.domains.get(spec.domain)
         tel = graph.module_telemetry.get(mod_id)
-        if task_payload and t_obj is not None:
-            src_ids = list(t_obj.sources)
-            for sid in spec.sources:
-                if sid not in src_ids:
-                    src_ids.append(sid)
-        else:
-            src_ids = list(spec.sources)
+        direct_ids, via_refs = module_source_refs(graph, spec)
+        src_ids = list(t_obj.sources) if task_payload and t_obj is not None else []
+        for sid in direct_ids:
+            if sid not in src_ids:
+                src_ids.append(sid)
         quotes = [
             {"id": sid, "date": graph.sources[sid].date, "context": graph.sources[sid].context, "quote": graph.sources[sid].quote}
             for sid in src_ids
             if sid in graph.sources
+        ]
+        decision_sources = [
+            {"id": sid, "date": graph.sources[sid].date, "decision": did, "summary": source_one_liner(graph, sid)}
+            for sid, did in via_refs
+            if sid in graph.sources and sid not in src_ids
         ]
         dec_ids_task = set(t_obj.decisions) if task_payload and t_obj is not None else set()
         adrs = [
@@ -206,6 +209,7 @@ def build_context_pack(graph: ProjectGraph, target: str) -> dict[str, Any]:
                 "body_markdown": spec.body_markdown,
             },
             "verbatim_sources": quotes,
+            "decision_sources": decision_sources,
             "decisions": adrs,
             "active_tasks": tasks,
             "telemetry": {
@@ -309,8 +313,17 @@ def build_lineage_trace(graph: ProjectGraph, node_id: str) -> dict[str, Any]:
     node_id = node_id.strip()
     if node_id in graph.sources:
         src = graph.sources[node_id]
-        specs = [m for m in graph.modules.values() if node_id in m.sources]
         decs = [d for d in graph.decisions.values() if node_id in d.sources]
+        spec_via: list[tuple[Any, str]] = []
+        for m in graph.modules.values():
+            direct_ids, via_refs = module_source_refs(graph, m)
+            if node_id in direct_ids:
+                spec_via.append((m, ""))
+            else:
+                hit = next((did for sid, did in via_refs if sid == node_id), None)
+                if hit:
+                    spec_via.append((m, hit))
+        specs = [m for m, _ in spec_via]
         tasks = [
             t
             for t in graph.tasks.values()
@@ -331,8 +344,8 @@ def build_lineage_trace(graph: ProjectGraph, node_id: str) -> dict[str, Any]:
                 for d in decs
             ],
             "modules": [
-                {"id": m.id, "domain": m.domain, "stage": m.stage, "title": m.title, "promise": m.promise, "doc_path": m.doc_path}
-                for m in specs
+                {"id": m.id, "domain": m.domain, "stage": m.stage, "title": m.title, "promise": m.promise, "doc_path": m.doc_path, "via_decision": via}
+                for m, via in spec_via
             ],
             "verified_done_count": len(done_tasks),
             "verified_done_tasks": [

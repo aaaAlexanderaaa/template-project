@@ -29,8 +29,8 @@ KNOWN_DIRS: tuple[tuple[str, str, str, str, str], ...] = (
         "docs/contracts",
         "工程规范契约",
         "Engineering Contracts",
-        "五份核心工程契约：团队分工与需求留痕、架构与 CSS 分层、按阶段匹配的测试策略、界面呈现规范、外部项目接入方式。",
-        "Five core normative contracts covering governance, architecture and CSS modularity, stage-matched verification, UI clarity, and repo onboarding.",
+        "工程规范契约：每份文件只讲一个主题，完整清单见 docs/contracts/README.md。",
+        "Normative engineering contracts, one topic per file; the full list lives in docs/contracts/README.md.",
     ),
     (
         "docs/guides",

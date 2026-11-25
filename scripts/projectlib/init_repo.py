@@ -1,5 +1,6 @@
-# Role: Clean repository bootstrap (`project.py init`), cloned-checkout sanitization, and `discipline_version` sync (`--sync`).
-# Out of scope: HTTP serving (server.py), TOML write-back mutations (toml_writer.py), or codebase validation.
+# Role: Clean repository bootstrap (`project.py init`) and `discipline_version` sync (`--sync`).
+# Out of scope: Removing template-only content from copied checkouts (checkout_sanitizer.py), HTTP serving (server.py),
+# TOML write-back mutations (toml_writer.py), or codebase validation.
 # Anchors: spec=perspective.server, ADR-002, SRC-014, SRC-020
 
 from __future__ import annotations
@@ -14,7 +15,8 @@ from pathlib import Path
 
 from .cli_format import fmt_stage
 from .import_scanner import SOURCE_EXTS, STYLE_EXTS
-from .validator import TEMPLATE_REMOTE_SLUG, _normalize_remote
+from .checkout_sanitizer import sanitize_copied_checkout, strip_internal_anchors
+from .validator import TEMPLATE_REMOTE_SLUG, _normalize_remote, find_hardcoded_versions
 
 CODE_EXTS = SOURCE_EXTS | STYLE_EXTS | {".java", ".rb", ".c", ".cpp", ".cs", ".swift", ".kt"}
 NON_CODE_DIRS = {".git", "docs", "templates", "tests", "archive", "tmp", ".agents", "node_modules", "__pycache__", ".venv", "venv", "dist", "build"}
@@ -25,19 +27,6 @@ DOWNSTREAM_TOOL_HARNESS = (
     "scripts/check_docs.py",
     "scripts/read_rules.py",
     "scripts/rule_reading.py",
-)
-TEMPLATE_INTERNAL_DOMAINS = ("discipline", "graph-engine", "perspective-ui", "reference-app")
-# Decision IDs that belong to template-project itself; extend when the template adds an ADR
-# (tests/test_discipline_transfer_and_consistency.py checks this list against docs/decisions/).
-TEMPLATE_INTERNAL_ADRS = ("ADR-001", "ADR-002", "ADR-003", "ADR-004", "ADR-005", "ADR-006")
-TEMPLATE_INTERNAL_TESTS = (
-    "test_discipline_transfer_and_consistency.py",
-    "test_project_cli_and_server.py",
-    "test_read_rules_and_onboard.py",
-    "test_reference_exemplar.py",
-    "test_ssot_and_check_docs.py",
-    "test_web_workbench.py",
-    "test_chrome_geometry.py",
 )
 
 
@@ -160,70 +149,6 @@ def _ensure_harness_paths_in_toml(txt: str) -> str:
     return txt[:open_idx] + body_trimmed + ins + close_indent + txt[close_idx:]
 
 
-def _sanitize_copied_checkout(target: Path) -> None:
-    specs_dir = target / "docs" / "specs"
-    if specs_dir.is_dir():
-        for dom in TEMPLATE_INTERNAL_DOMAINS:
-            if (specs_dir / dom).is_dir():
-                shutil.rmtree(specs_dir / dom)
-        if not any(specs_dir.iterdir()):
-            specs_dir.rmdir()
-    dec_dir = target / "docs" / "decisions"
-    if dec_dir.is_dir():
-        for adr in dec_dir.glob("ADR-*.md"):
-            if adr.name.startswith(tuple(f"{adr_id}-" for adr_id in TEMPLATE_INTERNAL_ADRS)):
-                adr.unlink(missing_ok=True)
-        if not any(dec_dir.iterdir()):
-            dec_dir.rmdir()
-    for folder in ("docs/archive", "docs/evaluations", "archive/legacy-v1"):
-        p = target / folder
-        if p.is_dir():
-            shutil.rmtree(p)
-    arch_readme = target / "archive" / "README.md"
-    if arch_readme.is_file() and "legacy-v1" in arch_readme.read_text(encoding="utf-8", errors="ignore"):
-        arch_readme.unlink(missing_ok=True)
-    if (target / "archive").is_dir() and not any((target / "archive").iterdir()):
-        (target / "archive").rmdir()
-    design_dir = target / "docs" / "design"
-    if design_dir.is_dir():
-        for df in ("perspective-web.md", "frontend-design-options.html"):
-            (design_dir / df).unlink(missing_ok=True)
-        des_readme = design_dir / "README.md"
-        if des_readme.is_file() and "perspective-web.md" in des_readme.read_text(encoding="utf-8", errors="ignore"):
-            des_readme.unlink(missing_ok=True)
-        if not any(design_dir.iterdir()):
-            design_dir.rmdir()
-    ex_app = target / "examples" / "reference-app"
-    if any((ex_app / p).is_file() for p in ("features/checkout/service.py", "domain/order_ledger.py", "src/checkout.py")):
-        shutil.rmtree(ex_app)
-        if (target / "examples").is_dir() and not any((target / "examples").iterdir()):
-            (target / "examples").rmdir()
-    tests_dir = target / "tests"
-    if tests_dir.is_dir():
-        for tf in TEMPLATE_INTERNAL_TESTS:
-            (tests_dir / tf).unlink(missing_ok=True)
-        t_readme = tests_dir / "README.md"
-        if t_readme.is_file() and "test_reference_exemplar.py" in t_readme.read_text(encoding="utf-8", errors="ignore"):
-            t_readme.unlink(missing_ok=True)
-        if not any(tests_dir.iterdir()):
-            tests_dir.rmdir()
-    src_readme = target / "src" / "README.md"
-    if src_readme.is_file() and "template-project" in src_readme.read_text(encoding="utf-8", errors="ignore"):
-        src_readme.unlink(missing_ok=True)
-        if (target / "src").is_dir() and not any((target / "src").iterdir()):
-            (target / "src").rmdir()
-    for rel in ("README_CN.md", "tmp/project-state.json"):
-        (target / rel).unlink(missing_ok=True)
-
-
-def _strip_internal_anchors(text: str, suffix: str) -> str:
-    if suffix == ".css":
-        return re.sub(r"\n\s*\*\s*Anchors:.*?\*/", " */", text)
-    if suffix == ".html":
-        return re.sub(r"^\s*<!--\s*Anchors:.*?-->\r?\n?", "", text, flags=re.MULTILINE)
-    return re.sub(r"^\s*(?:#|//)\s*Anchors:.*\r?\n?", "", text, flags=re.MULTILINE)
-
-
 def run_init_command(
     template_root: Path,
     target: Path,
@@ -263,7 +188,7 @@ def run_init_command(
         existing_cfg.get("project", {}).get("identity") == "template" or replace_template_agents
     )
     if is_copied_checkout and not sync:
-        _sanitize_copied_checkout(target)
+        sanitize_copied_checkout(target)
 
     tpl_dir = template_root / "templates"
     existing_src_dirs, root_files, has_existing_code = _detect_existing_code(target)
@@ -277,7 +202,7 @@ def run_init_command(
         det_roots = ["src"]
 
     tpl_policy = tomllib.loads((template_root / "docs-policy.toml").read_text(encoding="utf-8"))
-    tpl_version = str(tpl_policy.get("discipline_version", "2026.11.1"))
+    tpl_version = str(tpl_policy.get("discipline_version", "unknown"))
     head_sha = _run_git(target, "rev-parse", "--short", "HEAD") if not sync else ""
 
     if policy_file.is_file():
@@ -430,7 +355,7 @@ def run_init_command(
             src_f, dst_f = template_root / "scripts" / sname, scripts_dst / sname
             if src_f.is_file() and (sync or overwrite_starters or not dst_f.exists()):
                 shutil.copy2(src_f, dst_f)
-                dst_f.write_text(_strip_internal_anchors(dst_f.read_text(encoding="utf-8"), ".py"), encoding="utf-8")
+                dst_f.write_text(strip_internal_anchors(dst_f.read_text(encoding="utf-8"), ".py"), encoding="utf-8")
         projlib_dst = scripts_dst / "projectlib"
         if (sync or overwrite_starters) and projlib_dst.exists():
             shutil.rmtree(projlib_dst)
@@ -442,7 +367,7 @@ def run_init_command(
             )
             for copied in projlib_dst.rglob("*"):
                 if copied.is_file() and copied.suffix in (".py", ".js", ".css", ".html"):
-                    copied.write_text(_strip_internal_anchors(copied.read_text(encoding="utf-8"), copied.suffix), encoding="utf-8")
+                    copied.write_text(strip_internal_anchors(copied.read_text(encoding="utf-8"), copied.suffix), encoding="utf-8")
         for folder in ("contracts", "guides"):
             src_dir, dst_dir = template_root / "docs" / folder, target / "docs" / folder
             if src_dir.is_dir():
@@ -458,7 +383,7 @@ def run_init_command(
     elif overwrite_starters:
         for script_file in (target / "scripts").rglob("*"):
             if script_file.is_file() and script_file.suffix in (".py", ".js", ".css", ".html"):
-                script_file.write_text(_strip_internal_anchors(script_file.read_text(encoding="utf-8"), script_file.suffix), encoding="utf-8")
+                script_file.write_text(strip_internal_anchors(script_file.read_text(encoding="utf-8"), script_file.suffix), encoding="utf-8")
 
     for stem in ("adr", "domain-readme", "module-spec", "surface-spec", "charter", "adoption-assessment", "independent-review"):
         src_name = f"{stem}.zh.md" if lang == "zh" and (tpl_dir / f"{stem}.zh.md").is_file() else f"{stem}.md"
@@ -483,10 +408,25 @@ def run_init_command(
             zh_tpl.unlink(missing_ok=True)
 
     if sync:
+        tpl_ag = (template_root / "templates" / ("AGENTS.zh.md" if lang == "zh" else "AGENTS.md")).resolve()
+        kept_agents = agents_dst.is_file() and not replace_template_agents
+        stale = find_hardcoded_versions(target)
         if lang == "zh":
             print(f"已同步工程纪律：{target}（版本={tpl_version}，阶段={fmt_stage(stage, 'zh')}）。")
+            if kept_agents:
+                print(f"提示：已保留目标仓库现有的 AGENTS.md。请对照模板文件 {tpl_ag}，合并新增或改写的触发规则行。")
+            if stale:
+                print("提示：以下位置仍写死了 discipline_version。版本号只记录在 docs-policy.toml，请改为指向该文件（check_docs.py 会把它们报为错误）：")
+                for rel_md, ln_md, ver in stale:
+                    print(f"  - {rel_md}:{ln_md}（{ver}）")
         else:
             print(f"Synced engineering discipline in {target} (discipline_version={tpl_version}, {fmt_stage(stage, lang)}).")
+            if kept_agents:
+                print(f"Note: preserved existing AGENTS.md; compare it with the template file {tpl_ag} and merge new or rewritten trigger rows.")
+            if stale:
+                print("Note: these lines still hardcode discipline_version. The value lives only in docs-policy.toml; point there instead (check_docs.py reports them as errors):")
+                for rel_md, ln_md, ver in stale:
+                    print(f"  - {rel_md}:{ln_md} ({ver})")
     elif lang == "zh":
         print(f"已初始化产品仓库：{target}（名称={name}，阶段={fmt_stage(stage, 'zh')}）。")
     else:

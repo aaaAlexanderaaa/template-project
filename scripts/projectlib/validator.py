@@ -13,7 +13,7 @@ from urllib.parse import unquote, urlsplit
 
 from .frontmatter import extract_markdown_structure
 from .git_telemetry import get_working_changed_files, match_path_to_module
-from .model import ProjectGraph, ValidationFinding
+from .model import ProjectGraph, ValidationFinding, module_source_refs
 from .prose_checks import (
     BANNED_JARGON,
     DISCLAIMER_CHAINS,
@@ -25,6 +25,23 @@ from .prose_checks import (
 )
 
 TEMPLATE_REMOTE_SLUG = "github.com/aaaalexanderaaa/template-project"
+
+
+# `discipline_version = "x.y.z"` copied into Markdown. The value lives only in `docs-policy.toml`.
+HARDCODED_VERSION_RE = re.compile(r'discipline_version\s*=\s*"(\d+(?:\.\d+)+)"')
+
+
+def find_hardcoded_versions(root: Path, md_files: list[Path] | None = None) -> list[tuple[str, int, str]]:
+    """Return `(relative path, line number, version)` for every Markdown line that copies `discipline_version`."""
+    hits: list[tuple[str, int, str]] = []
+    for mp in md_files if md_files is not None else collect_live_markdown_files(root):
+        rel_md = mp.relative_to(root).as_posix()
+        if rel_md.startswith("docs/decisions/"):
+            continue  # decision records may name the version that was current back then
+        for ln, line in enumerate(mp.read_text(encoding="utf-8", errors="ignore").splitlines(), 1):
+            for m in HARDCODED_VERSION_RE.finditer(line):
+                hits.append((rel_md, ln, m.group(1)))
+    return hits
 
 
 def _normalize_remote(url: str) -> str:
@@ -119,10 +136,23 @@ def validate_project_graph(
     # 2. ID reference integrity across specs, ADRs, and work queues
     referenced_sources: set[str] = set()
     for mod in graph.modules.values():
+        _, via_refs = module_source_refs(graph, mod)
+        via_adr = {sid: did for sid, did in via_refs}
+        for dec in graph.decisions.values():
+            if dec.status != "superseded" and (mod.id in dec.affects or mod.domain in dec.affects):
+                for sid in dec.sources:
+                    via_adr.setdefault(sid, dec.id)
         for sid in mod.sources:
             referenced_sources.add(sid)
             if sid not in graph.sources:
                 emit("unknown_source", "broken_links_and_ids", mod.doc_path, f"Module `{mod.id}` references unknown source `{sid}`.")
+            elif sid in via_adr:
+                emit(
+                    "duplicate_module_source",
+                    "duplicate_module_source",
+                    mod.doc_path,
+                    f"Module `{mod.id}` re-lists `{sid}`, which `{via_adr[sid]}` already brings through `affects`; remove it from the spec's `sources`.",
+                )
         for dep in mod.depends_on:
             if dep not in graph.modules:
                 emit("unknown_dependency", "broken_links_and_ids", mod.doc_path, f"Module `{mod.id}` depends_on unknown module `{dep}`.")
@@ -185,6 +215,14 @@ def validate_project_graph(
 
     # 4. Markdown relative link & heading fragment resolution (excluding archive/)
     md_files = collect_live_markdown_files(root)
+    for rel_md, ln_md, ver in find_hardcoded_versions(root, md_files):
+        emit(
+            "hardcoded_version",
+            "hardcoded_version",
+            rel_md,
+            f"Copies `discipline_version = \"{ver}\"`; the value lives only in `docs-policy.toml`, so point to that file instead.",
+            ln_md,
+        )
     slug_cache: dict[Path, set[str]] = {}
     links_cache: dict[Path, list[tuple[str, int]]] = {}
     for mp in md_files:
@@ -351,8 +389,9 @@ def build_diff_context_nudges(graph: ProjectGraph, diff_base: str | None = None)
     module_reminders: list[dict[str, Any]] = []
     for mod_id in sorted(touched_mods):
         spec = graph.modules[mod_id]
+        direct_ids, via_refs = module_source_refs(graph, spec)
         quotes = []
-        for sid in spec.sources[:3]:
+        for sid in direct_ids[:3]:
             if sid in graph.sources:
                 excerpt = " ".join(graph.sources[sid].quote.splitlines()).strip()
                 quotes.append({"id": sid, "excerpt": excerpt[:120] + ("…" if len(excerpt) > 120 else "")})
@@ -363,6 +402,8 @@ def build_diff_context_nudges(graph: ProjectGraph, diff_base: str | None = None)
                 "spec_path": spec.doc_path,
                 "promise": spec.promise,
                 "sources": quotes,
+                "more_direct_sources": [sid for sid in direct_ids[3:] if sid in graph.sources],
+                "decision_sources": [{"id": sid, "decision": did} for sid, did in via_refs if sid in graph.sources],
             }
         )
 
