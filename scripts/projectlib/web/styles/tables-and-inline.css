@@ -44,6 +44,11 @@ body[data-archetype="orientation"] .data-table thead th { top: var(--topbar-heig
   background: var(--highlight-wash);
 }
 
+.data-row[data-expanded="true"] .small-note,
+.data-row[data-expanded="true"] .tertiary {
+  color: var(--ink-secondary);
+}
+
 .row-sub {
   margin-top: 2px;
   font-size: 12px;

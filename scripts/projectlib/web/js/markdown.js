@@ -1,5 +1,5 @@
-// Role: Zero-dependency Markdown, GFM table, alert callout, required-reading anchor, and heading-slug renderer.
-// Out of scope: Network fetches, UI translations (i18n.js), Mermaid SVG math (diagrams.js), and DOM events (app.js).
+// Role: Zero-dependency Markdown, GFM table, alert callout, required-reading anchor, heading-slug renderer, and relative doc-link resolver.
+// Out of scope: Network fetches, UI translations (i18n.js), Mermaid SVG math (diagrams.js), and DOM events (app.js, interactions.js).
 // Anchors: spec=ui.perspective-web, docs/README.md#language-standard, SRC-016, SRC-022
 
 import { escHtml } from "./i18n.js";
@@ -211,4 +211,18 @@ export function alignDocSidenotes(enabled) {
     prevBottom = clampedTop + h;
   });
   _sidenoteSheet.replaceSync(rules.length ? `@container workspace (min-width: 1025px) { ${rules.join(" ")} }` : "");
+}
+
+export function resolveDocLinkPath(baseDoc, href) {
+  const target = String(href || "").split("#")[0].split("?")[0].trim();
+  if (!target) return "";
+  if (target.startsWith("/")) return target.replace(/^\/+/, "");
+  const parts = String(baseDoc || "").split("/");
+  parts.pop();
+  for (const seg of target.split("/")) {
+    if (!seg || seg === ".") continue;
+    if (seg === "..") { if (parts.length) parts.pop(); }
+    else parts.push(seg);
+  }
+  return parts.join("/");
 }

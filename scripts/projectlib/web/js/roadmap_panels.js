@@ -38,7 +38,7 @@ export function renderRoadmapTraceHtml(provNodes, uiState, colHintFn) {
         ].join(", ");
     const taskTotal = (tr.verified_done_count || 0) + (tr.open_or_pending_tasks?.length || 0);
     const impactTxt = `${fmtNum((tr.modules || []).length)} ${t(lang, "modulesUnit")} · ${fmtNum(taskTotal)} ${t(lang, "tasksUnit")}`;
-    return `<tr class="data-row" data-expand-key="${escHtml(key)}" data-expanded="${isExp}">
+    return `<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-expand-key="${escHtml(key)}" data-expanded="${isExp}">
       <td title="${escHtml(pn.label)}"><strong>${escHtml(truncMiddle(pn.label, 38, 24))}</strong></td>
       <td><span class="status-label"><span class="status-dot ${dotCls}"></span>${escHtml(statusTxt)}</span></td>
       <td class="col-pri-2 num">${escHtml(impactTxt)}</td>
@@ -112,7 +112,7 @@ export function renderRoadmapDiffHtml(graph, uiState, colHintFn) {
     const expRow = isExp
       ? `<tr class="inline-expand-row"><td colspan="3"><div class="inline-expand-card"><div class="copy-row"><span class="mono">${escHtml(f.path)}</span><button type="button" class="btn-quiet" data-copy-text="${escHtml(f.path)}">${escHtml(t(lang, "copyBtn"))}</button></div><div class="row-sub">${escHtml(f.domain)} · ${escHtml(stTxt)}</div></div></td></tr>`
       : "";
-    return `<tr class="data-row" data-expand-key="${escHtml(key)}" data-expanded="${isExp}">
+    return `<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-expand-key="${escHtml(key)}" data-expanded="${isExp}">
       <td class="mono-trunc" title="${escHtml(f.path)}">${escHtml(truncMiddle(f.path, 16, 18))}</td>
       <td>${escHtml(f.domain)}</td>
       <td class="col-pri-3">${escHtml(stTxt)}</td>

@@ -25,7 +25,7 @@ from .toml_writer import append_verbatim_source, archive_completed_milestone, mu
 
 WEB_DIR = Path(__file__).resolve().parent / "web"
 ALLOWED_LOCAL_HOSTS = {"127.0.0.1", "localhost", "::1"}
-STYLE_FILES = ("tokens.css", "layout.css", "components.css", "tables-and-inline.css", "prose-and-svg.css")
+STYLE_FILES = ("tokens.css", "layout.css", "components.css", "tables-and-inline.css", "prose-and-svg.css", "accessibility.css")
 JS_BUNDLE_ORDER = (
     "i18n.js",
     "markdown.js",
@@ -34,6 +34,7 @@ JS_BUNDLE_ORDER = (
     "drawer.js",
     "roadmap_panels.js",
     "views.js",
+    "interactions.js",
     "app.js",
 )
 

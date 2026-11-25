@@ -33,7 +33,7 @@ export function renderOverviewView(graph, uiState) {
     const expRow = isExp
       ? `<tr class="inline-expand-row"><td colspan="4">${buildContextPackHtml(pack, graph, lang, canMutate)}</td></tr>`
       : "";
-    return `<tr class="data-row" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(item.task_id)}" data-expanded="${isExp}">
+    return `<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(item.task_id)}" data-expanded="${isExp}">
       <td><strong>${escHtml(item.task_id)}</strong> · ${escHtml(item.domain_name)}<div class="row-sub">${escHtml(kind === "blocked" ? item.blocker_question : item.title)}</div></td>
       <td><span class="status-label"><span class="status-dot ${dotCls}"></span>${escHtml(statusTxt)}</span></td>
       <td class="col-pri-2">${escHtml(item.source_id || "-")}</td>
@@ -111,7 +111,7 @@ export function renderOverviewView(graph, uiState) {
           }).join("") || `<span class="small-note">${escHtml(t(lang, "noneText"))}</span>`}</div>
         </div></td></tr>`
       : "";
-    return `<tr class="data-row" data-expand-key="${escHtml(key)}" data-expanded="${isExp}">
+    return `<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-expand-key="${escHtml(key)}" data-expanded="${isExp}">
       <td class="mono">${escHtml(de.path)}</td>
       <td><strong>${escHtml(label)}</strong><div class="row-sub">${escHtml(summary)}</div></td>
       <td class="col-pri-3">${escHtml(de.domain || "-")}</td>
@@ -214,7 +214,7 @@ export function renderBoundariesView(graph, uiState) {
       const expRow = isExp
         ? `<tr class="inline-expand-row"><td colspan="5">${buildContextPackHtml(pack, graph, lang, canMutate)}</td></tr>`
         : "";
-      return `<tr class="data-row" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(mod.id)}" data-expanded="${isExp}">
+      return `<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(mod.id)}" data-expanded="${isExp}">
         <td><strong>${escHtml(mod.title || mod.id)}</strong><div class="row-sub mono">${escHtml(mod.id)}</div><div class="row-sub">${escHtml(mod.promise || mod.summary || "")}</div></td>
         <td><span class="status-label"><span class="status-dot ${dotCls}"></span>${escHtml(trStage(lang, mod.stage))}</span></td>
         <td class="col-pri-3">${escHtml(dom.name)}</td>
@@ -274,7 +274,7 @@ export function renderBoundariesView(graph, uiState) {
       const expRow = isExp
         ? `<tr class="inline-expand-row"><td colspan="3">${hasModPack ? buildContextPackHtml({ ...rawPack, finding_msg: f.message, finding_loc: locStr }, graph, lang, canMutate) : fndCard}</td></tr>`
         : "";
-      return `<tr class="data-row" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(f.path)}" data-expanded="${isExp}">
+      return `<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(f.path)}" data-expanded="${isExp}">
         <td><strong>${escHtml(trRuleId(lang, f.rule_id))}</strong><div class="row-sub">${escHtml(f.message)}</div></td>
         <td><span class="status-label"><span class="status-dot ${dotCls}"></span>${escHtml(trSeverity(lang, f.severity))}</span></td>
         <td class="col-pri-2 mono-trunc" title="${escHtml(locStr)}">${escHtml(shortLoc)}</td>
@@ -386,7 +386,7 @@ export function renderRoadmapView(graph, uiState) {
       const depthNum = Math.min(4, Math.max(2, Number(tk.depth) || 2));
       const cellCls = `tree-cell-d${depthNum}`;
       const srcDec = [...(tk.sources || []), ...(tk.decisions || [])].join(", ") || (tk.specs || []).join(", ") || "-";
-      trs.push(`<tr class="data-row" data-parent-path="${escHtml(pPath)}" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(tk.id)}" data-expanded="${isExp}">
+      trs.push(`<tr class="data-row" tabindex="0" aria-expanded="${isExp}" data-parent-path="${escHtml(pPath)}" data-expand-key="${escHtml(key)}" data-context-q="${escHtml(tk.id)}" data-expanded="${isExp}">
         <td class="${cellCls}"><strong>${escHtml(tk.id)}</strong> · ${escHtml(tk.title)}</td>
         <td><span class="status-label"><span class="status-dot ${dotCls}"></span>${escHtml(trTaskState(lang, tk.state))}</span></td>
         <td class="col-pri-2">${escHtml(trHumanCheck(lang, tk.human_check))}</td>

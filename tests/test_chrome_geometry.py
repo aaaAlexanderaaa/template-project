@@ -123,7 +123,19 @@ PROBE_JS = r"""
           report.views.docs.stickyOverflowX = sticky ? sticky.scrollWidth - sticky.clientWidth : null;
           report.views.docs.longDocOverflowX = document.documentElement.scrollWidth - window.innerWidth;
         }
+        document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+        report.views.docs.drawerClosedByEsc = document.getElementById("doc-drawer").hidden;
+        report.views.docs.focusAfterEsc = document.activeElement?.id || "";
       }
+    }
+    click("#tab-boundaries");
+    const kbRow = document.querySelector("#view-boundaries tr[data-expand-key]");
+    if (kbRow) {
+      const kbKey = kbRow.dataset.expandKey;
+      kbRow.focus();
+      kbRow.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true, cancelable: true }));
+      const afterKb = document.querySelector(`#view-boundaries tr[data-expand-key="${kbKey}"]`);
+      report.kbToggle = { expanded: afterKb?.dataset.expanded || "", focusedKey: document.activeElement?.dataset?.expandKey || "" };
     }
     click("#tab-overview");
     const beforeLang = snapTabs();
@@ -303,6 +315,10 @@ class ChromeGeometryTests(unittest.TestCase):
                 self.assertTrue(rep["views"]["docs"]["tocBeforeCats"])
                 self.assertEqual(rep["views"]["docs"]["activeElementAfterSearchInput"], "drawer-doc-search")
                 self.assertGreaterEqual(rep["views"]["docs"]["filteredDocCount"], 1)
+                self.assertTrue(rep["views"]["docs"]["drawerClosedByEsc"])
+                self.assertEqual(rep["views"]["docs"]["focusAfterEsc"], "btn-doc-drawer")
+                self.assertEqual(rep["kbToggle"]["expanded"], "true")
+                self.assertTrue(rep["kbToggle"]["focusedKey"])
 
             scale_rep = self._run_chrome(chrome, scale_probe, 1280, 900, tmp_path, "scale_1280")
             self.assertEqual(scale_rep["errors"], [])

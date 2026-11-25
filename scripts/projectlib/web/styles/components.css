@@ -188,7 +188,7 @@
 .input-ctl {
   height: 26px;
   padding: 2px 8px;
-  border: 1px solid var(--hairline);
+  border: 1px solid var(--control-border);
   border-radius: var(--radius-control);
   background: var(--bg-platter);
   color: var(--ink-primary);

@@ -1,11 +1,12 @@
 // Role: Central client-side state manager, 4-view router, Stale-While-Revalidate fetch, drawer, and CSRF actions.
-// Out of scope: Raw SVG geometry math (diagrams.js/charts.js) and HTML view string assembly (views.js).
+// Out of scope: Raw SVG geometry math (diagrams.js/charts.js), HTML view string assembly (views.js), and keyboard/hover listeners (interactions.js).
 // Anchors: spec=ui.perspective-web, ADR-002, ADR-005, SRC-014, SRC-019, SRC-022
 
 import { escHtml, truncMiddle, t, trStage, trCategory } from "./i18n.js";
-import { scrollDocToFragment, alignDocSidenotes } from "./markdown.js";
+import { scrollDocToFragment, alignDocSidenotes, resolveDocLinkPath } from "./markdown.js";
 import { buildDocDrawerShellHtml, buildDocDrawerResultsHtml } from "./drawer.js";
 import { renderOverviewView, renderBoundariesView, renderRoadmapView, renderDocsView } from "./views.js";
+import { bindKeyboardAndHover } from "./interactions.js";
 
 const CAT_ORDER = ["entry", "contract", "guide", "skill", "spec", "design", "decision", "template", "config"];
 
@@ -37,20 +38,6 @@ const uiState = {
   _statusRight: "",
   isRefreshing: false,
 };
-
-function resolveDocLinkPath(baseDoc, href) {
-  const target = String(href || "").split("#")[0].split("?")[0].trim();
-  if (!target) return "";
-  if (target.startsWith("/")) return target.replace(/^\/+/, "");
-  const parts = String(baseDoc || "").split("/");
-  parts.pop();
-  for (const seg of target.split("/")) {
-    if (!seg || seg === ".") continue;
-    if (seg === "..") { if (parts.length) parts.pop(); }
-    else parts.push(seg);
-  }
-  return parts.join("/");
-}
 
 function getCsrfToken() {
   return uiState.graph?.csrf_token || document.querySelector('meta[name="project-csrf"]')?.content || "";
@@ -361,7 +348,7 @@ function bindEvents() {
         else uiState.docDrawerOpen = !uiState.docDrawerOpen;
         renderActiveView();
       }
-      else if (act === "close-doc-drawer") { uiState.docDrawerOpen = false; renderActiveView(); }
+      else if (act === "close-doc-drawer") { uiState.docDrawerOpen = false; renderActiveView(); document.getElementById("btn-doc-drawer")?.focus(); }
       else if (act === "toggle-more") {
         moreMenu.hidden = !moreMenu.hidden;
         actionEl.setAttribute("aria-expanded", String(!moreMenu.hidden));
@@ -464,21 +451,16 @@ function bindEvents() {
     const modEl = e.target.closest("[data-open-module]");
     if (modEl) { const mid = modEl.dataset.openModule; uiState.boundaryDomain = ""; uiState.boundaryOnlyIssues = false; uiState.view = "boundaries"; uiState.boundarySubMode = "matrix"; uiState.expandedKey = `bnd-mod::${mid}`; renderActiveView(); fetchContextLazy(mid); return; }
     const expRow = e.target.closest("[data-expand-key]");
-    if (expRow) {
-      const k = expRow.dataset.expandKey;
-      uiState.expandedKey = uiState.expandedKey === k ? "" : k;
-      renderActiveView();
-      if (uiState.expandedKey === k && expRow.dataset.contextQ) fetchContextLazy(expRow.dataset.contextQ);
-    }
+    if (expRow) toggleExpandRow(expRow);
   });
-  const setLinked = (sec, active) => {
-    if (!sec) return;
-    document.querySelectorAll(".sidenote-item[data-anchor-sec]").forEach((el) => {
-      if (el.dataset.anchorSec === sec) el.classList.toggle("is-linked", active);
-    });
-  };
-  document.addEventListener("mouseover", (e) => { const h = e.target.closest?.(".md-prose [data-sec], .md-prose [data-sec-owner]"); if (h) setLinked(h.dataset.sec || h.dataset.secOwner, true); });
-  document.addEventListener("mouseout", (e) => { const h = e.target.closest?.(".md-prose [data-sec], .md-prose [data-sec-owner]"); if (h) setLinked(h.dataset.sec || h.dataset.secOwner, false); });
+  function toggleExpandRow(expRow, restoreFocus = false) {
+    const k = expRow.dataset.expandKey;
+    uiState.expandedKey = uiState.expandedKey === k ? "" : k;
+    renderActiveView();
+    if (restoreFocus) document.querySelector(`[data-expand-key="${CSS.escape ? CSS.escape(k) : k.replace(/"/g, '\\"')}"]`)?.focus();
+    if (uiState.expandedKey === k && expRow.dataset.contextQ) fetchContextLazy(expRow.dataset.contextQ);
+  }
+  bindKeyboardAndHover(uiState, { renderActiveView, toggleExpandRow });
   window.addEventListener("resize", () => { if (uiState.view === "docs") alignDocSidenotes(true); });
 }
 

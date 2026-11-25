@@ -196,7 +196,7 @@ console.log("SVG_OK:" + outputs.length);
         def luminance(hex_color: str) -> float:
             h = hex_color.lstrip("#")
             channels = [int(h[i : i + 2], 16) / 255 for i in (0, 2, 4)]
-            lin = [c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4 for c in channels]
+            lin = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in channels]
             return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
 
         def contrast(a: str, b: str) -> float:
@@ -215,6 +215,38 @@ console.log("SVG_OK:" + outputs.length);
                     self.assertGreaterEqual(
                         ratio, 4.5, f"{token_file.name}: --{ink} on --{bg} is {ratio:.2f}:1, below WCAG AA 4.5:1"
                     )
+                border_ratio = contrast(tokens["control-border"], tokens[bg])
+                self.assertGreaterEqual(
+                    border_ratio, 3.0, f"{token_file.name}: --control-border on --{bg} is {border_ratio:.2f}:1, below WCAG AA 3:1"
+                )
+
+        # Tinted row backgrounds in the web overview: composite the rgba token over the white platter, then measure.
+        web_css = (ROOT / "scripts" / "projectlib" / "web" / "styles" / "tokens.css").read_text(encoding="utf-8")
+        web_tokens = {m.group(1): m.group(2) for m in re.finditer(r"--([\w-]+):\s*(#[0-9A-Fa-f]{6})\s*;", web_css)}
+        rgba_tokens = {
+            m.group(1): (int(m.group(2)), int(m.group(3)), int(m.group(4)), float(m.group(5)))
+            for m in re.finditer(r"--([\w-]+):\s*rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)\s*;", web_css)
+        }
+
+        def over_platter(name: str) -> str:
+            r, g, b, a = rgba_tokens[name]
+            base = web_tokens["bg-platter"].lstrip("#")
+            br, bgc, bb = (int(base[i : i + 2], 16) for i in (0, 2, 4))
+            mix = [round(c * a + p * (1 - a)) for c, p in ((r, br), (g, bgc), (b, bb))]
+            return "#" + "".join(f"{v:02X}" for v in mix)
+
+        for tint, inks in (
+            ("bg-subtle-hover", ("ink-primary", "ink-secondary", "ink-tertiary")),
+            ("highlight-wash", ("ink-primary", "ink-secondary")),
+        ):
+            bg_hex = over_platter(tint)
+            for ink in inks:
+                ratio = contrast(web_tokens[ink], bg_hex)
+                self.assertGreaterEqual(ratio, 4.5, f"--{ink} on --{tint} is {ratio:.2f}:1, below WCAG AA 4.5:1")
+        # Tertiary ink falls below 4.5:1 on the expanded-row wash, so expanded rows must switch it to secondary ink.
+        self.assertLess(contrast(web_tokens["ink-tertiary"], over_platter("highlight-wash")), 4.5)
+        tables_css = (ROOT / "scripts" / "projectlib" / "web" / "styles" / "tables-and-inline.css").read_text(encoding="utf-8")
+        self.assertRegex(tables_css, r'\.data-row\[data-expanded="true"\] \.tertiary\s*\{\s*color: var\(--ink-secondary\)')
 
     def test_web_views_scale_bundle_and_calm_platter_constraints(self) -> None:
         web_dir = ROOT / "scripts" / "projectlib" / "web"
@@ -231,8 +263,19 @@ console.log("SVG_OK:" + outputs.length);
         index_html = (web_dir / "index.html").read_text(encoding="utf-8")
         self.assertNotIn('style="', index_html)
         all_css = "\n".join(cf.read_text(encoding="utf-8") for cf in css_files)
-        for req in ("--bg-canvas: #F5F5F7", "--bg-platter: #FFFFFF", "--topbar-height: 32px", "--statusbar-height: 28px", "@container workspace", "scrollbar-gutter: stable", "tabular-nums"):
+        for req in ("--bg-canvas: #F5F5F7", "--bg-platter: #FFFFFF", "--topbar-height: 32px", "--statusbar-height: 28px", "@container workspace", "scrollbar-gutter: stable", "tabular-nums", ":focus-visible", "prefers-reduced-motion"):
             self.assertIn(req, all_css)
+        all_js = "\n".join(jf.read_text(encoding="utf-8") for jf in js_files)
+        self.assertIn('tabindex="0"', all_js)
+        self.assertIn('e.key === "Escape"', all_js)
+        # The static snapshot concatenates JS_BUNDLE_ORDER; every module file must be listed or it silently drops out.
+        from projectlib.server import JS_BUNDLE_ORDER
+        self.assertEqual(sorted(JS_BUNDLE_ORDER), sorted(jf.name for jf in js_files))
+        self.assertEqual(JS_BUNDLE_ORDER[-1], "app.js")
+        from projectlib.server import STYLE_FILES
+        self.assertEqual(sorted(STYLE_FILES), sorted(cf.name for cf in css_files))
+        for name in STYLE_FILES:
+            self.assertIn(f'href="/styles/{name}"', index_html)
 
         stripped_css = re.sub(r"/\*.*?\*/", "", all_css, flags=re.S)
         for banned in (r"border-left:\s*[34]px", r"linear-gradient", r"#000000", r"translateY\(-"):

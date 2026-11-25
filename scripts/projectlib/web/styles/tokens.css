@@ -14,9 +14,10 @@
   --ink-secondary: #51555E;
   --ink-tertiary: #6B7079;
 
-  /* 3. Hairlines & natural shadows */
+  /* 3. Hairlines, control borders & natural shadows */
   --hairline: rgba(0, 0, 0, 0.065);
   --line-strong: rgba(0, 0, 0, 0.14);
+  --control-border: #868B96;
   --platter-border: rgba(0, 0, 0, 0.05);
   --platter-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 6px 20px rgba(0, 0, 0, 0.035);
   --popover-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 16px 36px rgba(0, 0, 0, 0.08);
