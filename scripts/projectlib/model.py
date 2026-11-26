@@ -5,7 +5,9 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import Any
 
 
@@ -231,3 +233,120 @@ def source_one_liner(graph: ProjectGraph, sid: str, limit: int = 120) -> str:
         return ""
     text = " ".join((src.context or src.quote).split())
     return text[:limit] + ("…" if len(text) > limit else "")
+
+
+def _normalize_posix_path(raw: str) -> str:
+    p = raw.replace("\\", "/").strip()
+    while p.startswith("./"):
+        p = p[2:]
+    return p
+
+
+def normalize_doc_roots(raw_roots: Any) -> tuple[str, ...]:
+    """Normalize `[layout].doc_roots` entries into POSIX relative paths without leading `./`."""
+    if not isinstance(raw_roots, (list, tuple)):
+        return ()
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in raw_roots:
+        raw = str(item).strip().replace("\\", "/")
+        if not raw:
+            continue
+        if raw in (".", "./"):
+            norm = "."
+        elif raw.startswith("/"):
+            norm = raw.rstrip("/") or "/"
+        else:
+            while raw.startswith("./"):
+                raw = raw[2:]
+            norm = raw.rstrip("/") or "."
+        if norm not in seen:
+            seen.add(norm)
+            out.append(norm)
+    return tuple(out)
+
+
+@lru_cache(maxsize=256)
+def _glob_to_regex(pattern: str) -> re.Pattern[str]:
+    """Compile a POSIX path glob (`*` within a segment, `**` across directories, `?`, `[...]`)."""
+    parts: list[str] = ["^"]
+    i, n = 0, len(pattern)
+    while i < n:
+        ch = pattern[i]
+        if pattern.startswith("**/", i) and (i == 0 or pattern[i - 1] == "/"):
+            parts.append("(?:.+/)?")
+            i += 3
+        elif pattern.startswith("/**", i) and i + 3 == n:
+            parts.append("/.*")
+            i += 3
+        elif pattern.startswith("**", i):
+            parts.append(".*")
+            i += 2
+        elif ch == "*":
+            parts.append("[^/]*")
+            i += 1
+        elif ch == "?":
+            parts.append("[^/]")
+            i += 1
+        elif ch == "[":
+            j = i + 1
+            if j < n and pattern[j] in ("!", "^"):
+                j += 1
+            if j < n and pattern[j] == "]":
+                j += 1
+            while j < n and pattern[j] != "]":
+                j += 1
+            if j >= n:
+                parts.append(r"\[")
+                i += 1
+            else:
+                body = pattern[i + 1 : j]
+                neg = ""
+                if body and body[0] in ("!", "^"):
+                    neg = "^"
+                    body = body[1:]
+                body = body.replace("\\", r"\\").replace("[", r"\[")
+                if body.startswith("]"):
+                    body = r"\]" + body[1:]
+                if body.startswith("-"):
+                    body = r"\-" + body[1:]
+                if neg and "/" not in body:
+                    body = "/" + body
+                cls_expr = f"[{neg}{body}]"
+                try:
+                    re.compile(cls_expr)
+                    parts.append(cls_expr)
+                except re.error:
+                    parts.append(re.escape(pattern[i : j + 1]))
+                i = j + 1
+        else:
+            parts.append(re.escape(ch))
+            i += 1
+    parts.append("$")
+    return re.compile("".join(parts))
+
+
+def match_path_pattern(rel_path: str, pattern: str) -> bool:
+    """Match a POSIX relative path against a file, directory prefix, or POSIX glob (`*`, `**`, `?`, `[...]`)."""
+    rel = _normalize_posix_path(rel_path).rstrip("/")
+    pat = _normalize_posix_path(pattern)
+    if not pat or not rel:
+        return False
+    if pat.endswith("/**/"):
+        pat = pat[:-1]
+    norm = pat.rstrip("/")
+    if norm and (rel == norm or ("*" not in norm and "?" not in norm and rel.startswith(norm + "/"))):
+        return True
+    if not any(ch in pat for ch in "*?["):
+        return False
+    if pat.endswith("/**"):
+        prefix = pat[:-3].rstrip("/")
+        if prefix and "*" not in prefix and "?" not in prefix and rel.startswith(prefix + "/"):
+            return True
+        if not any(ch in prefix for ch in "*?["):
+            return False
+    return bool(_glob_to_regex(pat).match(rel))
+
+
+def matches_any_pattern(rel_path: str, patterns: tuple[str, ...] | list[str]) -> bool:
+    return any(match_path_pattern(rel_path, pat) for pat in patterns)

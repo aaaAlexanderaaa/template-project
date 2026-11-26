@@ -42,5 +42,5 @@ sources:
 
 ## 5. 样式拆分与交付核对
 
-- **样式归属**：{{基础颜色变量集中于 `tokens.css`，单样式文件不超过 `300` 行}}
+- **样式归属**：{{基础颜色变量集中于 `tokens.css`，单样式文件参考 `docs-policy.toml` 中的 `max_style_lines` 预算}}
 - **交付核对**：按前端规范“交付前界面自检”（`docs/contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check`）逐项核对原则、实测最佳实践与偏好三组检查，并在 `540px`、`800px`、`1280px`、`2560px+` 下实测通过。

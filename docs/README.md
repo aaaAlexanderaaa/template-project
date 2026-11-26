@@ -67,17 +67,15 @@ understand immediately without decoding insider terms:
      status summaries when configured.
 2. **Direct explanation first**: State plainly what the object is, how it works,
    and what problem it solves before giving background or caveats.
-3. **Banned writing habits**:
-   - **No coined buzzwords or theatrical metaphors**: Use ordinary words (`详情抽屉`,
-     `目录说明`, `三段式`, `模块依赖图`) rather than invented terms (`上下文胶囊`,
-     `三幕剧`, `稀缺暖陶红`, `技术内生模块`).
-   - **No defensive disclaimer chains**: Do not stack `"is not"` / `"does not prove"` /
-     `"cannot prove"` / `"不是"` / `"不等于"` / `"不能证明"` disclaimers. When a scope boundary
-     matters, state in one or two plain sentences what belongs elsewhere.
-   - **No conflicting numbering on the same page**: Do not use `L1/L2` for two
-     different meanings or mix `L1/L2` with `C2/C3` on the same screen.
-   - **No raw backend enums or internal chat codes in human views**: Translate
-     state tokens (`ready_for_check`, `stable`, `unclaimed_or_docs`) into plain
-     human wording in UI copy and drop internal chat codes (`A1`, `P0`) from
-     documentation.
+3. **Positive-first rules and natural wording**:
+   - State what good output looks like and where clear boundaries lie. Reserve
+     detailed lists of unwanted writing habits for optional on-demand cleanup
+     skills rather than default-loaded rules, because negative examples in
+     default context prime clean models with habits they lacked and reinforce
+     those habits in models that already have them (`SRC-036`).
+   - Keep widely used technical terms natural (preserve standard English terms
+     in non-English prose when translation hurts clarity), translate backend
+     enum tokens into ordinary words in human views, keep numbering consistent
+     on each page, and state scope boundaries directly in one or two plain
+     sentences instead of stacking disclaimers.
 <!-- /required-reading: language-standard -->

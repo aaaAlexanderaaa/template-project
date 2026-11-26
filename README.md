@@ -4,7 +4,7 @@
 
 `template-project` is an **Engineering Discipline Template** (`discipline_version` in [docs-policy.toml](docs-policy.toml)) for software repositories built with AI coding agents. Its core product is a transferable set of engineering agreements, architectural contracts, starter templates, and independent review protocols that keep growing codebases readable, modular, honest, and aligned with the project owner's real intent.
 
-The Python scripts in `scripts/` and the optional local web overview (`project.py serve`) are **supporting tools** that validate single-source links, enforce file line budgets, and bootstrap new or existing projects.
+The Python scripts in `scripts/` and the optional local web overview (`project.py serve`) are **supporting tools** that validate single-source links and module boundaries, remind on file size budgets, and bootstrap new or existing projects.
 
 ## What This Template Gives Any Repository
 

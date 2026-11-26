@@ -1,5 +1,5 @@
 version = 2
-discipline_version = "2026.11.3"
+discipline_version = "2026.11.4"
 
 [project]
 # "template" in template-project itself; change to "product" when adopting.
@@ -31,6 +31,8 @@ managed_paths = []
 # Directories or root files containing governed implementation code.
 # Adopters set this to e.g. ["src"], ["app", "packages"], or ["cmd", "internal"].
 source_roots = ["scripts", "examples/reference-app"]
+# Optional extra Markdown directories/files checked for links, jargon hints, placeholders, and version copies (e.g. ["hosts", "runbooks"]).
+doc_roots = []
 placeholder_names = ["README.md", ".gitkeep"]
 # Non-product tooling, tests, and config exempt from unclaimed-source errors.
 harness_paths = [
@@ -44,7 +46,7 @@ harness_paths = [
 
 [budgets]
 # Line counts and folder names at which check_docs.py reminds you to consider
-# splitting or renaming; they never fail the build (ADR-008).
+# splitting or renaming; they never fail the build.
 max_source_lines = 500
 max_style_lines = 300
 forbid_catchall_dirs = ["utils", "helpers", "common", "misc"]
@@ -62,5 +64,6 @@ unknown_task_specs = "error"
 catchall_directories = "advisory"
 orphan_active_sources = "advisory"
 git_doc_lag = "advisory"
-startup_disclaimers = "error"
+plain_language_jargon = "advisory"
+project_language_mismatch = "error"
 disclaimer_phrases = "advisory"

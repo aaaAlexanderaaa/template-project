@@ -10,7 +10,7 @@ import tomllib
 from pathlib import Path
 from typing import Any
 
-from .model import ProjectGraph
+from .model import ProjectGraph, normalize_doc_roots
 
 DISCLAIMER_CHAINS = (
     "does not by itself",
@@ -45,9 +45,47 @@ def scrub_examples(line: str) -> str:
     return cleaned.lower()
 
 
-def collect_live_markdown_files(root: Path) -> list[Path]:
-    """Collect active markdown files across entrypoints, guides, skills, specs, and templates (excluding archive)."""
+SKIP_DOC_DIRS = {
+    ".git",
+    "archive",
+    "node_modules",
+    "__pycache__",
+    ".venv",
+    "venv",
+    "dist",
+    "build",
+    "tmp",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+}
+
+
+def collect_live_markdown_files(
+    root: Path,
+    extra_doc_roots: tuple[str, ...] | list[str] | None = None,
+) -> list[Path]:
+    """Collect active markdown files across entrypoints, docs/guides/skills/specs/templates, and optional doc_roots."""
+    root_res = root.resolve()
     results: list[Path] = []
+    seen: set[Path] = set()
+
+    def _in_repo(fp: Path) -> Path | None:
+        try:
+            resolved = fp.resolve()
+        except OSError:
+            return None
+        return resolved if resolved.is_relative_to(root_res) else None
+
+    def _add(fp: Path) -> None:
+        if not fp.is_file():
+            return
+        resolved = _in_repo(fp)
+        if resolved is None or resolved in seen:
+            return
+        seen.add(resolved)
+        results.append(root / resolved.relative_to(root_res))
+
     for top in (
         "AGENTS.md",
         "ARCHITECTURE.md",
@@ -58,22 +96,27 @@ def collect_live_markdown_files(root: Path) -> list[Path]:
         "tests/README.md",
         "archive/README.md",
     ):
-        tp = root / top
-        if tp.is_file():
-            results.append(tp)
+        _add(root / top)
     ex_dir = root / "examples"
     if ex_dir.is_dir():
         for ex_readme in sorted(ex_dir.glob("*/README.md")):
-            if ex_readme.is_file():
-                results.append(ex_readme)
-    for folder in ("docs", "templates", ".agents"):
+            _add(ex_readme)
+    walk_roots: list[str] = ["docs", "templates", ".agents"]
+    for clean in normalize_doc_roots(extra_doc_roots):
+        if clean not in walk_roots:
+            walk_roots.append(clean)
+    for folder in walk_roots:
         fp = root / folder
-        if fp.is_dir():
+        if _in_repo(fp) is None:
+            continue
+        if fp.is_file() and fp.suffix.lower() == ".md":
+            _add(fp)
+        elif fp.is_dir():
             for dirpath, dirnames, filenames in os.walk(fp):
-                dirnames[:] = [d for d in sorted(dirnames) if d not in {".git", "archive"}]
+                dirnames[:] = [d for d in sorted(dirnames) if d not in SKIP_DOC_DIRS and not d.startswith(".")]
                 for fn in sorted(filenames):
-                    if fn.endswith(".md"):
-                        results.append(Path(dirpath) / fn)
+                    if fn.lower().endswith(".md"):
+                        _add(Path(dirpath) / fn)
     return results
 
 
@@ -96,7 +139,7 @@ def _check_work_toml_language(root: Path, emit: Any) -> None:
             if name and not CJK_RE.search(name):
                 emit(
                     "project_language_mismatch",
-                    "startup_disclaimers",
+                    "project_language_mismatch",
                     rel_work,
                     f'docs-policy.toml sets language = "zh", so milestone `{ms.get("id", "")}` name must be in plain Chinese.',
                     1,
@@ -106,7 +149,7 @@ def _check_work_toml_language(root: Path, emit: Any) -> None:
             if title and not CJK_RE.search(title):
                 emit(
                     "project_language_mismatch",
-                    "startup_disclaimers",
+                    "project_language_mismatch",
                     rel_work,
                     f'docs-policy.toml sets language = "zh", so task `{task.get("id", "")}` title must be in plain Chinese.',
                     1,
@@ -162,7 +205,7 @@ def check_plain_language(
         rel = fp.relative_to(root).as_posix()
         is_template = rel.startswith("templates/")
         is_code = fp.suffix.lower() in ui_exts
-        # Hedge phrases matter in rule documents agents follow; elsewhere a negation is ordinary prose (ADR-008).
+        # Hedge phrases matter in rule documents agents follow; elsewhere a negation is ordinary prose.
         is_rule_doc = not is_code and (rel in {"AGENTS.md", "docs/README.md"} or rel.startswith(("docs/contracts/", "docs/guides/", "templates/")))
         raw_text = fp.read_text(encoding="utf-8")
         if (
@@ -177,7 +220,7 @@ def check_plain_language(
             if prose and len(CJK_RE.findall(prose)) < 6:
                 emit(
                     "project_language_mismatch",
-                    "startup_disclaimers",
+                    "project_language_mismatch",
                     rel,
                     'docs-policy.toml sets language = "zh", so project documentation must contain substantial plain Chinese prose.',
                     1,
@@ -195,7 +238,7 @@ def check_plain_language(
                 for phrase in DISCLAIMER_CHAINS:
                     if phrase in scrubbed:
                         emit(
-                            "startup_disclaimer",
+                            "disclaimer_phrases",
                             "disclaimer_phrases",
                             rel,
                             f"`{phrase}` may start a chain of defensive hedges; if it does, state the scope directly.",
@@ -203,7 +246,14 @@ def check_plain_language(
                         )
             for term in BANNED_JARGON:
                 if term in scrubbed:
-                    emit("plain_language_jargon", "startup_disclaimers", rel, f"Uses coined buzzword `{term}`; replace with plain ordinary wording.", ln)
+                    emit(
+                        "plain_language_jargon",
+                        "plain_language_jargon",
+                        rel,
+                        f"Uses coined phrase `{term}`; prefer plain ordinary wording.",
+                        ln,
+                        default_sev="advisory",
+                    )
             if not is_template and not is_code and PLACEHOLDER_RE.search(re.sub(r"`[^`]*`", "", raw_line)):
                 emit("unresolved_placeholder", "broken_links_and_ids", rel, "Unresolved `{{...}}` template placeholder outside `templates/`.", ln)
 

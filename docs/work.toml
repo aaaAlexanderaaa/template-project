@@ -130,3 +130,24 @@ human_check = "pending"
 specs = ["discipline.entry-and-contracts", "discipline.templates", "graph.validator"]
 decisions = ["ADR-008"]
 sources = ["SRC-031", "SRC-032", "SRC-033", "SRC-034", "SRC-035"]
+
+[[tasks]]
+id = "T-209"
+milestone = "M-DIS-02"
+title = "Anchor discipline to goals and 4-layer complexity bounds, keep default rules positive and lean with 4 universal principles, and retain bounded glob/doc_roots/reminder fixes"
+state = "ready_for_check"
+human_check = "pending"
+specs = ["discipline.entry-and-contracts", "discipline.guides-and-skills", "discipline.templates", "graph.model", "graph.indexer", "graph.validator", "perspective.server", "ui.perspective-web"]
+decisions = ["ADR-009"]
+sources = ["SRC-036", "SRC-037"]
+selected_option = "Record meta-discipline and 4-layer complexity bounds (promise implies non-promise), add 4 universal info/research/data principles, revert framework-specific .astro parsing while keeping glob/doc_roots/jargon reminders, redact local tool/repo names"
+
+[[tasks]]
+id = "T-210"
+milestone = "M-DIS-02"
+title = "Package optional on-demand deep-research and positive-first plain-chinese-writing skills under .agents/skills/"
+state = "todo"
+human_check = "pending"
+specs = ["discipline.guides-and-skills"]
+decisions = []
+sources = ["SRC-031", "SRC-036", "SRC-037"]

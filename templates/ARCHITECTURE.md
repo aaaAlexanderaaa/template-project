@@ -12,6 +12,14 @@ stage: prototype
 State directly who uses this system, what measurable outcome it delivers, and
 which responsibilities stay outside its boundary.
 
+### Health Constraints
+
+List a small set of project-chosen health constraints next to the goal they
+serve, and adjust them sparingly against that goal:
+
+1. Keep every shared fact or state value owned by one authoritative file rather than duplicated across modules.
+2. Keep module boundaries explicit so changes stay local and verifiable.
+
 ## 2. End-to-End Runtime Flow & Failure Handling
 
 ```mermaid

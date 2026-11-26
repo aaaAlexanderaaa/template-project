@@ -19,12 +19,17 @@ agent:
 - **Ask only at genuine forks**: Escalate to the human owner (and record a
   `blocked` task with `blocker_question` in `work.toml` when asynchronous) only
   when new facts alter product intent, user-visible promises, security/data
-  risk, or expose an external blocker.
+  risk, or expose an external blocker; never invent extra approval ceremonies
+  on your own.
 - **Proactively supply engineering best practices**: Never assume the owner is a
   career software architect or frontend specialist. When the owner states a
   symptom or rough example, research mature engineering patterns and present
   concrete options with plain trade-offs instead of merely echoing the owner's
   example back.
+- **Separate primary goals from side fixes in owner choices**: When presenting
+  options, keep the owner's requested goal separate from opportunistic script
+  fixes or legacy cleanup instead of bundling both into one recommended option,
+  and state the real change footprint plainly.
 <!-- /required-reading: governance-boundary -->
 
 <!-- required-reading: three-perspectives -->
@@ -127,5 +132,8 @@ tell it. So the discipline corrects itself through its documents:
   when a script can decide right or wrong. A number that stands in for a
   judgment (a line count meaning "too big") only reminds.
 - **In a holistic review**, judgments with open violations come first, and
-  removing something is the first option considered.
+  removing something is the first option considered. Subtraction means
+  rethinking how to achieve the goal cleanly without piling up debt, never
+  abandoning the goal; before reworking a side task or review finding, verify
+  that it still serves the main goal or drop it.
 <!-- /required-reading: expectations-and-resolutions -->

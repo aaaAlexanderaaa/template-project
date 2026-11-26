@@ -284,7 +284,7 @@ flowchart TD
             self.assertIn("no-ui-in-core", codes)
             self.assertIn("file_size_budget", codes)
             self.assertIn("catchall_directory", codes)
-            self.assertIn("startup_disclaimer", codes)
+            self.assertIn("disclaimer_phrases", codes)
 
     def test_observed_adoption_stage_downgrades_legacy_debt_to_advisories(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -439,11 +439,131 @@ flowchart TD
             findings, _ = validate_project_graph(graph, strict=True)
             rules_by_path = {(f.rule_id, f.path) for f in findings}
             # A single negation in a design preview is ordinary prose, not a rule-document hedge (ADR-008).
-            self.assertNotIn(("startup_disclaimer", "docs/design/preview.html"), rules_by_path)
+            self.assertNotIn(("disclaimer_phrases", "docs/design/preview.html"), rules_by_path)
             self.assertIn(("project_language_mismatch", "docs/work.toml"), rules_by_path)
             self.assertIn(("project_language_mismatch", "docs/specs/core/work.toml"), rules_by_path)
             self.assertIn(("project_language_mismatch", "docs/specs/core/README.md"), rules_by_path)
             self.assertIn(("incomplete_spec_structure", "docs/specs/core/README.md"), rules_by_path)
+
+    def test_severity_keys_decoupled_from_startup_disclaimers(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _build_minimal_repo(root)
+            pol = (root / "docs-policy.toml").read_text(encoding="utf-8") + (
+                '\n[severity]\nstartup_disclaimers = "off"\n'
+            )
+            pol = pol.replace('identity = "product"', 'identity = "product"\nlanguage = "zh"')
+            _write(root, "docs-policy.toml", pol)
+            _write(root, "README.md", "# Demo\n使用上下文胶囊展示界面。\n")
+            _write(root, "docs/specs/ui.md", '---\nid: ui.view\ndomain: core\nowns: ["src/ui/**"]\nsources: [SRC-001]\npromise: UI.\n---\n# UI\nEnglish body only.\n')
+            graph = load_project_graph(root)
+            findings, _ = validate_project_graph(graph, strict=True)
+            rules = {(f.rule_id, f.severity) for f in findings}
+            # Wording heuristics remind without failing builds even under --strict (ADR-008, ADR-009).
+            self.assertIn(("plain_language_jargon", "advisory"), rules)
+            self.assertIn(("project_language_mismatch", "error"), rules)
+
+            pol_off = pol + 'plain_language_jargon = "off"\nproject_language_mismatch = "off"\n'
+            _write(root, "docs-policy.toml", pol_off)
+            graph2 = load_project_graph(root)
+            findings2, _ = validate_project_graph(graph2, strict=True)
+            rule_ids2 = {f.rule_id for f in findings2}
+            self.assertNotIn("plain_language_jargon", rule_ids2)
+            self.assertNotIn("project_language_mismatch", rule_ids2)
+
+    def test_recursive_double_star_globs_and_dynamic_route_paths(self) -> None:
+        from projectlib.model import match_path_pattern, normalize_doc_roots
+
+        # Unified POSIX glob semantics: [...], trailing /**, non-segment **/, leading ./, single *, dynamic routes
+        self.assertTrue(match_path_pattern("src/lib/nested/a.ts", "src/**/*.[jt]s"))
+        self.assertTrue(match_path_pattern("src/lib/a.js", "src/**/*.[jt]s"))
+        self.assertFalse(match_path_pattern("src/lib/a.py", "src/**/*.[jt]s"))
+        self.assertFalse(match_path_pattern("src", "src/**"))
+        self.assertFalse(match_path_pattern("src/foo", "src/foo/**"))
+        self.assertTrue(match_path_pattern("src/foo/a.ts", "src/foo/**/"))
+        self.assertFalse(match_path_pattern("src/ab.ts", "src/a**/b.ts"))
+        self.assertTrue(match_path_pattern("src/lib/site.ts", "./src/lib/**/*.ts"))
+        self.assertFalse(match_path_pattern("src/a/b/d/c.ts", "src/a/b/*.ts"))
+        self.assertFalse(match_path_pattern("src/a/b/d/c.ts", "src/**/b/*.ts"))
+        self.assertFalse(match_path_pattern("src/a/b.ts", "src/a[!x]b.ts"))
+        self.assertTrue(match_path_pattern("src/aXb.ts", "src/a[!x]b.ts"))
+        self.assertFalse(match_path_pattern("src/a]b.ts", "src/a[!]]b.ts"))
+        self.assertFalse(match_path_pattern("src/a-b.ts", "src/a[!-a]b.ts"))
+        self.assertTrue(match_path_pattern("src/aZb.ts", "src/a[!-a]b.ts"))
+        self.assertEqual(normalize_doc_roots(["/", "./hosts/", "."]), ("/", "hosts", "."))
+        self.assertTrue(match_path_pattern("src/pages/[post-id].tsx", "src/pages/[post-id].tsx"))
+        self.assertTrue(match_path_pattern("src/pages/[post-id]/index.tsx", "src/pages/[post-id]/**"))
+        self.assertTrue(match_path_pattern("src/pages/[post-id]/index.tsx", "src/pages/[post-id]/*.tsx"))
+        self.assertTrue(match_path_pattern("src/pages/[slug].tsx", "src/pages/[slug].tsx"))
+        self.assertTrue(match_path_pattern("src/pages/[slug]/index.tsx", "src/pages/[slug]/**"))
+        self.assertTrue(match_path_pattern("src/pages/[[slug]].tsx", "src/pages/[[slug]].tsx"))
+        self.assertTrue(match_path_pattern("src/pages/[...slug].tsx", "src/pages/[...slug].tsx"))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _build_minimal_repo(root)
+            _write(root, "docs/specs/secret.md", '---\nid: core.secret\ndomain: core\nowns: ["src/lib/**/*.[jt]s"]\ndepends_on: []\nsources: [SRC-001]\npromise: Lib.\n---\n# Lib\n')
+            _write(root, "docs/specs/pages.md", '---\nid: web.pages\ndomain: core\nowns: ["src/pages/**/*.tsx"]\ndepends_on: []\nsources: [SRC-001]\npromise: Pages.\n---\n# Pages\n')
+            _write(root, "src/lib/site.ts", "export const SITE = 1;\n")
+            _write(root, "src/lib/nested/helper.js", "// Role: Nested lib helper.\nexport const H = 2;\n")
+            _write(root, "src/pages/[post-id].tsx", '// Role: Dynamic route page.\nimport { SITE } from "../lib/site";\nexport const p = SITE;\n')
+            graph = load_project_graph(root)
+            findings, _ = validate_project_graph(graph)
+            by_rule_path = {(f.rule_id, f.path) for f in findings}
+            self.assertNotIn(("unclaimed_source", "src/lib/site.ts"), by_rule_path)
+            self.assertNotIn(("unclaimed_source", "src/pages/[post-id].tsx"), by_rule_path)
+            self.assertIn(("missing_role_header", "src/lib/site.ts"), by_rule_path)
+            self.assertIn(("undeclared_import", "src/pages/[post-id].tsx"), by_rule_path)
+
+    def test_optional_doc_roots_markdown_validation(self) -> None:
+        # 1. Explicit file and ./-prefixed subdirs tested independently without "." masking them
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _build_minimal_repo(root)
+            pol = (root / "docs-policy.toml").read_text(encoding="utf-8") + (
+                '\n[layout]\nsource_roots = ["src"]\ndoc_roots = ["RUNBOOK.md", "./hosts", "runbooks", "../outside"]\n'
+            )
+            _write(root, "docs-policy.toml", pol)
+            _write(root, "RUNBOOK.md", "# Ops Runbook\nSee [node](hosts/node1.md).\n")
+            _write(root, "hosts/node1.md", '# Node 1\nSee [missing](../runbooks/nope.md) and discipline_version = "2026.11.1".\n')
+            _write(root, "runbooks/deploy.md", "# Deploy\n使用上下文胶囊部署。\n")
+            _write(root, "hosts/archive/old.md", "# Old\nBroken [link](missing.md) ignored in archive.\n")
+            graph = load_project_graph(root)
+            findings, _ = validate_project_graph(graph)
+            by_rule_path = {(f.rule_id, f.path) for f in findings}
+            self.assertIn(("invalid_doc_root", "docs-policy.toml"), by_rule_path)
+            self.assertIn(("broken_link", "hosts/node1.md"), by_rule_path)
+            self.assertIn(("hardcoded_version", "hosts/node1.md"), by_rule_path)
+            self.assertIn(("plain_language_jargon", "runbooks/deploy.md"), by_rule_path)
+            self.assertNotIn(("broken_link", "hosts/archive/old.md"), by_rule_path)
+            doc_paths = {d.path: d.category for d in graph.repo_docs}
+            self.assertEqual(doc_paths.get("RUNBOOK.md"), "guide")
+            self.assertEqual(doc_paths.get("hosts/node1.md"), "guide")
+            self.assertEqual(doc_paths.get("docs-policy.toml"), "config")
+            self.assertNotIn("hosts/archive/old.md", doc_paths)
+
+        # 2. Root-wide "." doc_roots skips hidden/cache dirs and keeps .toml files as "config"
+        with tempfile.TemporaryDirectory() as tmp2:
+            root2 = Path(tmp2)
+            _build_minimal_repo(root2)
+            pol2 = (root2 / "docs-policy.toml").read_text(encoding="utf-8") + (
+                '\n[layout]\nsource_roots = ["src"]\ndoc_roots = ["."]\n'
+            )
+            _write(root2, "docs-policy.toml", pol2)
+            _write(root2, "RUNBOOK.md", "# Ops Runbook\nSee [missing](nope.md).\n")
+            _write(root2, ".github/pull_request_template.md", "# PR\nBroken [link](missing.md) skipped in hidden dir.\n")
+            _write(root2, ".astro/cache.md", "# Cache\nBroken [link](missing.md) skipped in hidden dir.\n")
+            graph2 = load_project_graph(root2)
+            findings2, _ = validate_project_graph(graph2)
+            by_rule_path2 = {(f.rule_id, f.path) for f in findings2}
+            self.assertIn(("broken_link", "RUNBOOK.md"), by_rule_path2)
+            self.assertNotIn(("broken_link", ".github/pull_request_template.md"), by_rule_path2)
+            self.assertNotIn(("broken_link", ".astro/cache.md"), by_rule_path2)
+            doc_paths2 = {d.path: d.category for d in graph2.repo_docs}
+            self.assertEqual(doc_paths2.get("RUNBOOK.md"), "guide")
+            self.assertEqual(doc_paths2.get("docs-policy.toml"), "config")
+            self.assertEqual(doc_paths2.get("docs/work.toml"), "config")
+            self.assertEqual(doc_paths2.get("docs/sources.toml"), "config")
 
 
 if __name__ == "__main__":

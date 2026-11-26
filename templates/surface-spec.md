@@ -42,5 +42,5 @@ sources:
 
 ## 5. Styles & Verification
 
-- **Style ownership**: {{`:root` tokens isolated in `tokens.css`; component CSS `<= 300` lines}}
+- **Style ownership**: {{`:root` tokens isolated in `tokens.css`; component CSS follows `max_style_lines` in `docs-policy.toml`}}
 - **Verification**: Verified against the pre-delivery self-check (`docs/contracts/frontend-and-visual-discipline.md#pre-delivery-ui-self-check`): principle checks, measured best-practice checks, and preference checks across `540px`, `800px`, `1280px`, and `2560px+`.

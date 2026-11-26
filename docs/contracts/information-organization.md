@@ -41,6 +41,11 @@ grouped, ordered, layered, named, and presented to the person reading it.
 4. **Say what the reader can do next**: End task-oriented pages with the next
    step, the owning file, or the decision that is waiting, rather than a
    restatement.
+5. **State the reader baseline and keep maintenance out of reader navigation**:
+   State the starting assumptions for standalone pieces and explain specialized
+   terms inline; in multi-part works build on earlier parts instead of
+   repeating introductions; keep planning gaps and maintenance todos in their
+   authoritative source rather than displacing reader-facing navigation.
 <!-- /required-reading: reader-task-first -->
 
 <!-- required-reading: organizing-schemes -->
@@ -86,6 +91,11 @@ grouped, ordered, layered, named, and presented to the person reading it.
    content into several branches.
 4. **Link instead of repeating**: When the same fact is needed in several
    places, keep it in one place and link to it with a one-line summary.
+5. **Separate stable structure from volatile catalogs**: When a body of
+   knowledge combines durable principles or system structure with a growing
+   list of individual items, keep them in separate linked layers and state
+   inclusion and retirement criteria for the volatile layer so item growth does
+   not bury the backbone.
 <!-- /required-reading: layering-and-disclosure -->
 
 <!-- required-reading: form-follows-content -->

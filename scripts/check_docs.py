@@ -24,7 +24,11 @@ else:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate single-source docs, code ownership, and import boundaries.")
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--strict", action="store_true", help="Promote advisories to errors.")
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Promote non-reminder advisories to errors (budget and wording reminders stay advisory).",
+    )
     parser.add_argument("--diff-base", default=None, help="Git ref to compute touched-module context against.")
     parser.add_argument("--format", choices=("text", "json"), default="text")
     args = parser.parse_args(argv)

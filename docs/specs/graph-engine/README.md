@@ -3,8 +3,8 @@ id: domain.graph-engine
 kind: domain-spec
 name: "Document & Code Graph Checker"
 stage: stable
-summary: "Subordinate repository checker that parses specs, inventories, and TOML ledgers; scans static imports and Git history; and verifies structural and language rules without hardcoding any host domain."
-promise: "Any repository using this discipline gets deterministic verification of links, file ownership, cross-module imports, line budgets, plain-language prose, and quote lineage without leaking template-project domain IDs."
+summary: "Bounded subordinate checker that parses specs, inventories, and TOML ledgers; checks universal structural facts and basic imports; and loads triggered rules without hardcoding host domains."
+promise: "Any repository using this discipline gets deterministic verification of universal structural facts (links, ID lineage, single-source version, path ownership, basic static imports, and non-blocking reminders) without leaking template-project domains or expanding into a framework-specific static analyzer."
 ---
 
 # Document & Code Graph Checker
@@ -43,6 +43,7 @@ flowchart TD
 | Static AST `import` graphs presented as system architecture | Show module dependencies as structural coupling only; document runtime logic and state separately | `docs/contracts/architecture-and-modularity.md` |
 | `validator.py` or `loader.py` mutating tracked project docs | Read-only checks report errors and exit status without altering `sources.toml` or specs | `validator.py` read-only check path |
 | `Core` importing `briefing_pack` or `server` | Headless `check_docs.py` runs with zero HTTP server or UI dependencies | Module `depends_on` graph |
+| Framework-specific template parsers inside core scanners | `scripts/` stays bounded to universal structural facts so most of its code serves its main promise; framework-specific syntax checks belong in native linters or target-repo scripts | `ARCHITECTURE.md` health constraints |
 
 ## 4. Entrypoints & Fitness Checks
 

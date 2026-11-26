@@ -11,7 +11,8 @@ from pathlib import Path
 
 from .frontmatter import extract_markdown_structure, parse_frontmatter
 from .git_telemetry import match_path_to_module
-from .model import DirectoryEntry, ModuleSpec, RepoDoc
+from .import_scanner import SOURCE_EXTS, STYLE_EXTS
+from .model import DirectoryEntry, ModuleSpec, RepoDoc, normalize_doc_roots
 
 IGNORE_WALK = {".git", "__pycache__", ".pytest_cache", "node_modules", ".venv", "venv", "dist", "build", "tmp"}
 TEXT_DOC_EXTS = {".md", ".toml", ".yml", ".yaml", ".html"}
@@ -22,7 +23,7 @@ KNOWN_DIRS: tuple[tuple[str, str, str, str, str], ...] = (
         "(root)",
         "根目录入口与配置",
         "Root Entry & Config",
-        "放置 AI 与人类协作者入口约定（AGENTS.md）、系统架构总览（ARCHITECTURE.md）、规则开关与文件上限配置（docs-policy.toml）。",
+        "放置 AI 与人类协作者入口约定（AGENTS.md）、系统架构总览（ARCHITECTURE.md）、规则开关与文件体积预算提醒配置（docs-policy.toml）。",
         "Entry agreement (AGENTS.md), system overview (ARCHITECTURE.md), and rule/budget config (docs-policy.toml).",
     ),
     (
@@ -139,7 +140,7 @@ _CAT_ORDER = {
 }
 
 
-def _classify_doc(rel: str) -> str:
+def _classify_doc(rel: str, doc_roots: tuple[str, ...] = ()) -> str:
     if rel in ("README.md", "README_CN.md", "AGENTS.md", "ARCHITECTURE.md", "CONTRIBUTING.md", "docs/README.md"):
         return "entry"
     if rel.startswith("docs/contracts/"):
@@ -156,6 +157,10 @@ def _classify_doc(rel: str) -> str:
         return "decision"
     if rel.startswith("templates/"):
         return "template"
+    if rel.lower().endswith(".md") and "archive" not in Path(rel).parts:
+        for dr in doc_roots:
+            if dr == "." or rel == dr or rel.startswith(dr + "/"):
+                return "guide"
     return "config"
 
 
@@ -220,7 +225,12 @@ def _extract_plain_summary(text: str, meta: dict, body: str) -> str:
     return pending_label or joined
 
 
-def _build_repo_doc(root: Path, fp: Path, modules: dict[str, ModuleSpec]) -> RepoDoc | None:
+def _build_repo_doc(
+    root: Path,
+    fp: Path,
+    modules: dict[str, ModuleSpec],
+    doc_roots: tuple[str, ...] = (),
+) -> RepoDoc | None:
     try:
         text = fp.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
@@ -284,7 +294,7 @@ def _build_repo_doc(root: Path, fp: Path, modules: dict[str, ModuleSpec]) -> Rep
     return RepoDoc(
         path=rel,
         title=title,
-        category=_classify_doc(rel),
+        category=_classify_doc(rel, doc_roots),
         summary=summary,
         body_markdown=(body if fp.suffix.lower() in (".md", ".html") else text).strip(),
         line_count=len(text.splitlines()),
@@ -351,7 +361,7 @@ def _dir_stats(root: Path, dir_rel: str, all_docs: dict[str, RepoDoc]) -> tuple[
             file_count += 1
             if rel in all_docs:
                 doc_paths.append(rel)
-            if fp.suffix.lower() in (TEXT_DOC_EXTS | {".py", ".js", ".ts", ".tsx", ".css", ".html"}):
+            if fp.suffix.lower() in (TEXT_DOC_EXTS | SOURCE_EXTS | STYLE_EXTS):
                 try:
                     total_lines += len(fp.read_text(encoding="utf-8", errors="ignore").splitlines())
                 except OSError:
@@ -362,19 +372,32 @@ def _dir_stats(root: Path, dir_rel: str, all_docs: dict[str, RepoDoc]) -> tuple[
 def index_repository_docs_and_dirs(
     root: Path,
     modules: dict[str, ModuleSpec],
+    doc_roots: tuple[str, ...] | list[str] | None = None,
 ) -> tuple[tuple[RepoDoc, ...], tuple[DirectoryEntry, ...]]:
     """Collect active repository documents and bilingual directory map entries."""
+    root_res = root.resolve()
+    norm_doc_roots = normalize_doc_roots(doc_roots)
     docs_list: list[RepoDoc] = []
     seen: set[str] = set()
+
+    def _in_repo(p: Path) -> Path | None:
+        try:
+            res = p.resolve()
+        except OSError:
+            return None
+        return res if res.is_relative_to(root_res) else None
 
     def _add_file(p: Path) -> None:
         if not p.is_file():
             return
-        rel = p.relative_to(root).as_posix()
+        res = _in_repo(p)
+        if res is None:
+            return
+        rel = res.relative_to(root_res).as_posix()
         if rel in seen:
             return
         seen.add(rel)
-        doc = _build_repo_doc(root, p, modules)
+        doc = _build_repo_doc(root, root / rel, modules, norm_doc_roots)
         if doc is not None:
             docs_list.append(doc)
 
@@ -402,10 +425,23 @@ def index_repository_docs_and_dirs(
         if child.name in ("docs", "templates", "tests", "examples", "archive", "scripts"):
             continue
         for dirpath, dirnames, filenames in os.walk(child):
-            dirnames[:] = [d for d in sorted(dirnames) if d not in IGNORE_WALK]
+            dirnames[:] = [d for d in sorted(dirnames) if d not in IGNORE_WALK and d != "archive" and not d.startswith(".")]
             for fn in sorted(filenames):
                 if fn.lower().endswith(".md"):
                     _add_file(Path(dirpath) / fn)
+
+    for dr in norm_doc_roots:
+        fp = root / dr
+        if _in_repo(fp) is None:
+            continue
+        if fp.is_file() and fp.suffix.lower() == ".md":
+            _add_file(fp)
+        elif fp.is_dir():
+            for dirpath, dirnames, filenames in os.walk(fp):
+                dirnames[:] = [d for d in sorted(dirnames) if d not in IGNORE_WALK and d != "archive" and not d.startswith(".")]
+                for fn in sorted(filenames):
+                    if fn.lower().endswith(".md"):
+                        _add_file(Path(dirpath) / fn)
 
     doc_by_path = {d.path: d for d in docs_list}
     entries: list[DirectoryEntry] = []

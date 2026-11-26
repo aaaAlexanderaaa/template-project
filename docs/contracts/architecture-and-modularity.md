@@ -16,6 +16,10 @@ concrete parts:
 
 1. **Positioning, Promises & Non-Goals (`ARCHITECTURE.md`)**: Who the system
    serves, what outcome it guarantees, and which work sits outside its boundary.
+   A stated promise also implies what the module does not promise: occasional
+   light help outside its core role must never turn it into a catch-all, and
+   most of a module's content and maintenance effort stays centered on its main
+   goal and promise.
 2. **End-to-End Runtime / Control Logic & Failure Paths**: How requests, state
    transitions, or governance gates run from trigger to completion, including
    failure handling and closed feedback loops (expressed as `mermaid` flowcharts

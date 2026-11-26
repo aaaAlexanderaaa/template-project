@@ -49,7 +49,10 @@ prose matching the owner's chosen language (never force another language onto th
 project, while keeping `docs/sources.toml` quotes verbatim):
 
 - Explain directly what each module or screen is, how it works, and what problem
-  it solves.
-- Ban coined jargon, metaphors, conflicting numbering on the same page, stacked
-  defensive disclaimers, and raw backend enum names in human-facing copy.
+  it solves, keeping standard technical terms natural and translating raw
+  backend enum names into ordinary words in human views.
+- State default rules positively (what good output looks like and where clear
+  boundaries lie) rather than piling negative examples into default-loaded docs;
+  keep page numbering consistent and state scope boundaries directly in one or
+  two plain sentences.
 <!-- /required-reading: language-standard -->

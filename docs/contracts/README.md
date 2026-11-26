@@ -4,7 +4,8 @@ Active engineering discipline is organized into focused contracts:
 
 1. [collaboration-and-governance.md](collaboration-and-governance.md) — Human vs
    engineering decision authority, three-perspective pre-code check, three-level
-   verbatim lineage, research fallbacks, and checks against metric drift.
+   verbatim lineage, research fallbacks, and the expectation-and-resolution
+   self-correction loop.
 2. [architecture-and-modularity.md](architecture-and-modularity.md) — Software
    architecture practices: top-down decomposition, single-owner state, explicit
    time and fixture isolation, module entrypoints, file role headers, line

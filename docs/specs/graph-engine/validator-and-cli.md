@@ -35,6 +35,6 @@ flowchart LR
 
 ## 3. State Ownership, Hard Constraints & Forbidden Couplings
 
-- **Full Markdown & Budget Scanning**: `collect_live_markdown_files` scans root entry files, `docs/`, `templates/`, and `.agents/` (excluding nested `archive/` directories), plus active `README.md` files under `tests/`, `src/`, `examples/*/`, and root `archive/README.md`. `read_rules.py onboard` reads `[budgets]` from target `docs-policy.toml` when present and flags catch-all `utils/`/`helpers/`/`common/`/`misc/` folders alongside `.mjs`/`.cjs` files.
+- **Full Markdown & Budget Scanning**: `collect_live_markdown_files` scans root entry files, `docs/`, `templates/`, `.agents/`, and optional repository-bounded `[layout].doc_roots` paths from `docs-policy.toml` (skipping nested `archive/`, hidden, and cache directories), plus active `README.md` files under `tests/`, `src/`, `examples/*/`, and root `archive/README.md`. `prose_checks.py` routes `project_language_mismatch` and reminder-only `plain_language_jargon` and `disclaimer_phrases` through separate severity keys. `read_rules.py onboard` reads `[budgets]` from target `docs-policy.toml` when present and flags catch-all `utils/`/`helpers/`/`common/`/`misc/` folders alongside `.mjs`/`.cjs` files.
 - **Forbidden couplings**: `validator.py` and CLI checkers stay read-only against project files (`never auto-edit specs`); `observed` onboarding mode must not break existing CI on legacy debt before explicit adoption.
 - **Verification**: Tested by `test_ssot_and_check_docs.py` and `test_read_rules_and_onboard.py`.

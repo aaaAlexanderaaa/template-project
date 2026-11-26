@@ -8,11 +8,10 @@ import ast
 import bisect
 import os
 import re
-from fnmatch import fnmatch
 from pathlib import Path
 
 from .frontmatter import has_inline_role_header
-from .model import FileStat, ImportEdge, ModuleSpec, ModuleTelemetry
+from .model import FileStat, ImportEdge, ModuleSpec, ModuleTelemetry, matches_any_pattern
 
 IGNORE_DIRS = {
     ".git",
@@ -39,13 +38,7 @@ RUST_MOD_RE = re.compile(r"""^\s*(?:pub\s+)?(?:mod\s+([a-zA-Z0-9_]+)\s*;|use\s+c
 
 
 def _matches_any(rel_path: str, patterns: list[str] | tuple[str, ...]) -> bool:
-    for pat in patterns:
-        norm = pat.rstrip("/")
-        if rel_path == norm or rel_path.startswith(norm + "/") or fnmatch(rel_path, pat):
-            return True
-        if pat.endswith("/**") and rel_path.startswith(pat[:-3] + "/"):
-            return True
-    return False
+    return matches_any_pattern(rel_path, patterns)
 
 
 def discover_governed_files(

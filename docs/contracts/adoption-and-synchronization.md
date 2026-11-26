@@ -79,11 +79,14 @@ already-adopted repository:
      tool directories added to `harness_paths`. Stage, budgets, collaboration
      mode, and every other setting stay as they are.
    - **Never touched**: `AGENTS.md`, `README.md`, `ARCHITECTURE.md`,
-     `docs/specs/**`, `docs/design/**`, `docs/decisions/**`,
+     `docs/README.md`, `docs/specs/**`, `docs/design/**`, `docs/decisions/**`,
      `docs/sources.toml`, `docs/work.toml`, and `architecture-rules.toml`.
-   - **Printed**: the full path of the template's `AGENTS.md` (or
-     `AGENTS.zh.md`) to compare with the project's own, and every Markdown line
-     that still hardcodes `discipline_version` (outside `docs/decisions/` and archives).
+   - **Printed**: the full paths of the template's `AGENTS.md` (or
+     `AGENTS.zh.md`) and `docs-readme.md` (or `docs-readme.zh.md`) to compare
+     with the project's own, any obsolete `startup_disclaimers` severity key
+     still in `docs-policy.toml`, and every Markdown line that still hardcodes
+     `discipline_version` (outside `docs/decisions/` and archives, including
+     configured `[layout].doc_roots`).
 3. Merge new or rewritten trigger rows from the printed template file into the
    project's `AGENTS.md`, and replace any hardcoded version with a pointer to
    `docs-policy.toml` (`check_docs.py` reports remaining copies as errors).
@@ -95,6 +98,35 @@ already-adopted repository:
 
 Newest first. Each entry lists only what an upgrading project should check.
 
+- **2026.11.4**
+  - Goal-anchored subtraction, promise-implies-non-promise, and 4-layer
+    complexity bounds are now explicit (`AGENTS.md`, `ARCHITECTURE.md`,
+    `architecture-and-modularity.md`, `collaboration-and-governance.md`):
+    subtraction rethinks how to meet the goal rather than abandoning it, owner
+    choices keep the main goal separate from opportunistic side fixes, each
+    module stays centered on its primary promise, and `scripts/` stays capped at
+    universal structural checks rather than framework-specific parsers.
+  - Compare your `docs/README.md` against the printed template `docs-readme`
+    file: default-loaded rules state positive outcomes and clear boundaries
+    rather than piling up negative examples (`docs/README.md#language-standard`).
+  - Added four concise universal principles: separating stable structure from
+    volatile catalogs and keeping maintenance out of reader navigation
+    (`information-organization.md`), discovering strong sources through
+    practitioners and checking counter-arguments (`research-and-access.md`), and
+    separating exact engineering facts from multi-definition open-domain data
+    without fabricated precision (`delivery-and-verification.md`).
+  - `plain_language_jargon` is now a non-blocking reminder alongside
+    `disclaimer_phrases` (which also replaces rule ID `startup_disclaimer`),
+    and `project_language_mismatch` uses its own `[severity]` key; remove any
+    obsolete `startup_disclaimers` entry from `docs-policy.toml`.
+  - `check_docs.py` and `project.py status` now use unified POSIX path globs
+    (`*` within a segment, `**` across directories, `[...]`) and support
+    optional repository-bounded `[layout].doc_roots` folders or files (such as
+    `["hosts", "runbooks"]`).
+  - Starter `ARCHITECTURE` templates now include a Health Constraints section,
+    and holistic `/grill` checks start with open expectation violations and
+    subtraction candidates (see "Judgments, Expectations & Three Resolutions" in
+    `collaboration-and-governance.md`).
 - **2026.11.3**
   - When a decision is recorded, also write its expectation: what should
     happen, and what would show it is wrong. When later work contradicts it,

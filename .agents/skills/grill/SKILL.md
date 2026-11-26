@@ -14,6 +14,8 @@ description: Challenge project direction, architecture, boundaries, UX, or Goodh
    - Before coding unapproved UX/product flows, grill the draft openly, present
      genuinely distinct architectural options, and pause (`blocked`) for owner
      approval instead of assuming consent.
+   - In holistic reviews, inspect judgments with open expectation violations
+     first and consider removing or simplifying rules before proposing additions.
    - Audit whether the repo centers on real operational logic, state ownership,
      hard constraints, forbidden couplings, downstream transfer fidelity, and
      plain unfamiliar-reader comprehension.

@@ -22,6 +22,11 @@ design trade-offs:
 3. **Translate into plain trade-offs**: Present the owner with clear options
    stating what each pattern is, how it works, what problem it solves, and what
    cost it adds at the project's current `stage`.
+4. **Follow strong sources through people and check the other side**: Reliable
+   insight usually traces back to specific practitioners and primary
+   communities. Expand source discovery outward along verified authors,
+   references, and recommendations, and check counter-arguments and later
+   developments rather than reading only one side.
 
 ## 2. Capability-Preserving Fallbacks
 

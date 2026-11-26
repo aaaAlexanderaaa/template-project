@@ -24,6 +24,7 @@ from .model import (
     SourceAnchor,
     ValidationFinding,
     WorkTask,
+    normalize_doc_roots,
 )
 
 STATE_REL_PATH = "tmp/project-state.json"
@@ -423,6 +424,7 @@ def load_project_graph(root: Path) -> ProjectGraph:
     layout_cfg = policy.get("layout", {})
     budgets_cfg = policy.get("budgets", {})
     source_roots = [str(s) for s in (layout_cfg.get("source_roots") or proj_cfg.get("source_roots") or ["src"])]
+    doc_roots = list(normalize_doc_roots(layout_cfg.get("doc_roots", [])))
     placeholders = {str(s) for s in layout_cfg.get("placeholder_names", ["README.md", ".gitkeep"])}
     harness_paths = [str(s) for s in layout_cfg.get("harness_paths", ["tests", "archive", "tmp"])]
     if identity != "template" and (root / "scripts" / "projectlib").is_dir() and not (root / "docs" / "specs" / "discipline").is_dir():
@@ -430,9 +432,11 @@ def load_project_graph(root: Path) -> ProjectGraph:
             if tool_hp not in harness_paths:
                 harness_paths.append(tool_hp)
     if not graph.modules and not any((root / s).exists() for s in source_roots):
-        skip_dirs = {"docs", "tmp", "archive", "tests", "templates", "examples", "node_modules", "__pycache__", "build", "dist", "venv"} | {
-            h.rstrip("/").split("/")[0] for h in harness_paths if "/" not in h.rstrip("/")
-        }
+        skip_dirs = (
+            {"docs", "tmp", "archive", "tests", "templates", "examples", "node_modules", "__pycache__", "build", "dist", "venv"}
+            | {h.rstrip("/").split("/")[0] for h in harness_paths if "/" not in h.rstrip("/")}
+            | {d.rstrip("/").split("/")[0] for d in doc_roots if d != "." and "/" not in d.rstrip("/")}
+        )
         if (root / "scripts" / "projectlib").is_dir():
             skip_dirs.add("scripts")
         auto_roots = [d.name for d in sorted(root.iterdir()) if d.is_dir() and not d.name.startswith(".") and d.name not in skip_dirs]
@@ -477,5 +481,5 @@ def load_project_graph(root: Path) -> ProjectGraph:
     graph.module_telemetry = telemetry
     graph.git_summary["file_claims"] = claims_map
 
-    graph.repo_docs, graph.directory_map = index_repository_docs_and_dirs(root, graph.modules)
+    graph.repo_docs, graph.directory_map = index_repository_docs_and_dirs(root, graph.modules, doc_roots=doc_roots)
     return graph

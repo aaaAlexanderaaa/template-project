@@ -18,7 +18,7 @@ sources:
 
 ## 1. Purpose, Public Interface & Non-Goals
 
-- **Public interface**: Dataclasses (`ProjectGraph`, `DomainSpec`, `ModuleSpec`, `DecisionRecord`, `SourceAnchor`, `Milestone`, `WorkTask`, `ValidationFinding`), `parse_frontmatter`, `extract_markdown_structure`, `has_inline_role_header`, and `RuleRepository`.
+- **Public interface**: Dataclasses (`ProjectGraph`, `DomainSpec`, `ModuleSpec`, `DecisionRecord`, `SourceAnchor`, `Milestone`, `WorkTask`, `ValidationFinding`), `module_source_refs`, `match_path_pattern`, `matches_any_pattern`, `normalize_doc_roots`, `parse_frontmatter`, `extract_markdown_structure`, `has_inline_role_header`, and `RuleRepository`.
 - **Out of scope**: Disk filesystem walks, Git subprocess calls, HTTP handling, or TOML writes.
 
 ## 2. Parsing & Digest-Verified Rule Flow

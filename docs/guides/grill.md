@@ -30,6 +30,9 @@ design work:
 
 ## 2. Core Holistic Grill Questions
 
+Start by inspecting judgments with open expectation violations ([collaboration-and-governance.md](../contracts/collaboration-and-governance.md#expectations-and-resolutions)), and
+consider removing or simplifying rules before proposing additions:
+
 1. **Goal vs proxy drift**: Does this deliverable achieve the owner's verbatim
    goals (`docs/sources.toml`), or did the team optimize a local metric (like
    doc indexing or unit-test counts) at the cost of the primary mission?
@@ -60,11 +63,13 @@ Follow [delivery-and-verification.md](../contracts/delivery-and-verification.md#
 ```text
 Inspect this repository independently from first principles against the owner's
 verbatim requests in `docs/sources.toml` and current engineering agreements.
-Do not stop at local script or code checks. Examine overall repository identity,
-system architecture (logic, state ownership, boundaries, hard constraints),
-cross-document consistency, downstream transferability (`templates/`, `init`,
-`onboard`), and actual usability for an unfamiliar reader. Report every major
-gap, contradiction, or misaligned assumption in plain language with file evidence.
+Start by inspecting judgments with open expectation violations and consider
+removing or simplifying rules before proposing additions. Do not stop at local
+script or code checks. Examine overall repository identity, system architecture
+(logic, state ownership, boundaries, hard constraints), cross-document
+consistency, downstream transferability (`templates/`, `init`, `onboard`), and
+actual usability for an unfamiliar reader. Report every major gap, contradiction,
+or misaligned assumption in plain language with file evidence.
 ```
 
 - **Complementary review angles** (use at least two for milestone reviews):
@@ -110,8 +115,8 @@ itself guides a fresh AI agent cleanly** across five standing scenarios:
    and working path immediately, with zero heavy subagent review ceremony.
 2. **Scenario 2: Growing State & CSS Modularization** — Ask a fresh agent to add
    a feature and UI component in a `usable` repo. Expected: single owner for shared
-   state, component-scoped styles referencing `tokens.css`, split before crossing
-   line budgets, and `check_docs.py` clean.
+   state, component-scoped styles referencing `tokens.css`, split by responsibility
+   when files grow past line budget reminders, and `check_docs.py` clean.
 3. **Scenario 3: Proactive Architecture & Constraints for Non-Architect Prompts** —
    Give a brief, informal domain request from a non-architect owner. Expected:
    agent supplies concrete boundaries, failure handling, single-owner state, and

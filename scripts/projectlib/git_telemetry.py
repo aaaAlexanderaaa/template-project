@@ -7,11 +7,10 @@ from __future__ import annotations
 import hashlib
 import re
 import subprocess
-from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any
 
-from .model import ModuleSpec
+from .model import ModuleSpec, matches_any_pattern
 
 
 def _run_git(root: Path, args: list[str]) -> tuple[int, str]:
@@ -84,12 +83,8 @@ def get_working_tree_digest(root: Path) -> str:
 
 def match_path_to_module(rel_path: str, modules: dict[str, ModuleSpec]) -> str | None:
     for mod_id, spec in modules.items():
-        for pattern in spec.owns:
-            norm = pattern.rstrip("/")
-            if rel_path == norm or fnmatch(rel_path, pattern):
-                return mod_id
-            if pattern.endswith("/**") and rel_path.startswith(pattern[:-3] + "/"):
-                return mod_id
+        if matches_any_pattern(rel_path, spec.owns):
+            return mod_id
     return None
 
 

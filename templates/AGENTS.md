@@ -9,7 +9,8 @@ intact as the codebase grows.
 
 1. **Data safety and the requested outcome**: Protect user data, credentials,
    and destructive boundaries, and deliver working results rather than empty
-   checklists.
+   checklists; never let local checklists, side fixes, or mechanical subtraction
+   replace the stated goal.
 2. **Shared vocabulary and single source of truth**: Give every concept one
    name and every state value, config threshold, or promise one authoritative
    file.
@@ -44,7 +45,7 @@ intact as the codebase grows.
 | Shared value across memory, DB, API, DOM, URL, or config | Assign one authoritative owner and compute derived views mechanically (`docs/contracts/architecture-and-modularity.md#single-source-of-state`). |
 | Product direction, interaction flow, or UI layout (`docs/design/`) | Before any product or UI design work, read `python3 scripts/read_rules.py prepare --concern frontend`. Principles and the measurable WCAG 2.2 AA baseline always outrank style preferences (the shipped default is the calm-platter style: light gray canvas, one white content panel), and no UI code is written before the owner records approval of a design option after a pre-code `/grill`. |
 | Organizing information for readers (doc structure, navigation, screen content, knowledge or reference content) | Before structuring docs, screens, or knowledge content, read `python3 scripts/read_rules.py prepare --concern information`. Start from the reader's task and put the answer first. |
-| Source files and CSS growth | Before adding files or growing one, read `python3 scripts/read_rules.py prepare --concern architecture` (and `--concern css` for styles). Every source and style file claimed by a spec's `owns` starts with a `# Role:` header, and files are split by responsibility before they pass the line budgets in `docs-policy.toml`, never by squeezing lines. |
+| Source files and CSS growth | Before adding files or growing one, read `python3 scripts/read_rules.py prepare --concern architecture` (and `--concern css` for styles). Every source and style file claimed by a spec's `owns` starts with a `# Role:` header; split files by responsibility when they grow past the line-budget reminders in `docs-policy.toml`, never by squeezing lines. |
 | Substantive owner quote, trade-off, or direction change | Read `python3 scripts/read_rules.py prepare --concern lineage`. Record the owner's exact words in `docs/sources.toml`; a quote behind a cross-module decision goes only into that ADR's `sources` with `affects`, never copied into module specs (`check_docs.py` reports copies). |
 | Task execution, review cadence, or unattended mode | Read `python3 scripts/read_rules.py prepare --concern verification`. Finish authorized tasks with real verification scaled to the domain `stage` and `[collaboration]` mode (`unattended` stays inside `templates/charter.md`); the owner decides when to run `/grill`, and agents only remind. |
 | Independent review or verification | Load `.agents/skills/grill/SKILL.md` and read `python3 scripts/read_rules.py prepare --concern review`. Reviewers work in a fresh context without the author's explanations and report findings; the owner decides status. |
@@ -73,5 +74,5 @@ intact as the codebase grows.
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/check_docs.py   # add --strict in CI once the project is stable: advisories then fail the run
+python3 scripts/check_docs.py   # add --strict in CI once stable: non-reminder advisories fail the run; reminder checks stay advisory
 ```

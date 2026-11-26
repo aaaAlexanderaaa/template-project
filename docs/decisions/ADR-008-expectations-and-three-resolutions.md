@@ -81,6 +81,18 @@ supersedes: []
 - **Expectation for this decision**: holistic reviews start ending in removed
   or loosened rules, and the discipline text does not grow because of this
   ADR. *Wrong if* reviews keep producing only additions.
+- **Observed violation & resolution (2026-11-26, `SRC-037`)**:
+  - *Observed*: During a release meant to distill cross-project lessons into
+    discipline, subtraction was applied mechanically by dropping the core
+    discipline edits to zero while an opportunistic helper-script side task
+    (including framework-specific `.astro` parsing) grew to 40+ files across
+    three review loops.
+  - *Resolution (Stronger description & revise expectation)*: Subtraction means
+    rethinking how to meet the goal cleanly without piling up debt, never
+    abandoning the goal; before reworking a side task or review finding, check
+    whether it serves the original goal or should be cut. Helper scripts stay
+    capped at universal structural facts, and a module's stated promise also
+    implies what it does not promise (applied in `ADR-009`).
 
 - **Rejected alternatives**:
   - A total size cap for the discipline: a fixed number is what `SRC-032`

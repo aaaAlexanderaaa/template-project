@@ -6,14 +6,13 @@ from __future__ import annotations
 
 import re
 import tomllib
-from fnmatch import fnmatch
 from pathlib import Path
 from typing import Any
 from urllib.parse import unquote, urlsplit
 
 from .frontmatter import extract_markdown_structure
 from .git_telemetry import get_working_changed_files, match_path_to_module
-from .model import ProjectGraph, ValidationFinding, module_source_refs
+from .model import ProjectGraph, ValidationFinding, matches_any_pattern, module_source_refs, normalize_doc_roots
 from .prose_checks import (
     BANNED_JARGON,
     DISCLAIMER_CHAINS,
@@ -31,10 +30,18 @@ TEMPLATE_REMOTE_SLUG = "github.com/aaaalexanderaaa/template-project"
 HARDCODED_VERSION_RE = re.compile(r'discipline_version\s*=\s*"(\d+(?:\.\d+)+)"')
 
 
-def find_hardcoded_versions(root: Path, md_files: list[Path] | None = None) -> list[tuple[str, int, str]]:
+def _policy_doc_roots(policy: dict[str, Any] | None) -> list[str]:
+    return list(normalize_doc_roots((policy or {}).get("layout", {}).get("doc_roots", [])))
+
+
+def find_hardcoded_versions(
+    root: Path,
+    md_files: list[Path] | None = None,
+    doc_roots: list[str] | tuple[str, ...] | None = None,
+) -> list[tuple[str, int, str]]:
     """Return `(relative path, line number, version)` for every Markdown line that copies `discipline_version`."""
     hits: list[tuple[str, int, str]] = []
-    for mp in md_files if md_files is not None else collect_live_markdown_files(root):
+    for mp in md_files if md_files is not None else collect_live_markdown_files(root, doc_roots):
         rel_md = mp.relative_to(root).as_posix()
         if rel_md.startswith("docs/decisions/"):
             continue  # decision records may name the version that was current back then
@@ -54,13 +61,7 @@ def _normalize_remote(url: str) -> str:
 
 
 def _matches_managed(path: str, managed_paths: list[str]) -> bool:
-    for pat in managed_paths:
-        norm = pat.rstrip("/")
-        if path == norm or path.startswith(norm + "/") or fnmatch(path, pat):
-            return True
-        if pat.endswith("/**") and path.startswith(pat[:-3] + "/"):
-            return True
-    return False
+    return matches_any_pattern(path, managed_paths)
 
 
 # Checks deferred while the governing `stage` is `prototype` (0->0.1).
@@ -72,8 +73,8 @@ ENFORCE_KEYS = (
     "catchall_directories",
     "unknown_task_specs",
 )
-# A number or wording that stands in for a judgment only reminds, even under --strict (ADR-008).
-REMINDER_KEYS = ("file_size_budget", "catchall_directories", "disclaimer_phrases")
+# A number or wording heuristic that stands in for a judgment only reminds, even under --strict.
+REMINDER_KEYS = ("file_size_budget", "catchall_directories", "disclaimer_phrases", "plain_language_jargon")
 
 
 def _deferred_by_stage(graph: ProjectGraph, key: str, path: str) -> bool:
@@ -232,7 +233,21 @@ def validate_project_graph(
             )
 
     # 4. Markdown relative link & heading fragment resolution (excluding archive/)
-    md_files = collect_live_markdown_files(root)
+    doc_roots = _policy_doc_roots(graph.policy)
+    root_res = root.resolve()
+    for dr in doc_roots:
+        try:
+            dr_res = (root / dr).resolve()
+        except OSError:
+            dr_res = None
+        if dr_res is None or not dr_res.is_relative_to(root_res):
+            emit(
+                "invalid_doc_root",
+                "broken_links_and_ids",
+                "docs-policy.toml",
+                f"`[layout].doc_roots` entry `{dr}` resolves outside the repository root and was skipped.",
+            )
+    md_files = collect_live_markdown_files(root, doc_roots)
     for rel_md, ln_md, ver in find_hardcoded_versions(root, md_files):
         emit(
             "hardcoded_version",
@@ -334,7 +349,7 @@ def validate_project_graph(
         dir_parts = {p.lower() for p in Path(fs.path).parts[:-1]}
         hit_banned = sorted(dir_parts & banned_dirs)
         if hit_banned:
-            emit("catchall_directory", "catchall_directories", fs.path, f"Catch-all directory name `{hit_banned[0]}` is disallowed; name packages by capability.")
+            emit("catchall_directory", "catchall_directories", fs.path, f"Catch-all directory name `{hit_banned[0]}` is vague; consider naming packages by capability.")
 
     # 8. Plain-language, coined-jargon, disclaimer-chain, project-language, placeholder & spec structure checks
     check_plain_language(root, md_files, graph.files, emit, graph.policy)
@@ -375,9 +390,9 @@ def _check_architecture_rules_manifest(root: Path, files: tuple[Any, ...], emit:
         excludes = [str(p) for p in rule.get("exclude", [])]
         forbidden = [str(p) for p in rule.get("forbidden_patterns", [])]
         for fs in files:
-            if not any(fnmatch(fs.path, pat) for pat in includes):
+            if not matches_any_pattern(fs.path, includes):
                 continue
-            if any(fnmatch(fs.path, pat) for pat in excludes):
+            if matches_any_pattern(fs.path, excludes):
                 continue
             try:
                 text = (root / fs.path).read_text(encoding="utf-8")

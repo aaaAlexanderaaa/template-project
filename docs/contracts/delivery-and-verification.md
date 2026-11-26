@@ -31,7 +31,9 @@ Before claiming a task is ready:
 
 1. **Promise → Observation**: Exercise the real runtime entrypoint (CLI, HTTP
    endpoint, or UI flow) for every promised user outcome and verify exit status,
-   persisted state, and rendered output.
+   persisted state, and rendered output. Write checks against expected behavior
+   rather than broken current state, and verify rendered UIs in a real browser
+   across widths rather than mocked DOM tests alone.
 2. **Observation → Unintended Side Effects**: Check actual external effects
    (`git status`, written files, network/process side effects, layout bounds,
    error states) to confirm nothing extra broke, leaked, or silently failed.
@@ -90,7 +92,9 @@ four conditions together, plus the remaining conditions whenever they apply:
 3. **Architecture, consistency & outcome scope**: Examine whole-system
    boundaries, single-source ownership, operational logic, hard constraints, plain
    language, and whether downstream adopters or unfamiliar readers actually get
-   the intended value—rather than stopping at local code syntax.
+   the intended value—rather than stopping at local code syntax. Check judgments
+   with open expectation violations first and consider removing or simplifying
+   rules before proposing additions.
 4. **Closed-loop re-verification**: After fixing issues raised by an independent
    review, re-verify from both ends:
    - Return to the **original reviewer context** (when still open) with the
@@ -125,9 +129,10 @@ four conditions together, plus the remaining conditions whenever they apply:
    findings are resolved and the owner confirms; the author never upgrades a
    conditional result to a pass on their own.
 8. **Vary the angle**: A neutral comprehension question, a deliberately
-   critical question, and a comparison across the whole collection surface
-   different problems. Use at least two angles for milestone reviews; a useful
-   finding from one angle keeps its value without a vote.
+   critical question, a comparison across the whole collection, or a hands-on
+   usage walkthrough surface different problems. Use at least two angles for
+   milestone reviews; a useful finding from one angle keeps its value without a
+   vote.
 <!-- /required-reading: independent-review-definition -->
 
 <!-- required-reading: discipline-and-transfer-verification -->
@@ -147,3 +152,4 @@ Whenever metrics, telemetry, or data-processing outputs are produced or displaye
 - Record the authoritative raw input source and computation command.
 - State explicit filtering, exclusion, or sampling criteria rather than hiding caveats.
 - Never silently drop invalid or anomalous inputs; surface explicit counts or errors so numbers remain reproducible.
+- Separate exact, reproducible engineering facts from open-domain or multi-definition data (such as history, industry, or social research): present differing sources and premises side by side, drop clear errors, and never fabricate false precision or hand-tuned composite scores.

@@ -409,10 +409,11 @@ class ProjectCliAndServerTests(unittest.TestCase):
             self.assertEqual(status2.returncode, 0, status2.stdout + status2.stderr)
             self.assertIn("+0 commits", status2.stdout)
 
-            # 3. --sync preserves review_anchor_sha, inserts missing harness_paths/discipline_version, skips example starter, prints Synced
+            # 3. --sync preserves review_anchor_sha, inserts missing harness_paths/discipline_version, skips example starter, prints Synced + docs/README & legacy severity notices
             old_pol = re.sub(r'^\s*(?:discipline_version|review_anchor_sha)\s*=.*\r?\n?', "", pol2, flags=re.MULTILINE)
             old_pol = re.sub(r'harness_paths\s*=\s*\[.*?\]\r?\n?', "", old_pol, flags=re.S)
-            old_pol = old_pol.replace("[collaboration]\n", '[collaboration]\nreview_anchor_sha = "abc1234"\n', 1) + "\n# custom_marker\n"
+            old_pol = old_pol.replace("[collaboration]\n", '[collaboration]\nreview_anchor_sha = "abc1234"\n', 1)
+            old_pol = old_pol.replace('disclaimer_phrases = "advisory"', 'startup_disclaimers = "error"') + "\n# custom_marker\n"
             (repo2 / "docs-policy.toml").write_text(old_pol, encoding="utf-8")
             res_sync = subprocess.run(
                 [sys.executable, str(SCRIPTS_DIR / "project.py"), "init", "--target", str(repo2), "--sync"],
@@ -421,6 +422,8 @@ class ProjectCliAndServerTests(unittest.TestCase):
             self.assertEqual(res_sync.returncode, 0, res_sync.stdout + res_sync.stderr)
             self.assertIn("Synced", res_sync.stdout)
             self.assertIn("AGENTS.md", res_sync.stdout)
+            self.assertIn("docs-readme.md", res_sync.stdout)
+            self.assertIn("startup_disclaimers", res_sync.stdout)
             import tomllib
             expected_ver = tomllib.loads((ROOT / "docs-policy.toml").read_text(encoding="utf-8"))["discipline_version"]
             synced_pol = (repo2 / "docs-policy.toml").read_text(encoding="utf-8")
@@ -464,6 +467,7 @@ class ProjectCliAndServerTests(unittest.TestCase):
             self.assertEqual(sync_empty.returncode, 0, sync_empty.stdout + sync_empty.stderr)
             self.assertIn("usable", sync_empty.stdout)
             self.assertNotIn("New Project", sync_empty.stdout)
+            self.assertNotIn("preserved existing docs/README.md", sync_empty.stdout)
             self.assertFalse((nospec / "docs" / "specs" / "example").exists())
             self.assertFalse((nospec / "src" / "example").exists())
             self.assertFalse((nospec / "tests" / "test_smoke.py").exists())

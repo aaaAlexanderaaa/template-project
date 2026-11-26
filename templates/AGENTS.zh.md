@@ -4,7 +4,7 @@
 
 ## 1. 优先级顺序
 
-1. **数据安全与交付目标**：保护用户数据、凭据与破坏性边界，交付可实际运行的真实结果，不拿清单充当完工。
+1. **数据安全与交付目标**：保护用户数据、凭据与破坏性边界，交付可实际运行的真实结果，不拿清单充当完工；不能因为机械照做局部检查项、顺手修杂活或做减法而丢掉原始目标。
 2. **统一用语与唯一真源**：每个核心概念只用一个名字，每项状态值、阈值或对外承诺只保留一个唯一权威源文件。
 3. **先用平实直接的中文、写清边界与拆分样式**：本项目的文档、规格、决策记录、产品自身命令行输出与报错文案（遵循 `docs/README.md#language-standard`）直接说明对象是什么、怎么工作、解决什么问题（模板配套的 `scripts/*.py` 仓库检查工具提供中文状态概览与开发者诊断提示）；模块规格 `owns` 认领的每个源码与样式文件开头都写 `# Role:` 职责头注释；样式按底层变量与组件目录隔离。
 4. **按成熟度与协作模式分级的真实验收**：根据域阶段（`prototype` 0->0.1、`usable` 0.1->1、`stable` 1->N）及 `docs-policy.toml` 中的 `[collaboration]` 模式（`interactive` 交互或受 `templates/charter.md` 约束的 `unattended` 无人值守）执行端到端验证。
@@ -25,7 +25,7 @@
 | 跨内存/数据库/API/DOM/URL/配置的共享状态 | 指定唯一权威真源，其余视图由真源计算得到（见 `docs/contracts/architecture-and-modularity.md#single-source-of-state`）。 |
 | 产品方向、交互流程或 UI 界面方案（`docs/design/`） | 做任何产品或界面设计前，先运行 `python3 scripts/read_rules.py prepare --concern frontend` 阅读规则。原则和可测量的 WCAG 2.2 AA 底线永远优先于风格偏好（随模板下发的默认风格是 calm-platter：浅灰底、单块白色内容面板）；做完写码前 `/grill` 并拿到负责人有记录的方案批准之前，不写界面代码。 |
 | 为读者组织信息（文档结构、导航、界面内容、知识或参考内容） | 组织文档、界面或知识内容前，先运行 `python3 scripts/read_rules.py prepare --concern information` 阅读规则。从读者的任务出发，结论先行。 |
-| 新增文件、源码或样式膨胀 | 新增或扩写文件前，先运行 `python3 scripts/read_rules.py prepare --concern architecture`（样式另加 `--concern css`）。规格 `owns` 认领的每个源码与样式文件开头写 `# Role:` 头注释；在超过 `docs-policy.toml` 的行数上限之前按职责拆分，不能靠把代码挤成更少的行。 |
+| 新增文件、源码或样式膨胀 | 新增或扩写文件前，先运行 `python3 scripts/read_rules.py prepare --concern architecture`（样式另加 `--concern css`）。规格 `owns` 认领的每个源码与样式文件开头写 `# Role:` 头注释；当文件超出 `docs-policy.toml` 的行数预算提醒值时按职责判断是否拆分，不靠压缩代码行凑数。 |
 | 影响项目方向的新要求、权衡决策或变更 | 先运行 `python3 scripts/read_rules.py prepare --concern lineage`。把负责人原话写入 `docs/sources.toml`；支撑跨模块决策的原话只写进该 ADR 的 `sources` 并填好 `affects`，不要再抄进模块规格（`check_docs.py` 会报出重复）。 |
 | 任务执行、审查节奏或无人值守模式 | 先运行 `python3 scripts/read_rules.py prepare --concern verification`。完整交付并按领域阶段和 `[collaboration]` 模式做真实验证（`unattended` 不越出 `templates/charter.md`）；何时做 `/grill` 由负责人决定，agent 只提醒。 |
 | 独立评审与整体验收 | 加载 `.agents/skills/grill/SKILL.md`，并运行 `python3 scripts/read_rules.py prepare --concern review`。评审方在没看过作者解释的全新上下文中工作，只报告发现，状态由负责人决定。 |
@@ -48,5 +48,5 @@
 
 ```bash
 python3 -m unittest discover -s tests -p 'test_*.py'
-python3 scripts/check_docs.py   # 项目稳定后在 CI 里加 --strict：提醒级问题也会让检查失败
+python3 scripts/check_docs.py   # 项目稳定后可在 CI 加 --strict：非提醒类建议会阻断检查，预算与措辞类提醒仍不阻断构建
 ```

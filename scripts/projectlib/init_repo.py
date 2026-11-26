@@ -15,6 +15,7 @@ from pathlib import Path
 
 from .cli_format import fmt_stage
 from .import_scanner import SOURCE_EXTS, STYLE_EXTS
+from .model import normalize_doc_roots
 from .checkout_sanitizer import sanitize_copied_checkout, strip_internal_anchors
 from .validator import TEMPLATE_REMOTE_SLUG, _normalize_remote, find_hardcoded_versions
 
@@ -239,6 +240,8 @@ def run_init_command(
         policy_file.write_text(_ensure_harness_paths_in_toml(base_policy), encoding="utf-8")
 
     overwrite_starters = is_copied_checkout and not sync
+    had_agents = agents_dst.is_file()
+    had_doc_readme = (target / "docs" / "README.md").is_file()
     copy_map = (
         ("AGENTS.zh.md" if lang == "zh" else "AGENTS.md", "AGENTS.md"),
         ("docs-readme.zh.md" if lang == "zh" else "docs-readme.md", "docs/README.md"),
@@ -409,12 +412,20 @@ def run_init_command(
 
     if sync:
         tpl_ag = (template_root / "templates" / ("AGENTS.zh.md" if lang == "zh" else "AGENTS.md")).resolve()
-        kept_agents = agents_dst.is_file() and not replace_template_agents
-        stale = find_hardcoded_versions(target)
+        tpl_doc_readme = (template_root / "templates" / ("docs-readme.zh.md" if lang == "zh" else "docs-readme.md")).resolve()
+        kept_agents = had_agents and not replace_template_agents
+        kept_doc_readme = had_doc_readme and not overwrite_starters
+        legacy_severity = "startup_disclaimers" in (existing_cfg.get("severity") or {})
+        doc_roots = list(normalize_doc_roots(existing_cfg.get("layout", {}).get("doc_roots", [])))
+        stale = find_hardcoded_versions(target, doc_roots=doc_roots)
         if lang == "zh":
             print(f"已同步工程纪律：{target}（版本={tpl_version}，阶段={fmt_stage(stage, 'zh')}）。")
             if kept_agents:
                 print(f"提示：已保留目标仓库现有的 AGENTS.md。请对照模板文件 {tpl_ag}，合并新增或改写的触发规则行。")
+            if kept_doc_readme:
+                print(f"提示：已保留目标仓库现有的 docs/README.md。如需同步语言规范更新，可对照 {tpl_doc_readme}。")
+            if legacy_severity:
+                print("提示：docs-policy.toml 中的旧键 startup_disclaimers 已由 disclaimer_phrases、plain_language_jargon 和 project_language_mismatch 替代，可按需清理。")
             if stale:
                 print("提示：以下位置仍写死了 discipline_version。版本号只记录在 docs-policy.toml，请改为指向该文件（check_docs.py 会把它们报为错误）：")
                 for rel_md, ln_md, ver in stale:
@@ -423,6 +434,10 @@ def run_init_command(
             print(f"Synced engineering discipline in {target} (discipline_version={tpl_version}, {fmt_stage(stage, lang)}).")
             if kept_agents:
                 print(f"Note: preserved existing AGENTS.md; compare it with the template file {tpl_ag} and merge new or rewritten trigger rows.")
+            if kept_doc_readme:
+                print(f"Note: preserved existing docs/README.md; compare it with {tpl_doc_readme} when updating language rules.")
+            if legacy_severity:
+                print("Note: legacy severity key `startup_disclaimers` in docs-policy.toml was replaced by `disclaimer_phrases`, `plain_language_jargon`, and `project_language_mismatch`.")
             if stale:
                 print("Note: these lines still hardcode discipline_version. The value lives only in docs-policy.toml; point there instead (check_docs.py reports them as errors):")
                 for rel_md, ln_md, ver in stale:

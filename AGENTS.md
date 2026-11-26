@@ -11,7 +11,8 @@ Apply these priorities in order whenever requirements pull against each other:
 
 1. **Data safety and the requested outcome**: Protect user data, credentials,
    and destructive boundaries, and deliver the working result the owner asked
-   for rather than extra paperwork.
+   for rather than extra paperwork; never let local checklists, side fixes, or
+   mechanical subtraction replace the stated goal.
 2. **Shared vocabulary and single source of truth**: Give each concept one name
    and give every fact, state value, or threshold one authoritative owner file.
 3. **Module boundaries, file role headers, and isolated styles**: Keep modules
@@ -49,7 +50,7 @@ Apply the linked rule whenever your work touches the object below:
 |---|---|
 | Any text read by humans or later AI sessions (`README.md`, `ARCHITECTURE.md`, specs, ADRs, CLI output, error messages, UI copy) | Use plain, direct language matching the project's chosen language: state what the object is, how it works, and what problem it solves; avoid coined jargon, stacked disclaimers, and raw enum tokens. Owner: [docs/README.md](docs/README.md#language-standard) |
 | Any value read in more than one place (DB, API, memory, DOM, URL, or config) | Assign one authoritative owner and compute downstream copies mechanically. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md#single-source-of-state) |
-| Creating a file, adding a new responsibility, or growing code/CSS | Before adding files or growing one, read `python3 scripts/read_rules.py prepare --concern architecture` (and `--concern css` for styles). Every source and style file claimed by a spec's `owns` starts with a `# Role:` header, and files are split by responsibility before they pass the line budgets in `docs-policy.toml`, never by squeezing lines. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md) |
+| Creating a file, adding a new responsibility, or growing code/CSS | Before adding files or growing one, read `python3 scripts/read_rules.py prepare --concern architecture` (and `--concern css` for styles). Every source and style file claimed by a spec's `owns` starts with a `# Role:` header; split files by responsibility when they grow past the line-budget reminders in `docs-policy.toml`, never by squeezing lines. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md) |
 | Architecture or module boundary description (`ARCHITECTURE.md`, domain/module specs) | Cover all five parts: positioning/non-goals, end-to-end runtime/control logic (`mermaid`), bounded interfaces & forbidden couplings, single-source state & hard invariants, and entrypoints/fitness checks. Owner: [architecture-and-modularity.md](docs/contracts/architecture-and-modularity.md#decomposition-and-ownership) |
 | Product direction, interaction flow, or visual UI design (`docs/design/`, web pages) | Before any product or UI design work, read `python3 scripts/read_rules.py prepare --concern frontend`. Principles and the measurable WCAG 2.2 AA baseline always outrank style preferences, and no UI code is written before the owner records approval of a design option after a pre-code `/grill`. Owner: [frontend-and-visual-discipline.md](docs/contracts/frontend-and-visual-discipline.md) and [grill.md](docs/guides/grill.md) |
 | Organizing information for readers (doc structure, navigation, screen content, knowledge or reference content) | Before structuring docs, screens, or knowledge content, read `python3 scripts/read_rules.py prepare --concern information`. Start from the reader's task and put the answer first. Owner: [information-organization.md](docs/contracts/information-organization.md) |
@@ -64,7 +65,7 @@ Apply the linked rule whenever your work touches the object below:
 - **Finish authorized tasks cleanly**: Complete implementation, integration, and verification instead of stopping mid-task with a `"Next steps"` list unless a genuine product decision or hard blocker needs the human owner.
 - **Keep independent review open, free of the author's explanations, and closed-loop**: Never pre-confine an independent reviewer to code details, feed the author's defense, skip architecture/consistency inspection, or declare a review complete before re-verifying fixes with the original reviewer and a fresh context.
 - **Never treat unapproved drafts as owner sign-off**: Wait for explicit owner choice on `docs/design/` alternatives before locking a UI architecture, visual style, or layout.
-- **Prevent monoliths and catch-all folders**: Split oversized files before exceeding line budgets, avoid vague `utils / helpers / common` folders, and keep component CSS out of global layout stylesheets.
+- **Prevent monoliths and catch-all folders**: Split oversized files by responsibility when they grow past line-budget reminders, prefer capability-named folders over vague `utils / helpers / common` folders, and keep component CSS out of global layout stylesheets.
 
 ## 5. Navigation & Verification Commands
 
