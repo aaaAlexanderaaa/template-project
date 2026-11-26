@@ -54,3 +54,5 @@ python3 scripts/project.py status
 | [docs/design/perspective-web.md](docs/design/perspective-web.md) | 四视图网页概览的规格，以及默认的 calm-platter 视觉风格（浅灰底、单块白色内容面板、安静配色） |
 | [templates/README.md](templates/README.md) | 迁移到下游项目时使用的起步模板清单 |
 | [.agents/skills/clean-chatgpt-flavor/SKILL.md](.agents/skills/clean-chatgpt-flavor/SKILL.md) | 可选独立自包含附加技能（**Clean ChatGPT Flavor**，独立分发仓库：[clean-chatgpt-flavor](https://github.com/aaaAlexanderaaa/clean-chatgpt-flavor)）：专门对抗 ChatGPT 式过度防御生成；默认直接清理文档与文案里的免责叠甲和自证材料，对代码层的无意义 SHA-256 校验、防审计字段、LLM payload 污染与冗余校验流水线先统计汇报、确认后再治理；可直接调用或整目录复制到任意仓库 / `~/.codex/skills/` |
+| [.agents/skills/deep-research/SKILL.md](.agents/skills/deep-research/SKILL.md) | 可选独立按需技能（**Deep Research**）：面向陌生领域调研、知识总览与争议议题的一手研究流程，覆盖读者定界、以人为本的信息源扩展、反方核验、多口径开放资料并排分析（不编造伪精确分）与带日期的覆盖和时效校验 |
+| [.agents/skills/plain-chinese-writing/SKILL.md](.agents/skills/plain-chinese-writing/SKILL.md) | 可选独立按需技能（**平实中文写作**）：按正面写作标准、整段重写与单次无分值诊断纪律撰写或润色自然现代汉语，不依赖容易诱发反向强化和应试换词的负面禁词表 |
